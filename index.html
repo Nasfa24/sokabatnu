@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <!-- Proteksi Viewport agar UI tidak bergeser atau ter-zoom tidak sengaja di HP -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dashboard Kampanye</title>
+  
+  <!-- Desain Sistem -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- SweetAlert2 untuk Notifikasi Dinamis -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <!-- Menu Utilitas Header -->
+  <div class="header-actions">
+    <button class="btn btn-warning" onclick="AppCore.refreshApp()">🔄 Refresh</button>
+    <button class="btn btn-primary" style="background-color: #6c757d;" onclick="AppCore.clearCache()">🧹 Clear Cache</button>
+  </div>
+
+  <h2 style="color: var(--primary); font-weight: 900; margin-bottom: 20px; text-align: center;">KONTROL UTAMA</h2>
+
+  <!-- Contoh Penggunaan Tombol Kebal Double-Tap -->
+  <button id="btn-test-api" class="btn btn-primary" onclick="testKoneksi()">
+    📡 Cek Koneksi Backend
+  </button>
+  
+  <button class="btn btn-accent" onclick="simulasiTindakanKritis()">
+    ⚠️ Tes Tombol Kritis
+  </button>
+
+  <!-- Script Inti -->
+  <script src="js/core.js"></script>
+  <script>
+    // Contoh implementasi fungsi memanggil API
+    function testKoneksi() {
+      const payload = { action: "ping" };
+      AppCore.fetchAPI("btn-test-api", payload, "Koneksi ke Google Sheets / GAS tersambung dengan sangat baik.");
+    }
+
+    // Contoh implementasi konfirmasi agar user tidak tidak sengaja menekan
+    function simulasiTindakanKritis() {
+      AppCore.confirmAction(
+        'Validasi Referal?', 
+        'Apakah Anda yakin ingin memvalidasi data ini secara permanen?', 
+        'Ya, Validasi', 
+        () => {
+          AppCore.showAlert('success', 'Tervalidasi', 'Data telah dikunci ke dalam sistem.');
+        }
+      );
+    }
+  </script>
+</body>
+</html>
