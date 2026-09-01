@@ -3,53 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Dashboard Kampanye</title>
+  <title>Dashboard SOKABAT-NU</title>
   
-  <!-- Injeksi Favicon -->
   <link rel="icon" type="image/png" href="favicon-32.png">
-  
-  <!-- PERBAIKAN: Memanggil style.css langsung dari root -->
   <link rel="stylesheet" href="style.css">
-  
-  <!-- SweetAlert2 untuk Notifikasi Dinamis -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
+  <!-- Menu Utilitas Header -->
   <div class="header-actions">
     <button class="btn btn-warning" onclick="AppCore.refreshApp()">🔄 Refresh</button>
     <button class="btn btn-primary" style="background-color: #6c757d;" onclick="AppCore.clearCache()">🧹 Clear Cache</button>
   </div>
 
-  <h2 style="color: var(--primary); font-weight: 900; margin-bottom: 20px; text-align: center;">KONTROL UTAMA</h2>
+  <!-- Countdown Section -->
+  <div class="countdown-container">
+    <h3 style="color: var(--bg-color); margin-bottom: 10px; font-weight: 800;">MENUJU 15 JULI 2029</h3>
+    <div class="timer-grid" id="countdown-timer">
+      <div class="time-box">
+        <span id="cd-days">000</span>
+        <label>HARI</label>
+      </div>
+      <div class="time-box">
+        <span id="cd-hours">00</span>
+        <label>JAM</label>
+      </div>
+      <div class="time-box">
+        <span id="cd-mins">00</span>
+        <label>MENIT</label>
+      </div>
+      <div class="time-box">
+        <span id="cd-secs">00</span>
+        <label>DETIK</label>
+      </div>
+    </div>
+  </div>
 
-  <button id="btn-test-api" class="btn btn-primary" onclick="testKoneksi()">
-    📡 Cek Koneksi Backend
-  </button>
-  
-  <button class="btn btn-accent" onclick="simulasiTindakanKritis()">
-    ⚠️ Tes Tombol Kritis
-  </button>
+  <h2 style="color: var(--primary); font-weight: 900; margin: 25px 0 15px 0; text-align: center; font-size: 18px;">MODUL KAMPANYE</h2>
 
-  <!-- PERBAIKAN: Memanggil core.js langsung dari root -->
+  <!-- Menu Navigasi MPA -->
+  <div class="menu-grid">
+    <a href="input-ktp.html" class="menu-card">
+      <div class="menu-icon">👥</div>
+      <div class="menu-title">Referal (1:10)</div>
+      <div class="menu-desc">Input & Validasi Data KTP</div>
+    </a>
+    
+    <a href="agenda.html" class="menu-card" onclick="checkFeature(event)">
+      <div class="menu-icon">📍</div>
+      <div class="menu-title">Geotagging</div>
+      <div class="menu-desc">Catat Rute & Frekuensi</div>
+    </a>
+
+    <a href="scanner.html" class="menu-card" onclick="checkFeature(event)">
+      <div class="menu-icon">📷</div>
+      <div class="menu-title">Scanner Benefit</div>
+      <div class="menu-desc">Klaim Poin Pertemuan</div>
+    </a>
+  </div>
+
   <script src="core.js"></script>
   
   <script>
-    function testKoneksi() {
-      const payload = { action: "ping" };
-      AppCore.fetchAPI("btn-test-api", payload, "Koneksi ke Google Sheets tersambung dengan sangat baik.");
-    }
+    // =========================================================================
+    // LOGIKA COUNTDOWN TIMER PRESISI
+    // =========================================================================
+    const targetDate = new Date("July 15, 2029 00:00:00").getTime();
 
-    function simulasiTindakanKritis() {
-      AppCore.confirmAction(
-        'Validasi Referal?', 
-        'Apakah Anda yakin ingin memvalidasi data ini secara permanen?', 
-        'Ya, Validasi', 
-        () => {
-          AppCore.showAlert('success', 'Tervalidasi', 'Data telah dikunci ke dalam sistem.');
-        }
-      );
-    }
-  </script>
-</body>
-</html>
+    const updateTimer = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        clearInterval(updateTimer);
+        document.getElementById("countdown-timer").innerHTML = "<h2 style='color:var(--accent-2); margin:0;'>HARI H TIBA!</h2>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = MathMantap. Karena kita menargetkan hasil akhir yang terdokumentasi penuh, benar-benar teruji, dan bebas dari *workaround* sementara—agar hasilnya solid saat direview oleh Manuth—saya butuh sedikit konteks untuk menyelaraskan langkah kita.
+
+Sistem mana yang koneksinya baru saja berhasil Anda selesaikan?
+
+*   Konfigurasi WAHA (WhatsApp HTTP API) di Docker?
+*   Integrasi Google Sheets dan Drive untuk aplikasi kehadiran pengunjung?
+*   Atau arsitektur sistem rekapitulasi suara *offline* untuk TPS?
+
+Silakan konfirmasi proyeknya, dan kita akan langsung membedah eksekusi teknis atau desain UI berikutnya.
