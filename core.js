@@ -5,7 +5,7 @@
  */
 
 // Ganti dengan URL Web App dari Google Apps Script setelah di-deploy
-const GAS_API_URL = "URL_WEB_APP_GAS_ANDA_DISINI"; 
+const GAS_API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec"; 
 
 const AppCore = {
   /**
