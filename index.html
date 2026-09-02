@@ -2,293 +2,80 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>ECMS 2029 - Portal Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <title>ECMS 2029 - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
-    :root {
-      --primary: #03754c;
-      --primary-hover: #025738;
-      --accent-orange: #FF9c08;
-      --accent-yellow: #fff212;
-      --bg-body: #f0f4f2;
-      --bg-card: #fefefe;
-      --text: #000000;
-      --border: #d1d9d6;
-    }
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-body);
-      color: var(--text);
-      margin: 0;
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .login-card {
-      background: var(--bg-card);
-      width: 100%;
-      max-width: 440px;
-      padding: 35px 25px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      border-top: 8px solid var(--primary);
-      text-align: center;
-    }
-    .brand-title {
-      font-size: 26px;
-      font-weight: 900;
-      color: var(--primary);
-      margin: 0 0 5px 0;
-      letter-spacing: 1px;
-    }
-    .brand-sub {
-      font-size: 13px;
-      color: #555;
-      margin-bottom: 25px;
-      font-weight: 600;
-    }
-    .form-group {
-      margin-bottom: 20px;
-      text-align: left;
-    }
-    label {
-      display: block;
-      font-weight: 800;
-      font-size: 12px;
-      color: var(--primary);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    input {
-      width: 100%;
-      padding: 16px;
-      border: 2px solid var(--border);
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      background-color: #f9fbfaf7;
-      transition: all 0.25s;
-      color: #111;
-    }
-    input:focus {
-      outline: none;
-      border-color: var(--primary);
-      background-color: #fff;
-      box-shadow: 0 0 0 4px rgba(3, 117, 76, 0.15);
-    }
-    .btn-submit {
-      width: 100%;
-      padding: 18px;
-      background-color: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-size: 18px;
-      font-weight: 900;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 6px 18px rgba(3, 117, 76, 0.3);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 10px;
-    }
-    .btn-submit:hover {
-      background-color: var(--primary-hover);
-      transform: translateY(-2px);
-    }
-    .btn-submit:active {
-      transform: translateY(0);
-    }
-    .action-tools {
-      display: flex;
-      gap: 10px;
-      margin-top: 25px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-    .btn-tool {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .btn-refresh { background-color: var(--accent-yellow); color: #000; }
-    .btn-clear { background-color: #6c757d; color: #fff; }
-    .btn-tool:hover { transform: translateY(-2px); opacity: 0.9; }
-    .footer-note {
-      font-size: 11px;
-      color: #888;
-      margin-top: 20px;
-      font-weight: 600;
-    }
+    :root { --primary: #03754c; --bg-body: #f0f4f2; }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg-body); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 15px;}
+    .login-card { background: #fff; width: 100%; max-width: 400px; padding: 30px; border-radius: 12px; border-top: 8px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+    input { width: 100%; padding: 15px; margin-bottom: 15px; border: 2px solid #d1d9d6; border-radius: 8px; box-sizing: border-box; font-size: 16px;}
+    button { width: 100%; padding: 15px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; margin-bottom: 10px;}
+    .btn-clear { background: #6c757d; }
   </style>
 </head>
 <body>
-
 <div class="login-card">
-  <div class="brand-title">ECMS 2029</div>
-  <div class="brand-sub">Enterprise Campaign Management System</div>
-
-  <form id="loginForm" onsubmit="executeLogin(event)">
-    <div class="form-group">
-      <label for="nik">NIK Terdaftar (16 Digit)</label>
-      <input type="text" id="nik" inputmode="numeric" maxlength="16" placeholder="Masukkan NIK Anda" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-    </div>
-
-    <div class="form-group">
-      <label for="hp">Nomor HP / WhatsApp</label>
-      <input type="text" id="hp" inputmode="numeric" placeholder="Contoh: 081234567890" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-    </div>
-
-    <button type="submit" class="btn-submit" id="btnLogin">🚀 MASUK SEKARANG</button>
+  <h2 style="color:var(--primary); margin-top:0;">ECMS 2029</h2>
+  <form id="loginForm" onsubmit="doLogin(event)">
+    <input type="text" id="nik" placeholder="NIK (Minimal 10 Digit Angka)" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    <input type="text" id="hp" placeholder="Nomor HP" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    <button type="submit" id="btn-login">🚀 MASUK</button>
+    <button type="button" class="btn-clear" onclick="clearCache()">🧹 CLEAR CACHE</button>
   </form>
-
-  <div class="action-tools">
-    <button type="button" class="btn-tool btn-refresh" onclick="refreshSystem()">🔄 Refresh App</button>
-    <button type="button" class="btn-tool btn-clear" onclick="clearSystemCache()">🧹 Clear Cache</button>
-  </div>
-
-  <div class="footer-note">Aplikasi Pemenangan Berbasis Data & AI • Surabaya 2029</div>
 </div>
 
 <script>
-  window.onload = function() {
-    checkExistingSession();
+  // 🔴 INI ADALAH JANTUNG APLIKASI - URL WEB APP ANDA
+  const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
+
+  window.onload = () => {
+    if (localStorage.getItem('ecms_role')) redirectToDash(localStorage.getItem('ecms_role'));
   };
 
-  function checkExistingSession() {
-    const savedRole = localStorage.getItem('ecms_role');
-    const savedUser = localStorage.getItem('ecms_user');
-    if (savedRole && savedUser) {
-      redirectToDashboard(savedRole);
-    }
+  async function callAPI(action, dataObj) {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      body: JSON.stringify({ action: action, data: dataObj })
+    });
+    return await response.json();
   }
 
-  function executeLogin(e) {
+  async function doLogin(e) {
     e.preventDefault();
-    const nik = document.getElementById('nik').value.trim();
-    const hp = document.getElementById('hp').value.trim();
+    const nik = document.getElementById('nik').value;
+    const hp = document.getElementById('hp').value;
 
-    if (nik.length < 10) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'NIK Tidak Valid',
-        text: 'NIK harus diisi minimal 10-16 digit angka.',
-        confirmButtonColor: '#03754c'
-      });
-      return;
-    }
+    if (nik.length < 10) return Swal.fire('Error', 'NIK minimal 10 Digit', 'error');
 
-    const btn = document.getElementById('btnLogin');
-    btn.disabled = true;
-    btn.innerText = '⏳ MEMVERIFIKASI...';
+    document.getElementById('btn-login').innerText = "⏳ MEMVERIFIKASI...";
+    Swal.fire({ title: 'Menembus Database...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
-    Swal.fire({
-      title: 'Menembus Database System...',
-      text: 'Memvalidasi Identitas & Otorisasi Role',
-      allowOutsideClick: false,
-      didOpen: () => { Swal.showLoading(); }
-    });
-
-    if (typeof google !== 'undefined' && google.script && google.script.run) {
-      google.script.run
-        .withFailureHandler(function(err) {
-          btn.disabled = false;
-          btn.innerText = '🚀 MASUK SEKARANG';
-          Swal.fire({ icon: 'error', title: 'Gagal Terhubung', text: err.message, confirmButtonColor: '#03754c' });
-        })
-        .withSuccessHandler(function(res) {
-          btn.disabled = false;
-          btn.innerText = '🚀 MASUK SEKARANG';
-          if (res.status === 'success') {
-            localStorage.setItem('ecms_role', res.role);
-            localStorage.setItem('ecms_user', JSON.stringify(res.user));
-            
-            Swal.fire({
-              icon: 'success',
-              title: 'Akses Diberikan!',
-              text: 'Selamat datang, ' + res.user.nama + ' (' + res.role + ')',
-              timer: 1800,
-              showConfirmButton: false
-            }).then(() => {
-              redirectToDashboard(res.role);
-            });
-          } else {
-            Swal.fire({ icon: 'error', title: 'Akses Ditolak', text: res.message, confirmButtonColor: '#03754c' });
-          }
-        })
-        .loginUser(nik, hp);
-    } else {
-      // Mock / Offline Test Fallback
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.innerText = '🚀 MASUK SEKARANG';
-        let role = 'CALEG';
-        if (nik === '3578011002800005') role = 'TIM_PASTI';
-        if (nik === '3578021506880009') role = 'TIM_PASANG';
-        if (nik === '3578020504780002') role = 'INPUTER';
-
-        let userObj = { nik: nik, nama: 'PENGGUNA TEST', hp: hp, kategori: role };
-        localStorage.setItem('ecms_role', role);
-        localStorage.setItem('ecms_user', JSON.stringify(userObj));
-        
-        Swal.fire({ icon: 'success', title: 'Mode Offline Demo', text: 'Login sebagai: ' + role, timer: 1500, showConfirmButton: false })
-          .then(() => { redirectToDashboard(role); });
-      }, 1000);
-    }
-  }
-
-  function redirectToDashboard(role) {
-    let target = 'caleg.html';
-    if (role === 'TIM_PASTI' || role === 'TIM_PASANG') target = 'tim.html';
-    if (role === 'INPUTER') target = 'inputer.html';
-    
-    // Check if running in GAS iframe environment
-    if (window.location.href.indexOf('script.google.com') !== -1) {
-      window.top.location.href = window.location.pathname + '?page=' + target.replace('.html', '');
-    } else {
-      window.location.href = target;
-    }
-  }
-
-  function refreshSystem() {
-    Swal.fire({
-      toast: true,
-      position: 'top',
-      icon: 'info',
-      title: 'Memperbarui Aplikasi...',
-      showConfirmButton: false,
-      timer: 1200
-    }).then(() => { location.reload(); });
-  }
-
-  function clearSystemCache() {
-    Swal.fire({
-      title: 'Clear Cache Aplikasi?',
-      text: 'Sesi login akan dihapus dan cache browser dibersihkan.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#03754c',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Ya, Bersihkan!'
-    }).then((r) => {
-      if (r.isConfirmed) {
-        localStorage.clear();
-        sessionStorage.clear();
-        Swal.fire({ icon: 'success', title: 'Cache Bersih', timer: 1500, showConfirmButton: false })
-          .then(() => { location.reload(); });
+    try {
+      const res = await callAPI('login', { nik: nik, hp: hp });
+      if (res.status === 'success') {
+        localStorage.setItem('ecms_role', res.role);
+        localStorage.setItem('ecms_user', JSON.stringify(res.user));
+        Swal.fire({ icon: 'success', title: 'Berhasil', timer: 1500, showConfirmButton: false }).then(() => redirectToDash(res.role));
+      } else {
+        Swal.fire('Akses Ditolak', res.message, 'error');
+        document.getElementById('btn-login').innerText = "🚀 MASUK";
       }
-    });
+    } catch (err) {
+      Swal.fire('Koneksi Gagal', err.message, 'error');
+      document.getElementById('btn-login').innerText = "🚀 MASUK";
+    }
+  }
+
+  function redirectToDash(role) {
+    if (role === 'CALEG') location.href = 'caleg.html';
+    else if (role === 'TIM_PASTI' || role === 'TIM_PASANG') location.href = 'tim.html';
+    else if (role === 'INPUTER') location.href = 'inputer.html';
+  }
+
+  function clearCache() {
+    localStorage.clear();
+    Swal.fire('Bersih!', 'Cache telah dihapus.', 'success');
   }
 </script>
 </body>
