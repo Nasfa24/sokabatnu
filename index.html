@@ -8,7 +8,12 @@
   <!-- PWA & Icon Identitas -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <script> if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js'); </script>
+  <meta name="theme-color" content="#03754c">
+  <script> 
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(err => console.log('SW Reg Failed', err));
+    }
+  </script>
   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
@@ -17,6 +22,7 @@
       --primary: #03754c; 
       --primary-hover: #025738; 
       --accent-orange: #FF9c08; 
+      --accent-yellow: #fff212;
       --bg-body: #f0f4f2; 
       --border: #d1d9d6;
     }
@@ -31,75 +37,57 @@
       padding: 20px 15px;
     }
     
-    .wrapper {
-      width: 100%;
-      max-width: 420px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+    .wrapper { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 15px; }
 
     /* KARTU 1: HEADER & COUNTDOWN */
     .header-card {
-      background: linear-gradient(135deg, var(--primary), #02452d);
-      color: #fff;
-      padding: 25px 20px;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(3, 117, 76, 0.2);
-      border-bottom: 6px solid var(--accent-orange);
+      background: linear-gradient(135deg, var(--primary), #02452d); color: #fff;
+      padding: 25px 20px; border-radius: 16px; text-align: center;
+      box-shadow: 0 10px 25px rgba(3, 117, 76, 0.2); border-bottom: 6px solid var(--accent-orange);
     }
-    .header-card h1 { margin: 0 0 5px 0; font-size: 26px; font-weight: 900; letter-spacing: 1px; }
-    .header-card p { margin: 0 0 20px 0; font-size: 13px; color: #e2e8e5; font-weight: 600; }
+    .header-card h1 { margin: 0 0 5px 0; font-size: 28px; font-weight: 900; letter-spacing: 1px; color: var(--accent-yellow); }
+    .header-card p { margin: 0 0 20px 0; font-size: 13px; color: #e2e8e5; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;}
     
-    .timer-display { display: flex; justify-content: center; gap: 10px; }
-    .timer-box { background: rgba(255,255,255,0.15); padding: 10px; border-radius: 10px; flex: 1; backdrop-filter: blur(5px); }
-    .timer-num { font-size: 24px; font-weight: 900; line-height: 1; }
-    .timer-lbl { font-size: 10px; text-transform: uppercase; margin-top: 4px; font-weight: 700; color: #fff212; }
+    .timer-display { display: flex; justify-content: center; gap: 8px; }
+    .timer-box { background: rgba(255,255,255,0.15); padding: 12px 8px; border-radius: 10px; flex: 1; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);}
+    .timer-num { font-size: 26px; font-weight: 900; line-height: 1; }
+    .timer-lbl { font-size: 10px; text-transform: uppercase; margin-top: 5px; font-weight: 800; color: var(--accent-yellow); }
 
     /* KARTU 2: STATISTIK & TARGET PUBLIK */
-    .stats-card {
-      background: #fff;
-      padding: 25px 20px;
-      border-radius: 16px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-    }
+    .stats-card { background: #fff; padding: 25px 20px; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.05); }
     .target-badge {
-      display: inline-block;
-      background: var(--accent-orange);
-      color: #000;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 900;
-      margin-bottom: 15px;
+      display: inline-block; background: var(--accent-orange); color: #000;
+      padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 900; margin-bottom: 15px; width: 100%; text-align: center;
     }
-    .progress-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; color: var(--primary); margin-bottom: 5px; }
-    .progress-bg { background: #e9eceb; border-radius: 10px; height: 14px; overflow: hidden; margin-bottom: 8px; border: 1px solid var(--border); }
-    .progress-fill { background: var(--primary); height: 100%; width: 0%; transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
-    .progress-meta { font-size: 11px; color: #666; font-weight: 600; text-align: right; }
+    .progress-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+    .progress-bg { background: #e9eceb; border-radius: 12px; height: 18px; overflow: hidden; margin-bottom: 8px; border: 1px solid var(--border); }
+    .progress-fill { background: linear-gradient(90deg, var(--primary), #10b981); height: 100%; width: 0%; transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .progress-meta { font-size: 12px; color: #555; font-weight: 700; text-align: center; margin-bottom: 20px;}
     
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--border); }
-    .stat-item { text-align: center; }
-    .stat-item span { display: block; font-size: 11px; color: #666; font-weight: 700; text-transform: uppercase; }
-    .stat-item b { font-size: 20px; color: var(--primary); font-weight: 900; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 15px; border-top: 2px dashed var(--border); }
+    .stat-item { background: #f9fbfaf7; padding: 12px; border-radius: 10px; border: 1px solid var(--border); text-align: center; }
+    .stat-item span { display: block; font-size: 10px; color: var(--primary); font-weight: 800; text-transform: uppercase; margin-bottom: 5px;}
+    .stat-item b { font-size: 22px; color: #111; font-weight: 900; }
 
-    /* KARTU 3: LOGIN FORM */
-    .login-card {
-      background: #fff;
-      padding: 25px 20px;
-      border-radius: 16px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-      border-top: 5px solid var(--primary);
-    }
-    .login-card h3 { margin: 0 0 15px 0; color: var(--primary); font-size: 16px; text-align: center; }
-    input { width: 100%; padding: 16px; margin-bottom: 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 15px; font-weight: 700; background: #f9fbfaf7; text-align: center; transition: 0.2s;}
+    /* KARTU 3: LOGIN FORM & TOOLS */
+    .login-card { background: #fff; padding: 25px 20px; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary); }
+    .login-card h3 { margin: 0 0 15px 0; color: var(--primary); font-size: 16px; text-align: center; font-weight: 900;}
+    input { width: 100%; padding: 16px; margin-bottom: 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 16px; font-weight: 700; background: #f9fbfaf7; text-align: center; transition: 0.2s;}
     input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(3, 117, 76, 0.15); background: #fff; }
     
-    button { width: 100%; padding: 16px; color: #fff; border: none; border-radius: 10px; font-weight: 900; font-size: 15px; cursor: pointer; margin-bottom: 10px; transition: 0.2s;}
-    .btn-login { background: var(--primary); box-shadow: 0 4px 15px rgba(3, 117, 76, 0.25); }
+    button { width: 100%; padding: 16px; color: #fff; border: none; border-radius: 10px; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s; text-transform: uppercase;}
+    .btn-login { background: var(--primary); box-shadow: 0 4px 15px rgba(3, 117, 76, 0.25); margin-bottom: 20px; }
     .btn-login:active { transform: translateY(2px); box-shadow: none; }
-    .btn-clear { background: #6c757d; font-size: 13px; padding: 12px; }
+    
+    .tools-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    .btn-clear { background: #e74c3c; font-size: 13px; padding: 12px; }
+    .btn-install { background: #FF9c08; color: #000; font-size: 13px; padding: 12px; display: none; animation: pulse 2s infinite; }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 156, 8, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 156, 8, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 156, 8, 0); }
+    }
   </style>
 </head>
 <body>
@@ -109,7 +97,7 @@
   <!-- MODUL 1: BRANDING & COUNTDOWN -->
   <div class="header-card">
     <h1>SOKABAT NU</h1>
-    <p>Sistem Komando Pemenangan Pemilu 2029</p>
+    <p>Sistem Komando Pemenangan 2029</p>
     
     <div class="timer-display">
       <div class="timer-box"><div class="timer-num" id="c-days">0</div><div class="timer-lbl">Hari</div></div>
@@ -121,29 +109,27 @@
 
   <!-- MODUL 2: DASHBOARD PUBLIK (TARGET & CAPAIAN) -->
   <div class="stats-card">
-    <div style="text-align: center;">
-      <div class="target-badge">🎯 TARGET KEMENANGAN: 10.000 SUARA</div>
-    </div>
+    <div class="target-badge">🎯 TARGET KEMENANGAN: 10.000 SUARA</div>
     
     <div class="progress-header">
-      <span>PERSIAPAN CALON PEMILIH</span>
+      <span>CALON PEMILIH BINAAN</span>
       <span id="percent-text">0.0%</span>
     </div>
     <div class="progress-bg">
       <div class="progress-fill" id="progress-bar"></div>
     </div>
     <div class="progress-meta">
-      <b id="count-pemilih" style="color:var(--primary); font-size:14px;">...</b> dari 25.000 Data
+      Berhasil Kumpul: <b id="count-pemilih" style="color:var(--primary); font-size:15px;">...</b> / Target: 25.000 Data
     </div>
 
     <div class="stats-grid">
       <div class="stat-item">
-        <span>Total Relawan (Tim)</span>
-        <b id="count-tim">...</b>
+        <span>TIM PASTI (TERBUKA)</span>
+        <b id="count-tim-pasti">...</b>
       </div>
-      <div class="stat-item">
-        <span>Status Mesin Data</span>
-        <b style="color:#FF9c08; font-size:14px; margin-top:4px; display:block;">🟢 AKTIF</b>
+      <div class="stat-item" style="border-color: #FF9c08; background: #fffcf0;">
+        <span style="color: #d97706;">TIM PASANG (RAHASIA)</span>
+        <b style="color:#d97706; font-size: 14px; margin-top: 8px; display:block;">[ ENCRYPTED ]</b>
       </div>
     </div>
   </div>
@@ -152,11 +138,16 @@
   <div class="login-card">
     <h3>🔐 PORTAL OTORISASI</h3>
     <form id="loginForm" onsubmit="doLogin(event)">
-      <input type="text" id="nik" inputmode="numeric" placeholder="NIK Terdaftar" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+      <input type="text" id="nik" inputmode="numeric" placeholder="NIK Terdaftar (16 Digit)" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
       <input type="text" id="hp" inputmode="numeric" placeholder="Nomor WhatsApp" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
       <button type="submit" id="btn-login" class="btn-login">🚀 MASUK SISTEM</button>
-      <button type="button" class="btn-clear" onclick="clearCache()">🧹 CLEAR CACHE</button>
     </form>
+    
+    <div class="tools-grid">
+      <!-- Tombol Install PWA ini hanya akan muncul jika didukung oleh HP Pengguna -->
+      <button type="button" id="btn-install" class="btn-install" onclick="installPWA()">📲 INSTALL APLIKASI (PWA)</button>
+      <button type="button" class="btn-clear" onclick="hardNukeCache()">🔥 RESET & CLEAR CACHE TOTAL</button>
+    </div>
   </div>
 
 </div>
@@ -165,6 +156,32 @@
   // 🔴 URL API GAS ANDA
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
 
+  // ==========================================
+  // MODUL PWA INSTALLER (Mobile Friendly)
+  // ==========================================
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Munculkan tombol instalasi jika HP mendeteksi Web App ini valid
+    document.getElementById('btn-install').style.display = 'block';
+  });
+
+  function installPWA() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          document.getElementById('btn-install').style.display = 'none';
+        }
+        deferredPrompt = null;
+      });
+    }
+  }
+
+  // ==========================================
+  // INIT DASHBOARD
+  // ==========================================
   window.onload = () => {
     // 1. Cek Sesi (Mencegah Loop Login)
     const role = localStorage.getItem('ecms_role');
@@ -172,7 +189,6 @@
       redirectToDash(role);
       return; 
     }
-
     // 2. Jalankan Modul Landing Page
     startCountdown();
     fetchPublicStats();
@@ -195,19 +211,19 @@
 
   async function fetchPublicStats() {
     try {
-      // Menarik data sebagai GUEST (Akan menyembunyikan pasukan PASANG secara otomatis dari API)
+      // Menarik data sebagai GUEST (Keamanan: Backend akan menyembunyikan TIM PASANG)
       const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'getStats', data: { nik: 'GUEST', role: 'GUEST' } }) });
       const json = await res.json();
       
       if (json.status === 'success') {
         const pemilih = json.data.total_pemilih || 0;
-        const tim = json.data.total_tim_pasti || 0;
+        const timPasti = json.data.total_tim_pasti || 0;
         
-        // Animasi Progress Bar ke 25.000
+        // Animasi Progress Bar berdasarkan Target 25.000 Pemilih Persiapan
         const percent = Math.min((pemilih / 25000) * 100, 100);
         
         document.getElementById('count-pemilih').innerText = pemilih.toLocaleString('id-ID');
-        document.getElementById('count-tim').innerText = tim.toLocaleString('id-ID');
+        document.getElementById('count-tim-pasti').innerText = timPasti.toLocaleString('id-ID') + " Orang";
         
         setTimeout(() => {
           document.getElementById('progress-bar').style.width = percent + '%';
@@ -215,9 +231,8 @@
         }, 300);
       }
     } catch (e) {
-      console.log('Gagal menarik satelit data publik.');
       document.getElementById('count-pemilih').innerText = "0";
-      document.getElementById('count-tim').innerText = "0";
+      document.getElementById('count-tim-pasti').innerText = "0";
     }
   }
 
@@ -267,10 +282,47 @@
     else if (role === 'INPUTER') window.location.replace('inputer.html');
   }
 
-  function clearCache() {
-    localStorage.clear();
-    sessionStorage.clear();
-    Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Cache HP Dibersihkan', timer: 2000, showConfirmButton: false });
+  // ==========================================
+  // THE "HARD NUKE" CACHE DESTROYER
+  // ==========================================
+  async function hardNukeCache() {
+    Swal.fire({
+      title: 'Reset Total Sistem?',
+      text: "Semua pembaruan skrip akan ditarik ulang secara paksa.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#e74c3c',
+      cancelButtonColor: '#6c757d',
+      confirmButtonText: 'Ya, Hancurkan Cache!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        
+        // 1. Hapus Storage Standar
+        localStorage.clear();
+        sessionStorage.clear();
+
+        // 2. Bunuh Service Worker (PWA Caching Root Cause)
+        if ('serviceWorker' in navigator) {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          for (let registration of registrations) {
+            await registration.unregister();
+          }
+        }
+
+        // 3. Bom Nuklir Cache Storage Level Browser
+        if ('caches' in window) {
+          const cacheNames = await caches.keys();
+          for (let name of cacheNames) {
+            await caches.delete(name);
+          }
+        }
+
+        Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Sistem Ter-Reset Total!', showConfirmButton: false, timer: 2000 }).then(() => {
+          // 4. Force Hard Reload dari Server
+          window.location.reload(true);
+        });
+      }
+    });
   }
 </script>
 </body>
