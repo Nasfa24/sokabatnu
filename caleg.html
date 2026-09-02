@@ -4,89 +4,118 @@
   <meta charset="UTF-8">
   <title>CALEG DASHBOARD - SOKABAT NU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <meta name="theme-color" content="#03754c">
   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="app.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   
   <style>
-    :root { --primary: #03754c; --border: #d1d9d6; }
+    :root { --primary: #03754c; --primary-hover: #025738; --border: #d1d9d6; --accent-orange: #FF9c08; --bg-body: #f0f4f2;}
     * { box-sizing: border-box; touch-action: manipulation; user-select: none; }
-    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f2; padding: 15px; margin: 0; }
-    .card { background: #fff; padding: 22px; border-radius: 14px; margin-bottom: 20px; box-shadow: 0 6px 15px rgba(0,0,0,0.06); }
-    .btn { background: var(--primary); color: #fff; padding: 16px; border: none; border-radius: 10px; width: 100%; font-weight: 900; font-size: 15px; margin-bottom: 12px; cursor:pointer; min-height: 52px; transition: 0.2s;}
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-body); padding: 15px; margin: 0; }
+    
+    .wrapper { width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+    
+    .card { background: #fff; padding: 22px; border-radius: 14px; box-shadow: 0 6px 15px rgba(0,0,0,0.06); }
+    
+    .btn { background: var(--primary); color: #fff; padding: 16px; border: none; border-radius: 10px; width: 100%; font-weight: 900; font-size: 15px; margin-bottom: 12px; cursor:pointer; min-height: 52px; transition: 0.2s; text-transform: uppercase;}
     .btn:active { transform: translateY(2px); }
     .btn-red { background: #e74c3c; }
-    .btn-orange { background: #FF9c08; color: #000; }
+    .btn-orange { background: var(--accent-orange); color: #000; }
     .btn-outline { background: transparent; border: 2px solid var(--border); color: #333; }
+    
     .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .stat-box { background: #f9fbfaf7; padding: 18px; border-left: 6px solid var(--primary); border-radius: 10px; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);}
-    .stat-box h2 { margin: 8px 0 0 0; color: var(--primary); font-size: 28px;}
-    .stat-box.orange { border-left-color: #FF9c08; } .stat-box.orange h2 { color: #d97706; }
-    input, select { width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 10px; border: 2px solid var(--border); font-size: 15px; font-weight: 600; min-height: 52px;}
-    input:focus, select:focus { outline: none; border-color: var(--primary); }
-    .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap:10px;}
+    .stat-box { background: #f9fbfaf7; padding: 18px; border-left: 6px solid var(--primary); border-radius: 10px; border: 1px solid var(--border); border-left-width: 6px; }
+    .stat-box h2 { margin: 8px 0 0 0; color: var(--primary); font-size: 28px; line-height: 1;}
+    .stat-box.orange { border-left-color: var(--accent-orange); background: #fffdf8;} 
+    .stat-box.orange h2 { color: #d97706; }
+    
+    input, select { width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 10px; border: 2px solid var(--border); font-size: 15px; font-weight: 600; min-height: 52px; background: #f9fbfaf7; transition: 0.2s;}
+    input:focus, select:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(3, 117, 76, 0.15);}
+    
+    .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap:10px;}
     .badge { padding:4px 8px; border-radius:4px; font-size:10px; font-weight:bold; background:var(--primary); color:#fff; }
-    .badge.pasang { background:#FF9c08; color:#000; }
+    .badge.pasang { background: var(--accent-orange); color:#000; }
   </style>
 </head>
 <body>
 
-<div class="card">
-  <div class="header-top">
-    <h2 style="margin:0; color:var(--primary); font-weight: 900;">👑 SUPER ADMIN</h2>
-    <div style="display:flex; gap:8px;">
-      <button class="btn btn-outline" style="width:auto; padding:10px 15px; margin:0;" onclick="loadStats()">🔄 Refresh</button>
-      <button class="btn btn-red" style="width:auto; padding:10px 15px; margin:0;" onclick="doLogout()">🚪 KELUAR</button>
+<div class="wrapper">
+
+  <!-- CARD 1: HEADER & LOGOUT -->
+  <div class="card">
+    <div class="header-top">
+      <h2 style="margin:0; color:var(--primary); font-weight: 900;">👑 SUPER ADMIN</h2>
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-outline" style="width:auto; padding:10px 15px; margin:0;" onclick="loadStats()">🔄 Refresh</button>
+        <button class="btn btn-red" style="width:auto; padding:10px 15px; margin:0;" onclick="doLogout()">🚪 KELUAR</button>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="card" style="text-align:center;">
-  <h3 style="margin-top:0; color:#333;">📱 QR Presensi Caleg</h3>
-  <p style="font-size:12px; color:#666;">Tunjukkan Barcode ini ke Relawan Anda untuk di-scan guna mencatat poin pertemuan.</p>
-  <div id="qrcode-caleg" style="display:flex; justify-content:center; margin:15px 0; padding:15px; background:#fff; border-radius:10px; border:2px dashed var(--primary);"></div>
-  <b style="color:var(--primary); font-size: 18px;">NIK: 081339760265</b>
-</div>
-
-<div class="card">
-  <h3 style="margin-top:0; color:#333;">📊 Statistik Relawan & Pemilih</h3>
-  <div class="stat-grid">
-    <div class="stat-box"><span style="font-size:12px; font-weight:bold; color:#666;">PEMILIH BINAAN</span><h2 id="st-pemilih">...</h2></div>
-    <div class="stat-box"><span style="font-size:12px; font-weight:bold; color:#666;">RUMAH DIKUNJUNGI</span><h2 id="st-rumah">...</h2></div>
-    <div class="stat-box"><span style="font-size:12px; font-weight:bold; color:#666;">TIM TERBUKA (PASTI)</span><h2 id="st-pasti">...</h2></div>
-    <div class="stat-box orange"><span style="font-size:12px; font-weight:bold; color:#666;">TIM RAHASIA (PASANG)</span><h2 id="st-pasang">...</h2></div>
+  <!-- CARD 2: QR CODE -->
+  <div class="card" style="text-align:center;">
+    <h3 style="margin-top:0; color:var(--primary);">📱 QR Presensi Caleg</h3>
+    <p style="font-size:12px; color:#666; margin-bottom: 5px;">Tunjukkan Barcode ini ke Relawan Anda untuk di-scan guna mencatat poin pertemuan.</p>
+    <div style="display:flex; justify-content:center; margin:15px 0;">
+       <div id="qrcode-caleg" style="padding:15px; background:#fff; border-radius:10px; border:2px dashed var(--primary); display: inline-block;"></div>
+    </div>
+    <b style="color:var(--primary); font-size: 18px; letter-spacing: 1px;">NIK: 081339760265</b>
   </div>
-</div>
 
-<div class="card">
-  <h3 style="margin-top:0; color:#333;">🏆 Manajemen Tim (Overachiever)</h3>
-  <p style="font-size:12px; color:#666;">Pantau kuota referal tim. Berikan slot tambahan (+10) atau Promosikan menjadi Koordinator.</p>
-  <button class="btn btn-outline" style="border-color:var(--primary); color:var(--primary);" onclick="loadProgressTim()">🔄 Muat Data Pergerakan Tim</button>
-  <div id="tim-list-container" style="margin-top: 15px;"></div>
-</div>
+  <!-- CARD 3: STATISTIK -->
+  <div class="card">
+    <h3 style="margin-top:0; color:var(--primary);">📊 Statistik Relawan & Pemilih</h3>
+    <div class="stat-grid">
+      <div class="stat-box"><span style="font-size:11px; font-weight:800; color:#666; text-transform: uppercase;">PEMILIH BINAAN</span><h2 id="st-pemilih">0</h2></div>
+      <div class="stat-box"><span style="font-size:11px; font-weight:800; color:#666; text-transform: uppercase;">RUMAH DIKUNJUNGI</span><h2 id="st-rumah">0</h2></div>
+      <div class="stat-box"><span style="font-size:11px; font-weight:800; color:#666; text-transform: uppercase;">TIM TERBUKA (PASTI)</span><h2 id="st-pasti">0</h2></div>
+      <div class="stat-box orange"><span style="font-size:11px; font-weight:800; color:#d97706; text-transform: uppercase;">TIM RAHASIA (PASANG)</span><h2 id="st-pasang">0</h2></div>
+    </div>
+  </div>
 
-<div class="card">
-  <h3 style="margin-top:0; color:#333;">👥 Pendaftaran Tim Baru</h3>
-  <input type="text" id="tm_nik" inputmode="numeric" maxlength="16" placeholder="NIK Terverifikasi (16 Digit)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-  <input type="text" id="tm_nama" placeholder="Nama Lengkap Relawan">
-  <input type="text" id="tm_hp" inputmode="numeric" placeholder="No WhatsApp" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-  <select id="tm_kategori"><option value="PASTI">PASUKAN INTI (TERBUKA)</option><option value="PASANG">PASUKAN BAYANGAN (RAHASIA)</option></select>
-  <button class="btn" onclick="daftarTim()">💾 DAFTARKAN TIM</button>
-</div>
+  <!-- CARD 4: OVERACHIEVER ENGINE -->
+  <div class="card">
+    <h3 style="margin-top:0; color:var(--primary);">🏆 Manajemen Tim (Overachiever)</h3>
+    <p style="font-size:12px; color:#666;">Pantau kuota referal tim. Berikan slot tambahan (+10) atau Promosikan menjadi Koordinator.</p>
+    <button class="btn btn-outline" style="border-color:var(--primary); color:var(--primary);" onclick="loadProgressTim()">🔄 Muat Data Pergerakan Tim</button>
+    <div id="tim-list-container" style="margin-top: 15px;"></div>
+  </div>
 
-<div class="card">
-  <h3 style="margin-top:0; color:#333;">📁 Upload KTP Massal (>100 File)</h3>
-  <p style="font-size:12px; color:#666; line-height:1.4;">Sistem memecah antrean (chunking) otomatis untuk mencegah crash pada browser dan server.</p>
-  <input type="file" id="bulkFiles" multiple accept=".pdf,image/*">
-  <button class="btn btn-orange" onclick="uploadMassal()">📤 EKSEKUSI UPLOAD MASSAL</button>
+  <!-- CARD 5: DAFTAR TIM -->
+  <div class="card">
+    <h3 style="margin-top:0; color:var(--primary);">👥 Pendaftaran Tim Baru</h3>
+    <input type="text" id="tm_nik" inputmode="numeric" maxlength="16" placeholder="NIK Terverifikasi (16 Digit)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    <input type="text" id="tm_nama" placeholder="Nama Lengkap Relawan">
+    <input type="text" id="tm_hp" inputmode="numeric" placeholder="No WhatsApp" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    <select id="tm_kategori">
+      <option value="PASTI">PASUKAN INTI (TERBUKA)</option>
+      <option value="PASANG">PASUKAN BAYANGAN (RAHASIA)</option>
+    </select>
+    <button class="btn" onclick="daftarTim()">💾 DAFTARKAN TIM</button>
+  </div>
+
+  <!-- CARD 6: BULK UPLOAD KTP -->
+  <div class="card">
+    <h3 style="margin-top:0; color:var(--primary);">📁 Upload KTP Massal (>100 File)</h3>
+    <p style="font-size:12px; color:#666; line-height:1.4;">Sistem memecah antrean (chunking) otomatis untuk mencegah crash pada browser dan server.</p>
+    <input type="file" id="bulkFiles" multiple accept=".pdf,image/*" style="padding: 10px; background: #fff;">
+    <button class="btn btn-orange" onclick="uploadMassal()">📤 EKSEKUSI UPLOAD MASSAL</button>
+  </div>
+
 </div>
 
 <script>
+  // 🔴 URL API GAS ANDA
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
   
+  // ==========================================
+  // Otorisasi & Anti-Back Button Loop
+  // ==========================================
   const userStr = localStorage.getItem('ecms_user');
   if (!userStr || localStorage.getItem('ecms_role') !== 'CALEG') window.location.replace('index.html');
 
@@ -96,28 +125,54 @@
       Swal.fire({ toast: true, position: 'top', icon: 'warning', title: 'Gunakan tombol KELUAR', showConfirmButton: false, timer: 2000 });
   };
 
+  // ==========================================
+  // Init & Load Data
+  // ==========================================
   window.onload = () => {
-    new QRCode(document.getElementById("qrcode-caleg"), { text: "081339760265", width: 220, height: 220, colorDark : "#03754c", colorLight : "#ffffff" });
+    // Generate QR Code NIK CALEG
+    new QRCode(document.getElementById("qrcode-caleg"), { 
+      text: "081339760265", 
+      width: 220, 
+      height: 220, 
+      colorDark : "#03754c", 
+      colorLight : "#ffffff" 
+    });
+    
     loadStats();
     loadProgressTim();
   };
 
   async function callAPI(action, dataObj) {
-    const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: action, data: dataObj }) });
+    const res = await fetch(API_URL, { 
+      method: 'POST', 
+      headers: { "Content-Type": "text/plain;charset=utf-8" }, 
+      body: JSON.stringify({ action: action, data: dataObj }),
+      redirect: "follow"
+    });
     return await res.json();
   }
 
+  // ==========================================
+  // Statistik Utama
+  // ==========================================
   async function loadStats() {
-    Swal.fire({ toast: true, position: 'top-end', icon: 'info', title: 'Memperbarui Statistik...', showConfirmButton: false, timer: 1000 });
+    Swal.fire({ toast: true, position: 'top-end', icon: 'info', title: 'Memperbarui Statistik...', showConfirmButton: false, timer: 1500 });
     try {
       const res = await callAPI('getStats', { nik: '081339760265', role: 'CALEG' });
-      document.getElementById('st-pemilih').innerText = res.data.total_pemilih;
-      document.getElementById('st-pasti').innerText = res.data.total_tim_pasti;
-      document.getElementById('st-pasang').innerText = res.data.total_tim_pasang;
-      document.getElementById('st-rumah').innerText = res.data.total_rumah_dikunjungi;
-    } catch(e) { Swal.fire('Gagal Memuat Data', e.message, 'error'); }
+      if (res.status === 'success') {
+        document.getElementById('st-pemilih').innerText = (res.data.total_pemilih || 0).toLocaleString('id-ID');
+        document.getElementById('st-pasti').innerText = (res.data.total_tim_pasti || 0).toLocaleString('id-ID');
+        document.getElementById('st-pasang').innerText = (res.data.total_tim_pasang || 0).toLocaleString('id-ID');
+        document.getElementById('st-rumah').innerText = (res.data.total_rumah_dikunjungi || 0).toLocaleString('id-ID');
+      }
+    } catch(e) { 
+      Swal.fire({ toast: true, position: 'top-end', icon: 'error', title: 'Gagal Memuat Data', showConfirmButton: false, timer: 2000 });
+    }
   }
 
+  // ==========================================
+  // Manajemen Tim (Overachiever)
+  // ==========================================
   async function loadProgressTim() {
     const div = document.getElementById('tim-list-container');
     div.innerHTML = '<div style="text-align:center; color:#888; padding:20px;">Menarik data tim dari satelit...</div>';
@@ -126,68 +181,98 @@
       const res = await callAPI('getTimProgress', {});
       if(res.status === 'success') {
         let html = '';
-        if(res.data.length === 0) html = '<p style="text-align:center; color:#888;">Belum ada Tim Terdaftar.</p>';
+        if(res.data.length === 0) html = '<p style="text-align:center; color:#888; padding:10px; border: 1px dashed var(--border); border-radius: 10px;">Belum ada Tim Terdaftar.</p>';
         
         res.data.forEach(t => {
-          let isLocked = t.count >= (10 + t.slot);
+          let targetKuota = 10 + t.slot;
+          let isLocked = t.count >= targetKuota;
           let lockWarn = isLocked ? `<span style="color:#e74c3c; font-size:11px; font-weight:900;">[KUOTA PENUH]</span>` : '';
           let roleBadge = t.role === 'KOORDINATOR' ? `<span class="badge">KOORDINATOR</span>` : `<span class="badge pasang">TIM RELAWAN</span>`;
           
           html += `
-            <div style="border:2px solid ${isLocked ? '#FF9c08' : '#e2e8e5'}; padding:18px; border-radius:12px; margin-bottom:12px; background: ${isLocked ? '#fffbf2' : '#fff'};">
+            <div style="border:2px solid ${isLocked ? 'var(--accent-orange)' : 'var(--border)'}; padding:18px; border-radius:12px; margin-bottom:12px; background: ${isLocked ? '#fffbf2' : '#fff'};">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                 <b style="color:var(--primary); font-size:16px;">${t.nama}</b>
                 ${roleBadge}
               </div>
-              <div style="font-size:14px; color:#555; margin-bottom:12px;">
-                Validasi KTP: <b style="color:#000; font-size:16px;">${t.count} / ${10 + t.slot}</b> ${lockWarn}
+              <div style="font-size:14px; color:#555; margin-bottom:12px; font-weight: 600;">
+                Validasi KTP: <b style="color:#000; font-size:18px;">${t.count} / ${targetKuota}</b> ${lockWarn}
               </div>
               <div style="display:flex; gap:8px;">
-                <button style="flex:1; padding:10px; background:#FF9c08; border:none; border-radius:8px; font-weight:bold; cursor:pointer; color:#000;" onclick="approveSlot('${t.nik}')">+10 SLOT</button>
-                ${t.role !== 'KOORDINATOR' ? `<button style="flex:1; padding:10px; background:var(--primary); color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="promosiKoor('${t.nik}')">PROMOSI KOOR</button>` : ''}
+                <button style="flex:1; padding:10px; background:var(--accent-orange); border:none; border-radius:8px; font-weight:bold; cursor:pointer; color:#000; font-size:12px;" onclick="approveSlot('${t.nik}')">+10 SLOT</button>
+                ${t.role !== 'KOORDINATOR' ? `<button style="flex:1; padding:10px; background:var(--primary); color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:12px;" onclick="promosiKoor('${t.nik}')">PROMOSI KOOR</button>` : ''}
               </div>
             </div>
           `;
         });
         div.innerHTML = html;
       }
-    } catch(e) { div.innerHTML = '<p style="color:red;">Gagal memuat tim.</p>'; }
+    } catch(e) { div.innerHTML = '<p style="color:#e74c3c; text-align:center;">Gagal memuat daftar tim.</p>'; }
   }
 
   async function approveSlot(nik) {
-    Swal.fire({ title: 'Membuka Gembok (Bypass)...', didOpen: () => Swal.showLoading() });
-    const res = await callAPI('approveSlot', { nik: nik });
-    Swal.fire(res.status === 'success' ? 'Sukses' : 'Gagal', res.message, res.status);
-    loadProgressTim();
+    Swal.fire({ title: 'Membuka Gembok (Bypass)...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    try {
+      const res = await callAPI('approveSlot', { nik: nik });
+      Swal.fire(res.status === 'success' ? 'Sukses' : 'Gagal', res.message, res.status);
+      if(res.status === 'success') loadProgressTim();
+    } catch (e) { Swal.fire('Error', e.message, 'error'); }
   }
 
   async function promosiKoor(nik) {
-    Swal.fire({ title: 'Memproses Promosi Eksekutif...', didOpen: () => Swal.showLoading() });
-    const res = await callAPI('promoteTim', { nik: nik });
-    Swal.fire(res.status === 'success' ? 'Sukses' : 'Gagal', res.message, res.status);
-    loadProgressTim();
+    Swal.fire({ title: 'Memproses Promosi Eksekutif...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    try {
+      const res = await callAPI('promoteTim', { nik: nik });
+      Swal.fire(res.status === 'success' ? 'Sukses' : 'Gagal', res.message, res.status);
+      if(res.status === 'success') loadProgressTim();
+    } catch (e) { Swal.fire('Error', e.message, 'error'); }
   }
 
+  // ==========================================
+  // Pendaftaran Tim
+  // ==========================================
   async function daftarTim() {
-    const payload = { nik: document.getElementById('tm_nik').value, nama: document.getElementById('tm_nama').value, hp: document.getElementById('tm_hp').value, kategori: document.getElementById('tm_kategori').value, bank: '-', rekening: '-' };
-    if (payload.nik.length < 16) return Swal.fire('Peringatan', 'NIK Tim wajib 16 Digit', 'warning');
+    const payload = { 
+      nik: document.getElementById('tm_nik').value, 
+      nama: document.getElementById('tm_nama').value, 
+      hp: document.getElementById('tm_hp').value, 
+      kategori: document.getElementById('tm_kategori').value, 
+      bank: '-', 
+      rekening: '-' 
+    };
+    
+    if (payload.nik.length < 16) return Swal.fire('Peringatan', 'NIK Tim wajib 16 Digit Angka', 'warning');
+    if (!payload.nama || !payload.hp) return Swal.fire('Peringatan', 'Lengkapi Nama dan No HP', 'warning');
     
     Swal.fire({ title: 'Menyimpan ke Database...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
-    const res = await callAPI('tambahTim', payload);
-    Swal.fire(res.status === 'success' ? 'Sukses!' : 'Gagal', res.message, res.status);
-    if(res.status === 'success') {
-      document.getElementById('tm_nik').value = ''; document.getElementById('tm_nama').value = ''; document.getElementById('tm_hp').value = '';
-      loadStats();
-      loadProgressTim();
-    }
+    try {
+      const res = await callAPI('tambahTim', payload);
+      Swal.fire(res.status === 'success' ? 'Sukses!' : 'Gagal', res.message, res.status);
+      if(res.status === 'success') {
+        document.getElementById('tm_nik').value = ''; 
+        document.getElementById('tm_nama').value = ''; 
+        document.getElementById('tm_hp').value = '';
+        loadStats();
+        loadProgressTim();
+      }
+    } catch(e) { Swal.fire('Error', e.message, 'error'); }
   }
 
+  // ==========================================
+  // ALGORITMA UPLOAD MASSAL ANTI-CRASH (CHUNK BY 3)
+  // ==========================================
   async function uploadMassal() {
     const files = document.getElementById('bulkFiles').files;
-    if (files.length === 0) return Swal.fire('Peringatan', 'Silakan pilih gambar terlebih dahulu.', 'warning');
+    if (files.length === 0) return Swal.fire('Peringatan', 'Silakan pilih gambar/PDF KTP terlebih dahulu.', 'warning');
     
     let successCount = 0;
-    Swal.fire({ title: 'Memproses Upload...', html: 'Berhasil: <b id="up-count" style="color:var(--primary); font-size:24px;">0</b> / ' + files.length, allowOutsideClick: false, showConfirmButton: false, didOpen: () => Swal.showLoading() });
+    Swal.fire({ 
+      title: 'Memproses Upload...', 
+      html: 'Berhasil: <b id="up-count" style="color:var(--primary); font-size:24px;">0</b> / ' + files.length, 
+      allowOutsideClick: false, 
+      showConfirmButton: false, 
+      didOpen: () => Swal.showLoading() 
+    });
 
     const toBase64 = file => new Promise((res, rej) => { 
       const reader = new FileReader(); 
@@ -209,18 +294,31 @@
         }
         successCount += res.count;
         document.getElementById('up-count').innerText = successCount;
-      } catch(e) { return Swal.fire('Error Koneksi', 'Terhenti di tengah jalan: ' + e.message, 'error'); }
+      } catch(e) { return Swal.fire('Error Koneksi', 'Terhenti di file ke-' + (successCount+1) + ': ' + e.message, 'error'); }
     }
     
-    Swal.fire('Tuntas!', successCount + ' File KTP/PDF berhasil mendarat di Google Drive.', 'success');
+    Swal.fire('Tuntas!', successCount + ' File KTP/PDF berhasil mendarat di Google Drive Pusat.', 'success');
     document.getElementById('bulkFiles').value = '';
   }
 
+  // ==========================================
+  // Logout
+  // ==========================================
   function doLogout() {
     Swal.fire({
-      title: 'Yakin Ingin Keluar?', text: "Sesi kerja Anda akan diakhiri.", icon: 'warning', showCancelButton: true, confirmButtonColor: '#e74c3c', cancelButtonColor: '#6c757d', confirmButtonText: 'Ya, Keluar!'
+      title: 'Yakin Ingin Keluar?', 
+      text: "Sesi kerja Anda akan diakhiri.", 
+      icon: 'warning', 
+      showCancelButton: true, 
+      confirmButtonColor: '#e74c3c', 
+      cancelButtonColor: '#6c757d', 
+      confirmButtonText: 'Ya, Keluar!'
     }).then((result) => {
-      if (result.isConfirmed) { localStorage.clear(); window.location.replace('index.html'); }
+      if (result.isConfirmed) { 
+        localStorage.clear(); 
+        sessionStorage.clear();
+        window.location.replace('index.html'); 
+      }
     });
   }
 </script>
