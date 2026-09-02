@@ -2,35 +2,45 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>ECMS 2029 - Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECMS 2029 - Portal Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
-    :root { --primary: #03754c; --bg-body: #f0f4f2; }
+    :root { --primary: #03754c; --primary-hover: #025738; --bg-body: #f0f4f2; }
+    * { box-sizing: border-box; touch-action: manipulation; }
     body { font-family: 'Segoe UI', sans-serif; background: var(--bg-body); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 15px;}
-    .login-card { background: #fff; width: 100%; max-width: 400px; padding: 30px; border-radius: 12px; border-top: 8px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
-    input { width: 100%; padding: 15px; margin-bottom: 15px; border: 2px solid #d1d9d6; border-radius: 8px; box-sizing: border-box; font-size: 16px;}
-    button { width: 100%; padding: 15px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; margin-bottom: 10px;}
+    .login-card { background: #fff; width: 100%; max-width: 400px; padding: 35px 25px; border-radius: 16px; border-top: 8px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+    .brand-title { font-size: 26px; font-weight: 900; color: var(--primary); margin: 0 0 5px 0; letter-spacing: 1px; }
+    .brand-sub { font-size: 13px; color: #555; margin-bottom: 25px; font-weight: 600; }
+    input { width: 100%; padding: 16px; margin-bottom: 20px; border: 2px solid #d1d9d6; border-radius: 10px; font-size: 16px; font-weight: 600; background: #f9fbfaf7; }
+    input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(3, 117, 76, 0.15); background: #fff; }
+    button { width: 100%; padding: 18px; color: #fff; border: none; border-radius: 10px; font-weight: 900; font-size: 16px; cursor: pointer; margin-bottom: 12px; min-height: 52px; user-select: none; transition: 0.2s;}
+    .btn-login { background: var(--primary); box-shadow: 0 6px 15px rgba(3, 117, 76, 0.3); }
+    .btn-login:active { transform: translateY(2px); box-shadow: none; }
     .btn-clear { background: #6c757d; }
   </style>
 </head>
 <body>
+
 <div class="login-card">
-  <h2 style="color:var(--primary); margin-top:0;">ECMS 2029</h2>
+  <div class="brand-title">ECMS 2029</div>
+  <div class="brand-sub">Sistem Komando Pemenangan</div>
   <form id="loginForm" onsubmit="doLogin(event)">
-    <input type="text" id="nik" placeholder="NIK (Minimal 10 Digit Angka)" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-    <input type="text" id="hp" placeholder="Nomor HP" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-    <button type="submit" id="btn-login">🚀 MASUK</button>
+    <input type="text" id="nik" inputmode="numeric" placeholder="NIK (Minimal 10 Digit)" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    <input type="text" id="hp" inputmode="numeric" placeholder="Nomor WhatsApp" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    <button type="submit" id="btn-login" class="btn-login">🚀 MASUK SISTEM</button>
     <button type="button" class="btn-clear" onclick="clearCache()">🧹 CLEAR CACHE</button>
   </form>
 </div>
 
 <script>
-  // 🔴 INI ADALAH JANTUNG APLIKASI - URL WEB APP ANDA
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
 
   window.onload = () => {
-    if (localStorage.getItem('ecms_role')) redirectToDash(localStorage.getItem('ecms_role'));
+    // Mencegah History Loop yang Menyebabkan Auto-Logout
+    if (localStorage.getItem('ecms_user') && localStorage.getItem('ecms_role')) {
+      redirectToDash(localStorage.getItem('ecms_role'));
+    }
   };
 
   async function callAPI(action, dataObj) {
@@ -46,7 +56,7 @@
     const nik = document.getElementById('nik').value;
     const hp = document.getElementById('hp').value;
 
-    if (nik.length < 10) return Swal.fire('Error', 'NIK minimal 10 Digit', 'error');
+    if (nik.length < 10) return Swal.fire('Error', 'NIK minimal 10 Digit Angka.', 'warning');
 
     document.getElementById('btn-login').innerText = "⏳ MEMVERIFIKASI...";
     Swal.fire({ title: 'Menembus Database...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
@@ -56,26 +66,27 @@
       if (res.status === 'success') {
         localStorage.setItem('ecms_role', res.role);
         localStorage.setItem('ecms_user', JSON.stringify(res.user));
-        Swal.fire({ icon: 'success', title: 'Berhasil', timer: 1500, showConfirmButton: false }).then(() => redirectToDash(res.role));
+        Swal.fire({ icon: 'success', title: 'Akses Diberikan', timer: 1200, showConfirmButton: false }).then(() => redirectToDash(res.role));
       } else {
-        Swal.fire('Akses Ditolak', res.message, 'error');
-        document.getElementById('btn-login').innerText = "🚀 MASUK";
+        Swal.fire('Ditolak', res.message, 'error');
+        document.getElementById('btn-login').innerText = "🚀 MASUK SISTEM";
       }
     } catch (err) {
       Swal.fire('Koneksi Gagal', err.message, 'error');
-      document.getElementById('btn-login').innerText = "🚀 MASUK";
+      document.getElementById('btn-login').innerText = "🚀 MASUK SISTEM";
     }
   }
 
   function redirectToDash(role) {
-    if (role === 'CALEG') location.href = 'caleg.html';
-    else if (role === 'TIM_PASTI' || role === 'TIM_PASANG') location.href = 'tim.html';
-    else if (role === 'INPUTER') location.href = 'inputer.html';
+    if (role === 'CALEG') window.location.replace('caleg.html');
+    else if (role === 'TIM_PASTI' || role === 'TIM_PASANG') window.location.replace('tim.html');
+    else if (role === 'INPUTER') window.location.replace('inputer.html');
   }
 
   function clearCache() {
     localStorage.clear();
-    Swal.fire('Bersih!', 'Cache telah dihapus.', 'success');
+    sessionStorage.clear();
+    Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Cache HP Dibersihkan', timer: 2000, showConfirmButton: false });
   }
 </script>
 </body>
