@@ -1,0 +1,22 @@
+{
+  "name": "ECMS 2029",
+  "short_name": "ECMS",
+  "description": "Enterprise Campaign Management System 2029",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f0f4f2",
+  "theme_color": "#03754c",
+  "icons": [
+    {
+      "src": "favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-32.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
