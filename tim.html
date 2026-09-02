@@ -2,11 +2,15 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>TIM DASHBOARD</title>
+  <title>TIM DASHBOARD - SOKABAT NU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="app.js"></script>
   <script src="https://unpkg.com/html5-qrcode"></script>
+  
   <style>
     :root { --primary: #03754c; --border: #d1d9d6; }
     * { box-sizing: border-box; touch-action: manipulation; }
@@ -21,8 +25,6 @@
     .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
     .tab-content { display: none; } .tab-content.active { display: block; }
     #reader { width: 100%; border-radius: 12px; overflow: hidden; border: 2px solid var(--primary); }
-    
-    /* OVERACHIEVER LOCK BANNER */
     .locked-banner { background: #fff8e1; border: 2px dashed #FF9c08; padding: 20px; border-radius: 10px; text-align: center; color: #d97706; margin-bottom: 20px;}
   </style>
 </head>
@@ -36,7 +38,6 @@
   <button class="btn btn-red" style="width:auto; padding:10px 15px; margin:0;" onclick="doLogout()">🚪 KELUAR</button>
 </div>
 
-<!-- DASHBOARD POIN & DOMPET -->
 <div class="card" style="text-align:center; background: linear-gradient(135deg, #03754c, #02452d); color: white;">
   <p style="margin:0; font-size:12px; font-weight:bold; color:#FF9c08;">DOMPET POIN (Rp 1.000 / Poin)</p>
   <h1 style="font-size:40px; margin:5px 0;" id="st-poin">0</h1>
@@ -50,10 +51,8 @@
   <button class="tab-btn" onclick="switchTab('tab-lapor')">📍 Lapor Giat</button>
 </div>
 
-<!-- TAB 1: INPUT PEMILIH (AUTO-LOCK) -->
 <div id="tab-pemilih" class="tab-content active card">
   <h3 style="margin-top:0; color:var(--primary);">👥 Rekrutmen Pemilih</h3>
-  
   <div id="form-container">
     <p style="font-size:12px; color:#666;">Progres Kuota: <b id="quota-text">0 / 10</b></p>
     <input type="text" id="pm_nik" inputmode="numeric" maxlength="16" placeholder="NIK Pemilih">
@@ -68,7 +67,6 @@
     <select id="pm_kel"><option value="Kelurahan">Pilih Kelurahan...</option></select>
     <button class="btn" onclick="simpanPemilih()">💾 SIMPAN PEMILIH</button>
   </div>
-
   <div id="locked-container" class="locked-banner" style="display:none;">
     <h3>🏆 ACHIEVEMENT UNLOCKED!</h3>
     <p>Selamat! Kuota Anda telah penuh. Sistem input reguler dikunci secara otomatis.<br><br><b>Benefit Aktif:</b> Nilai Pertemuan Scan Barcode naik menjadi <b>15 Poin</b>.</p>
@@ -76,7 +74,6 @@
   </div>
 </div>
 
-<!-- TAB 2: SCAN CALEG -->
 <div id="tab-scan" class="tab-content card">
   <h3 style="margin-top:0; color:var(--primary);">📷 Validasi Presensi & Benefit</h3>
   <p style="font-size:12px; color:#666;">Arahkan kamera ke Barcode di HP Caleg saat pertemuan fisik berlangsung.</p>
@@ -84,7 +81,6 @@
   <button class="btn btn-orange" onclick="startScanner()" style="margin-top:15px;">▶️ BUKA KAMERA</button>
 </div>
 
-<!-- TAB 3: LAPOR GIAT -->
 <div id="tab-lapor" class="tab-content card">
   <h3 style="margin-top:0; color:var(--primary);">📍 Laporan Geotagging</h3>
   <select id="gt_skema">
@@ -107,8 +103,6 @@
 </div>
 
 <script>
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js'); // Register PWA
-
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
   const userObj = JSON.parse(localStorage.getItem('ecms_user') || '{}');
   if (!userObj.nik) window.location.replace('index.html');
@@ -141,7 +135,6 @@
     if(res.status === 'success') {
       document.getElementById('st-poin').innerText = res.poin;
       document.getElementById('quota-text').innerText = `${res.total_valid} / ${res.max_quota}`;
-      
       if(res.is_locked) {
         document.getElementById('form-container').style.display = 'none';
         document.getElementById('locked-container').style.display = 'block';

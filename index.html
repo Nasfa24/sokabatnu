@@ -4,18 +4,12 @@
   <meta charset="UTF-8">
   <title>MENANG PEMILU 2029 - SOKABAT NU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
-  <!-- PWA & Icon Identitas -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <meta name="theme-color" content="#03754c">
-  <script> 
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').catch(err => console.log('SW Reg Failed', err));
-    }
-  </script>
   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="app.js"></script>
   
   <style>
     :root { 
@@ -144,7 +138,6 @@
     </form>
     
     <div class="tools-grid">
-      <!-- Tombol Install PWA ini hanya akan muncul jika didukung oleh HP Pengguna -->
       <button type="button" id="btn-install" class="btn-install" onclick="installPWA()">📲 INSTALL APLIKASI (PWA)</button>
       <button type="button" class="btn-clear" onclick="hardNukeCache()">🔥 RESET & CLEAR CACHE TOTAL</button>
     </div>
@@ -163,7 +156,6 @@
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    // Munculkan tombol instalasi jika HP mendeteksi Web App ini valid
     document.getElementById('btn-install').style.display = 'block';
   });
 
@@ -183,13 +175,12 @@
   // INIT DASHBOARD
   // ==========================================
   window.onload = () => {
-    // 1. Cek Sesi (Mencegah Loop Login)
+    // Cek Sesi
     const role = localStorage.getItem('ecms_role');
     if (localStorage.getItem('ecms_user') && role) {
       redirectToDash(role);
       return; 
     }
-    // 2. Jalankan Modul Landing Page
     startCountdown();
     fetchPublicStats();
   };
@@ -211,7 +202,6 @@
 
   async function fetchPublicStats() {
     try {
-      // Menarik data sebagai GUEST (Keamanan: Backend akan menyembunyikan TIM PASANG)
       const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'getStats', data: { nik: 'GUEST', role: 'GUEST' } }) });
       const json = await res.json();
       
@@ -219,7 +209,6 @@
         const pemilih = json.data.total_pemilih || 0;
         const timPasti = json.data.total_tim_pasti || 0;
         
-        // Animasi Progress Bar berdasarkan Target 25.000 Pemilih Persiapan
         const percent = Math.min((pemilih / 25000) * 100, 100);
         
         document.getElementById('count-pemilih').innerText = pemilih.toLocaleString('id-ID');
@@ -297,11 +286,9 @@
     }).then(async (result) => {
       if (result.isConfirmed) {
         
-        // 1. Hapus Storage Standar
         localStorage.clear();
         sessionStorage.clear();
 
-        // 2. Bunuh Service Worker (PWA Caching Root Cause)
         if ('serviceWorker' in navigator) {
           const registrations = await navigator.serviceWorker.getRegistrations();
           for (let registration of registrations) {
@@ -309,7 +296,6 @@
           }
         }
 
-        // 3. Bom Nuklir Cache Storage Level Browser
         if ('caches' in window) {
           const cacheNames = await caches.keys();
           for (let name of cacheNames) {
@@ -318,7 +304,6 @@
         }
 
         Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Sistem Ter-Reset Total!', showConfirmButton: false, timer: 2000 }).then(() => {
-          // 4. Force Hard Reload dari Server
           window.location.reload(true);
         });
       }
