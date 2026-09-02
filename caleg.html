@@ -40,12 +40,12 @@
        ========================================= */
     .sokabat-header {
       background: linear-gradient(180deg, #044b2e 0%, var(--primary) 100%);
-      padding: 30px 15px 45px 15px; /* Padding bawah lebih besar untuk efek melayang */
+      padding: 30px 15px 45px 15px; 
       text-align: center;
       border-bottom-left-radius: 24px;
       border-bottom-right-radius: 24px;
       box-shadow: 0 8px 0 var(--accent-orange), 0 15px 20px rgba(0,0,0,0.1);
-      margin-bottom: -25px; /* Menarik kartu di bawahnya naik */
+      margin-bottom: -25px;
     }
     .sokabat-header h1 { color: var(--accent-yellow); margin: 0; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;}
     .sokabat-header p { color: #f8fafc; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; margin-top: 5px; margin-bottom: 25px; text-transform: uppercase;}
@@ -80,6 +80,7 @@
     .btn-red { background: #ef4444; }
     .btn-orange { background: var(--accent-orange); color: #000; }
     .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text-main); }
+    .btn-green { background: #10b981; color: #fff; }
     
     /* 4. FORM & INPUT */
     input, select, textarea { width: 100%; padding: 15px 16px; margin-bottom: 15px; border-radius: 12px; border: 2px solid var(--border); font-size: 15px; font-weight: 600; background: #f8fafc; transition: 0.2s; color: var(--text-main); font-family: inherit;}
@@ -108,6 +109,11 @@
     /* Mini Progress for Team */
     .team-progress-bg { background: #e2e8f0; height: 8px; border-radius: 5px; width: 100%; margin-top: 8px; overflow: hidden;}
     .team-progress-fill { background: var(--primary); height: 100%; border-radius: 5px;}
+
+    /* Withdraw Card Styling */
+    .wd-card { border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; margin-bottom: 15px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.02); border-left: 5px solid #10b981;}
+    .wd-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; }
+    .wd-val { font-weight: 800; color: var(--text-main); }
   </style>
 </head>
 <body>
@@ -176,7 +182,7 @@
     <div class="card-header">
       <h3 style="color: var(--accent-orange);">📸 PINDAI QR TIM</h3>
     </div>
-    <span class="text-muted">Pindai barcode relawan untuk memvalidasi pertemuan tatap muka dan memberikan Poin KPI.</span>
+    <span class="text-muted">Pindai barcode relawan untuk memvalidasi pertemuan tatap muka dan memberikan 10 Poin KPI.</span>
     
     <div id="reader"></div>
     <button class="btn btn-orange" id="btn-scan" onclick="mulaiScanner()">Buka Kamera Pemindai</button>
@@ -277,7 +283,22 @@
   </div>
 
   <!-- ==========================================
-       MODUL 8: UPLOAD KTP MASSAL
+       MODUL 8: MANAJEMEN PENCAIRAN (WITHDRAW)
+       ========================================== -->
+  <div class="card" style="border-top: 4px solid #10b981;">
+    <div class="card-header">
+      <h3 style="color: #10b981;">💸 MANAJEMEN PENCAIRAN</h3>
+      <span class="badge red">TGL 12</span>
+    </div>
+    
+    <span class="text-muted">Setujui permintaan penarikan dana likuiditas dari Tim yang telah mencapai ≥ 200 Poin (Nilai Tukar: 1 Poin = Rp 1.000).</span>
+    
+    <button class="btn btn-outline" onclick="muatDataWithdraw()">🔄 Cek Antrean Pencairan</button>
+    <div id="withdraw-list-container" style="margin-top: 15px;"></div>
+  </div>
+
+  <!-- ==========================================
+       MODUL 9: UPLOAD KTP MASSAL
        ========================================== -->
   <div class="card" style="border-top: 4px solid var(--accent-orange);">
     <div class="card-header">
@@ -303,7 +324,7 @@
 <script>
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
   const NIK_CALEG = localStorage.getItem('ecms_nik') || "081339760265";
-  const TARGET_NASIONAL = 25000; // Target total yang ditetapkan
+  const TARGET_NASIONAL = 25000; 
   
   let map, marker, scannerKamera;
   
@@ -328,7 +349,6 @@
     muatDataSistem();
   };
 
-  // Mencegah Tombol "Back" Loop
   window.history.pushState(null, "", window.location.href);
   window.onpopstate = function() {
       window.history.pushState(null, "", window.location.href);
@@ -348,33 +368,20 @@
     return await res.json();
   }
 
-  /**
-   * FITUR: HITUNG MUNDUR (15 JULI 2029)
-   */
   function inisialisasiTimer() {
     const targetDate = new Date("July 15, 2029 00:00:00").getTime();
     setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;
+      if (distance < 0) return;
       
-      if (distance < 0) return; // Hentikan jika sudah lewat
-      
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-      const fmt = (n) => n.toString().padStart(2, '0');
-      document.getElementById("cd-days").innerText = days;
-      document.getElementById("cd-hours").innerText = fmt(hours);
-      document.getElementById("cd-mins").innerText = fmt(minutes);
-      document.getElementById("cd-secs").innerText = fmt(seconds);
+      document.getElementById("cd-days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+      document.getElementById("cd-hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      document.getElementById("cd-mins").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+      document.getElementById("cd-secs").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
     }, 1000);
   }
 
-  /**
-   * KONTROL SISTEM
-   */
   function prosesLogout() {
     Swal.fire({
       title: 'Akhiri Sesi?',
@@ -384,70 +391,53 @@
       confirmButtonColor: '#ef4444',
       confirmButtonText: 'Ya, Keluar'
     }).then((result) => {
-      if (result.isConfirmed) { 
-        localStorage.clear(); 
-        window.location.replace('index.html'); 
-      }
+      if (result.isConfirmed) { localStorage.clear(); window.location.replace('index.html'); }
     });
   }
 
   function muatDataSistem() {
     muatStatistik();
     muatProgressTim();
+    muatDataWithdraw(); // Memuat data antrean pencairan
   }
 
-  /**
-   * FITUR: STATISTIK & KALKULASI PROGRESS
-   */
   async function muatStatistik() {
     Swal.fire({ toast: true, position: 'top-end', icon: 'info', title: 'Sinkronisasi Satelit...', showConfirmButton: false, timer: 1500 });
     try {
       const res = await panggilAPI('getStats', { nik: NIK_CALEG, role: 'CALEG' });
       if (res.status === 'success') {
         let totalPemilih = res.data.total_pemilih || 0;
-        
-        // Update Kartu Target (Sesuai Gambar)
         document.getElementById('progress-current').innerText = totalPemilih.toLocaleString('id-ID');
         
-        // Kalkulasi Persentase
         let persentase = (totalPemilih / TARGET_NASIONAL) * 100;
-        if(persentase > 100) persentase = 100; // Cap at 100%
+        if(persentase > 100) persentase = 100;
         
         document.getElementById('progress-percent').innerText = persentase.toFixed(1) + "%";
         document.getElementById('progress-fill').style.width = persentase + "%";
 
-        // Update Stat Grid Biasa
         document.getElementById('st-rumah').innerText = (res.data.total_rumah_dikunjungi || 0).toLocaleString('id-ID');
         document.getElementById('st-pasti').innerText = (res.data.total_tim_pasti || 0).toLocaleString('id-ID');
         document.getElementById('st-pasang').innerText = (res.data.total_tim_pasang || 0).toLocaleString('id-ID');
       }
-    } catch(e) { console.error('API Timeout:', e); }
+    } catch(e) {}
   }
 
-  /**
-   * FITUR: MANAJEMEN TARGET TIM (RULE: 10 MAX, NO CANNIBAL)
-   */
   async function muatProgressTim() {
     const div = document.getElementById('tim-list-container');
     div.innerHTML = '<div style="text-align:center; color:var(--text-muted); padding:20px; font-weight:600;">Memuat data dari database pusat...</div>';
-    
     try {
       const res = await panggilAPI('getTimProgress', {});
       if(res.status === 'success') {
-        let html = '';
         if(res.data.length === 0) {
            div.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:15px; border: 2px dashed var(--border); border-radius: 10px;">Belum ada tim yang direkrut.</p>';
            return;
         }
-        
+        let html = '';
         res.data.forEach(t => {
-          // ATURAN MUTLAK: Target Binaan adalah 10 per Relawan
           let targetMaks = 10;
           let kumpul = t.count || 0;
           let isSelesai = kumpul >= targetMaks;
-          
-          let pct = (kumpul / targetMaks) * 100;
-          if(pct > 100) pct = 100;
+          let pct = Math.min((kumpul / targetMaks) * 100, 100);
 
           let roleBadge = t.role === 'KOORDINATOR' ? `<span class="badge">KOOR</span>` : `<span class="badge orange">${t.kategori || 'TIM'}</span>`;
           let statusLabel = isSelesai ? `<span style="color:#059669; font-size:12px; font-weight:900;">✓ MISI SELESAI</span>` : `<span style="color:var(--text-muted); font-size:12px; font-weight:700;">PROSES MENCARI...</span>`;
@@ -458,14 +448,12 @@
                 <strong style="color:var(--text-main); font-size:16px;">${t.nama}</strong>
                 ${roleBadge}
               </div>
-              
               <div style="display:flex; justify-content:space-between; align-items:center;">
                 <div style="font-size:13px; color:var(--text-main); font-weight:700;">
                   Pencapaian: <strong style="font-size:16px; color:var(--primary);">${kumpul} / ${targetMaks}</strong>
                 </div>
                 ${statusLabel}
               </div>
-              
               <div class="team-progress-bg">
                 <div class="team-progress-fill" style="width: ${pct}%; background: ${isSelesai ? '#10b981' : 'var(--primary)'};"></div>
               </div>
@@ -474,30 +462,95 @@
         });
         div.innerHTML = html;
       }
-    } catch(e) { div.innerHTML = '<p style="color:#ef4444; text-align:center; font-weight:bold;">Koneksi terganggu. Gagal memuat data tim.</p>'; }
+    } catch(e) { div.innerHTML = '<p style="color:#ef4444; text-align:center; font-weight:bold;">Gagal memuat data tim.</p>'; }
   }
 
-  /**
-   * FITUR: PEMINDAI BARCODE
-   */
+  // ==========================================
+  // FITUR BARU: MANAJEMEN PENCAIRAN (WITHDRAW)
+  // ==========================================
+  async function muatDataWithdraw() {
+    const div = document.getElementById('withdraw-list-container');
+    div.innerHTML = '<div style="text-align:center; color:var(--text-muted); padding:20px; font-weight:600;">Memeriksa antrean pengajuan...</div>';
+    
+    try {
+      // Endpoint ini diarahkan ke fungsi GAS yang membaca baris berstatus "PENDING"
+      const res = await panggilAPI('getWithdrawRequests', {}); 
+      if(res.status === 'success') {
+        if(res.data.length === 0) {
+           div.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:15px; border: 2px dashed var(--border); border-radius: 10px;">Tidak ada antrean pencairan dana.</p>';
+           return;
+        }
+        
+        let html = '';
+        res.data.forEach(w => {
+          // Asumsi struktur data: w.id, w.nama, w.bank, w.rekening, w.poin, w.nominal
+          let nominalRp = (w.poin * 1000).toLocaleString('id-ID'); // 1 Poin = Rp 1.000
+          
+          html += `
+            <div class="wd-card">
+              <div class="wd-row"><span style="color:var(--text-muted);">Nama Tim:</span> <span class="wd-val">${w.nama}</span></div>
+              <div class="wd-row"><span style="color:var(--text-muted);">Total Poin (Valid):</span> <span class="wd-val" style="color:#f59e0b;">${w.poin} Poin</span></div>
+              <div class="wd-row" style="margin-top:8px; margin-bottom:8px; padding-top:8px; border-top:1px dashed var(--border);">
+                <span style="color:var(--text-muted);">Nominal Transfer:</span> 
+                <span class="wd-val" style="font-size:18px; color:#10b981;">Rp ${nominalRp}</span>
+              </div>
+              <div class="wd-row" style="align-items:center;">
+                <div>
+                  <span style="display:block; font-size:11px; color:var(--text-muted); text-transform:uppercase;">Bank Tujuan:</span>
+                  <strong style="color:var(--text-main); font-size:15px;">${w.bank} - ${w.rekening}</strong>
+                </div>
+                <button class="btn btn-outline" style="width:auto; padding:6px 12px; min-height:0; font-size:12px; margin:0;" onclick="salinRekening('${w.rekening}')">📋 Salin</button>
+              </div>
+              <div class="flex-row" style="margin-top: 15px;">
+                <button class="btn btn-green" style="margin:0;" onclick="konfirmasiLunas('${w.id}', '${w.nama}', '${w.rekening}')">✓ TANDAI LUNAS</button>
+              </div>
+            </div>
+          `;
+        });
+        div.innerHTML = html;
+      }
+    } catch(e) { div.innerHTML = '<p style="color:#ef4444; text-align:center; font-weight:bold;">Gagal memuat antrean pencairan.</p>'; }
+  }
+
+  // Fungsi Salin Rekening Pintar (Boil The Ocean Feature)
+  function salinRekening(rekeningText) {
+    navigator.clipboard.writeText(rekeningText).then(() => {
+      Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Nomor Rekening Disalin!', showConfirmButton: false, timer: 1500 });
+    }).catch(err => {
+      Swal.fire({ toast: true, position: 'top-end', icon: 'error', title: 'Gagal menyalin', showConfirmButton: false, timer: 1500 });
+    });
+  }
+
+  function konfirmasiLunas(id_withdraw, nama, rekening) {
+    Swal.fire({
+      title: 'Tandai Lunas?',
+      html: `Pastikan Anda sudah mentransfer dana ke rekening <b>${rekening}</b> atas nama <b>${nama}</b>.<br><br>Status tidak dapat dibatalkan.`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#10b981',
+      confirmButtonText: 'Ya, Sudah Ditransfer!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        Swal.fire({ title: 'Menyimpan Bukti Transaksi...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+        try {
+          const res = await panggilAPI('approveWithdraw', { id: id_withdraw });
+          Swal.fire(res.status === 'success' ? 'Lunas!' : 'Gagal', res.message, res.status);
+          if (res.status === 'success') muatDataWithdraw(); // Segarkan antrean
+        } catch(e) { Swal.fire('Error', 'Gagal memproses ke server.', 'error'); }
+      }
+    });
+  }
+
   function mulaiScanner() {
     document.getElementById('reader').style.display = 'block';
     document.getElementById('btn-scan').style.display = 'none';
     document.getElementById('btn-stop-scan').style.display = 'block';
-    
     scannerKamera = new Html5Qrcode("reader");
     scannerKamera.start(
-      { facingMode: "environment" },
-      { fps: 10, qrbox: { width: 250, height: 250 } },
-      (decodedText) => {
-        hentikanScanner();
-        prosesPresensi(decodedText);
-      },
-      (errorMessage) => { /* Silenced background search */ }
-    ).catch(() => {
-      hentikanScanner();
-      Swal.fire('Kamera Error', 'Mohon izinkan akses kamera.', 'error');
-    });
+      { facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } },
+      (decodedText) => { hentikanScanner(); prosesPresensi(decodedText); },
+      (err) => {}
+    ).catch(() => { hentikanScanner(); Swal.fire('Kamera Error', 'Mohon izinkan akses kamera.', 'error'); });
   }
 
   function hentikanScanner() {
@@ -506,38 +559,21 @@
         document.getElementById('reader').style.display = 'none';
         document.getElementById('btn-scan').style.display = 'block';
         document.getElementById('btn-stop-scan').style.display = 'none';
-      }).catch(err => console.error(err));
+      }).catch(err => {});
     }
   }
 
   function prosesPresensi(nikTim) {
-    Swal.fire({
-      title: 'Validasi...',
-      text: `Memverifikasi NIK: ${nikTim}`,
-      icon: 'info',
-      allowOutsideClick: false,
-      didOpen: () => Swal.showLoading()
-    });
-    
+    Swal.fire({ title: 'Validasi...', text: `Memverifikasi NIK: ${nikTim}`, icon: 'info', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
     panggilAPI('catatPresensi', { nik_caleg: NIK_CALEG, nik_tim: nikTim })
-      .then(res => {
-        Swal.fire('Validasi Berhasil', `Poin KPI telah masuk untuk Tim (NIK: ${nikTim}).`, 'success');
-      })
-      .catch(err => {
-        Swal.fire('Mode Offline', 'Tersimpan lokal, akan diunggah saat sinyal stabil.', 'success');
-      });
+      .then(res => { Swal.fire('Validasi Berhasil', `10 Poin KPI telah masuk untuk Tim (NIK: ${nikTim}).`, 'success'); })
+      .catch(err => { Swal.fire('Mode Offline', 'Tersimpan lokal, akan diunggah saat sinyal stabil.', 'success'); });
   }
 
-  /**
-   * FITUR: PETA & LAPOR KEGIATAN
-   */
   function inisialisasiPeta() {
-    const latAwal = -7.250445; // Default Surabaya
-    const lngAwal = 112.768845;
-    
+    const latAwal = -7.250445; const lngAwal = 112.768845;
     map = L.map('map').setView([latAwal, lngAwal], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OS' }).addTo(map);
-    
     marker = L.marker([latAwal, lngAwal], {draggable: true}).addTo(map);
     marker.on('dragend', function(e) {
       const pos = marker.getLatLng();
@@ -551,17 +587,10 @@
       Swal.fire({title: 'Mencari Satelit...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
       navigator.geolocation.getCurrentPosition(
         (pos) => {
-          const lat = pos.coords.latitude;
-          const lng = pos.coords.longitude;
-          
-          document.getElementById('giat_lat').value = lat;
-          document.getElementById('giat_lng').value = lng;
-          
-          map.setView([lat, lng], 17);
-          marker.setLatLng([lat, lng]);
-          
-          Swal.close();
-          Swal.fire({toast: true, position: 'top-end', icon: 'success', title: 'Lokasi Terkunci', showConfirmButton: false, timer: 1500});
+          const lat = pos.coords.latitude; const lng = pos.coords.longitude;
+          document.getElementById('giat_lat').value = lat; document.getElementById('giat_lng').value = lng;
+          map.setView([lat, lng], 17); marker.setLatLng([lat, lng]);
+          Swal.close(); Swal.fire({toast: true, position: 'top-end', icon: 'success', title: 'Lokasi Terkunci', showConfirmButton: false, timer: 1500});
         }, 
         (error) => { Swal.fire('Gagal', 'Pastikan GPS HP menyala.', 'error'); },
         { enableHighAccuracy: true, timeout: 10000 }
@@ -575,122 +604,60 @@
       keterangan: document.getElementById('giat_keterangan').value,
       lat: document.getElementById('giat_lat').value,
       lng: document.getElementById('giat_lng').value,
-      nik_pelapor: NIK_CALEG,
-      tipe_pelapor: 'CALEG'
+      nik_pelapor: NIK_CALEG, tipe_pelapor: 'CALEG'
     };
-    
-    if (!payload.skema) return Swal.fire('Peringatan', 'Pilih Skema Kegiatan.', 'warning');
-    if (!payload.lat) return Swal.fire('Peringatan', 'Deteksi lokasi GPS terlebih dahulu.', 'warning');
-    
-    Swal.fire({
-      title: 'Kirim Laporan?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Ya, Kirim'
-    }).then(async (result) => {
+    if (!payload.skema || !payload.lat) return Swal.fire('Peringatan', 'Lengkapi Skema dan deteksi GPS terlebih dahulu.', 'warning');
+    Swal.fire({ title: 'Kirim Laporan?', icon: 'question', showCancelButton: true, confirmButtonText: 'Ya, Kirim' }).then(async (result) => {
       if (result.isConfirmed) {
         Swal.fire({ title: 'Menyimpan...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
         try {
           const res = await panggilAPI('laporGiat', payload);
           Swal.fire(res.status === 'success' ? 'Berhasil' : 'Gagal', res.message, res.status);
-          if(res.status === 'success') {
-            document.getElementById('giat_skema').value = '';
-            document.getElementById('giat_keterangan').value = '';
-          }
+          if(res.status === 'success') { document.getElementById('giat_skema').value = ''; document.getElementById('giat_keterangan').value = ''; }
         } catch(e) { Swal.fire('Offline', 'Disimpan sementara di memori HP.', 'success'); }
       }
     });
   }
 
-  /**
-   * FITUR: REGISTRASI TIM (Dengan Penjelasan Anti Kanibal)
-   */
   function daftarTimBaru() {
     const payload = { 
-      nik: document.getElementById('tm_nik').value, 
-      nama: document.getElementById('tm_nama').value, 
-      hp: document.getElementById('tm_hp').value, 
-      bank: document.getElementById('tm_bank').value,
-      rekening: document.getElementById('tm_rek').value,
-      kategori: document.getElementById('tm_kategori').value
+      nik: document.getElementById('tm_nik').value, nama: document.getElementById('tm_nama').value, hp: document.getElementById('tm_hp').value, 
+      bank: document.getElementById('tm_bank').value, rekening: document.getElementById('tm_rek').value, kategori: document.getElementById('tm_kategori').value
     };
-    
-    if (payload.nik.length < 16) return Swal.fire('Peringatan', 'NIK wajib 16 Digit.', 'warning');
-    if (!payload.nama || !payload.hp) return Swal.fire('Peringatan', 'Data belum lengkap.', 'warning');
-    
-    Swal.fire({
-      title: 'Konfirmasi',
-      html: `Daftarkan <b>${payload.nama}</b>?<br><br><span style="font-size:12px; color:#ef4444;">Pastikan NIK tidak sedang dipakai tim lain (Sistem Anti-Kanibal).</span>`,
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Simpan Data'
-    }).then(async (result) => {
+    if (payload.nik.length < 16 || !payload.nama || !payload.hp) return Swal.fire('Peringatan', 'Data belum lengkap/Valid.', 'warning');
+    Swal.fire({ title: 'Konfirmasi', html: `Daftarkan <b>${payload.nama}</b>?<br><br><span style="font-size:12px; color:#ef4444;">Sistem Anti-Kanibal Aktif.</span>`, icon: 'question', showCancelButton: true, confirmButtonText: 'Simpan Data' }).then(async (result) => {
       if (result.isConfirmed) {
         Swal.fire({ title: 'Injeksi Data...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
         try {
           const res = await panggilAPI('tambahTim', payload);
-          // Jika NIK sudah ada, API harus membalas error (status: error, message: NIK sudah terdaftar)
           Swal.fire(res.status === 'success' ? 'Berhasil' : 'Pendaftaran Ditolak', res.message, res.status);
-          if (res.status === 'success') {
-            ['tm_nik','tm_nama','tm_hp','tm_bank','tm_rek'].forEach(id => document.getElementById(id).value = '');
-            muatDataSistem();
-          }
+          if (res.status === 'success') { ['tm_nik','tm_nama','tm_hp','tm_bank','tm_rek'].forEach(id => document.getElementById(id).value = ''); muatDataSistem(); }
         } catch(e) { Swal.fire('Offline', 'Data antre di memori lokal.', 'success'); }
       }
     });
   }
 
-  /**
-   * FITUR: UPLOAD MASSAL OTOMATIS (CHUNKING)
-   */
   function prosesUploadMassal() {
     const files = document.getElementById('bulkFiles').files;
     if (files.length === 0) return Swal.fire('Kosong', 'Pilih minimal 1 file.', 'warning');
-    
-    Swal.fire({
-      title: 'Upload Massal',
-      html: `Siap mengirim <b>${files.length}</b> berkas ke Cloud. NIK ganda otomatis diabaikan AI.`,
-      icon: 'info',
-      showCancelButton: true,
-      confirmButtonText: 'Mulai Upload'
-    }).then((result) => {
+    Swal.fire({ title: 'Upload Massal', html: `Siap mengirim <b>${files.length}</b> berkas.`, icon: 'info', showCancelButton: true, confirmButtonText: 'Mulai Upload' }).then((result) => {
       if (result.isConfirmed) eksekusiUploadChunk(files);
     });
   }
 
   async function eksekusiUploadChunk(files) {
     let sukses = 0;
-    Swal.fire({ 
-      title: 'Mengunggah...', 
-      html: 'Berhasil: <b id="up-count" style="color:var(--primary); font-size:20px;">0</b> / ' + files.length, 
-      allowOutsideClick: false, 
-      showConfirmButton: false, 
-      didOpen: () => Swal.showLoading() 
-    });
-
-    const jadikanBase64 = file => new Promise((resolve, reject) => { 
-      const reader = new FileReader(); 
-      reader.readAsDataURL(file); 
-      reader.onload = () => resolve({name: file.name, mimeType: file.type, data: reader.result}); 
-      reader.onerror = err => reject(err);
-    });
-
+    Swal.fire({ title: 'Mengunggah...', html: 'Berhasil: <b id="up-count" style="color:var(--primary); font-size:20px;">0</b> / ' + files.length, allowOutsideClick: false, showConfirmButton: false, didOpen: () => Swal.showLoading() });
+    const jadikanBase64 = file => new Promise((resolve, reject) => { const reader = new FileReader(); reader.readAsDataURL(file); reader.onload = () => resolve({name: file.name, mimeType: file.type, data: reader.result}); reader.onerror = err => reject(err); });
     for (let i = 0; i < files.length; i += 3) {
       let antrean = [];
-      for (let j = i; j < i + 3 && j < files.length; j++) {
-        antrean.push(await jadikanBase64(files[j]));
-      }
-      
+      for (let j = i; j < i + 3 && j < files.length; j++) antrean.push(await jadikanBase64(files[j]));
       try {
         const res = await panggilAPI('uploadChunk', { filesBatch: antrean });
         if (res.status === 'error') return Swal.fire('Error', res.message, 'error');
-        sukses += antrean.length; 
-        document.getElementById('up-count').innerText = sukses;
-      } catch(e) { 
-        return Swal.fire('Koneksi Putus', 'Gagal memproses gelombang data.', 'error'); 
-      }
+        sukses += antrean.length; document.getElementById('up-count').innerText = sukses;
+      } catch(e) { return Swal.fire('Koneksi Putus', 'Gagal memproses gelombang data.', 'error'); }
     }
-    
     Swal.fire('Selesai', `${sukses} Berkas masuk Folder Input.`, 'success');
     document.getElementById('bulkFiles').value = '';
   }
