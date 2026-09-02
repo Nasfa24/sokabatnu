@@ -1,11 +1,13 @@
-const CACHE_NAME = 'sokabatnu-v6.0';
+const CACHE_NAME = 'sokabatnu-v6.1';
 const urlsToCache = [
   './',
   './index.html',
   './caleg.html',
   './tim.html',
   './inputer.html',
-  './app.js'
+  './app.js',
+  './favicon-32.png',
+  './favicon-512.png'
 ];
 
 self.addEventListener('install', event => {
