@@ -14,7 +14,6 @@
     body { font-family: 'Segoe UI', sans-serif; background: #f0f4f2; margin: 0; padding: 15px; }
     .container { max-width: 1200px; margin: auto; background: var(--bg); padding: 25px; border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-top: 6px solid var(--primary); display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
     
-    /* NEW HEADER */
     .header-top { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 15px; margin-bottom: 10px; flex-wrap: wrap; gap:10px;}
     .header-top h2 { margin: 0; color: var(--primary); font-weight: 900;}
     .btn-group { display: flex; gap: 8px; flex-wrap: wrap;}
@@ -56,7 +55,7 @@
     <div id="cropper-container"><img id="cropper-image" src="" alt="Gambar KTP"></div>
     <div style="display:flex; gap:10px;">
       <button class="btn-submit" style="background:#e74c3c; margin-top:0;" onclick="buangKtp()">🗑️ HAPUS FILE</button>
-      <button class="btn-submit" style="background:#FF9c08; color:#000; margin-top:0;" onclick="executeCrop()">✂️ SELESAI CROP</button>
+      <button class="btn-submit" style="background:#FF9c08; color:#000; margin-top:0;" onclick="executeCrop()">✂️ SELESAI CROP & BACA AI</button>
     </div>
   </div>
 
@@ -75,8 +74,18 @@
       </div>
       
       <div style="display:flex; gap:10px;">
-        <div style="flex:1;"><label>Kecamatan</label><input type="text" id="kecamatan" required oninput="this.value = this.value.toUpperCase()"></div>
-        <div style="flex:1;"><label>Kelurahan</label><input type="text" id="kelurahan" required oninput="this.value = this.value.toUpperCase()"></div>
+        <div style="flex:1;">
+          <label>Kecamatan (Wajib)</label>
+          <select id="kecamatan" required onchange="populateKelurahan()">
+            <option value="">-- PILIH KECAMATAN --</option>
+          </select>
+        </div>
+        <div style="flex:1;">
+          <label>Kelurahan (Wajib)</label>
+          <select id="kelurahan" required>
+            <option value="">-- PILIH KELURAHAN --</option>
+          </select>
+        </div>
       </div>
 
       <div style="padding:15px; border:2px dashed var(--primary); border-radius:10px; margin-top:10px;">
@@ -101,6 +110,30 @@
   
   let cropper = null;
 
+  // DATABASE 31 KECAMATAN & 154 KELURAHAN SURABAYA
+  const wilayahSby = {
+    "Asemrowo": ["Asemrowo", "Genting Kalianak", "Tambak Sarioso"], "Benowo": ["Kandangan", "Romokalisari", "Sememi", "Tambak Oso Wilangon"], "Bubutan": ["Alon-Alon Contong", "Bubutan", "Gundih", "Jepara", "Tembok Dukuh"], "Bulak": ["Bulak", "Kedung Cowek", "Kenjeran", "Sukolilo Baru"], "Dukuh Pakis": ["Dukuh Kupang", "Dukuh Pakis", "Gunungsari", "Pradahkali Kendal"], "Gayungan": ["Dukuh Menanggal", "Gayungan", "Ketintang", "Menanggal"], "Genteng": ["Embong Kaliasin", "Genteng", "Kapasari", "Ketabang", "Peneleh"], "Gubeng": ["Airlangga", "Baratajaya", "Gubeng", "Kertajaya", "Mojo", "Pucang Sewu"], "Gunung Anyar": ["Gunung Anyar", "Gunung Anyar Tambak", "Rungkut Menanggal", "Rungkut Tengah"], "Jambangan": ["Jambangan", "Karah", "Kebonsari", "Pagesangan"], "Karang Pilang": ["Karang Pilang", "Kebraon", "Kedurus", "Warugunung"], "Kenjeran": ["Bulak Banteng", "Sidotopo Wetan", "Tambak Wedi", "Tanah Kali Kedinding"], "Krembangan": ["Dupak", "Kemayoran", "Krembangan Selatan", "Morokrembangan", "Perak Barat"], "Lakarsantri": ["Bangkingan", "Jeruk", "Lakarsantri", "Lidah Kulon", "Lidah Wetan", "Sumur Welut"], "Mulyorejo": ["Dukuh Sutorejo", "Kalijudan", "Kalisari", "Kejawen Putih Tambak", "Manyar Sabrangan", "Mulyorejo"], "Pabean Cantian": ["Bongkaran", "Krembangan Utara", "Nyamplungan", "Perak Timur", "Perak Utara"], "Pakal": ["Babat Jerawat", "Benowo", "Pakal", "Sumberrejo"], "Rungkut": ["Kali Rungkut", "Kedung Baruk", "Medokan Ayu", "Penjaringan Sari", "Rungkut Kidul", "Wonorejo Rungkut"], "Sambikerep": ["Bringin", "Lontar", "Made", "Sambikerep"], "Sawahan": ["Banyu Urip", "Kupang Krajan", "Pakis", "Petemon", "Putat Jaya", "Sawahan"], "Semampir": ["Ampel", "Pegirian", "Sidotopo", "Ujung", "Wonokusumo"], "Simokerto": ["Kapasan", "Sidodadi", "Simokerto", "Simolawang", "Tambakrejo"], "Suko Manunggal": ["Putat Gede", "Simomulyo", "Simomulyo Baru", "Sono Kwijenan", "Suko Manunggal", "Tanjungsari"], "Sukolilo": ["Gebang Putih", "Keputih", "Klampis Ngasem", "Medokan Semampir", "Menur Pumpungan", "Ngiden Jangkungan", "Semolowaru"], "Tambaksari": ["Dukuh Setro", "Gading", "Kapasmadya Baru", "Pacar Keling", "Pacar Kembang", "Ploso", "Rangkah", "Tambaksari"], "Tandes": ["Balongsari", "Banjar Sugihan", "Karangpoh", "Manukan Kulon", "Manukan Wetan", "Tandes"], "Tegalsari": ["Dr. Sutomo", "Kedungdoro", "Keputran", "Tegalsari", "Wonorejo Tegalsari"], "Tenggilis Mejoyo": ["Kendangsari", "Kutisari", "Panjang Jiwo", "Tenggilis Mejoyo"], "Wiyung": ["Babatan", "Balas Klumprik", "Jajar Tunggal", "Wiyung"], "Wonocolo": ["Bendul Merisi", "Jemur Wonosari", "Margorejo", "Sidosermo", "Siwalankerto"], "Wonokromo": ["Darmo", "Jagir", "Ngagel", "Ngagelrejo", "Sawunggaling", "Wonokromo"]
+  };
+
+  function initWilayah() {
+    const kecSelect = document.getElementById('kecamatan');
+    Object.keys(wilayahSby).sort().forEach(kec => {
+      kecSelect.appendChild(new Option(kec.toUpperCase(), kec.toUpperCase()));
+    });
+  }
+
+  function populateKelurahan() {
+    const kec = document.getElementById('kecamatan').value;
+    const kelSelect = document.getElementById('kelurahan');
+    kelSelect.innerHTML = '<option value="">-- PILIH KELURAHAN --</option>'; 
+    const originalKec = Object.keys(wilayahSby).find(k => k.toUpperCase() === kec);
+    if (originalKec) {
+      wilayahSby[originalKec].sort().forEach(kel => {
+        kelSelect.appendChild(new Option(kel.toUpperCase(), kel.toUpperCase()));
+      });
+    }
+  }
+
   // Anti-Back Button Loop
   window.history.pushState(null, "", window.location.href);
   window.onpopstate = function() {
@@ -108,7 +141,10 @@
       Swal.fire({ toast: true, position: 'top', icon: 'warning', title: 'Gunakan tombol Keluar di atas', showConfirmButton: false, timer: 2000 });
   };
 
-  window.onload = () => loadAntreanKtp();
+  window.onload = () => {
+    initWilayah(); // Render Dropdown Wilayah
+    loadAntreanKtp(); // Tarik file Drive
+  };
 
   async function callAPI(action, dataObj) {
     const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: action, data: dataObj }) });
@@ -138,13 +174,64 @@
     } catch(e) { Swal.fire('Error', 'Gagal memuat Drive: ' + e.message, 'error'); }
   }
 
-  function executeCrop() {
+  // EKSEKUSI CROP & KIRIM KE VISION AI
+  async function executeCrop() {
     if (!cropper) return;
     const canvas = cropper.getCroppedCanvas({ width: 1200, fillColor: '#fff' });
     const finalBase64 = canvas.toDataURL('image/jpeg', 0.90);
+    
     document.getElementById('crop-ui-container').style.display = 'none';
     document.getElementById('ktp-viewer').style.display = 'block';
-    document.getElementById('ktp-viewer').innerHTML = `<img src='${finalBase64}' style='max-width:100%; border-radius:8px;'>`;
+    document.getElementById('ktp-viewer').innerHTML = `<img src='${finalBase64}' style='max-width:100%; border-radius:8px;'><br><div class="ocr-badge" id="ocr-status" style="margin-top:10px; display:inline-block; font-size:14px; padding:8px 15px; font-weight:bold; background-color:#FF9c08; color:#000;">🧠 Menunggu Hasil AI...</div>`;
+    
+    Swal.fire({ title: 'Vision AI Membaca...', text: 'Mengekstrak data teks dari gambar KTP...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    const docType = document.getElementById('jenis_dokumen').value;
+    
+    try {
+      const res = await callAPI('extractAI', { base64Image: finalBase64, docType: docType });
+      if (res.status === 'success') {
+        const d = res.data;
+        Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'AI Sukses Membaca', showConfirmButton: false, timer: 2000 });
+        document.getElementById('ocr-status').innerText = `✅ Terekstrak Otomatis (${res.model})`;
+        document.getElementById('ocr-status').style.backgroundColor = 'var(--primary)';
+        document.getElementById('ocr-status').style.color = '#fff';
+        
+        // AUTO-FILL TEXT FIELDS
+        if(d.alamat) document.getElementById('alamat').value = d.alamat;
+        if(d.rt_rw) {
+          let parts = d.rt_rw.split('/');
+          if(parts[0]) document.getElementById('rt').value = parts[0].replace(/[^0-9]/g, '').padStart(3, '0');
+          if(parts[1]) document.getElementById('rw').value = parts[1].replace(/[^0-9]/g, '').padStart(3, '0');
+        }
+        if(d.anggota && d.anggota.length > 0) {
+           document.getElementById('nik').value = d.anggota[0].nik || '';
+           document.getElementById('nama').value = d.anggota[0].nama || '';
+        }
+
+        // AUTO-FILL SELECT DROPDOWNS (Kecamatan & Kelurahan)
+        if(d.kecamatan) {
+          const kecSelect = document.getElementById('kecamatan');
+          let matchedKec = Array.from(kecSelect.options).find(opt => opt.value === d.kecamatan.toUpperCase());
+          if (matchedKec) {
+            kecSelect.value = matchedKec.value;
+            populateKelurahan(); 
+            
+            if (d.kelurahan) {
+              const kelSelect = document.getElementById('kelurahan');
+              let matchedKel = Array.from(kelSelect.options).find(opt => opt.value === d.kelurahan.toUpperCase());
+              if (matchedKel) kelSelect.value = matchedKel.value;
+            }
+          }
+        }
+      } else {
+        Swal.fire('AI Gagal Membaca', res.message, 'error');
+        document.getElementById('ocr-status').innerText = '⚠️ Ekstraksi AI Gagal';
+        document.getElementById('ocr-status').style.backgroundColor = '#e74c3c';
+        document.getElementById('ocr-status').style.color = '#fff';
+      }
+    } catch(err) {
+      Swal.fire('Koneksi Putus', err.message, 'error');
+    }
   }
 
   async function buangKtp() {
