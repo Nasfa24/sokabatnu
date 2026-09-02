@@ -4,10 +4,18 @@
   <meta charset="UTF-8">
   <title>MENANG PEMILU 2029 - SOKABAT NU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <meta name="theme-color" content="#03754c">
   
+  <!-- PWA & MOBILE APP META TAGS (Wajib untuk Install UI) -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="favicon-32.png">
+  <meta name="theme-color" content="#03754c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SOKABAT NU">
+  <meta name="mobile-web-app-capable" content="yes">
+  
+  <!-- Library -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="app.js"></script>
   
@@ -75,7 +83,7 @@
     
     .tools-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
     .btn-clear { background: #e74c3c; font-size: 13px; padding: 12px; }
-    .btn-install { background: #FF9c08; color: #000; font-size: 13px; padding: 12px; display: none; animation: pulse 2s infinite; }
+    .btn-install { background: #FF9c08; color: #000; font-size: 13px; padding: 12px; display: none; animation: pulse 2s infinite; border: 2px solid #d97706;}
     
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(255, 156, 8, 0.7); }
@@ -88,11 +96,9 @@
 
 <div class="wrapper">
   
-  <!-- MODUL 1: BRANDING & COUNTDOWN -->
   <div class="header-card">
     <h1>SOKABAT NU</h1>
     <p>Sistem Komando Pemenangan 2029</p>
-    
     <div class="timer-display">
       <div class="timer-box"><div class="timer-num" id="c-days">0</div><div class="timer-lbl">Hari</div></div>
       <div class="timer-box"><div class="timer-num" id="c-hours">0</div><div class="timer-lbl">Jam</div></div>
@@ -101,26 +107,13 @@
     </div>
   </div>
 
-  <!-- MODUL 2: DASHBOARD PUBLIK (TARGET & CAPAIAN) -->
   <div class="stats-card">
     <div class="target-badge">🎯 TARGET KEMENANGAN: 10.000 SUARA</div>
-    
-    <div class="progress-header">
-      <span>CALON PEMILIH BINAAN</span>
-      <span id="percent-text">0.0%</span>
-    </div>
-    <div class="progress-bg">
-      <div class="progress-fill" id="progress-bar"></div>
-    </div>
-    <div class="progress-meta">
-      Berhasil Kumpul: <b id="count-pemilih" style="color:var(--primary); font-size:15px;">...</b> / Target: 25.000 Data
-    </div>
-
+    <div class="progress-header"><span>CALON PEMILIH BINAAN</span><span id="percent-text">0.0%</span></div>
+    <div class="progress-bg"><div class="progress-fill" id="progress-bar"></div></div>
+    <div class="progress-meta">Berhasil Kumpul: <b id="count-pemilih" style="color:var(--primary); font-size:15px;">...</b> / Target: 25.000 Data</div>
     <div class="stats-grid">
-      <div class="stat-item">
-        <span>TIM PASTI (TERBUKA)</span>
-        <b id="count-tim-pasti">...</b>
-      </div>
+      <div class="stat-item"><span>TIM PASTI (TERBUKA)</span><b id="count-tim-pasti">...</b></div>
       <div class="stat-item" style="border-color: #FF9c08; background: #fffcf0;">
         <span style="color: #d97706;">TIM PASANG (RAHASIA)</span>
         <b style="color:#d97706; font-size: 14px; margin-top: 8px; display:block;">[ ENCRYPTED ]</b>
@@ -128,7 +121,6 @@
     </div>
   </div>
 
-  <!-- MODUL 3: GATEWAY LOGIN -->
   <div class="login-card">
     <h3>🔐 PORTAL OTORISASI</h3>
     <form id="loginForm" onsubmit="doLogin(event)">
@@ -136,9 +128,8 @@
       <input type="text" id="hp" inputmode="numeric" placeholder="Nomor WhatsApp" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
       <button type="submit" id="btn-login" class="btn-login">🚀 MASUK SISTEM</button>
     </form>
-    
     <div class="tools-grid">
-      <button type="button" id="btn-install" class="btn-install" onclick="installPWA()">📲 INSTALL APLIKASI (PWA)</button>
+      <button type="button" id="btn-install" class="btn-install" onclick="installPWA()">📲 INSTALL APLIKASI DI HP</button>
       <button type="button" class="btn-clear" onclick="hardNukeCache()">🔥 RESET & CLEAR CACHE TOTAL</button>
     </div>
   </div>
@@ -146,17 +137,14 @@
 </div>
 
 <script>
-  // 🔴 URL API GAS ANDA
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
 
-  // ==========================================
-  // MODUL PWA INSTALLER (Mobile Friendly)
-  // ==========================================
+  // MODUL PWA INSTALLER
   let deferredPrompt;
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    document.getElementById('btn-install').style.display = 'block';
+    document.getElementById('btn-install').style.display = 'block'; // Tombol install muncul!
   });
 
   function installPWA() {
@@ -171,11 +159,8 @@
     }
   }
 
-  // ==========================================
-  // INIT DASHBOARD
-  // ==========================================
+  // INIT
   window.onload = () => {
-    // Cek Sesi
     const role = localStorage.getItem('ecms_role');
     if (localStorage.getItem('ecms_user') && role) {
       redirectToDash(role);
@@ -185,9 +170,6 @@
     fetchPublicStats();
   };
 
-  // ==========================================
-  // MODUL LANDING PAGE (Countdown & Live Stats)
-  // ==========================================
   function startCountdown() {
     const target = new Date('2029-07-15T00:00:00+07:00').getTime();
     setInterval(() => {
@@ -204,16 +186,12 @@
     try {
       const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'getStats', data: { nik: 'GUEST', role: 'GUEST' } }) });
       const json = await res.json();
-      
       if (json.status === 'success') {
         const pemilih = json.data.total_pemilih || 0;
         const timPasti = json.data.total_tim_pasti || 0;
-        
         const percent = Math.min((pemilih / 25000) * 100, 100);
-        
         document.getElementById('count-pemilih').innerText = pemilih.toLocaleString('id-ID');
         document.getElementById('count-tim-pasti').innerText = timPasti.toLocaleString('id-ID') + " Orang";
-        
         setTimeout(() => {
           document.getElementById('progress-bar').style.width = percent + '%';
           document.getElementById('percent-text').innerText = percent.toFixed(1) + '%';
@@ -225,14 +203,8 @@
     }
   }
 
-  // ==========================================
-  // MODUL AUTENTIKASI (Login)
-  // ==========================================
   async function callAPI(action, dataObj) {
-    const response = await fetch(API_URL, {
-      method: 'POST',
-      body: JSON.stringify({ action: action, data: dataObj })
-    });
+    const response = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: action, data: dataObj }) });
     return await response.json();
   }
 
@@ -240,7 +212,6 @@
     e.preventDefault();
     const nik = document.getElementById('nik').value;
     const hp = document.getElementById('hp').value;
-
     if (nik.length < 10) return Swal.fire('Peringatan', 'NIK minimal 10 Angka.', 'warning');
 
     document.getElementById('btn-login').innerText = "⏳ MEMVERIFIKASI...";
@@ -251,7 +222,6 @@
       if (res.status === 'success') {
         localStorage.setItem('ecms_role', res.role);
         localStorage.setItem('ecms_user', JSON.stringify(res.user));
-        
         Swal.fire({ icon: 'success', title: 'Akses Diberikan', timer: 1000, showConfirmButton: false }).then(() => {
            redirectToDash(res.role);
         });
@@ -271,38 +241,22 @@
     else if (role === 'INPUTER') window.location.replace('inputer.html');
   }
 
-  // ==========================================
-  // THE "HARD NUKE" CACHE DESTROYER
-  // ==========================================
   async function hardNukeCache() {
     Swal.fire({
       title: 'Reset Total Sistem?',
-      text: "Semua pembaruan skrip akan ditarik ulang secara paksa.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#e74c3c',
-      cancelButtonColor: '#6c757d',
-      confirmButtonText: 'Ya, Hancurkan Cache!'
+      text: "Semua pembaruan skrip akan ditarik ulang secara paksa. Ini akan memperbaiki tampilan nyangkut.",
+      icon: 'warning', showCancelButton: true, confirmButtonColor: '#e74c3c', cancelButtonColor: '#6c757d', confirmButtonText: 'Ya, Hancurkan Cache!'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        
-        localStorage.clear();
-        sessionStorage.clear();
-
+        localStorage.clear(); sessionStorage.clear();
         if ('serviceWorker' in navigator) {
           const registrations = await navigator.serviceWorker.getRegistrations();
-          for (let registration of registrations) {
-            await registration.unregister();
-          }
+          for (let registration of registrations) await registration.unregister();
         }
-
         if ('caches' in window) {
           const cacheNames = await caches.keys();
-          for (let name of cacheNames) {
-            await caches.delete(name);
-          }
+          for (let name of cacheNames) await caches.delete(name);
         }
-
         Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Sistem Ter-Reset Total!', showConfirmButton: false, timer: 2000 }).then(() => {
           window.location.reload(true);
         });
