@@ -11,6 +11,7 @@
   
   <!-- Dependensi Eksternal -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   
   <!-- Peta (Leaflet.js) -->
@@ -208,20 +209,30 @@
       <input type="text" id="pm_rw" inputmode="numeric" placeholder="RW" style="flex:1;" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
     </div>
     
+    <!-- Filter Wilayah Terkunci Sesuai Yurisdiksi Instruksi -->
     <select id="pm_kec">
       <option value="" disabled selected>-- Pilih Kecamatan --</option>
+      <option value="Bulak">Bulak</option>
+      <option value="Mulyorejo">Mulyorejo</option>
+      <option value="Sukolilo">Sukolilo</option>
       <option value="Rungkut">Rungkut</option>
       <option value="Gunung Anyar">Gunung Anyar</option>
       <option value="Tenggilis Mejoyo">Tenggilis Mejoyo</option>
+      <option value="Wonocolo">Wonocolo</option>
     </select>
     
     <select id="pm_kel">
       <option value="" disabled selected>-- Pilih Kelurahan --</option>
-      <option value="Penjaringan Sari">Penjaringan Sari</option>
-      <option value="Medokan Ayu">Medokan Ayu</option>
-      <option value="Kalirungkut">Kalirungkut</option>
-      <option value="Kedung Baruk">Kedung Baruk</option>
+      <option value="Bulak">Bulak</option>
+      <option value="Mulyorejo">Mulyorejo</option>
+      <option value="Sukolilo">Sukolilo</option>
+      <option value="Rungkut">Rungkut</option>
+      <option value="Gunung Anyar">Gunung Anyar</option>
+      <option value="Tenggilis Mejoyo">Tenggilis Mejoyo</option>
+      <option value="Wonocolo">Wonocolo</option>
     </select>
+    
+    <!-- Tidak Ada Modul Upload KTP. Tugas Input Dokumen dilakukan Inputer Back-Office -->
     
     <button class="btn" onclick="simpanPemilih()">💾 KUNCI DATA PEMILIH</button>
   </div>
@@ -236,13 +247,28 @@
   </div>
 
   <!-- ==========================================
-       MODUL 4: SCAN CALEG (VALIDASI)
+       MODUL 4: QR PRESENSI TIM & SCAN CALEG 
+       (VALIDASI DUA ARAH)
        ========================================== -->
+  <div class="card" style="text-align:center; border-top: 4px solid var(--primary);">
+    <div class="card-header">
+      <h3 style="color: var(--primary);">📱 QR PRESENSI TIM</h3>
+      <span class="badge">IDENTITAS ANDA</span>
+    </div>
+    <span class="text-muted">Tunjukkan Barcode ini ke Caleg untuk dipindai saat pertemuan fisik agar Anda mendapatkan 10 Poin KPI.</span>
+    
+    <!-- QR Code Pribadi Milik Tim Berdasarkan NIK Mereka -->
+    <div style="display:flex; justify-content:center; margin:15px 0;">
+       <div id="qrcode-tim" style="padding:15px; background:#fff; border-radius:16px; border:3px dashed var(--primary); display: inline-block;"></div>
+    </div>
+    <b style="color:var(--primary); font-size: 18px; letter-spacing: 1px;">NIK: <span id="lbl-nik-tim">-</span></b>
+  </div>
+
   <div class="card" style="border-top: 4px solid var(--accent-yellow);">
     <div class="card-header">
-      <h3 style="color: #d97706;">📷 VALIDASI TATAP MUKA</h3>
+      <h3 style="color: #d97706;">📷 PINDAI QR CALEG</h3>
     </div>
-    <span class="text-muted">Arahkan kamera HP Anda ke Barcode di HP Caleg saat pertemuan fisik berlangsung untuk klaim 10 Poin Benefit. Membutuhkan verifikasi GPS.</span>
+    <span class="text-muted">Atau gunakan fitur ini untuk memindai Barcode di HP Caleg (Fitur Dua Arah). Membutuhkan verifikasi GPS.</span>
     
     <div id="reader"></div>
     <button class="btn btn-yellow" id="btn-scan" onclick="mulaiScanner()">Buka Kamera Pemindai</button>
@@ -294,26 +320,35 @@
 <script>
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
   
-  // Simulasi Session User (Normalnya dari localStorage saat login)
+  // Memuat Session User
   let userObj = JSON.parse(localStorage.getItem('ecms_user') || '{}');
-  // Hapus komentar ini jika di-deploy live:
+  // Hilangkan // pada baris di bawah ini jika di-deploy Live
   // if (!userObj.nik || localStorage.getItem('ecms_role') !== 'TIM') window.location.replace('index.html');
   
-  // Mock Data untuk preview jika tidak ada session
+  // Mock Data untuk preview jika tidak ada session lokal
   if(!userObj.nik) {
       userObj = { nik: "3578000000000001", nama: "REL. AGUS KUNCORO" };
   }
 
   let map, marker, scannerKamera;
-  let currentPoin = 0; // State untuk validasi WD
+  let currentPoin = 0; // State Dompet Poin
   
   window.onload = () => {
+    // 1. Eksekusi Nama dan NIK Tim
     document.getElementById('user-name').innerText = userObj.nama;
+    document.getElementById('lbl-nik-tim').innerText = userObj.nik;
+    
+    // 2. Generate QR Code Khusus Milik Tim (Agar bisa di-scan Caleg)
+    new QRCode(document.getElementById("qrcode-tim"), { 
+      text: userObj.nik, width: 160, height: 160, colorDark : "#065f3a", colorLight : "#ffffff" 
+    });
+
     inisialisasiAccordion();
     inisialisasiPeta();
     loadDataUtama();
   };
 
+  // Mencegah Tombol Back
   window.history.pushState(null, "", window.location.href);
   window.onpopstate = () => {
     window.history.pushState(null, "", window.location.href);
@@ -345,7 +380,7 @@
         document.getElementById('st-poin').innerText = currentPoin;
         document.getElementById('st-rupiah').innerText = "Rp " + (currentPoin * 1000).toLocaleString('id-ID');
         
-        // Update Progress Kuota Binaan
+        // Update Progress Kuota Binaan (Rule: Maksimal 10)
         let kumpul = res.total_valid || 0;
         let maks = res.max_quota || 10;
         let pct = Math.min((kumpul / maks) * 100, 100);
@@ -355,7 +390,7 @@
         document.getElementById('progress-percent').innerText = pct.toFixed(0) + "%";
         document.getElementById('progress-fill').style.width = pct + "%";
         
-        // Smart Lock Logic
+        // Smart Lock Logic (Mengunci Form jika Kuota 10 Terpenuhi)
         if(kumpul >= maks || res.is_locked) {
           document.getElementById('form-pemilih-container').style.display = 'none';
           document.getElementById('locked-container').style.display = 'block';
@@ -382,11 +417,11 @@
         title: 'Gerbang Terkunci',
         html: `Pencairan (Withdrawal) hanya dapat diajukan secara serentak setiap <b>Tanggal 12</b>.<br><br>Sekarang tanggal ${today}.`,
         icon: 'warning',
-        confirmButtonColor: var(--primary)
+        confirmButtonColor: 'var(--primary)'
       });
     }
 
-    // Threshold Poin
+    // Threshold Poin Minimum
     if (currentPoin < 200) {
       return Swal.fire({
         title: 'Poin Tidak Mencukupi',
@@ -431,8 +466,8 @@
       koordinator_nama: userObj.nama
     };
     
-    if(payload.nik.length < 16) return Swal.fire('Format Salah', 'NIK harus 16 Digit', 'warning');
-    if(!payload.nama || !payload.kecamatan || !payload.kelurahan) return Swal.fire('Data Tidak Lengkap', 'Seluruh form wajib diisi', 'warning');
+    if(payload.nik.length < 16) return Swal.fire('Format Salah', 'NIK harus 16 Digit Angka.', 'warning');
+    if(!payload.nama || !payload.kecamatan || !payload.kelurahan) return Swal.fire('Data Tidak Lengkap', 'Seluruh form wajib diisi secara lengkap.', 'warning');
     
     Swal.fire({ title: 'Mengunci Pemilih...', text: "Sistem mendeteksi kemungkinan duplikasi/kanibalisasi...", allowOutsideClick: false, didOpen: () => Swal.showLoading() });
     try {
@@ -442,20 +477,20 @@
         ['pm_nik','pm_nama','pm_hp','pm_alamat','pm_rt','pm_rw'].forEach(id => document.getElementById(id).value = '');
         document.getElementById('pm_kec').value = '';
         document.getElementById('pm_kel').value = '';
-        loadDataUtama();
+        loadDataUtama(); // Segarkan kuota setelah berhasil input
       }
-    } catch (e) { Swal.fire('Offline', 'Disimpan sementara, akan dicek duplikasi saat terhubung.', 'success'); }
+    } catch (e) { Swal.fire('Offline', 'Disimpan sementara, akan dicek duplikasi saat terhubung internet.', 'success'); }
   }
 
   // ----------------------------------------------------
-  // SCANNER TATAP MUKA
+  // SCANNER TATAP MUKA (Pindai Barcode Caleg)
   // ----------------------------------------------------
   function mulaiScanner() {
     document.getElementById('reader').style.display = 'block'; document.getElementById('btn-scan').style.display = 'none'; document.getElementById('btn-stop-scan').style.display = 'block';
     scannerKamera = new Html5Qrcode("reader");
     scannerKamera.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } }, (decodedText) => { 
       hentikanScanner(); prosesValidasiPertemuan(decodedText); 
-    }, (err) => {}).catch(() => { hentikanScanner(); Swal.fire('Kamera Error', 'Mohon izinkan akses kamera.', 'error'); });
+    }, (err) => {}).catch(() => { hentikanScanner(); Swal.fire('Kamera Error', 'Mohon izinkan akses kamera di Browser Anda.', 'error'); });
   }
 
   function hentikanScanner() {
@@ -463,18 +498,18 @@
   }
 
   function prosesValidasiPertemuan(nikCaleg) {
-    Swal.fire({ title: 'Memeriksa Satelit...', text: `Mengunci lokasi GPS Anda untuk validasi...`, icon: 'info', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    Swal.fire({ title: 'Memeriksa Satelit...', text: `Mengunci lokasi GPS Anda untuk validasi kehadiran...`, icon: 'info', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
     navigator.geolocation.getCurrentPosition(async (pos) => {
       try {
         const res = await panggilAPI('scanPresensi', { nik_tim: userObj.nik, nama_tim: userObj.nama, nik_caleg: nikCaleg, latitude: pos.coords.latitude, longitude: pos.coords.longitude });
         Swal.fire('Validasi Sukses!', res.message, res.status);
-        loadDataUtama();
-      } catch(e) { Swal.fire('Selesai', 'Data tersimpan offline.', 'success'); }
+        loadDataUtama(); // Segarkan dompet poin
+      } catch(e) { Swal.fire('Selesai', 'Sistem Offline. Data kehadiran tersimpan aman.', 'success'); }
     }, () => Swal.fire('GPS Mati', 'Nyalakan GPS HP Anda untuk validasi kehadiran.', 'error'), { enableHighAccuracy: true, timeout: 10000 });
   }
 
   // ----------------------------------------------------
-  // GEOTAG & LAPORAN GIAT (SAMA PERSIS DGN CALEG)
+  // GEOTAG & LAPORAN GIAT
   // ----------------------------------------------------
   function inisialisasiPeta() {
     const latAwal = -7.250445; const lngAwal = 112.768845;
@@ -493,7 +528,7 @@
           map.setView([pos.coords.latitude, pos.coords.longitude], 17); marker.setLatLng([pos.coords.latitude, pos.coords.longitude]);
           Swal.close(); Swal.fire({toast: true, position: 'top-end', icon: 'success', title: 'Lokasi Terkunci', showConfirmButton: false, timer: 1500});
         }, 
-        (error) => { Swal.fire('Gagal', 'Pastikan GPS HP menyala.', 'error'); }, { enableHighAccuracy: true, timeout: 10000 }
+        (error) => { Swal.fire('Gagal', 'Pastikan GPS Lokasi di HP Anda menyala.', 'error'); }, { enableHighAccuracy: true, timeout: 10000 }
       );
     }
   }
@@ -521,7 +556,7 @@
   }
 
   // ----------------------------------------------------
-  // UTILITIES (ACCORDION & LOGOUT)
+  // UTILITIES (ACCORDION BUKU SAKU & LOGOUT)
   // ----------------------------------------------------
   function inisialisasiAccordion() {
     const acc = document.getElementsByClassName("acc-btn");
