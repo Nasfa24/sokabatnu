@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>ECMS 2029 - Dashboard Tim Relawan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #03754c;
+      --primary-hover: #025738;
+      --accent-orange: #FF9c08;
+      --accent-yellow: #fff212;
+      --bg-body: #f0f4f2;
+      --bg-card: #fefefe;
+      --text: #000000;
+      --border: #d1d9d6;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-body); color: var(--text); margin: 0; padding: 15px; }
+    .container { max-width: 900px; margin: auto; }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 25px rgba(3, 117, 76, 0.25);
+      margin-bottom: 20px;
+    }
+    .user-badge { background: var(--accent-yellow); color: #000; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 900; }
+    .user-badge.pasang { background: var(--accent-orange); color: #000; }
+
+    /* CARD BARCODE TIM */
+    .qr-card {
+      background: var(--bg-card);
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      border-top: 5px solid var(--accent-orange);
+    }
+    #qrcode-tim { display: flex; justify-content: center; margin: 15px 0; }
+
+    /* NAVIGATION TABS */
+    .nav-tabs { display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; }
+    .tab-btn {
+      padding: 12px 18px;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    .tab-content { display: none; background: var(--bg-card); padding: 22px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .tab-content.active { display: block; }
+
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-weight: 800; font-size: 12px; color: var(--primary); margin-bottom: 6px; text-transform: uppercase; }
+    input, select, textarea { width: 100%; padding: 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 15px; font-weight: 600; }
+    .btn-act { width: 100%; padding: 16px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-weight: 900; font-size: 16px; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+
+    /* VOTE LIST TABLE */
+    .voter-card { background: #f9fbfaf7; border: 1px solid var(--border); border-radius: 10px; padding: 12px 15px; margin-bottom: 10px; border-left: 5px solid var(--primary); }
+    .voter-nama { font-weight: 900; font-size: 16px; color: var(--primary); }
+    .voter-meta { font-size: 12px; color: #555; margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div>
+      <h2 id="tm-nama-head" style="margin:0; font-size:18px;">RELAWAN TIM</h2>
+      <span class="user-badge" id="tm-badge">PASTI</span>
+    </div>
+    <button onclick="logout()" style="background:#e74c3c; color:#fff; border:none; padding:8px 12px; border-radius:6px; font-weight:bold; cursor:pointer;">Keluar</button>
+  </header>
+
+  <!-- BARCODE QR TIM -->
+  <div class="qr-card">
+    <h4 style="margin:0; color:var(--primary);">📱 QR CODE ID RELAWAN</h4>
+    <p style="font-size:12px; color:#666; margin-top:4px;">Tunjukkan ke Caleg saat tatap muka untuk validasi poin / benefit.</p>
+    <div id="qrcode-tim"></div>
+    <div id="tm-nik-lbl" style="font-weight:900; color:#111;">-</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('tab-lapor')">📍 Lapor Giat (Geotag)</button>
+    <button class="tab-btn" onclick="switchTab('tab-pemilih')">👥 Pemilih Binaan (10)</button>
+    <button class="tab-btn" onclick="switchTab('tab-profil')">💳 Rekening & Profil</button>
+  </div>
+
+  <!-- TAB 1: LAPOR GIAT GEOTAG -->
+  <div id="tab-lapor" class="tab-content active">
+    <h3 style="color:var(--primary); margin-top:0;">📍 Laporan Silaturahim Lapangan</h3>
+    <form id="formGiat" onsubmit="submitLaporanGiat(event)">
+      <div class="form-group">
+        <label>Skema Kegiatan Silaturahim</label>
+        <select id="gt_skema" required>
+          <option value="Door to Door">1. Door to Door (Rumah ke Rumah)</option>
+          <option value="Undangan Warga">2. Menghadiri Undangan Acara Warga</option>
+          <option value="Ngopi Warkop">3. Ngopi Santai di Warkop</option>
+          <option value="Solosemiran">4. Acara Solosemiran</option>
+          <option value="Reses">5. Acara Reses</option>
+          <option value="Melayani Masyarakat">6. Pelayanan Air Mineral / Laundry Karpet / Penggantian Al-Quran</option>
+        </select>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+        <div class="form-group">
+          <label>Jumlah Orang Ditemui</label>
+          <input type="number" id="gt_orang" required value="1" min="1">
+        </div>
+        <div class="form-group">
+          <label>Jumlah Rumah Dikunjungi</label>
+          <input type="number" id="gt_rumah" required value="1" min="0">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Koordinat GPS (Geotag Lokasi)</label>
+        <div style="display:flex; gap:8px;">
+          <input type="text" id="gt_coords" readonly placeholder="Klik Ambil Lokasi GPS" required>
+          <button type="button" onclick="fetchGPSLocation()" style="background:var(--accent-orange); color:#000; border:none; border-radius:8px; padding:0 15px; font-weight:bold; cursor:pointer;">📡 GPS</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Keterangan & Catatan Aspirasi</label>
+        <textarea id="gt_ket" rows="3" placeholder="Aspirasi warga / hasil pertemuan..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-act">🚀 KIRIM LAPORAN GIAT</button>
+    </form>
+  </div>
+
+  <!-- TAB 2: PEMILIH BINAAN -->
+  <div id="tab-pemilih" class="tab-content">
+    <h3 style="color:var(--primary); margin-top:0;">👥 Daftar Pemilih Binaan Anda</h3>
+    <p style="font-size:12px; color:#666;">Target: Minimum 10 Pemilih Terdaftar per Relawan.</p>
+    <div id="voterList">
+      <div style="text-align:center; padding:20px; color:#888;">Memuat data pemilih...</div>
+    </div>
+  </div>
+
+  <!-- TAB 3: PROFIL & REKENING -->
+  <div id="tab-profil" class="tab-content">
+    <h3 style="color:var(--primary); margin-top:0;">💳 Data Rekening Bank & Profil</h3>
+    <div class="form-group">
+      <label>Nama Lengkap Tim</label>
+      <input type="text" id="pf_nama" readonly>
+    </div>
+    <div class="form-group">
+      <label>NIK Terdaftar</label>
+      <input type="text" id="pf_nik" readonly>
+    </div>
+    <div class="form-group">
+      <label>Nama Bank</label>
+      <input type="text" id="pf_bank" readonly>
+    </div>
+    <div class="form-group">
+      <label>Nomor Rekening</label>
+      <input type="text" id="pf_rekening" readonly>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentUser = null;
+
+  window.onload = function() {
+    const userStr = localStorage.getItem('ecms_user');
+    if (!userStr) { location.href = 'index.html'; return; }
+    currentUser = JSON.parse(userStr);
+
+    document.getElementById('tm-nama-head').innerText = currentUser.nama || 'RELAWAN';
+    document.getElementById('tm-nik-lbl').innerText = currentUser.nik || '-';
+    
+    const badge = document.getElementById('tm-badge');
+    badge.innerText = currentUser.kategori || 'PASTI';
+    if (currentUser.kategori === 'PASANG') badge.classList.add('pasang');
+
+    document.getElementById('pf_nama').value = currentUser.nama || '';
+    document.getElementById('pf_nik').value = currentUser.nik || '';
+    document.getElementById('pf_bank').value = currentUser.bank || '-';
+    document.getElementById('pf_rekening').value = currentUser.rekening || '-';
+
+    generateTimQr(currentUser.nik);
+    loadPemilihBinaan();
+  };
+
+  function generateTimQr(nik) {
+    const qrDiv = document.getElementById('qrcode-tim');
+    qrDiv.innerHTML = '';
+    new QRCode(qrDiv, { text: nik || '3578011002800005', width: 180, height: 180 });
+  }
+
+  function fetchGPSLocation() {
+    Swal.fire({ title: 'Mengunci Koordinat GPS...', allowOutsideClick: false, didOpen: () => { Swal.showLoading(); } });
+    navigator.geolocation.getCurrentPosition((pos) => {
+      Swal.close();
+      const coordsStr = pos.coords.latitude.toFixed(6) + ', ' + pos.coords.longitude.toFixed(6);
+      document.getElementById('gt_coords').value = coordsStr;
+      Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'GPS Dikunci: ' + coordsStr, timer: 2000, showConfirmButton: false });
+    }, (err) => {
+      Swal.close();
+      Swal.fire('GPS Error', 'Aktifkan Lokasi / GPS HP Anda!', 'warning');
+    });
+  }
+
+  function submitLaporanGiat(e) {
+    e.preventDefault();
+    const coordsStr = document.getElementById('gt_coords').value;
+    if (!coordsStr) {
+      Swal.fire('GPS Belum Ditentukan', 'Klik tombol 📡 GPS terlebih dahulu.', 'warning');
+      return;
+    }
+
+    const parts = coordsStr.split(',');
+    const payload = {
+      pelapor_nik: currentUser.nik,
+      nama_pelapor: currentUser.nama,
+      tipe_pelapor: 'TIM_' + (currentUser.kategori || 'PASTI'),
+      skema_kegiatan: document.getElementById('gt_skema').value,
+      jumlah_orang: document.getElementById('gt_orang').value,
+      jumlah_rumah: document.getElementById('gt_rumah').value,
+      latitude: parseFloat(parts[0]),
+      longitude: parseFloat(parts[1]),
+      keterangan: document.getElementById('gt_ket').value
+    };
+
+    Swal.fire({ title: 'Mengirim Laporan Giat...', allowOutsideClick: false, didOpen: () => { Swal.showLoading(); } });
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run.withSuccessHandler((res) => {
+        Swal.fire('Berhasil!', res.message, 'success');
+        document.getElementById('formGiat').reset();
+      }).simpanLaporanGiat(payload);
+    } else {
+      Swal.fire('Mode Demo', 'Laporan Giat Berhasil Disimpan!', 'success');
+      document.getElementById('formGiat').reset();
+    }
+  }
+
+  function loadPemilihBinaan() {
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run.withSuccessHandler((res) => {
+        renderPemilihList(res.pemilih);
+      }).getReferalPemilih(currentUser.nik);
+    } else {
+      // Mock Data
+      setTimeout(() => {
+        renderPemilihList([
+          { nik: '3578011508850001', nama: 'AHMAD SUBAGIO', hp: '081234567890', alamat: 'JL. ASEMROWO NO. 12', rt: '001', rw: '002', kelurahan: 'ASEMROWO' },
+          { nik: '3578012210900003', nama: 'SITI AMINAH', hp: '085678901234', alamat: 'JL. BENOWO JAYA 45', rt: '003', rw: '001', kelurahan: 'KANDANGAN' }
+        ]);
+      }, 500);
+    }
+  }
+
+  function renderPemilihList(list) {
+    const div = document.getElementById('voterList');
+    if (!list || list.length === 0) {
+      div.innerHTML = '<div style="text-align:center; padding:20px; color:#888;">Belum ada pemilih binaan terdaftar.</div>';
+      return;
+    }
+
+    let html = '';
+    list.forEach((item, idx) => {
+      html += '<div class="voter-card">';
+      html += '<div class="voter-nama">' + (idx + 1) + '. ' + item.nama + '</div>';
+      html += '<div class="voter-meta">NIK: ' + item.nik + ' • HP: ' + (item.hp || '-') + '</div>';
+      html += '<div class="voter-meta">' + item.alamat + ', RT ' + item.rt + ' / RW ' + item.rw + ' - ' + item.kelurahan + '</div>';
+      html += '</div>';
+    });
+    div.innerHTML = html;
+  }
+
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    
+    event.target.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  function logout() {
+    localStorage.clear();
+    location.href = 'index.html';
+  }
+</script>
+</body>
+</html>

@@ -2,94 +2,294 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <title>ECMS 2029 - Portal Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Dashboard SOKABAT-NU</title>
-  
-  <link rel="icon" type="image/png" href="favicon-32.png">
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    :root {
+      --primary: #03754c;
+      --primary-hover: #025738;
+      --accent-orange: #FF9c08;
+      --accent-yellow: #fff212;
+      --bg-body: #f0f4f2;
+      --bg-card: #fefefe;
+      --text: #000000;
+      --border: #d1d9d6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text);
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .login-card {
+      background: var(--bg-card);
+      width: 100%;
+      max-width: 440px;
+      padding: 35px 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-top: 8px solid var(--primary);
+      text-align: center;
+    }
+    .brand-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--primary);
+      margin: 0 0 5px 0;
+      letter-spacing: 1px;
+    }
+    .brand-sub {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    label {
+      display: block;
+      font-weight: 800;
+      font-size: 12px;
+      color: var(--primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    input {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      background-color: #f9fbfaf7;
+      transition: all 0.25s;
+      color: #111;
+    }
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background-color: #fff;
+      box-shadow: 0 0 0 4px rgba(3, 117, 76, 0.15);
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 18px;
+      background-color: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 6px 18px rgba(3, 117, 76, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 10px;
+    }
+    .btn-submit:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+    .action-tools {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .btn-tool {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-refresh { background-color: var(--accent-yellow); color: #000; }
+    .btn-clear { background-color: #6c757d; color: #fff; }
+    .btn-tool:hover { transform: translateY(-2px); opacity: 0.9; }
+    .footer-note {
+      font-size: 11px;
+      color: #888;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Menu Utilitas Header -->
-  <div class="header-actions">
-    <button class="btn btn-warning" onclick="AppCore.refreshApp()">🔄 Refresh</button>
-    <button class="btn btn-primary" style="background-color: #6c757d;" onclick="AppCore.clearCache()">🧹 Clear Cache</button>
-  </div>
+<div class="login-card">
+  <div class="brand-title">ECMS 2029</div>
+  <div class="brand-sub">Enterprise Campaign Management System</div>
 
-  <!-- Countdown Section -->
-  <div class="countdown-container">
-    <h3 style="color: var(--bg-color); margin-bottom: 10px; font-weight: 800;">MENUJU 15 JULI 2029</h3>
-    <div class="timer-grid" id="countdown-timer">
-      <div class="time-box">
-        <span id="cd-days">000</span>
-        <label>HARI</label>
-      </div>
-      <div class="time-box">
-        <span id="cd-hours">00</span>
-        <label>JAM</label>
-      </div>
-      <div class="time-box">
-        <span id="cd-mins">00</span>
-        <label>MENIT</label>
-      </div>
-      <div class="time-box">
-        <span id="cd-secs">00</span>
-        <label>DETIK</label>
-      </div>
+  <form id="loginForm" onsubmit="executeLogin(event)">
+    <div class="form-group">
+      <label for="nik">NIK Terdaftar (16 Digit)</label>
+      <input type="text" id="nik" inputmode="numeric" maxlength="16" placeholder="Masukkan NIK Anda" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
     </div>
+
+    <div class="form-group">
+      <label for="hp">Nomor HP / WhatsApp</label>
+      <input type="text" id="hp" inputmode="numeric" placeholder="Contoh: 081234567890" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    </div>
+
+    <button type="submit" class="btn-submit" id="btnLogin">🚀 MASUK SEKARANG</button>
+  </form>
+
+  <div class="action-tools">
+    <button type="button" class="btn-tool btn-refresh" onclick="refreshSystem()">🔄 Refresh App</button>
+    <button type="button" class="btn-tool btn-clear" onclick="clearSystemCache()">🧹 Clear Cache</button>
   </div>
 
-  <h2 style="color: var(--primary); font-weight: 900; margin: 25px 0 15px 0; text-align: center; font-size: 18px;">MODUL KAMPANYE</h2>
+  <div class="footer-note">Aplikasi Pemenangan Berbasis Data & AI • Surabaya 2029</div>
+</div>
 
-  <!-- Menu Navigasi MPA -->
-  <div class="menu-grid">
-    <a href="input-ktp.html" class="menu-card">
-      <div class="menu-icon">👥</div>
-      <div class="menu-title">Referal (1:10)</div>
-      <div class="menu-desc">Input & Validasi Data KTP</div>
-    </a>
+<script>
+  window.onload = function() {
+    checkExistingSession();
+  };
+
+  function checkExistingSession() {
+    const savedRole = localStorage.getItem('ecms_role');
+    const savedUser = localStorage.getItem('ecms_user');
+    if (savedRole && savedUser) {
+      redirectToDashboard(savedRole);
+    }
+  }
+
+  function executeLogin(e) {
+    e.preventDefault();
+    const nik = document.getElementById('nik').value.trim();
+    const hp = document.getElementById('hp').value.trim();
+
+    if (nik.length < 10) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'NIK Tidak Valid',
+        text: 'NIK harus diisi minimal 10-16 digit angka.',
+        confirmButtonColor: '#03754c'
+      });
+      return;
+    }
+
+    const btn = document.getElementById('btnLogin');
+    btn.disabled = true;
+    btn.innerText = '⏳ MEMVERIFIKASI...';
+
+    Swal.fire({
+      title: 'Menembus Database System...',
+      text: 'Memvalidasi Identitas & Otorisasi Role',
+      allowOutsideClick: false,
+      didOpen: () => { Swal.showLoading(); }
+    });
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withFailureHandler(function(err) {
+          btn.disabled = false;
+          btn.innerText = '🚀 MASUK SEKARANG';
+          Swal.fire({ icon: 'error', title: 'Gagal Terhubung', text: err.message, confirmButtonColor: '#03754c' });
+        })
+        .withSuccessHandler(function(res) {
+          btn.disabled = false;
+          btn.innerText = '🚀 MASUK SEKARANG';
+          if (res.status === 'success') {
+            localStorage.setItem('ecms_role', res.role);
+            localStorage.setItem('ecms_user', JSON.stringify(res.user));
+            
+            Swal.fire({
+              icon: 'success',
+              title: 'Akses Diberikan!',
+              text: 'Selamat datang, ' + res.user.nama + ' (' + res.role + ')',
+              timer: 1800,
+              showConfirmButton: false
+            }).then(() => {
+              redirectToDashboard(res.role);
+            });
+          } else {
+            Swal.fire({ icon: 'error', title: 'Akses Ditolak', text: res.message, confirmButtonColor: '#03754c' });
+          }
+        })
+        .loginUser(nik, hp);
+    } else {
+      // Mock / Offline Test Fallback
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerText = '🚀 MASUK SEKARANG';
+        let role = 'CALEG';
+        if (nik === '3578011002800005') role = 'TIM_PASTI';
+        if (nik === '3578021506880009') role = 'TIM_PASANG';
+        if (nik === '3578020504780002') role = 'INPUTER';
+
+        let userObj = { nik: nik, nama: 'PENGGUNA TEST', hp: hp, kategori: role };
+        localStorage.setItem('ecms_role', role);
+        localStorage.setItem('ecms_user', JSON.stringify(userObj));
+        
+        Swal.fire({ icon: 'success', title: 'Mode Offline Demo', text: 'Login sebagai: ' + role, timer: 1500, showConfirmButton: false })
+          .then(() => { redirectToDashboard(role); });
+      }, 1000);
+    }
+  }
+
+  function redirectToDashboard(role) {
+    let target = 'caleg.html';
+    if (role === 'TIM_PASTI' || role === 'TIM_PASANG') target = 'tim.html';
+    if (role === 'INPUTER') target = 'inputer.html';
     
-    <a href="agenda.html" class="menu-card" onclick="checkFeature(event)">
-      <div class="menu-icon">📍</div>
-      <div class="menu-title">Geotagging</div>
-      <div class="menu-desc">Catat Rute & Frekuensi</div>
-    </a>
+    // Check if running in GAS iframe environment
+    if (window.location.href.indexOf('script.google.com') !== -1) {
+      window.top.location.href = window.location.pathname + '?page=' + target.replace('.html', '');
+    } else {
+      window.location.href = target;
+    }
+  }
 
-    <a href="scanner.html" class="menu-card" onclick="checkFeature(event)">
-      <div class="menu-icon">📷</div>
-      <div class="menu-title">Scanner Benefit</div>
-      <div class="menu-desc">Klaim Poin Pertemuan</div>
-    </a>
-  </div>
+  function refreshSystem() {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      icon: 'info',
+      title: 'Memperbarui Aplikasi...',
+      showConfirmButton: false,
+      timer: 1200
+    }).then(() => { location.reload(); });
+  }
 
-  <script src="core.js"></script>
-  
-  <script>
-    // =========================================================================
-    // LOGIKA COUNTDOWN TIMER PRESISI
-    // =========================================================================
-    const targetDate = new Date("July 15, 2029 00:00:00").getTime();
-
-    const updateTimer = setInterval(function() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance < 0) {
-        clearInterval(updateTimer);
-        document.getElementById("countdown-timer").innerHTML = "<h2 style='color:var(--accent-2); margin:0;'>HARI H TIBA!</h2>";
-        return;
+  function clearSystemCache() {
+    Swal.fire({
+      title: 'Clear Cache Aplikasi?',
+      text: 'Sesi login akan dihapus dan cache browser dibersihkan.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#03754c',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Bersihkan!'
+    }).then((r) => {
+      if (r.isConfirmed) {
+        localStorage.clear();
+        sessionStorage.clear();
+        Swal.fire({ icon: 'success', title: 'Cache Bersih', timer: 1500, showConfirmButton: false })
+          .then(() => { location.reload(); });
       }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = MathMantap. Karena kita menargetkan hasil akhir yang terdokumentasi penuh, benar-benar teruji, dan bebas dari *workaround* sementara—agar hasilnya solid saat direview oleh Manuth—saya butuh sedikit konteks untuk menyelaraskan langkah kita.
-
-Sistem mana yang koneksinya baru saja berhasil Anda selesaikan?
-
-*   Konfigurasi WAHA (WhatsApp HTTP API) di Docker?
-*   Integrasi Google Sheets dan Drive untuk aplikasi kehadiran pengunjung?
-*   Atau arsitektur sistem rekapitulasi suara *offline* untuk TPS?
-
-Silakan konfirmasi proyeknya, dan kita akan langsung membedah eksekusi teknis atau desain UI berikutnya.
+    });
+  }
+</script>
+</body>
+</html>

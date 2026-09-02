@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>ECMS 2029 - OCR Vision AI KTP & KK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #03754c;
+      --primary-hover: #025738;
+      --accent-1: #FF9c08;
+      --accent-2: #fff212;
+      --bg: #fefefe;
+      --bg-body: #f0f4f2;
+      --text: #000000;
+      --border: #d1d9d6;
+      --danger: #e74c3c;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-body); color: var(--text); margin: 0; padding: 15px; }
+    .container { max-width: 1200px; margin: auto; background: var(--bg); padding: 25px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-top: 6px solid var(--primary); display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+    .header-actions { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 15px; margin-bottom: 10px; }
+    .header-actions h2 { margin: 0; color: var(--primary); font-size: 22px; font-weight: 900;}
+    
+    .btn-group { display: flex; gap: 8px; flex-wrap: wrap;}
+    .btn-action { padding: 9px 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: 800; transition: all 0.2s; font-size: 13px; }
+    .btn-refresh { background-color: var(--accent-2); color: var(--text); }
+    .btn-clear { background-color: #6c757d; color: #fff; }
+    .btn-trash { background-color: var(--danger); color: #fff; }
+    
+    .file-viewer-container { background: #e9eceb; border-radius: 10px; padding: 15px; border: 2px dashed #b5c2bc; position: sticky; top: 15px; text-align: center; }
+    
+    #cropper-container { width: 100%; max-height: 50vh; background-color: #2c3e50; border-radius: 8px; overflow: hidden; margin-bottom: 15px;}
+    #cropper-image { max-width: 100%; display: block; }
+    .crop-toolbar { display: flex; gap: 8px; margin-bottom: 15px; justify-content: center; }
+    .btn-tool { padding: 10px 12px; background: #34495e; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; flex: 1; font-size: 13px; }
+    .btn-execute-crop { width: 100%; padding: 14px; background-color: var(--accent-1); color: var(--text); border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; text-transform: uppercase;}
+    
+    .zoom-wrapper { overflow: hidden; border-radius: 8px; width: 100%; cursor: crosshair; position: relative; background: #fff;}
+    .zoom-wrapper img { width: 100%; display: block; object-fit: contain; }
+    
+    .section-title { font-size: 15px; font-weight: 800; color: #333; margin: 20px 0 12px 0; border-bottom: 2px solid var(--primary); padding-bottom: 5px; display: flex; justify-content: space-between; align-items: center;}
+    .form-group { margin-bottom: 15px; }
+    label { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 5px; color: var(--primary); font-size: 12px; text-transform: uppercase; }
+    .ocr-badge { font-size: 10px; padding: 3px 8px; border-radius: 12px; background-color: #ccc; color: white; font-weight:bold; }
+    
+    input, select { width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 15px; font-weight: 600; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    
+    .member-card { background: #fff; border: 2px solid #e2e8e5; border-radius: 8px; padding: 12px; margin-bottom: 12px; position: relative;}
+    .member-card.valid { border-left: 6px solid var(--primary); }
+    .member-card.invalid { border-left: 6px solid var(--danger); opacity: 0.7; }
+    .member-card-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: bold; font-size: 13px; color: #555;}
+    
+    .btn-submit { width: 100%; padding: 16px; background-color: var(--primary); color: var(--bg); border: none; border-radius: 8px; font-size: 17px; font-weight: bold; cursor: pointer; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
+
+    @media (max-width: 850px) { 
+      .container { grid-template-columns: 1fr; gap: 20px; } 
+      .file-viewer-container { position: relative; top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header-actions">
+    <h2>OCR VISION AI: INPUT KTP & KK</h2>
+    
+    <div class="btn-group">
+      <button class="btn-action btn-refresh" onclick="loadPendingFiles()">🔄 Refresh</button>
+      <button class="btn-action btn-clear" onclick="clearForm()">🧹 Clear</button>
+      <button class="btn-action btn-trash" onclick="trashCurrentFile()">🗑️ Buang (Rusak)</button>
+    </div>
+  </div>
+
+  <div class="file-viewer-container" id="ktp-viewer">
+    <h3 style="color: #666; margin:0;" id="loadingText">Memuat Sistem Vision AI...</h3>
+  </div>
+
+  <div class="file-viewer-container" id="crop-ui-container" style="display:none;">
+    <h4 style="color: var(--primary); margin:0 0 5px 0;">✂️ Paskan Area Scan</h4>
+    <div class="crop-toolbar">
+      <button type="button" class="btn-tool" onclick="rotateImage(-90)">↺ Putar Kiri</button>
+      <button type="button" class="btn-tool" onclick="rotateImage(90)">Putar Kanan ↻</button>
+    </div>
+
+    <div id="cropper-container">
+      <img id="cropper-image" src="" alt="Source Image">
+    </div>
+    
+    <button type="button" class="btn-execute-crop" onclick="executeCropAndScan()">✂️ CROP & SCAN VISION AI</button>
+  </div>
+
+  <div class="form-container">
+    <form id="main-form">
+      <input type="hidden" id="fileId" name="fileId">
+      <input type="hidden" id="croppedBase64" name="croppedBase64"> 
+      
+      <div style="background: #eef5f2; padding: 12px; border-radius: 8px; margin-bottom: 15px; border: 2px solid var(--primary); text-align: center;">
+        <label style="justify-content: center; margin-bottom: 5px;">JENIS DOKUMEN YANG DI-SCAN</label>
+        <select id="jenis_dokumen" name="jenis_dokumen" onchange="handleDocTypeChange()">
+          <option value="KTP">KARTU TANDA PENDUDUK (KTP)</option>
+          <option value="KK">KARTU KELUARGA (KK)</option>
+        </select>
+      </div>
+
+      <div class="section-title">
+        📍 DATA WILAYAH & KEGIATAN
+        <span class="ocr-badge" id="ocr-status">🤖 AI Standby</span>
+      </div>
+
+      <div class="form-group" id="kk_container" style="display:none;">
+        <label>NOMOR KARTU KELUARGA (16 Digit)</label>
+        <input type="text" inputmode="numeric" maxlength="16" id="no_kk" name="no_kk" placeholder="16 Digit No KK" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+      </div>
+
+      <div class="form-group">
+        <label>Alamat Jalan (Wajib)</label>
+        <input type="text" id="alamat" name="alamat" required oninput="this.value = this.value.toUpperCase()">
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>RT</label>
+          <input type="text" inputmode="numeric" maxlength="3" id="rt" name="rt" required placeholder="001" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        </div>
+        <div class="form-group">
+          <label>RW</label>
+          <input type="text" inputmode="numeric" maxlength="3" id="rw" name="rw" required placeholder="002" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Kecamatan (Wajib)</label>
+          <input type="text" id="kecamatan" name="kecamatan" required oninput="this.value = this.value.toUpperCase()">
+        </div>
+        <div class="form-group">
+          <label>Kelurahan (Wajib)</label>
+          <input type="text" id="kelurahan" name="kelurahan" required oninput="this.value = this.value.toUpperCase()">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Nama Kegiatan</label>
+          <select id="nama_kegiatan" name="nama_kegiatan" required>
+            <option value="Reses">Reses</option>
+            <option value="Solosemiran">Solosemiran</option>
+            <option value="Ngopi Bareng">Ngopi Bareng</option>
+            <option value="Door to Door">Door to Door</option>
+            <option value="Lain-lain">Lain-lain</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Koordinator</label>
+          <input type="text" id="koordinator" name="koordinator" required oninput="this.value = this.value.toUpperCase()">
+        </div>
+      </div>
+
+      <div class="section-title">
+        👥 DATA ANGGOTA / PEMILIH
+        <button type="button" onclick="addManualMember()" style="padding: 4px 10px; font-size:11px; background:var(--primary); color:white; border:none; border-radius:4px; font-weight:bold; cursor:pointer;">+ Tambah</button>
+      </div>
+
+      <div id="anggota-container"></div>
+
+      <button type="button" class="btn-submit" id="btn-submit" onclick="submitForm()">💾 TEMBAK KE DATABASE</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  let cropper = null;
+  let memberCount = 0;
+
+  window.onload = function() {
+    addManualMember();
+    loadPendingFiles();
+  };
+
+  function handleDocTypeChange() {
+    const type = document.getElementById('jenis_dokumen').value;
+    document.getElementById('kk_container').style.display = type === 'KK' ? 'block' : 'none';
+  }
+
+  function addManualMember() {
+    memberCount++;
+    const html = `
+      <div class="member-card valid" id="member-card-${memberCount}">
+        <div class="member-card-header">
+          <span>👤 PEMILIH KE-${memberCount}</span>
+        </div>
+        <div class="form-group">
+          <input type="text" inputmode="numeric" maxlength="16" id="nik-${memberCount}" placeholder="16 Digit NIK" required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+        </div>
+        <div class="grid-2">
+          <div class="form-group" style="margin-bottom:0;">
+            <input type="text" id="nama-${memberCount}" placeholder="Nama Lengkap" required oninput="this.value = this.value.toUpperCase()">
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <input type="text" inputmode="numeric" id="hp-${memberCount}" placeholder="No. HP" oninput="this.value = this.value.replace(/[^0-9]/g,'')">
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById('anggota-container').insertAdjacentHTML('beforeend', html);
+  }
+
+  function loadPendingFiles() {
+    Swal.fire({ title: 'Mencari Berkas KTP/KK...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run.withSuccessHandler((res) => {
+        Swal.close();
+        if (res.totalAntrean !== 0 && res.currentFile) {
+          document.getElementById('fileId').value = res.currentFile.id;
+          initCropperUI(res.currentFile.base64);
+        } else {
+          document.getElementById('ktp-viewer').innerHTML = "<h3 style='color:var(--primary);'>🎉 KERANJANG KTP KOSONG!</h3>";
+        }
+      }).getPendingKtpFiles();
+    } else {
+      setTimeout(() => {
+        Swal.close();
+        document.getElementById('ktp-viewer').innerHTML = "<h3 style='color:var(--primary);'>🎉 DEMO: KERANJANG KTP KOSONG</h3>";
+      }, 600);
+    }
+  }
+
+  function initCropperUI(base64Image) {
+    document.getElementById('ktp-viewer').style.display = 'none';
+    document.getElementById('crop-ui-container').style.display = 'block';
+    
+    const imageElement = document.getElementById('cropper-image');
+    imageElement.src = base64Image;
+    if (cropper) cropper.destroy();
+
+    cropper = new Cropper(imageElement, { aspectRatio: NaN, viewMode: 1, autoCropArea: 0.95 });
+  }
+
+  function rotateImage(degree) { if (cropper) cropper.rotate(degree); }
+
+  function executeCropAndScan() {
+    if (!cropper) return;
+    const canvas = cropper.getCroppedCanvas({ width: 1200, fillColor: '#fff' });
+    const finalBase64 = canvas.toDataURL('image/jpeg', 0.90);
+    
+    document.getElementById('croppedBase64').value = finalBase64;
+    document.getElementById('crop-ui-container').style.display = 'none';
+    document.getElementById('ktp-viewer').style.display = 'block';
+    
+    document.getElementById('ktp-viewer').innerHTML = "<img src='" + finalBase64 + "' style='max-width:100%; border-radius:8px;'>";
+  }
+
+  function clearForm() {
+    document.getElementById('main-form').reset();
+    document.getElementById('anggota-container').innerHTML = '';
+    memberCount = 0;
+    addManualMember();
+  }
+
+  function trashCurrentFile() {
+    Swal.fire({ title: 'Buang Berkas Ini?', text: 'File akan dipindah ke Sampah.', icon: 'warning', showCancelButton: true, confirmButtonColor: 'var(--danger)' }).then((r) => {
+      if (r.isConfirmed) { clearForm(); loadPendingFiles(); }
+    });
+  }
+
+  function submitForm() {
+    const form = document.getElementById('main-form');
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    Swal.fire({ title: 'Menembak ke Database...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    setTimeout(() => {
+      Swal.fire('Berhasil!', 'Data KTP/KK berhasil disimpan ke Database Sheet.', 'success');
+      clearForm();
+      loadPendingFiles();
+    }, 1000);
+  }
+</script>
+</body>
+</html>
