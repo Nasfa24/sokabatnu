@@ -1,55 +1,79 @@
 /**
  * =========================================================================
- * ECMS 2029 - GLOBAL APP CONTROLLER (PWA & NETWORK MANAGER)
- * =========================================================================
- * Menangani siklus hidup Progressive Web App (PWA), instalasi, 
- * dan mendeteksi status sinyal internet (Offline/Online) secara real-time.
+ * SOKABAT NU 2029 - GLOBAL APP CONTROLLER (PWA & NETWORK MANAGER)
  * =========================================================================
  */
 
-// 1. REGISTRASI SERVICE WORKER (PWA)
+// KUNCI INI HARUS BERISI URL DEPLOYMENT "WEB APP" YANG PALING BARU
+const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
+
+// ==========================================
+// FUNGSI UNIVERSAL PEMANGGIL API (LAPIS BAJA)
+// ==========================================
+async function callAPI(action, dataObj = {}) {
+  // Jangan munculkan loading ganda jika action adalah getStats (background loading)
+  if (action !== 'getStats' && action !== 'getPemilih' && action !== 'getTimProgress') {
+    Swal.fire({
+      title: 'Menembus Database...',
+      text: 'Menyinkronkan data dengan Satelit Pusat',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false,
+      didOpen: () => { Swal.showLoading(); }
+    });
+  }
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" }, // STANDAR MUTLAK
+      body: JSON.stringify({ action: action, data: dataObj }),
+      redirect: "follow" // STANDAR MUTLAK
+    });
+
+    const textResponse = await response.text();
+    let result;
+    try {
+      result = JSON.parse(textResponse);
+    } catch (e) {
+      console.error("SERVER GOOGLE MENOLAK:", textResponse);
+      throw new Error("Koneksi diblokir oleh Server Google. Pastikan Akses Deployment 'Anyone'.");
+    }
+
+    if (action !== 'getStats' && action !== 'getPemilih' && action !== 'getTimProgress') {
+      Swal.close();
+    }
+    return result;
+
+  } catch (error) {
+    if (action !== 'getStats' && action !== 'getPemilih' && action !== 'getTimProgress') {
+      Swal.close();
+      Swal.fire({ icon: 'error', title: 'Koneksi Gagal', text: error.message, confirmButtonColor: '#e74c3c' });
+    }
+    throw error; 
+  }
+}
+
+// ==========================================
+// ENGINE INSTALASI APLIKASI (PWA)
+// ==========================================
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js')
-      .then(registration => {
-        console.log('✅ Sistem PWA Aktif di scope:', registration.scope);
-      })
-      .catch(error => {
-        console.error('❌ Gagal memuat PWA:', error);
-      });
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('✅ Sistem Aplikasi Terinstal (PWA Aktif)'))
+      .catch(err => console.log('❌ PWA Gagal:', err));
   });
 }
 
-// 2. SISTEM DETEKSI SINYAL INTERNET (REAL-TIME)
+// ==========================================
+// DETEKSI SINYAL INTERNET
+// ==========================================
 window.addEventListener('offline', () => {
-  if (typeof Swal !== 'undefined') {
-    Swal.fire({
-      toast: true,
-      position: 'top',
-      icon: 'error',
-      title: 'Koneksi Terputus!',
-      text: 'HP Anda sedang offline. Beberapa fitur mungkin tertahan.',
-      showConfirmButton: false,
-      timer: 4000,
-      background: '#fffbf2',
-      color: '#d97706'
-    });
-  }
+  if (typeof Swal !== 'undefined') Swal.fire({ toast: true, position: 'top', icon: 'error', title: 'Sinyal Terputus!', showConfirmButton: false, timer: 3000 });
 });
 
 window.addEventListener('online', () => {
-  if (typeof Swal !== 'undefined') {
-    Swal.fire({
-      toast: true,
-      position: 'top',
-      icon: 'success',
-      title: 'Sinyal Kembali!',
-      text: 'Sistem terhubung kembali ke satelit pusat.',
-      showConfirmButton: false,
-      timer: 3000
-    });
-  }
+  if (typeof Swal !== 'undefined') Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Sinyal Kembali', showConfirmButton: false, timer: 3000 });
 });
 
-// 3. PROTEKSI PULL-TO-REFRESH DI HP (Mencegah Reload Tidak Sengaja)
 document.body.style.overscrollBehaviorY = 'contain';

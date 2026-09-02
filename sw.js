@@ -1,28 +1,37 @@
-// NAIKKAN VERSI INI SETIAP KALI ANDA MENGUBAH FILE HTML (contoh: v6, v7, dst)
-const CACHE_NAME = 'ecms-v5.5-cache';
-const urlsToCache = [ '/', '/index.html', '/caleg.html', '/tim.html', '/inputer.html', '/favicon-32.png', '/app.js', '/manifest.json' ];
+const CACHE_NAME = 'sokabatnu-v6.0';
+const urlsToCache = [
+  './',
+  './index.html',
+  './caleg.html',
+  './tim.html',
+  './inputer.html',
+  './app.js'
+];
 
-// 1. INSTALL & CACHE FILE BARU
 self.addEventListener('install', event => {
-  self.skipWaiting(); // Paksa Service Worker baru langsung mengambil alih
-  event.waitUntil( caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)) );
+  self.skipWaiting();
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
 });
 
-// 2. ACTIVATE & BOMB CACHE LAMA (Holy shit, that's done)
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.filter(cacheName => cacheName !== CACHE_NAME)
-          .map(cacheName => caches.delete(cacheName)) // Hapus semua cache versi terdahulu
-      );
-    }).then(() => self.clients.claim())
-  );
+  event.waitUntil(caches.keys().then(keys => Promise.all(keys.map(key => {
+    if (key !== CACHE_NAME) return caches.delete(key);
+  }))));
+  self.clients.claim();
 });
 
-// 3. FETCH STRATEGY: Network First, Fallback to Cache
 self.addEventListener('fetch', event => {
+  // ATURAN MUTLAK: Jika request adalah POST atau menuju server Google, BYPASS CACHE SEPENUHNYA!
+  if (event.request.method !== 'GET' || event.request.url.includes('script.google') || event.request.url.includes('googleusercontent')) {
+    return; 
+  }
+  
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    }).catch(() => {
+      // Fallback jika offline mutlak
+      return caches.match('./index.html');
+    })
   );
 });

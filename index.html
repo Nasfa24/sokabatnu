@@ -5,48 +5,20 @@
   <title>MENANG PEMILU 2029 - SOKABAT NU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <!-- PWA & MOBILE APP META TAGS (Wajib untuk Install UI) -->
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon-32.png">
-  <link rel="apple-touch-icon" href="favicon-32.png">
   <meta name="theme-color" content="#03754c">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="SOKABAT NU">
-  <meta name="mobile-web-app-capable" content="yes">
   
-  <!-- Library -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="app.js"></script>
   
   <style>
-    :root { 
-      --primary: #03754c; 
-      --primary-hover: #025738; 
-      --accent-orange: #FF9c08; 
-      --accent-yellow: #fff212;
-      --bg-body: #f0f4f2; 
-      --border: #d1d9d6;
-    }
+    :root { --primary: #03754c; --accent-orange: #FF9c08; --accent-yellow: #fff212; --bg-body: #f0f4f2; --border: #d1d9d6; }
     * { box-sizing: border-box; touch-action: manipulation; }
-    body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      background: var(--bg-body); 
-      display: flex; 
-      justify-content: center; 
-      min-height: 100vh; 
-      margin: 0; 
-      padding: 20px 15px;
-    }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg-body); display: flex; justify-content: center; min-height: 100vh; margin: 0; padding: 20px 15px; }
     
     .wrapper { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 15px; }
 
-    /* KARTU 1: HEADER & COUNTDOWN */
-    .header-card {
-      background: linear-gradient(135deg, var(--primary), #02452d); color: #fff;
-      padding: 25px 20px; border-radius: 16px; text-align: center;
-      box-shadow: 0 10px 25px rgba(3, 117, 76, 0.2); border-bottom: 6px solid var(--accent-orange);
-    }
+    .header-card { background: linear-gradient(135deg, var(--primary), #02452d); color: #fff; padding: 25px 20px; border-radius: 16px; text-align: center; box-shadow: 0 10px 25px rgba(3, 117, 76, 0.2); border-bottom: 6px solid var(--accent-orange); }
     .header-card h1 { margin: 0 0 5px 0; font-size: 28px; font-weight: 900; letter-spacing: 1px; color: var(--accent-yellow); }
     .header-card p { margin: 0 0 20px 0; font-size: 13px; color: #e2e8e5; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;}
     
@@ -55,12 +27,8 @@
     .timer-num { font-size: 26px; font-weight: 900; line-height: 1; }
     .timer-lbl { font-size: 10px; text-transform: uppercase; margin-top: 5px; font-weight: 800; color: var(--accent-yellow); }
 
-    /* KARTU 2: STATISTIK & TARGET PUBLIK */
     .stats-card { background: #fff; padding: 25px 20px; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.05); }
-    .target-badge {
-      display: inline-block; background: var(--accent-orange); color: #000;
-      padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 900; margin-bottom: 15px; width: 100%; text-align: center;
-    }
+    .target-badge { display: inline-block; background: var(--accent-orange); color: #000; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 900; margin-bottom: 15px; width: 100%; text-align: center; }
     .progress-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
     .progress-bg { background: #e9eceb; border-radius: 12px; height: 18px; overflow: hidden; margin-bottom: 8px; border: 1px solid var(--border); }
     .progress-fill { background: linear-gradient(90deg, var(--primary), #10b981); height: 100%; width: 0%; transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -71,7 +39,6 @@
     .stat-item span { display: block; font-size: 10px; color: var(--primary); font-weight: 800; text-transform: uppercase; margin-bottom: 5px;}
     .stat-item b { font-size: 22px; color: #111; font-weight: 900; }
 
-    /* KARTU 3: LOGIN FORM & TOOLS */
     .login-card { background: #fff; padding: 25px 20px; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary); }
     .login-card h3 { margin: 0 0 15px 0; color: var(--primary); font-size: 16px; text-align: center; font-weight: 900;}
     input { width: 100%; padding: 16px; margin-bottom: 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 16px; font-weight: 700; background: #f9fbfaf7; text-align: center; transition: 0.2s;}
@@ -137,29 +104,29 @@
 </div>
 
 <script>
-  const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
-
+  // ==========================================
   // MODUL PWA INSTALLER
+  // ==========================================
   let deferredPrompt;
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    document.getElementById('btn-install').style.display = 'block'; // Tombol install muncul!
+    document.getElementById('btn-install').style.display = 'block'; 
   });
 
   function installPWA() {
     if (deferredPrompt) {
       deferredPrompt.prompt();
       deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          document.getElementById('btn-install').style.display = 'none';
-        }
+        if (choiceResult.outcome === 'accepted') document.getElementById('btn-install').style.display = 'none';
         deferredPrompt = null;
       });
     }
   }
 
-  // INIT
+  // ==========================================
+  // INIT DASHBOARD & LOGIN
+  // ==========================================
   window.onload = () => {
     const role = localStorage.getItem('ecms_role');
     if (localStorage.getItem('ecms_user') && role) {
@@ -184,12 +151,12 @@
 
   async function fetchPublicStats() {
     try {
-      const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'getStats', data: { nik: 'GUEST', role: 'GUEST' } }) });
-      const json = await res.json();
-      if (json.status === 'success') {
-        const pemilih = json.data.total_pemilih || 0;
-        const timPasti = json.data.total_tim_pasti || 0;
+      const res = await callAPI('getStats', { nik: 'GUEST', role: 'GUEST' });
+      if (res.status === 'success') {
+        const pemilih = res.data.total_pemilih || 0;
+        const timPasti = res.data.total_tim_pasti || 0;
         const percent = Math.min((pemilih / 25000) * 100, 100);
+        
         document.getElementById('count-pemilih').innerText = pemilih.toLocaleString('id-ID');
         document.getElementById('count-tim-pasti').innerText = timPasti.toLocaleString('id-ID') + " Orang";
         setTimeout(() => {
@@ -203,35 +170,30 @@
     }
   }
 
-  async function callAPI(action, dataObj) {
-    const response = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: action, data: dataObj }) });
-    return await response.json();
-  }
-
   async function doLogin(e) {
     e.preventDefault();
     const nik = document.getElementById('nik').value;
     const hp = document.getElementById('hp').value;
-    if (nik.length < 10) return Swal.fire('Peringatan', 'NIK minimal 10 Angka.', 'warning');
 
-    document.getElementById('btn-login').innerText = "⏳ MEMVERIFIKASI...";
-    Swal.fire({ title: 'Menembus Database...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    if (nik.length < 10) return Swal.fire('Peringatan', 'NIK minimal 10 Angka.', 'warning');
+    const btn = document.getElementById('btn-login');
+    btn.innerText = "⏳ MEMVERIFIKASI...";
 
     try {
       const res = await callAPI('login', { nik: nik, hp: hp });
       if (res.status === 'success') {
         localStorage.setItem('ecms_role', res.role);
         localStorage.setItem('ecms_user', JSON.stringify(res.user));
+        
         Swal.fire({ icon: 'success', title: 'Akses Diberikan', timer: 1000, showConfirmButton: false }).then(() => {
            redirectToDash(res.role);
         });
       } else {
         Swal.fire('Akses Ditolak', res.message, 'error');
-        document.getElementById('btn-login').innerText = "🚀 MASUK SISTEM";
+        btn.innerText = "🚀 MASUK SISTEM";
       }
     } catch (err) {
-      Swal.fire('Koneksi Gagal', err.message, 'error');
-      document.getElementById('btn-login').innerText = "🚀 MASUK SISTEM";
+      btn.innerText = "🚀 MASUK SISTEM";
     }
   }
 
