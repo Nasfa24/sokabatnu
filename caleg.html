@@ -424,34 +424,71 @@
     }
   }
 
-  function executeBulkUpload() {
+async function executeBulkUpload() {
     const input = document.getElementById('bulkFiles');
-    if (input.files.length === 0) {
+    const files = input.files;
+    if (files.length === 0) {
       Swal.fire('Pilih File', 'Silakan pilih minimal 1 berkas KTP/PDF.', 'warning');
       return;
     }
 
+    const totalFiles = files.length;
+    let uploadedCount = 0;
+    const BATCH_SIZE = 3; // Mengirim 3 file per request agar tidak menyentuh limit payload Google
+
+    // Tampilkan UI Progres Dinamis
     Swal.fire({
-      title: 'Mengunggah ' + input.files.length + ' Berkas...',
-      text: 'File diproses satu per satu di latar belakang.',
+      title: 'Mengunggah Berkas...',
+      html: `Progres: <b id="upload-progress" style="color: var(--primary); font-size: 20px;">0</b> dari <b>${totalFiles}</b> file.`,
       allowOutsideClick: false,
+      showConfirmButton: false,
       didOpen: () => { Swal.showLoading(); }
     });
 
-    setTimeout(() => {
-      Swal.fire('Unggah Selesai!', input.files.length + ' Berkas telah berhasil masuk ke Drive Folder Input KTP.', 'success');
-      input.value = '';
-    }, 2000);
-  }
+    // Helper: Konversi File ke Base64
+    const getBase64 = (file) => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve({ name: file.name, mimeType: file.type, data: reader.result });
+      reader.onerror = error => reject(error);
+    });
 
-  function clearSystemCache() {
-    localStorage.clear();
-    Swal.fire('Cache Bersih', 'Sistem berhasil di-refresh.', 'success').then(() => location.reload());
-  }
+    // Looping Asinkron untuk Pengiriman Paket (Batching)
+    for (let i = 0; i < totalFiles; i += BATCH_SIZE) {
+      const chunk = [];
+      for (let j = i; j < i + BATCH_SIZE && j < totalFiles; j++) {
+        chunk.push(await getBase64(files[j]));
+      }
 
-  function logout() {
-    localStorage.clear();
-    location.href = 'index.html';
+      try {
+        await new Promise((resolve, reject) => {
+          if (typeof google !== 'undefined' && google.script && google.script.run) {
+            google.script.run
+              .withSuccessHandler((res) => {
+                uploadedCount += chunk.length;
+                document.getElementById('upload-progress').innerText = uploadedCount;
+                resolve(res);
+              })
+              .withFailureHandler((err) => reject(err))
+              .processBulkUploadChunk(chunk); // Panggil fungsi backend
+          } else {
+            // Mode Demo / Offline Test
+            setTimeout(() => {
+              uploadedCount += chunk.length;
+              document.getElementById('upload-progress').innerText = uploadedCount;
+              resolve('OK');
+            }, 800);
+          }
+        });
+      } catch (err) {
+        Swal.fire('Upload Terhenti', 'Error pada file ke-' + (uploadedCount + 1) + ': ' + err.message, 'error');
+        return;
+      }
+    }
+
+    // Eksekusi Selesai
+    Swal.fire('Unggah Massal Selesai!', totalFiles + ' Berkas telah berhasil masuk ke Drive Folder Input KTP.', 'success');
+    input.value = ''; // Kosongkan input
   }
 </script>
 </body>
