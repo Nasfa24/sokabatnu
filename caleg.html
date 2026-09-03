@@ -25,115 +25,114 @@
       --primary-light: #167a4e;
       --accent-orange: #f59e0b; 
       --accent-yellow: #fde047; 
-      --bg-body: #f8fafc; 
-      --text-main: #0f172a;
+      --bg-body: #f0fdf4; 
+      --text-main: #1e293b;
       --text-muted: #64748b;
       --border: #e2e8f0; 
     }
     * { box-sizing: border-box; touch-action: manipulation; user-select: none; }
-    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; padding-bottom: 100px; line-height: 1.6; overflow-x: hidden; }
+    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; padding-bottom: 90px; line-height: 1.5; overflow-x: hidden; }
     
-    /* Spacing Ekstra agar "Lebih Penuh dan Tidak Ramai" */
-    .wrapper { width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; padding: 20px; }
-    
+    .wrapper { width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; padding: 15px; }
+
     /* =========================================
        BOTTOM NAVIGATION (APP STYLE)
        ========================================= */
-    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; display: flex; justify-content: space-around; padding: 15px 0 25px 0; box-shadow: 0 -10px 30px rgba(0,0,0,0.05); z-index: 1000; border-top: 1px solid var(--border); max-width: 800px; margin: 0 auto;}
-    .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 11px; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.3s; flex: 1; text-decoration: none; gap: 6px;}
-    .nav-item .icon { font-size: 24px; filter: grayscale(100%) opacity(0.5); transition: 0.3s;}
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; display: flex; justify-content: space-around; padding: 12px 0 20px 0; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 1000; border-top: 1px solid var(--border); max-width: 800px; margin: 0 auto;}
+    .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.2s; flex: 1; text-decoration: none;}
+    .nav-item .icon { font-size: 22px; margin-bottom: 4px; filter: grayscale(100%) opacity(0.6); transition: 0.2s;}
     .nav-item.active { color: var(--primary); }
-    .nav-item.active .icon { filter: none; transform: translateY(-3px) scale(1.1);}
+    .nav-item.active .icon { filter: none; transform: scale(1.15);}
     
-    .tab-section { display: none; animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .tab-section { display: none; animation: fadeIn 0.3s ease; }
     .tab-section.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
     /* =========================================
-       HEADER SOKABAT NU (LEBIH MEGAH)
+       HEADER SOKABAT NU
        ========================================= */
-    .sokabat-header { background: linear-gradient(180deg, #044b2e 0%, var(--primary) 100%); padding: 40px 20px 60px 20px; text-align: center; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; box-shadow: 0 10px 0 var(--accent-orange), 0 20px 30px rgba(0,0,0,0.1); margin-bottom: -30px; color: white;}
-    .sokabat-header h1 { color: var(--accent-yellow); margin: 0; font-size: 36px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px;}
-    .sokabat-header p { color: #f8fafc; font-size: 14px; font-weight: 700; letter-spacing: 2px; margin-top: 8px; margin-bottom: 30px; text-transform: uppercase; opacity: 0.9;}
+    .sokabat-header { background: linear-gradient(180deg, #044b2e 0%, var(--primary) 100%); padding: 30px 15px 45px 15px; text-align: center; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 8px 0 var(--accent-orange), 0 15px 25px rgba(0,0,0,0.1); margin-bottom: -20px; color: white;}
+    .sokabat-header h1 { color: var(--accent-yellow); margin: 0; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;}
+    .sokabat-header p { color: #f8fafc; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; margin-top: 5px; margin-bottom: 25px; text-transform: uppercase;}
     
-    .timer-grid { display: flex; justify-content: center; gap: 12px; }
-    .timer-box { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); padding: 15px 12px; border-radius: 16px; min-width: 75px; backdrop-filter: blur(5px);}
-    .timer-box span { display: block; font-size: 32px; font-weight: 900; color: #ffffff; line-height: 1; }
-    .timer-box label { display: block; font-size: 12px; color: var(--accent-yellow); font-weight: 800; margin-top: 8px; letter-spacing: 1px;}
+    .timer-grid { display: flex; justify-content: center; gap: 10px; }
+    .timer-box { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); padding: 12px 10px; border-radius: 12px; min-width: 70px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);}
+    .timer-box span { display: block; font-size: 28px; font-weight: 900; color: #ffffff; line-height: 1; }
+    .timer-box label { display: block; font-size: 11px; color: var(--accent-yellow); font-weight: 800; margin-top: 6px; letter-spacing: 0.5px;}
 
     /* =========================================
-       KARTU UMUM & PROGRESS (LEBIH LUAS)
+       KARTU UMUM & PROGRESS
        ========================================= */
-    .card { background: #ffffff; padding: 30px 25px; border-radius: 24px; box-shadow: 0 8px 25px rgba(0,0,0,0.04); border: 1px solid rgba(226, 232, 240, 0.8); position: relative; z-index: 10; margin-bottom: 25px;}
-    .card-header { margin-bottom: 25px; border-bottom: 2px dashed var(--border); padding-bottom: 15px; display: flex; justify-content: space-between; align-items: center;}
-    .card-header h3 { margin: 0; color: var(--primary); font-size: 19px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;}
+    .card { background: #ffffff; padding: 24px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); position: relative; z-index: 10; margin-bottom: 20px;}
+    .card-header { margin-bottom: 18px; border-bottom: 2px dashed var(--border); padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center;}
+    .card-header h3 { margin: 0; color: var(--primary); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;}
     
-    .target-badge { background: var(--accent-orange); color: #000; font-weight: 900; font-size: 15px; text-align: center; padding: 15px; border-radius: 40px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.2); text-transform: uppercase; letter-spacing: 1px;}
-    .progress-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px;}
-    .progress-header b { color: var(--primary); font-size: 16px; font-weight: 900; text-transform: uppercase;}
-    .progress-header .pct { color: var(--primary); font-size: 20px; font-weight: 900;}
-    .progress-bar-bg { background: #f1f5f9; height: 22px; border-radius: 20px; overflow: hidden; width: 100%; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);}
-    .progress-bar-fill { background: linear-gradient(90deg, var(--primary), var(--primary-light)); height: 100%; width: 0%; border-radius: 20px; transition: width 1s ease-in-out;}
-    .progress-footer { text-align: center; font-size: 15px; font-weight: 700; color: var(--text-muted); margin-top: 18px;}
+    .target-badge { background: var(--accent-orange); color: #000; font-weight: 900; font-size: 14px; text-align: center; padding: 12px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3); text-transform: uppercase;}
+    .progress-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px;}
+    .progress-header b { color: var(--primary); font-size: 15px; font-weight: 900; text-transform: uppercase;}
+    .progress-header .pct { color: var(--primary); font-size: 18px; font-weight: 900;}
+    .progress-bar-bg { background: #e2e8f0; height: 18px; border-radius: 10px; overflow: hidden; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);}
+    .progress-bar-fill { background: var(--primary); height: 100%; width: 0%; border-radius: 10px; transition: width 1s ease-in-out;}
+    .progress-footer { text-align: center; font-size: 14px; font-weight: 700; color: var(--text-muted); margin-top: 15px;}
     
     /* =========================================
-       FORM, INPUT & TOMBOL (FAT-FINGER PROOF)
+       FORM, INPUT & TOMBOL
        ========================================= */
-    .btn { background: var(--primary); color: #ffffff; padding: 18px; border: none; border-radius: 16px; width: 100%; font-weight: 800; font-size: 16px; cursor:pointer; min-height: 60px; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px; box-shadow: 0 4px 12px rgba(6, 95, 58, 0.2);}
-    .btn:active { transform: translateY(2px); box-shadow: none;}
-    .btn-red { background: #ef4444; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2); }
-    .btn-orange { background: var(--accent-orange); color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
-    .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text-main); box-shadow: none;}
-    .btn-green { background: #10b981; color: #fff; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);}
+    .btn { background: var(--primary); color: #ffffff; padding: 18px; border: none; border-radius: 14px; width: 100%; font-weight: 800; font-size: 15px; cursor:pointer; min-height: 54px; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px;}
+    .btn:active { transform: scale(0.97); }
+    .btn-red { background: #ef4444; }
+    .btn-orange { background: var(--accent-orange); color: #000; }
+    .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text-main); }
+    .btn-green { background: #10b981; color: #fff; }
     
-    input, select, textarea { width: 100%; padding: 18px 20px; margin-bottom: 20px; border-radius: 14px; border: 2px solid var(--border); font-size: 17px; font-weight: 600; background: #f8fafc; transition: 0.2s; color: var(--text-main); font-family: inherit;}
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); background: #ffffff; box-shadow: 0 0 0 5px rgba(6, 95, 58, 0.1);}
+    input, select, textarea { width: 100%; padding: 16px; margin-bottom: 16px; border-radius: 12px; border: 2px solid var(--border); font-size: 16px; font-weight: 600; background: #f8fafc; transition: 0.2s; color: var(--text-main); font-family: inherit;}
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(6, 95, 58, 0.15);}
     
-    .text-muted { font-size: 14px; color: var(--text-muted); margin-bottom: 22px; display: block; font-weight: 500; line-height: 1.6;}
-    .badge { padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 900; background: var(--primary); color: #fff; text-transform: uppercase; letter-spacing: 1px;}
+    .text-muted { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; display: block; font-weight: 500; line-height: 1.5;}
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 900; background: var(--primary); color: #fff; text-transform: uppercase; letter-spacing: 0.5px;}
     .badge.orange { background: var(--accent-orange); color: #000; }
     .badge.red { background: #ef4444; color: #fff; }
     
-    .flex-row { display: flex; gap: 15px; width: 100%; }
+    .flex-row { display: flex; gap: 10px; width: 100%; }
     
     /* =========================================
-       STATISTIK & DAFTAR TIM
+       STATISTIK & DAFTAR TIM & WITHDRAWAL
        ========================================= */
-    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;}
-    .stat-box { background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid var(--border); border-left: 6px solid var(--primary); text-align: left;}
-    .stat-box span { font-size: 12px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;}
-    .stat-box h2 { margin: 8px 0 0 0; color: var(--primary); font-size: 32px; line-height: 1;}
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;}
+    .stat-box { background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid var(--border); border-left: 5px solid var(--primary); text-align: left;}
+    .stat-box span { font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;}
+    .stat-box h2 { margin: 5px 0 0 0; color: var(--primary); font-size: 26px; line-height: 1;}
     .stat-box.orange { border-left-color: var(--accent-orange); background: #fffbeb;} 
     .stat-box.orange h2 { color: #d97706; }
     
-    .team-progress-bg { background: #e2e8f0; height: 10px; border-radius: 6px; width: 100%; margin-top: 10px; overflow: hidden;}
-    .team-progress-fill { background: var(--primary); height: 100%; border-radius: 6px;}
-    .wd-card { border: 1px solid #e2e8f0; padding: 20px; border-radius: 16px; margin-bottom: 20px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-left: 6px solid #10b981;}
-    .wd-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 15px; }
-    .wd-val { font-weight: 900; color: var(--text-main); }
+    .team-progress-bg { background: #e2e8f0; height: 8px; border-radius: 5px; width: 100%; margin-top: 8px; overflow: hidden;}
+    .team-progress-fill { background: var(--primary); height: 100%; border-radius: 5px;}
+    .wd-card { border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; margin-bottom: 15px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.02); border-left: 5px solid #10b981;}
+    .wd-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; }
+    .wd-val { font-weight: 800; color: var(--text-main); }
     
     /* =========================================
-       UPLOAD KTP ZONE (MINIMALIS & RAKSASA)
+       UPLOAD KTP ZONE (KHUSUS CALEG)
        ========================================= */
-    .upload-zone { border: 3px dashed var(--primary); border-radius: 20px; padding: 50px 20px; text-align: center; background: #f0fdf4; margin-bottom: 25px; cursor: pointer; transition: 0.2s; display: block;}
-    .upload-zone:hover { background: #dcfce7; transform: scale(1.01); border-color: var(--primary-light);}
+    .upload-zone { border: 3px dashed var(--primary); border-radius: 16px; padding: 40px 20px; text-align: center; background: #f0fdf4; margin-bottom: 20px; cursor: pointer; transition: 0.2s; display: block;}
+    .upload-zone:hover { background: #dcfce7; transform: scale(1.02); }
     .upload-zone input[type="file"] { display: none; }
-    .upload-zone p { margin: 15px 0 0 0; font-size: 18px; color: var(--primary); font-weight: 800;}
-    .upload-zone span { font-size: 60px; display: block; margin-bottom: 5px; line-height: 1;}
-    .upload-info { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 18px; border-radius: 14px; font-size: 14px; font-weight: 600; margin-bottom: 25px; line-height: 1.6;}
-    .anti-kanibal-banner { background: #fee2e2; border: 1px solid #f87171; color: #991b1b; padding: 18px; border-radius: 14px; font-size: 14px; font-weight: 700; display: flex; gap: 15px; align-items: center; margin-bottom: 25px;}
+    .upload-zone p { margin: 10px 0 0 0; font-size: 16px; color: var(--primary); font-weight: 800;}
+    .upload-zone span { font-size: 48px; display: block; margin-bottom: 5px;}
+    .upload-info { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; line-height: 1.5;}
+    .anti-kanibal-banner { background: #fee2e2; border: 1px solid #f87171; color: #991b1b; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 700; display: flex; gap: 12px; align-items: center; margin-bottom: 20px;}
     
     /* Peta & Scanner */
-    #map { height: 350px; width: 100%; border-radius: 16px; margin-bottom: 25px; border: 2px solid var(--border); z-index: 1;}
-    #reader { width: 100%; border-radius: 16px; overflow: hidden; border: 4px solid var(--accent-orange); display: none; margin-bottom: 25px;}
+    #map { height: 300px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
+    #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
     
     /* Buku Saku Accordion */
-    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 20px 24px; width: 100%; border: 1px solid var(--border); text-align: left; outline: none; font-size: 16px; font-weight: 800; transition: 0.3s; display: flex; justify-content: space-between; align-items: center; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.02);}
+    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; outline: none; font-size: 15px; font-weight: 800; transition: 0.3s; display: flex; justify-content: space-between; align-items: center; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);}
     .acc-btn:hover, .acc-btn.active { background-color: #e2e8f0; border-color: #cbd5e1; }
-    .acc-panel { padding: 0 24px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; font-size: 15px; color: var(--text-main); border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 20px; border-radius: 0 0 12px 12px;}
-    .acc-panel.show { padding: 20px 24px; max-height: 1200px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
-    .acc-panel ul { padding-left: 20px; margin-top: 5px; line-height: 1.7;}
-    .acc-panel li { margin-bottom: 12px; }
+    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 14px; color: var(--text-main); border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
+    .acc-panel.show { padding: 15px 20px; max-height: 1000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
+    .acc-panel ul { padding-left: 18px; margin-top: 5px; line-height: 1.6;}
+    .acc-panel li { margin-bottom: 10px; }
   </style>
 </head>
 <body>
@@ -179,9 +178,9 @@
     </div>
   </div>
 
-  <div class="wrapper" style="padding-top: 35px;">
+  <div class="wrapper" style="padding-top: 25px;">
     <!-- Target Kemenangan -->
-    <div class="card" style="border-top: 5px solid var(--accent-orange); margin-top: 0;">
+    <div class="card" style="border-top: 4px solid var(--accent-orange); margin-top: 0;">
       <div class="target-badge">🎯 TARGET KEMENANGAN: 10.000 SUARA</div>
       <div class="progress-header">
         <b>CALON PEMILIH BINAAN</b>
@@ -189,7 +188,7 @@
       </div>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
       <div class="progress-footer">
-        Berhasil Kumpul: <span id="progress-current" style="color:var(--primary); font-size:18px;">0</span> / Target: 25.000 Data
+        Berhasil Kumpul: <span id="progress-current" style="color:var(--primary); font-size:16px;">0</span> / Target: 25.000 Data
       </div>
     </div>
 
@@ -206,7 +205,7 @@
     </div>
 
     <!-- Buku Saku -->
-    <div class="card" style="border-top: 5px solid var(--primary);">
+    <div class="card" style="border-top: 4px solid var(--primary);">
       <div class="card-header">
         <h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3>
         <span class="badge">DOKUMEN RAHASIA</span>
@@ -218,7 +217,7 @@
         <ul>
           <li>Target mengamankan 10.000 suara riil dengan mengelola 20.000 target pemilih (asumsi conversion rate 50%).</li>
           <li>Menolak keras pendekatan politik transaksional (jual beli suara).</li>
-          <li>Fase pendekatan: Empati (mendengar), Simpati (ikatan emosional), hingga Advokasi (membela kandidat).</li>
+          <li>Fase: Empati (mendengar dan hadir), Simpati (ikatan emosional), hingga Advokasi (membela kandidat).</li>
         </ul>
       </div>
 
@@ -251,9 +250,9 @@
       </div>
     </div>
     
-    <div class="flex-row" style="margin-bottom: 25px;">
-      <button class="btn btn-outline" style="flex:1;" onclick="muatDataSistem()">🔄 REFRESH DATA</button>
-      <button class="btn btn-red" style="flex:1;" onclick="prosesLogout()">🚪 KELUAR APLIKASI</button>
+    <div style="display:flex; gap:10px; margin-bottom: 20px;">
+      <button class="btn btn-outline" style="flex:1; font-size:12px;" onclick="muatDataSistem()">🔄 REFRESH DATA</button>
+      <button class="btn btn-red" style="flex:1; font-size:12px;" onclick="prosesLogout()">🚪 KELUAR APLIKASI</button>
     </div>
   </div>
 </div>
@@ -261,24 +260,24 @@
 <!-- ==========================================
      SECTION 2: MANAJEMEN TIM & WITHDRAWAL
      ========================================== -->
-<div id="sec-tim" class="tab-section wrapper" style="padding-top: 30px;">
+<div id="sec-tim" class="tab-section wrapper" style="padding-top: 20px;">
   
   <div class="card">
     <div class="card-header">
       <h3>👥 PENDAFTARAN TIM BARU</h3>
     </div>
-    <span class="text-muted">Daftarkan relawan ke dalam sistem. Kuota binaan otomatis terkunci di angka 10.</span>
+    <span class="text-muted">Daftarkan relawan ke dalam sistem. Kuota otomatis terkunci di angka 10.</span>
     
     <input type="text" id="tm_nik" inputmode="numeric" maxlength="16" placeholder="NIK Relawan (16 Digit)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
     <input type="text" id="tm_nama" placeholder="Nama Lengkap Sesuai KTP">
-    <input type="text" id="tm_hp" inputmode="numeric" placeholder="No WhatsApp Aktif" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    <input type="text" id="tm_hp" inputmode="numeric" placeholder="No WhatsApp (Contoh: 0812...)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
     
     <div class="flex-row">
         <input type="text" id="tm_bank" placeholder="Nama Bank" style="flex:1;">
         <input type="text" id="tm_rek" inputmode="numeric" placeholder="Nomor Rekening" style="flex:1;" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
     </div>
     
-    <select id="tm_kategori" style="height: 60px;">
+    <select id="tm_kategori">
       <option value="PASTI">PASUKAN INTI (TERBUKA / PASTI)</option>
       <option value="PASANG">PASUKAN BAYANGAN (RAHASIA / PASANG)</option>
     </select>
@@ -292,22 +291,22 @@
       <span class="badge orange">STRICT RULE: 10</span>
     </div>
     <div class="anti-kanibal-banner">
-      <span style="font-size: 28px;">🛡️</span> 
-      <span><b>ANTI-KANIBAL AKTIF:</b> NIK Pemilih ganda otomatis ditolak oleh sistem.</span>
+      <span style="font-size: 24px;">🛡️</span> 
+      <span><b>ANTI-KANIBAL AKTIF:</b> NIK Pemilih ganda otomatis ditolak.</span>
     </div>
-    <span class="text-muted">Pantau pencapaian 10 KTP Binaan per Tim di bawah ini.</span>
+    <span class="text-muted">Pantau pencapaian 10 KTP Binaan per Tim.</span>
     <button class="btn btn-outline" onclick="muatProgressTim()">🔄 Muat Data Pergerakan Tim</button>
-    <div id="tim-list-container" style="margin-top: 20px;"></div>
+    <div id="tim-list-container" style="margin-top: 15px;"></div>
   </div>
 
-  <div class="card" style="border-top: 5px solid #10b981;">
+  <div class="card" style="border-top: 4px solid #10b981;">
     <div class="card-header">
       <h3 style="color: #10b981;">💸 MANAJEMEN PENCAIRAN</h3>
       <span class="badge red">TGL 12</span>
     </div>
-    <span class="text-muted">Setujui permintaan penarikan dana dari Tim yang telah mencapai minimum 200 Poin (Rp 1.000/Poin).</span>
+    <span class="text-muted">Setujui permintaan penarikan dana dari Tim yang telah mencapai ≥ 200 Poin (Rp 1.000/Poin).</span>
     <button class="btn btn-outline" onclick="muatDataWithdraw()">🔄 Cek Antrean Pencairan</button>
-    <div id="withdraw-list-container" style="margin-top: 20px;"></div>
+    <div id="withdraw-list-container" style="margin-top: 15px;"></div>
   </div>
 
 </div>
@@ -315,16 +314,16 @@
 <!-- ==========================================
      SECTION 3: DATA KTP (SETOR SATUAN & MASSAL)
      ========================================== -->
-<div id="sec-ktp" class="tab-section wrapper" style="padding-top: 30px;">
+<div id="sec-ktp" class="tab-section wrapper" style="padding-top: 20px;">
   
-  <!-- Setor KTP Individual (Bebas Mengetik) -->
-  <div class="card" style="border-top: 5px solid var(--primary);">
+  <!-- Setor KTP Individual (Tanpa Mengetik) -->
+  <div class="card" style="border-top: 4px solid var(--primary);">
     <div class="card-header">
       <h3>👥 SETOR KTP BINAAN (SATUAN)</h3>
     </div>
     
     <div class="upload-info">
-      💡 <b>BEBAS MENGETIK WILAYAH & NAMA!</b> Anda cukup melampirkan foto KTP warga dan memasukkan nomor WhatsApp mereka. Inputer Pusat yang akan memproses sisanya. 
+      💡 <b>BEBAS MENGETIK!</b> Anda tidak perlu mengetik Nama atau Alamat warga. Cukup foto KTP dan masukkan nomor WhatsApp mereka. Inputer Pusat yang akan mengetikkan seluruh biodatanya. 
     </div>
     
     <!-- Upload Zone Raksasa -->
@@ -335,24 +334,24 @@
     </label>
     
     <!-- HANYA 1 INPUT: WhatsApp -->
-    <input type="text" id="pm_hp" inputmode="numeric" placeholder="📱 Masukkan No. WhatsApp Warga..." oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="height: 65px; font-size:18px;">
+    <input type="text" id="pm_hp" inputmode="numeric" placeholder="📱 Masukkan No. WhatsApp Warga..." oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="height: 60px; font-size:18px;">
     
-    <button class="btn" style="height: 65px; font-size: 18px;" onclick="setorKTPSatuan()">🚀 KIRIM KTP KE PUSAT</button>
+    <button class="btn" style="height: 60px; font-size: 18px;" onclick="setorKTPSatuan()">🚀 KIRIM KTP KE PUSAT</button>
   </div>
 
   <!-- Upload Massal -->
-  <div class="card" style="border-top: 5px solid var(--accent-orange);">
+  <div class="card" style="border-top: 4px solid var(--accent-orange);">
     <div class="card-header">
       <h3 style="color: var(--accent-orange);">📁 UPLOAD KTP MASSAL</h3>
     </div>
     <div class="anti-kanibal-banner" style="background: #fef9c3; border-color: #fde047; color: #854d0e;">
-      <span style="font-size: 28px;">🤖</span> 
-      <span>Berkas akan divalidasi AI. NIK ganda dieliminasi secara otomatis.</span>
+      <span style="font-size: 24px;">🤖</span> 
+      <span>Berkas akan divalidasi AI. NIK ganda dieliminasi.</span>
     </div>
-    <span class="text-muted">Pilih >100 berkas sekaligus. Sistem Auto-Chunking mencegah server *freeze* saat mengunggah banyak KTP.</span>
+    <span class="text-muted">Pilih >100 berkas sekaligus. Sistem Auto-Chunking mencegah server error saat unggah massal.</span>
     
-    <input type="file" id="bulkFiles" multiple accept=".pdf,image/*" style="background: #fff; padding: 20px; border: 3px dashed var(--accent-orange); cursor:pointer;">
-    <button class="btn btn-orange" onclick="prosesUploadMassal()" style="height: 65px;">MULAI UPLOAD MASSAL</button>
+    <input type="file" id="bulkFiles" multiple accept=".pdf,image/*" style="background: #fff; padding: 12px; border: 2px dashed var(--accent-orange);">
+    <button class="btn btn-orange" onclick="prosesUploadMassal()">MULAI UPLOAD MASSAL</button>
   </div>
 
 </div>
@@ -360,30 +359,30 @@
 <!-- ==========================================
      SECTION 4: VALIDASI (QR CALEG & SCAN TIM)
      ========================================== -->
-<div id="sec-validasi" class="tab-section wrapper" style="padding-top: 30px;">
+<div id="sec-validasi" class="tab-section wrapper" style="padding-top: 20px;">
   
-  <div class="card" style="text-align:center; border-top: 5px solid var(--primary);">
+  <div class="card" style="text-align:center; border-top: 4px solid var(--primary);">
     <div class="card-header">
       <h3 style="color: var(--primary);">📱 QR PRESENSI ANDA</h3>
       <span class="badge">SUPER ADMIN</span>
     </div>
-    <span class="text-muted">Tunjukkan QR ini ke Tim Lapangan untuk dipindai sebagai bukti pertemuan tatap muka. Mereka akan mendapat 10 Poin.</span>
+    <span class="text-muted">Tunjukkan QR ini ke Tim Lapangan untuk dipindai sebagai bukti pertemuan tatap muka.</span>
     
-    <div style="display:flex; justify-content:center; margin:30px 0;">
-       <div id="qrcode-caleg" style="padding:25px; background:#fff; border-radius:24px; border:5px dashed var(--primary); display: inline-block;"></div>
+    <div style="display:flex; justify-content:center; margin:20px 0;">
+       <div id="qrcode-caleg" style="padding:20px; background:#fff; border-radius:20px; border:4px dashed var(--primary); display: inline-block;"></div>
     </div>
-    <b style="color:var(--text-main); font-size: 22px; letter-spacing: 2px;">NIK: <span id="lbl-nik-caleg" style="color:var(--primary);">-</span></b>
+    <b style="color:var(--text-main); font-size: 18px; letter-spacing: 1px;">NIK: <span id="lbl-nik-caleg" style="color:var(--primary);">-</span></b>
   </div>
 
-  <div class="card" style="border-top: 5px solid var(--accent-orange);">
+  <div class="card" style="border-top: 4px solid var(--accent-orange);">
     <div class="card-header">
       <h3 style="color: var(--accent-orange);">📸 PINDAI QR TIM</h3>
     </div>
-    <span class="text-muted">Pindai barcode relawan untuk memvalidasi pertemuan secara dua arah. Membutuhkan verifikasi satelit GPS.</span>
+    <span class="text-muted">Pindai barcode relawan untuk memvalidasi pertemuan dan memberikan 10 Poin KPI.</span>
     
     <div id="reader"></div>
-    <button class="btn btn-orange" id="btn-scan" onclick="mulaiScanner()" style="height: 65px;">Buka Kamera Pemindai</button>
-    <button class="btn btn-outline" id="btn-stop-scan" style="display:none; height: 65px;" onclick="hentikanScanner()">Batalkan Pemindaian</button>
+    <button class="btn btn-orange" id="btn-scan" onclick="mulaiScanner()">Buka Kamera Pemindai</button>
+    <button class="btn btn-outline" id="btn-stop-scan" style="display:none;" onclick="hentikanScanner()">Batalkan Pemindaian</button>
   </div>
 
 </div>
@@ -391,14 +390,14 @@
 <!-- ==========================================
      SECTION 5: LAPOR GIAT & GEOTAG
      ========================================== -->
-<div id="sec-lapor" class="tab-section wrapper" style="padding-top: 30px;">
-  <div class="card" style="border-top: 5px solid var(--accent-yellow);">
+<div id="sec-lapor" class="tab-section wrapper" style="padding-top: 20px;">
+  <div class="card" style="border-top: 4px solid var(--accent-yellow);">
     <div class="card-header">
       <h3 style="color: #d97706;">📍 LAPOR GIAT LAPANGAN</h3>
     </div>
-    <span class="text-muted">Laporkan pergerakan lapangan Anda. Koordinat satelit GPS akan dikunci otomatis.</span>
+    <span class="text-muted">Laporkan pergerakan lapangan Anda. Koordinat satelit akan direkam otomatis.</span>
     
-    <select id="giat_skema" style="height: 65px;">
+    <select id="giat_skema" style="height: 55px;">
       <option value="" disabled selected>-- Pilih Skema Kegiatan --</option>
       <option value="Door to Door">Door to Door</option>
       <option value="Undangan Warga">Undangan Warga</option>
@@ -408,15 +407,15 @@
       <option value="Melayani Masyarakat">Melayani Masyarakat</option>
     </select>
     
-    <textarea id="giat_keterangan" rows="5" placeholder="Tambahkan catatan hasil pertemuan..."></textarea>
+    <textarea id="giat_keterangan" rows="4" placeholder="Tambahkan catatan hasil pertemuan..."></textarea>
     
     <div id="map"></div>
     <input type="hidden" id="giat_lat">
     <input type="hidden" id="giat_lng">
     
-    <div class="flex-row">
-      <button class="btn btn-outline" style="flex:1; height: 65px;" onclick="dapatkanLokasiGPS()">🛰️ AMBIL GPS</button>
-      <button class="btn btn-yellow" style="flex:1; height: 65px;" onclick="kirimLaporanGiat()">KIRIM LAPORAN</button>
+    <div style="display: flex; gap:10px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="dapatkanLokasiGPS()">🛰️ AMBIL GPS</button>
+      <button class="btn btn-yellow" style="flex:1;" onclick="kirimLaporanGiat()">KIRIM LAPORAN</button>
     </div>
   </div>
 </div>
@@ -442,7 +441,7 @@
     // Generate QR Code Caleg
     document.getElementById('lbl-nik-caleg').innerText = NIK_CALEG;
     new QRCode(document.getElementById("qrcode-caleg"), { 
-      text: NIK_CALEG, width: 240, height: 240, colorDark : "#065f3a", colorLight : "#ffffff" 
+      text: NIK_CALEG, width: 220, height: 220, colorDark : "#065f3a", colorLight : "#ffffff" 
     });
 
     inisialisasiTimer();
@@ -454,12 +453,15 @@
   // SISTEM TAB NAVIGASI BAWAH (APP STYLE)
   // ----------------------------------------------------
   function switchTab(sectionId, element) {
+    // Ubah UI Navigasi
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
     element.classList.add('active');
     
+    // Ubah Layar Section
     document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
     document.getElementById(sectionId).classList.add('active');
     
+    // Render Ulang Peta jika Tab Lapor Ditekan (Fix Bug Leaflet)
     if(sectionId === 'sec-lapor' && !petaSudahDimuat) {
       inisialisasiPeta();
       petaSudahDimuat = true;
@@ -532,7 +534,7 @@
   }
 
   // ----------------------------------------------------
-  // SETOR KTP BINAAN SATUAN (BEBAS MENGETIK WILAYAH)
+  // SETOR KTP BINAAN SATUAN (BEBAS MENGETIK)
   // ----------------------------------------------------
   function tampilkanNamaFileKTP() {
     const input = document.getElementById('pm_ktp');
@@ -547,7 +549,7 @@
     const fileInput = document.getElementById('pm_ktp');
     const hp = document.getElementById('pm_hp').value;
 
-    if (!fileInput.files || fileInput.files.length === 0) return Swal.fire('KTP Kosong', 'Harap jepret / unggah foto KTP warga terlebih dahulu.', 'warning');
+    if (!fileInput.files || fileInput.files.length === 0) return Swal.fire('KTP Kosong', 'Harap jepret / unggah foto KTP terlebih dahulu.', 'warning');
     if (!hp || hp.length < 9) return Swal.fire('Data Kurang', 'Masukkan Nomor WhatsApp warga dengan benar.', 'warning');
 
     const file = fileInput.files[0];
@@ -621,10 +623,10 @@
           let roleBadge = t.role === 'KOORDINATOR' ? `<span class="badge">KOOR</span>` : `<span class="badge orange">${t.kategori || 'TIM'}</span>`;
           let statusLabel = isSelesai ? `<span style="color:#059669; font-size:12px; font-weight:900;">✓ MISI SELESAI</span>` : `<span style="color:var(--text-muted); font-size:12px; font-weight:700;">PROSES MENCARI...</span>`;
           html += `
-            <div style="border: 2px solid ${isSelesai ? '#10b981' : 'var(--border)'}; padding:20px; border-radius:16px; margin-bottom:15px; background: ${isSelesai ? '#f0fdf4' : '#ffffff'}; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;"><strong style="color:var(--text-main); font-size:17px;">${t.nama}</strong>${roleBadge}</div>
+            <div style="border: 2px solid ${isSelesai ? '#10b981' : 'var(--border)'}; padding:18px; border-radius:12px; margin-bottom:15px; background: ${isSelesai ? '#f0fdf4' : '#ffffff'}; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;"><strong style="color:var(--text-main); font-size:16px;">${t.nama}</strong>${roleBadge}</div>
               <div style="display:flex; justify-content:space-between; align-items:center;">
-                <div style="font-size:14px; color:var(--text-main); font-weight:700;">Pencapaian: <strong style="font-size:18px; color:var(--primary);">${kumpul} / ${targetMaks}</strong></div>
+                <div style="font-size:13px; color:var(--text-main); font-weight:700;">Pencapaian: <strong style="font-size:16px; color:var(--primary);">${kumpul} / ${targetMaks}</strong></div>
                 ${statusLabel}
               </div>
               <div class="team-progress-bg"><div class="team-progress-fill" style="width: ${pct}%; background: ${isSelesai ? '#10b981' : 'var(--primary)'};"></div></div>
@@ -649,14 +651,14 @@
             <div class="wd-card">
               <div class="wd-row"><span style="color:var(--text-muted);">Nama Tim:</span> <span class="wd-val">${w.nama}</span></div>
               <div class="wd-row"><span style="color:var(--text-muted);">Total Poin (Valid):</span> <span class="wd-val" style="color:#f59e0b;">${w.poin} Poin</span></div>
-              <div class="wd-row" style="margin-top:10px; margin-bottom:10px; padding-top:10px; border-top:1px dashed var(--border);">
-                <span style="color:var(--text-muted);">Nominal Transfer:</span> <span class="wd-val" style="font-size:20px; color:#10b981;">Rp ${nominalRp}</span>
+              <div class="wd-row" style="margin-top:8px; margin-bottom:8px; padding-top:8px; border-top:1px dashed var(--border);">
+                <span style="color:var(--text-muted);">Nominal Transfer:</span> <span class="wd-val" style="font-size:18px; color:#10b981;">Rp ${nominalRp}</span>
               </div>
               <div class="wd-row" style="align-items:center;">
-                <div><span style="display:block; font-size:12px; color:var(--text-muted); text-transform:uppercase;">Bank Tujuan:</span><strong style="color:var(--text-main); font-size:16px;">${w.bank} - ${w.rekening}</strong></div>
-                <button class="btn btn-outline" style="width:auto; padding:8px 16px; min-height:0; font-size:13px; margin:0;" onclick="salinRekening('${w.rekening}')">📋 Salin</button>
+                <div><span style="display:block; font-size:11px; color:var(--text-muted); text-transform:uppercase;">Bank Tujuan:</span><strong style="color:var(--text-main); font-size:15px;">${w.bank} - ${w.rekening}</strong></div>
+                <button class="btn btn-outline" style="width:auto; padding:6px 12px; min-height:0; font-size:12px; margin:0;" onclick="salinRekening('${w.rekening}')">📋 Salin</button>
               </div>
-              <div class="flex-row" style="margin-top: 20px;"><button class="btn btn-green" style="margin:0;" onclick="konfirmasiLunas('${w.id}', '${w.nama}', '${w.rekening}')">✓ TANDAI LUNAS</button></div>
+              <div class="flex-row" style="margin-top: 15px;"><button class="btn btn-green" style="margin:0;" onclick="konfirmasiLunas('${w.id}', '${w.nama}', '${w.rekening}')">✓ TANDAI LUNAS</button></div>
             </div>`;
         });
         div.innerHTML = html;
@@ -685,14 +687,14 @@
   function prosesUploadMassal() {
     const files = document.getElementById('bulkFiles').files;
     if (files.length === 0) return Swal.fire('Kosong', 'Pilih minimal 1 file.', 'warning');
-    Swal.fire({ title: 'Upload Massal', html: `Siap mengirim <b>${files.length}</b> berkas KTP.`, icon: 'info', showCancelButton: true, confirmButtonText: 'Mulai Upload' }).then((result) => {
+    Swal.fire({ title: 'Upload Massal', html: `Siap mengirim <b>${files.length}</b> berkas.`, icon: 'info', showCancelButton: true, confirmButtonText: 'Mulai Upload' }).then((result) => {
       if (result.isConfirmed) eksekusiUploadChunk(files);
     });
   }
 
   async function eksekusiUploadChunk(files) {
     let sukses = 0;
-    Swal.fire({ title: 'Mengunggah...', html: 'Berhasil: <b id="up-count" style="color:var(--primary); font-size:24px;">0</b> / ' + files.length, allowOutsideClick: false, showConfirmButton: false, didOpen: () => Swal.showLoading() });
+    Swal.fire({ title: 'Mengunggah...', html: 'Berhasil: <b id="up-count" style="color:var(--primary); font-size:20px;">0</b> / ' + files.length, allowOutsideClick: false, showConfirmButton: false, didOpen: () => Swal.showLoading() });
     const jadikanBase64 = file => new Promise((resolve, reject) => { const reader = new FileReader(); reader.readAsDataURL(file); reader.onload = () => resolve({name: file.name, mimeType: file.type, data: reader.result}); reader.onerror = err => reject(err); });
     for (let i = 0; i < files.length; i += 3) {
       let antrean = [];
@@ -703,7 +705,7 @@
         sukses += antrean.length; document.getElementById('up-count').innerText = sukses;
       } catch(e) { return Swal.fire('Koneksi Putus', 'Gagal memproses gelombang data.', 'error'); }
     }
-    Swal.fire('Selesai', `${sukses} Berkas masuk Folder Input Pusat.`, 'success');
+    Swal.fire('Selesai', `${sukses} Berkas masuk Folder Input.`, 'success');
     document.getElementById('bulkFiles').value = '';
   }
 
@@ -765,6 +767,9 @@
     });
   }
 
+  // ----------------------------------------------------
+  // UTILITIES (ACCORDION BUKU SAKU)
+  // ----------------------------------------------------
   function inisialisasiAccordion() {
     const acc = document.getElementsByClassName("acc-btn");
     for (let i = 0; i < acc.length; i++) {
