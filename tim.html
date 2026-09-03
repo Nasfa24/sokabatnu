@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard Tim - ECMS 2029</title>
+  <title>Aplikasi Tim - ECMS 2029</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
   <link rel="manifest" href="manifest.json">
@@ -22,6 +22,7 @@
     /* 1. VARIABEL & RESET */
     :root { 
       --primary: #065f3a; 
+      --primary-light: #167a4e;
       --accent-orange: #f59e0b; 
       --accent-yellow: #fde047; 
       --bg-body: #f0fdf4; 
@@ -30,248 +31,266 @@
       --border: #e2e8f0; 
     }
     * { box-sizing: border-box; touch-action: manipulation; user-select: none; }
-    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; padding-bottom: 80px; line-height: 1.5; }
+    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; padding-bottom: 80px; line-height: 1.5; overflow-x: hidden;}
     
-    .wrapper { width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; padding: 0 15px; }
+    .wrapper { width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; padding: 15px; }
     
-    /* 2. HEADER DOMPET POIN & PROFIL */
-    .sokabat-header {
-      background: linear-gradient(180deg, #044b2e 0%, var(--primary) 100%);
-      padding: 25px 15px 45px 15px; 
-      text-align: center;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
-      box-shadow: 0 8px 0 var(--accent-orange), 0 15px 20px rgba(0,0,0,0.1);
-      margin-bottom: -25px; 
-      color: white;
-    }
-    .profile-badge { background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; display: inline-block; margin-bottom: 15px; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.4);}
+    /* =========================================
+       BOTTOM NAVIGATION (APP STYLE)
+       ========================================= */
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; display: flex; justify-content: space-around; padding: 12px 0 20px 0; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 1000; border-top: 1px solid var(--border); max-width: 800px; margin: 0 auto;}
+    .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.2s; flex: 1; text-decoration: none;}
+    .nav-item .icon { font-size: 24px; margin-bottom: 4px; filter: grayscale(100%) opacity(0.6); transition: 0.2s;}
+    .nav-item.active { color: var(--primary); }
+    .nav-item.active .icon { filter: none; transform: scale(1.15);}
+    
+    /* Tab Control */
+    .tab-section { display: none; animation: fadeIn 0.3s ease; }
+    .tab-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* =========================================
+       HEADER DOMPET POIN & PROFIL
+       ========================================= */
+    .sokabat-header { background: linear-gradient(180deg, #044b2e 0%, var(--primary) 100%); padding: 25px 15px 40px 15px; text-align: center; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 8px 0 var(--accent-orange), 0 15px 25px rgba(0,0,0,0.1); margin-bottom: -20px; color: white;}
+    .profile-badge { background: rgba(255,255,255,0.2); padding: 6px 18px; border-radius: 20px; font-size: 12px; font-weight: 800; display: inline-block; margin-bottom: 15px; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.4); text-transform: uppercase;}
     .wallet-box { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; margin-bottom: 10px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);}
     .wallet-box p { margin: 0; font-size: 11px; color: var(--accent-yellow); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;}
-    .wallet-box h1 { margin: 5px 0 0 0; font-size: 42px; font-weight: 900; line-height: 1;}
+    .wallet-box h1 { margin: 5px 0 0 0; font-size: 46px; font-weight: 900; line-height: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.3);}
     .wallet-box .rupiah { font-size: 14px; font-weight: 600; color: #cbd5e1; margin-top: 5px; display: block;}
     
-    /* 3. KARTU & PROGRESS TARGET */
-    .card { background: #ffffff; padding: 22px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid var(--border); position: relative; z-index: 10;}
-    .card-header { margin-bottom: 15px; border-bottom: 2px dashed var(--border); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
-    .card-header h3 { margin: 0; color: var(--primary); font-size: 17px; font-weight: 800; text-transform: uppercase; }
+    /* =========================================
+       KARTU UMUM & PROGRESS
+       ========================================= */
+    .card { background: #ffffff; padding: 24px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); position: relative; z-index: 10; margin-bottom: 20px;}
+    .card-header { margin-bottom: 18px; border-bottom: 2px dashed var(--border); padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center;}
+    .card-header h3 { margin: 0; color: var(--primary); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;}
     
-    .target-badge { background: var(--accent-orange); color: #000; font-weight: 900; font-size: 14px; text-align: center; padding: 12px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);}
+    .target-badge { background: var(--accent-orange); color: #000; font-weight: 900; font-size: 14px; text-align: center; padding: 12px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3); text-transform: uppercase;}
     .progress-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px;}
-    .progress-header b { color: var(--primary); font-size: 15px; font-weight: 800; text-transform: uppercase;}
+    .progress-header b { color: var(--primary); font-size: 15px; font-weight: 900; text-transform: uppercase;}
     .progress-header .pct { color: var(--primary); font-size: 18px; font-weight: 900;}
-    .progress-bar-bg { background: #e2e8f0; height: 16px; border-radius: 10px; overflow: hidden; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);}
+    .progress-bar-bg { background: #e2e8f0; height: 18px; border-radius: 10px; overflow: hidden; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);}
     .progress-bar-fill { background: var(--primary); height: 100%; width: 0%; border-radius: 10px; transition: width 1s ease-in-out;}
-    .progress-footer { text-align: center; font-size: 14px; font-weight: 700; color: var(--text-muted); margin-top: 12px;}
+    .progress-footer { text-align: center; font-size: 14px; font-weight: 700; color: var(--text-muted); margin-top: 15px;}
     
-    /* 4. FORM, INPUT & TOMBOL */
-    .btn { background: var(--primary); color: #ffffff; padding: 16px; border: none; border-radius: 12px; width: 100%; font-weight: 800; font-size: 15px; cursor:pointer; min-height: 52px; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 10px;}
-    .btn:active { transform: scale(0.98); }
+    /* =========================================
+       FORM, INPUT & TOMBOL
+       ========================================= */
+    .btn { background: var(--primary); color: #ffffff; padding: 18px; border: none; border-radius: 14px; width: 100%; font-weight: 800; font-size: 15px; cursor:pointer; min-height: 54px; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px;}
+    .btn:active { transform: scale(0.97); }
     .btn-red { background: #ef4444; }
     .btn-orange { background: var(--accent-orange); color: #000; }
     .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text-main); }
     
-    input, select, textarea { width: 100%; padding: 15px 16px; margin-bottom: 15px; border-radius: 12px; border: 2px solid var(--border); font-size: 15px; font-weight: 600; background: #f8fafc; transition: 0.2s; color: var(--text-main); font-family: inherit;}
+    input, select, textarea { width: 100%; padding: 16px; margin-bottom: 16px; border-radius: 12px; border: 2px solid var(--border); font-size: 16px; font-weight: 600; background: #f8fafc; transition: 0.2s; color: var(--text-main); font-family: inherit;}
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(6, 95, 58, 0.15);}
     
-    /* Upload KTP Zone */
-    .upload-zone { border: 2px dashed var(--primary); border-radius: 12px; padding: 20px; text-align: center; background: #f0fdf4; margin-bottom: 15px; cursor: pointer; transition: 0.2s;}
-    .upload-zone:hover { background: #dcfce7; }
+    .text-muted { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; display: block; font-weight: 500; line-height: 1.5;}
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 900; background: var(--primary); color: #fff; text-transform: uppercase; letter-spacing: 0.5px;}
+    
+    /* =========================================
+       UPLOAD KTP ZONE (KHUSUS TIM)
+       ========================================= */
+    .upload-zone { border: 3px dashed var(--primary); border-radius: 16px; padding: 40px 20px; text-align: center; background: #f0fdf4; margin-bottom: 20px; cursor: pointer; transition: 0.2s; display: block;}
+    .upload-zone:hover { background: #dcfce7; transform: scale(1.02); }
     .upload-zone input[type="file"] { display: none; }
-    .upload-zone p { margin: 5px 0 0 0; font-size: 13px; color: var(--primary); font-weight: 700;}
-    .upload-zone span { font-size: 30px; display: block; margin-bottom: 5px;}
+    .upload-zone p { margin: 10px 0 0 0; font-size: 16px; color: var(--primary); font-weight: 800;}
+    .upload-zone span { font-size: 48px; display: block; margin-bottom: 5px;}
+    .upload-info { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; line-height: 1.5;}
     
-    .flex-row { display: flex; gap: 10px; width: 100%; }
-    .text-muted { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; display: block; font-weight: 500;}
-    .badge { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 900; background: var(--primary); color: #fff; text-transform: uppercase; letter-spacing: 0.5px;}
-    .badge.orange { background: var(--accent-orange); color: #000; }
+    /* Peta & Scanner */
+    #map { height: 300px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
+    #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
     
-    /* 5. PEMINDAI & PETA */
-    #map { height: 250px; width: 100%; border-radius: 12px; margin-bottom: 15px; border: 2px solid var(--border); z-index: 1;}
-    #reader { width: 100%; border-radius: 12px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 15px;}
+    /* Banners */
+    .locked-banner { background: #fffbeb; border: 2px dashed #f59e0b; padding: 30px 20px; border-radius: 18px; text-align: center; color: #b45309; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.1);}
+    .locked-banner h3 { margin: 0 0 10px 0; color: #d97706; font-size: 22px; font-weight: 900;}
     
-    /* 6. ACHIEVEMENT LOCKED */
-    .locked-banner { background: #fffbeb; border: 2px dashed #f59e0b; padding: 25px 20px; border-radius: 16px; text-align: center; color: #b45309; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.1);}
-    .locked-banner h3 { margin: 0 0 10px 0; color: #d97706; font-size: 18px; font-weight: 900;}
-    
-    /* 7. ACCORDION BUKU SAKU */
-    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px; width: 100%; border: 1px solid var(--border); text-align: left; outline: none; font-size: 14px; font-weight: 800; transition: 0.3s; display: flex; justify-content: space-between; align-items: center; border-radius: 8px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);}
+    /* Buku Saku Accordion */
+    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; outline: none; font-size: 15px; font-weight: 800; transition: 0.3s; display: flex; justify-content: space-between; align-items: center; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);}
     .acc-btn:hover, .acc-btn.active { background-color: #e2e8f0; border-color: #cbd5e1; }
-    .acc-panel { padding: 0 16px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 13px; color: var(--text-main); border-left: 3px solid var(--primary); margin-left: 5px; margin-bottom: 10px; border-radius: 0 0 8px 8px;}
-    .acc-panel.show { padding: 15px 16px; max-height: 1000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
-    .acc-panel ul { padding-left: 15px; margin-top: 5px;}
-    .acc-panel li { margin-bottom: 8px; }
+    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 14px; color: var(--text-main); border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
+    .acc-panel.show { padding: 15px 20px; max-height: 1000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
+    .acc-panel ul { padding-left: 18px; margin-top: 5px; line-height: 1.6;}
+    .acc-panel li { margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
 <!-- ==========================================
-     HEADER DOMPET POIN & PROFIL TIM
+     BOTTOM NAVIGATION BAR (APP STYLE)
      ========================================== -->
-<div class="sokabat-header">
-  <div class="profile-badge">👤 <span id="user-name">Memuat Data...</span></div>
-  
-  <div class="wallet-box">
-    <p>Dompet Likuiditas (Poin)</p>
-    <h1 id="st-poin">0</h1>
-    <span class="rupiah" id="st-rupiah">Rp 0</span>
+<nav class="bottom-nav">
+  <a href="#" class="nav-item active" onclick="switchTab('sec-home', this)">
+    <span class="icon">🏠</span>
+    <span>Beranda</span>
+  </a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-rekrut', this)">
+    <span class="icon">📸</span>
+    <span>Rekrut</span>
+  </a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-validasi', this)">
+    <span class="icon">📷</span>
+    <span>Validasi</span>
+  </a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-lapor', this)">
+    <span class="icon">📍</span>
+    <span>Lapor</span>
+  </a>
+</nav>
+
+<!-- ==========================================
+     SECTION 1: BERANDA (DOMPET, TARGET, BUKU SAKU)
+     ========================================== -->
+<div id="sec-home" class="tab-section active">
+  <div class="sokabat-header">
+    <div class="profile-badge">👤 <span id="user-name">Memuat Data...</span></div>
+    <div class="wallet-box">
+      <p>Dompet Likuiditas (Poin)</p>
+      <h1 id="st-poin">0</h1>
+      <span class="rupiah" id="st-rupiah">Rp 0</span>
+    </div>
+    <p style="font-size: 11px; opacity: 0.9; line-height: 1.4; margin-bottom: 15px;">Batas Minimum: 200 Poin. Nilai Tukar: Rp 1.000 / Poin.<br>Pencairan dilakukan pada tanggal 12.</p>
+    <button class="btn btn-orange" onclick="cairkanBonus()">💸 CAIRKAN POIN (WD)</button>
   </div>
-  
-  <p style="font-size: 11px; opacity: 0.9; line-height: 1.4;">Batas Minimum: 200 Poin. Nilai Tukar: Rp 1.000 / Poin.<br>Pencairan hanya dapat dilakukan pada tanggal 12.</p>
-  <button class="btn btn-orange" style="margin-top: 10px;" onclick="cairkanBonus()">💸 AJUKAN PENCAIRAN POIN</button>
+
+  <div class="wrapper">
+    <!-- Target Binaan -->
+    <div class="card" style="border-top: 4px solid var(--accent-orange);">
+      <div class="target-badge">🎯 MISI UTAMA: 10 PEMILIH BINAAN</div>
+      <div class="progress-header">
+        <b>PROGRES KUOTA ANDA</b>
+        <span class="pct" id="progress-percent">0%</span>
+      </div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+      <div class="progress-footer">
+        Terkunci: <span id="progress-current" style="color:var(--primary); font-size:18px; font-weight:900;">0</span> / Maksimal: <span id="progress-max">10</span> Pemilih
+      </div>
+    </div>
+
+    <!-- Buku Saku -->
+    <div class="card" style="border-top: 4px solid var(--primary);">
+      <div class="card-header">
+        <h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3>
+        <span class="badge">DOKUMEN TIM</span>
+      </div>
+      <span class="text-muted">Panduan absolut kampanye Politik Cinta & Tangan Yang Melayani.</span>
+      
+      <button class="acc-btn">1. KPI & Filosofi Dasar <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li>Target mengamankan 10.000 suara riil dengan mengelola 20.000 target pemilih (conversion rate 50%).</li>
+          <li>Menolak keras pendekatan politik transaksional (jual beli suara).</li>
+          <li>Fase pendekatan: Empati (hadir), Simpati (ikatan emosional), hingga Advokasi.</li>
+        </ul>
+      </div>
+
+      <button class="acc-btn">2. Manajemen Pemangku Wilayah <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li>Jangan melangkahi tokoh lokal (Ketua LPMK, RW, RT, KSH).</li>
+          <li><b>Kunjungan 0-0-0:</b> 0 Atribut Partai, 0 Janji Politik, 0 Permintaan Suara.</li>
+          <li>Wajib "kula nuwun" ke RW/RT; biarkan Ketua RT yang memimpin saat Home Visit.</li>
+        </ul>
+      </div>
+
+      <button class="acc-btn">3. Eksekusi 4 Pilar <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li><b>Tebarkan Salam:</b> Sapa warga di pasar/terminal pukul 05.30-07.00 WIB tanpa atribut.</li>
+          <li><b>Berikan Makan:</b> Jumat Seribu Nasi Bungkus, Posko Piring Tetangga.</li>
+          <li><b>Sambung Silaturahmi:</b> Kunjungan tertutup. Grup WA Lingkar Peduli (tanpa politik).</li>
+          <li><b>Salat Malam:</b> Sajadah Cinta (salat jamaah, tausiyah).</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div style="display:flex; gap:10px; margin-bottom: 20px;">
+      <button class="btn btn-outline" style="flex:1; font-size:12px;" onclick="loadDataUtama()">🔄 REFRESH DATA</button>
+      <button class="btn btn-red" style="flex:1; font-size:12px;" onclick="prosesLogout()">🚪 KELUAR APLIKASI</button>
+    </div>
+  </div>
 </div>
 
-<div class="wrapper">
-
-  <!-- ==========================================
-       MODUL 1: BUKU SAKU STRATEGI KAMPANYE
-       ========================================== -->
-  <div class="card" style="margin-top: 0; border-top: 4px solid var(--primary);">
-    <div class="card-header">
-      <h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3>
-      <span class="badge">DOKUMEN TIM</span>
-    </div>
-    <span class="text-muted">Panduan absolut kampanye Politik Cinta & Tangan Yang Melayani. Wajib dibaca sebelum turun ke lapangan.</span>
-    
-    <button class="acc-btn">1. KPI & Filosofi Dasar <span>▼</span></button>
-    <div class="acc-panel">
-      <ul>
-        <li>Target mengamankan 10.000 suara riil di kotak suara dengan mengelola 20.000 target pemilih (asumsi conversion rate 50%).</li>
-        <li>Kampanye ini menolak keras pendekatan politik transaksional (jual beli suara).</li>
-        <li>Pendekatan dilakukan melalui fase Empati, Simpati (ikatan emosional), hingga Advokasi.</li>
-      </ul>
-    </div>
-
-    <button class="acc-btn">2. Strategi Teritorial <span>▼</span></button>
-    <div class="acc-panel">
-      <ul>
-        <li><b>Ring 1 (Kandang Utama):</b> Berpusat di Penjaringan Sari (Target 780 suara mutlak).</li>
-        <li><b>Ring 2 (Sabuk Konsolidasi):</b> Kalirungkut, Kedung Baruk, Medokan Ayu, Gunung Anyar, Rungkut Tengah (>5.000 suara).</li>
-        <li><b>Ring 3 (Front Ekspansi):</b> Jemur Wonosari, Keputih, Siwalan Kerto, Medokan Semampir.</li>
-      </ul>
-    </div>
-
-    <button class="acc-btn">3. Manajemen Pemangku Wilayah <span>▼</span></button>
-    <div class="acc-panel">
-      <ul>
-        <li>Jangan melangkahi tokoh lokal (Ketua LPMK, RW, RT, KSH).</li>
-        <li><b>Kunjungan Perdana (0-0-0):</b> 0 Atribut Partai, 0 Janji Politik, 0 Permintaan Suara.</li>
-        <li>Wajib "kula nuwun" ke RW/RT; biarkan Ketua RT yang memimpin saat Home Visit.</li>
-      </ul>
-    </div>
-
-    <button class="acc-btn">4. Eksekusi 4 Pilar <span>▼</span></button>
-    <div class="acc-panel">
-      <ul>
-        <li><b>Tebarkan Salam:</b> Sapa warga di pasar/terminal pukul 05.30-07.00 WIB tanpa atribut partai.</li>
-        <li><b>Berikan Makan:</b> Seribu Nasi Bungkus tiap Jumat, Posko Piring Tetangga.</li>
-        <li><b>Sambung Silaturahmi:</b> Kunjungan tanpa kamera besar. Bentuk Grup WA Lingkar Peduli.</li>
-        <li><b>Salat Malam:</b> Sajadah Cinta (salat subuh berjamaah, tausiyah).</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       MODUL 2: TARGET BINAAN (STRICT 10)
-       ========================================== -->
-  <div class="card" style="border-top: 4px solid var(--accent-orange);">
-    <div class="target-badge">🎯 MISI UTAMA: 10 PEMILIH BINAAN</div>
-    
-    <div class="progress-header">
-      <b>PROGRES KUOTA ANDA</b>
-      <span class="pct" id="progress-percent">0%</span>
-    </div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
-    <div class="progress-footer">
-      Berhasil Dikunci: <span id="progress-current" style="color:var(--primary); font-size:16px;">0</span> / Maksimal: <span id="progress-max">10</span> Pemilih
-    </div>
-  </div>
-
-  <!-- ==========================================
-       MODUL 3: SETOR KTP BINAAN (TANPA MENGETIK)
-       ========================================== -->
-  <div class="card" id="form-pemilih-container">
+<!-- ==========================================
+     SECTION 2: REKRUT (HANYA FOTO KTP & WA)
+     ========================================== -->
+<div id="sec-rekrut" class="tab-section wrapper" style="padding-top: 20px;">
+  
+  <div class="card" id="form-pemilih-container" style="border-top: 4px solid var(--primary);">
     <div class="card-header">
       <h3>👥 SETOR KTP BINAAN</h3>
     </div>
     
-    <div style="background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 12px; border-radius: 10px; font-size: 12px; font-weight: 600; margin-bottom: 15px;">
-      💡 <b>TIM ADALAH GARDA TERDEPAN!</b> Anda dibebaskan dari tugas mengetik Nama/Alamat. Cukup lampirkan foto KTP, dan Inputer Pusat yang akan memprosesnya atas nama Anda.
+    <div class="upload-info">
+      💡 <b>BEBAS MENGETIK!</b> Cukup foto KTP Calon Pemilih dan masukkan nomor WhatsApp mereka. Inputer Pusat akan mengetikkan seluruh biodatanya untuk Anda. 
     </div>
     
-    <!-- Upload Zone -->
+    <!-- Upload Zone Raksasa -->
     <label for="pm_ktp" class="upload-zone" id="drop-zone">
       <span>📸</span>
       <p id="file-name-display">Ketuk di sini untuk Memfoto KTP</p>
       <input type="file" id="pm_ktp" accept="image/*" capture="environment" onchange="tampilkanNamaFile()">
     </label>
     
-    <input type="text" id="pm_hp" inputmode="numeric" placeholder="No WhatsApp Warga (Wajib)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    <!-- HANYA 1 INPUT: WhatsApp -->
+    <input type="text" id="pm_hp" inputmode="numeric" placeholder="📱 Masukkan No. WhatsApp Warga..." oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="height: 60px; font-size:18px;">
     
-    <!-- Filter Wilayah Dinamis & Terkunci -->
-    <select id="pm_kec" onchange="updateKelurahan()">
-      <option value="" disabled selected>-- Pilih Kecamatan Warga --</option>
-      <option value="Bulak">Bulak</option>
-      <option value="Mulyorejo">Mulyorejo</option>
-      <option value="Sukolilo">Sukolilo</option>
-      <option value="Rungkut">Rungkut</option>
-      <option value="Gunung Anyar">Gunung Anyar</option>
-      <option value="Tenggilis Mejoyo">Tenggilis Mejoyo</option>
-      <option value="Wonocolo">Wonocolo</option>
-    </select>
-    
-    <select id="pm_kel">
-      <option value="" disabled selected>-- Pilih Kelurahan Warga --</option>
-      <!-- Akan diisi otomatis oleh JavaScript -->
-    </select>
-    
-    <button class="btn" onclick="setorKTP()">🚀 KIRIM KTP KE PUSAT</button>
+    <button class="btn" style="height: 60px; font-size: 18px;" onclick="setorKTP()">🚀 KIRIM KTP KE PUSAT</button>
   </div>
 
   <!-- BANNERS JIKA KUOTA 10 PENUH -->
   <div id="locked-container" class="locked-banner" style="display:none;">
-    <h3 style="font-size:24px;">🏆 MISI SELESAI!</h3>
-    <p style="font-size:14px; color:#92400e; font-weight:600; line-height:1.5;">Anda telah mencapai batas absolut <b>10 Pemilih Binaan</b>. Fokuskan energi Anda sekarang untuk membina dan memastikan mereka hadir pada 15 Juli 2029.</p>
+    <h3 style="font-size:26px;">🏆 MISI SELESAI!</h3>
+    <p style="font-size:15px; color:#92400e; font-weight:600; line-height:1.6;">Anda telah mencapai batas absolut <b>10 Pemilih Binaan</b>. Fokuskan energi Anda sekarang untuk membina mereka.</p>
+    <div style="background:#fff; padding:15px; border-radius:12px; margin-top:20px; color:var(--text-main); font-weight:700;">
+      Bonus Multiplier Scan QR Terbuka!
+    </div>
   </div>
+</div>
 
-  <!-- ==========================================
-       MODUL 4: QR PRESENSI TIM & SCAN CALEG 
-       ========================================== -->
+<!-- ==========================================
+     SECTION 3: VALIDASI (QR TIM & SCAN CALEG)
+     ========================================== -->
+<div id="sec-validasi" class="tab-section wrapper" style="padding-top: 20px;">
+  
   <div class="card" style="text-align:center; border-top: 4px solid var(--primary);">
     <div class="card-header">
       <h3 style="color: var(--primary);">📱 QR IDENTITAS TIM</h3>
       <span class="badge">WAJIB SCAN</span>
     </div>
-    <span class="text-muted">Tunjukkan Barcode ini ke Caleg saat pertemuan fisik agar Caleg memindainya. Anda akan mendapat <b>10 Poin KPI</b>.</span>
+    <span class="text-muted">Tunjukkan Barcode ini ke Caleg saat pertemuan agar dipindai. Anda akan mendapat <b>10 Poin KPI</b>.</span>
     
-    <!-- QR Code Pribadi Milik Tim Berdasarkan NIK Mereka -->
-    <div style="display:flex; justify-content:center; margin:15px 0;">
-       <div id="qrcode-tim" style="padding:20px; background:#fff; border-radius:16px; border:3px dashed var(--primary); display: inline-block;"></div>
+    <div style="display:flex; justify-content:center; margin:20px 0;">
+       <div id="qrcode-tim" style="padding:20px; background:#fff; border-radius:20px; border:4px dashed var(--primary); display: inline-block;"></div>
     </div>
-    <b style="color:var(--primary); font-size: 18px; letter-spacing: 1px;">NIK ANDA: <span id="lbl-nik-tim">-</span></b>
+    <b style="color:var(--text-main); font-size: 18px; letter-spacing: 1px;">NIK: <span id="lbl-nik-tim" style="color:var(--primary);">-</span></b>
   </div>
 
-  <div class="card" style="border-top: 4px solid var(--accent-yellow);">
+  <div class="card" style="border-top: 4px solid var(--accent-orange);">
     <div class="card-header">
-      <h3 style="color: #d97706;">📷 PINDAI QR CALEG</h3>
+      <h3 style="color: var(--accent-orange);">📷 PINDAI QR CALEG</h3>
     </div>
-    <span class="text-muted">Atau gunakan fitur ini untuk memindai Barcode di HP Caleg. Membutuhkan verifikasi satelit GPS.</span>
+    <span class="text-muted">Gunakan kamera Anda untuk memindai HP Caleg. Membutuhkan verifikasi satelit GPS.</span>
     
     <div id="reader"></div>
-    <button class="btn btn-yellow" id="btn-scan" onclick="mulaiScanner()">Buka Kamera Pemindai</button>
+    <button class="btn btn-orange" id="btn-scan" onclick="mulaiScanner()">Buka Kamera Pemindai</button>
     <button class="btn btn-outline" id="btn-stop-scan" style="display:none;" onclick="hentikanScanner()">Batalkan Pemindaian</button>
   </div>
+</div>
 
-  <!-- ==========================================
-       MODUL 5: PELAPORAN LAPANGAN & GEOTAG
-       ========================================== -->
-  <div class="card">
+<!-- ==========================================
+     SECTION 4: LAPOR GIAT & GEOTAG
+     ========================================== -->
+<div id="sec-lapor" class="tab-section wrapper" style="padding-top: 20px;">
+  <div class="card" style="border-top: 4px solid var(--accent-yellow);">
     <div class="card-header">
-      <h3>📍 LAPOR GIAT SILATURAHIM</h3>
+      <h3 style="color: #d97706;">📍 LAPOR GIAT LAPANGAN</h3>
     </div>
-    <span class="text-muted">Setiap pergerakan Anda wajib dilaporkan. Titik GPS akan direkam otomatis.</span>
+    <span class="text-muted">Setiap pergerakan Anda wajib dilaporkan. Titik GPS akan dikunci secara otomatis.</span>
     
-    <select id="gt_skema">
+    <select id="gt_skema" style="height: 55px;">
       <option value="" disabled selected>-- Pilih Skema Kegiatan --</option>
       <option value="Door to Door">Door to Door</option>
       <option value="Undangan Warga">Undangan Warga</option>
@@ -281,25 +300,19 @@
       <option value="Melayani Masyarakat">Melayani Masyarakat</option>
     </select>
     
-    <textarea id="gt_keterangan" rows="3" placeholder="Deskripsi/Catatan hasil pertemuan dengan warga..."></textarea>
+    <textarea id="gt_keterangan" rows="4" placeholder="Tulis catatan atau kondisi warga di lapangan..."></textarea>
     
     <div id="map"></div>
     <input type="hidden" id="gt_lat">
     <input type="hidden" id="gt_lng">
     
-    <div class="flex-row">
-      <button class="btn btn-outline" style="flex:1;" onclick="dapatkanLokasiGPS()">🛰️ Deteksi GPS</button>
-      <button class="btn" style="flex:1;" onclick="kirimLaporanGiat()">Kirim Laporan</button>
+    <div style="display: flex; gap:10px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="dapatkanLokasiGPS()">🛰️ AMBIL GPS</button>
+      <button class="btn btn-yellow" style="flex:1;" onclick="kirimLaporanGiat()">KIRIM LAPORAN</button>
     </div>
   </div>
-
-  <!-- SYSTEM CONTROL -->
-  <div class="flex-row" style="margin-top: 10px; margin-bottom: 30px;">
-    <button class="btn btn-outline" style="flex:1; font-size: 13px;" onclick="loadDataUtama()">🔄 SEGARKAN DATA</button>
-    <button class="btn btn-red" style="flex:1; font-size: 13px;" onclick="prosesLogout()">🚪 KELUAR SISTEM</button>
-  </div>
-
 </div>
+
 
 <!-- ==========================================
      LOGIKA APLIKASI (JAVASCRIPT)
@@ -309,43 +322,55 @@
   
   // Memuat Session User
   let userObj = JSON.parse(localStorage.getItem('ecms_user') || '{}');
-  // Hapus tanda // di bawah ini jika di-deploy ke server
+  // Hapus tanda // di bawah ini jika aplikasi di-deploy Live
   // if (!userObj.nik || localStorage.getItem('ecms_role') !== 'TIM') window.location.replace('index.html');
   
-  // Mock Data untuk preview lokal
+  // Mock Data untuk preview/development
   if(!userObj.nik) {
       userObj = { nik: "3578000000000001", nama: "REL. AGUS KUNCORO" };
   }
 
   let map, marker, scannerKamera;
   let currentPoin = 0; 
+  let petaSudahDimuat = false;
   
-  // Database Kelurahan Dinamis
-  const dataWilayah = {
-    "Bulak": ["Bulak", "Kedung Cowek", "Kenjeran", "Sukolilo Baru"],
-    "Mulyorejo": ["Dukuh Sutorejo", "Kalijudan", "Kalisari", "Kejawan Putih Tambak", "Manyar Sabrangan", "Mulyorejo"],
-    "Sukolilo": ["Gebang Putih", "Keputih", "Klampis Ngasem", "Medokan Semampir", "Menur Pumpungan", "Nginden Jangkungan", "Semolowaru"],
-    "Rungkut": ["Babatan", "Kali Rungkut", "Kedung Baruk", "Medokan Ayu", "Penjaringan Sari", "Wonorejo"],
-    "Gunung Anyar": ["Gunung Anyar", "Gunung Anyar Tambak", "Rungkut Menanggal", "Rungkut Tengah"],
-    "Tenggilis Mejoyo": ["Kendangsari", "Kutisari", "Panjang Jiwo", "Tenggilis Mejoyo"],
-    "Wonocolo": ["Bendul Merisi", "Jemur Wonosari", "Margorejo", "Sidosermo", "Siwalankerto"]
-  };
-
   window.onload = () => {
-    // 1. Set Profil User
     document.getElementById('user-name').innerText = userObj.nama;
     document.getElementById('lbl-nik-tim').innerText = userObj.nik;
     
-    // 2. Generate Barcode QR untuk Relawan (Bisa discan oleh Caleg)
+    // Generate QR Code Eksklusif milik Tim
     new QRCode(document.getElementById("qrcode-tim"), { 
-      text: userObj.nik, width: 180, height: 180, colorDark : "#065f3a", colorLight : "#ffffff" 
+      text: userObj.nik, width: 220, height: 220, colorDark : "#065f3a", colorLight : "#ffffff" 
     });
 
     inisialisasiAccordion();
-    inisialisasiPeta();
     loadDataUtama();
   };
 
+  // ----------------------------------------------------
+  // SISTEM TAB NAVIGASI BAWAH (APP STYLE)
+  // ----------------------------------------------------
+  function switchTab(sectionId, element) {
+    // Ubah UI Navigasi
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    element.classList.add('active');
+    
+    // Ubah Layar Section
+    document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+    
+    // Render Ulang Peta jika Tab Lapor Ditekan (Fix Bug Leaflet)
+    if(sectionId === 'sec-lapor' && !petaSudahDimuat) {
+      inisialisasiPeta();
+      petaSudahDimuat = true;
+    } else if (sectionId === 'sec-lapor' && map) {
+      setTimeout(() => { map.invalidateSize(); }, 100);
+    }
+    
+    window.scrollTo(0,0);
+  }
+
+  // Mencegah Tombol Back HP keluar aplikasi tanpa sengaja
   window.history.pushState(null, "", window.location.href);
   window.onpopstate = () => {
     window.history.pushState(null, "", window.location.href);
@@ -364,93 +389,13 @@
   }
 
   // ----------------------------------------------------
-  // DYNAMIC DROPDOWN KECAMATAN -> KELURAHAN
-  // ----------------------------------------------------
-  function updateKelurahan() {
-    const kec = document.getElementById("pm_kec").value;
-    const kelSelect = document.getElementById("pm_kel");
-    kelSelect.innerHTML = '<option value="" disabled selected>-- Pilih Kelurahan Warga --</option>';
-    
-    if(kec && dataWilayah[kec]) {
-      dataWilayah[kec].forEach(kel => {
-        let opt = document.createElement("option");
-        opt.value = kel; opt.innerHTML = kel;
-        kelSelect.appendChild(opt);
-      });
-    }
-  }
-
-  // ----------------------------------------------------
-  // UBAH TAMPILAN NAMA FILE KTP SAAT DIPILIH
-  // ----------------------------------------------------
-  function tampilkanNamaFile() {
-    const input = document.getElementById('pm_ktp');
-    const display = document.getElementById('file-name-display');
-    if (input.files && input.files[0]) {
-      display.innerText = "Berkas Dipilih: " + input.files[0].name;
-      display.style.color = "var(--accent-orange)";
-    }
-  }
-
-  // ----------------------------------------------------
-  // SETOR KTP BINAAN (PENGGANTI FORM KETIK)
-  // ----------------------------------------------------
-  async function setorKTP() {
-    const fileInput = document.getElementById('pm_ktp');
-    const hp = document.getElementById('pm_hp').value;
-    const kec = document.getElementById('pm_kec').value;
-    const kel = document.getElementById('pm_kel').value;
-
-    if (!fileInput.files || fileInput.files.length === 0) return Swal.fire('Foto KTP Kosong', 'Harap foto KTP warga terlebih dahulu.', 'warning');
-    if (!hp || !kec || !kel) return Swal.fire('Data Tidak Lengkap', 'Nomor WhatsApp, Kecamatan, dan Kelurahan wajib diisi.', 'warning');
-
-    const file = fileInput.files[0];
-
-    // Proses konversi KTP menjadi Base64
-    Swal.fire({ title: 'Menyiapkan Enkripsi...', html: 'Menjahit identitas Anda ke dalam foto KTP...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
-    
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = async () => {
-      // INI RAHASIANYA: NIK Tim disisipkan ke dalam nama file agar Inputer tahu ini milik siapa
-      const namaFileAman = `KTP_TIM_${userObj.nik}_${Date.now()}_${file.name}`;
-      
-      const chunkData = [{
-        name: namaFileAman,
-        mimeType: file.type,
-        data: reader.result,
-        // Meta data tambahan untuk dibaca server
-        meta: { uploader_nik: userObj.nik, hp_warga: hp, kecamatan: kec, kelurahan: kel }
-      }];
-
-      Swal.fire({ title: 'Menerbangkan ke Satelit...', text: 'Mengunggah KTP ke Back-Office...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
-      try {
-        // Menggunakan endpoint uploadChunk yang sudah ada di Apps Script Anda
-        const res = await panggilAPI('uploadChunk', { filesBatch: chunkData });
-        
-        if (res.status === 'error') return Swal.fire('Gagal', res.message, 'error');
-        
-        Swal.fire('Misi Berhasil!', 'KTP telah mendarat di meja Inputer Pusat atas nama Anda.', 'success');
-        
-        // Reset Form
-        document.getElementById('pm_ktp').value = '';
-        document.getElementById('file-name-display').innerText = "Ketuk di sini untuk Memfoto KTP";
-        document.getElementById('file-name-display').style.color = "var(--primary)";
-        ['pm_hp','pm_kec','pm_kel'].forEach(id => document.getElementById(id).value = '');
-        
-      } catch (e) {
-        Swal.fire('Koneksi Lemah', 'Gagal terhubung ke pusat. Pastikan sinyal internet stabil.', 'error');
-      }
-    };
-    reader.onerror = () => Swal.fire('Error', 'Gagal membaca file foto dari HP Anda.', 'error');
-  }
-
-  // ----------------------------------------------------
   // LOAD DATA DOMPET & KUOTA
   // ----------------------------------------------------
   async function loadDataUtama() {
+    Swal.fire({ title: 'Sinkronisasi Sistem...', didOpen: () => Swal.showLoading(), allowOutsideClick: false });
     try {
       const res = await panggilAPI('getPemilih', { nik: userObj.nik });
+      Swal.close();
       if(res.status === 'success') {
         currentPoin = res.poin || 0;
         document.getElementById('st-poin').innerText = currentPoin;
@@ -465,6 +410,7 @@
         document.getElementById('progress-percent').innerText = pct.toFixed(0) + "%";
         document.getElementById('progress-fill').style.width = pct + "%";
         
+        // Smart Lock Logic (Mengunci Form jika Kuota Penuh)
         if(kumpul >= maks || res.is_locked) {
           document.getElementById('form-pemilih-container').style.display = 'none';
           document.getElementById('locked-container').style.display = 'block';
@@ -473,7 +419,10 @@
           document.getElementById('locked-container').style.display = 'none';
         }
       }
-    } catch(e) { console.error(e); }
+    } catch(e) {
+      Swal.close();
+      Swal.fire({ toast: true, position: 'top-end', icon: 'error', title: 'Satelit Sibuk', showConfirmButton: false, timer: 2000 });
+    }
   }
 
   // ----------------------------------------------------
@@ -482,15 +431,15 @@
   async function cairkanBonus() {
     const today = new Date().getDate();
     if (today !== 12) {
-      return Swal.fire({ title: 'Gerbang Terkunci', html: `Pencairan (Withdrawal) hanya dapat diajukan secara serentak setiap <b>Tanggal 12</b>.<br><br>Sekarang tanggal ${today}.`, icon: 'warning', confirmButtonColor: 'var(--primary)'});
+      return Swal.fire({ title: 'Gerbang Terkunci', html: `Pencairan hanya dapat diajukan secara serentak setiap <b>Tanggal 12</b>.<br>Sekarang tanggal ${today}.`, icon: 'warning', confirmButtonColor: 'var(--primary)'});
     }
     if (currentPoin < 200) {
-      return Swal.fire({ title: 'Poin Tidak Mencukupi', text: 'Batas minimum pengajuan pencairan adalah 200 Poin (Setara Rp 200.000).', icon: 'warning' });
+      return Swal.fire({ title: 'Saldo Kurang', text: 'Batas minimum pengajuan adalah 200 Poin (Rp 200.000).', icon: 'warning' });
     }
 
     Swal.fire({
       title: 'Ajukan Pencairan?',
-      html: `Anda akan mencairkan <b>${currentPoin} Poin</b> menjadi <b>Rp ${(currentPoin * 1000).toLocaleString('id-ID')}</b>.`,
+      html: `Mencairkan <b>${currentPoin} Poin</b> menjadi <b>Rp ${(currentPoin * 1000).toLocaleString('id-ID')}</b>.`,
       icon: 'question', showCancelButton: true, confirmButtonText: 'Ya, Ajukan', confirmButtonColor: '#f59e0b'
     }).then(async (result) => {
       if(result.isConfirmed) {
@@ -499,9 +448,65 @@
           const res = await panggilAPI('cairkanPoin', { nik: userObj.nik });
           Swal.fire(res.status === 'success' ? 'Terkirim!' : 'Ditolak', res.message, res.status);
           if (res.status === 'success') loadDataUtama();
-        } catch(e) { Swal.fire('Error', 'Gagal memproses data.', 'error'); }
+        } catch(e) { Swal.fire('Error', 'Gagal terhubung ke jaringan.', 'error'); }
       }
     });
+  }
+
+  // ----------------------------------------------------
+  // SETOR KTP BINAAN (REKRUTMEN BEBAS KETIK)
+  // ----------------------------------------------------
+  function tampilkanNamaFile() {
+    const input = document.getElementById('pm_ktp');
+    const display = document.getElementById('file-name-display');
+    if (input.files && input.files[0]) {
+      display.innerText = "KTP Terlampir: " + input.files[0].name;
+      display.style.color = "var(--accent-orange)";
+    }
+  }
+
+  async function setorKTP() {
+    const fileInput = document.getElementById('pm_ktp');
+    const hp = document.getElementById('pm_hp').value;
+
+    if (!fileInput.files || fileInput.files.length === 0) return Swal.fire('KTP Kosong', 'Harap jepret / unggah foto KTP warga terlebih dahulu.', 'warning');
+    if (!hp || hp.length < 9) return Swal.fire('Data Kurang', 'Masukkan Nomor WhatsApp warga dengan benar.', 'warning');
+
+    const file = fileInput.files[0];
+
+    Swal.fire({ title: 'Menyandikan Data...', html: 'Menjahit identitas Anda ke dalam berkas KTP...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+      // INI RAHASIA PELACAKAN: NIK Tim disisipkan ke dalam nama file secara otomatis
+      const namaFileAman = `KTP_TIM_${userObj.nik}_${Date.now()}_${file.name}`;
+      
+      const chunkData = [{
+        name: namaFileAman,
+        mimeType: file.type,
+        data: reader.result,
+        meta: { uploader_nik: userObj.nik, hp_warga: hp }
+      }];
+
+      Swal.fire({ title: 'Menerbangkan Data...', text: 'Mengirim KTP ke Meja Inputer Pusat...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+      try {
+        const res = await panggilAPI('uploadChunk', { filesBatch: chunkData });
+        if (res.status === 'error') return Swal.fire('Gagal', res.message, 'error');
+        
+        Swal.fire('Misi Berhasil!', 'KTP telah masuk ke server pusat atas nama Anda.', 'success');
+        
+        // Reset Form
+        document.getElementById('pm_ktp').value = '';
+        document.getElementById('file-name-display').innerText = "Ketuk di sini untuk Memfoto KTP";
+        document.getElementById('file-name-display').style.color = "var(--primary)";
+        document.getElementById('pm_hp').value = '';
+        
+      } catch (e) {
+        Swal.fire('Sinyal Terputus', 'Gagal mengirim. Pastikan internet di lokasi Anda stabil.', 'error');
+      }
+    };
+    reader.onerror = () => Swal.fire('Error', 'Gagal membaca foto dari perangkat Anda.', 'error');
   }
 
   // ----------------------------------------------------
@@ -512,7 +517,7 @@
     scannerKamera = new Html5Qrcode("reader");
     scannerKamera.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } }, (decodedText) => { 
       hentikanScanner(); prosesValidasiPertemuan(decodedText); 
-    }, (err) => {}).catch(() => { hentikanScanner(); Swal.fire('Kamera Error', 'Mohon izinkan akses kamera.', 'error'); });
+    }, (err) => {}).catch(() => { hentikanScanner(); Swal.fire('Kamera Error', 'Mohon izinkan akses kamera di Browser Anda.', 'error'); });
   }
 
   function hentikanScanner() {
@@ -520,18 +525,18 @@
   }
 
   function prosesValidasiPertemuan(nikCaleg) {
-    Swal.fire({ title: 'Memeriksa Satelit...', text: `Mengunci lokasi GPS Anda untuk validasi...`, icon: 'info', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    Swal.fire({ title: 'Mengunci Satelit...', text: `Mengunci lokasi GPS Anda untuk memvalidasi pertemuan...`, icon: 'info', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
     navigator.geolocation.getCurrentPosition(async (pos) => {
       try {
         const res = await panggilAPI('scanPresensi', { nik_tim: userObj.nik, nama_tim: userObj.nama, nik_caleg: nikCaleg, latitude: pos.coords.latitude, longitude: pos.coords.longitude });
         Swal.fire('Validasi Sukses!', res.message, res.status);
         loadDataUtama();
-      } catch(e) { Swal.fire('Selesai', 'Data tersimpan offline.', 'success'); }
-    }, () => Swal.fire('GPS Mati', 'Nyalakan GPS HP Anda untuk validasi kehadiran.', 'error'), { enableHighAccuracy: true, timeout: 10000 });
+      } catch(e) { Swal.fire('Selesai', 'Data absensi tersimpan offline.', 'success'); }
+    }, () => Swal.fire('GPS Mati', 'Nyalakan GPS Lokasi di HP Anda.', 'error'), { enableHighAccuracy: true, timeout: 10000 });
   }
 
   // ----------------------------------------------------
-  // GEOTAG & LAPORAN GIAT
+  // GEOTAG & LAPORAN GIAT LAPANGAN
   // ----------------------------------------------------
   function inisialisasiPeta() {
     const latAwal = -7.250445; const lngAwal = 112.768845;
@@ -543,14 +548,14 @@
 
   function dapatkanLokasiGPS() {
     if (navigator.geolocation) {
-      Swal.fire({title: 'Mencari Satelit...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
+      Swal.fire({title: 'Melacak Kordinat...', allowOutsideClick: false, didOpen: () => Swal.showLoading()});
       navigator.geolocation.getCurrentPosition(
         (pos) => {
           document.getElementById('gt_lat').value = pos.coords.latitude; document.getElementById('gt_lng').value = pos.coords.longitude;
           map.setView([pos.coords.latitude, pos.coords.longitude], 17); marker.setLatLng([pos.coords.latitude, pos.coords.longitude]);
-          Swal.close(); Swal.fire({toast: true, position: 'top-end', icon: 'success', title: 'Lokasi Terkunci', showConfirmButton: false, timer: 1500});
+          Swal.close(); Swal.fire({toast: true, position: 'top-end', icon: 'success', title: 'Satelit Terkunci', showConfirmButton: false, timer: 1500});
         }, 
-        (error) => { Swal.fire('Gagal', 'Pastikan GPS menyala.', 'error'); }, { enableHighAccuracy: true, timeout: 10000 }
+        (error) => { Swal.fire('Gagal', 'Pastikan GPS menyala dan izinkan browser mengakses lokasi.', 'error'); }, { enableHighAccuracy: true, timeout: 10000 }
       );
     }
   }
@@ -560,19 +565,22 @@
       skema: document.getElementById('gt_skema').value, keterangan: document.getElementById('gt_keterangan').value, 
       lat: document.getElementById('gt_lat').value, lng: document.getElementById('gt_lng').value, nik_pelapor: userObj.nik, tipe_pelapor: 'TIM' 
     };
-    if (!payload.skema || !payload.lat) return Swal.fire('Peringatan', 'Lengkapi Skema dan GPS terlebih dahulu.', 'warning');
+    if (!payload.skema || !payload.lat) return Swal.fire('Peringatan', 'Lengkapi Skema Kegiatan dan tekan tombol Ambil GPS.', 'warning');
     Swal.fire({ title: 'Kirim Laporan?', icon: 'question', showCancelButton: true, confirmButtonText: 'Ya, Kirim' }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire({ title: 'Menyimpan...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+        Swal.fire({ title: 'Mengirim Laporan...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
         try {
           const res = await panggilAPI('laporGiat', payload);
-          Swal.fire(res.status === 'success' ? 'Berhasil' : 'Gagal', res.message, res.status);
+          Swal.fire(res.status === 'success' ? 'Terkirim' : 'Gagal', res.message, res.status);
           if(res.status === 'success') { document.getElementById('gt_skema').value = ''; document.getElementById('gt_keterangan').value = ''; }
-        } catch(e) { Swal.fire('Offline', 'Disimpan sementara di memori HP.', 'success'); }
+        } catch(e) { Swal.fire('Offline', 'Laporan diantrekan di memori lokal.', 'success'); }
       }
     });
   }
 
+  // ----------------------------------------------------
+  // UTILITIES (ACCORDION BUKU SAKU & LOGOUT)
+  // ----------------------------------------------------
   function inisialisasiAccordion() {
     const acc = document.getElementsByClassName("acc-btn");
     for (let i = 0; i < acc.length; i++) {
@@ -585,7 +593,7 @@
   }
 
   function prosesLogout() {
-    Swal.fire({ title: 'Keluar Aplikasi?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#ef4444', confirmButtonText: 'Ya, Keluar' }).then((result) => {
+    Swal.fire({ title: 'Akhiri Sesi?', text: 'Keluar dari aplikasi komando.', icon: 'warning', showCancelButton: true, confirmButtonColor: '#ef4444', confirmButtonText: 'Ya, Keluar' }).then((result) => {
       if (result.isConfirmed) { localStorage.clear(); window.location.replace('index.html'); }
     });
   }
