@@ -31,22 +31,27 @@
       --border: #e2e8f0; 
     }
     * { box-sizing: border-box; touch-action: manipulation; user-select: none; }
-    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; padding-bottom: 80px; line-height: 1.5; }
+    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; padding-bottom: 90px; line-height: 1.5; overflow-x: hidden; }
     
-    .wrapper { width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; padding: 0 15px; }
+    .wrapper { width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; padding: 15px; }
+
+    /* =========================================
+       BOTTOM NAVIGATION (APP STYLE)
+       ========================================= */
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; display: flex; justify-content: space-around; padding: 12px 0 20px 0; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 1000; border-top: 1px solid var(--border); max-width: 800px; margin: 0 auto;}
+    .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.2s; flex: 1; text-decoration: none;}
+    .nav-item .icon { font-size: 22px; margin-bottom: 4px; filter: grayscale(100%) opacity(0.6); transition: 0.2s;}
+    .nav-item.active { color: var(--primary); }
+    .nav-item.active .icon { filter: none; transform: scale(1.15);}
+    
+    .tab-section { display: none; animation: fadeIn 0.3s ease; }
+    .tab-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
     /* =========================================
        HEADER SOKABAT NU
        ========================================= */
-    .sokabat-header {
-      background: linear-gradient(180deg, #044b2e 0%, var(--primary) 100%);
-      padding: 30px 15px 45px 15px; 
-      text-align: center;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
-      box-shadow: 0 8px 0 var(--accent-orange), 0 15px 20px rgba(0,0,0,0.1);
-      margin-bottom: -25px; 
-    }
+    .sokabat-header { background: linear-gradient(180deg, #044b2e 0%, var(--primary) 100%); padding: 30px 15px 45px 15px; text-align: center; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 8px 0 var(--accent-orange), 0 15px 25px rgba(0,0,0,0.1); margin-bottom: -20px; color: white;}
     .sokabat-header h1 { color: var(--accent-yellow); margin: 0; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;}
     .sokabat-header p { color: #f8fafc; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; margin-top: 5px; margin-bottom: 25px; text-transform: uppercase;}
     
@@ -56,36 +61,43 @@
     .timer-box label { display: block; font-size: 11px; color: var(--accent-yellow); font-weight: 800; margin-top: 6px; letter-spacing: 0.5px;}
 
     /* =========================================
-       PROGRESS TARGET & KARTU UMUM
+       KARTU UMUM & PROGRESS
        ========================================= */
-    .target-card { background: #ffffff; padding: 24px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); position: relative; z-index: 10; margin-top: 0;}
-    .target-badge { background: var(--accent-orange); color: #000; font-weight: 900; font-size: 14px; text-align: center; padding: 12px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);}
+    .card { background: #ffffff; padding: 24px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); position: relative; z-index: 10; margin-bottom: 20px;}
+    .card-header { margin-bottom: 18px; border-bottom: 2px dashed var(--border); padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center;}
+    .card-header h3 { margin: 0; color: var(--primary); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;}
     
+    .target-badge { background: var(--accent-orange); color: #000; font-weight: 900; font-size: 14px; text-align: center; padding: 12px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3); text-transform: uppercase;}
     .progress-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px;}
-    .progress-header b { color: var(--primary); font-size: 15px; font-weight: 800; text-transform: uppercase;}
+    .progress-header b { color: var(--primary); font-size: 15px; font-weight: 900; text-transform: uppercase;}
     .progress-header .pct { color: var(--primary); font-size: 18px; font-weight: 900;}
-    
-    .progress-bar-bg { background: #e2e8f0; height: 16px; border-radius: 10px; overflow: hidden; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);}
+    .progress-bar-bg { background: #e2e8f0; height: 18px; border-radius: 10px; overflow: hidden; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);}
     .progress-bar-fill { background: var(--primary); height: 100%; width: 0%; border-radius: 10px; transition: width 1s ease-in-out;}
-    .progress-footer { text-align: center; font-size: 14px; font-weight: 700; color: var(--text-muted); margin-top: 12px;}
-    
-    .card { background: #ffffff; padding: 22px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid var(--border); }
-    .card-header { margin-bottom: 15px; border-bottom: 2px dashed var(--border); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
-    .card-header h3 { margin: 0; color: var(--primary); font-size: 17px; font-weight: 800; text-transform: uppercase; }
+    .progress-footer { text-align: center; font-size: 14px; font-weight: 700; color: var(--text-muted); margin-top: 15px;}
     
     /* =========================================
-       TOMBOL, INPUT, STATISTIK GRID
+       FORM, INPUT & TOMBOL
        ========================================= */
-    .btn { background: var(--primary); color: #ffffff; padding: 16px; border: none; border-radius: 12px; width: 100%; font-weight: 800; font-size: 15px; cursor:pointer; min-height: 52px; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 10px;}
-    .btn:active { transform: scale(0.98); }
+    .btn { background: var(--primary); color: #ffffff; padding: 18px; border: none; border-radius: 14px; width: 100%; font-weight: 800; font-size: 15px; cursor:pointer; min-height: 54px; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px;}
+    .btn:active { transform: scale(0.97); }
     .btn-red { background: #ef4444; }
     .btn-orange { background: var(--accent-orange); color: #000; }
     .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text-main); }
     .btn-green { background: #10b981; color: #fff; }
     
-    input, select, textarea { width: 100%; padding: 15px 16px; margin-bottom: 15px; border-radius: 12px; border: 2px solid var(--border); font-size: 15px; font-weight: 600; background: #f8fafc; transition: 0.2s; color: var(--text-main); font-family: inherit;}
+    input, select, textarea { width: 100%; padding: 16px; margin-bottom: 16px; border-radius: 12px; border: 2px solid var(--border); font-size: 16px; font-weight: 600; background: #f8fafc; transition: 0.2s; color: var(--text-main); font-family: inherit;}
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(6, 95, 58, 0.15);}
     
+    .text-muted { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; display: block; font-weight: 500; line-height: 1.5;}
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 900; background: var(--primary); color: #fff; text-transform: uppercase; letter-spacing: 0.5px;}
+    .badge.orange { background: var(--accent-orange); color: #000; }
+    .badge.red { background: #ef4444; color: #fff; }
+    
+    .flex-row { display: flex; gap: 10px; width: 100%; }
+    
+    /* =========================================
+       STATISTIK & DAFTAR TIM & WITHDRAWAL
+       ========================================= */
     .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;}
     .stat-box { background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid var(--border); border-left: 5px solid var(--primary); text-align: left;}
     .stat-box span { font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;}
@@ -93,188 +105,168 @@
     .stat-box.orange { border-left-color: var(--accent-orange); background: #fffbeb;} 
     .stat-box.orange h2 { color: #d97706; }
     
-    .flex-row { display: flex; gap: 10px; width: 100%; }
-    .text-muted { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; display: block; font-weight: 500;}
-    #map { height: 250px; width: 100%; border-radius: 12px; margin-bottom: 15px; border: 2px solid var(--border); z-index: 1;}
-    #reader { width: 100%; border-radius: 12px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 15px;}
-    
-    .badge { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 900; background: var(--primary); color: #fff; text-transform: uppercase; letter-spacing: 0.5px;}
-    .badge.orange { background: var(--accent-orange); color: #000; }
-    .badge.red { background: #ef4444; color: #fff; }
-    
-    .anti-kanibal-banner { background: #fee2e2; border: 1px solid #f87171; color: #991b1b; padding: 12px; border-radius: 10px; font-size: 12px; font-weight: 700; display: flex; gap: 10px; align-items: center; margin-bottom: 15px;}
-    
-    /* Withdraw & Progress Tims */
     .team-progress-bg { background: #e2e8f0; height: 8px; border-radius: 5px; width: 100%; margin-top: 8px; overflow: hidden;}
     .team-progress-fill { background: var(--primary); height: 100%; border-radius: 5px;}
     .wd-card { border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; margin-bottom: 15px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.02); border-left: 5px solid #10b981;}
     .wd-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; }
     .wd-val { font-weight: 800; color: var(--text-main); }
-
+    
     /* =========================================
-       ACCORDION BUKU SAKU
+       UPLOAD KTP ZONE (KHUSUS CALEG)
        ========================================= */
-    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px; width: 100%; border: 1px solid var(--border); text-align: left; outline: none; font-size: 14px; font-weight: 800; transition: 0.3s; display: flex; justify-content: space-between; align-items: center; border-radius: 8px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);}
+    .upload-zone { border: 3px dashed var(--primary); border-radius: 16px; padding: 40px 20px; text-align: center; background: #f0fdf4; margin-bottom: 20px; cursor: pointer; transition: 0.2s; display: block;}
+    .upload-zone:hover { background: #dcfce7; transform: scale(1.02); }
+    .upload-zone input[type="file"] { display: none; }
+    .upload-zone p { margin: 10px 0 0 0; font-size: 16px; color: var(--primary); font-weight: 800;}
+    .upload-zone span { font-size: 48px; display: block; margin-bottom: 5px;}
+    .upload-info { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; line-height: 1.5;}
+    .anti-kanibal-banner { background: #fee2e2; border: 1px solid #f87171; color: #991b1b; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 700; display: flex; gap: 12px; align-items: center; margin-bottom: 20px;}
+    
+    /* Peta & Scanner */
+    #map { height: 300px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
+    #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
+    
+    /* Buku Saku Accordion */
+    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; outline: none; font-size: 15px; font-weight: 800; transition: 0.3s; display: flex; justify-content: space-between; align-items: center; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);}
     .acc-btn:hover, .acc-btn.active { background-color: #e2e8f0; border-color: #cbd5e1; }
-    .acc-panel { padding: 0 16px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 13px; color: var(--text-main); border-left: 3px solid var(--primary); margin-left: 5px; margin-bottom: 10px; border-radius: 0 0 8px 8px;}
-    .acc-panel.show { padding: 15px 16px; max-height: 1000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
-    .acc-panel ul { padding-left: 15px; margin-top: 5px;}
-    .acc-panel li { margin-bottom: 8px; }
-    .citation { font-size: 9px; color: var(--text-muted); opacity: 0.7; vertical-align: super; font-weight: bold;}
+    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 14px; color: var(--text-main); border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
+    .acc-panel.show { padding: 15px 20px; max-height: 1000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
+    .acc-panel ul { padding-left: 18px; margin-top: 5px; line-height: 1.6;}
+    .acc-panel li { margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
-<!-- HEADER SOKABAT NU -->
-<div class="sokabat-header">
-  <h1>SOKABAT NU</h1>
-  <p>SISTEM KOMANDO PEMENANGAN 2029</p>
-  <div class="timer-grid">
-    <div class="timer-box"><span id="cd-days">0</span><label>HARI</label></div>
-    <div class="timer-box"><span id="cd-hours">0</span><label>JAM</label></div>
-    <div class="timer-box"><span id="cd-mins">0</span><label>MENIT</label></div>
-    <div class="timer-box"><span id="cd-secs">0</span><label>DETIK</label></div>
+<!-- ==========================================
+     BOTTOM NAVIGATION BAR (APP STYLE)
+     ========================================== -->
+<nav class="bottom-nav">
+  <a href="#" class="nav-item active" onclick="switchTab('sec-home', this)">
+    <span class="icon">🏠</span>
+    <span>Beranda</span>
+  </a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-tim', this)">
+    <span class="icon">👥</span>
+    <span>Tim & WD</span>
+  </a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-ktp', this)">
+    <span class="icon">📸</span>
+    <span>Setor KTP</span>
+  </a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-validasi', this)">
+    <span class="icon">📷</span>
+    <span>Validasi</span>
+  </a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-lapor', this)">
+    <span class="icon">📍</span>
+    <span>Lapor</span>
+  </a>
+</nav>
+
+<!-- ==========================================
+     SECTION 1: BERANDA (TARGET, STATISTIK, BUKU SAKU)
+     ========================================== -->
+<div id="sec-home" class="tab-section active">
+  <div class="sokabat-header">
+    <h1>SOKABAT NU</h1>
+    <p>SISTEM KOMANDO PEMENANGAN 2029</p>
+    <div class="timer-grid">
+      <div class="timer-box"><span id="cd-days">0</span><label>HARI</label></div>
+      <div class="timer-box"><span id="cd-hours">0</span><label>JAM</label></div>
+      <div class="timer-box"><span id="cd-mins">0</span><label>MENIT</label></div>
+      <div class="timer-box"><span id="cd-secs">0</span><label>DETIK</label></div>
+    </div>
+  </div>
+
+  <div class="wrapper" style="padding-top: 25px;">
+    <!-- Target Kemenangan -->
+    <div class="card" style="border-top: 4px solid var(--accent-orange); margin-top: 0;">
+      <div class="target-badge">🎯 TARGET KEMENANGAN: 10.000 SUARA</div>
+      <div class="progress-header">
+        <b>CALON PEMILIH BINAAN</b>
+        <span class="pct" id="progress-percent">0.0%</span>
+      </div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+      <div class="progress-footer">
+        Berhasil Kumpul: <span id="progress-current" style="color:var(--primary); font-size:16px;">0</span> / Target: 25.000 Data
+      </div>
+    </div>
+
+    <!-- Analitik Pergerakan -->
+    <div class="card">
+      <div class="card-header">
+        <h3>📊 ANALITIK PERGERAKAN</h3>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-box"><span>Rumah Dikunjungi</span><h2 id="st-rumah">0</h2></div>
+        <div class="stat-box"><span>Tim Terbuka (Pasti)</span><h2 id="st-pasti">0</h2></div>
+        <div class="stat-box orange" style="grid-column: span 2;"><span>Tim Rahasia (Pasang)</span><h2 id="st-pasang">0</h2></div>
+      </div>
+    </div>
+
+    <!-- Buku Saku -->
+    <div class="card" style="border-top: 4px solid var(--primary);">
+      <div class="card-header">
+        <h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3>
+        <span class="badge">DOKUMEN RAHASIA</span>
+      </div>
+      <span class="text-muted">Panduan absolut kampanye Politik Cinta & Tangan Yang Melayani.</span>
+      
+      <button class="acc-btn">1. KPI & Filosofi Dasar <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li>Target mengamankan 10.000 suara riil dengan mengelola 20.000 target pemilih (asumsi conversion rate 50%).</li>
+          <li>Menolak keras pendekatan politik transaksional (jual beli suara).</li>
+          <li>Fase: Empati (mendengar dan hadir), Simpati (ikatan emosional), hingga Advokasi (membela kandidat).</li>
+        </ul>
+      </div>
+
+      <button class="acc-btn">2. Strategi Teritorial <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li><b>Ring 1 (Kandang Utama):</b> Penjaringan Sari (Target 780 suara mutlak).</li>
+          <li><b>Ring 2 (Sabuk Konsolidasi):</b> Kalirungkut, Kedung Baruk, Medokan Ayu, Gunung Anyar, Rungkut Tengah (>5.000 suara).</li>
+          <li><b>Ring 3 (Front Ekspansi):</b> Jemur Wonosari, Keputih, Siwalan Kerto, Medokan Semampir.</li>
+        </ul>
+      </div>
+
+      <button class="acc-btn">3. Manajemen Pemangku Wilayah <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li>Jangan melangkahi tokoh lokal (Ketua LPMK, RW, RT, KSH).</li>
+          <li><b>Kunjungan 0-0-0:</b> 0 Atribut Partai, 0 Janji Politik, 0 Permintaan Suara.</li>
+          <li>Wajib "kula nuwun" ke RW/RT; biarkan Ketua RT yang memimpin saat Home Visit.</li>
+        </ul>
+      </div>
+
+      <button class="acc-btn">4. Eksekusi 4 Pilar <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li><b>Tebarkan Salam:</b> Sapa warga di pasar/terminal pukul 05.30-07.00 WIB tanpa atribut.</li>
+          <li><b>Berikan Makan:</b> Seribu Nasi Bungkus tiap Jumat, Posko Piring Tetangga.</li>
+          <li><b>Sambung Silaturahmi:</b> Kunjungan tanpa kamera besar. Bentuk Grup WA Lingkar Peduli.</li>
+          <li><b>Salat Malam:</b> Sajadah Cinta (salat subuh berjamaah, tausiyah).</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div style="display:flex; gap:10px; margin-bottom: 20px;">
+      <button class="btn btn-outline" style="flex:1; font-size:12px;" onclick="muatDataSistem()">🔄 REFRESH DATA</button>
+      <button class="btn btn-red" style="flex:1; font-size:12px;" onclick="prosesLogout()">🚪 KELUAR APLIKASI</button>
+    </div>
   </div>
 </div>
 
-<div class="wrapper">
-
-  <!-- MODUL 1: TARGET PROGRESS -->
-  <div class="target-card">
-    <div class="target-badge">🎯 TARGET KEMENANGAN: 10.000 SUARA</div>
-    <div class="progress-header">
-      <b>CALON PEMILIH BINAAN</b>
-      <span class="pct" id="progress-percent">0.0%</span>
-    </div>
-    <div class="progress-bar-bg">
-      <div class="progress-bar-fill" id="progress-fill"></div>
-    </div>
-    <div class="progress-footer">
-      Berhasil Kumpul: <span id="progress-current" style="color:var(--primary); font-size:16px;">0</span> / Target: 25.000 Data
-    </div>
-    <div class="flex-row" style="margin-top: 20px;">
-      <button class="btn btn-outline" style="flex:1; font-size: 12px; min-height:40px; padding: 10px;" onclick="muatDataSistem()">🔄 REFRESH</button>
-      <button class="btn btn-red" style="flex:1; font-size: 12px; min-height:40px; padding: 10px;" onclick="prosesLogout()">🚪 KELUAR</button>
-    </div>
-  </div>
-
-  <!-- MODUL 2: BUKU SAKU STRATEGI KAMPANYE -->
-  <div class="card" style="border-top: 4px solid var(--primary);">
-    <div class="card-header">
-      <h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3>
-      <span class="badge">DOKUMEN RAHASIA</span>
-    </div>
-    <span class="text-muted">Panduan absolut kampanye Politik Cinta & Tangan Yang Melayani. Klik untuk membuka.</span>
-    
-    <button class="acc-btn">1. KPI & Filosofi Dasar <span>▼</span></button>
-    <div class="acc-panel">
-      <ul>
-        <li>Target mengamankan 10.000 suara riil di kotak suara dengan mengelola 20.000 target pemilih (asumsi conversion rate 50%) <span class="citation">[cite: 2]</span>.</li>
-        <li>Kampanye ini menolak keras pendekatan politik transaksional (jual beli suara) <span class="citation">[cite: 2]</span>.</li>
-        <li>Pendekatan dilakukan melalui fase Empati (mendengar dan hadir), Simpati (ikatan emosional), hingga mencapai tahap Advokasi di mana warga secara organik membela dan mendukung kandidat <span class="citation">[cite: 2]</span>.</li>
-      </ul>
-    </div>
-
-    <button class="acc-btn">2. Strategi Teritorial <span>▼</span></button>
-    <div class="acc-panel">
-      <ul>
-        <li><b>Ring 1 (Kandang Utama):</b> Berpusat di Penjaringan Sari dengan target mutlak 780 suara. Kehadiran pemilih harus dipastikan berada di angka tertinggi <span class="citation">[cite: 2]</span>.</li>
-        <li><b>Ring 2 (Sabuk Konsolidasi):</b> Meliputi Kalirungkut, Kedung Baruk, Medokan Ayu, Gunung Anyar, dan Rungkut Tengah dengan target gabungan lebih dari 5.000 suara <span class="citation">[cite: 2]</span>.</li>
-        <li><b>Ring 3 (Front Ekspansi):</b> Meliputi Jemur Wonosari, Keputih, Siwalan Kerto, dan Medokan Semampir yang dikelola oleh Korlap khusus <span class="citation">[cite: 2]</span>.</li>
-      </ul>
-    </div>
-
-    <button class="acc-btn">3. Manajemen Pemangku Wilayah <span>▼</span></button>
-    <div class="acc-panel">
-      <ul>
-        <li>Jangan pernah melangkahi atau berseberangan dengan tokoh lokal (Ketua LPMK, RW, RT, KSH) <span class="citation">[cite: 2]</span>.</li>
-        <li><b>Kunjungan Perdana (0-0-0):</b> 0 Atribut Partai, 0 Janji Politik, dan 0 Permintaan Suara <span class="citation">[cite: 2]</span>.</li>
-        <li>Kandidat wajib "kula nuwun" kepada RW/RT; biarkan Ketua RT yang memimpin dan memperkenalkan kandidat saat Home Visit <span class="citation">[cite: 2]</span>.</li>
-      </ul>
-    </div>
-
-    <button class="acc-btn">4. Eksekusi 4 Pilar <span>▼</span></button>
-    <div class="acc-panel">
-      <ul>
-        <li><b>Tebarkan Salam:</b> Sapa warga di pasar/terminal pukul 05.30-07.00 WIB tanpa atribut partai/janji politik <span class="citation">[cite: 2]</span>.</li>
-        <li><b>Berikan Makan:</b> Seribu Nasi Bungkus tiap Jumat, buka Posko Piring Tetangga ("Yang lapar silakan ambil, yang kenyang bantu doakan"), dan titip deposit di warung makan <span class="citation">[cite: 2]</span>.</li>
-        <li><b>Sambung Silaturahmi:</b> Kunjungan tanpa kamera besar dan bentuk Grup WA Lingkar Peduli (ambulans, lowongan kerja) dilarang membahas politik di dalamnya <span class="citation">[cite: 2]</span>.</li>
-        <li><b>Salat Malam:</b> Sajadah Cinta (salat subuh berjamaah, tausiyah kedamaian, sarapan gratis) <span class="citation">[cite: 2]</span>.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- MODUL 3: PRESENSI QR CALEG -->
-  <div class="card" style="text-align:center;">
-    <div class="card-header">
-      <h3>📱 QR PRESENSI ANDA</h3>
-      <span class="badge">SUPER ADMIN</span>
-    </div>
-    <span class="text-muted">Tunjukkan QR ini ke Tim Lapangan untuk dipindai sebagai bukti pertemuan tatap muka.</span>
-    <div style="display:flex; justify-content:center; margin:15px 0;">
-       <div id="qrcode-caleg" style="padding:15px; background:#fff; border-radius:16px; border:3px dashed var(--primary); display: inline-block;"></div>
-    </div>
-    <b style="color:var(--primary); font-size: 20px; letter-spacing: 2px;">NIK: <span id="lbl-nik-caleg">-</span></b>
-  </div>
-
-  <!-- MODUL 4: SCANNER BARCODE TIM -->
-  <div class="card" style="border-top: 4px solid var(--accent-orange);">
-    <div class="card-header">
-      <h3 style="color: var(--accent-orange);">📸 PINDAI QR TIM</h3>
-    </div>
-    <span class="text-muted">Pindai barcode relawan untuk memvalidasi pertemuan tatap muka dan memberikan 10 Poin KPI.</span>
-    <div id="reader"></div>
-    <button class="btn btn-orange" id="btn-scan" onclick="mulaiScanner()">Buka Kamera Pemindai</button>
-    <button class="btn btn-outline" id="btn-stop-scan" style="display:none;" onclick="hentikanScanner()">Batalkan Pemindaian</button>
-  </div>
-
-  <!-- MODUL 5: STATISTIK PERGERAKAN -->
-  <div class="card">
-    <div class="card-header">
-      <h3>📊 ANALITIK PERGERAKAN</h3>
-    </div>
-    <div class="stat-grid">
-      <div class="stat-box"><span>Rumah Dikunjungi</span><h2 id="st-rumah">0</h2></div>
-      <div class="stat-box"><span>Tim Terbuka (Pasti)</span><h2 id="st-pasti">0</h2></div>
-      <div class="stat-box orange" style="grid-column: span 2;"><span>Tim Rahasia (Pasang)</span><h2 id="st-pasang">0</h2></div>
-    </div>
-  </div>
-
-  <!-- MODUL 6: PELAPORAN KEGIATAN & GEOTAG -->
-  <div class="card">
-    <div class="card-header">
-      <h3>📍 LAPOR GIAT SILATURAHIM</h3>
-    </div>
-    <span class="text-muted">Laporkan pergerakan lapangan. Koordinat satelit akan direkam otomatis.</span>
-    
-    <select id="giat_skema">
-      <option value="" disabled selected>-- Pilih Skema Kegiatan --</option>
-      <option value="Door to Door">Door to Door</option>
-      <option value="Undangan Warga">Undangan Warga</option>
-      <option value="Ngopi Warkop">Ngopi Warkop</option>
-      <option value="Solosemiran">Solosemiran</option>
-      <option value="Reses">Reses</option>
-      <option value="Melayani Masyarakat">Melayani Masyarakat</option>
-    </select>
-    
-    <textarea id="giat_keterangan" rows="3" placeholder="Tambahkan catatan hasil pertemuan..."></textarea>
-    
-    <div id="map"></div>
-    <input type="hidden" id="giat_lat">
-    <input type="hidden" id="giat_lng">
-    
-    <div class="flex-row">
-      <button class="btn btn-outline" style="flex:1;" onclick="dapatkanLokasiGPS()">🛰️ Deteksi GPS</button>
-      <button class="btn" style="flex:1;" onclick="kirimLaporanGiat()">Kirim Laporan</button>
-    </div>
-  </div>
-
-  <!-- MODUL 7: REGISTRASI TIM -->
+<!-- ==========================================
+     SECTION 2: MANAJEMEN TIM & WITHDRAWAL
+     ========================================== -->
+<div id="sec-tim" class="tab-section wrapper" style="padding-top: 20px;">
+  
   <div class="card">
     <div class="card-header">
       <h3>👥 PENDAFTARAN TIM BARU</h3>
     </div>
-    <span class="text-muted">Daftarkan relawan baru ke dalam sistem. Tim bertugas membina maksimal 10 Pemilih.</span>
+    <span class="text-muted">Daftarkan relawan ke dalam sistem. Kuota otomatis terkunci di angka 10.</span>
     
     <input type="text" id="tm_nik" inputmode="numeric" maxlength="16" placeholder="NIK Relawan (16 Digit)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
     <input type="text" id="tm_nama" placeholder="Nama Lengkap Sesuai KTP">
@@ -293,71 +285,192 @@
     <button class="btn" onclick="daftarTimBaru()">SIMPAN DATA TIM</button>
   </div>
   
-  <!-- MODUL 8: MANAJEMEN TARGET TIM -->
   <div class="card">
     <div class="card-header">
       <h3>🏆 MANAJEMEN TARGET TIM</h3>
       <span class="badge orange">STRICT RULE: 10</span>
     </div>
     <div class="anti-kanibal-banner">
-      <span style="font-size: 20px;">🛡️</span> 
-      <span><b>SISTEM ANTI-KANIBAL AKTIF:</b> 1 NIK Pemilih hanya bisa diklaim oleh 1 Tim. Jika terdeteksi duplikasi, pendaftaran otomatis ditolak.</span>
+      <span style="font-size: 24px;">🛡️</span> 
+      <span><b>ANTI-KANIBAL AKTIF:</b> NIK Pemilih ganda otomatis ditolak.</span>
     </div>
-    <span class="text-muted">Pantau pencapaian input 10 KTP Binaan per Tim. Kuota dikunci maksimal 10 pemilih untuk menjaga kualitas penetrasi.</span>
-    
+    <span class="text-muted">Pantau pencapaian 10 KTP Binaan per Tim.</span>
     <button class="btn btn-outline" onclick="muatProgressTim()">🔄 Muat Data Pergerakan Tim</button>
     <div id="tim-list-container" style="margin-top: 15px;"></div>
   </div>
 
-  <!-- MODUL 9: MANAJEMEN PENCAIRAN (WITHDRAW) -->
   <div class="card" style="border-top: 4px solid #10b981;">
     <div class="card-header">
       <h3 style="color: #10b981;">💸 MANAJEMEN PENCAIRAN</h3>
       <span class="badge red">TGL 12</span>
     </div>
-    <span class="text-muted">Setujui permintaan penarikan dana likuiditas dari Tim yang telah mencapai ≥ 200 Poin (Nilai Tukar: 1 Poin = Rp 1.000).</span>
-    
+    <span class="text-muted">Setujui permintaan penarikan dana dari Tim yang telah mencapai ≥ 200 Poin (Rp 1.000/Poin).</span>
     <button class="btn btn-outline" onclick="muatDataWithdraw()">🔄 Cek Antrean Pencairan</button>
     <div id="withdraw-list-container" style="margin-top: 15px;"></div>
   </div>
 
-  <!-- MODUL 10: UPLOAD KTP MASSAL -->
+</div>
+
+<!-- ==========================================
+     SECTION 3: DATA KTP (SETOR SATUAN & MASSAL)
+     ========================================== -->
+<div id="sec-ktp" class="tab-section wrapper" style="padding-top: 20px;">
+  
+  <!-- Setor KTP Individual (Tanpa Mengetik) -->
+  <div class="card" style="border-top: 4px solid var(--primary);">
+    <div class="card-header">
+      <h3>👥 SETOR KTP BINAAN (SATUAN)</h3>
+    </div>
+    
+    <div class="upload-info">
+      💡 <b>BEBAS MENGETIK!</b> Anda tidak perlu mengetik Nama atau Alamat warga. Cukup foto KTP dan masukkan nomor WhatsApp mereka. Inputer Pusat yang akan mengetikkan seluruh biodatanya. 
+    </div>
+    
+    <!-- Upload Zone Raksasa -->
+    <label for="pm_ktp" class="upload-zone" id="drop-zone">
+      <span>📸</span>
+      <p id="file-name-display">Ketuk di sini untuk Memfoto KTP Warga</p>
+      <input type="file" id="pm_ktp" accept="image/*" capture="environment" onchange="tampilkanNamaFileKTP()">
+    </label>
+    
+    <!-- HANYA 1 INPUT: WhatsApp -->
+    <input type="text" id="pm_hp" inputmode="numeric" placeholder="📱 Masukkan No. WhatsApp Warga..." oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="height: 60px; font-size:18px;">
+    
+    <button class="btn" style="height: 60px; font-size: 18px;" onclick="setorKTPSatuan()">🚀 KIRIM KTP KE PUSAT</button>
+  </div>
+
+  <!-- Upload Massal -->
   <div class="card" style="border-top: 4px solid var(--accent-orange);">
     <div class="card-header">
-      <h3 style="color: var(--accent-orange);">📁 UNGGAH KTP MASSAL</h3>
+      <h3 style="color: var(--accent-orange);">📁 UPLOAD KTP MASSAL</h3>
     </div>
     <div class="anti-kanibal-banner" style="background: #fef9c3; border-color: #fde047; color: #854d0e;">
-      <span style="font-size: 20px;">🤖</span> 
-      <span>Berkas akan divalidasi oleh AI. NIK ganda akan otomatis dieliminasi dari sistem.</span>
+      <span style="font-size: 24px;">🤖</span> 
+      <span>Berkas akan divalidasi AI. NIK ganda dieliminasi.</span>
     </div>
-    <span class="text-muted">Pilih >100 berkas (Gambar/PDF). Sistem Auto-Chunking mencegah server error saat unggah massal.</span>
+    <span class="text-muted">Pilih >100 berkas sekaligus. Sistem Auto-Chunking mencegah server error saat unggah massal.</span>
     
     <input type="file" id="bulkFiles" multiple accept=".pdf,image/*" style="background: #fff; padding: 12px; border: 2px dashed var(--accent-orange);">
-    <button class="btn btn-orange" onclick="prosesUploadMassal()">MULAI UNGGAH MASSAL</button>
+    <button class="btn btn-orange" onclick="prosesUploadMassal()">MULAI UPLOAD MASSAL</button>
   </div>
 
 </div>
 
-<!-- LOGIKA APLIKASI -->
+<!-- ==========================================
+     SECTION 4: VALIDASI (QR CALEG & SCAN TIM)
+     ========================================== -->
+<div id="sec-validasi" class="tab-section wrapper" style="padding-top: 20px;">
+  
+  <div class="card" style="text-align:center; border-top: 4px solid var(--primary);">
+    <div class="card-header">
+      <h3 style="color: var(--primary);">📱 QR PRESENSI ANDA</h3>
+      <span class="badge">SUPER ADMIN</span>
+    </div>
+    <span class="text-muted">Tunjukkan QR ini ke Tim Lapangan untuk dipindai sebagai bukti pertemuan tatap muka.</span>
+    
+    <div style="display:flex; justify-content:center; margin:20px 0;">
+       <div id="qrcode-caleg" style="padding:20px; background:#fff; border-radius:20px; border:4px dashed var(--primary); display: inline-block;"></div>
+    </div>
+    <b style="color:var(--text-main); font-size: 18px; letter-spacing: 1px;">NIK: <span id="lbl-nik-caleg" style="color:var(--primary);">-</span></b>
+  </div>
+
+  <div class="card" style="border-top: 4px solid var(--accent-orange);">
+    <div class="card-header">
+      <h3 style="color: var(--accent-orange);">📸 PINDAI QR TIM</h3>
+    </div>
+    <span class="text-muted">Pindai barcode relawan untuk memvalidasi pertemuan dan memberikan 10 Poin KPI.</span>
+    
+    <div id="reader"></div>
+    <button class="btn btn-orange" id="btn-scan" onclick="mulaiScanner()">Buka Kamera Pemindai</button>
+    <button class="btn btn-outline" id="btn-stop-scan" style="display:none;" onclick="hentikanScanner()">Batalkan Pemindaian</button>
+  </div>
+
+</div>
+
+<!-- ==========================================
+     SECTION 5: LAPOR GIAT & GEOTAG
+     ========================================== -->
+<div id="sec-lapor" class="tab-section wrapper" style="padding-top: 20px;">
+  <div class="card" style="border-top: 4px solid var(--accent-yellow);">
+    <div class="card-header">
+      <h3 style="color: #d97706;">📍 LAPOR GIAT LAPANGAN</h3>
+    </div>
+    <span class="text-muted">Laporkan pergerakan lapangan Anda. Koordinat satelit akan direkam otomatis.</span>
+    
+    <select id="giat_skema" style="height: 55px;">
+      <option value="" disabled selected>-- Pilih Skema Kegiatan --</option>
+      <option value="Door to Door">Door to Door</option>
+      <option value="Undangan Warga">Undangan Warga</option>
+      <option value="Ngopi Warkop">Ngopi Warkop</option>
+      <option value="Solosemiran">Solosemiran</option>
+      <option value="Reses">Reses</option>
+      <option value="Melayani Masyarakat">Melayani Masyarakat</option>
+    </select>
+    
+    <textarea id="giat_keterangan" rows="4" placeholder="Tambahkan catatan hasil pertemuan..."></textarea>
+    
+    <div id="map"></div>
+    <input type="hidden" id="giat_lat">
+    <input type="hidden" id="giat_lng">
+    
+    <div style="display: flex; gap:10px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="dapatkanLokasiGPS()">🛰️ AMBIL GPS</button>
+      <button class="btn btn-yellow" style="flex:1;" onclick="kirimLaporanGiat()">KIRIM LAPORAN</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================
+     LOGIKA APLIKASI (JAVASCRIPT)
+     ========================================== -->
 <script>
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
   const NIK_CALEG = localStorage.getItem('ecms_nik') || "081339760265";
   const TARGET_NASIONAL = 25000; 
   
   let map, marker, scannerKamera;
+  let petaSudahDimuat = false;
   
   window.onload = () => {
+    // Keamanan Akses
     if (localStorage.getItem('ecms_role') !== 'CALEG') {
+      // Hapus komentar di bawah untuk proteksi live production
       // window.location.replace('index.html');
     }
+    
+    // Generate QR Code Caleg
     document.getElementById('lbl-nik-caleg').innerText = NIK_CALEG;
-    new QRCode(document.getElementById("qrcode-caleg"), { text: NIK_CALEG, width: 180, height: 180, colorDark : "#065f3a", colorLight : "#ffffff" });
+    new QRCode(document.getElementById("qrcode-caleg"), { 
+      text: NIK_CALEG, width: 220, height: 220, colorDark : "#065f3a", colorLight : "#ffffff" 
+    });
 
     inisialisasiTimer();
-    inisialisasiPeta();
-    muatDataSistem();
     inisialisasiAccordion();
+    muatDataSistem();
   };
+
+  // ----------------------------------------------------
+  // SISTEM TAB NAVIGASI BAWAH (APP STYLE)
+  // ----------------------------------------------------
+  function switchTab(sectionId, element) {
+    // Ubah UI Navigasi
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    element.classList.add('active');
+    
+    // Ubah Layar Section
+    document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+    
+    // Render Ulang Peta jika Tab Lapor Ditekan (Fix Bug Leaflet)
+    if(sectionId === 'sec-lapor' && !petaSudahDimuat) {
+      inisialisasiPeta();
+      petaSudahDimuat = true;
+    } else if (sectionId === 'sec-lapor' && map) {
+      setTimeout(() => { map.invalidateSize(); }, 100);
+    }
+    
+    window.scrollTo(0,0);
+  }
 
   window.history.pushState(null, "", window.location.href);
   window.onpopstate = function() {
@@ -365,24 +478,14 @@
       Swal.fire({ toast: true, position: 'top', icon: 'warning', title: 'Gunakan tombol Keluar', showConfirmButton: false, timer: 2000 });
   };
 
-  // Fungsi Accordion Buku Saku
-  function inisialisasiAccordion() {
-    const acc = document.getElementsByClassName("acc-btn");
-    for (let i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        let panel = this.nextElementSibling;
-        if (panel.classList.contains("show")) {
-          panel.classList.remove("show");
-        } else {
-          panel.classList.add("show");
-        }
-      });
-    }
-  }
-
+  /**
+   * FUNGSI API CORE
+   */
   async function panggilAPI(action, dataObj) {
-    const res = await fetch(API_URL, { method: 'POST', headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ action: action, data: dataObj }), redirect: "follow" });
+    const res = await fetch(API_URL, { 
+      method: 'POST', headers: { "Content-Type": "text/plain;charset=utf-8" }, 
+      body: JSON.stringify({ action: action, data: dataObj }), redirect: "follow"
+    });
     return await res.json();
   }
 
@@ -422,11 +525,86 @@
         if(persentase > 100) persentase = 100;
         document.getElementById('progress-percent').innerText = persentase.toFixed(1) + "%";
         document.getElementById('progress-fill').style.width = persentase + "%";
+
         document.getElementById('st-rumah').innerText = (res.data.total_rumah_dikunjungi || 0).toLocaleString('id-ID');
         document.getElementById('st-pasti').innerText = (res.data.total_tim_pasti || 0).toLocaleString('id-ID');
         document.getElementById('st-pasang').innerText = (res.data.total_tim_pasang || 0).toLocaleString('id-ID');
       }
     } catch(e) {}
+  }
+
+  // ----------------------------------------------------
+  // SETOR KTP BINAAN SATUAN (BEBAS MENGETIK)
+  // ----------------------------------------------------
+  function tampilkanNamaFileKTP() {
+    const input = document.getElementById('pm_ktp');
+    const display = document.getElementById('file-name-display');
+    if (input.files && input.files[0]) {
+      display.innerText = "KTP Terlampir: " + input.files[0].name;
+      display.style.color = "var(--accent-orange)";
+    }
+  }
+
+  async function setorKTPSatuan() {
+    const fileInput = document.getElementById('pm_ktp');
+    const hp = document.getElementById('pm_hp').value;
+
+    if (!fileInput.files || fileInput.files.length === 0) return Swal.fire('KTP Kosong', 'Harap jepret / unggah foto KTP terlebih dahulu.', 'warning');
+    if (!hp || hp.length < 9) return Swal.fire('Data Kurang', 'Masukkan Nomor WhatsApp warga dengan benar.', 'warning');
+
+    const file = fileInput.files[0];
+
+    Swal.fire({ title: 'Menyandikan Data...', html: 'Menjahit NIK Anda ke dalam berkas...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+      // INI RAHASIA PELACAKAN: NIK Caleg disisipkan ke nama file
+      const namaFileAman = `KTP_CALEG_${NIK_CALEG}_${Date.now()}_${file.name}`;
+      
+      const chunkData = [{
+        name: namaFileAman,
+        mimeType: file.type,
+        data: reader.result,
+        meta: { uploader_nik: NIK_CALEG, hp_warga: hp, role: 'CALEG' }
+      }];
+
+      Swal.fire({ title: 'Menerbangkan Data...', text: 'Mengirim KTP ke Meja Inputer Pusat...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+      try {
+        const res = await panggilAPI('uploadChunk', { filesBatch: chunkData });
+        if (res.status === 'error') return Swal.fire('Gagal', res.message, 'error');
+        
+        Swal.fire('Misi Berhasil!', 'KTP telah masuk ke server pusat atas nama Anda.', 'success');
+        
+        // Reset Form
+        document.getElementById('pm_ktp').value = '';
+        document.getElementById('file-name-display').innerText = "Ketuk di sini untuk Memfoto KTP Warga";
+        document.getElementById('file-name-display').style.color = "var(--primary)";
+        document.getElementById('pm_hp').value = '';
+        
+      } catch (e) {
+        Swal.fire('Sinyal Terputus', 'Gagal mengirim. Pastikan internet di lokasi Anda stabil.', 'error');
+      }
+    };
+    reader.onerror = () => Swal.fire('Error', 'Gagal membaca foto dari perangkat Anda.', 'error');
+  }
+
+  // ----------------------------------------------------
+  // MANAJEMEN TIM & WITHDRAWAL
+  // ----------------------------------------------------
+  function daftarTimBaru() {
+    const payload = { nik: document.getElementById('tm_nik').value, nama: document.getElementById('tm_nama').value, hp: document.getElementById('tm_hp').value, bank: document.getElementById('tm_bank').value, rekening: document.getElementById('tm_rek').value, kategori: document.getElementById('tm_kategori').value };
+    if (payload.nik.length < 16 || !payload.nama || !payload.hp) return Swal.fire('Peringatan', 'Data belum lengkap/Valid.', 'warning');
+    Swal.fire({ title: 'Konfirmasi', html: `Daftarkan <b>${payload.nama}</b>?<br><br><span style="font-size:12px; color:#ef4444;">Sistem Anti-Kanibal Aktif.</span>`, icon: 'question', showCancelButton: true, confirmButtonText: 'Simpan Data' }).then(async (result) => {
+      if (result.isConfirmed) {
+        Swal.fire({ title: 'Injeksi Data...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+        try {
+          const res = await panggilAPI('tambahTim', payload);
+          Swal.fire(res.status === 'success' ? 'Berhasil' : 'Pendaftaran Ditolak', res.message, res.status);
+          if (res.status === 'success') { ['tm_nik','tm_nama','tm_hp','tm_bank','tm_rek'].forEach(id => document.getElementById(id).value = ''); muatDataSistem(); }
+        } catch(e) { Swal.fire('Offline', 'Data antre di memori lokal.', 'success'); }
+      }
+    });
   }
 
   async function muatProgressTim() {
@@ -506,6 +684,34 @@
     });
   }
 
+  function prosesUploadMassal() {
+    const files = document.getElementById('bulkFiles').files;
+    if (files.length === 0) return Swal.fire('Kosong', 'Pilih minimal 1 file.', 'warning');
+    Swal.fire({ title: 'Upload Massal', html: `Siap mengirim <b>${files.length}</b> berkas.`, icon: 'info', showCancelButton: true, confirmButtonText: 'Mulai Upload' }).then((result) => {
+      if (result.isConfirmed) eksekusiUploadChunk(files);
+    });
+  }
+
+  async function eksekusiUploadChunk(files) {
+    let sukses = 0;
+    Swal.fire({ title: 'Mengunggah...', html: 'Berhasil: <b id="up-count" style="color:var(--primary); font-size:20px;">0</b> / ' + files.length, allowOutsideClick: false, showConfirmButton: false, didOpen: () => Swal.showLoading() });
+    const jadikanBase64 = file => new Promise((resolve, reject) => { const reader = new FileReader(); reader.readAsDataURL(file); reader.onload = () => resolve({name: file.name, mimeType: file.type, data: reader.result}); reader.onerror = err => reject(err); });
+    for (let i = 0; i < files.length; i += 3) {
+      let antrean = [];
+      for (let j = i; j < i + 3 && j < files.length; j++) antrean.push(await jadikanBase64(files[j]));
+      try {
+        const res = await panggilAPI('uploadChunk', { filesBatch: antrean });
+        if (res.status === 'error') return Swal.fire('Error', res.message, 'error');
+        sukses += antrean.length; document.getElementById('up-count').innerText = sukses;
+      } catch(e) { return Swal.fire('Koneksi Putus', 'Gagal memproses gelombang data.', 'error'); }
+    }
+    Swal.fire('Selesai', `${sukses} Berkas masuk Folder Input.`, 'success');
+    document.getElementById('bulkFiles').value = '';
+  }
+
+  // ----------------------------------------------------
+  // SCANNER TATAP MUKA (Pindai Tim)
+  // ----------------------------------------------------
   function mulaiScanner() {
     document.getElementById('reader').style.display = 'block'; document.getElementById('btn-scan').style.display = 'none'; document.getElementById('btn-stop-scan').style.display = 'block';
     scannerKamera = new Html5Qrcode("reader");
@@ -521,6 +727,9 @@
     panggilAPI('catatPresensi', { nik_caleg: NIK_CALEG, nik_tim: nikTim }).then(res => { Swal.fire('Validasi Berhasil', `10 Poin KPI telah masuk untuk Tim (NIK: ${nikTim}).`, 'success'); }).catch(err => { Swal.fire('Mode Offline', 'Tersimpan lokal, akan diunggah saat sinyal stabil.', 'success'); });
   }
 
+  // ----------------------------------------------------
+  // GEOTAG & LAPORAN GIAT LAPANGAN
+  // ----------------------------------------------------
   function inisialisasiPeta() {
     const latAwal = -7.250445; const lngAwal = 112.768845;
     map = L.map('map').setView([latAwal, lngAwal], 13);
@@ -558,44 +767,18 @@
     });
   }
 
-  function daftarTimBaru() {
-    const payload = { nik: document.getElementById('tm_nik').value, nama: document.getElementById('tm_nama').value, hp: document.getElementById('tm_hp').value, bank: document.getElementById('tm_bank').value, rekening: document.getElementById('tm_rek').value, kategori: document.getElementById('tm_kategori').value };
-    if (payload.nik.length < 16 || !payload.nama || !payload.hp) return Swal.fire('Peringatan', 'Data belum lengkap/Valid.', 'warning');
-    Swal.fire({ title: 'Konfirmasi', html: `Daftarkan <b>${payload.nama}</b>?<br><br><span style="font-size:12px; color:#ef4444;">Sistem Anti-Kanibal Aktif.</span>`, icon: 'question', showCancelButton: true, confirmButtonText: 'Simpan Data' }).then(async (result) => {
-      if (result.isConfirmed) {
-        Swal.fire({ title: 'Injeksi Data...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
-        try {
-          const res = await panggilAPI('tambahTim', payload);
-          Swal.fire(res.status === 'success' ? 'Berhasil' : 'Pendaftaran Ditolak', res.message, res.status);
-          if (res.status === 'success') { ['tm_nik','tm_nama','tm_hp','tm_bank','tm_rek'].forEach(id => document.getElementById(id).value = ''); muatDataSistem(); }
-        } catch(e) { Swal.fire('Offline', 'Data antre di memori lokal.', 'success'); }
-      }
-    });
-  }
-
-  function prosesUploadMassal() {
-    const files = document.getElementById('bulkFiles').files;
-    if (files.length === 0) return Swal.fire('Kosong', 'Pilih minimal 1 file.', 'warning');
-    Swal.fire({ title: 'Upload Massal', html: `Siap mengirim <b>${files.length}</b> berkas.`, icon: 'info', showCancelButton: true, confirmButtonText: 'Mulai Upload' }).then((result) => {
-      if (result.isConfirmed) eksekusiUploadChunk(files);
-    });
-  }
-
-  async function eksekusiUploadChunk(files) {
-    let sukses = 0;
-    Swal.fire({ title: 'Mengunggah...', html: 'Berhasil: <b id="up-count" style="color:var(--primary); font-size:20px;">0</b> / ' + files.length, allowOutsideClick: false, showConfirmButton: false, didOpen: () => Swal.showLoading() });
-    const jadikanBase64 = file => new Promise((resolve, reject) => { const reader = new FileReader(); reader.readAsDataURL(file); reader.onload = () => resolve({name: file.name, mimeType: file.type, data: reader.result}); reader.onerror = err => reject(err); });
-    for (let i = 0; i < files.length; i += 3) {
-      let antrean = [];
-      for (let j = i; j < i + 3 && j < files.length; j++) antrean.push(await jadikanBase64(files[j]));
-      try {
-        const res = await panggilAPI('uploadChunk', { filesBatch: antrean });
-        if (res.status === 'error') return Swal.fire('Error', res.message, 'error');
-        sukses += antrean.length; document.getElementById('up-count').innerText = sukses;
-      } catch(e) { return Swal.fire('Koneksi Putus', 'Gagal memproses gelombang data.', 'error'); }
+  // ----------------------------------------------------
+  // UTILITIES (ACCORDION BUKU SAKU)
+  // ----------------------------------------------------
+  function inisialisasiAccordion() {
+    const acc = document.getElementsByClassName("acc-btn");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        if (panel.classList.contains("show")) { panel.classList.remove("show"); } else { panel.classList.add("show"); }
+      });
     }
-    Swal.fire('Selesai', `${sukses} Berkas masuk Folder Input.`, 'success');
-    document.getElementById('bulkFiles').value = '';
   }
 </script>
 </body>
