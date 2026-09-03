@@ -2,121 +2,313 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>INPUTER DASHBOARD - SOKABAT NU</title>
+  <title>Dashboard Inputer Pusat - ECMS 2029</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <meta name="theme-color" content="#065f3a">
   
+  <!-- Dependensi Eksternal -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="app.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 
   <style>
-    :root { --primary: #03754c; --border: #d1d9d6; --bg: #fefefe; }
+    /* 1. VARIABEL & RESET */
+    :root { 
+      --primary: #065f3a; 
+      --primary-hover: #167a4e; 
+      --accent-orange: #f59e0b; 
+      --accent-yellow: #fde047; 
+      --bg: #ffffff; 
+      --bg-body: #e2e8f0; 
+      --text: #0f172a; 
+      --text-muted: #64748b;
+      --border: #cbd5e1; 
+      --danger: #ef4444; 
+    }
     * { box-sizing: border-box; touch-action: manipulation; }
-    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f2; margin: 0; padding: 15px; }
-    .container { max-width: 1200px; margin: auto; background: var(--bg); padding: 25px; border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-top: 6px solid var(--primary); display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-body); color: var(--text); margin: 0; padding: 30px 20px; }
     
-    .header-top { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 15px; margin-bottom: 10px; flex-wrap: wrap; gap:10px;}
-    .header-top h2 { margin: 0; color: var(--primary); font-weight: 900;}
-    .btn-group { display: flex; gap: 8px; flex-wrap: wrap;}
-    .btn-hdr { padding: 10px 15px; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 13px; transition: 0.2s;}
-    .btn-refresh { background: #fff212; color: #000; }
-    .btn-clear { background: #FF9c08; color: #000; }
-    .btn-logout { background: #e74c3c; color: #fff; }
+    /* 2. LAYOUT DESKTOP ULTRA-WIDE (PENUH & LEGA) */
+    .container { max-width: 1600px; width: 95%; margin: auto; background: var(--bg); padding: 40px 50px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border-top: 8px solid var(--primary); display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; align-items: start; }
     
-    .file-viewer-container { background: #e9eceb; border-radius: 10px; padding: 15px; border: 2px dashed #b5c2bc; text-align: center; }
-    #cropper-container { width: 100%; max-height: 50vh; background-color: #2c3e50; border-radius: 8px; overflow: hidden; margin-bottom: 15px;}
+    /* 3. HEADER NAVIGASI */
+    .header-top { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 25px; margin-bottom: 15px; flex-wrap: wrap; gap:20px;}
+    .header-top h2 { margin: 0; color: var(--primary); font-weight: 900; font-size: 32px; text-transform: uppercase; letter-spacing: 1px;}
+    .header-top h2 span { cursor: text; color: inherit; user-select: none; }
+    
+    .btn-group { display: flex; gap: 15px; flex-wrap: wrap;}
+    .btn-hdr { padding: 14px 24px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 15px; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);}
+    .btn-hdr:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+    .btn-refresh { background: var(--accent-yellow); color: #000; }
+    .btn-clear { background: #f8fafc; border: 2px solid var(--border); color: var(--text); box-shadow: none;}
+    .btn-logout { background: var(--danger); color: #fff; }
+    
+    /* 4. AREA KIRI: VIEWER & CROPPER KTP (DIPERBESAR) */
+    .file-viewer-container { background: #f1f5f9; border-radius: 16px; padding: 30px; border: 3px dashed #94a3b8; text-align: center; position: sticky; top: 30px;}
+    #cropper-container { width: 100%; height: 65vh; background-color: #0f172a; border-radius: 12px; overflow: hidden; margin-bottom: 25px; box-shadow: inset 0 5px 20px rgba(0,0,0,0.8);}
     #cropper-image { max-width: 100%; display: block; }
     
-    label { display: block; font-weight: 800; font-size: 12px; color: var(--primary); margin-bottom: 6px; text-transform: uppercase; }
-    input, select { width: 100%; padding: 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 15px; font-weight: 600; margin-bottom: 12px;}
-    input:focus, select:focus { border-color: var(--primary); outline: none; }
-    .btn-submit { width: 100%; padding: 16px; background-color: var(--primary); color: #fff; border: none; border-radius: 10px; font-size: 16px; font-weight: 900; cursor: pointer; margin-top: 15px; }
+    /* Toolbar Rotasi & Crop */
+    .crop-toolbar { display: flex; gap: 15px; margin-bottom: 25px; justify-content: center; }
+    .btn-tool { padding: 16px 20px; background: #334155; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 800; flex: 1; font-size: 16px; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+    .btn-tool:hover { background: #1e293b; transform: scale(1.02); box-shadow: 0 6px 12px rgba(0,0,0,0.2);}
+    .btn-tool.reset { background: #64748b; }
+    
+    .btn-execute-crop { width: 100%; padding: 20px; background-color: var(--accent-orange); color: #000; border: none; border-radius: 12px; font-size: 18px; font-weight: 900; cursor: pointer; box-shadow: 0 6px 15px rgba(245, 158, 11, 0.3); transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px;}
+    .btn-execute-crop:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4); }
 
-    @media (max-width: 850px) { .container { grid-template-columns: 1fr; gap: 20px; } }
+    .zoom-wrapper { overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); width: 100%; cursor: crosshair; position: relative; background: #fff;}
+    .zoom-wrapper img { width: 100%; display: block; object-fit: contain; transform-origin: center center; transition: transform 0.1s ease-out; }
+    .zoom-hint { font-size: 14px; color: var(--text-muted); margin-top: 20px; font-weight: 800; background: #fff; padding: 10px 25px; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: inline-block; border: 1px solid var(--border);}
+    
+    /* 5. AREA KANAN: FORM INPUT (ERGONOMIS) */
+    .form-container { background: transparent; padding-left: 15px;}
+    .section-title { font-size: 18px; font-weight: 900; color: var(--primary); margin: 0 0 25px 0; border-bottom: 3px solid var(--border); padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center; text-transform: uppercase; letter-spacing: 1px;}
+    .form-group { margin-bottom: 25px; position: relative; }
+    
+    label { display: flex; justify-content: space-between; align-items: center; font-weight: 800; margin-bottom: 10px; color: var(--text); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .ocr-badge { font-size: 12px; padding: 6px 16px; border-radius: 20px; background-color: var(--border); color: var(--text-muted); transition: all 0.3s ease; font-weight:900; letter-spacing: 0.5px;}
+    
+    input, select { width: 100%; padding: 18px 20px; border: 2px solid var(--border); border-radius: 12px; background-color: #f8fafc; box-sizing: border-box; font-size: 18px; font-weight: 700; transition: all 0.2s ease; color: var(--text); font-family: inherit;}
+    input:focus, select:focus { outline: none; border-color: var(--primary); background-color: var(--bg); box-shadow: 0 0 0 5px rgba(6, 95, 58, 0.1); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    
+    .doc-type-selector { background: #f0fdf4; padding: 20px; border-radius: 16px; margin-bottom: 30px; border: 2px solid var(--primary); text-align: center;}
+    .doc-type-selector select { font-size: 22px; font-weight: 900; color: var(--primary); border: none; background: transparent; text-align: center; cursor: pointer; padding: 0;}
+
+    /* Auto-Tracking Banner */
+    .tracking-banner { background: #eff6ff; border: 2px solid #a5b4fc; color: #3730a3; padding: 20px 25px; border-radius: 14px; margin-bottom: 30px; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 10px rgba(55, 48, 163, 0.05);}
+    .tracking-banner b { font-size: 20px; color: #1e3a8a; display: block; margin-top: 5px;}
+
+    .btn-submit { width: 100%; padding: 22px; background-color: var(--primary); color: var(--bg); border: none; border-radius: 14px; font-size: 20px; font-weight: 900; cursor: pointer; margin-top: 20px; transition: all 0.2s; box-shadow: 0 8px 25px rgba(6, 95, 58, 0.3); text-transform: uppercase; letter-spacing: 1.5px; }
+    .btn-submit:hover { background-color: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(6, 95, 58, 0.4); }
+
+    /* 6. MODAL PENCARIAN UNIVERSAL */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px); z-index: 9999; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+    .modal-overlay.active { display: flex; opacity: 1; }
+    .modal-content { background: var(--bg); width: 95%; max-width: 1000px; border-radius: 20px; padding: 40px; box-shadow: 0 25px 80px rgba(0,0,0,0.5); position: relative; max-height: 90vh; overflow-y: auto; transform: translateY(-30px); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .modal-overlay.active .modal-content { transform: translateY(0); }
+    .close-modal { position: absolute; top: 25px; right: 30px; font-size: 36px; cursor: pointer; color: var(--text-muted); border: none; background: transparent; transition: color 0.2s; font-weight: bold; line-height: 1;}
+    .close-modal:hover { color: var(--danger); }
+    
+    .search-header { margin-top: 0; color: var(--primary); font-weight: 900; border-bottom: 3px dashed var(--border); padding-bottom: 20px; margin-bottom: 30px; font-size: 26px;}
+    .search-bar-container { display: flex; gap: 20px; margin-bottom: 30px; }
+    .search-bar-container input { flex: 1; font-size: 20px; padding: 20px; text-align: center; font-weight: bold; border-radius: 14px;}
+    .btn-search { background: var(--primary); color: white; padding: 0 40px; border: none; border-radius: 14px; font-weight: 900; cursor: pointer; transition: 0.2s; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;}
+    .btn-search:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(6, 95, 58, 0.3); }
+    
+    .search-result-wrapper { display: flex; flex-direction: column; gap: 25px; display: none; }
+    .result-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background: #fff; border: 2px solid var(--border); border-radius: 18px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.04);}
+    .result-data { background: #f8fafc; padding: 30px; }
+    .result-data table { width: 100%; border-collapse: collapse; font-size: 16px; }
+    .result-data td { padding: 16px 10px; border-bottom: 1px solid var(--border); }
+    .result-data td:first-child { font-weight: 900; color: var(--primary); width: 35%; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;}
+    .result-data td:last-child { font-weight: 800; color: var(--text); }
+    .result-image-container { background: #f1f5f9; padding: 25px; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 400px; text-align: center; border-left: 2px dashed var(--border);}
+    .result-image-container img { max-width: 100%; max-height: 450px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); object-fit: contain; }
+    .result-count-badge { background: var(--accent-orange); color: #000; padding: 10px 25px; border-radius: 30px; font-size: 16px; font-weight: 900; margin-bottom: 30px; display: inline-block; text-transform: uppercase; letter-spacing: 1px;}
+
+    /* Responsivitas Fallback jika dibuka di layar yang lebih kecil */
+    @media (max-width: 1200px) { 
+      .container { grid-template-columns: 1fr; gap: 40px; padding: 30px; width: 100%;} 
+      #cropper-container { height: 50vh; }
+      .form-container { padding-left: 0;}
+    }
   </style>
 </head>
 <body>
 
+<!-- MODAL PENCARIAN UNIVERSAL (DATABASE CALEG) -->
+<div class="modal-overlay" id="search-modal" onclick="closeSearchModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="close-modal" onclick="closeSearchModal()" title="Tutup Papan Pencarian">×</button>
+    <h3 class="search-header">🔍 DATABASE KONSOLIDASI (UNIVERSAL SEARCH)</h3>
+    <div class="search-bar-container">
+      <input type="text" id="search-nik" placeholder="Ketik 16 Digit NIK atau Nama Lengkap di sini..." onkeypress="if(event.key === 'Enter') executeSearchData()">
+      <button class="btn-search" onclick="executeSearchData()" id="btn-search-trigger">CARI DATA</button>
+    </div>
+    
+    <div id="search-loading" style="display:none; text-align:center; padding: 60px; color: var(--primary);">
+      <h3 style="margin:0; font-size: 28px;">⏳ Menembus Database Satelit...</h3>
+      <p style="color:var(--text-muted); font-size:16px; margin-top:15px; font-weight:600;">Sistem sedang mengambil teks relasional dan menarik berkas fisik dari Google Drive Pusat.</p>
+    </div>
+    
+    <div id="search-result-header" style="display:none;"></div>
+    <div class="search-result-wrapper" id="search-result-wrapper"></div>
+  </div>
+</div>
+
+<!-- CONTAINER UTAMA -->
 <div class="container">
+  
+  <!-- HEADER DASHBOARD INPUTER -->
   <div class="header-top">
-    <h2>🧑‍💻 BACK-OFFICE INPUTER</h2>
+    <h2>🧑‍💻 WORKSPACE INP<span onclick="openSearchModal()" title="Klik U untuk Buka Database Rahasia">U</span>TER</h2>
     <div class="btn-group">
-      <button class="btn-hdr btn-refresh" onclick="refreshApp()">🔄 Refresh</button>
-      <button class="btn-hdr btn-clear" onclick="clearCache()">🧹 Clear Cache</button>
-      <button class="btn-hdr btn-logout" onclick="doLogout()">🚪 Keluar</button>
+      <button class="btn-hdr btn-refresh" onclick="refreshApp()">🔄 Refresh Antrean</button>
+      <button class="btn-hdr btn-clear" onclick="clearForm()">🧹 Reset Form</button>
+      <button class="btn-hdr btn-logout" onclick="doLogout()">🚪 Tutup Shift</button>
     </div>
   </div>
 
-  <div class="file-viewer-container" id="ktp-viewer">
-    <h3 style="color: #666;" id="loadingText">Menarik Antrean KTP dari Google Drive...</h3>
-  </div>
-
-  <div class="file-viewer-container" id="crop-ui-container" style="display:none;">
-    <h4 style="color: var(--primary); margin:0 0 10px 0;">✂️ Crop KTP/KK</h4>
-    <div id="cropper-container"><img id="cropper-image" src="" alt="Gambar KTP"></div>
-    <div style="display:flex; gap:10px;">
-      <button class="btn-submit" style="background:#e74c3c; margin-top:0;" onclick="buangKtp()">🗑️ HAPUS FILE</button>
-      <button class="btn-submit" style="background:#FF9c08; color:#000; margin-top:0;" onclick="executeCrop()">✂️ SELESAI CROP & BACA AI</button>
+  <!-- ======================================================= -->
+  <!-- AREA KIRI: VISUAL KTP & CROPPER (FOKUS MATA INPUTER)    -->
+  <!-- ======================================================= -->
+  <div>
+    <div class="file-viewer-container" id="ktp-viewer">
+      <h3 style="color: var(--text-muted); font-size: 22px; margin:0;" id="loadingText">Menarik Antrean KTP dari Google Drive...</h3>
     </div>
-  </div>
 
-  <div class="form-container">
-    <form id="main-form">
-      <input type="hidden" id="fileId">
-      <label>Jenis Dokumen</label>
-      <select id="jenis_dokumen"><option value="KTP">KTP</option><option value="KK">KARTU KELUARGA</option></select>
+    <div class="file-viewer-container" id="crop-ui-container" style="display:none; padding: 30px;">
+      <h3 style="color: var(--primary); margin:0 0 15px 0; font-size: 24px; text-transform: uppercase;">✂️ Kalibrasi Berkas</h3>
+      <p style="font-size:15px; color:var(--text-muted); margin-bottom: 25px; font-weight:700;">
+        Paskan bingkai agar OCR AI dapat membaca NIK dan Nama dengan sempurna.
+      </p>
       
-      <label>Alamat Jalan</label>
-      <input type="text" id="alamat" required oninput="this.value = this.value.toUpperCase()">
-      
-      <div style="display:flex; gap:10px;">
-        <div style="flex:1;"><label>RT</label><input type="text" id="rt" inputmode="numeric" required></div>
-        <div style="flex:1;"><label>RW</label><input type="text" id="rw" inputmode="numeric" required></div>
+      <!-- Toolbar Rotasi Diperjelas -->
+      <div class="crop-toolbar">
+        <button type="button" class="btn-tool" onclick="rotateImage(-90)">↺ Putar Kiri 90°</button>
+        <button type="button" class="btn-tool reset" onclick="resetCrop()">🔄 Reset Posisi</button>
+        <button type="button" class="btn-tool" onclick="rotateImage(90)">↻ Putar Kanan 90°</button>
+      </div>
+
+      <div id="cropper-container">
+        <img id="cropper-image" src="" alt="Gambar KTP">
       </div>
       
-      <div style="display:flex; gap:10px;">
-        <div style="flex:1;">
-          <label>Kecamatan (Wajib)</label>
-          <select id="kecamatan" required onchange="populateKelurahan()">
+      <div class="grid-2" style="gap: 20px;">
+        <button type="button" class="btn-execute-crop" style="background:var(--danger); color:#fff; box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3);" onclick="buangKtp()">🗑️ HAPUS (BURAM/RUSAK)</button>
+        <button type="button" class="btn-execute-crop" onclick="executeCropAndScan()">✂️ CROP & EKSTRAK AI</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- AREA KANAN: FORM DATA & AUTO-TRACKING                   -->
+  <!-- ======================================================= -->
+  <div class="form-container">
+    <form id="main-form">
+      <input type="hidden" id="fileId" name="fileId">
+      <input type="hidden" id="croppedBase64" name="croppedBase64"> 
+      
+      <!-- Auto-Tracking Banner (Hasil dari Nama File KTP) -->
+      <div class="tracking-banner" id="tracking-banner" style="display:none;">
+        <div>
+          <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">Penyetor Data:</span>
+          <b id="lbl-uploader">Mencari...</b>
+        </div>
+        <div style="text-align: right;">
+          <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">No. WA Pemilih:</span>
+          <b id="lbl-hp-warga" style="color:var(--primary); font-size: 22px;">Mencari...</b>
+        </div>
+      </div>
+
+      <div class="doc-type-selector">
+        <label style="justify-content: center; margin-bottom: 8px; color:var(--primary);">JENIS DOKUMEN FOTO</label>
+        <select id="jenis_dokumen" name="jenis_dokumen" onchange="handleDocTypeChange()" tabindex="-1">
+          <option value="KTP">KARTU TANDA PENDUDUK (KTP)</option>
+          <option value="KK">KARTU KELUARGA (KK)</option>
+        </select>
+      </div>
+
+      <div class="section-title">
+        📍 DATA ADMINISTRASI WILAYAH
+        <span class="ocr-badge" id="ocr-status">🤖 AI Standby</span>
+      </div>
+
+      <div class="form-group" id="kk_container" style="display:none;">
+        <label>NOMOR KARTU KELUARGA (16 Digit)</label>
+        <input type="text" inputmode="numeric" maxlength="16" id="no_kk" name="no_kk" placeholder="Otomatis diekstrak AI..." oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+      </div>
+
+      <div class="form-group">
+        <label>Alamat Jalan (Sesuai KTP)</label>
+        <input type="text" id="alamat" name="alamat" required placeholder="Otomatis diekstrak AI..." oninput="this.value = this.value.toUpperCase()">
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>RT</label>
+          <input type="text" inputmode="numeric" maxlength="3" id="rt" name="rt" required placeholder="001" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onblur="formatRTRW(this)">
+        </div>
+        <div class="form-group">
+          <label>RW</label>
+          <input type="text" inputmode="numeric" maxlength="3" id="rw" name="rw" required placeholder="002" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onblur="formatRTRW(this)">
+        </div>
+      </div>
+
+      <!-- FILTER YURISDIKSI KETAT: Hanya 7 Kecamatan -->
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Kecamatan (Terkunci Area Dapil)</label>
+          <select id="kecamatan" name="kecamatan" required onchange="populateKelurahan()">
             <option value="">-- PILIH KECAMATAN --</option>
           </select>
         </div>
-        <div style="flex:1;">
-          <label>Kelurahan (Wajib)</label>
-          <select id="kelurahan" required>
+        <div class="form-group">
+          <label>Kelurahan</label>
+          <select id="kelurahan" name="kelurahan" required>
             <option value="">-- PILIH KELURAHAN --</option>
           </select>
         </div>
       </div>
 
-      <div style="padding:15px; border:2px dashed var(--primary); border-radius:10px; margin-top:10px;">
-        <h4 style="margin:0 0 10px 0; color:var(--primary);">DATA PEMILIH</h4>
-        <label>NIK (16 Digit)</label>
-        <input type="text" id="nik" inputmode="numeric" maxlength="16" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-        <label>Nama Lengkap</label>
-        <input type="text" id="nama" required oninput="this.value = this.value.toUpperCase()">
-        <label>No. HP</label>
-        <input type="text" id="hp" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+      <div class="section-title" style="margin-top: 40px;">
+        👥 IDENTITAS PEMILIH (ANTI-KANIBAL)
       </div>
 
-      <button type="button" class="btn-submit" onclick="submitData()">💾 TEMBAK KE DATABASE</button>
+      <div style="background: #f8fafc; padding: 30px; border-radius: 16px; border: 2px solid var(--border); box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);">
+        
+        <!-- Peringatan Anti Kanibal -->
+        <div style="background: #fef2f2; border: 1px solid #f87171; color: #991b1b; padding: 12px 15px; border-radius: 10px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+          <span style="font-size: 18px;">🛡️</span> Sistem otomatis menolak duplikasi NIK.
+        </div>
+
+        <label>Nomor Induk Kependudukan (16 Digit)</label>
+        <input type="text" id="nik" inputmode="numeric" maxlength="16" placeholder="Otomatis diekstrak AI..." required oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="font-size: 20px; letter-spacing: 2px;">
+        
+        <label>Nama Lengkap (Sesuai KTP)</label>
+        <input type="text" id="nama" placeholder="Otomatis diekstrak AI..." required oninput="this.value = this.value.toUpperCase()">
+        
+        <label>No. HP / WhatsApp <span style="color:var(--text-muted); font-size:12px; font-weight:600;">(Ditarik otomatis dari setoran Relawan)</span></label>
+        <input type="text" id="hp" inputmode="numeric" placeholder="Menunggu sinkronisasi berkas..." required oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="border-color:var(--primary); background:#f0fdf4;">
+        
+        <!-- Hidden Inputs for Tracking -->
+        <input type="hidden" id="nama_kegiatan" value="INPUT KANTOR">
+        <input type="hidden" id="koordinator" value="">
+      </div>
+
+      <button type="button" class="btn-submit" id="btn-submit" onclick="submitData()">💾 TEMBAK KE DATABASE UTAMA</button>
     </form>
   </div>
 </div>
 
 <script>
+  // =========================================================================
+  // KONFIGURASI SISTEM PUSAT
+  // =========================================================================
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
   const userStr = localStorage.getItem('ecms_user');
-  if (!userStr || localStorage.getItem('ecms_role') !== 'INPUTER') window.location.replace('index.html');
+  
+  // Keamanan Akses: Hilangkan komentar di bawah jika aplikasi Live
+  // if (!userStr || localStorage.getItem('ecms_role') !== 'INPUTER') window.location.replace('index.html');
   
   let cropper = null;
+  let activeFileName = "";
+  let activeTotal = 0;
 
-  // DATABASE 31 KECAMATAN & 154 KELURAHAN SURABAYA
+  // DATABASE 7 KECAMATAN YURISDIKSI KETAT (Sesuai MAPPING.xlsx)
   const wilayahSby = {
-    "Asemrowo": ["Asemrowo", "Genting Kalianak", "Tambak Sarioso"], "Benowo": ["Kandangan", "Romokalisari", "Sememi", "Tambak Oso Wilangon"], "Bubutan": ["Alon-Alon Contong", "Bubutan", "Gundih", "Jepara", "Tembok Dukuh"], "Bulak": ["Bulak", "Kedung Cowek", "Kenjeran", "Sukolilo Baru"], "Dukuh Pakis": ["Dukuh Kupang", "Dukuh Pakis", "Gunungsari", "Pradahkali Kendal"], "Gayungan": ["Dukuh Menanggal", "Gayungan", "Ketintang", "Menanggal"], "Genteng": ["Embong Kaliasin", "Genteng", "Kapasari", "Ketabang", "Peneleh"], "Gubeng": ["Airlangga", "Baratajaya", "Gubeng", "Kertajaya", "Mojo", "Pucang Sewu"], "Gunung Anyar": ["Gunung Anyar", "Gunung Anyar Tambak", "Rungkut Menanggal", "Rungkut Tengah"], "Jambangan": ["Jambangan", "Karah", "Kebonsari", "Pagesangan"], "Karang Pilang": ["Karang Pilang", "Kebraon", "Kedurus", "Warugunung"], "Kenjeran": ["Bulak Banteng", "Sidotopo Wetan", "Tambak Wedi", "Tanah Kali Kedinding"], "Krembangan": ["Dupak", "Kemayoran", "Krembangan Selatan", "Morokrembangan", "Perak Barat"], "Lakarsantri": ["Bangkingan", "Jeruk", "Lakarsantri", "Lidah Kulon", "Lidah Wetan", "Sumur Welut"], "Mulyorejo": ["Dukuh Sutorejo", "Kalijudan", "Kalisari", "Kejawen Putih Tambak", "Manyar Sabrangan", "Mulyorejo"], "Pabean Cantian": ["Bongkaran", "Krembangan Utara", "Nyamplungan", "Perak Timur", "Perak Utara"], "Pakal": ["Babat Jerawat", "Benowo", "Pakal", "Sumberrejo"], "Rungkut": ["Kali Rungkut", "Kedung Baruk", "Medokan Ayu", "Penjaringan Sari", "Rungkut Kidul", "Wonorejo Rungkut"], "Sambikerep": ["Bringin", "Lontar", "Made", "Sambikerep"], "Sawahan": ["Banyu Urip", "Kupang Krajan", "Pakis", "Petemon", "Putat Jaya", "Sawahan"], "Semampir": ["Ampel", "Pegirian", "Sidotopo", "Ujung", "Wonokusumo"], "Simokerto": ["Kapasan", "Sidodadi", "Simokerto", "Simolawang", "Tambakrejo"], "Suko Manunggal": ["Putat Gede", "Simomulyo", "Simomulyo Baru", "Sono Kwijenan", "Suko Manunggal", "Tanjungsari"], "Sukolilo": ["Gebang Putih", "Keputih", "Klampis Ngasem", "Medokan Semampir", "Menur Pumpungan", "Ngiden Jangkungan", "Semolowaru"], "Tambaksari": ["Dukuh Setro", "Gading", "Kapasmadya Baru", "Pacar Keling", "Pacar Kembang", "Ploso", "Rangkah", "Tambaksari"], "Tandes": ["Balongsari", "Banjar Sugihan", "Karangpoh", "Manukan Kulon", "Manukan Wetan", "Tandes"], "Tegalsari": ["Dr. Sutomo", "Kedungdoro", "Keputran", "Tegalsari", "Wonorejo Tegalsari"], "Tenggilis Mejoyo": ["Kendangsari", "Kutisari", "Panjang Jiwo", "Tenggilis Mejoyo"], "Wiyung": ["Babatan", "Balas Klumprik", "Jajar Tunggal", "Wiyung"], "Wonocolo": ["Bendul Merisi", "Jemur Wonosari", "Margorejo", "Sidosermo", "Siwalankerto"], "Wonokromo": ["Darmo", "Jagir", "Ngagel", "Ngagelrejo", "Sawunggaling", "Wonokromo"]
+    "Bulak": ["Bulak", "Kedung Cowek", "Kenjeran", "Sukolilo Baru"],
+    "Mulyorejo": ["Dukuh Sutorejo", "Kalijudan", "Kalisari", "Kejawen Putih Tambak", "Manyar Sabrangan", "Mulyorejo"],
+    "Sukolilo": ["Gebang Putih", "Keputih", "Klampis Ngasem", "Medokan Semampir", "Menur Pumpungan", "Ngiden Jangkungan", "Semolowaru"],
+    "Rungkut": ["Kali Rungkut", "Kedung Baruk", "Medokan Ayu", "Penjaringan Sari", "Rungkut Kidul", "Wonorejo Rungkut"],
+    "Gunung Anyar": ["Gunung Anyar", "Gunung Anyar Tambak", "Rungkut Menanggal", "Rungkut Tengah"],
+    "Tenggilis Mejoyo": ["Kendangsari", "Kutisari", "Panjang Jiwo", "Tenggilis Mejoyo"],
+    "Wonocolo": ["Bendul Merisi", "Jemur Wonosari", "Margorejo", "Sidosermo", "Siwalankerto"]
   };
 
   function initWilayah() {
@@ -138,16 +330,16 @@
     }
   }
 
-  // Anti-Back Button Loop
+  // Mencegah Tombol Back yang tidak disengaja
   window.history.pushState(null, "", window.location.href);
   window.onpopstate = function() {
       window.history.pushState(null, "", window.location.href);
-      Swal.fire({ toast: true, position: 'top', icon: 'warning', title: 'Gunakan tombol Keluar di atas', showConfirmButton: false, timer: 2000 });
+      Swal.fire({ toast: true, position: 'top', icon: 'warning', title: 'Gunakan tombol Tutup Shift', showConfirmButton: false, timer: 2000 });
   };
 
   window.onload = () => {
-    initWilayah(); // Render Dropdown Wilayah
-    loadAntreanKtp(); // Tarik file Drive
+    initWilayah(); // Render 7 Kecamatan
+    loadAntreanKtp(); // Tarik file pertama
   };
 
   async function callAPI(action, dataObj) {
@@ -156,15 +348,32 @@
   }
 
   function refreshApp() { location.reload(); }
-  function clearCache() { localStorage.clear(); sessionStorage.clear(); Swal.fire('Bersih', 'Cache Aplikasi dihapus', 'success'); }
+  
+  function clearForm() { 
+    document.getElementById('main-form').reset(); 
+    populateKelurahan();
+    document.getElementById('croppedBase64').value = "";
+    document.getElementById('ocr-status').innerText = '🤖 Standby'; 
+    document.getElementById('ocr-status').style.backgroundColor = 'var(--border)';
+    document.getElementById('ocr-status').style.color = 'var(--text-muted)';
+  }
 
+  // =========================================================================
+  // 1. ENGINE PENGAMBILAN BERKAS & AUTO-TRACKING RELAWAN
+  // =========================================================================
   async function loadAntreanKtp() {
-    Swal.fire({ title: 'Mencari Berkas KTP/KK...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    Swal.fire({ title: 'Membuka Brankas Drive...', text: 'Mencari tumpukan KTP yang dikirim Tim Lapangan.', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
     try {
       const res = await callAPI('getPendingKtp', {});
       Swal.close();
       if (res.totalAntrean !== 0 && res.currentFile) {
+        
+        // 1. Ambil File & Meta Data
         document.getElementById('fileId').value = res.currentFile.id;
+        activeFileName = res.currentFile.name;
+        activeTotal = res.totalAntrean;
+        
+        // 2. Tampilkan UI Crop
         document.getElementById('ktp-viewer').style.display = 'none';
         document.getElementById('crop-ui-container').style.display = 'block';
         
@@ -172,35 +381,89 @@
         img.src = res.currentFile.base64;
         if (cropper) cropper.destroy();
         cropper = new Cropper(img, { viewMode: 1, autoCropArea: 0.95 });
+
+        // 3. AUTO-TRACKING ENGINE (Ekstrak dari format Nama File)
+        const fileParts = activeFileName.split('_');
+        const trackingBanner = document.getElementById('tracking-banner');
+        
+        if (fileParts.length >= 3 && (fileParts[1] === "TIM" || fileParts[1] === "CALEG")) {
+           const uploaderNik = fileParts[2];
+           document.getElementById('koordinator').value = "TIM NIK: " + uploaderNik;
+           
+           let hpWargaTerekstrak = res.currentFile.meta_hp || "Diisi oleh AI/Sistem";
+           document.getElementById('hp').value = hpWargaTerekstrak.replace(/[^0-9]/g, '');
+
+           document.getElementById('lbl-uploader').innerText = (fileParts[1] === "TIM" ? "RELAWAN (" : "CALEG (") + uploaderNik + ")";
+           document.getElementById('lbl-hp-warga').innerText = hpWargaTerekstrak;
+           trackingBanner.style.display = "flex";
+        } else {
+           document.getElementById('koordinator').value = "INPUTER PUSAT";
+           trackingBanner.style.display = "none";
+        }
+
       } else {
-        document.getElementById('ktp-viewer').innerHTML = "<h3 style='color:var(--primary);'>🎉 KERANJANG KTP KOSONG!</h3><p>Tidak ada KTP yang perlu diketik.</p>";
+        document.getElementById('ktp-viewer').innerHTML = "<h2 style='color:var(--primary); font-size:36px; margin-bottom:10px;'>🎉 KERANJANG KOSONG!</h2><p style='color:var(--text-muted); font-size:18px;'>Seluruh data KTP lapangan telah berhasil Anda eksekusi.</p>";
       }
-    } catch(e) { Swal.fire('Error', 'Gagal memuat Drive: ' + e.message, 'error'); }
+    } catch(e) { Swal.fire('Error Database', 'Gagal memuat API Drive: ' + e.message, 'error'); }
   }
 
-  // EKSEKUSI CROP & KIRIM KE VISION AI
-  async function executeCrop() {
+  // =========================================================================
+  // 2. ENGINE CROP KTP (DENGAN ROTASI) & VISION AI (GEMINI)
+  // =========================================================================
+  function rotateImage(degree) { if (cropper) cropper.rotate(degree); }
+  function resetCrop() { if (cropper) cropper.reset(); }
+  
+  function handleDocTypeChange() {
+    const type = document.getElementById('jenis_dokumen').value;
+    document.getElementById('kk_container').style.display = type === 'KK' ? 'block' : 'none';
+  }
+
+  async function executeCropAndScan() {
     if (!cropper) return;
     const canvas = cropper.getCroppedCanvas({ width: 1200, fillColor: '#fff' });
     const finalBase64 = canvas.toDataURL('image/jpeg', 0.90);
     
+    document.getElementById('croppedBase64').value = finalBase64;
     document.getElementById('crop-ui-container').style.display = 'none';
+    
+    // Tampilkan Viewer Zoomable
     document.getElementById('ktp-viewer').style.display = 'block';
-    document.getElementById('ktp-viewer').innerHTML = `<img src='${finalBase64}' style='max-width:100%; border-radius:8px;'><br><div class="ocr-badge" id="ocr-status" style="margin-top:10px; display:inline-block; font-size:14px; padding:8px 15px; font-weight:bold; background-color:#FF9c08; color:#000;">🧠 Menunggu Hasil AI...</div>`;
     
-    Swal.fire({ title: 'Vision AI Membaca...', text: 'Mengekstrak data teks dari gambar KTP...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    var viewerHtml = [];
+    viewerHtml.push(`<h4 style='color:var(--primary); margin:0 0 15px 0; font-size: 20px; text-transform:uppercase;'>Sisa Antrean: ${activeTotal} Berkas</h4>`);
+    viewerHtml.push(`<div class='zoom-wrapper' id='zoom-container'><img src='${finalBase64}' id='live-zoom-img'></div>`);
+    viewerHtml.push(`<div class='zoom-hint'>🔍 Arahkan kursor / sentuh gambar untuk memperbesar detail (Zoom)</div>`);
+    viewerHtml.push(`<div class="ocr-badge" id="ocr-status" style="margin-top:25px; display:inline-block; font-size:16px; padding:12px 25px; font-weight:900; background-color:var(--accent-orange); color:#000;">🧠 AI Membaca Data...</div>`);
+    
+    document.getElementById('ktp-viewer').innerHTML = viewerHtml.join("");
+    
+    // Aktifkan Efek Magnifying Glass (Kaca Pembesar)
+    const img = document.getElementById('live-zoom-img');
+    const container = document.getElementById('zoom-container');
+    container.addEventListener('mousemove', function(e) {
+      const rect = container.getBoundingClientRect();
+      const xOrigin = ((e.clientX - rect.left) / rect.width) * 100;
+      const yOrigin = ((e.clientY - rect.top) / rect.height) * 100;
+      img.style.transformOrigin = xOrigin + "% " + yOrigin + "%";
+      img.style.transform = 'scale(2.5)';
+    });
+    container.addEventListener('mouseleave', function() { img.style.transformOrigin = "center center"; img.style.transform = 'scale(1)'; });
+    
+    Swal.fire({ title: 'Vision AI Bekerja...', text: 'Mengekstrak data teks dari gambar KTP secara presisi...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    
     const docType = document.getElementById('jenis_dokumen').value;
-    
     try {
       const res = await callAPI('extractAI', { base64Image: finalBase64, docType: docType });
       if (res.status === 'success') {
         const d = res.data;
-        Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'AI Sukses Membaca', showConfirmButton: false, timer: 2000 });
-        document.getElementById('ocr-status').innerText = `✅ Terekstrak Otomatis (${res.model})`;
-        document.getElementById('ocr-status').style.backgroundColor = 'var(--primary)';
-        document.getElementById('ocr-status').style.color = '#fff';
+        Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Data Berhasil Diekstrak', showConfirmButton: false, timer: 2000 });
         
-        // AUTO-FILL TEXT FIELDS
+        const badgeAI = document.getElementById('ocr-status');
+        badgeAI.innerText = `✅ Terekstrak Presisi (${res.model})`;
+        badgeAI.style.backgroundColor = 'var(--primary)';
+        badgeAI.style.color = '#fff';
+        
+        // AUTO-FILL FIELD TEKS
         if(d.alamat) document.getElementById('alamat').value = d.alamat;
         if(d.rt_rw) {
           let parts = d.rt_rw.split('/');
@@ -212,7 +475,7 @@
            document.getElementById('nama').value = d.anggota[0].nama || '';
         }
 
-        // AUTO-FILL SELECT DROPDOWNS (Kecamatan & Kelurahan)
+        // AUTO-FILL SELECT DROPDOWNS (Dengan Kunci Yurisdiksi 7 Area)
         if(d.kecamatan) {
           const kecSelect = document.getElementById('kecamatan');
           let matchedKec = Array.from(kecSelect.options).find(opt => opt.value === d.kecamatan.toUpperCase());
@@ -225,12 +488,15 @@
               let matchedKel = Array.from(kelSelect.options).find(opt => opt.value === d.kelurahan.toUpperCase());
               if (matchedKel) kelSelect.value = matchedKel.value;
             }
+          } else {
+             // Peringatan jika AI membaca kecamatan di luar 7 Yurisdiksi
+             Swal.fire({ toast: true, position: 'top-end', icon: 'warning', title: 'Kecamatan di luar Area Target', showConfirmButton: false, timer: 3000 });
           }
         }
       } else {
-        Swal.fire('AI Gagal Membaca', res.message, 'error');
-        document.getElementById('ocr-status').innerText = '⚠️ Ekstraksi AI Gagal';
-        document.getElementById('ocr-status').style.backgroundColor = '#e74c3c';
+        Swal.fire('KTP Buram / AI Gagal', res.message, 'error');
+        document.getElementById('ocr-status').innerText = '⚠️ Ekstraksi Gagal (Mohon Ketik Manual)';
+        document.getElementById('ocr-status').style.backgroundColor = 'var(--danger)';
         document.getElementById('ocr-status').style.color = '#fff';
       }
     } catch(err) {
@@ -238,14 +504,19 @@
     }
   }
 
+  function formatRTRW(input) { if(input.value !== "") input.value = input.value.replace(/[^0-9]/g, '').padStart(3, '0'); }
+
+  // =========================================================================
+  // 3. ENGINE PEMBUANG FILE RUSAK & PENYIMPAN DATABASE UTAMA
+  // =========================================================================
   async function buangKtp() {
     const fileId = document.getElementById('fileId').value;
     if (!fileId) return;
-    Swal.fire({ title: 'Buang Gambar Blur / Rusak?', icon: 'warning', showCancelButton: true, confirmButtonText: 'Ya, Buang!'}).then(async (r) => {
+    Swal.fire({ title: 'Buang Gambar Blur / Rusak?', text: 'File ini tidak akan dihitung ke Poin Relawan.', icon: 'warning', showCancelButton: true, confirmButtonColor: 'var(--danger)', confirmButtonText: 'Ya, Buang ke Sampah!'}).then(async (r) => {
       if(r.isConfirmed) {
-        Swal.fire({ title: 'Membuang ke Sampah...', didOpen: () => Swal.showLoading() });
+        Swal.fire({ title: 'Membuang ke Sampah...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
         await callAPI('trashKtp', { fileId: fileId });
-        document.getElementById('main-form').reset();
+        clearForm();
         loadAntreanKtp();
       }
     });
@@ -255,28 +526,152 @@
     const form = document.getElementById('main-form');
     if (!form.checkValidity()) return form.reportValidity();
     
+    // Validasi Mutlak 16 Digit NIK
+    const nikInput = document.getElementById('nik').value;
+    if(nikInput.length < 16) {
+       return Swal.fire('Format NIK Salah', 'Nomor Induk Kependudukan (NIK) wajib 16 Digit Angka.', 'warning');
+    }
+
+    const btnSubmit = document.getElementById('btn-submit');
+    btnSubmit.disabled = true;
+
     const payload = {
       fileId: document.getElementById('fileId').value,
+      croppedBase64: document.getElementById('croppedBase64').value,
       jenis_dokumen: document.getElementById('jenis_dokumen').value,
+      no_kk: document.getElementById('no_kk').value,
       alamat: document.getElementById('alamat').value,
-      rt: document.getElementById('rt').value, rw: document.getElementById('rw').value,
-      kecamatan: document.getElementById('kecamatan').value, kelurahan: document.getElementById('kelurahan').value,
-      nama_kegiatan: "INPUT KANTOR", koordinator: "INPUTER PUSAT",
-      anggota: [{ nik: document.getElementById('nik').value, nama: document.getElementById('nama').value, hp: document.getElementById('hp').value }]
+      rt: document.getElementById('rt').value, 
+      rw: document.getElementById('rw').value,
+      kecamatan: document.getElementById('kecamatan').value, 
+      kelurahan: document.getElementById('kelurahan').value,
+      nama_kegiatan: document.getElementById('nama_kegiatan').value, 
+      koordinator: document.getElementById('koordinator').value,
+      anggota: [{ nik: nikInput, nama: document.getElementById('nama').value, hp: document.getElementById('hp').value }]
     };
 
-    Swal.fire({ title: 'Menyimpan & Memindah File...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    Swal.fire({ title: 'Mengeksekusi Database...', html: 'Menyimpan data dan mencocokkan NIK...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    
     try {
       const res = await callAPI('simpanInputer', payload);
-      Swal.fire(res.status === 'success' ? 'Berhasil' : 'Error', res.message, res.status);
-      if(res.status === 'success') { form.reset(); loadAntreanKtp(); }
-    } catch(e) { Swal.fire('Error', e.message, 'error'); }
+      btnSubmit.disabled = false;
+      
+      // Respon Anti-Kanibal dari Google Apps Script
+      if(res.status === 'success') {
+         Swal.fire({ icon: 'success', title: 'Data Dikunci!', text: res.message, timer: 3000 });
+         clearForm(); 
+         loadAntreanKtp(); 
+      } else {
+         Swal.fire('Ditolak (Duplikasi Ditemukan)', res.message, 'error');
+      }
+    } catch(e) { 
+      btnSubmit.disabled = false;
+      Swal.fire('Error Server', e.message, 'error'); 
+    }
   }
 
   function doLogout() {
-    Swal.fire({ title: 'Keluar Kerja?', text: "Pastikan semua data KTP telah disubmit.", icon: 'warning', showCancelButton: true, confirmButtonColor: '#e74c3c', confirmButtonText: 'Ya, Keluar' }).then((result) => {
+    Swal.fire({ title: 'Tutup Shift?', text: "Pastikan semua data yang terbuka di layar telah dieksekusi.", icon: 'warning', showCancelButton: true, confirmButtonColor: '#e74c3c', confirmButtonText: 'Ya, Tutup Shift' }).then((result) => {
       if (result.isConfirmed) { localStorage.clear(); window.location.replace('index.html'); }
     });
+  }
+
+  // =========================================================================
+  // 4. MODAL PENCARIAN UNIVERSAL (DATABASE RAHASIA)
+  // =========================================================================
+  function openSearchModal() {
+    document.getElementById('search-modal').classList.add('active');
+    setTimeout(function() { document.getElementById('search-nik').focus(); }, 100);
+  }
+
+  function closeSearchModal(e) {
+    if (e && e.target !== document.getElementById('search-modal') && !e.target.classList.contains('close-modal')) return;
+    document.getElementById('search-modal').classList.remove('active');
+    setTimeout(function() {
+      document.getElementById('search-result-wrapper').style.display = 'none';
+      document.getElementById('search-result-header').style.display = 'none';
+      document.getElementById('search-nik').value = '';
+    }, 300);
+  }
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape" && document.getElementById('search-modal').classList.contains('active')) {
+      closeSearchModal();
+    }
+  });
+
+  async function executeSearchData() {
+    var query = document.getElementById('search-nik').value.trim();
+    if (query.length < 3) {
+      Swal.fire({ toast: true, position: 'top', icon: 'warning', title: 'Ketik minimal 3 huruf/angka', showConfirmButton: false, timer: 3000 });
+      return;
+    }
+    
+    document.getElementById('search-result-wrapper').style.display = 'none';
+    document.getElementById('search-result-header').style.display = 'none';
+    document.getElementById('search-loading').style.display = 'block';
+    
+    var btnTrigger = document.getElementById('btn-search-trigger');
+    btnTrigger.disabled = true;
+    btnTrigger.innerText = "MENCARI...";
+
+    try {
+      const res = await callAPI('searchUniversal', { query: query });
+      
+      document.getElementById('search-loading').style.display = 'none';
+      btnTrigger.disabled = false;
+      btnTrigger.innerText = "CARI DATA";
+      
+      if (!res.found || res.data.length === 0) {
+        Swal.fire({ icon: 'info', title: 'Data Nihil', text: 'Tidak ditemukan NIK atau Nama yang cocok dalam Sistem.' });
+        return;
+      }
+      
+      var headerDiv = document.getElementById('search-result-header');
+      headerDiv.innerHTML = "<div class='result-count-badge'>Ditemukan " + res.total + " Berkas Identik</div>";
+      headerDiv.style.display = 'block';
+      
+      var htmlWrapper = [];
+      for (var i = 0; i < res.data.length; i++) {
+        var t = res.data[i];
+        var hpStatus = t.hp ? t.hp : '<i style="color:var(--danger);">Kosong</i>';
+        
+        htmlWrapper.push("<div class='result-row'>");
+        htmlWrapper.push("<div class='result-data'>");
+        htmlWrapper.push("<table>");
+        htmlWrapper.push("<tr><td>NIK</td><td style='font-size: 18px; font-weight:900; color:var(--primary);'>" + t.nik + "</td></tr>");
+        htmlWrapper.push("<tr><td>NAMA LENGKAP</td><td style='font-size: 15px; font-weight:800; color:var(--text);'>" + t.nama + "</td></tr>");
+        htmlWrapper.push("<tr><td>NO WHATSAPP</td><td>" + hpStatus + "</td></tr>");
+        htmlWrapper.push("<tr><td>ALAMAT</td><td>" + t.alamat + ", RT " + t.rt + " / RW " + t.rw + "</td></tr>");
+        htmlWrapper.push("<tr><td>WILAYAH</td><td>" + t.kelurahan + ", KEC. " + t.kecamatan + "</td></tr>");
+        htmlWrapper.push("<tr><td>DIPROSES OLEH</td><td>" + (t.koordinator || 'SISTEM') + "</td></tr>");
+        htmlWrapper.push("</table>");
+        htmlWrapper.push("</div>");
+        
+        htmlWrapper.push("<div class='result-image-container'>");
+        if (t.imageBase64) {
+          htmlWrapper.push("<img src='" + t.imageBase64 + "' alt='Berkas Fisik'>");
+          htmlWrapper.push("<p style='font-size:13px; color:var(--text-muted); margin-top:15px; font-weight:800;'>Berkas Fisik Asli (Drive Pusat)</p>");
+        } else {
+          htmlWrapper.push("<div style='padding:25px; background:#fef2f2; border-radius:14px; border:3px dashed var(--danger); width: 85%;'>");
+          htmlWrapper.push("<h4 style='color:var(--danger); margin:0 0 10px 0; font-size:18px;'>Visual Tidak Tersedia</h4>");
+          htmlWrapper.push("<p style='font-size:14px; color:var(--text-muted); margin:0; line-height:1.5;'>Data ini diketik secara manual atau foto fisiknya telah dihapus dari Cloud oleh sistem.</p>");
+          htmlWrapper.push("</div>");
+        }
+        htmlWrapper.push("</div>");
+        htmlWrapper.push("</div>"); 
+      }
+      
+      var wrapper = document.getElementById('search-result-wrapper');
+      wrapper.innerHTML = htmlWrapper.join("");
+      wrapper.style.display = 'flex';
+
+    } catch (e) {
+      document.getElementById('search-loading').style.display = 'none';
+      btnTrigger.disabled = false;
+      btnTrigger.innerText = "CARI DATA";
+      Swal.fire('Terjadi Kesalahan API', e.message, 'error');
+    }
   }
 </script>
 </body>
