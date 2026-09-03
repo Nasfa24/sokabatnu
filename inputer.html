@@ -221,12 +221,12 @@
 
       <div class="form-group" id="kk_container" style="display:none;">
         <label>NOMOR KARTU KELUARGA (16 Digit)</label>
-        <input type="text" inputmode="numeric" maxlength="16" id="no_kk" name="no_kk" placeholder="Otomatis diekstrak AI..." oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        <input type="text" inputmode="numeric" maxlength="16" id="no_kk" name="no_kk" placeholder="Contoh : 357803..." oninput="this.value = this.value.replace(/[^0-9]/g, '')">
       </div>
 
       <div class="form-group">
         <label>Alamat Jalan (Sesuai KTP)</label>
-        <input type="text" id="alamat" name="alamat" required placeholder="Otomatis diekstrak AI..." oninput="this.value = this.value.toUpperCase()">
+        <input type="text" id="alamat" name="alamat" required placeholder="Contoh : Jl. Anggrek..." oninput="this.value = this.value.toUpperCase()">
       </div>
 
       <div class="grid-2">
@@ -243,7 +243,7 @@
       <!-- FILTER YURISDIKSI KETAT: Hanya 7 Kecamatan -->
       <div class="grid-2">
         <div class="form-group">
-          <label>Kecamatan (Terkunci Area Dapil)</label>
+          <label>Kecamatan</label>
           <select id="kecamatan" name="kecamatan" required onchange="populateKelurahan()">
             <option value="">-- PILIH KECAMATAN --</option>
           </select>
@@ -268,12 +268,12 @@
         </div>
 
         <label>Nomor Induk Kependudukan (16 Digit)</label>
-        <input type="text" id="nik" inputmode="numeric" maxlength="16" placeholder="Otomatis diekstrak AI..." required oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="font-size: 20px; letter-spacing: 2px;">
+        <input type="text" id="nik" inputmode="numeric" maxlength="16" placeholder="357803..." required oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="font-size: 20px; letter-spacing: 2px;">
         
         <label>Nama Lengkap (Sesuai KTP)</label>
-        <input type="text" id="nama" placeholder="Otomatis diekstrak AI..." required oninput="this.value = this.value.toUpperCase()">
+        <input type="text" id="nama" placeholder="Contoh : Muhammad..." required oninput="this.value = this.value.toUpperCase()">
         
-        <label>No. HP / WhatsApp <span style="color:var(--text-muted); font-size:12px; font-weight:600;">(Ditarik otomatis dari setoran Relawan)</span></label>
+        <label>No. HP / WhatsApp <span style="color:var(--text-muted); font-size:12px; font-weight:600;"> </span></label>
         <input type="text" id="hp" inputmode="numeric" placeholder="Menunggu sinkronisasi berkas..." required oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="border-color:var(--primary); background:#f0fdf4;">
         
         <!-- Hidden Inputs for Tracking -->
