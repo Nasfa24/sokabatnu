@@ -4,36 +4,23 @@
   <meta charset="UTF-8">
   <title>Aplikasi Tim - ECMS 2029</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <meta name="theme-color" content="#065f3a">
   
-  <!-- Dependensi Eksternal -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   
-  <!-- Peta (Leaflet.js) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   
   <style>
-    :root { 
-      --primary: #065f3a; 
-      --primary-light: #167a4e;
-      --accent-orange: #f59e0b; 
-      --accent-yellow: #fde047; 
-      --bg-body: #f0fdf4; 
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --border: #e2e8f0; 
-    }
+    :root { --primary: #065f3a; --accent-orange: #f59e0b; --accent-yellow: #fde047; --bg-body: #f0fdf4; --text-main: #1e293b; --text-muted: #64748b; --border: #e2e8f0; }
     * { box-sizing: border-box; touch-action: manipulation; user-select: none; }
-    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; padding-bottom: 80px; line-height: 1.5; overflow-x: hidden;}
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; padding-bottom: 80px; line-height: 1.5; overflow-x: hidden;}
     
     .wrapper { width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; padding: 15px; }
-    
     .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; display: flex; justify-content: space-around; padding: 12px 0 20px 0; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 1000; border-top: 1px solid var(--border); max-width: 800px; margin: 0 auto;}
     .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.2s; flex: 1; text-decoration: none;}
     .nav-item .icon { font-size: 24px; margin-bottom: 4px; filter: grayscale(100%) opacity(0.6); transition: 0.2s;}
@@ -47,23 +34,22 @@
     .sokabat-header { background: linear-gradient(180deg, #044b2e 0%, var(--primary) 100%); padding: 25px 15px 40px 15px; text-align: center; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 8px 0 var(--accent-orange), 0 15px 25px rgba(0,0,0,0.1); margin-bottom: -20px; color: white;}
     .profile-badge { background: rgba(255,255,255,0.2); padding: 6px 18px; border-radius: 20px; font-size: 12px; font-weight: 800; display: inline-block; margin-bottom: 15px; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.4); text-transform: uppercase;}
     .wallet-box { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; margin-bottom: 10px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);}
-    .wallet-box p { margin: 0; font-size: 11px; color: var(--accent-yellow); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;}
-    .wallet-box h1 { margin: 5px 0 0 0; font-size: 46px; font-weight: 900; line-height: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.3);}
+    .wallet-box p { margin: 0; font-size: 11px; color: var(--accent-yellow); font-weight: 800; letter-spacing: 1px;}
+    .wallet-box h1 { margin: 5px 0 0 0; font-size: 46px; font-weight: 900; line-height: 1; }
     .wallet-box .rupiah { font-size: 14px; font-weight: 600; color: #cbd5e1; margin-top: 5px; display: block;}
     
-    .card { background: #ffffff; padding: 24px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); position: relative; z-index: 10; margin-bottom: 20px;}
+    .card { background: #ffffff; padding: 24px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); margin-bottom: 20px;}
     .card-header { margin-bottom: 18px; border-bottom: 2px dashed var(--border); padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center;}
-    .card-header h3 { margin: 0; color: var(--primary); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;}
-    
-    .target-badge { background: var(--accent-orange); color: #000; font-weight: 900; font-size: 14px; text-align: center; padding: 12px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3); text-transform: uppercase;}
+    .card-header h3 { margin: 0; color: var(--primary); font-size: 17px; font-weight: 900;}
+    .target-badge { background: var(--accent-orange); color: #000; font-weight: 900; font-size: 14px; text-align: center; padding: 12px; border-radius: 30px; margin-bottom: 20px;}
     .progress-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px;}
-    .progress-header b { color: var(--primary); font-size: 15px; font-weight: 900; text-transform: uppercase;}
+    .progress-header b { color: var(--primary); font-size: 15px; font-weight: 900;}
     .progress-header .pct { color: var(--primary); font-size: 18px; font-weight: 900;}
-    .progress-bar-bg { background: #e2e8f0; height: 18px; border-radius: 10px; overflow: hidden; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);}
+    .progress-bar-bg { background: #e2e8f0; height: 18px; border-radius: 10px; overflow: hidden; width: 100%; }
     .progress-bar-fill { background: var(--primary); height: 100%; width: 0%; border-radius: 10px; transition: width 1s ease-in-out;}
     .progress-footer { text-align: center; font-size: 14px; font-weight: 700; color: var(--text-muted); margin-top: 15px;}
     
-    .btn { background: var(--primary); color: #ffffff; padding: 18px; border: none; border-radius: 14px; width: 100%; font-weight: 800; font-size: 15px; cursor:pointer; min-height: 54px; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px;}
+    .btn { background: var(--primary); color: #ffffff; padding: 18px; border: none; border-radius: 14px; width: 100%; font-weight: 800; font-size: 15px; cursor:pointer; min-height: 54px; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px;}
     .btn:active { transform: scale(0.97); }
     .btn-red { background: #ef4444; }
     .btn-orange { background: var(--accent-orange); color: #000; }
@@ -72,8 +58,8 @@
     input, select, textarea { width: 100%; padding: 16px; margin-bottom: 16px; border-radius: 12px; border: 2px solid var(--border); font-size: 16px; font-weight: 600; background: #f8fafc; transition: 0.2s; color: var(--text-main); font-family: inherit;}
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(6, 95, 58, 0.15);}
     
-    .text-muted { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; display: block; font-weight: 500; line-height: 1.5;}
-    .badge { padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 900; background: var(--primary); color: #fff; text-transform: uppercase; letter-spacing: 0.5px;}
+    .text-muted { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; display: block; font-weight: 500; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 900; background: var(--primary); color: #fff;}
     
     .upload-zone { border: 3px dashed var(--primary); border-radius: 16px; padding: 40px 20px; text-align: center; background: #f0fdf4; margin-bottom: 20px; cursor: pointer; transition: 0.2s; display: block;}
     .upload-zone:hover { background: #dcfce7; transform: scale(1.02); }
@@ -85,39 +71,31 @@
     #map { height: 300px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
     #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
     
-    .locked-banner { background: #fffbeb; border: 2px dashed #f59e0b; padding: 30px 20px; border-radius: 18px; text-align: center; color: #b45309; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.1);}
+    .locked-banner { background: #fffbeb; border: 2px dashed #f59e0b; padding: 30px 20px; border-radius: 18px; text-align: center; color: #b45309; margin-bottom: 20px;}
     .locked-banner h3 { margin: 0 0 10px 0; color: #d97706; font-size: 22px; font-weight: 900;}
     
-    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; outline: none; font-size: 15px; font-weight: 800; transition: 0.3s; display: flex; justify-content: space-between; align-items: center; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);}
-    .acc-btn:hover, .acc-btn.active { background-color: #e2e8f0; border-color: #cbd5e1; }
-    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 14px; color: var(--text-main); border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
+    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 800; border-radius: 10px; margin-bottom: 10px;}
+    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s; font-size: 14px; border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
     .acc-panel.show { padding: 15px 20px; max-height: 1000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
-    .acc-panel ul { padding-left: 18px; margin-top: 5px; line-height: 1.6;}
-    .acc-panel li { margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
 <nav class="bottom-nav">
   <a href="#" class="nav-item active" onclick="switchTab('sec-home', this)">
-    <span class="icon">🏠</span>
-    <span>Beranda</span>
+    <span class="icon">🏠</span><span>Beranda</span>
   </a>
   <a href="#" class="nav-item" onclick="switchTab('sec-rekrut', this)">
-    <span class="icon">📸</span>
-    <span>Rekrut</span>
+    <span class="icon">📸</span><span>Rekrut</span>
   </a>
   <a href="#" class="nav-item" onclick="switchTab('sec-validasi', this)">
-    <span class="icon">📷</span>
-    <span>Validasi</span>
+    <span class="icon">📷</span><span>Validasi</span>
   </a>
   <a href="#" class="nav-item" onclick="switchTab('sec-lapor', this)">
-    <span class="icon">📍</span>
-    <span>Lapor</span>
+    <span class="icon">📍</span><span>Lapor</span>
   </a>
 </nav>
 
-<!-- SECTION 1: BERANDA -->
 <div id="sec-home" class="tab-section active">
   <div class="sokabat-header">
     <div class="profile-badge">👤 <span id="user-name">Memuat Data...</span></div>
@@ -148,14 +126,13 @@
         <h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3>
         <span class="badge">DOKUMEN TIM</span>
       </div>
-      <span class="text-muted">Panduan absolut kampanye Politik Cinta & Tangan Yang Melayani.</span>
       
       <button class="acc-btn">1. KPI & Filosofi Dasar <span>▼</span></button>
       <div class="acc-panel">
         <ul>
-          <li>Target mengamankan 10.000 suara riil dengan mengelola 20.000 target pemilih (conversion rate 50%).</li>
+          <li>Target mengamankan 10.000 suara riil dengan mengelola 20.000 target pemilih.</li>
           <li>Menolak keras pendekatan politik transaksional (jual beli suara).</li>
-          <li>Fase pendekatan: Empati (hadir), Simpati (ikatan emosional), hingga Advokasi.</li>
+          <li>Fase pendekatan: Empati, Simpati, Advokasi.</li>
         </ul>
       </div>
 
@@ -163,18 +140,17 @@
       <div class="acc-panel">
         <ul>
           <li>Jangan melangkahi tokoh lokal (Ketua LPMK, RW, RT, KSH).</li>
-          <li><b>Kunjungan 0-0-0:</b> 0 Atribut Partai, 0 Janji Politik, 0 Permintaan Suara.</li>
-          <li>Wajib "kula nuwun" ke RW/RT; biarkan Ketua RT yang memimpin saat Home Visit.</li>
+          <li><b>Kunjungan 0-0-0:</b> 0 Atribut, 0 Janji, 0 Permintaan Suara.</li>
         </ul>
       </div>
 
       <button class="acc-btn">3. Eksekusi 4 Pilar <span>▼</span></button>
       <div class="acc-panel">
         <ul>
-          <li><b>Tebarkan Salam:</b> Sapa warga di pasar/terminal pukul 05.30-07.00 WIB tanpa atribut.</li>
-          <li><b>Berikan Makan:</b> Jumat Seribu Nasi Bungkus, Posko Piring Tetangga.</li>
-          <li><b>Sambung Silaturahmi:</b> Kunjungan tertutup. Grup WA Lingkar Peduli (tanpa politik).</li>
-          <li><b>Salat Malam:</b> Sajadah Cinta (salat jamaah, tausiyah).</li>
+          <li><b>Tebarkan Salam:</b> Sapa warga di pasar/terminal pagi hari.</li>
+          <li><b>Berikan Makan:</b> Jumat Seribu Nasi Bungkus.</li>
+          <li><b>Sambung Silaturahmi:</b> Kunjungan tertutup.</li>
+          <li><b>Salat Malam:</b> Sajadah Cinta.</li>
         </ul>
       </div>
     </div>
@@ -186,7 +162,6 @@
   </div>
 </div>
 
-<!-- SECTION 2: REKRUT -->
 <div id="sec-rekrut" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card" id="form-pemilih-container" style="border-top: 4px solid var(--primary);">
     <div class="card-header">
@@ -210,47 +185,39 @@
 
   <div id="locked-container" class="locked-banner" style="display:none;">
     <h3 style="font-size:26px;">🏆 MISI SELESAI!</h3>
-    <p style="font-size:15px; color:#92400e; font-weight:600; line-height:1.6;">Anda telah mencapai batas absolut <b>10 Pemilih Binaan</b>. Fokuskan energi Anda sekarang untuk membina mereka.</p>
-    <div style="background:#fff; padding:15px; border-radius:12px; margin-top:20px; color:var(--text-main); font-weight:700;">
-      Bonus Multiplier Scan QR Terbuka!
-    </div>
+    <p style="font-size:15px; color:#92400e; font-weight:600; line-height:1.6;">Anda telah mencapai batas absolut <b>10 Pemilih Binaan</b>.</p>
   </div>
 </div>
 
-<!-- SECTION 3: VALIDASI -->
 <div id="sec-validasi" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card" style="text-align:center; border-top: 4px solid var(--primary);">
     <div class="card-header">
       <h3 style="color: var(--primary);">📱 QR IDENTITAS TIM</h3>
       <span class="badge">WAJIB SCAN</span>
     </div>
-    <span class="text-muted">Tunjukkan Barcode ini ke Caleg saat pertemuan agar dipindai. Anda mendapat <b>10 Poin KPI</b>.</span>
+    <span class="text-muted">Tunjukkan Barcode ini ke Caleg saat pertemuan.</span>
     
     <div style="display:flex; justify-content:center; margin:20px 0;">
        <div id="qrcode-tim" style="padding:20px; background:#fff; border-radius:20px; border:4px dashed var(--primary); display: inline-block;"></div>
     </div>
-    <b style="color:var(--text-main); font-size: 18px; letter-spacing: 1px;">NIK: <span id="lbl-nik-tim" style="color:var(--primary);">-</span></b>
+    <b style="color:var(--text-main); font-size: 18px;">NIK: <span id="lbl-nik-tim" style="color:var(--primary);">-</span></b>
   </div>
 
   <div class="card" style="border-top: 4px solid var(--accent-orange);">
     <div class="card-header">
       <h3 style="color: var(--accent-orange);">📷 PINDAI QR CALEG</h3>
     </div>
-    <span class="text-muted">Gunakan kamera Anda untuk memindai HP Caleg. Membutuhkan verifikasi satelit GPS.</span>
-    
     <div id="reader"></div>
     <button class="btn btn-orange" id="btn-scan" onclick="mulaiScanner()">Buka Kamera Pemindai</button>
     <button class="btn btn-outline" id="btn-stop-scan" style="display:none;" onclick="hentikanScanner()">Batalkan Pemindaian</button>
   </div>
 </div>
 
-<!-- SECTION 4: LAPOR GIAT RELAWAN TERKALIBRASI -->
 <div id="sec-lapor" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card" style="border-top: 4px solid var(--accent-yellow);">
     <div class="card-header">
       <h3 style="color: #d97706;">📍 LAPOR GIAT LAPANGAN</h3>
     </div>
-    <span class="text-muted">Laporkan pergerakan Anda. Titik GPS dan metrik capaian langsung terkunci di sistem.</span>
     
     <select id="gt_skema" style="height: 55px;">
       <option value="" disabled selected>-- Pilih Skema Kegiatan --</option>
@@ -262,7 +229,6 @@
       <option value="Melayani Masyarakat">Melayani Masyarakat</option>
     </select>
     
-    <!-- METRIK INTERAKSI RELAWAN -->
     <div style="display: flex; gap: 10px; width: 100%;">
       <div style="flex: 1;">
         <label style="font-size: 12px; font-weight: 800; color: var(--text-muted);">🏡 RUMAH DIKUNJUNGI</label>
@@ -274,7 +240,7 @@
       </div>
     </div>
 
-    <textarea id="gt_keterangan" rows="4" placeholder="Tulis catatan atau kondisi warga di lapangan..."></textarea>
+    <textarea id="gt_keterangan" rows="4" placeholder="Tulis catatan lapangan..."></textarea>
     
     <div id="map"></div>
     <input type="hidden" id="gt_lat">
@@ -291,9 +257,7 @@
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
   
   let userObj = JSON.parse(localStorage.getItem('ecms_user') || '{}');
-  if(!userObj.nik) {
-      userObj = { nik: "3578000000000001", nama: "REL. AGUS KUNCORO" };
-  }
+  if(!userObj.nik) { userObj = { nik: "3578000000000001", nama: "REL. AGUS KUNCORO" }; }
 
   let map, marker, scannerKamera;
   let currentPoin = 0; 
@@ -369,20 +333,13 @@
           document.getElementById('locked-container').style.display = 'none';
         }
       }
-    } catch(e) {
-      Swal.close();
-      Swal.fire({ toast: true, position: 'top-end', icon: 'error', title: 'Satelit Sibuk', showConfirmButton: false, timer: 2000 });
-    }
+    } catch(e) { Swal.close(); }
   }
 
   async function cairkanBonus() {
     const today = new Date().getDate();
-    if (today !== 12) {
-      return Swal.fire({ title: 'Gerbang Terkunci', html: `Pencairan hanya dapat diajukan secara serentak setiap <b>Tanggal 12</b>.<br>Sekarang tanggal ${today}.`, icon: 'warning', confirmButtonColor: 'var(--primary)'});
-    }
-    if (currentPoin < 200) {
-      return Swal.fire({ title: 'Saldo Kurang', text: 'Batas minimum pengajuan adalah 200 Poin (Rp 200.000).', icon: 'warning' });
-    }
+    if (today !== 12) return Swal.fire({ title: 'Gerbang Terkunci', html: `Pencairan hanya dapat diajukan secara serentak setiap <b>Tanggal 12</b>.<br>Sekarang tanggal ${today}.`, icon: 'warning', confirmButtonColor: 'var(--primary)'});
+    if (currentPoin < 200) return Swal.fire({ title: 'Saldo Kurang', text: 'Batas minimum pengajuan adalah 200 Poin (Rp 200.000).', icon: 'warning' });
 
     Swal.fire({
       title: 'Ajukan Pencairan?',
@@ -422,7 +379,8 @@
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = async () => {
-      const namaFileAman = `KTP_TIM_${userObj.nik}_${Date.now()}_${file.name}`;
+      // FIX ARSITEKTUR FILE: Sisipkan No. WA HP Warga tepat setelah NIK TIM
+      const namaFileAman = `KTP_TIM_${userObj.nik}_${hp}_${Date.now()}_${file.name.replace(/_/g, '-')}`;
       const chunkData = [{
         name: namaFileAman,
         mimeType: file.type,
@@ -491,7 +449,6 @@
     }
   }
 
-  // PENGIRIMAN DATA LAPORAN GIAT TIM TERKALIBRASI
   async function kirimLaporanGiat() {
     const payload = { 
       skema: document.getElementById('gt_skema').value, 

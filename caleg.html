@@ -4,38 +4,23 @@
   <meta charset="UTF-8">
   <title>Dashboard Caleg - ECMS 2029</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <meta name="theme-color" content="#065f3a">
   
-  <!-- Dependensi Eksternal -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   
-  <!-- Peta (Leaflet.js) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   
   <style>
-    /* 1. VARIABEL & RESET */
-    :root { 
-      --primary: #065f3a; 
-      --primary-light: #167a4e;
-      --accent-orange: #f59e0b; 
-      --accent-yellow: #fde047; 
-      --bg-body: #f0fdf4; 
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --border: #e2e8f0; 
-    }
+    :root { --primary: #065f3a; --accent-orange: #f59e0b; --accent-yellow: #fde047; --bg-body: #f0fdf4; --text-main: #1e293b; --text-muted: #64748b; --border: #e2e8f0; }
     * { box-sizing: border-box; touch-action: manipulation; user-select: none; }
-    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; padding-bottom: 90px; line-height: 1.5; overflow-x: hidden; }
-    
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; padding-bottom: 90px; line-height: 1.5; overflow-x: hidden; }
     .wrapper { width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; padding: 15px; }
 
-    /* BOTTOM NAVIGATION */
     .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; display: flex; justify-content: space-around; padding: 12px 0 20px 0; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 1000; border-top: 1px solid var(--border); max-width: 800px; margin: 0 auto;}
     .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.2s; flex: 1; text-decoration: none;}
     .nav-item .icon { font-size: 22px; margin-bottom: 4px; filter: grayscale(100%) opacity(0.6); transition: 0.2s;}
@@ -46,31 +31,26 @@
     .tab-section.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
-    /* HEADER SOKABAT NU */
     .sokabat-header { background: linear-gradient(180deg, #044b2e 0%, var(--primary) 100%); padding: 30px 15px 45px 15px; text-align: center; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 8px 0 var(--accent-orange), 0 15px 25px rgba(0,0,0,0.1); margin-bottom: -20px; color: white;}
-    .sokabat-header h1 { color: var(--accent-yellow); margin: 0; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;}
-    .sokabat-header p { color: #f8fafc; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; margin-top: 5px; margin-bottom: 25px; text-transform: uppercase;}
-    
+    .sokabat-header h1 { color: var(--accent-yellow); margin: 0; font-size: 32px; font-weight: 900; letter-spacing: 1px;}
+    .sokabat-header p { font-size: 13px; font-weight: 600; letter-spacing: 1.5px; margin-top: 5px; margin-bottom: 25px;}
     .timer-grid { display: flex; justify-content: center; gap: 10px; }
-    .timer-box { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); padding: 12px 10px; border-radius: 12px; min-width: 70px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);}
-    .timer-box span { display: block; font-size: 28px; font-weight: 900; color: #ffffff; line-height: 1; }
-    .timer-box label { display: block; font-size: 11px; color: var(--accent-yellow); font-weight: 800; margin-top: 6px; letter-spacing: 0.5px;}
+    .timer-box { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); padding: 12px 10px; border-radius: 12px; min-width: 70px; }
+    .timer-box span { display: block; font-size: 28px; font-weight: 900; line-height: 1; }
+    .timer-box label { font-size: 11px; color: var(--accent-yellow); font-weight: 800; margin-top: 6px; letter-spacing: 0.5px;}
 
-    /* KARTU UMUM & PROGRESS */
-    .card { background: #ffffff; padding: 24px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); position: relative; z-index: 10; margin-bottom: 20px;}
+    .card { background: #ffffff; padding: 24px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); margin-bottom: 20px;}
     .card-header { margin-bottom: 18px; border-bottom: 2px dashed var(--border); padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center;}
-    .card-header h3 { margin: 0; color: var(--primary); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;}
-    
-    .target-badge { background: var(--accent-orange); color: #000; font-weight: 900; font-size: 14px; text-align: center; padding: 12px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3); text-transform: uppercase;}
+    .card-header h3 { margin: 0; color: var(--primary); font-size: 17px; font-weight: 900;}
+    .target-badge { background: var(--accent-orange); color: #000; font-weight: 900; font-size: 14px; text-align: center; padding: 12px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3); }
     .progress-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px;}
-    .progress-header b { color: var(--primary); font-size: 15px; font-weight: 900; text-transform: uppercase;}
+    .progress-header b { color: var(--primary); font-size: 15px; font-weight: 900;}
     .progress-header .pct { color: var(--primary); font-size: 18px; font-weight: 900;}
     .progress-bar-bg { background: #e2e8f0; height: 18px; border-radius: 10px; overflow: hidden; width: 100%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);}
     .progress-bar-fill { background: var(--primary); height: 100%; width: 0%; border-radius: 10px; transition: width 1s ease-in-out;}
     .progress-footer { text-align: center; font-size: 14px; font-weight: 700; color: var(--text-muted); margin-top: 15px;}
     
-    /* FORM, INPUT & TOMBOL */
-    .btn { background: var(--primary); color: #ffffff; padding: 18px; border: none; border-radius: 14px; width: 100%; font-weight: 800; font-size: 15px; cursor:pointer; min-height: 54px; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px;}
+    .btn { background: var(--primary); color: #ffffff; padding: 18px; border: none; border-radius: 14px; width: 100%; font-weight: 800; font-size: 15px; cursor:pointer; min-height: 54px; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px;}
     .btn:active { transform: scale(0.97); }
     .btn-red { background: #ef4444; }
     .btn-orange { background: var(--accent-orange); color: #000; }
@@ -80,45 +60,39 @@
     input, select, textarea { width: 100%; padding: 16px; margin-bottom: 16px; border-radius: 12px; border: 2px solid var(--border); font-size: 16px; font-weight: 600; background: #f8fafc; transition: 0.2s; color: var(--text-main); font-family: inherit;}
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(6, 95, 58, 0.15);}
     
-    .text-muted { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; display: block; font-weight: 500; line-height: 1.5;}
-    .badge { padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 900; background: var(--primary); color: #fff; text-transform: uppercase; letter-spacing: 0.5px;}
+    .text-muted { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; display: block; font-weight: 500;}
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 900; background: var(--primary); color: #fff;}
     .badge.orange { background: var(--accent-orange); color: #000; }
     .badge.red { background: #ef4444; color: #fff; }
-    
     .flex-row { display: flex; gap: 10px; width: 100%; }
     
-    /* STATISTIK */
     .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;}
     .stat-box { background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid var(--border); border-left: 5px solid var(--primary); text-align: left;}
-    .stat-box span { font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;}
+    .stat-box span { font-size: 11px; font-weight: 800; color: var(--text-muted); letter-spacing: 0.5px;}
     .stat-box h2 { margin: 5px 0 0 0; color: var(--primary); font-size: 26px; line-height: 1;}
     .stat-box.orange { border-left-color: var(--accent-orange); background: #fffbeb;} 
     .stat-box.orange h2 { color: #d97706; }
     
     .team-progress-bg { background: #e2e8f0; height: 8px; border-radius: 5px; width: 100%; margin-top: 8px; overflow: hidden;}
     .team-progress-fill { background: var(--primary); height: 100%; border-radius: 5px;}
-    .wd-card { border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; margin-bottom: 15px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.02); border-left: 5px solid #10b981;}
+    .wd-card { border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; margin-bottom: 15px; background: #fff; border-left: 5px solid #10b981;}
     .wd-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; }
     .wd-val { font-weight: 800; color: var(--text-main); }
     
-    /* UPLOAD ZONE */
     .upload-zone { border: 3px dashed var(--primary); border-radius: 16px; padding: 40px 20px; text-align: center; background: #f0fdf4; margin-bottom: 20px; cursor: pointer; transition: 0.2s; display: block;}
-    .upload-zone:hover { background: #dcfce7; transform: scale(1.02); }
     .upload-zone input[type="file"] { display: none; }
     .upload-zone p { margin: 10px 0 0 0; font-size: 16px; color: var(--primary); font-weight: 800;}
     .upload-zone span { font-size: 48px; display: block; margin-bottom: 5px;}
-    .upload-info { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; line-height: 1.5;}
+    .upload-info { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px;}
     .anti-kanibal-banner { background: #fee2e2; border: 1px solid #f87171; color: #991b1b; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 700; display: flex; gap: 12px; align-items: center; margin-bottom: 20px;}
     
     #map { height: 300px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
     #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
     
-    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; outline: none; font-size: 15px; font-weight: 800; transition: 0.3s; display: flex; justify-content: space-between; align-items: center; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);}
-    .acc-btn:hover, .acc-btn.active { background-color: #e2e8f0; border-color: #cbd5e1; }
-    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 14px; color: var(--text-main); border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
+    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 800; display: flex; justify-content: space-between; border-radius: 10px; margin-bottom: 10px;}
+    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s; font-size: 14px; border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
     .acc-panel.show { padding: 15px 20px; max-height: 1000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
-    .acc-panel ul { padding-left: 18px; margin-top: 5px; line-height: 1.6;}
-    .acc-panel li { margin-bottom: 10px; }
+    .acc-panel ul { padding-left: 18px; margin-top: 5px;}
   </style>
 </head>
 <body>
@@ -146,7 +120,6 @@
   </a>
 </nav>
 
-<!-- SECTION 1: BERANDA -->
 <div id="sec-home" class="tab-section active">
   <div class="sokabat-header">
     <h1>SOKABAT NU</h1>
@@ -188,8 +161,6 @@
         <h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3>
         <span class="badge">DOKUMEN RAHASIA</span>
       </div>
-      <span class="text-muted">Panduan absolut kampanye Politik Cinta & Tangan Yang Melayani.</span>
-      
       <button class="acc-btn">1. KPI & Filosofi Dasar <span>▼</span></button>
       <div class="acc-panel">
         <ul>
@@ -235,7 +206,6 @@
   </div>
 </div>
 
-<!-- SECTION 2: TIM & WD -->
 <div id="sec-tim" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card">
     <div class="card-header">
@@ -285,7 +255,6 @@
   </div>
 </div>
 
-<!-- SECTION 3: SETOR KTP -->
 <div id="sec-ktp" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card" style="border-top: 4px solid var(--primary);">
     <div class="card-header">
@@ -322,7 +291,6 @@
   </div>
 </div>
 
-<!-- SECTION 4: VALIDASI -->
 <div id="sec-validasi" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card" style="text-align:center; border-top: 4px solid var(--primary);">
     <div class="card-header">
@@ -349,7 +317,6 @@
   </div>
 </div>
 
-<!-- SECTION 5: LAPOR GIAT TERKALIBRASI METRIK -->
 <div id="sec-lapor" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card" style="border-top: 4px solid var(--accent-yellow);">
     <div class="card-header">
@@ -367,7 +334,6 @@
       <option value="Melayani Masyarakat">Melayani Masyarakat</option>
     </select>
     
-    <!-- METRIK INTERAKSI AKTIF -->
     <div class="flex-row">
       <div style="flex: 1;">
         <label style="font-size: 12px; font-weight: 800; color: var(--text-muted);">🏡 RUMAH DIKUNJUNGI</label>
@@ -507,7 +473,8 @@
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = async () => {
-      const namaFileAman = `KTP_CALEG_${NIK_CALEG}_${Date.now()}_${file.name}`;
+      // FIX ARSITEKTUR FILE: Sisipkan No. WA HP Warga tepat setelah NIK CALEG
+      const namaFileAman = `KTP_CALEG_${NIK_CALEG}_${hp}_${Date.now()}_${file.name.replace(/_/g, '-')}`;
       const chunkData = [{
         name: namaFileAman,
         mimeType: file.type,
@@ -562,7 +529,7 @@
           let roleBadge = t.role === 'KOORDINATOR' ? `<span class="badge">KOOR</span>` : `<span class="badge orange">${t.kategori || 'TIM'}</span>`;
           let statusLabel = isSelesai ? `<span style="color:#059669; font-size:12px; font-weight:900;">✓ MISI SELESAI</span>` : `<span style="color:var(--text-muted); font-size:12px; font-weight:700;">PROSES MENCARI...</span>`;
           html += `
-            <div style="border: 2px solid ${isSelesai ? '#10b981' : 'var(--border)'}; padding:18px; border-radius:12px; margin-bottom:15px; background: ${isSelesai ? '#f0fdf4' : '#ffffff'}; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <div style="border: 2px solid ${isSelesai ? '#10b981' : 'var(--border)'}; padding:18px; border-radius:12px; margin-bottom:15px; background: ${isSelesai ? '#f0fdf4' : '#ffffff'};">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;"><strong style="color:var(--text-main); font-size:16px;">${t.nama}</strong>${roleBadge}</div>
               <div style="display:flex; justify-content:space-between; align-items:center;">
                 <div style="font-size:13px; color:var(--text-main); font-weight:700;">Pencapaian: <strong style="font-size:16px; color:var(--primary);">${kumpul} / ${targetMaks}</strong></div>
@@ -638,6 +605,8 @@
       let antrean = [];
       for (let j = i; j < i + 3 && j < files.length; j++) antrean.push(await jadikanBase64(files[j]));
       try {
+        // FIX ARSITEKTUR FILE MASSAL (Menyisipkan tag MASSAL agar index array sesuai)
+        antrean.forEach(f => f.name = `KTP_CALEG_${NIK_CALEG}_MASSAL_${Date.now()}_${f.name.replace(/_/g, '-')}`);
         const res = await panggilAPI('uploadChunk', { filesBatch: antrean });
         if (res.status === 'error') return Swal.fire('Error', res.message, 'error');
         sukses += antrean.length; document.getElementById('up-count').innerText = sukses;
@@ -684,7 +653,6 @@
     }
   }
 
-  // PENGIRIMAN DATA LAPORAN GIAT CALEG TERKALIBRASI
   async function kirimLaporanGiat() {
     const payload = { 
       skema: document.getElementById('giat_skema').value, 
