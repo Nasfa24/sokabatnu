@@ -35,9 +35,7 @@
     
     .wrapper { width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; padding: 15px; }
 
-    /* =========================================
-       BOTTOM NAVIGATION (APP STYLE)
-       ========================================= */
+    /* BOTTOM NAVIGATION */
     .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; display: flex; justify-content: space-around; padding: 12px 0 20px 0; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 1000; border-top: 1px solid var(--border); max-width: 800px; margin: 0 auto;}
     .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.2s; flex: 1; text-decoration: none;}
     .nav-item .icon { font-size: 22px; margin-bottom: 4px; filter: grayscale(100%) opacity(0.6); transition: 0.2s;}
@@ -48,9 +46,7 @@
     .tab-section.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
-    /* =========================================
-       HEADER SOKABAT NU
-       ========================================= */
+    /* HEADER SOKABAT NU */
     .sokabat-header { background: linear-gradient(180deg, #044b2e 0%, var(--primary) 100%); padding: 30px 15px 45px 15px; text-align: center; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 8px 0 var(--accent-orange), 0 15px 25px rgba(0,0,0,0.1); margin-bottom: -20px; color: white;}
     .sokabat-header h1 { color: var(--accent-yellow); margin: 0; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;}
     .sokabat-header p { color: #f8fafc; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; margin-top: 5px; margin-bottom: 25px; text-transform: uppercase;}
@@ -60,9 +56,7 @@
     .timer-box span { display: block; font-size: 28px; font-weight: 900; color: #ffffff; line-height: 1; }
     .timer-box label { display: block; font-size: 11px; color: var(--accent-yellow); font-weight: 800; margin-top: 6px; letter-spacing: 0.5px;}
 
-    /* =========================================
-       KARTU UMUM & PROGRESS
-       ========================================= */
+    /* KARTU UMUM & PROGRESS */
     .card { background: #ffffff; padding: 24px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); position: relative; z-index: 10; margin-bottom: 20px;}
     .card-header { margin-bottom: 18px; border-bottom: 2px dashed var(--border); padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center;}
     .card-header h3 { margin: 0; color: var(--primary); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;}
@@ -75,9 +69,7 @@
     .progress-bar-fill { background: var(--primary); height: 100%; width: 0%; border-radius: 10px; transition: width 1s ease-in-out;}
     .progress-footer { text-align: center; font-size: 14px; font-weight: 700; color: var(--text-muted); margin-top: 15px;}
     
-    /* =========================================
-       FORM, INPUT & TOMBOL
-       ========================================= */
+    /* FORM, INPUT & TOMBOL */
     .btn { background: var(--primary); color: #ffffff; padding: 18px; border: none; border-radius: 14px; width: 100%; font-weight: 800; font-size: 15px; cursor:pointer; min-height: 54px; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px;}
     .btn:active { transform: scale(0.97); }
     .btn-red { background: #ef4444; }
@@ -95,9 +87,7 @@
     
     .flex-row { display: flex; gap: 10px; width: 100%; }
     
-    /* =========================================
-       STATISTIK & DAFTAR TIM & WITHDRAWAL
-       ========================================= */
+    /* STATISTIK */
     .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;}
     .stat-box { background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid var(--border); border-left: 5px solid var(--primary); text-align: left;}
     .stat-box span { font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;}
@@ -111,9 +101,7 @@
     .wd-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; }
     .wd-val { font-weight: 800; color: var(--text-main); }
     
-    /* =========================================
-       UPLOAD KTP ZONE (KHUSUS CALEG)
-       ========================================= */
+    /* UPLOAD ZONE */
     .upload-zone { border: 3px dashed var(--primary); border-radius: 16px; padding: 40px 20px; text-align: center; background: #f0fdf4; margin-bottom: 20px; cursor: pointer; transition: 0.2s; display: block;}
     .upload-zone:hover { background: #dcfce7; transform: scale(1.02); }
     .upload-zone input[type="file"] { display: none; }
@@ -122,11 +110,9 @@
     .upload-info { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px; line-height: 1.5;}
     .anti-kanibal-banner { background: #fee2e2; border: 1px solid #f87171; color: #991b1b; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 700; display: flex; gap: 12px; align-items: center; margin-bottom: 20px;}
     
-    /* Peta & Scanner */
     #map { height: 300px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
     #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
     
-    /* Buku Saku Accordion */
     .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; outline: none; font-size: 15px; font-weight: 800; transition: 0.3s; display: flex; justify-content: space-between; align-items: center; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.02);}
     .acc-btn:hover, .acc-btn.active { background-color: #e2e8f0; border-color: #cbd5e1; }
     .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 14px; color: var(--text-main); border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
@@ -137,9 +123,6 @@
 </head>
 <body>
 
-<!-- ==========================================
-     BOTTOM NAVIGATION BAR (APP STYLE)
-     ========================================== -->
 <nav class="bottom-nav">
   <a href="#" class="nav-item active" onclick="switchTab('sec-home', this)">
     <span class="icon">🏠</span>
@@ -163,9 +146,7 @@
   </a>
 </nav>
 
-<!-- ==========================================
-     SECTION 1: BERANDA (TARGET, STATISTIK, BUKU SAKU)
-     ========================================== -->
+<!-- SECTION 1: BERANDA -->
 <div id="sec-home" class="tab-section active">
   <div class="sokabat-header">
     <h1>SOKABAT NU</h1>
@@ -179,7 +160,6 @@
   </div>
 
   <div class="wrapper" style="padding-top: 25px;">
-    <!-- Target Kemenangan -->
     <div class="card" style="border-top: 4px solid var(--accent-orange); margin-top: 0;">
       <div class="target-badge">🎯 TARGET KEMENANGAN: 10.000 SUARA</div>
       <div class="progress-header">
@@ -192,7 +172,6 @@
       </div>
     </div>
 
-    <!-- Analitik Pergerakan -->
     <div class="card">
       <div class="card-header">
         <h3>📊 ANALITIK PERGERAKAN</h3>
@@ -204,7 +183,6 @@
       </div>
     </div>
 
-    <!-- Buku Saku -->
     <div class="card" style="border-top: 4px solid var(--primary);">
       <div class="card-header">
         <h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3>
@@ -257,11 +235,8 @@
   </div>
 </div>
 
-<!-- ==========================================
-     SECTION 2: MANAJEMEN TIM & WITHDRAWAL
-     ========================================== -->
+<!-- SECTION 2: TIM & WD -->
 <div id="sec-tim" class="tab-section wrapper" style="padding-top: 20px;">
-  
   <div class="card">
     <div class="card-header">
       <h3>👥 PENDAFTARAN TIM BARU</h3>
@@ -308,59 +283,47 @@
     <button class="btn btn-outline" onclick="muatDataWithdraw()">🔄 Cek Antrean Pencairan</button>
     <div id="withdraw-list-container" style="margin-top: 15px;"></div>
   </div>
-
 </div>
 
-<!-- ==========================================
-     SECTION 3: DATA KTP (SETOR SATUAN & MASSAL)
-     ========================================== -->
+<!-- SECTION 3: SETOR KTP -->
 <div id="sec-ktp" class="tab-section wrapper" style="padding-top: 20px;">
-  
-  <!-- Setor KTP Individual (Tanpa Mengetik) -->
   <div class="card" style="border-top: 4px solid var(--primary);">
     <div class="card-header">
       <h3>👥 SETOR KTP BINAAN (SATUAN)</h3>
     </div>
     
     <div class="upload-info">
-      💡 <b>BEBAS MENGETIK!</b> Anda tidak perlu mengetik Nama atau Alamat warga. Cukup foto KTP dan masukkan nomor WhatsApp mereka. Inputer Pusat yang akan mengetikkan seluruh biodatanya. 
+      💡 <b>BEBAS MENGETIK!</b> Cukup foto KTP dan masukkan WhatsApp warga. Inputer Pusat yang akan mengetikkan seluruh biodatanya. 
     </div>
     
-    <!-- Upload Zone Raksasa -->
     <label for="pm_ktp" class="upload-zone" id="drop-zone">
       <span>📸</span>
       <p id="file-name-display">Ketuk di sini untuk Memfoto KTP Warga</p>
       <input type="file" id="pm_ktp" accept="image/*" capture="environment" onchange="tampilkanNamaFileKTP()">
     </label>
     
-    <!-- HANYA 1 INPUT: WhatsApp -->
     <input type="text" id="pm_hp" inputmode="numeric" placeholder="📱 Masukkan No. WhatsApp Warga..." oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="height: 60px; font-size:18px;">
     
     <button class="btn" style="height: 60px; font-size: 18px;" onclick="setorKTPSatuan()">🚀 KIRIM KTP KE PUSAT</button>
   </div>
 
-  <!-- Upload Massal -->
   <div class="card" style="border-top: 4px solid var(--accent-orange);">
     <div class="card-header">
       <h3 style="color: var(--accent-orange);">📁 UPLOAD KTP MASSAL</h3>
     </div>
     <div class="anti-kanibal-banner" style="background: #fef9c3; border-color: #fde047; color: #854d0e;">
       <span style="font-size: 24px;">🤖</span> 
-      <span>Berkas akan divalidasi AI. NIK ganda dieliminasi.</span>
+      <span>Berkas divalidasi AI. NIK ganda dieliminasi.</span>
     </div>
-    <span class="text-muted">Pilih >100 berkas sekaligus. Sistem Auto-Chunking mencegah server error saat unggah massal.</span>
+    <span class="text-muted">Pilih berkas sekaligus. Sistem Auto-Chunking mencegah timeout.</span>
     
     <input type="file" id="bulkFiles" multiple accept=".pdf,image/*" style="background: #fff; padding: 12px; border: 2px dashed var(--accent-orange);">
     <button class="btn btn-orange" onclick="prosesUploadMassal()">MULAI UPLOAD MASSAL</button>
   </div>
-
 </div>
 
-<!-- ==========================================
-     SECTION 4: VALIDASI (QR CALEG & SCAN TIM)
-     ========================================== -->
+<!-- SECTION 4: VALIDASI -->
 <div id="sec-validasi" class="tab-section wrapper" style="padding-top: 20px;">
-  
   <div class="card" style="text-align:center; border-top: 4px solid var(--primary);">
     <div class="card-header">
       <h3 style="color: var(--primary);">📱 QR PRESENSI ANDA</h3>
@@ -384,18 +347,15 @@
     <button class="btn btn-orange" id="btn-scan" onclick="mulaiScanner()">Buka Kamera Pemindai</button>
     <button class="btn btn-outline" id="btn-stop-scan" style="display:none;" onclick="hentikanScanner()">Batalkan Pemindaian</button>
   </div>
-
 </div>
 
-<!-- ==========================================
-     SECTION 5: LAPOR GIAT & GEOTAG
-     ========================================== -->
+<!-- SECTION 5: LAPOR GIAT TERKALIBRASI METRIK -->
 <div id="sec-lapor" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card" style="border-top: 4px solid var(--accent-yellow);">
     <div class="card-header">
       <h3 style="color: #d97706;">📍 LAPOR GIAT LAPANGAN</h3>
     </div>
-    <span class="text-muted">Laporkan pergerakan lapangan Anda. Koordinat satelit akan direkam otomatis.</span>
+    <span class="text-muted">Laporkan pergerakan Anda. Koordinat satelit dan volume interaksi tercatat langsung.</span>
     
     <select id="giat_skema" style="height: 55px;">
       <option value="" disabled selected>-- Pilih Skema Kegiatan --</option>
@@ -407,6 +367,18 @@
       <option value="Melayani Masyarakat">Melayani Masyarakat</option>
     </select>
     
+    <!-- METRIK INTERAKSI AKTIF -->
+    <div class="flex-row">
+      <div style="flex: 1;">
+        <label style="font-size: 12px; font-weight: 800; color: var(--text-muted);">🏡 RUMAH DIKUNJUNGI</label>
+        <input type="number" id="giat_rumah" placeholder="0" min="0" value="0">
+      </div>
+      <div style="flex: 1;">
+        <label style="font-size: 12px; font-weight: 800; color: var(--text-muted);">👥 ORANG DITEMUI</label>
+        <input type="number" id="giat_orang" placeholder="0" min="0" value="0">
+      </div>
+    </div>
+
     <textarea id="giat_keterangan" rows="4" placeholder="Tambahkan catatan hasil pertemuan..."></textarea>
     
     <div id="map"></div>
@@ -415,14 +387,11 @@
     
     <div style="display: flex; gap:10px;">
       <button class="btn btn-outline" style="flex:1;" onclick="dapatkanLokasiGPS()">🛰️ AMBIL GPS</button>
-      <button class="btn btn-yellow" style="flex:1;" onclick="kirimLaporanGiat()">KIRIM LAPORAN</button>
+      <button class="btn btn-orange" style="flex:1;" onclick="kirimLaporanGiat()">KIRIM LAPORAN</button>
     </div>
   </div>
 </div>
 
-<!-- ==========================================
-     LOGIKA APLIKASI (JAVASCRIPT)
-     ========================================== -->
 <script>
   const API_URL = "https://script.google.com/macros/s/AKfycbyhZ5TzJKBNV3nsd059EAta3FrfhpbmRK5OQF54JejeI7HsXwqrDuBrS7Rfjl0vUNWygg/exec";
   const NIK_CALEG = localStorage.getItem('ecms_nik') || "081339760265";
@@ -432,13 +401,6 @@
   let petaSudahDimuat = false;
   
   window.onload = () => {
-    // Keamanan Akses
-    if (localStorage.getItem('ecms_role') !== 'CALEG') {
-      // Hapus komentar di bawah untuk proteksi live production
-      // window.location.replace('index.html');
-    }
-    
-    // Generate QR Code Caleg
     document.getElementById('lbl-nik-caleg').innerText = NIK_CALEG;
     new QRCode(document.getElementById("qrcode-caleg"), { 
       text: NIK_CALEG, width: 220, height: 220, colorDark : "#065f3a", colorLight : "#ffffff" 
@@ -449,26 +411,19 @@
     muatDataSistem();
   };
 
-  // ----------------------------------------------------
-  // SISTEM TAB NAVIGASI BAWAH (APP STYLE)
-  // ----------------------------------------------------
   function switchTab(sectionId, element) {
-    // Ubah UI Navigasi
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
     element.classList.add('active');
     
-    // Ubah Layar Section
     document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
     document.getElementById(sectionId).classList.add('active');
     
-    // Render Ulang Peta jika Tab Lapor Ditekan (Fix Bug Leaflet)
     if(sectionId === 'sec-lapor' && !petaSudahDimuat) {
       inisialisasiPeta();
       petaSudahDimuat = true;
     } else if (sectionId === 'sec-lapor' && map) {
       setTimeout(() => { map.invalidateSize(); }, 100);
     }
-    
     window.scrollTo(0,0);
   }
 
@@ -478,9 +433,6 @@
       Swal.fire({ toast: true, position: 'top', icon: 'warning', title: 'Gunakan tombol Keluar', showConfirmButton: false, timer: 2000 });
   };
 
-  /**
-   * FUNGSI API CORE
-   */
   async function panggilAPI(action, dataObj) {
     const res = await fetch(API_URL, { 
       method: 'POST', headers: { "Content-Type": "text/plain;charset=utf-8" }, 
@@ -533,9 +485,6 @@
     } catch(e) {}
   }
 
-  // ----------------------------------------------------
-  // SETOR KTP BINAAN SATUAN (BEBAS MENGETIK)
-  // ----------------------------------------------------
   function tampilkanNamaFileKTP() {
     const input = document.getElementById('pm_ktp');
     const display = document.getElementById('file-name-display');
@@ -553,15 +502,12 @@
     if (!hp || hp.length < 9) return Swal.fire('Data Kurang', 'Masukkan Nomor WhatsApp warga dengan benar.', 'warning');
 
     const file = fileInput.files[0];
-
     Swal.fire({ title: 'Menyandikan Data...', html: 'Menjahit NIK Anda ke dalam berkas...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
     
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = async () => {
-      // INI RAHASIA PELACAKAN: NIK Caleg disisipkan ke nama file
       const namaFileAman = `KTP_CALEG_${NIK_CALEG}_${Date.now()}_${file.name}`;
-      
       const chunkData = [{
         name: namaFileAman,
         mimeType: file.type,
@@ -569,19 +515,15 @@
         meta: { uploader_nik: NIK_CALEG, hp_warga: hp, role: 'CALEG' }
       }];
 
-      Swal.fire({ title: 'Menerbangkan Data...', text: 'Mengirim KTP ke Meja Inputer Pusat...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
       try {
         const res = await panggilAPI('uploadChunk', { filesBatch: chunkData });
         if (res.status === 'error') return Swal.fire('Gagal', res.message, 'error');
-        
         Swal.fire('Misi Berhasil!', 'KTP telah masuk ke server pusat atas nama Anda.', 'success');
         
-        // Reset Form
         document.getElementById('pm_ktp').value = '';
         document.getElementById('file-name-display').innerText = "Ketuk di sini untuk Memfoto KTP Warga";
         document.getElementById('file-name-display').style.color = "var(--primary)";
         document.getElementById('pm_hp').value = '';
-        
       } catch (e) {
         Swal.fire('Sinyal Terputus', 'Gagal mengirim. Pastikan internet di lokasi Anda stabil.', 'error');
       }
@@ -589,9 +531,6 @@
     reader.onerror = () => Swal.fire('Error', 'Gagal membaca foto dari perangkat Anda.', 'error');
   }
 
-  // ----------------------------------------------------
-  // MANAJEMEN TIM & WITHDRAWAL
-  // ----------------------------------------------------
   function daftarTimBaru() {
     const payload = { nik: document.getElementById('tm_nik').value, nama: document.getElementById('tm_nama').value, hp: document.getElementById('tm_hp').value, bank: document.getElementById('tm_bank').value, rekening: document.getElementById('tm_rek').value, kategori: document.getElementById('tm_kategori').value };
     if (payload.nik.length < 16 || !payload.nama || !payload.hp) return Swal.fire('Peringatan', 'Data belum lengkap/Valid.', 'warning');
@@ -667,14 +606,13 @@
   }
 
   function salinRekening(rekeningText) {
-    navigator.clipboard.writeText(rekeningText).then(() => { Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Nomor Rekening Disalin!', showConfirmButton: false, timer: 1500 }); })
-    .catch(err => { Swal.fire({ toast: true, position: 'top-end', icon: 'error', title: 'Gagal menyalin', showConfirmButton: false, timer: 1500 }); });
+    navigator.clipboard.writeText(rekeningText).then(() => { Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: 'Nomor Rekening Disalin!', showConfirmButton: false, timer: 1500 }); });
   }
 
   function konfirmasiLunas(id_withdraw, nama, rekening) {
-    Swal.fire({ title: 'Tandai Lunas?', html: `Pastikan Anda sudah mentransfer dana ke rekening <b>${rekening}</b> atas nama <b>${nama}</b>.<br><br>Status tidak dapat dibatalkan.`, icon: 'question', showCancelButton: true, confirmButtonColor: '#10b981', confirmButtonText: 'Ya, Sudah Ditransfer!' }).then(async (result) => {
+    Swal.fire({ title: 'Tandai Lunas?', html: `Pastikan dana sudah ditransfer ke <b>${rekening}</b> (${nama}).`, icon: 'question', showCancelButton: true, confirmButtonColor: '#10b981', confirmButtonText: 'Ya, Sudah Ditransfer!' }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire({ title: 'Menyimpan Bukti Transaksi...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+        Swal.fire({ title: 'Menyimpan...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
         try {
           const res = await panggilAPI('approveWithdraw', { id: id_withdraw });
           Swal.fire(res.status === 'success' ? 'Lunas!' : 'Gagal', res.message, res.status);
@@ -709,9 +647,6 @@
     document.getElementById('bulkFiles').value = '';
   }
 
-  // ----------------------------------------------------
-  // SCANNER TATAP MUKA (Pindai Tim)
-  // ----------------------------------------------------
   function mulaiScanner() {
     document.getElementById('reader').style.display = 'block'; document.getElementById('btn-scan').style.display = 'none'; document.getElementById('btn-stop-scan').style.display = 'block';
     scannerKamera = new Html5Qrcode("reader");
@@ -724,12 +659,9 @@
 
   function prosesPresensi(nikTim) {
     Swal.fire({ title: 'Validasi...', text: `Memverifikasi NIK: ${nikTim}`, icon: 'info', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
-    panggilAPI('catatPresensi', { nik_caleg: NIK_CALEG, nik_tim: nikTim }).then(res => { Swal.fire('Validasi Berhasil', `10 Poin KPI telah masuk untuk Tim (NIK: ${nikTim}).`, 'success'); }).catch(err => { Swal.fire('Mode Offline', 'Tersimpan lokal, akan diunggah saat sinyal stabil.', 'success'); });
+    panggilAPI('catatPresensi', { nik_caleg: NIK_CALEG, nik_tim: nikTim, nama_tim: 'REL. TERVERIFIKASI' }).then(res => { Swal.fire('Validasi Berhasil', `10 Poin KPI telah masuk untuk Tim (NIK: ${nikTim}).`, 'success'); }).catch(err => { Swal.fire('Mode Offline', 'Tersimpan lokal, akan diunggah saat sinyal stabil.', 'success'); });
   }
 
-  // ----------------------------------------------------
-  // GEOTAG & LAPORAN GIAT LAPANGAN
-  // ----------------------------------------------------
   function inisialisasiPeta() {
     const latAwal = -7.250445; const lngAwal = 112.768845;
     map = L.map('map').setView([latAwal, lngAwal], 13);
@@ -752,8 +684,19 @@
     }
   }
 
+  // PENGIRIMAN DATA LAPORAN GIAT CALEG TERKALIBRASI
   async function kirimLaporanGiat() {
-    const payload = { skema: document.getElementById('giat_skema').value, keterangan: document.getElementById('giat_keterangan').value, lat: document.getElementById('giat_lat').value, lng: document.getElementById('giat_lng').value, nik_pelapor: NIK_CALEG, tipe_pelapor: 'CALEG' };
+    const payload = { 
+      skema: document.getElementById('giat_skema').value, 
+      keterangan: document.getElementById('giat_keterangan').value, 
+      lat: document.getElementById('giat_lat').value, 
+      lng: document.getElementById('giat_lng').value, 
+      jumlah_rumah: document.getElementById('giat_rumah').value || 0,
+      jumlah_orang: document.getElementById('giat_orang').value || 0,
+      pelapor_nik: NIK_CALEG, 
+      nama_pelapor: 'CALEG UTAMA', 
+      tipe_pelapor: 'CALEG' 
+    };
     if (!payload.skema || !payload.lat) return Swal.fire('Peringatan', 'Lengkapi Skema dan deteksi GPS terlebih dahulu.', 'warning');
     Swal.fire({ title: 'Kirim Laporan?', icon: 'question', showCancelButton: true, confirmButtonText: 'Ya, Kirim' }).then(async (result) => {
       if (result.isConfirmed) {
@@ -761,15 +704,18 @@
         try {
           const res = await panggilAPI('laporGiat', payload);
           Swal.fire(res.status === 'success' ? 'Berhasil' : 'Gagal', res.message, res.status);
-          if(res.status === 'success') { document.getElementById('giat_skema').value = ''; document.getElementById('giat_keterangan').value = ''; }
+          if(res.status === 'success') { 
+            document.getElementById('giat_skema').value = ''; 
+            document.getElementById('giat_keterangan').value = ''; 
+            document.getElementById('giat_rumah').value = '0';
+            document.getElementById('giat_orang').value = '0';
+            muatStatistik();
+          }
         } catch(e) { Swal.fire('Offline', 'Disimpan sementara di memori HP.', 'success'); }
       }
     });
   }
 
-  // ----------------------------------------------------
-  // UTILITIES (ACCORDION BUKU SAKU)
-  // ----------------------------------------------------
   function inisialisasiAccordion() {
     const acc = document.getElementsByClassName("acc-btn");
     for (let i = 0; i < acc.length; i++) {
