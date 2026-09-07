@@ -86,36 +86,33 @@
     .upload-info { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-bottom: 20px;}
     
     #map { height: 300px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
-    #map-pergerakan { height: 400px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
+    #map-pergerakan { height: 450px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
     #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
     
-    /* TREE NETWORK CSS */
-    .tree-node { margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: #fff; overflow: hidden;}
-    .tree-parent { background: #f8fafc; padding: 15px 20px; font-weight: 800; cursor: pointer; display: flex; justify-content: space-between; color: var(--primary); transition: 0.3s;}
-    .tree-parent:hover { background: #e2e8f0; }
-    .tree-children { display: none; padding: 15px 20px; border-top: 1px solid var(--border); background: #fff;}
-    .tree-children div { padding: 8px 0; border-bottom: 1px dashed var(--border); font-size: 14px; font-weight: 600; color: var(--text-main);}
-    .tree-children div:last-child { border-bottom: none; }
+    /* VIRTUALIZED TREE CARD CSS (NEW V6.6) */
+    .tree-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+    .tree-card { border: 1px solid var(--border); border-radius: 14px; padding: 18px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;}
+    .tree-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;}
+    .tree-card-title { font-weight: 900; font-size: 15px; color: var(--text-main); }
+    .tree-card-badge { padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 900; letter-spacing: 0.5px;}
+    .badge-pasti { background: #fef3c7; color: #d97706; border: 1px solid #fde68a;}
+    .badge-pasang { background: #fce7f3; color: #be185d; border: 1px solid #fbcfe8;}
+    
+    /* BUKU SAKU ACCORDION */
+    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 800; border-radius: 10px; margin-bottom: 10px;}
+    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s; font-size: 14px; border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
+    .acc-panel.show { padding: 15px 20px; max-height: 1000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
+    .acc-panel ul { padding-left: 18px; margin-top: 5px;}
   </style>
 </head>
 <body>
 
 <nav class="bottom-nav">
-  <a href="#" class="nav-item active" onclick="switchTab('sec-home', this)">
-    <span class="icon">🏠</span><span>Beranda</span>
-  </a>
-  <a href="#" class="nav-item" onclick="switchTab('sec-tim', this)">
-    <span class="icon">👥</span><span>Tim & WD</span>
-  </a>
-  <a href="#" class="nav-item" onclick="switchTab('sec-ktp', this)">
-    <span class="icon">📸</span><span>Setor KTP</span>
-  </a>
-  <a href="#" class="nav-item" onclick="switchTab('sec-validasi', this)">
-    <span class="icon">📷</span><span>Validasi</span>
-  </a>
-  <a href="#" class="nav-item" onclick="switchTab('sec-lapor', this)">
-    <span class="icon">📍</span><span>Lapor</span>
-  </a>
+  <a href="#" class="nav-item active" onclick="switchTab('sec-home', this)"><span class="icon">🏠</span><span>Beranda</span></a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-tim', this)"><span class="icon">👥</span><span>Tim & WD</span></a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-ktp', this)"><span class="icon">📸</span><span>Setor KTP</span></a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-validasi', this)"><span class="icon">📷</span><span>Validasi</span></a>
+  <a href="#" class="nav-item" onclick="switchTab('sec-lapor', this)"><span class="icon">📍</span><span>Lapor</span></a>
 </nav>
 
 <!-- SECTION 1: BERANDA -->
@@ -135,21 +132,14 @@
     <!-- PROGRESS CARD -->
     <div class="card" style="border-top: 4px solid var(--accent-orange); margin-top: 0;">
       <div class="target-badge">🎯 TARGET KEMENANGAN: 10.000 SUARA</div>
-      <div class="progress-header">
-        <b>CALON PEMILIH BINAAN</b>
-        <span class="pct" id="progress-percent">0.0%</span>
-      </div>
+      <div class="progress-header"><b>CALON PEMILIH BINAAN</b><span class="pct" id="progress-percent">0.0%</span></div>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
-      <div class="progress-footer">
-        Berhasil Kumpul: <span id="progress-current" style="color:var(--primary); font-size:16px;">0</span> / Target: 25.000 Data
-      </div>
+      <div class="progress-footer">Berhasil Kumpul: <span id="progress-current" style="color:var(--primary); font-size:16px;">0</span> / Target: 25.000 Data</div>
     </div>
 
     <!-- STATS CARD -->
     <div class="card">
-      <div class="card-header">
-        <h3>📊 ANALITIK PERGERAKAN</h3>
-      </div>
+      <div class="card-header"><h3>📊 ANALITIK PERGERAKAN</h3></div>
       <div class="stat-grid">
         <div class="stat-box"><span>Rumah Dikunjungi</span><h2 id="st-rumah">0</h2></div>
         <div class="stat-box"><span>Tim Terbuka (Pasti)</span><h2 id="st-pasti">0</h2></div>
@@ -157,13 +147,19 @@
       </div>
     </div>
 
-    <!-- NEW: PETA SEBARAN (HEATMAP) -->
+    <!-- PETA SEBARAN (CANVAS/VECTOR RENDER) -->
     <div class="card" style="border-top: 4px solid #3b82f6;">
-      <div class="card-header">
-        <h3 style="color: #3b82f6;">🗺️ RADAR PERGERAKAN</h3>
+      <div class="card-header"><h3 style="color: #3b82f6;">🗺️ RADAR PERGERAKAN</h3></div>
+      <span class="text-muted">Lacak titik spasial pergerakan door-to-door.</span>
+      
+      <!-- MAP LEGEND -->
+      <div style="display:flex; justify-content:center; gap:15px; margin-bottom: 15px; font-size:12px; font-weight:800;">
+         <span style="color:#10b981;">🟢 Caleg</span>
+         <span style="color:#eab308;">🟡 Tim Pasti</span>
+         <span style="color:#ec4899;">🔴 Tim Pasang</span>
       </div>
-      <span class="text-muted">Lacak titik kumpul dan door-to-door (Tim & Caleg) berdasarkan waktu.</span>
-      <select id="filter-map-time" onchange="renderRadarMap()">
+
+      <select id="filter-map-time" onchange="renderRadarMap()" style="padding:10px; font-size:14px; margin-bottom:10px;">
         <option value="7">1 Minggu Terakhir</option>
         <option value="30" selected>1 Bulan Terakhir</option>
         <option value="90">3 Bulan Terakhir</option>
@@ -174,17 +170,23 @@
       <div id="map-pergerakan"></div>
     </div>
 
-    <!-- NEW: POHON JARINGAN -->
+    <!-- POHON JARINGAN VIRTUAL (V6.6 UPGRADE) -->
     <div class="card" style="border-top: 4px solid #8b5cf6;">
-      <div class="card-header">
-        <h3 style="color: #8b5cf6;">🌳 POHON JARINGAN</h3>
-      </div>
-      <span class="text-muted">Hierarki konsolidasi relawan lapis demi lapis.</span>
+      <div class="card-header"><h3 style="color: #8b5cf6;">🌳 POHON JARINGAN</h3></div>
+      <span class="text-muted">Hierarki konsolidasi relawan lapis demi lapis (Optimized Render).</span>
+      
       <div id="tree-container" style="margin-top: 15px;">
         <div style="text-align:center; padding: 20px; font-weight: bold; color:var(--text-muted)">Memuat struktur jaringan...</div>
       </div>
     </div>
     
+    <!-- BUKU SAKU -->
+    <div class="card" style="border-top: 4px solid var(--primary);">
+      <div class="card-header"><h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3></div>
+      <button class="acc-btn">1. KPI & Filosofi Dasar <span>▼</span></button>
+      <div class="acc-panel"><ul><li>Target 10.000 suara.</li><li>Tolak politik uang.</li><li>Empati, Simpati, Advokasi.</li></ul></div>
+    </div>
+
     <div style="display:flex; gap:10px; margin-bottom: 20px;">
       <button class="btn btn-outline" style="flex:1; font-size:12px;" onclick="muatDataSistem()">🔄 REFRESH DATA</button>
       <button class="btn btn-red" style="flex:1; font-size:12px;" onclick="prosesLogout()">🚪 KELUAR APLIKASI</button>
@@ -195,44 +197,26 @@
 <!-- SECTION 2: TIM & WD -->
 <div id="sec-tim" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card">
-    <div class="card-header">
-      <h3>👥 PENDAFTARAN TIM BARU</h3>
-    </div>
-    <span class="text-muted">Daftarkan relawan ke dalam sistem. Kuota otomatis terkunci di angka 10.</span>
-    
+    <div class="card-header"><h3>👥 PENDAFTARAN TIM BARU</h3></div>
     <input type="text" id="tm_nik" inputmode="numeric" maxlength="16" placeholder="NIK Relawan (16 Digit)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
     <input type="text" id="tm_nama" placeholder="Nama Lengkap Sesuai KTP">
     <input type="text" id="tm_hp" inputmode="numeric" placeholder="No WhatsApp (Contoh: 0812...)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-    
     <div class="flex-row">
         <input type="text" id="tm_bank" placeholder="Nama Bank" style="flex:1;">
         <input type="text" id="tm_rek" inputmode="numeric" placeholder="Nomor Rekening" style="flex:1;" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
     </div>
-    
-    <select id="tm_kategori">
-      <option value="PASTI">PASUKAN INTI (TERBUKA / PASTI)</option>
-      <option value="PASANG">PASUKAN BAYANGAN (RAHASIA / PASANG)</option>
-    </select>
-    
+    <select id="tm_kategori"><option value="PASTI">PASUKAN INTI (TERBUKA)</option><option value="PASANG">PASUKAN BAYANGAN (RAHASIA)</option></select>
     <button class="btn" onclick="daftarTimBaru()">SIMPAN DATA TIM</button>
   </div>
   
   <div class="card">
-    <div class="card-header">
-      <h3>🏆 MANAJEMEN TARGET TIM</h3>
-      <span class="badge orange">STRICT RULE: 10</span>
-    </div>
-    <span class="text-muted">Pantau pencapaian 10 KTP Binaan per Tim.</span>
+    <div class="card-header"><h3>🏆 MANAJEMEN TARGET TIM</h3><span class="badge orange">STRICT RULE: 10</span></div>
     <button class="btn btn-outline" onclick="muatProgressTim()">🔄 Muat Data Pergerakan Tim</button>
     <div id="tim-list-container" style="margin-top: 15px;"></div>
   </div>
 
   <div class="card" style="border-top: 4px solid #10b981;">
-    <div class="card-header">
-      <h3 style="color: #10b981;">💸 MANAJEMEN PENCAIRAN</h3>
-      <span class="badge red">TGL 12</span>
-    </div>
-    <span class="text-muted">Setujui permintaan penarikan dana dari Tim yang telah mencapai ≥ 200 Poin.</span>
+    <div class="card-header"><h3 style="color: #10b981;">💸 MANAJEMEN PENCAIRAN</h3><span class="badge red">TGL 12</span></div>
     <button class="btn btn-outline" onclick="muatDataWithdraw()">🔄 Cek Antrean Pencairan</button>
     <div id="withdraw-list-container" style="margin-top: 15px;"></div>
   </div>
@@ -241,12 +225,9 @@
 <!-- SECTION 3: SETOR KTP -->
 <div id="sec-ktp" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card" style="border-top: 4px solid var(--primary);">
-    <div class="card-header">
-      <h3>👥 SETOR KTP BINAAN (SATUAN)</h3>
-    </div>
+    <div class="card-header"><h3>👥 SETOR KTP BINAAN (SATUAN)</h3></div>
     <label for="pm_ktp" class="upload-zone" id="drop-zone">
-      <span>📸</span>
-      <p id="file-name-display">Ketuk di sini untuk Memfoto KTP Warga</p>
+      <span>📸</span><p id="file-name-display">Ketuk di sini untuk Memfoto KTP Warga</p>
       <input type="file" id="pm_ktp" accept="image/*" capture="environment" onchange="tampilkanNamaFileKTP()">
     </label>
     <input type="text" id="pm_hp" inputmode="numeric" placeholder="📱 Masukkan No. WhatsApp Warga..." oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="height: 60px; font-size:18px;">
@@ -309,6 +290,7 @@
   let map, marker, scannerKamera;
   let radarMap, radarMarkers = [];
   let globalGiatData = [];
+  let globalTreeData = [];
   let petaSudahDimuat = false;
   let radarSudahDimuat = false;
   
@@ -317,6 +299,7 @@
     new QRCode(document.getElementById("qrcode-caleg"), { text: NIK_CALEG, width: 220, height: 220, colorDark : "#065f3a", colorLight : "#ffffff" });
     inisialisasiTimer();
     muatDataSistem();
+    inisialisasiAccordion();
   };
 
   function switchTab(sectionId, element) {
@@ -331,7 +314,6 @@
       setTimeout(() => { map.invalidateSize(); }, 100);
     }
     
-    // Fitur Refresh Peta Radar Jika Tab Beranda Ditekan
     if (sectionId === 'sec-home') {
        if(!radarSudahDimuat) { inisialisasiRadarMap(); radarSudahDimuat = true; }
        if(radarMap) setTimeout(() => { radarMap.invalidateSize(); renderRadarMap(); }, 100);
@@ -357,7 +339,7 @@
   }
 
   function prosesLogout() {
-    Swal.fire({ title: 'Akhiri Sesi?', text: "Anda akan keluar.", icon: 'warning', showCancelButton: true, confirmButtonColor: '#ef4444', confirmButtonText: 'Ya, Keluar' }).then((r) => {
+    Swal.fire({ title: 'Akhiri Sesi?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#ef4444', confirmButtonText: 'Ya' }).then((r) => {
       if (r.isConfirmed) { localStorage.clear(); window.location.replace('index.html'); }
     });
   }
@@ -366,7 +348,7 @@
     muatStatistik();
     muatProgressTim();
     muatDataWithdraw(); 
-    muatAnalitikCaleg(); // Peta & Jaringan
+    muatAnalitikCaleg(); 
   }
 
   async function muatStatistik() {
@@ -375,9 +357,8 @@
       if (res.status === 'success') {
         let tp = res.data.total_pemilih || 0;
         document.getElementById('progress-current').innerText = tp.toLocaleString('id-ID');
-        let pct = Math.min((tp / TARGET_NASIONAL) * 100, 100);
-        document.getElementById('progress-percent').innerText = pct.toFixed(1) + "%";
-        document.getElementById('progress-fill').style.width = pct + "%";
+        document.getElementById('progress-percent').innerText = Math.min((tp / TARGET_NASIONAL) * 100, 100).toFixed(1) + "%";
+        document.getElementById('progress-fill').style.width = Math.min((tp / TARGET_NASIONAL) * 100, 100) + "%";
         document.getElementById('st-rumah').innerText = (res.data.total_rumah_dikunjungi || 0).toLocaleString('id-ID');
         document.getElementById('st-pasti').innerText = (res.data.total_tim_pasti || 0).toLocaleString('id-ID');
         document.getElementById('st-pasang').innerText = (res.data.total_tim_pasang || 0).toLocaleString('id-ID');
@@ -386,27 +367,26 @@
   }
 
   // ==============================================================
-  // ENGINE ANALITIK PETA (RADAR) & POHON JARINGAN
+  // ENGINE PETA (VEKTOR/CANVAS UNTUK PERFORMA TINGGI)
   // ==============================================================
   async function muatAnalitikCaleg() {
     try {
        const res = await panggilAPI('getCalegAnalytics', {});
        if (res.status === 'success') {
           globalGiatData = res.data.map || [];
-          renderRadarMap(); // Render peta
-          renderPohonJaringan(res.data.tree || []); // Render pohon
+          renderRadarMap(); 
+          renderPohonJaringanGrid(res.data.tree || []); 
        }
     } catch(e) {}
   }
 
   function inisialisasiRadarMap() {
-     radarMap = L.map('map-pergerakan').setView([-7.250445, 112.768845], 12);
+     radarMap = L.map('map-pergerakan', { preferCanvas: true }).setView([-7.250445, 112.768845], 12);
      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '© OS' }).addTo(radarMap);
   }
 
   function renderRadarMap() {
      if(!radarMap) return;
-     // Bersihkan marker lama
      radarMarkers.forEach(m => radarMap.removeLayer(m));
      radarMarkers = [];
 
@@ -417,49 +397,97 @@
         let tglGiat = new Date(g.tgl).getTime();
         let selisihHari = (now - tglGiat) / (1000 * 3600 * 24);
 
-        if (selisihHari <= hariFilter) {
-           if(g.lat && g.lng) {
-              let iconColor = g.nama.includes("CALEG") ? "#f59e0b" : "#3b82f6"; // Orange = Caleg, Biru = Tim
-              let markerHtml = `<div style="background-color:${iconColor}; width:15px; height:15px; border-radius:50%; border:2px solid white; box-shadow:0 0 4px rgba(0,0,0,0.5);"></div>`;
-              let customIcon = L.divIcon({ html: markerHtml, className: '', iconSize: [15, 15] });
-              
-              let m = L.marker([g.lat, g.lng], {icon: customIcon}).bindPopup(`<b>${g.nama}</b><br>${g.skema}<br><small>${new Date(g.tgl).toLocaleDateString('id-ID')}</small>`).addTo(radarMap);
-              radarMarkers.push(m);
-           }
+        if (selisihHari <= hariFilter && g.lat && g.lng) {
+            let fillColor = '#10b981'; // Hijau (CALEG) default
+            if (g.kategori === 'PASTI') fillColor = '#eab308'; // Kuning
+            if (g.kategori === 'PASANG') fillColor = '#ec4899'; // Pink
+
+            // Menggunakan Vector Circle Marker, 100x Lebih ringan dari DOM Icon
+            let m = L.circleMarker([g.lat, g.lng], {
+                radius: 6,
+                fillColor: fillColor,
+                color: '#ffffff',
+                weight: 1.5,
+                opacity: 1,
+                fillOpacity: 0.9
+            }).bindPopup(`<b>${g.nama}</b><br>${g.skema}<br><small>${new Date(g.tgl).toLocaleDateString('id-ID')}</small>`);
+            
+            m.addTo(radarMap);
+            radarMarkers.push(m);
         }
      });
   }
 
-  function renderPohonJaringan(treeData) {
+  // ==============================================================
+  // ENGINE POHON JARINGAN (GRID VIRTUALIZATION)
+  // ==============================================================
+  function renderPohonJaringanGrid(treeData) {
+     globalTreeData = treeData;
      const container = document.getElementById('tree-container');
-     if (treeData.length === 0) { container.innerHTML = '<p style="text-align:center;">Belum ada jaringan yang terbentuk.</p>'; return; }
+     if (treeData.length === 0) { container.innerHTML = '<p style="text-align:center;">Belum ada jaringan.</p>'; return; }
 
-     let html = `<div class="tree-node"><div class="tree-parent" style="background:var(--primary); color:#fff;">🌳 CALEG UTAMA (SUPER ADMIN)</div><div class="tree-children" style="display:block;">`;
+     let html = `
+        <input type="text" id="search-tree" placeholder="🔍 Cari Nama Tim / Relawan..." oninput="filterPohon(this.value)" style="margin-bottom:15px; background:#fff;">
+        <div id="tree-grid" class="tree-grid"></div>
+     `;
+     container.innerHTML = html;
+     drawGridNodes(treeData);
+  }
+
+  function drawGridNodes(data) {
+     const grid = document.getElementById('tree-grid');
+     if(!grid) return;
      
-     treeData.forEach((tim, i) => {
-        let pemilihList = tim.pemilih.map(p => `<div>&nbsp;&nbsp;↳ 👤 ${p}</div>`).join('');
-        if (pemilihList === '') pemilihList = `<div>&nbsp;&nbsp;↳ <i style="color:#ef4444">Belum ada Pemilih</i></div>`;
-        
-        let badge = tim.kategori === 'PASTI' ? '🟢 PASTI' : '🔴 RAHASIA';
-        
+     if(data.length === 0) { grid.innerHTML = '<p style="font-size:13px; color:var(--text-muted);">Tidak ada hasil ditemukan.</p>'; return; }
+
+     let html = '';
+     data.forEach((tim, index) => {
+        let isPasti = tim.kategori === 'PASTI';
+        let badgeClass = isPasti ? 'badge-pasti' : 'badge-pasang';
+        let fillCol = isPasti ? '#d97706' : '#be185d';
+        let target = tim.kategori === 'KOORDINATOR' ? 50 : 10;
+        let pct = Math.min((tim.pemilih.length / target) * 100, 100);
+
+        // Find true index in global array for the modal
+        let trueIndex = globalTreeData.findIndex(t => t.nama_tim === tim.nama_tim);
+
         html += `
-          <div class="tree-node" style="margin: 10px 0;">
-             <div class="tree-parent" onclick="toggleTree('tree-node-${i}')">
-                <span>👥 ${tim.nama_tim} (${tim.pemilih.length} Binaan)</span>
-                <span style="font-size:11px;">${badge}</span>
+          <div class="tree-card">
+             <div>
+                <div class="tree-card-header">
+                   <div class="tree-card-title">👥 ${tim.nama_tim}</div>
+                   <div class="tree-card-badge ${badgeClass}">${tim.kategori}</div>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:6px; font-weight:700; color:var(--text-muted);">
+                   <span>Pemilih Binaan</span> <span>${tim.pemilih.length} / ${target}</span>
+                </div>
+                <div class="team-progress-bg" style="height:6px; margin-bottom:15px;"><div class="team-progress-fill" style="width:${pct}%; background:${fillCol}"></div></div>
              </div>
-             <div class="tree-children" id="tree-node-${i}">${pemilihList}</div>
+             <button class="btn btn-outline" style="padding:10px; font-size:12px; min-height:0; margin:0;" onclick="bukaModalPemilih(${trueIndex})">Lihat Daftar Pemilih</button>
           </div>
         `;
      });
-     html += `</div></div>`;
-     container.innerHTML = html;
+     grid.innerHTML = html;
   }
 
-  function toggleTree(id) {
-     let el = document.getElementById(id);
-     if(el.style.display === "block") el.style.display = "none";
-     else el.style.display = "block";
+  function filterPohon(val) {
+     let lowerVal = val.toLowerCase();
+     let filtered = globalTreeData.filter(t => t.nama_tim.toLowerCase().includes(lowerVal));
+     drawGridNodes(filtered);
+  }
+
+  function bukaModalPemilih(index) {
+     let tim = globalTreeData[index];
+     let listHtml = tim.pemilih.map(p => `<div style="padding:12px 15px; border-bottom:1px solid #e2e8f0; text-align:left; font-size:14px; font-weight:600; color:var(--text-main);">👤 ${p}</div>`).join('');
+     if(!listHtml) listHtml = '<p style="color:#ef4444; padding:20px;">Belum ada pemilih binaan.</p>';
+     
+     Swal.fire({
+        title: `<div style="font-size:18px;">Binaan: ${tim.nama_tim}</div>`,
+        html: `<div style="max-height:50vh; overflow-y:auto; border:2px solid var(--border); border-radius:12px; background:#f8fafc;">${listHtml}</div>`,
+        confirmButtonText: 'Tutup',
+        confirmButtonColor: 'var(--primary)',
+        width: 400
+     });
   }
 
   // ==============================================================
@@ -475,8 +503,8 @@
   async function setorKTPSatuan() {
     const fileInput = document.getElementById('pm_ktp');
     const hp = document.getElementById('pm_hp').value;
-    if (!fileInput.files || fileInput.files.length === 0) return Swal.fire('KTP Kosong', 'Harap jepret KTP terlebih dahulu.', 'warning');
-    if (!hp || hp.length < 9) return Swal.fire('Data Kurang', 'Masukkan Nomor WhatsApp.', 'warning');
+    if (!fileInput.files || fileInput.files.length === 0) return Swal.fire('Kosong', 'Harap jepret KTP.', 'warning');
+    if (!hp || hp.length < 9) return Swal.fire('Kurang', 'Masukkan No WA.', 'warning');
 
     const file = fileInput.files[0];
     Swal.fire({ title: 'Menyandikan Data...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
@@ -492,13 +520,13 @@
         if (res.status === 'error') return Swal.fire('Gagal', res.message, 'error');
         Swal.fire('Misi Berhasil!', 'KTP telah masuk ke server.', 'success');
         document.getElementById('pm_ktp').value = ''; document.getElementById('file-name-display').innerText = "Ketuk di sini untuk Memfoto KTP Warga"; document.getElementById('pm_hp').value = '';
-      } catch (e) { Swal.fire('Sinyal Terputus', 'Gagal mengirim.', 'error'); }
+      } catch (e) { Swal.fire('Error', 'Sinyal Terputus.', 'error'); }
     };
   }
 
   function daftarTimBaru() {
     const payload = { nik: document.getElementById('tm_nik').value, nama: document.getElementById('tm_nama').value, hp: document.getElementById('tm_hp').value, bank: document.getElementById('tm_bank').value, rekening: document.getElementById('tm_rek').value, kategori: document.getElementById('tm_kategori').value };
-    if (payload.nik.length < 16 || !payload.nama || !payload.hp) return Swal.fire('Peringatan', 'Data belum lengkap/Valid.', 'warning');
+    if (payload.nik.length < 16 || !payload.nama || !payload.hp) return Swal.fire('Peringatan', 'Data belum lengkap.', 'warning');
     Swal.fire({ title: 'Konfirmasi', html: `Daftarkan <b>${payload.nama}</b>?`, icon: 'question', showCancelButton: true, confirmButtonText: 'Simpan Data' }).then(async (r) => {
       if (r.isConfirmed) {
         Swal.fire({ title: 'Injeksi Data...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
@@ -615,6 +643,18 @@
     Swal.fire('Sukses', res.message, 'success');
     document.getElementById('giat_skema').value = ''; document.getElementById('giat_keterangan').value = ''; 
     document.getElementById('giat_rumah').value = '0'; document.getElementById('giat_orang').value = '0';
+    muatStatistik();
+  }
+
+  function inisialisasiAccordion() {
+    const acc = document.getElementsByClassName("acc-btn");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        if (panel.classList.contains("show")) { panel.classList.remove("show"); } else { panel.classList.add("show"); }
+      });
+    }
   }
 </script>
 </body>
