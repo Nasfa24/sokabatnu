@@ -89,20 +89,10 @@
     #map-pergerakan { height: 450px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
     #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
     
-    /* VIRTUALIZED TREE CARD CSS (NEW V6.6) */
-    .tree-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
-    .tree-card { border: 1px solid var(--border); border-radius: 14px; padding: 18px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;}
-    .tree-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;}
-    .tree-card-title { font-weight: 900; font-size: 15px; color: var(--text-main); }
-    .tree-card-badge { padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 900; letter-spacing: 0.5px;}
-    .badge-pasti { background: #fef3c7; color: #d97706; border: 1px solid #fde68a;}
-    .badge-pasang { background: #fce7f3; color: #be185d; border: 1px solid #fbcfe8;}
-    
     /* BUKU SAKU ACCORDION */
-    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 800; border-radius: 10px; margin-bottom: 10px;}
+    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 800; display: flex; justify-content: space-between; border-radius: 10px; margin-bottom: 10px;}
     .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s; font-size: 14px; border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
     .acc-panel.show { padding: 15px 20px; max-height: 1000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
-    .acc-panel ul { padding-left: 18px; margin-top: 5px;}
   </style>
 </head>
 <body>
@@ -173,7 +163,7 @@
     <!-- POHON JARINGAN VIRTUAL (V6.6 UPGRADE) -->
     <div class="card" style="border-top: 4px solid #8b5cf6;">
       <div class="card-header"><h3 style="color: #8b5cf6;">🌳 POHON JARINGAN</h3></div>
-      <span class="text-muted">Hierarki konsolidasi relawan lapis demi lapis (Optimized Render).</span>
+      <span class="text-muted">Hierarki konsolidasi relawan lapis demi lapis (Render Instan).</span>
       
       <div id="tree-container" style="margin-top: 15px;">
         <div style="text-align:center; padding: 20px; font-weight: bold; color:var(--text-muted)">Memuat struktur jaringan...</div>
@@ -185,6 +175,10 @@
       <div class="card-header"><h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3></div>
       <button class="acc-btn">1. KPI & Filosofi Dasar <span>▼</span></button>
       <div class="acc-panel"><ul><li>Target 10.000 suara.</li><li>Tolak politik uang.</li><li>Empati, Simpati, Advokasi.</li></ul></div>
+      <button class="acc-btn">2. Strategi Teritorial <span>▼</span></button>
+      <div class="acc-panel"><ul><li><b>Ring 1 (Kandang Utama):</b> Penjaringan Sari (Target 780 suara mutlak).</li><li><b>Ring 2 (Sabuk Konsolidasi):</b> Kalirungkut, Kedung Baruk, Medokan Ayu.</li></ul></div>
+      <button class="acc-btn">3. Eksekusi 4 Pilar <span>▼</span></button>
+      <div class="acc-panel"><ul><li><b>Tebarkan Salam:</b> Sapa warga pagi hari.</li><li><b>Berikan Makan:</b> Jumat Seribu Nasi Bungkus.</li><li><b>Salat Malam:</b> Sajadah Cinta.</li></ul></div>
     </div>
 
     <div style="display:flex; gap:10px; margin-bottom: 20px;">
@@ -265,7 +259,6 @@
       <option value="Undangan Warga">Undangan Warga</option>
       <option value="Ngopi Warkop">Ngopi Warkop</option>
       <option value="Solosemiran">Solosemiran</option>
-      <option value="Reses">Reses</option>
       <option value="Melayani Masyarakat">Melayani Masyarakat</option>
     </select>
     <div class="flex-row">
@@ -367,7 +360,7 @@
   }
 
   // ==============================================================
-  // ENGINE PETA (VEKTOR/CANVAS UNTUK PERFORMA TINGGI)
+  // ENGINE PETA (RESOLUSI TINGGI - KEMBALI KE OPENSTREETMAP)
   // ==============================================================
   async function muatAnalitikCaleg() {
     try {
@@ -381,8 +374,9 @@
   }
 
   function inisialisasiRadarMap() {
-     radarMap = L.map('map-pergerakan', { preferCanvas: true }).setView([-7.250445, 112.768845], 12);
-     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '© OS' }).addTo(radarMap);
+     radarMap = L.map('map-pergerakan').setView([-7.250445, 112.768845], 13);
+     // Kembalikan ke OpenStreetMap seperti Lapor Giat agar tajam
+     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OS' }).addTo(radarMap);
   }
 
   function renderRadarMap() {
@@ -402,15 +396,12 @@
             if (g.kategori === 'PASTI') fillColor = '#eab308'; // Kuning
             if (g.kategori === 'PASANG') fillColor = '#ec4899'; // Pink
 
-            // Menggunakan Vector Circle Marker, 100x Lebih ringan dari DOM Icon
-            let m = L.circleMarker([g.lat, g.lng], {
-                radius: 6,
-                fillColor: fillColor,
-                color: '#ffffff',
-                weight: 1.5,
-                opacity: 1,
-                fillOpacity: 0.9
-            }).bindPopup(`<b>${g.nama}</b><br>${g.skema}<br><small>${new Date(g.tgl).toLocaleDateString('id-ID')}</small>`);
+            // Pin Tajam Custom berbasis DivIcon (Sangat ringan)
+            let iconHtml = `<div style="background-color:${fillColor}; width:18px; height:18px; border-radius:50%; border:3px solid white; box-shadow:0 3px 6px rgba(0,0,0,0.5);"></div>`;
+            let customIcon = L.divIcon({ html: iconHtml, className: '', iconSize: [18,18], iconAnchor: [9, 9] });
+
+            let m = L.marker([g.lat, g.lng], {icon: customIcon})
+               .bindPopup(`<b style="color:${fillColor}; font-size:14px;">${g.nama}</b><br><b style="font-size:11px;">${g.kategori}</b><br>${g.skema}<br><small style="color:var(--text-muted)">${new Date(g.tgl).toLocaleDateString('id-ID')}</small>`);
             
             m.addTo(radarMap);
             radarMarkers.push(m);
@@ -419,7 +410,7 @@
   }
 
   // ==============================================================
-  // ENGINE POHON JARINGAN (GRID VIRTUALIZATION)
+  // ENGINE POHON JARINGAN (GRID VIRTUALIZATION + LIVE SEARCH)
   // ==============================================================
   function renderPohonJaringanGrid(treeData) {
      globalTreeData = treeData;
@@ -427,8 +418,8 @@
      if (treeData.length === 0) { container.innerHTML = '<p style="text-align:center;">Belum ada jaringan.</p>'; return; }
 
      let html = `
-        <input type="text" id="search-tree" placeholder="🔍 Cari Nama Tim / Relawan..." oninput="filterPohon(this.value)" style="margin-bottom:15px; background:#fff;">
-        <div id="tree-grid" class="tree-grid"></div>
+        <input type="text" id="search-tree" placeholder="🔍 Cari Nama Tim / Relawan..." oninput="filterPohon(this.value)" style="width:100%; padding:15px; border-radius:12px; border:2px solid var(--border); margin-bottom:15px; font-size:16px;">
+        <div id="tree-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px;"></div>
      `;
      container.innerHTML = html;
      drawGridNodes(treeData);
@@ -437,31 +428,31 @@
   function drawGridNodes(data) {
      const grid = document.getElementById('tree-grid');
      if(!grid) return;
-     
      if(data.length === 0) { grid.innerHTML = '<p style="font-size:13px; color:var(--text-muted);">Tidak ada hasil ditemukan.</p>'; return; }
 
      let html = '';
-     data.forEach((tim, index) => {
+     data.forEach((tim) => {
         let isPasti = tim.kategori === 'PASTI';
-        let badgeClass = isPasti ? 'badge-pasti' : 'badge-pasang';
-        let fillCol = isPasti ? '#d97706' : '#be185d';
+        let badgeBg = isPasti ? '#fef3c7' : '#fce7f3';
+        let badgeColor = isPasti ? '#d97706' : '#be185d';
         let target = tim.kategori === 'KOORDINATOR' ? 50 : 10;
         let pct = Math.min((tim.pemilih.length / target) * 100, 100);
 
-        // Find true index in global array for the modal
         let trueIndex = globalTreeData.findIndex(t => t.nama_tim === tim.nama_tim);
 
         html += `
-          <div class="tree-card">
+          <div style="border:1px solid var(--border); border-radius:14px; padding:18px; background:#fff; display:flex; flex-direction:column; justify-content:space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
              <div>
-                <div class="tree-card-header">
-                   <div class="tree-card-title">👥 ${tim.nama_tim}</div>
-                   <div class="tree-card-badge ${badgeClass}">${tim.kategori}</div>
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                   <span style="font-weight:900; font-size:15px; color:var(--text-main);">👥 ${tim.nama_tim}</span>
+                   <span style="background:${badgeBg}; color:${badgeColor}; padding:4px 8px; border-radius:6px; font-size:10px; font-weight:900;">${tim.kategori}</span>
                 </div>
                 <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:6px; font-weight:700; color:var(--text-muted);">
                    <span>Pemilih Binaan</span> <span>${tim.pemilih.length} / ${target}</span>
                 </div>
-                <div class="team-progress-bg" style="height:6px; margin-bottom:15px;"><div class="team-progress-fill" style="width:${pct}%; background:${fillCol}"></div></div>
+                <div style="background:#e2e8f0; height:6px; border-radius:5px; margin-bottom:15px; overflow:hidden;">
+                    <div style="height:100%; width:${pct}%; background:${badgeColor};"></div>
+                </div>
              </div>
              <button class="btn btn-outline" style="padding:10px; font-size:12px; min-height:0; margin:0;" onclick="bukaModalPemilih(${trueIndex})">Lihat Daftar Pemilih</button>
           </div>
@@ -478,7 +469,7 @@
 
   function bukaModalPemilih(index) {
      let tim = globalTreeData[index];
-     let listHtml = tim.pemilih.map(p => `<div style="padding:12px 15px; border-bottom:1px solid #e2e8f0; text-align:left; font-size:14px; font-weight:600; color:var(--text-main);">👤 ${p}</div>`).join('');
+     let listHtml = tim.pemilih.map((p, i) => `<div style="padding:12px 15px; border-bottom:1px solid #e2e8f0; text-align:left; font-size:14px; font-weight:600; color:var(--text-main);">${i+1}. 👤 ${p}</div>`).join('');
      if(!listHtml) listHtml = '<p style="color:#ef4444; padding:20px;">Belum ada pemilih binaan.</p>';
      
      Swal.fire({
@@ -643,7 +634,7 @@
     Swal.fire('Sukses', res.message, 'success');
     document.getElementById('giat_skema').value = ''; document.getElementById('giat_keterangan').value = ''; 
     document.getElementById('giat_rumah').value = '0'; document.getElementById('giat_orang').value = '0';
-    muatStatistik();
+    muatDataSistem();
   }
 
   function inisialisasiAccordion() {
