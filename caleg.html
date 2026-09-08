@@ -89,7 +89,7 @@
     #map-pergerakan { height: 450px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
     #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
     
-    /* VIRTUALIZED TREE CARD CSS (V6.7 INLINE) */
+    /* VIRTUALIZED TREE CARD CSS (V6.9) */
     .tree-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
     .tree-card { border: 1px solid var(--border); border-radius: 14px; padding: 18px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;}
     .tree-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;}
@@ -98,11 +98,12 @@
     .badge-pasti { background: #fef3c7; color: #d97706; border: 1px solid #fde68a;}
     .badge-pasang { background: #fce7f3; color: #be185d; border: 1px solid #fbcfe8;}
     
-    /* BUKU SAKU ACCORDION */
-    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 800; border-radius: 10px; margin-bottom: 10px; display:flex; justify-content: space-between;}
-    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s; font-size: 14px; border-left: 4px solid var(--primary); margin-left: 5px; margin-bottom: 15px; border-radius: 0 0 10px 10px;}
-    .acc-panel.show { padding: 15px 20px; max-height: 2000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);}
-    .acc-panel ul { padding-left: 18px; margin-top: 5px;}
+    /* BUKU SAKU ACCORDION FULL TEXT - FIX CSS HILANG */
+    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 800; border-radius: 10px; margin-bottom: 5px; display:flex; justify-content: space-between; align-items: center;}
+    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 14px; border-left: 4px solid var(--primary); margin-left: 5px; border-radius: 0 0 10px 10px;}
+    .acc-panel.show { padding: 15px 20px; max-height: 2000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); margin-bottom: 15px;}
+    .acc-panel ul { padding-left: 18px; margin-top: 5px; margin-bottom: 5px;}
+    .acc-panel li { margin-bottom: 8px;}
   </style>
 </head>
 <body>
@@ -147,7 +148,7 @@
       </div>
     </div>
 
-    <!-- PETA SEBARAN (PIN MAP LEAFLET ASLI) -->
+    <!-- PETA SEBARAN (PIN MAP LEAFLET ASLI & TAJAM) -->
     <div class="card" style="border-top: 4px solid #3b82f6;">
       <div class="card-header"><h3 style="color: #3b82f6;">🗺️ RADAR PERGERAKAN</h3></div>
       <span class="text-muted">Lacak titik spasial pergerakan door-to-door dengan resolusi tajam.</span>
@@ -421,7 +422,7 @@
      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OS' }).addTo(radarMap);
   }
 
-  // Custom Colored Pin Leaflet 
+  // Custom Colored Pin Leaflet (Original Icons)
   const pinCaleg = new L.Icon({ iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png', shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png', iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41] });
   const pinPasti = new L.Icon({ iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png', shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png', iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41] });
   const pinPasang = new L.Icon({ iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png', shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png', iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41] });
@@ -435,16 +436,17 @@
      const now = new Date().getTime();
 
      globalGiatData.forEach(g => {
-        let tglGiat = new Date(g.tgl).getTime();
-        let selisihHari = (now - tglGiat) / (1000 * 3600 * 24);
+        let selisihHari = (now - g.tgl) / (1000 * 3600 * 24);
 
-        if (selisihHari <= hariFilter && g.lat && g.lng) {
+        if (selisihHari <= hariFilter && g.lat !== 0 && g.lng !== 0) {
             let activeIcon = pinCaleg;
             if (g.kategori === 'PASTI') activeIcon = pinPasti;
             if (g.kategori === 'PASANG') activeIcon = pinPasang;
 
+            let fillColor = g.kategori === 'PASTI' ? '#eab308' : (g.kategori === 'PASANG' ? '#ec4899' : '#10b981');
+
             let m = L.marker([g.lat, g.lng], {icon: activeIcon})
-               .bindPopup(`<b>${g.nama}</b><br><b style="font-size:11px;">${g.kategori}</b><br>${g.skema}<br><small style="color:var(--text-muted)">${new Date(g.tgl).toLocaleDateString('id-ID')}</small>`);
+               .bindPopup(`<b style="color:${fillColor}; font-size:14px;">${g.nama}</b><br><b style="font-size:11px;">${g.kategori}</b><br>${g.skema}<br><small style="color:var(--text-muted)">${new Date(g.tgl).toLocaleDateString('id-ID')}</small>`);
             
             m.addTo(radarMap);
             radarMarkers.push(m);
@@ -453,7 +455,7 @@
   }
 
   // ==============================================================
-  // ENGINE POHON JARINGAN (INLINE CHIP CLOUD)
+  // ENGINE POHON JARINGAN (INLINE CHIP CLOUD - TANPA POPUP)
   // ==============================================================
   function renderPohonJaringanGrid(treeData) {
      globalTreeData = treeData;
@@ -481,10 +483,10 @@
         let target = tim.kategori === 'KOORDINATOR' ? 50 : 10;
         let pct = Math.min((tim.pemilih.length / target) * 100, 100);
 
-        // NAMA PEMILIH MUNCUL SECARA INLINE (TIDAK PERLU DIKLIK)
+        // NAMA PEMILIH MUNCUL SECARA INLINE MURNI SEPERTI TAGS
         let pemilihHtml = tim.pemilih.length > 0 
            ? tim.pemilih.map(p => `<span style="display:inline-block; background:#f1f5f9; padding:4px 8px; border-radius:6px; font-size:11px; margin:4px 4px 0 0; border:1px solid #e2e8f0; color:var(--primary); font-weight:700;">👤 ${p}</span>`).join('')
-           : `<span style="font-size:11px; color:#ef4444; font-style:italic;">Belum ada Pemilih</span>`;
+           : `<span style="font-size:11px; color:#ef4444; font-style:italic;">Belum ada Pemilih Binaan</span>`;
 
         html += `
           <div style="border:1px solid var(--border); border-radius:14px; padding:18px; background:#fff; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
@@ -527,7 +529,7 @@
   async function setorKTPSatuan() {
     const fileInput = document.getElementById('pm_ktp');
     const hp = document.getElementById('pm_hp').value;
-    if (!fileInput.files || fileInput.files.length === 0) return Swal.fire('Kosong', 'Harap jepret KTP.', 'warning');
+    if (!fileInput.files || fileInput.files.length === 0) return Swal.fire('Kosong', 'Harap jepret KTP terlebih dahulu.', 'warning');
     if (!hp || hp.length < 9) return Swal.fire('Kurang', 'Masukkan No WA.', 'warning');
 
     const file = fileInput.files[0];
