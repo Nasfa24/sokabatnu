@@ -89,7 +89,6 @@
     #map-pergerakan { height: 450px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
     #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
     
-    /* VIRTUALIZED TREE CARD CSS */
     .tree-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
     .tree-card { border: 1px solid var(--border); border-radius: 14px; padding: 18px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;}
     .tree-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;}
@@ -98,7 +97,6 @@
     .badge-pasti { background: #fef3c7; color: #d97706; border: 1px solid #fde68a;}
     .badge-pasang { background: #fce7f3; color: #be185d; border: 1px solid #fbcfe8;}
     
-    /* BUKU SAKU ACCORDION FULL TEXT - FIX CSS MAX HEIGHT */
     .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 800; border-radius: 10px; margin-bottom: 5px; display:flex; justify-content: space-between; align-items: center;}
     .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 14px; border-left: 4px solid var(--primary); margin-left: 5px; border-radius: 0 0 10px 10px;}
     .acc-panel.show { padding: 15px 20px; max-height: 2000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); margin-bottom: 15px;}
@@ -148,12 +146,11 @@
       </div>
     </div>
 
-    <!-- PETA SEBARAN (PIN MAP LEAFLET ASLI & TAJAM) -->
+    <!-- PETA SEBARAN -->
     <div class="card" style="border-top: 4px solid #3b82f6;">
       <div class="card-header"><h3 style="color: #3b82f6;">🗺️ RADAR PERGERAKAN</h3></div>
       <span class="text-muted">Lacak titik spasial pergerakan door-to-door dengan resolusi tajam.</span>
       
-      <!-- MAP LEGEND -->
       <div style="display:flex; justify-content:center; gap:15px; margin-bottom: 15px; font-size:12px; font-weight:800;">
          <span style="color:#10b981;">🟢 Caleg</span>
          <span style="color:#eab308;">🟡 Tim Pasti</span>
@@ -171,7 +168,7 @@
       <div id="map-pergerakan"></div>
     </div>
 
-    <!-- POHON JARINGAN VIRTUAL INLINE & WHATSAPP CRM -->
+    <!-- POHON JARINGAN VIRTUAL INLINE -->
     <div class="card" style="border-top: 4px solid #8b5cf6;">
       <div class="card-header"><h3 style="color: #8b5cf6;">🌳 POHON JARINGAN (CRM)</h3></div>
       <span class="text-muted">Klik/Sentuh langsung pada nama Pemilih untuk membuka WhatsApp (Otomatis Sapa WA).</span>
@@ -409,9 +406,9 @@
     try {
        const res = await panggilAPI('getCalegAnalytics', {});
        if (res.status === 'success') {
-          globalGiatData = res.data.map || [];
+          globalGiatData = res.data ? res.data.map : [];
           renderRadarMap(); 
-          renderPohonJaringanGrid(res.data.tree || []); 
+          renderPohonJaringanGrid(res.data ? res.data.tree : []); 
        }
     } catch(e) {}
   }
@@ -436,7 +433,6 @@
      globalGiatData.forEach(g => {
         let selisihHari = (now - g.tgl) / (1000 * 3600 * 24);
 
-        // Filter validasi kordinat 0 tidak dimunculkan
         if (selisihHari <= hariFilter && g.lat && g.lng && g.lat !== 0 && g.lng !== 0) {
             let activeIcon = pinCaleg;
             if (g.kategori === 'PASTI') activeIcon = pinPasti;
@@ -454,7 +450,7 @@
   }
 
   // ==============================================================
-  // ENGINE POHON JARINGAN DENGAN CRM WHATSAPP PINTAR (V7.0)
+  // ENGINE POHON JARINGAN DENGAN CRM WHATSAPP PINTAR (V7.1)
   // ==============================================================
   function renderPohonJaringanGrid(treeData) {
      globalTreeData = treeData;
@@ -482,13 +478,10 @@
         let target = tim.kategori === 'KOORDINATOR' ? 50 : 10;
         let pct = Math.min((tim.pemilih.length / target) * 100, 100);
 
-        // WHATSAPP SMART SAPA ENGINE
         let pemilihHtml = tim.pemilih.length > 0 
            ? tim.pemilih.map(p => {
-               // Render Pesan Otomatis (Aman dari Bug URL)
                let waText = encodeURIComponent(`Assalamu'alaikum Bapak/Ibu *${p.nama}*.\n\nSaya mewakili tim pemenangan SOKABAT NU mengucapkan terima kasih atas silaturahminya bersama koordinator kami, *${tim.nama_tim}*.\n\nMohon doa dan dukungannya untuk perjuangan kita di 2029. Sehat dan sukses selalu untuk panjenengan sekeluarga! 🙏`);
                let waLink = p.hp ? `https://wa.me/${p.hp}?text=${waText}` : '#';
-               
                let clickAction = p.hp ? `href="${waLink}" target="_blank"` : `href="#" onclick="Swal.fire('Oops!','No WA Pemilih tidak ditemukan/kosong.','error'); return false;"`;
 
                return `
@@ -635,17 +628,32 @@
     Swal.fire('Selesai', `${sukses} Berkas masuk.`, 'success');
   }
 
+  // ==============================================================
+  // UNIVERSAL SCANNER DENGAN GPS ABSOLUT (V7.1)
+  // ==============================================================
   function mulaiScanner() {
     document.getElementById('reader').style.display = 'block'; document.getElementById('btn-scan').style.display = 'none'; document.getElementById('btn-stop-scan').style.display = 'block';
     scannerKamera = new Html5Qrcode("reader");
-    scannerKamera.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } }, (d) => { hentikanScanner(); prosesPresensi(d); }, (err) => {}).catch(() => { hentikanScanner(); });
+    scannerKamera.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } }, (d) => { hentikanScanner(); prosesPresensiBarcode(d); }, (err) => {}).catch(() => { hentikanScanner(); });
   }
 
   function hentikanScanner() { if (scannerKamera) scannerKamera.stop().then(() => { document.getElementById('reader').style.display = 'none'; document.getElementById('btn-scan').style.display = 'block'; document.getElementById('btn-stop-scan').style.display = 'none'; }); }
 
-  function prosesPresensi(nikTim) {
-    Swal.fire({ title: 'Validasi...', didOpen: () => Swal.showLoading() });
-    panggilAPI('catatPresensi', { nik_caleg: NIK_CALEG, nik_tim: nikTim, nama_tim: 'REL. TERVERIFIKASI' }).then(res => { Swal.fire('Sukses', res.message, 'success'); });
+  function prosesPresensiBarcode(scannedNik) {
+    Swal.fire({ title: 'Mengunci Satelit...', text: 'Merekam lokasi GPS pertemuan...', didOpen: () => Swal.showLoading(), allowOutsideClick: false });
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+      try {
+        const payload = { 
+          nik_caleg: NIK_CALEG, 
+          nik_tim: scannedNik, 
+          nama_tim: 'REL. TERVERIFIKASI', 
+          latitude: pos.coords.latitude, 
+          longitude: pos.coords.longitude 
+        };
+        const res = await panggilAPI('catatPresensi', payload);
+        Swal.fire('Sukses', res.message, 'success');
+      } catch(e) { Swal.fire('Error', 'Gagal tersambung.', 'error'); }
+    }, () => Swal.fire('GPS Mati', 'Nyalakan GPS Lokasi di HP Anda.', 'error'), { enableHighAccuracy: true, timeout: 10000 });
   }
 
   function inisialisasiPeta() {

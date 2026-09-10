@@ -38,7 +38,6 @@
     .wallet-box h1 { margin: 5px 0 0 0; font-size: 46px; font-weight: 900; line-height: 1; }
     .wallet-box .rupiah { font-size: 14px; font-weight: 600; color: #cbd5e1; margin-top: 5px; display: block;}
     
-    /* NEW: Label Misteri */
     .mystery-badge { position: absolute; top: 10px; right: 10px; background: rgba(245, 158, 11, 0.2); color: var(--accent-yellow); border: 1px dashed var(--accent-orange); padding: 5px 10px; border-radius: 8px; font-size: 10px; font-weight: 800; display: none; align-items: center; gap: 5px;}
     
     .card { background: #ffffff; padding: 24px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); position: relative; z-index: 10; margin-bottom: 20px;}
@@ -75,6 +74,12 @@
     
     .locked-banner { background: #fffbeb; border: 2px dashed #f59e0b; padding: 30px 20px; border-radius: 18px; text-align: center; color: #b45309; margin-bottom: 20px;}
     .locked-banner h3 { margin: 0 0 10px 0; color: #d97706; font-size: 22px; font-weight: 900;}
+    
+    .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 800; border-radius: 10px; margin-bottom: 5px; display:flex; justify-content: space-between; align-items: center;}
+    .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 14px; border-left: 4px solid var(--primary); margin-left: 5px; border-radius: 0 0 10px 10px;}
+    .acc-panel.show { padding: 15px 20px; max-height: 2000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); margin-bottom: 15px;}
+    .acc-panel ul { padding-left: 18px; margin-top: 5px; margin-bottom: 5px;}
+    .acc-panel li { margin-bottom: 8px;}
   </style>
 </head>
 <body>
@@ -109,6 +114,48 @@
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
       <div class="progress-footer">Terkunci: <span id="progress-current" style="color:var(--primary); font-size:18px; font-weight:900;">0</span> / Maksimal: <span id="progress-max">10</span> Pemilih</div>
     </div>
+
+    <!-- BUKU SAKU FULL TEXT -->
+    <div class="card" style="border-top: 4px solid var(--primary);">
+      <div class="card-header"><h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3></div>
+      
+      <button class="acc-btn">1. KPI & Filosofi Dasar <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li>Target mengamankan 10.000 suara riil dengan mengelola 20.000 target pemilih (asumsi conversion rate 50%).</li>
+          <li>Menolak keras pendekatan politik transaksional (jual beli suara).</li>
+          <li>Fase: Empati (mendengar dan hadir), Simpati (ikatan emosional), hingga Advokasi (membela kandidat).</li>
+        </ul>
+      </div>
+
+      <button class="acc-btn">2. Strategi Teritorial <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li><b>Ring 1 (Kandang Utama):</b> Penjaringan Sari (Target 780 suara mutlak).</li>
+          <li><b>Ring 2 (Sabuk Konsolidasi):</b> Kalirungkut, Kedung Baruk, Medokan Ayu, Gunung Anyar, Rungkut Tengah (>5.000 suara).</li>
+          <li><b>Ring 3 (Front Ekspansi):</b> Jemur Wonosari, Keputih, Siwalan Kerto, Medokan Semampir.</li>
+        </ul>
+      </div>
+
+      <button class="acc-btn">3. Manajemen Pemangku Wilayah <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li>Jangan melangkahi tokoh lokal (Ketua LPMK, RW, RT, KSH).</li>
+          <li><b>Kunjungan 0-0-0:</b> 0 Atribut Partai, 0 Janji Politik, 0 Permintaan Suara.</li>
+          <li>Wajib "kula nuwun" ke RW/RT; biarkan Ketua RT yang memimpin saat Home Visit.</li>
+        </ul>
+      </div>
+
+      <button class="acc-btn">4. Eksekusi 4 Pilar <span>▼</span></button>
+      <div class="acc-panel">
+        <ul>
+          <li><b>Tebarkan Salam:</b> Sapa warga di pasar/terminal pukul 05.30-07.00 WIB tanpa atribut.</li>
+          <li><b>Berikan Makan:</b> Seribu Nasi Bungkus tiap Jumat, Posko Piring Tetangga.</li>
+          <li><b>Sambung Silaturahmi:</b> Kunjungan tanpa kamera besar. Bentuk Grup WA Lingkar Peduli.</li>
+          <li><b>Salat Malam:</b> Sajadah Cinta (salat subuh berjamaah, tausiyah).</li>
+        </ul>
+      </div>
+    </div>
     
     <div style="display:flex; gap:10px; margin-bottom: 20px;">
       <button class="btn btn-outline" style="flex:1; font-size:12px;" onclick="loadDataUtama()">🔄 REFRESH DATA</button>
@@ -139,6 +186,7 @@
 <div id="sec-validasi" class="tab-section wrapper" style="padding-top: 20px;">
   <div class="card" style="text-align:center; border-top: 4px solid var(--primary);">
     <div class="card-header"><h3 style="color: var(--primary);">📱 QR IDENTITAS TIM</h3><span class="badge">WAJIB SCAN</span></div>
+    <span class="text-muted">Tunjukkan Barcode ini ke Caleg saat pertemuan.</span>
     <div style="display:flex; justify-content:center; margin:20px 0;"><div id="qrcode-tim" style="padding:20px; background:#fff; border-radius:20px; border:4px dashed var(--primary); display: inline-block;"></div></div>
     <b style="color:var(--text-main); font-size: 18px;">NIK: <span id="lbl-nik-tim" style="color:var(--primary);">-</span></b>
   </div>
@@ -191,6 +239,7 @@
     document.getElementById('lbl-nik-tim').innerText = userObj.nik;
     new QRCode(document.getElementById("qrcode-tim"), { text: userObj.nik, width: 220, height: 220, colorDark : "#065f3a", colorLight : "#ffffff" });
     loadDataUtama();
+    inisialisasiAccordion();
   };
 
   function switchTab(sectionId, element) {
@@ -222,7 +271,6 @@
         document.getElementById('st-poin').innerText = currentPoin;
         document.getElementById('st-rupiah').innerText = "Rp " + (currentPoin * 1000).toLocaleString('id-ID');
         
-        // REWARD MISTERI
         let poinMisteri = res.data ? res.data.poin_misteri : (res.poin_misteri || 0);
         if (poinMisteri > 0) {
            document.getElementById('lbl-misteri').innerText = poinMisteri;
@@ -299,21 +347,32 @@
     };
   }
 
+  // ==============================================================
+  // UNIVERSAL SCANNER DENGAN GPS ABSOLUT (V7.1)
+  // ==============================================================
   function mulaiScanner() {
     document.getElementById('reader').style.display = 'block'; document.getElementById('btn-scan').style.display = 'none'; document.getElementById('btn-stop-scan').style.display = 'block';
     scannerKamera = new Html5Qrcode("reader");
-    scannerKamera.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } }, (d) => { hentikanScanner(); prosesValidasiPertemuan(d); }, (e) => {}).catch(() => { hentikanScanner(); });
+    scannerKamera.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } }, (d) => { hentikanScanner(); prosesPresensiBarcode(d); }, (e) => {}).catch(() => { hentikanScanner(); });
   }
 
   function hentikanScanner() { if (scannerKamera) { scannerKamera.stop().then(() => { document.getElementById('reader').style.display = 'none'; document.getElementById('btn-scan').style.display = 'block'; document.getElementById('btn-stop-scan').style.display = 'none'; }); } }
 
-  function prosesValidasiPertemuan(nikCaleg) {
-    Swal.fire({ title: 'Mengunci Satelit...', didOpen: () => Swal.showLoading() });
+  function prosesPresensiBarcode(scannedNikCaleg) {
+    Swal.fire({ title: 'Mengunci Satelit...', text: 'Merekam lokasi GPS pertemuan...', didOpen: () => Swal.showLoading(), allowOutsideClick: false });
     navigator.geolocation.getCurrentPosition(async (pos) => {
       try {
-        const res = await panggilAPI('scanPresensi', { nik_tim: userObj.nik, nama_tim: userObj.nama, nik_caleg: nikCaleg, latitude: pos.coords.latitude, longitude: pos.coords.longitude });
-        Swal.fire('Sukses!', res.message, res.status); loadDataUtama();
-      } catch(e) { Swal.fire('Selesai', 'Data absensi tersimpan offline.', 'success'); }
+        const payload = { 
+          nik_caleg: scannedNikCaleg, 
+          nik_tim: userObj.nik, 
+          nama_tim: userObj.nama, 
+          latitude: pos.coords.latitude, 
+          longitude: pos.coords.longitude 
+        };
+        const res = await panggilAPI('catatPresensi', payload);
+        Swal.fire('Sukses', res.message, 'success');
+        loadDataUtama();
+      } catch(e) { Swal.fire('Error', 'Gagal tersambung.', 'error'); }
     }, () => Swal.fire('GPS Mati', 'Nyalakan GPS Lokasi di HP Anda.', 'error'), { enableHighAccuracy: true, timeout: 10000 });
   }
 
@@ -349,10 +408,21 @@
         Swal.fire(res.status === 'success' ? 'Terkirim' : 'Gagal', res.message, res.status);
         if(res.status === 'success') { 
           document.getElementById('gt_skema').value = ''; document.getElementById('gt_keterangan').value = ''; document.getElementById('gt_rumah').value = '0'; document.getElementById('gt_orang').value = '0';
-          loadDataUtama(); // Panggil ulang untuk merefresh notifikasi Poin Misteri
+          loadDataUtama(); 
         }
       }
     });
+  }
+
+  function inisialisasiAccordion() {
+    const acc = document.getElementsByClassName("acc-btn");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        if (panel.classList.contains("show")) { panel.classList.remove("show"); } else { panel.classList.add("show"); }
+      });
+    }
   }
 
   function prosesLogout() {
