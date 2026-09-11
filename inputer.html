@@ -54,7 +54,7 @@
     .ocr-badge { font-size: 12px; padding: 6px 16px; border-radius: 20px; background-color: var(--border); color: var(--text-muted); font-weight:900; letter-spacing: 0.5px;}
     
     input, select { width: 100%; padding: 18px 20px; border: 2px solid var(--border); border-radius: 12px; background-color: #f8fafc; font-size: 18px; font-weight: 700; transition: all 0.2s ease; color: var(--text); font-family: inherit;}
-    input:focus, select:focus { outline: none; border-color: var(--primary); background-color: var(--bg); box-shadow: 0 0 0 5px rgba(6, 95, 58, 0.1); }
+    input:focus, select:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 5px rgba(6, 95, 58, 0.1); }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
     
     .doc-type-selector { background: #f0fdf4; padding: 20px; border-radius: 16px; margin-bottom: 30px; border: 2px solid var(--primary); text-align: center;}
@@ -172,8 +172,8 @@
           <b id="lbl-uploader">Mencari...</b>
         </div>
         <div style="text-align: right;">
-          <span style="font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 5px;">No. WA Pemilih:</span>
-          <b id="lbl-hp-warga" style="color:var(--primary); font-size: 22px;">Mencari...</b>
+          <label style="font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 5px; color:#1e3a8a;" id="pm_hp_info">No. WA Pemilih:</label>
+          <input type="text" id="hp" inputmode="numeric" placeholder="Ketik No WA warga..." required oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="border-color:#3730a3; background:#fff; text-align:right; margin:0; padding:10px;">
         </div>
       </div>
 
@@ -231,16 +231,13 @@
       </div>
       
       <div style="background: #fef2f2; border: 1px solid #f87171; color: #991b1b; padding: 12px 15px; border-radius: 10px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-        <span style="font-size: 18px;">🛡️</span> Sistem otomatis menolak duplikasi NIK. Umur otomatis terhitung saat Agustus 2029.
+        <span style="font-size: 18px;">🛡️</span> Sistem otomatis mengunci NIK. Umur otomatis terhitung saat Agustus 2029.
       </div>
 
-      <div id="anggota-container">
-        <!-- Input NIK Dinamis Dibuat via JS -->
-      </div>
+      <div id="anggota-container"></div>
       
       <button type="button" class="btn-tambah-anggota" id="btn-tambah-anggota" onclick="tambahAnggotaForm()" style="display:none;">+ TAMBAH ANGGOTA KELUARGA (KK)</button>
 
-      <input type="hidden" id="hp">
       <input type="hidden" id="nama_kegiatan" value="INPUT KANTOR">
       <input type="hidden" id="koordinator" value="">
 
@@ -295,7 +292,7 @@
 
   window.onload = () => {
     initWilayah();
-    tambahAnggotaForm(); // Buat baris pertama secara default
+    tambahAnggotaForm(); 
     loadAntreanKtp();
   };
 
@@ -318,7 +315,6 @@
     handleDocTypeChange();
   }
 
-  /* ENGINE KALKULATOR UMUR NIK (Agustus 2029) */
   function kalkulasiUmur(inputElement) {
     let nik = inputElement.value;
     let badge = inputElement.parentElement.querySelector('.age-badge');
@@ -326,36 +322,21 @@
         let d = parseInt(nik.substring(6,8));
         let m = parseInt(nik.substring(8,10));
         let y = parseInt(nik.substring(10,12));
-        
-        if (d > 40) d -= 40; // NIK Perempuan
-        let fullYear = (y > 30) ? 1900 + y : 2000 + y; // Asumsi pemisah abad 1900 dan 2000
-        
-        let targetYear = 2029;
-        let targetMonth = 8; // Agustus
-        
+        if (d > 40) d -= 40; 
+        let fullYear = (y > 30) ? 1900 + y : 2000 + y; 
+        let targetYear = 2029; let targetMonth = 8; 
         let age = targetYear - fullYear;
         if (targetMonth < m) age--;
         
-        if (age >= 17) {
-            badge.innerText = "🎯 Usia (Agustus 2029): " + age + " Thn";
-            badge.style.color = "var(--primary)";
-        } else if (age > 0) {
-            badge.innerText = "⚠️ Belum Cukup Umur (Agustus 2029): " + age + " Thn";
-            badge.style.color = "var(--danger)";
-        } else {
-            badge.innerText = "⚠️ Format Tanggal Lahir Invalid";
-            badge.style.color = "var(--danger)";
-        }
-    } else {
-        badge.innerText = "";
-    }
+        if (age >= 17) { badge.innerText = "🎯 Usia (Agustus 2029): " + age + " Thn"; badge.style.color = "var(--primary)"; } 
+        else if (age > 0) { badge.innerText = "⚠️ Belum Cukup Umur (Agustus 2029): " + age + " Thn"; badge.style.color = "var(--danger)"; } 
+        else { badge.innerText = "⚠️ Format Tanggal Lahir Invalid"; badge.style.color = "var(--danger)"; }
+    } else { badge.innerText = ""; }
   }
 
-  /* ENGINE DINAMIS ANGGOTA (KK) */
   function tambahAnggotaForm(nikVal = "", namaVal = "") {
       const container = document.getElementById('anggota-container');
       const index = container.children.length;
-      
       const div = document.createElement('div');
       div.className = "anggota-box";
       div.innerHTML = `
@@ -364,15 +345,11 @@
            <span class="age-badge"></span>
         </div>
         <input type="text" class="input-nik" inputmode="numeric" maxlength="16" placeholder="357803..." required oninput="this.value = this.value.replace(/[^0-9]/g, ''); kalkulasiUmur(this);" value="${nikVal}" style="font-size: 20px; letter-spacing: 2px;">
-        
         <label>Nama Lengkap (Sesuai KTP)</label>
         <input type="text" class="input-nama" placeholder="Contoh : Muhammad..." required oninput="this.value = this.value.toUpperCase()" value="${namaVal}">
-        
         ${index > 0 ? `<button type="button" class="btn-hapus-anggota" onclick="this.parentElement.remove()">🗑️ Hapus Baris Ini</button>` : ''}
       `;
       container.appendChild(div);
-      
-      // Auto-trigger umur jika diisi dari AI
       if(nikVal.length === 16) kalkulasiUmur(div.querySelector('.input-nik'));
   }
 
@@ -382,7 +359,6 @@
     document.getElementById('kk_container').style.display = isKK ? 'block' : 'none';
     document.getElementById('btn-tambah-anggota').style.display = isKK ? 'block' : 'none';
     if(!isKK) {
-        // Reset kembali ke 1 anggota jika diganti ke KTP
         const container = document.getElementById('anggota-container');
         while (container.children.length > 1) { container.lastChild.remove(); }
     }
@@ -406,20 +382,24 @@
         if (cropper) cropper.destroy();
         cropper = new Cropper(img, { viewMode: 1, autoCropArea: 0.95 });
 
-        // AUTO TRACKING DENGAN ARSITEKTUR FILE BARU
         const fileParts = activeFileName.split('_');
         const trackingBanner = document.getElementById('tracking-banner');
         
         if (fileParts.length >= 4 && (fileParts[1] === "TIM" || fileParts[1] === "CALEG")) {
            const uploaderNik = fileParts[2];
            document.getElementById('koordinator').value = "TIM NIK: " + uploaderNik;
+           document.getElementById('lbl-uploader').innerText = (fileParts[1] === "TIM" ? "RELAWAN (" : "CALEG (") + uploaderNik + ")";
            
            let hpWargaTerekstrak = fileParts[3]; 
-           if(hpWargaTerekstrak === "MASSAL" || !hpWargaTerekstrak) hpWargaTerekstrak = "Diisi oleh AI/Sistem";
-           
-           document.getElementById('hp').value = hpWargaTerekstrak.replace(/[^0-9]/g, '');
-           document.getElementById('lbl-uploader').innerText = (fileParts[1] === "TIM" ? "RELAWAN (" : "CALEG (") + uploaderNik + ")";
-           document.getElementById('lbl-hp-warga').innerText = hpWargaTerekstrak;
+           if(hpWargaTerekstrak === "MASSAL" || !hpWargaTerekstrak) {
+              document.getElementById('hp').value = "";
+              document.getElementById('pm_hp_info').innerText = "⚠️ Upload Massal: Ketik manual No. WA Warga";
+              document.getElementById('pm_hp_info').style.color = "#ef4444";
+           } else {
+              document.getElementById('hp').value = hpWargaTerekstrak.replace(/[^0-9]/g, '');
+              document.getElementById('pm_hp_info').innerText = "No. WA Pemilih:";
+              document.getElementById('pm_hp_info').style.color = "#1e3a8a";
+           }
            trackingBanner.style.display = "flex";
         } else {
            document.getElementById('koordinator').value = "INPUTER PUSAT";
@@ -442,7 +422,6 @@
     
     document.getElementById('croppedBase64').value = finalBase64;
     document.getElementById('crop-ui-container').style.display = 'none';
-    
     document.getElementById('ktp-viewer').style.display = 'block';
     
     var viewerHtml = [];
@@ -450,7 +429,6 @@
     viewerHtml.push(`<div class='zoom-wrapper' id='zoom-container'><img src='${finalBase64}' id='live-zoom-img'></div>`);
     viewerHtml.push(`<div class='zoom-hint'>🔍 Arahkan kursor / sentuh gambar untuk memperbesar detail (Zoom)</div>`);
     viewerHtml.push(`<div class="ocr-badge" id="ocr-status" style="margin-top:25px; display:inline-block; font-size:16px; padding:12px 25px; font-weight:900; background-color:var(--accent-orange); color:#000;">🧠 AI Membaca Data...</div>`);
-    
     document.getElementById('ktp-viewer').innerHTML = viewerHtml.join("");
     
     const img = document.getElementById('live-zoom-img');
@@ -485,9 +463,8 @@
           if(parts[1]) document.getElementById('rw').value = parts[1].replace(/[^0-9]/g, '').padStart(3, '0');
         }
         
-        // POPULASI NIK DAN NAMA BERDASARKAN AI EXTRACT
         if(d.anggota && d.anggota.length > 0) {
-           document.getElementById('anggota-container').innerHTML = ''; // Clear form
+           document.getElementById('anggota-container').innerHTML = ''; 
            d.anggota.forEach(a => tambahAnggotaForm(a.nik || "", a.nama || ""));
         }
 
@@ -497,7 +474,6 @@
           if (matchedKec) {
             kecSelect.value = matchedKec.value;
             populateKelurahan(); 
-            
             if (d.kelurahan) {
               const kelSelect = document.getElementById('kelurahan');
               let matchedKel = Array.from(kelSelect.options).find(opt => opt.value === d.kelurahan.toUpperCase());
@@ -513,9 +489,7 @@
         document.getElementById('ocr-status').style.backgroundColor = 'var(--danger)';
         document.getElementById('ocr-status').style.color = '#fff';
       }
-    } catch(err) {
-      Swal.fire('Koneksi Putus', err.message, 'error');
-    }
+    } catch(err) { Swal.fire('Koneksi Putus', err.message, 'error'); }
   }
 
   function formatRTRW(input) { if(input.value !== "") input.value = input.value.replace(/[^0-9]/g, '').padStart(3, '0'); }
@@ -537,15 +511,12 @@
     const form = document.getElementById('main-form');
     if (!form.checkValidity()) return form.reportValidity();
     
-    // Tarik semua NIK & NAMA yang terdaftar
     const anggotaList = [];
     const boxes = document.querySelectorAll('.anggota-box');
     for (let box of boxes) {
         const _nik = box.querySelector('.input-nik').value;
         const _nama = box.querySelector('.input-nama').value;
-        if(_nik.length < 16) {
-           return Swal.fire('Format NIK Salah', 'Semua NIK harus 16 Digit Angka.', 'warning');
-        }
+        if(_nik.length < 16) return Swal.fire('Format NIK Salah', 'Semua NIK harus 16 Digit Angka.', 'warning');
         anggotaList.push({ nik: _nik, nama: _nama });
     }
 
@@ -564,7 +535,7 @@
       kelurahan: document.getElementById('kelurahan').value,
       nama_kegiatan: document.getElementById('nama_kegiatan').value, 
       koordinator: document.getElementById('koordinator').value,
-      hp: document.getElementById('hp').value, // HP dikirim di root payload
+      hp: document.getElementById('hp').value, 
       anggota: anggotaList
     };
 
@@ -573,18 +544,11 @@
     try {
       const res = await callAPI('simpanInputer', payload);
       btnSubmit.disabled = false;
-      
       if(res.status === 'success') {
          Swal.fire({ icon: 'success', title: 'Data Dikunci!', text: res.message });
-         clearForm(); 
-         loadAntreanKtp(); 
-      } else {
-         Swal.fire('Ditolak', res.message, 'error');
-      }
-    } catch(e) { 
-      btnSubmit.disabled = false;
-      Swal.fire('Error Server', e.message, 'error'); 
-    }
+         clearForm(); loadAntreanKtp(); 
+      } else { Swal.fire('Ditolak', res.message, 'error'); }
+    } catch(e) { btnSubmit.disabled = false; Swal.fire('Error Server', e.message, 'error'); }
   }
 
   function doLogout() {
@@ -609,9 +573,7 @@
   }
 
   document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape" && document.getElementById('search-modal').classList.contains('active')) {
-      closeSearchModal();
-    }
+    if (event.key === "Escape" && document.getElementById('search-modal').classList.contains('active')) { closeSearchModal(); }
   });
 
   async function executeSearchData() {
@@ -623,19 +585,14 @@
     document.getElementById('search-loading').style.display = 'block';
     
     var btnTrigger = document.getElementById('btn-search-trigger');
-    btnTrigger.disabled = true;
-    btnTrigger.innerText = "MENCARI...";
+    btnTrigger.disabled = true; btnTrigger.innerText = "MENCARI...";
 
     try {
       const res = await callAPI('searchUniversal', { query: query });
-      
       document.getElementById('search-loading').style.display = 'none';
-      btnTrigger.disabled = false;
-      btnTrigger.innerText = "CARI DATA";
+      btnTrigger.disabled = false; btnTrigger.innerText = "CARI DATA";
       
-      if (!res.found || res.data.length === 0) {
-        return Swal.fire({ icon: 'info', title: 'Data Nihil', text: 'Tidak ditemukan NIK atau Nama yang cocok dalam Sistem.' });
-      }
+      if (!res.found || res.data.length === 0) return Swal.fire({ icon: 'info', title: 'Data Nihil', text: 'Tidak ditemukan NIK atau Nama yang cocok dalam Sistem.' });
       
       var headerDiv = document.getElementById('search-result-header');
       headerDiv.innerHTML = "<div class='result-count-badge'>Ditemukan " + res.total + " Berkas Identik</div>";
@@ -645,29 +602,19 @@
       for (var i = 0; i < res.data.length; i++) {
         var t = res.data[i];
         var hpStatus = t.hp ? t.hp : '<i style="color:var(--danger);">Kosong</i>';
-        
-        htmlWrapper.push("<div class='result-row'>");
-        htmlWrapper.push("<div class='result-data'><table>");
+        htmlWrapper.push("<div class='result-row'><div class='result-data'><table>");
         htmlWrapper.push("<tr><td>NIK</td><td style='font-size: 18px; font-weight:900; color:var(--primary);'>" + t.nik + "</td></tr>");
         htmlWrapper.push("<tr><td>NAMA LENGKAP</td><td style='font-size: 15px; font-weight:800; color:var(--text);'>" + t.nama + "</td></tr>");
         htmlWrapper.push("<tr><td>NO WHATSAPP</td><td>" + hpStatus + "</td></tr>");
         htmlWrapper.push("<tr><td>ALAMAT</td><td>" + t.alamat + ", RT " + t.rt + " / RW " + t.rw + "</td></tr>");
         htmlWrapper.push("<tr><td>WILAYAH</td><td>" + t.kelurahan + ", KEC. " + t.kecamatan + "</td></tr>");
         htmlWrapper.push("<tr><td>DIPROSES OLEH</td><td>" + (t.koordinator || 'SISTEM') + "</td></tr>");
-        htmlWrapper.push("</table></div>");
-        htmlWrapper.push("<div class='result-image-container'><div style='padding:25px; background:#fef2f2; border-radius:14px; border:3px dashed var(--danger); width: 85%;'><h4 style='color:var(--danger); margin:0 0 10px 0; font-size:18px;'>Visual Tidak Tersedia</h4><p style='font-size:14px; color:var(--text-muted); margin:0; line-height:1.5;'>Data ini diketik secara manual atau foto fisiknya telah dihapus dari Cloud oleh sistem.</p></div></div>");
-        htmlWrapper.push("</div>"); 
+        htmlWrapper.push("</table></div><div class='result-image-container'><div style='padding:25px; background:#fef2f2; border-radius:14px; border:3px dashed var(--danger); width: 85%;'><h4 style='color:var(--danger); margin:0 0 10px 0; font-size:18px;'>Visual Tidak Tersedia</h4><p style='font-size:14px; color:var(--text-muted); margin:0; line-height:1.5;'>Data ini diketik secara manual atau foto fisiknya telah dihapus dari Cloud oleh sistem.</p></div></div></div>"); 
       }
-      
       var wrapper = document.getElementById('search-result-wrapper');
-      wrapper.innerHTML = htmlWrapper.join("");
-      wrapper.style.display = 'flex';
-
+      wrapper.innerHTML = htmlWrapper.join(""); wrapper.style.display = 'flex';
     } catch (e) {
-      document.getElementById('search-loading').style.display = 'none';
-      btnTrigger.disabled = false;
-      btnTrigger.innerText = "CARI DATA";
-      Swal.fire('Terjadi Kesalahan API', e.message, 'error');
+      document.getElementById('search-loading').style.display = 'none'; btnTrigger.disabled = false; btnTrigger.innerText = "CARI DATA"; Swal.fire('Terjadi Kesalahan API', e.message, 'error');
     }
   }
 </script>

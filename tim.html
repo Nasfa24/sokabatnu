@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Aplikasi Tim - SOKABAT NU</title>
+  <title>Aplikasi Tim - ECMS 2029</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -99,7 +99,7 @@
       <!-- REWARD MISTERI BADGE -->
       <div class="mystery-badge" id="mystery-badge">🎁 <span id="lbl-misteri">0</span> Mengendap</div>
       
-      <p>Dompet (Poin)</p>
+      <p>Dompet Likuiditas (Poin)</p>
       <h1 id="st-poin">0</h1>
       <span class="rupiah" id="st-rupiah">Rp 0</span>
     </div>
@@ -329,6 +329,36 @@
     }
   }
 
+  // ==============================================================
+  // ENGINE KOMPRESI GAMBAR CLIENT-SIDE (ANTI CRASH PAYLOAD)
+  // ==============================================================
+  const kompresGambar = (file) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event) => {
+      const img = new Image();
+      img.src = event.target.result;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const MAX_WIDTH = 1200; 
+        let width = img.width;
+        let height = img.height;
+        if (width > MAX_WIDTH) {
+          height = Math.round((height * MAX_WIDTH) / width);
+          width = MAX_WIDTH;
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        const base64 = canvas.toDataURL('image/jpeg', 0.8);
+        resolve({ name: file.name, mimeType: 'image/jpeg', data: base64 });
+      };
+      img.onerror = () => reject('Gagal memuat gambar');
+    };
+    reader.onerror = () => reject('Gagal membaca file');
+  });
+
   async function setorKTP() {
     const fileInput = document.getElementById('pm_ktp');
     const hp = document.getElementById('pm_hp').value;
@@ -336,17 +366,17 @@
     if (!hp || hp.length < 9) return Swal.fire('Data Kurang', 'Masukkan No WA.', 'warning');
     const file = fileInput.files[0];
     Swal.fire({ title: 'Menyandikan Data...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
-    const reader = new FileReader(); reader.readAsDataURL(file);
-    reader.onload = async () => {
-      const namaFileAman = `KTP_TIM_${userObj.nik}_${hp}_${Date.now()}_${file.name.replace(/_/g, '-')}`;
-      const chunkData = [{ name: namaFileAman, mimeType: file.type, data: reader.result, meta: { uploader_nik: userObj.nik, hp_warga: hp } }];
-      try {
-        const res = await panggilAPI('uploadChunk', { filesBatch: chunkData });
-        if (res.status === 'error') return Swal.fire('Gagal', res.message, 'error');
-        Swal.fire('Berhasil!', 'KTP masuk server.', 'success');
-        document.getElementById('pm_ktp').value = ''; document.getElementById('file-name-display').innerText = "Ketuk di sini untuk Memfoto KTP"; document.getElementById('pm_hp').value = '';
-      } catch (e) { Swal.fire('Error', 'Gagal mengirim.', 'error'); }
-    };
+    
+    try {
+      const compressed = await kompresGambar(file);
+      const namaFileAman = `KTP_TIM_${userObj.nik}_${hp}_${Date.now()}_${compressed.name.replace(/_/g, '-')}`;
+      const chunkData = [{ name: namaFileAman, mimeType: compressed.mimeType, data: compressed.data, meta: { uploader_nik: userObj.nik, hp_warga: hp } }];
+
+      const res = await panggilAPI('uploadChunk', { filesBatch: chunkData });
+      if (res.status === 'error') return Swal.fire('Gagal', res.message, 'error');
+      Swal.fire('Berhasil!', 'KTP masuk server.', 'success');
+      document.getElementById('pm_ktp').value = ''; document.getElementById('file-name-display').innerText = "Ketuk di sini untuk Memfoto KTP"; document.getElementById('pm_hp').value = '';
+    } catch (e) { Swal.fire('Error', 'Gagal mengirim.', 'error'); }
   }
 
   function mulaiScanner() {
@@ -358,7 +388,7 @@
   function hentikanScanner() { if (scannerKamera) { scannerKamera.stop().then(() => { document.getElementById('reader').style.display = 'none'; document.getElementById('btn-scan').style.display = 'block'; document.getElementById('btn-stop-scan').style.display = 'none'; }); } }
 
   function prosesPresensiBarcode(scannedNikCaleg) {
-    Swal.fire({ title: 'Mengunci Satelit...', text: 'Merekam GPS pertemuan...', didOpen: () => Swal.showLoading(), allowOutsideClick: false });
+    Swal.fire({ title: 'Mengunci Satelit...', text: 'Merekam lokasi GPS pertemuan...', didOpen: () => Swal.showLoading(), allowOutsideClick: false });
     navigator.geolocation.getCurrentPosition(async (pos) => {
       try {
         const payload = { nik_caleg: scannedNikCaleg, nik_tim: userObj.nik, nama_tim: userObj.nama, latitude: pos.coords.latitude, longitude: pos.coords.longitude };
@@ -377,12 +407,12 @@
 
   function dapatkanLokasiGPS() {
     if (navigator.geolocation) {
-      Swal.fire({title: 'Melacak...', didOpen: () => Swal.showLoading()});
+      Swal.fire({title: 'Melacak Kordinat...', didOpen: () => Swal.showLoading()});
       navigator.geolocation.getCurrentPosition((pos) => {
           document.getElementById('gt_lat').value = pos.coords.latitude; document.getElementById('gt_lng').value = pos.coords.longitude;
           map.setView([pos.coords.latitude, pos.coords.longitude], 17); marker.setLatLng([pos.coords.latitude, pos.coords.longitude]);
-          Swal.close(); Swal.fire({toast: true, position: 'top-end', icon: 'success', title: 'Terkunci', showConfirmButton: false, timer: 1500});
-        }, () => Swal.fire('Gagal', 'GPS Mati.', 'error'), { enableHighAccuracy: true, timeout: 10000 });
+          Swal.close(); Swal.fire({toast: true, position: 'top-end', icon: 'success', title: 'Satelit Terkunci', showConfirmButton: false, timer: 1500});
+        }, () => Swal.fire('Gagal', 'Pastikan GPS menyala.', 'error'), { enableHighAccuracy: true, timeout: 10000 });
     }
   }
 
@@ -407,9 +437,15 @@
     });
 
     const payload = { 
-      skema: document.getElementById('gt_skema').value, keterangan: document.getElementById('gt_keterangan').value, lat: document.getElementById('gt_lat').value, lng: document.getElementById('gt_lng').value, 
-      jumlah_rumah: document.getElementById('gt_rumah').value || 0, jumlah_orang: document.getElementById('gt_orang').value || 0,
-      pelapor_nik: userObj.nik, nama_pelapor: userObj.nama, tipe_pelapor: 'TIM',
+      skema: document.getElementById('gt_skema').value, 
+      keterangan: document.getElementById('gt_keterangan').value, 
+      lat: document.getElementById('gt_lat').value, 
+      lng: document.getElementById('gt_lng').value, 
+      jumlah_rumah: document.getElementById('gt_rumah').value || 0, 
+      jumlah_orang: document.getElementById('gt_orang').value || 0,
+      pelapor_nik: userObj.nik, 
+      nama_pelapor: userObj.nama, 
+      tipe_pelapor: 'TIM',
       leads: leadsData 
     };
     if (!payload.skema || !payload.lat) return Swal.fire('Peringatan', 'Lengkapi Skema Kegiatan dan Ambil GPS.', 'warning');
@@ -436,12 +472,6 @@
         if (panel.classList.contains("show")) { panel.classList.remove("show"); } else { panel.classList.add("show"); }
       });
     }
-  }
-
-  function prosesLogout() {
-    Swal.fire({ title: 'Akhiri Sesi?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#ef4444', confirmButtonText: 'Ya, Keluar' }).then((r) => {
-      if (r.isConfirmed) { localStorage.clear(); window.location.replace('index.html'); }
-    });
   }
 </script>
 </body>
