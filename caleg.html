@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard Caleg - ECMS 2029</title>
+  <title>Dashboard Caleg - SOKABAT NU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -89,6 +89,7 @@
     #map-pergerakan { height: 450px; width: 100%; border-radius: 14px; margin-bottom: 20px; border: 2px solid var(--border); z-index: 1;}
     #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 3px solid var(--accent-orange); display: none; margin-bottom: 20px;}
     
+    /* VIRTUALIZED TREE CARD CSS */
     .tree-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
     .tree-card { border: 1px solid var(--border); border-radius: 14px; padding: 18px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;}
     .tree-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;}
@@ -97,6 +98,7 @@
     .badge-pasti { background: #fef3c7; color: #d97706; border: 1px solid #fde68a;}
     .badge-pasang { background: #fce7f3; color: #be185d; border: 1px solid #fbcfe8;}
     
+    /* BUKU SAKU ACCORDION FULL TEXT - FIX CSS MAX HEIGHT */
     .acc-btn { background-color: #f8fafc; color: var(--primary); cursor: pointer; padding: 16px 20px; width: 100%; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 800; border-radius: 10px; margin-bottom: 5px; display:flex; justify-content: space-between; align-items: center;}
     .acc-panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-size: 14px; border-left: 4px solid var(--primary); margin-left: 5px; border-radius: 0 0 10px 10px;}
     .acc-panel.show { padding: 15px 20px; max-height: 2000px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); margin-bottom: 15px;}
@@ -128,7 +130,6 @@
   </div>
 
   <div class="wrapper" style="padding-top: 25px;">
-    <!-- PROGRESS CARD -->
     <div class="card" style="border-top: 4px solid var(--accent-orange); margin-top: 0;">
       <div class="target-badge">🎯 TARGET KEMENANGAN: 10.000 SUARA</div>
       <div class="progress-header"><b>CALON PEMILIH BINAAN</b><span class="pct" id="progress-percent">0.0%</span></div>
@@ -136,7 +137,6 @@
       <div class="progress-footer">Berhasil Kumpul: <span id="progress-current" style="color:var(--primary); font-size:16px;">0</span> / Target: 25.000 Data</div>
     </div>
 
-    <!-- STATS CARD -->
     <div class="card">
       <div class="card-header"><h3>📊 ANALITIK PERGERAKAN</h3></div>
       <div class="stat-grid">
@@ -146,7 +146,6 @@
       </div>
     </div>
 
-    <!-- PETA SEBARAN -->
     <div class="card" style="border-top: 4px solid #3b82f6;">
       <div class="card-header"><h3 style="color: #3b82f6;">🗺️ RADAR PERGERAKAN</h3></div>
       <span class="text-muted">Lacak titik spasial pergerakan door-to-door dengan resolusi tajam.</span>
@@ -168,7 +167,7 @@
       <div id="map-pergerakan"></div>
     </div>
 
-    <!-- POHON JARINGAN VIRTUAL INLINE -->
+    <!-- POHON JARINGAN VIRTUAL INLINE & WHATSAPP CRM -->
     <div class="card" style="border-top: 4px solid #8b5cf6;">
       <div class="card-header"><h3 style="color: #8b5cf6;">🌳 POHON JARINGAN (CRM)</h3></div>
       <span class="text-muted">Klik/Sentuh langsung pada nama Pemilih untuk membuka WhatsApp (Otomatis Sapa WA).</span>
@@ -178,7 +177,6 @@
       </div>
     </div>
     
-    <!-- BUKU SAKU FULL TEXT -->
     <div class="card" style="border-top: 4px solid var(--primary);">
       <div class="card-header"><h3 style="color: var(--primary);">📖 BUKU SAKU STRATEGI</h3></div>
       
@@ -450,7 +448,7 @@
   }
 
   // ==============================================================
-  // ENGINE POHON JARINGAN DENGAN CRM WHATSAPP PINTAR (V7.1)
+  // ENGINE POHON JARINGAN DENGAN CRM WHATSAPP PINTAR (V7.2)
   // ==============================================================
   function renderPohonJaringanGrid(treeData) {
      globalTreeData = treeData;
@@ -476,21 +474,31 @@
         let badgeBg = isPasti ? '#fef3c7' : '#fce7f3';
         let badgeColor = isPasti ? '#d97706' : '#be185d';
         let target = tim.kategori === 'KOORDINATOR' ? 50 : 10;
-        let pct = Math.min((tim.pemilih.length / target) * 100, 100);
+        
+        let validPemilih = tim.pemilih.filter(p => p.status === 'VALID');
+        let prospekPemilih = tim.pemilih.filter(p => p.status === 'PROSPEK');
+        
+        let pct = Math.min((validPemilih.length / target) * 100, 100);
 
-        let pemilihHtml = tim.pemilih.length > 0 
-           ? tim.pemilih.map(p => {
+        let validHtml = validPemilih.length > 0 
+           ? validPemilih.map(p => {
                let waText = encodeURIComponent(`Assalamu'alaikum Bapak/Ibu *${p.nama}*.\n\nSaya mewakili tim pemenangan SOKABAT NU mengucapkan terima kasih atas silaturahminya bersama koordinator kami, *${tim.nama_tim}*.\n\nMohon doa dan dukungannya untuk perjuangan kita di 2029. Sehat dan sukses selalu untuk panjenengan sekeluarga! 🙏`);
                let waLink = p.hp ? `https://wa.me/${p.hp}?text=${waText}` : '#';
                let clickAction = p.hp ? `href="${waLink}" target="_blank"` : `href="#" onclick="Swal.fire('Oops!','No WA Pemilih tidak ditemukan/kosong.','error'); return false;"`;
 
-               return `
-                 <a ${clickAction} style="display:inline-flex; align-items:center; background:#ecfdf5; padding:6px 10px; border-radius:8px; font-size:11px; margin:4px 4px 0 0; border:1px solid #10b981; color:#065f3a; font-weight:800; text-decoration:none; transition:0.2s; cursor:pointer;" onmouseover="this.style.background='#d1fae5'" onmouseout="this.style.background='#ecfdf5'">
-                   <span style="margin-right:5px; font-size:14px;">💬</span> ${p.nama}
-                 </a>
-               `;
+               return `<a ${clickAction} style="display:inline-flex; align-items:center; background:#ecfdf5; padding:6px 10px; border-radius:8px; font-size:11px; margin:4px 4px 0 0; border:1px solid #10b981; color:#065f3a; font-weight:800; text-decoration:none; transition:0.2s; cursor:pointer;" onmouseover="this.style.background='#d1fae5'" onmouseout="this.style.background='#ecfdf5'"><span style="margin-right:5px; font-size:14px;">💬</span> ${p.nama}</a>`;
              }).join('')
-           : `<span style="font-size:11px; color:#ef4444; font-style:italic;">Belum ada Pemilih Binaan</span>`;
+           : `<span style="font-size:11px; color:#ef4444; font-style:italic;">Belum ada KTP</span>`;
+
+        let prospekHtml = prospekPemilih.length > 0 
+           ? prospekPemilih.map(p => {
+               let waText = encodeURIComponent(`Assalamu'alaikum Bapak/Ibu *${p.nama}*.\n\nSaya SOKABAT NU menyapa panjenengan. Terima kasih sudah meluangkan waktu ngopi dan berbincang dengan tim kami, *${tim.nama_tim}* di lapangan.\n\nSalam kenal dari kami. Sehat dan sukses selalu untuk panjenengan sekeluarga! 🙏`);
+               let waLink = p.hp ? `https://wa.me/${p.hp}?text=${waText}` : '#';
+               let clickAction = p.hp ? `href="${waLink}" target="_blank"` : `href="#" onclick="Swal.fire('Oops!','No WA Pemilih tidak ditemukan/kosong.','error'); return false;"`;
+
+               return `<a ${clickAction} style="display:inline-flex; align-items:center; background:#fffbeb; padding:6px 10px; border-radius:8px; font-size:11px; margin:4px 4px 0 0; border:1px solid #fde68a; color:#d97706; font-weight:800; text-decoration:none; transition:0.2s; cursor:pointer;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'"><span style="margin-right:5px; font-size:14px;">👋</span> ${p.nama}</a>`;
+             }).join('')
+           : `<span style="font-size:11px; color:var(--text-muted); font-style:italic;">Kosong</span>`;
 
         html += `
           <div style="border:1px solid var(--border); border-radius:14px; padding:18px; background:#fff; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
@@ -499,14 +507,20 @@
                 <span style="background:${badgeBg}; color:${badgeColor}; padding:4px 8px; border-radius:6px; font-size:10px; font-weight:900;">${tim.kategori}</span>
              </div>
              <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:6px; font-weight:700; color:var(--text-muted);">
-                <span>Pemilih Binaan</span> <span>${tim.pemilih.length} / ${target}</span>
+                <span>KTP Valid (Masuk Kuota)</span> <span>${validPemilih.length} / ${target}</span>
              </div>
              <div style="background:#e2e8f0; height:6px; border-radius:5px; margin-bottom:15px; overflow:hidden;">
                  <div style="height:100%; width:${pct}%; background:${badgeColor};"></div>
              </div>
+             
              <div style="border-top: 1px dashed var(--border); padding-top: 12px; margin-top: 5px;">
-                 <span style="display:block; font-size:11px; color:var(--text-muted); font-weight:800; margin-bottom:6px;">SAPA BINAAN VIA WA:</span>
-                 ${pemilihHtml}
+                 <span style="display:block; font-size:11px; color:var(--text-muted); font-weight:800; margin-bottom:6px;">DAFTAR BINAAN (KTP VALID):</span>
+                 ${validHtml}
+             </div>
+
+             <div style="border-top: 1px dashed var(--border); padding-top: 12px; margin-top: 10px;">
+                 <span style="display:block; font-size:11px; color:var(--text-muted); font-weight:800; margin-bottom:6px;">PROSPEK (LEAD GIAT):</span>
+                 ${prospekHtml}
              </div>
           </div>
         `;
@@ -628,30 +642,28 @@
     Swal.fire('Selesai', `${sukses} Berkas masuk.`, 'success');
   }
 
-  // ==============================================================
-  // UNIVERSAL SCANNER DENGAN GPS ABSOLUT (V7.1)
-  // ==============================================================
   function mulaiScanner() {
     document.getElementById('reader').style.display = 'block'; document.getElementById('btn-scan').style.display = 'none'; document.getElementById('btn-stop-scan').style.display = 'block';
     scannerKamera = new Html5Qrcode("reader");
     scannerKamera.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } }, (d) => { hentikanScanner(); prosesPresensiBarcode(d); }, (err) => {}).catch(() => { hentikanScanner(); });
   }
 
-  function hentikanScanner() { if (scannerKamera) scannerKamera.stop().then(() => { document.getElementById('reader').style.display = 'none'; document.getElementById('btn-scan').style.display = 'block'; document.getElementById('btn-stop-scan').style.display = 'none'; }); }
+  function hentikanScanner() { if (scannerKamera) { scannerKamera.stop().then(() => { document.getElementById('reader').style.display = 'none'; document.getElementById('btn-scan').style.display = 'block'; document.getElementById('btn-stop-scan').style.display = 'none'; }); } }
 
-  function prosesPresensiBarcode(scannedNik) {
+  function prosesPresensiBarcode(scannedNikCaleg) {
     Swal.fire({ title: 'Mengunci Satelit...', text: 'Merekam lokasi GPS pertemuan...', didOpen: () => Swal.showLoading(), allowOutsideClick: false });
     navigator.geolocation.getCurrentPosition(async (pos) => {
       try {
         const payload = { 
-          nik_caleg: NIK_CALEG, 
-          nik_tim: scannedNik, 
-          nama_tim: 'REL. TERVERIFIKASI', 
+          nik_caleg: scannedNikCaleg, 
+          nik_tim: userObj.nik, 
+          nama_tim: userObj.nama, 
           latitude: pos.coords.latitude, 
           longitude: pos.coords.longitude 
         };
         const res = await panggilAPI('catatPresensi', payload);
         Swal.fire('Sukses', res.message, 'success');
+        loadDataUtama();
       } catch(e) { Swal.fire('Error', 'Gagal tersambung.', 'error'); }
     }, () => Swal.fire('GPS Mati', 'Nyalakan GPS Lokasi di HP Anda.', 'error'), { enableHighAccuracy: true, timeout: 10000 });
   }
@@ -665,12 +677,12 @@
 
   function dapatkanLokasiGPS() {
     if (navigator.geolocation) {
-      Swal.fire({title: 'Melacak...', didOpen: () => Swal.showLoading()});
+      Swal.fire({title: 'Melacak Kordinat...', didOpen: () => Swal.showLoading()});
       navigator.geolocation.getCurrentPosition((pos) => {
           document.getElementById('giat_lat').value = pos.coords.latitude; document.getElementById('giat_lng').value = pos.coords.longitude;
           map.setView([pos.coords.latitude, pos.coords.longitude], 17); marker.setLatLng([pos.coords.latitude, pos.coords.longitude]);
-          Swal.close(); Swal.fire({toast: true, position: 'top-end', icon: 'success', title: 'Terkunci', showConfirmButton: false, timer: 1500});
-        }, () => Swal.fire('Gagal', 'GPS Mati.', 'error'), { enableHighAccuracy: true, timeout: 10000 });
+          Swal.close(); Swal.fire({toast: true, position: 'top-end', icon: 'success', title: 'Satelit Terkunci', showConfirmButton: false, timer: 1500});
+        }, () => Swal.fire('Gagal', 'Pastikan GPS menyala.', 'error'), { enableHighAccuracy: true, timeout: 10000 });
     }
   }
 
