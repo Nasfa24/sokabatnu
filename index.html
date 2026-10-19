@@ -1,230 +1,211 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>MENANG PEMILU 2029 - SOKABAT NU</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#03754c">
-  
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="app.js"></script>
-  
-  <style>
-    :root { --primary: #03754c; --accent-orange: #FF9c08; --accent-yellow: #fff212; --bg-body: #f0f4f2; --border: #d1d9d6; }
-    * { box-sizing: border-box; touch-action: manipulation; }
-    body { font-family: 'Segoe UI', sans-serif; background: var(--bg-body); display: flex; justify-content: center; min-height: 100vh; margin: 0; padding: 20px 15px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasfa Uuth Akhmadie - Mas Uuth</title>
     
-    .wrapper { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 15px; }
+    <link rel="icon" type="image/webp" sizes="32x32" href="assets/favicon-32.webp">
+    <link rel="icon" type="image/webp" sizes="512x512" href="assets/favicon-512.webp">
+    <link rel="apple-touch-icon" href="assets/favicon-512.webp">
 
-    .header-card { background: linear-gradient(135deg, var(--primary), #02452d); color: #fff; padding: 25px 20px; border-radius: 16px; text-align: center; box-shadow: 0 10px 25px rgba(3, 117, 76, 0.2); border-bottom: 6px solid var(--accent-orange); }
-    .header-card h1 { margin: 0 0 5px 0; font-size: 28px; font-weight: 900; letter-spacing: 1px; color: var(--accent-yellow); }
-    .header-card p { margin: 0 0 20px 0; font-size: 13px; color: #e2e8e5; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;}
-    
-    .timer-display { display: flex; justify-content: center; gap: 8px; }
-    .timer-box { background: rgba(255,255,255,0.15); padding: 12px 8px; border-radius: 10px; flex: 1; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);}
-    .timer-num { font-size: 26px; font-weight: 900; line-height: 1; }
-    .timer-lbl { font-size: 10px; text-transform: uppercase; margin-top: 5px; font-weight: 800; color: var(--accent-yellow); }
-
-    .stats-card { background: #fff; padding: 25px 20px; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.05); }
-    .target-badge { display: inline-block; background: var(--accent-orange); color: #000; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 900; margin-bottom: 15px; width: 100%; text-align: center; }
-    .progress-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
-    .progress-bg { background: #e9eceb; border-radius: 12px; height: 18px; overflow: hidden; margin-bottom: 8px; border: 1px solid var(--border); }
-    .progress-fill { background: linear-gradient(90deg, var(--primary), #10b981); height: 100%; width: 0%; transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
-    .progress-meta { font-size: 12px; color: #555; font-weight: 700; text-align: center; margin-bottom: 20px;}
-    
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 15px; border-top: 2px dashed var(--border); }
-    .stat-item { background: #f9fbfaf7; padding: 12px; border-radius: 10px; border: 1px solid var(--border); text-align: center; }
-    .stat-item span { display: block; font-size: 10px; color: var(--primary); font-weight: 800; text-transform: uppercase; margin-bottom: 5px;}
-    .stat-item b { font-size: 22px; color: #111; font-weight: 900; }
-
-    .login-card { background: #fff; padding: 25px 20px; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary); }
-    .login-card h3 { margin: 0 0 15px 0; color: var(--primary); font-size: 16px; text-align: center; font-weight: 900;}
-    input { width: 100%; padding: 16px; margin-bottom: 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 16px; font-weight: 700; background: #f9fbfaf7; text-align: center; transition: 0.2s;}
-    input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(3, 117, 76, 0.15); background: #fff; }
-    
-    button { width: 100%; padding: 16px; color: #fff; border: none; border-radius: 10px; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s; text-transform: uppercase;}
-    .btn-login { background: var(--primary); box-shadow: 0 4px 15px rgba(3, 117, 76, 0.25); margin-bottom: 20px; }
-    .btn-login:active { transform: translateY(2px); box-shadow: none; }
-    
-    .tools-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
-    .btn-clear { background: #e74c3c; font-size: 13px; padding: 12px; }
-    .btn-install { background: #FF9c08; color: #000; font-size: 13px; padding: 12px; display: none; animation: pulse 2s infinite; border: 2px solid #d97706;}
-    
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(255, 156, 8, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(255, 156, 8, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(255, 156, 8, 0); }
-    }
-  </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<div class="wrapper">
-  
-  <div class="header-card">
-    <h1>SOKABAT NU</h1>
-    <p>Sistem Komando Pemenangan 2029</p>
-    <div class="timer-display">
-      <div class="timer-box"><div class="timer-num" id="c-days">0</div><div class="timer-lbl">Hari</div></div>
-      <div class="timer-box"><div class="timer-num" id="c-hours">0</div><div class="timer-lbl">Jam</div></div>
-      <div class="timer-box"><div class="timer-num" id="c-mins">0</div><div class="timer-lbl">Menit</div></div>
-      <div class="timer-box"><div class="timer-num" id="c-secs">0</div><div class="timer-lbl">Detik</div></div>
+    <nav class="navbar navbar-expand-lg py-3 sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/logo 2.webp" alt="Logo Mas Uuth" height="70" style="object-fit: contain;">
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-3 align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="program.html">Program & Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="berita-karya.html">Jurnal</a></li>
+                    <li class="nav-item">
+                        <button type="button" onclick="openPKBModal(false)" class="btn btn-gold-custom btn-sm px-3 py-2">
+                            <i class="bi bi-flag-fill me-1"></i> Daftar Kader PKB
+                        </button>
+                    </li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0"><a href="program.html#layanan-cepat" class="btn btn-primary-custom">Hubungi Kami</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-section text-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <p class="hero-tagline"><i class="bi bi-stars me-1"></i> Suara Akar Rumput Surabaya</p>
+                        <h1 class="hero-title">HADIR UNTUK MENDENGAR,<br><span class="text-emerald">BERGERAK UNTUK MELAYANI!</span></h1>
+                        <p class="hero-lead mx-auto mt-4 mb-5">
+                            "Bukan politisi yang datang meminta suara, melainkan tetangga yang hadir untuk meringankan beban."
+                        </p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="program.html" class="btn btn-primary-custom"><i class="bi bi-box-arrow-up-right me-2"></i> Akses Layanan Warga</a>
+                            <button type="button" onclick="openPKBModal(false)" class="btn btn-gold-custom"><i class="bi bi-people-fill me-2"></i> Gabung Kader PKB Rungkut</button>
+                            <a href="#profil-biografi" class="btn btn-secondary-custom">Kenali Mas Uuth</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="profil-biografi">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="profile-card">
+                        <div class="row align-items-center">
+                            <div class="col-md-5 text-center mb-5 mb-md-0">
+                                <div class="profile-img-container">
+                                    <img src="assets/uuth 2.webp" alt="Foto Profil Mas Uuth" class="profile-img">
+                                    <div class="profile-badge"><i class="bi bi-check2-all"></i></div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 ps-md-4">
+                                <!-- DITEGASKAN DENGAN BACKGROUND GRADASI HIJAU BRAND IDENTITY -->
+                                <div class="greeting-banner-emerald mb-4">
+                                    <h3 class="m-0 fs-4"><i class="bi bi-patch-check-fill text-warning me-2"></i>Salam hangat, saya Nasfa Uuth Akhmadie.</h3>
+                                </div>
+                                <p class="text-muted" style="line-height: 1.85; font-size: 1.05rem;">
+                                    Biasa dipanggil <strong class="text-dark">Mas Uuth</strong>. Saya tumbuh di lingkungan Pesantren dan terbiasa melihat bahwa perjuangan sejati tidak dimulai dari mimbar pidato, melainkan dari <span class="highlight-gold">kehadiran nyata di tengah kesulitan warga</span>.
+                                </p>
+                                <p class="text-muted mb-0" style="line-height: 1.85; font-size: 1.05rem;">
+                                    Dengan latar belakang sebagai Staf Khusus Ketua DPRD Jawa Timur, pengusaha, serta aktivis sosial-keagamaan (IPNU/GP Ansor), saya mendedikasikan diri untuk mendengar dan melayani Anda.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mt-5 pt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="mb-4">
+                        <div class="section-header-pill">
+                            <i class="bi bi-shield-check text-emerald fs-4"></i>
+                            <h4 class="fw-bold mb-0">Kapasitas & Kompetensi Utama</h4>
+                        </div>
+                    </div>
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6">
+                            <div class="capacity-card">
+                                <div class="capacity-header-badge">
+                                    <i class="bi bi-mortarboard-fill text-warning"></i> Latar Belakang Pendidikan
+                                </div>
+                                <ul class="list-unstyled text-muted mb-0">
+                                    <li class="mb-4">
+                                        <div class="d-flex"><i class="bi bi-check-circle-fill text-gold me-3 fs-5"></i>
+                                            <div><strong class="text-dark d-block" style="font-family: 'Satoshi', sans-serif;">S1 Ilmu Administrasi Negara</strong><span class="small">STISIP Waskita Darma</span></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex"><i class="bi bi-check-circle-fill text-gold me-3 fs-5"></i>
+                                            <div><strong class="text-dark d-block" style="font-family: 'Satoshi', sans-serif;">S2 Hukum</strong><span class="small">Universitas Sunan Giri Surabaya</span></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="capacity-card">
+                                <div class="capacity-header-badge">
+                                    <i class="bi bi-lightning-charge-fill text-warning"></i> Keahlian (Skills)
+                                </div>
+                                <div class="mt-1">
+                                    <span class="badge-skill">Analisis Kebijakan Publik</span>
+                                    <span class="badge-skill">Perencanaan Strategis</span>
+                                    <span class="badge-skill">Public Speaking</span>
+                                    <span class="badge-skill">Lobbying & Negosiasi</span>
+                                    <span class="badge-skill">Entrepreneurship</span>
+                                    <span class="badge-skill">Digital Marketing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 mt-5">
+                        <div class="section-header-pill">
+                            <i class="bi bi-award-fill text-emerald fs-4"></i>
+                            <h4 class="fw-bold mb-0">Pengalaman Profesional & Organisasi</h4>
+                        </div>
+                    </div>
+                    <div class="table-responsive table-rekam-jejak mb-5">
+                        <table class="table table-borderless mb-0">
+                            <thead><tr><th scope="col" style="width: 35%;">Kategori</th><th scope="col" style="width: 65%;">Detail Pengalaman</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold text-emerald" style="background: linear-gradient(90deg, rgba(80,200,120,0.12), rgba(80,200,120,0.03)); border-right: 1px solid #f0f0f0;"><i class="bi bi-building me-2"></i> Pemerintahan & Kebijakan</td>
+                                    <td><ul class="mb-0 text-muted ps-3 py-2" style="line-height: 1.7;"><li><strong class="text-dark">Staf Khusus Ketua DPRD Jawa Timur</strong> (2024 - Sekarang)</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-emerald" style="background: linear-gradient(90deg, rgba(80,200,120,0.12), rgba(80,200,120,0.03)); border-right: 1px solid #f0f0f0;"><i class="bi bi-people-fill me-2"></i> Politik & Organisasi</td>
+                                    <td><ul class="mb-0 text-muted ps-3 py-2" style="line-height: 1.7;"><li><strong class="text-dark">Ketua DPAC PKB Kec. Rungkut</strong> (2026-2031)</li><li><strong class="text-dark">Wakil Ketua GP Ansor Kota Surabaya</strong> (2025-2029)</li><li><strong class="text-dark">Ketua DKC Garda Bangsa Kota Surabaya</strong> (2022-2025)</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-emerald" style="background: linear-gradient(90deg, rgba(80,200,120,0.12), rgba(80,200,120,0.03)); border-right: 1px solid #f0f0f0;"><i class="bi bi-shop-window me-2"></i> Wirausaha</td>
+                                    <td><ul class="mb-0 text-muted ps-3 py-2" style="line-height: 1.7;"><li><strong class="text-dark">Founder Manuth Japan</strong> (2025 - Sekarang)</li><li><strong class="text-dark">Business Owner Pasirpedia</strong> (2021-2025)</li><li><strong class="text-dark">Project Manager CV Continuum Bumi Nusantara</strong> (2020-2024)</li><li><strong class="text-dark">Cuci Motor Rukun Konco</strong> (2013-2017)</li></ul></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- BANNER PANGGILAN KADER PKB -->
+                    <div class="pkb-cta-banner mt-5">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8 mb-4 mb-lg-0">
+                                <span class="badge bg-warning text-dark fw-bold mb-2 px-3 py-2 rounded-pill">PENDAFTARAN KADER PKB SURABAYA</span>
+                                <h3 class="fw-bold mb-2">Siap Bergerak Bersama Memajukan Surabaya?</h3>
+                                <p class="mb-0 text-white-50" style="font-size: 1.02rem; line-height: 1.7;">
+                                    Dapatkan KTA Resmi PKB, akses jaringan strategis Kota Surabaya, pelatihan peningkatan diri, hingga fasilitas layanan sosial & advokasi penuh.
+                                </p>
+                            </div>
+                            <div class="col-lg-4 text-lg-end">
+                                <button type="button" onclick="openPKBModal(false)" class="btn btn-gold-custom py-3 px-4 fs-6">
+                                    <i class="bi bi-person-plus-fill me-2"></i> Lihat Info & Daftar Kader
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FLOATING BUTTON GABUNG PKB -->
+    <div class="floating-controls">
+        <button type="button" onclick="openPKBModal(false)" class="btn-float btn-pkb-float">
+            <i class="bi bi-flag-fill me-2"></i> Gabung Kader PKB
+        </button>
     </div>
-  </div>
 
-  <div class="stats-card">
-    <div class="target-badge">🎯 TARGET KEMENANGAN: 10.000 SUARA</div>
-    <div class="progress-header"><span>CALON PEMILIH BINAAN</span><span id="percent-text">0.0%</span></div>
-    <div class="progress-bg"><div class="progress-fill" id="progress-bar"></div></div>
-    <div class="progress-meta">Berhasil Kumpul: <b id="count-pemilih" style="color:var(--primary); font-size:15px;">...</b> / Target: 25.000 Data</div>
-    <div class="stats-grid">
-      <div class="stat-item"><span>TIM PASTI (TERBUKA)</span><b id="count-tim-pasti">...</b></div>
-      <div class="stat-item" style="border-color: #FF9c08; background: #fffcf0;">
-        <span style="color: #d97706;">TIM PASANG (RAHASIA)</span>
-        <b style="color:#d97706; font-size: 14px; margin-top: 8px; display:block;">[ ENCRYPTED ]</b>
-      </div>
-    </div>
-  </div>
+    <footer class="footer-custom py-5 mt-auto text-center">
+        <div class="container">
+            <div class="mb-4">
+                <a href="https://www.instagram.com/mas_uuth/" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+                    <i class="bi bi-instagram fs-5 text-danger"></i> @mas_uuth
+                </a>
+                <a href="https://www.tiktok.com/@mas_uuth" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+                    <i class="bi bi-tiktok fs-5 text-dark"></i> @mas_uuth
+                </a>
+            </div>
+            <p class="mb-1 fw-bold text-dark" style="font-size: 0.98rem;">&copy; 2026 Nasfa Uuth Akhmadie (Mas Uuth).</p>
+            <p class="mb-0 text-muted small">Hadir untuk Mendengar, Bergerak untuk Melayani. PKB Surabaya ! Bangkit Solid Menang !</p>
+        </div>
+    </footer>
 
-  <div class="login-card">
-    <h3>🔐 PORTAL OTORISASI</h3>
-    <form id="loginForm" onsubmit="doLogin(event)">
-      <input type="text" id="nik" inputmode="numeric" placeholder="NIK Terdaftar (16 Digit)" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-      <input type="text" id="hp" inputmode="numeric" placeholder="Nomor WhatsApp" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-      <button type="submit" id="btn-login" class="btn-login">🚀 MASUK SISTEM</button>
-    </form>
-    <div class="tools-grid">
-      <button type="button" id="btn-install" class="btn-install" onclick="installPWA()">📲 INSTALL APLIKASI DI HP</button>
-      <button type="button" class="btn-clear" onclick="hardNukeCache()">🔥 RESET & CLEAR CACHE TOTAL</button>
-    </div>
-  </div>
-
-</div>
-
-<script>
-  // ==========================================
-  // MODUL PWA INSTALLER
-  // ==========================================
-  let deferredPrompt;
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    document.getElementById('btn-install').style.display = 'block'; 
-  });
-
-  function installPWA() {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') document.getElementById('btn-install').style.display = 'none';
-        deferredPrompt = null;
-      });
-    }
-  }
-
-  // ==========================================
-  // INIT DASHBOARD & LOGIN
-  // ==========================================
-  window.onload = () => {
-    const role = localStorage.getItem('ecms_role');
-    if (localStorage.getItem('ecms_user') && role) {
-      redirectToDash(role);
-      return; 
-    }
-    startCountdown();
-    fetchPublicStats();
-  };
-
-  function startCountdown() {
-    const target = new Date('2029-07-15T00:00:00+07:00').getTime();
-    setInterval(() => {
-      const diff = target - new Date().getTime();
-      if (diff <= 0) return;
-      document.getElementById('c-days').innerText = Math.floor(diff / 86400000);
-      document.getElementById('c-hours').innerText = Math.floor((diff % 86400000) / 3600000);
-      document.getElementById('c-mins').innerText = Math.floor((diff % 3600000) / 60000);
-      document.getElementById('c-secs').innerText = Math.floor((diff % 60000) / 1000);
-    }, 1000);
-  }
-
-  async function fetchPublicStats() {
-    try {
-      const res = await callAPI('getStats', { nik: 'GUEST', role: 'GUEST' });
-      if (res.status === 'success') {
-        const pemilih = res.data.total_pemilih || 0;
-        const timPasti = res.data.total_tim_pasti || 0;
-        const percent = Math.min((pemilih / 25000) * 100, 100);
-        
-        document.getElementById('count-pemilih').innerText = pemilih.toLocaleString('id-ID');
-        document.getElementById('count-tim-pasti').innerText = timPasti.toLocaleString('id-ID') + " Orang";
-        setTimeout(() => {
-          document.getElementById('progress-bar').style.width = percent + '%';
-          document.getElementById('percent-text').innerText = percent.toFixed(1) + '%';
-        }, 300);
-      }
-    } catch (e) {
-      document.getElementById('count-pemilih').innerText = "0";
-      document.getElementById('count-tim-pasti').innerText = "0";
-    }
-  }
-
-  async function doLogin(e) {
-    e.preventDefault();
-    const nik = document.getElementById('nik').value;
-    const hp = document.getElementById('hp').value;
-
-    if (nik.length < 10) return Swal.fire('Peringatan', 'NIK minimal 10 Angka.', 'warning');
-    const btn = document.getElementById('btn-login');
-    btn.innerText = "⏳ MEMVERIFIKASI...";
-
-    try {
-      const res = await callAPI('login', { nik: nik, hp: hp });
-      if (res.status === 'success') {
-        localStorage.setItem('ecms_role', res.role);
-        localStorage.setItem('ecms_user', JSON.stringify(res.user));
-        
-        Swal.fire({ icon: 'success', title: 'Akses Diberikan', timer: 1000, showConfirmButton: false }).then(() => {
-           redirectToDash(res.role);
-        });
-      } else {
-        Swal.fire('Akses Ditolak', res.message, 'error');
-        btn.innerText = "🚀 MASUK SISTEM";
-      }
-    } catch (err) {
-      btn.innerText = "🚀 MASUK SISTEM";
-    }
-  }
-
-  function redirectToDash(role) {
-    if (role === 'CALEG') window.location.replace('caleg.html');
-    else if (role === 'TIM_PASTI' || role === 'TIM_PASANG') window.location.replace('tim.html');
-    else if (role === 'INPUTER') window.location.replace('inputer.html');
-  }
-
-  async function hardNukeCache() {
-    Swal.fire({
-      title: 'Reset Total Sistem?',
-      text: "Semua pembaruan skrip akan ditarik ulang secara paksa. Ini akan memperbaiki tampilan nyangkut.",
-      icon: 'warning', showCancelButton: true, confirmButtonColor: '#e74c3c', cancelButtonColor: '#6c757d', confirmButtonText: 'Ya, Hancurkan Cache!'
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        localStorage.clear(); sessionStorage.clear();
-        if ('serviceWorker' in navigator) {
-          const registrations = await navigator.serviceWorker.getRegistrations();
-          for (let registration of registrations) await registration.unregister();
-        }
-        if ('caches' in window) {
-          const cacheNames = await caches.keys();
-          for (let name of cacheNames) await caches.delete(name);
-        }
-        Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Sistem Ter-Reset Total!', showConfirmButton: false, timer: 2000 }).then(() => {
-          window.location.reload(true);
-        });
-      }
-    });
-  }
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/app.js"></script>
 </body>
 </html>
