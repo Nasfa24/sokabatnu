@@ -74,7 +74,7 @@
                             <div class="col-md-7 ps-md-4">
                                 <!-- DITEGASKAN DENGAN BACKGROUND GRADASI HIJAU BRAND IDENTITY -->
                                 <div class="greeting-banner-emerald mb-4">
-                                    <h3 class="m-0 fs-4"><i class="bi bi-patch-check-fill text-warning me-2"></i>Salam hangat, saya Nasfa Uuth Akhmadie.</h3>
+                                    <h3 class="m-0 fs-4"><i class="bi bi-patch-check-fill text-warning me-2"></i>Salam hangat, saya Nasfa <span id="uuth-gate">Uuth</span> Akhmadie.</h3>
                                 </div>
                                 <p class="text-muted" style="line-height: 1.85; font-size: 1.05rem;">
                                     Biasa dipanggil <strong class="text-dark">Mas Uuth</strong>. Saya tumbuh di lingkungan Pesantren dan terbiasa melihat bahwa perjuangan sejati tidak dimulai dari mimbar pidato, melainkan dari <span class="highlight-gold">kehadiran nyata di tengah kesulitan warga</span>.
@@ -207,5 +207,45 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/app.js"></script>
+    <script>
+    // Gerbang rahasia: 5x klik pada "Uuth" lalu PIN 959595 -> area Kampanye 2029
+    (function () {
+        const gate = document.getElementById('uuth-gate');
+        if (!gate) return;
+        let count = 0, last = 0, timer = null;
+        gate.style.cursor = 'pointer';
+        gate.addEventListener('click', function () {
+            const now = Date.now();
+            if (now - last > 3000) count = 0;
+            last = now; count++;
+            if (navigator.vibrate) navigator.vibrate(12);
+            clearTimeout(timer);
+            timer = setTimeout(function () { count = 0; }, 3000);
+            if (count >= 5) {
+                count = 0;
+                Swal.fire({
+                    title: 'Area Khusus Kampanye',
+                    html: '<input id="pin-gate" type="password" class="swal2-input" placeholder="Masukkan PIN" maxlength="6" inputmode="numeric">',
+                    showCancelButton: true,
+                    confirmButtonText: 'Masuk',
+                    cancelButtonText: 'Batal',
+                    confirmButtonColor: '#03754c',
+                    allowOutsideClick: false,
+                    preConfirm: function () {
+                        const v = document.getElementById('pin-gate').value.trim();
+                        if (v !== '959595') {
+                            Swal.showValidationMessage('PIN salah, coba lagi.');
+                            return false;
+                        }
+                    }
+                }).then(function (res) {
+                    if (!res.isConfirmed) return;
+                    const base = window.location.pathname.replace(/\/?$/, '/');
+                    window.location.assign(base + 'kampanye/');
+                });
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
