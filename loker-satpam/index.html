@@ -154,7 +154,7 @@
 
   <section class="card tarik">
     <h2>Cek kelayakan Anda</h2>
-    <p class="kecil">Isi lima kolom, hasilnya langsung muncul. Tidak ada data yang dikirim ke mana pun sampai Anda menekan tombol WhatsApp.</p>
+    <p class="kecil">Isi enam kolom, hasilnya langsung muncul. Data Anda tersimpan untuk proses rekrutmen lalu diteruskan ke WhatsApp.</p>
 
     <form id="form" novalidate>
       <div class="baris">
@@ -170,6 +170,9 @@
           </select>
         </div>
       </div>
+
+      <label for="wa">Nomor WhatsApp aktif</label>
+      <input id="wa" name="wa" type="tel" inputmode="tel" autocomplete="tel" placeholder="Contoh: 081234567890" required>
 
       <div class="baris">
         <div>
@@ -284,6 +287,25 @@
 <script>
 (function(){
   var NOMOR = "6281339760265";
+  var GAS = "https://script.google.com/macros/s/AKfycbxIkfE5eE_Fh6Hy-AhOHI2V0ZzC6CZQ14u8NGRgziSZnuDcWf-lhx__-cAD0HDDOX9E/exec";
+
+  function kirim(d){
+    var q = new URLSearchParams({
+      action: "register",
+      nama: d.nama,
+      wa: d.waRapi,
+      tipe: "loker-satpam",
+      usia: String(d.usia || ""),
+      tinggi: String(d.tinggi || ""),
+      domisili: d.domisili,
+      gada: d.gada,
+      android: d.android,
+      sumber: "sokabatnu.fun/loker-satpam"
+    });
+    try {
+      fetch(GAS + "?" + q.toString(), { method: "GET", mode: "no-cors", keepalive: true });
+    } catch (_) {}
+  }
 
   function wa(teks){
     return "https://wa.me/" + NOMOR + "?text=" + encodeURIComponent(teks);
@@ -299,9 +321,12 @@
     var nama = nilai("nama"), jk = nilai("jk"), usia = parseInt(nilai("usia"),10);
     var tinggi = parseInt(nilai("tinggi"),10), pengalaman = nilai("pengalaman");
     var domisili = nilai("domisili"), gada = nilai("gada"), android = nilai("android");
+    var wa = nilai("wa").replace(/[^0-9]/g, "");
+    var waRapi = wa.indexOf("62") === 0 ? "0" + wa.slice(2) : wa;
     var kurang = [];
 
     if (!nama) kurang.push("Nama belum diisi.");
+    if (!/^(08|628|8)[0-9]{7,}$/.test(wa)) kurang.push("Nomor WhatsApp belum benar.");
     if (!usia || usia < 17) kurang.push("Usia belum diisi dengan benar.");
     if (!tinggi) kurang.push("Tinggi badan belum diisi.");
     if (!domisili) kurang.push("Kecamatan domisili belum diisi.");
@@ -321,13 +346,15 @@
     return {
       kurang: kurang, nama: nama, jk: jk === "P" ? "Perempuan" : "Laki-laki",
       usia: usia, tinggi: tinggi, pengalaman: pengalaman === "ya" ? "Sudah" : "Belum",
-      domisili: domisili, gada: gada === "ya" ? "Ya" : "Belum", android: android === "ya" ? "Ya" : "Tidak"
+      domisili: domisili, gada: gada === "ya" ? "Ya" : "Belum", android: android === "ya" ? "Ya" : "Tidak",
+      wa: wa, waRapi: waRapi
     };
   }
 
   function rangkai(d){
     return "Assalamualaikum, saya ingin melamar posisi Security Surabaya.\n\n"
       + "Nama: " + d.nama + "\n"
+      + "WhatsApp: " + d.waRapi + "\n"
       + "Jenis kelamin: " + d.jk + "\n"
       + "Usia: " + d.usia + " tahun\n"
       + "Tinggi badan: " + d.tinggi + " cm\n"
@@ -341,13 +368,14 @@
   form.addEventListener("submit", function(e){
     e.preventDefault();
     var d = periksa();
-    if (!d.nama || !d.usia || !d.tinggi || !d.domisili) {
+    if (!d.nama || !d.usia || !d.tinggi || !d.domisili || !d.wa) {
       hasil.className = "hasil no";
       hasil.innerHTML = "<b>Lengkapi dulu datanya</b><ul><li>" + d.kurang.join("</li><li>") + "</li></ul>";
       return;
     }
     var tautan = wa(rangkai(d));
     bawah.href = tautan;
+    kirim(d);
 
     if (d.kurang.length === 0) {
       hasil.className = "hasil ok";
