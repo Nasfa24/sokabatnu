@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lowongan Security Surabaya - Khusus Warga Surabaya</title>
+<meta name="description" content="Rekrutmen posisi Security khusus warga Surabaya. Wajib Gada Pratama dan KTA aktif, minimal SLTA, tinggi pria 168 cm dan wanita 158 cm. Kirim lamaran langsung via WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sokabatnu.fun/loker-satpam/">
+<meta property="og:site_name" content="Rekrutmen Security Surabaya">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sokabatnu.fun/loker-satpam/">
+<meta property="og:title" content="Lowongan Security Surabaya">
+<meta property="og:description" content="Khusus warga Surabaya. Gada Pratama dan KTA aktif wajib. Cek kelayakan lalu kirim lamaran via WhatsApp.">
+<meta property="og:image" content="https://sokabatnu.fun/loker-satpam/assets/poster.jpg">
+<meta property="og:image:width" content="820">
+<meta property="og:image:height" content="1025">
+<meta name="theme-color" content="#064e3b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23064e3b'/%3E%3Ctext x='50' y='68' font-size='54' text-anchor='middle' fill='%23fbbf24'%3ES%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --hijau:#064e3b; --hijau2:#0b6a4f; --emas:#fbbf24; --kertas:#f8fafc;
+    --tinta:#0f172a; --abu:#475569; --garis:#e2e8f0; --ok:#059669; --warn:#b45309;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--tinta); background:var(--kertas); line-height:1.55;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px}
+  a{color:var(--hijau)}
+  /* HERO */
+  .hero{
+    background:
+      radial-gradient(120% 90% at 85% 0%, rgba(251,191,36,.22), transparent 55%),
+      linear-gradient(160deg, var(--hijau) 0%, var(--hijau2) 100%);
+    color:#fff; padding:34px 0 74px;
+  }
+  .badge{
+    display:inline-block; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.28);
+    padding:7px 12px; border-radius:999px; font-weight:700;
+  }
+  h1{font-size:clamp(27px,7vw,40px); line-height:1.15; margin:16px 0 10px; letter-spacing:-.02em}
+  h1 span{color:var(--emas)}
+  .sub{font-size:16px; color:#d7e6df; margin:0 0 18px; max-width:34ch}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none}
+  .chips li{
+    font-size:13px; font-weight:600; background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.2); border-radius:10px; padding:7px 11px;
+  }
+  /* KARTU */
+  .card{
+    background:#fff; border:1px solid var(--garis); border-radius:18px; padding:22px;
+    box-shadow:0 10px 30px -18px rgba(6,78,59,.45); margin:0 0 16px;
+  }
+  .card.tarik{margin-top:-52px; position:relative; z-index:2}
+  h2{font-size:19px; margin:0 0 4px; letter-spacing:-.01em}
+  .kecil{font-size:13.5px; color:var(--abu); margin:0 0 16px}
+  label{display:block; font-size:13.5px; font-weight:700; margin:12px 0 6px}
+  input,select{
+    width:100%; font:inherit; font-size:16px; padding:12px 13px; border-radius:11px;
+    border:1.5px solid var(--garis); background:#fff; color:var(--tinta);
+  }
+  input:focus,select:focus{outline:none; border-color:var(--hijau); box-shadow:0 0 0 3px rgba(6,78,59,.12)}
+  .baris{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  .tombol{
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    width:100%; padding:15px 18px; border-radius:12px; border:0; cursor:pointer;
+    font:inherit; font-weight:800; font-size:16px; text-decoration:none;
+  }
+  .utama{background:var(--hijau); color:#fff; margin-top:18px}
+  .utama:hover{background:#053f30}
+  .wa{background:#25d366; color:#06301c}
+  .garis-abu{background:#fff; color:var(--hijau); border:1.5px solid var(--garis)}
+  .hasil{border-radius:12px; padding:14px 15px; font-size:14.5px; margin-top:16px; display:none}
+  .hasil.ok{display:block; background:#ecfdf5; border:1px solid #a7f3d0; color:#065f46}
+  .hasil.no{display:block; background:#fffbeb; border:1px solid #fde68a; color:#92400e}
+  .hasil b{display:block; margin-bottom:4px}
+  .hasil ul{margin:6px 0 0; padding-left:18px}
+  /* DAFTAR */
+  ul.syarat{list-style:none; margin:0; padding:0}
+  ul.syarat li{
+    display:flex; gap:11px; padding:11px 0; border-bottom:1px dashed var(--garis); font-size:15px;
+  }
+  ul.syarat li:last-child{border-bottom:0}
+  .tik{
+    flex:0 0 22px; height:22px; border-radius:50%; background:#ecfdf5; color:var(--ok);
+    display:grid; place-items:center; font-size:13px; font-weight:900; margin-top:1px;
+  }
+  /* CHECKLIST BERKAS */
+  .berkas{list-style:none; margin:0; padding:0}
+  .berkas li{border-bottom:1px solid var(--garis)}
+  .berkas li:last-child{border-bottom:0}
+  .berkas label{
+    display:flex; align-items:flex-start; gap:11px; margin:0; padding:12px 0;
+    font-weight:500; font-size:15px; cursor:pointer;
+  }
+  .berkas input{width:20px; height:20px; flex:0 0 20px; margin:2px 0 0; accent-color:var(--hijau)}
+  .meter{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background:#f1f5f9; border-radius:10px; padding:10px 13px; font-size:13.5px; font-weight:700;
+    margin-bottom:6px;
+  }
+  .meter .bar{flex:1; height:8px; background:#e2e8f0; border-radius:99px; overflow:hidden}
+  .meter .bar i{display:block; height:100%; width:0; background:var(--ok); transition:width .25s}
+  /* ALUR */
+  ol.alur{list-style:none; counter-reset:l; margin:0; padding:0}
+  ol.alur li{counter-increment:l; position:relative; padding:0 0 18px 40px; font-size:15px}
+  ol.alur li::before{
+    content:counter(l); position:absolute; left:0; top:0; width:27px; height:27px;
+    border-radius:50%; background:var(--hijau); color:#fff; display:grid; place-items:center;
+    font-size:13px; font-weight:800;
+  }
+  ol.alur li::after{content:""; position:absolute; left:13px; top:30px; bottom:2px; width:1.5px; background:var(--garis)}
+  ol.alur li:last-child{padding-bottom:0}
+  ol.alur li:last-child::after{display:none}
+  ol.alur b{display:block}
+  .poster{border-radius:14px; overflow:hidden; border:1px solid var(--garis)}
+  .poster img{display:block; width:100%; height:auto}
+  footer{padding:26px 0 108px; text-align:center; color:var(--abu); font-size:13px}
+  /* BILAH BAWAH */
+  .bawah{
+    position:fixed; left:0; right:0; bottom:0; z-index:20;
+    background:rgba(255,255,255,.96); backdrop-filter:blur(8px);
+    border-top:1px solid var(--garis); padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  }
+  .bawah .wrap{padding:0; display:flex; align-items:center; gap:12px}
+  .bawah .info{font-size:12.5px; color:var(--abu); line-height:1.3; flex:1}
+  .bawah .info b{color:var(--tinta); display:block; font-size:13.5px}
+  .bawah .wa{padding:12px 16px; font-size:15px; width:auto; flex:0 0 auto; border-radius:11px}
+  @media (max-width:420px){ .baris{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">Rekrutmen Security</span>
+    <h1>Lowongan Security <span>Surabaya</span></h1>
+    <p class="sub">Khusus warga Surabaya. Wajib Gada Pratama dan KTA aktif. Kirim lamaran lewat WhatsApp, tanpa antre.</p>
+    <ul class="chips">
+      <li>Gada Pratama</li>
+      <li>Minimal SLTA</li>
+      <li>TB 168 / 158 cm</li>
+      <li>Android 10+</li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card tarik">
+    <h2>Cek kelayakan Anda</h2>
+    <p class="kecil">Isi lima kolom, hasilnya langsung muncul. Tidak ada data yang dikirim ke mana pun sampai Anda menekan tombol WhatsApp.</p>
+
+    <form id="form" novalidate>
+      <div class="baris">
+        <div>
+          <label for="nama">Nama lengkap</label>
+          <input id="nama" name="nama" type="text" autocomplete="name" placeholder="Nama sesuai KTP" required>
+        </div>
+        <div>
+          <label for="jk">Jenis kelamin</label>
+          <select id="jk" name="jk">
+            <option value="L">Laki-laki</option>
+            <option value="P">Perempuan</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="baris">
+        <div>
+          <label for="usia">Usia (tahun)</label>
+          <input id="usia" name="usia" type="number" inputmode="numeric" min="17" max="60" placeholder="Contoh: 23" required>
+        </div>
+        <div>
+          <label for="tinggi">Tinggi badan (cm)</label>
+          <input id="tinggi" name="tinggi" type="number" inputmode="numeric" min="140" max="210" placeholder="Contoh: 170" required>
+        </div>
+      </div>
+
+      <div class="baris">
+        <div>
+          <label for="pengalaman">Pengalaman security</label>
+          <select id="pengalaman" name="pengalaman">
+            <option value="tidak">Belum pernah</option>
+            <option value="ya">Sudah pernah</option>
+          </select>
+        </div>
+        <div>
+          <label for="domisili">Kecamatan di Surabaya</label>
+          <input id="domisili" name="domisili" type="text" placeholder="Contoh: Rungkut" required>
+        </div>
+      </div>
+
+      <label for="gada">Gada Pratama dan KTA aktif</label>
+      <select id="gada" name="gada">
+        <option value="ya">Sudah, aktif</option>
+        <option value="tidak">Belum punya</option>
+      </select>
+
+      <label for="android">HP Android versi 10 ke atas</label>
+      <select id="android" name="android">
+        <option value="ya">Ya</option>
+        <option value="tidak">Bukan atau di bawah 10</option>
+      </select>
+
+      <button class="tombol utama" type="submit">Cek dan lanjut ke WhatsApp</button>
+      <div class="hasil" id="hasil" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Kualifikasi</h2>
+    <p class="kecil">Sesuai poster rekrutmen resmi.</p>
+    <ul class="syarat">
+      <li><span class="tik">1</span><span>Telah mengikuti pendidikan Gada Pratama dan memiliki KTA aktif</span></li>
+      <li><span class="tik">2</span><span>Pendidikan terakhir minimal SLTA sederajat</span></li>
+      <li><span class="tik">3</span><span>Usia maksimal 25 tahun untuk pria tanpa pengalaman, 35 tahun untuk pria berpengalaman, 30 tahun untuk perempuan</span></li>
+      <li><span class="tik">4</span><span>Tinggi badan minimal 168 cm pria dan 158 cm perempuan, berat badan ideal</span></li>
+      <li><span class="tik">5</span><span>Memahami kesamaptaan: lari, push up, sit up, shuttle run</span></li>
+      <li><span class="tik">6</span><span>Wajib memiliki HP Android minimal versi 10</span></li>
+      <li><span class="tik">7</span><span>Tidak menggunakan narkoba dan miras</span></li>
+      <li><span class="tik">8</span><span>Tidak terlibat judi dalam bentuk apa pun</span></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Berkas yang disiapkan</h2>
+    <p class="kecil">Centang yang sudah Anda pegang. Hitungannya tersimpan di HP ini saja.</p>
+    <div class="meter"><span id="hitung">Menghitung berkas</span><span class="bar"><i id="isi"></i></span></div>
+    <ul class="berkas" id="berkas">
+      <li><label><input type="checkbox"><span>Surat lamaran kerja dan CV</span></label></li>
+      <li><label><input type="checkbox"><span>Copy KTP, KK, dan NPWP</span></label></li>
+      <li><label><input type="checkbox"><span>Copy ijazah pendidikan formal dan transkrip nilai</span></label></li>
+      <li><label><input type="checkbox"><span>Copy ijazah Gada Pratama yang sudah dilegalisir Polda penerbit</span></label></li>
+      <li><label><input type="checkbox"><span>Copy SKCK aktif</span></label></li>
+      <li><label><input type="checkbox"><span>Copy BPJS Kesehatan aktif</span></label></li>
+      <li><label><input type="checkbox"><span>Surat keterangan sehat terbaru dari fasilitas kesehatan</span></label></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Alur lamaran</h2>
+    <p class="kecil">Empat langkah, semuanya lewat WhatsApp.</p>
+    <ol class="alur">
+      <li><b>Kirim data</b>Isi formulir di atas, pesan sudah terisi otomatis.</li>
+      <li><b>Verifikasi berkas</b>Tim memeriksa KTA, SKCK, dan ijazah Gada Pratama.</li>
+      <li><b>Tes kesamaptaan</b>Lari, push up, sit up, dan shuttle run.</li>
+      <li><b>Penempatan</b>Lokasi dan jadwal kerja dijelaskan saat wawancara.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Poster resmi</h2>
+    <p class="kecil">Simpan atau bagikan ke grup WhatsApp.</p>
+    <div class="poster">
+      <picture>
+        <source srcset="assets/poster.webp" type="image/webp">
+        <img src="assets/poster.jpg" alt="Poster lowongan kerja posisi security khusus warga Surabaya" loading="lazy" width="820" height="1025">
+      </picture>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  Rekrutmen Security Surabaya. Dikelola oleh @Mas_Uuth.
+</footer>
+
+<div class="bawah">
+  <div class="wrap">
+    <div class="info">
+      <b>Butuh info cepat?</b>
+      Tanya langsung ke rekruter
+    </div>
+    <a class="tombol wa" id="waBawah" href="https://wa.me/6281339760265" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NOMOR = "6281339760265";
+
+  function wa(teks){
+    return "https://wa.me/" + NOMOR + "?text=" + encodeURIComponent(teks);
+  }
+
+  var form = document.getElementById("form");
+  var hasil = document.getElementById("hasil");
+  var bawah = document.getElementById("waBawah");
+
+  function nilai(id){ return document.getElementById(id).value.trim(); }
+
+  function periksa(){
+    var nama = nilai("nama"), jk = nilai("jk"), usia = parseInt(nilai("usia"),10);
+    var tinggi = parseInt(nilai("tinggi"),10), pengalaman = nilai("pengalaman");
+    var domisili = nilai("domisili"), gada = nilai("gada"), android = nilai("android");
+    var kurang = [];
+
+    if (!nama) kurang.push("Nama belum diisi.");
+    if (!usia || usia < 17) kurang.push("Usia belum diisi dengan benar.");
+    if (!tinggi) kurang.push("Tinggi badan belum diisi.");
+    if (!domisili) kurang.push("Kecamatan domisili belum diisi.");
+
+    var batasUsia = jk === "P" ? 30 : (pengalaman === "ya" ? 35 : 25);
+    var batasTinggi = jk === "P" ? 158 : 168;
+
+    if (usia && usia > batasUsia) {
+      kurang.push("Usia " + usia + " tahun melewati batas " + batasUsia + " tahun untuk kategori Anda.");
+    }
+    if (tinggi && tinggi < batasTinggi) {
+      kurang.push("Tinggi " + tinggi + " cm kurang dari " + batasTinggi + " cm.");
+    }
+    if (gada !== "ya") kurang.push("Gada Pratama dan KTA aktif masih wajib dipenuhi.");
+    if (android !== "ya") kurang.push("HP Android minimal versi 10 masih wajib dipenuhi.");
+
+    return {
+      kurang: kurang, nama: nama, jk: jk === "P" ? "Perempuan" : "Laki-laki",
+      usia: usia, tinggi: tinggi, pengalaman: pengalaman === "ya" ? "Sudah" : "Belum",
+      domisili: domisili, gada: gada === "ya" ? "Ya" : "Belum", android: android === "ya" ? "Ya" : "Tidak"
+    };
+  }
+
+  function rangkai(d){
+    return "Assalamualaikum, saya ingin melamar posisi Security Surabaya.\n\n"
+      + "Nama: " + d.nama + "\n"
+      + "Jenis kelamin: " + d.jk + "\n"
+      + "Usia: " + d.usia + " tahun\n"
+      + "Tinggi badan: " + d.tinggi + " cm\n"
+      + "Pengalaman security: " + d.pengalaman + "\n"
+      + "Domisili: " + d.domisili + ", Surabaya\n"
+      + "Gada Pratama dan KTA: " + d.gada + "\n"
+      + "HP Android 10+: " + d.android + "\n\n"
+      + "Mohon informasi tahapan selanjutnya. Terima kasih.";
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var d = periksa();
+    if (!d.nama || !d.usia || !d.tinggi || !d.domisili) {
+      hasil.className = "hasil no";
+      hasil.innerHTML = "<b>Lengkapi dulu datanya</b><ul><li>" + d.kurang.join("</li><li>") + "</li></ul>";
+      return;
+    }
+    var tautan = wa(rangkai(d));
+    bawah.href = tautan;
+
+    if (d.kurang.length === 0) {
+      hasil.className = "hasil ok";
+      hasil.innerHTML = "<b>Anda memenuhi syarat dasar</b>Lanjutkan kirim data lewat WhatsApp. Siapkan berkas untuk verifikasi.";
+    } else {
+      hasil.className = "hasil no";
+      hasil.innerHTML = "<b>Ada syarat yang belum terpenuhi</b><ul><li>" + d.kurang.join("</li><li>") + "</li></ul>";
+    }
+    var tombol = document.createElement("a");
+    tombol.className = "tombol wa";
+    tombol.style.marginTop = "12px";
+    tombol.href = tautan;
+    tombol.target = "_blank";
+    tombol.rel = "noopener";
+    tombol.textContent = d.kurang.length === 0 ? "Kirim lamaran lewat WhatsApp" : "Tanya dulu lewat WhatsApp";
+    hasil.appendChild(tombol);
+    window.open(tautan, "_blank");
+  });
+
+  var kotak = document.querySelectorAll("#berkas input");
+  var hitung = document.getElementById("hitung");
+  var isi = document.getElementById("isi");
+  function segarkan(){
+    var n = 0;
+    kotak.forEach(function(k){ if (k.checked) n++; });
+    hitung.textContent = n + " dari " + kotak.length + " siap";
+    isi.style.width = Math.round(n / kotak.length * 100) + "%";
+    try { localStorage.setItem("berkas_satpam", JSON.stringify([].map.call(kotak, function(k){ return k.checked; }))); } catch (_) {}
+  }
+  try {
+    var simpan = JSON.parse(localStorage.getItem("berkas_satpam") || "[]");
+    simpan.forEach(function(v, i){ if (kotak[i]) kotak[i].checked = v; });
+  } catch (_) {}
+  kotak.forEach(function(k){ k.addEventListener("change", segarkan); });
+  segarkan();
+
+  bawah.href = wa("Assalamualaikum, saya ingin bertanya soal lowongan Security Surabaya.");
+})();
+</script>
+</body>
+</html>
