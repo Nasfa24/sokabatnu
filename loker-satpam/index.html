@@ -45,7 +45,10 @@
   }
   h1{font-size:clamp(27px,7vw,40px); line-height:1.15; margin:16px 0 10px; letter-spacing:-.02em}
   h1 span{color:var(--emas)}
-  .sub{font-size:16px; color:#d7e6df; margin:0 0 18px; max-width:34ch}
+  .sub{font-size:15px; font-weight:700; letter-spacing:.02em; color:#fff; margin:0 0 12px; text-transform:uppercase}
+  .poin{list-style:none; margin:0 0 18px; padding:0; display:grid; gap:7px; max-width:34ch}
+  .poin li{position:relative; padding-left:23px; font-size:15.5px; line-height:1.45; color:#dbeae3}
+  .poin li::before{content:"\2713"; position:absolute; left:0; top:0; color:var(--emas); font-weight:800; font-size:13px}
   .chips{display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none}
   .chips li{
     font-size:13px; font-weight:600; background:rgba(255,255,255,.1);
@@ -141,9 +144,13 @@
   <div class="wrap">
     <span class="badge">Rekrutmen Security</span>
     <h1>Lowongan Security <span>Surabaya</span></h1>
-    <p class="sub">Khusus warga Surabaya. Wajib Gada Pratama dan KTA aktif. Kirim lamaran lewat WhatsApp, tanpa antre.</p>
+    <p class="sub">Khusus warga Surabaya</p>
+    <ul class="poin">
+      <li>Wajib Gada Pratama dan KTA aktif</li>
+      <li>Lamaran dikirim lewat WhatsApp</li>
+      <li>Tanpa antre, langsung dari HP</li>
+    </ul>
     <ul class="chips">
-      <li>Gada Pratama</li>
       <li>Minimal SLTA</li>
       <li>TB 168 / 158 cm</li>
       <li>Android 10+</li>
