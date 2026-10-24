@@ -64,6 +64,7 @@
     width:100%; font:inherit; font-size:16px; padding:12px 13px; border-radius:11px;
     border:1.5px solid var(--garis); background:#fff; color:var(--tinta);
   }
+  #nama{text-transform:uppercase}
   input:focus,select:focus{outline:none; border-color:var(--hijau); box-shadow:0 0 0 3px rgba(6,78,59,.12)}
   .baris{display:grid; grid-template-columns:1fr 1fr; gap:12px}
   .tombol{
@@ -154,7 +155,7 @@
 
   <section class="card tarik">
     <h2>Cek kelayakan Anda</h2>
-    <p class="kecil">Isi enam kolom, hasilnya langsung muncul. Data Anda tersimpan untuk proses rekrutmen lalu diteruskan ke WhatsApp.</p>
+    <p class="kecil">Lengkapi kolom di bawah, hasilnya langsung muncul. Data Anda tersimpan untuk proses rekrutmen lalu diteruskan ke WhatsApp.</p>
 
     <form id="form" novalidate>
       <div class="baris">
@@ -185,17 +186,55 @@
         </div>
       </div>
 
+      <label for="pengalaman">Pengalaman security</label>
+      <select id="pengalaman" name="pengalaman">
+        <option value="tidak">Belum pernah</option>
+        <option value="ya">Sudah pernah</option>
+      </select>
+
       <div class="baris">
         <div>
-          <label for="pengalaman">Pengalaman security</label>
-          <select id="pengalaman" name="pengalaman">
-            <option value="tidak">Belum pernah</option>
-            <option value="ya">Sudah pernah</option>
+          <label for="kecamatan">Kecamatan di Surabaya</label>
+          <select id="kecamatan" name="kecamatan" required>
+            <option value="">Pilih kecamatan</option>
+            <option value="Asemrowo">Asemrowo</option>
+            <option value="Benowo">Benowo</option>
+            <option value="Bubutan">Bubutan</option>
+            <option value="Bulak">Bulak</option>
+            <option value="Dukuh Pakis">Dukuh Pakis</option>
+            <option value="Gayungan">Gayungan</option>
+            <option value="Genteng">Genteng</option>
+            <option value="Gubeng">Gubeng</option>
+            <option value="Gunung Anyar">Gunung Anyar</option>
+            <option value="Jambangan">Jambangan</option>
+            <option value="Karang Pilang">Karang Pilang</option>
+            <option value="Kenjeran">Kenjeran</option>
+            <option value="Krembangan">Krembangan</option>
+            <option value="Lakarsantri">Lakarsantri</option>
+            <option value="Mulyorejo">Mulyorejo</option>
+            <option value="Pabean Cantian">Pabean Cantian</option>
+            <option value="Pakal">Pakal</option>
+            <option value="Rungkut">Rungkut</option>
+            <option value="Sambikerep">Sambikerep</option>
+            <option value="Sawahan">Sawahan</option>
+            <option value="Semampir">Semampir</option>
+            <option value="Simokerto">Simokerto</option>
+            <option value="Suko Manunggal">Suko Manunggal</option>
+            <option value="Sukolilo">Sukolilo</option>
+            <option value="Tambaksari">Tambaksari</option>
+            <option value="Tandes">Tandes</option>
+            <option value="Tegalsari">Tegalsari</option>
+            <option value="Tenggilis Mejoyo">Tenggilis Mejoyo</option>
+            <option value="Wiyung">Wiyung</option>
+            <option value="Wonocolo">Wonocolo</option>
+            <option value="Wonokromo">Wonokromo</option>
           </select>
         </div>
         <div>
-          <label for="domisili">Kecamatan di Surabaya</label>
-          <input id="domisili" name="domisili" type="text" placeholder="Contoh: Rungkut" required>
+          <label for="kelurahan">Kelurahan</label>
+          <select id="kelurahan" name="kelurahan" required>
+            <option value="">Pilih kecamatan dulu</option>
+          </select>
         </div>
       </div>
 
@@ -316,10 +355,33 @@
 
   function nilai(id){ return document.getElementById(id).value.trim(); }
 
+  var KEC = {"Asemrowo":["Asemrowo","Genting Kalianak","Tambak Sarioso"],"Benowo":["Kandangan","Romokalisari","Sememi","Tambak Oso Wilangon"],"Bubutan":["Alon-Alon Contong","Bubutan","Gundih","Jepara","Tembok Dukuh"],"Bulak":["Bulak","Kedung Cowek","Kenjeran","Sukolilo Baru"],"Dukuh Pakis":["Dukuh Kupang","Dukuh Pakis","Gunungsari","Pradahkali Kendal"],"Gayungan":["Dukuh Menanggal","Gayungan","Ketintang","Menanggal"],"Genteng":["Embong Kaliasin","Genteng","Kapasari","Ketabang","Peneleh"],"Gubeng":["Airlangga","Baratajaya","Gubeng","Kertajaya","Mojo","Pucang Sewu"],"Gunung Anyar":["Gunung Anyar","Gunung Anyar Tambak","Rungkut Menanggal","Rungkut Tengah"],"Jambangan":["Jambangan","Karah","Kebonsari","Pagesangan"],"Karang Pilang":["Karang Pilang","Kebraon","Kedurus","Warugunung"],"Kenjeran":["Bulak Banteng","Sidotopo Wetan","Tambak Wedi","Tanah Kali Kedinding"],"Krembangan":["Dupak","Kemayoran","Krembangan Selatan","Morokrembangan","Perak Barat"],"Lakarsantri":["Bangkingan","Jeruk","Lakarsantri","Lidah Kulon","Lidah Wetan","Sumur Welut"],"Mulyorejo":["Dukuh Sutorejo","Kalijudan","Kalisari","Kejawen Putih Tambak","Manyar Sabrangan","Mulyorejo"],"Pabean Cantian":["Bongkaran","Krembangan Utara","Nyamplungan","Perak Timur","Perak Utara"],"Pakal":["Babat Jerawat","Benowo","Pakal","Sumberrejo"],"Rungkut":["Kali Rungkut","Kedung Baruk","Medokan Ayu","Penjaringan Sari","Rungkut Kidul","Wonorejo Rungkut"],"Sambikerep":["Bringin","Lontar","Made","Sambikerep"],"Sawahan":["Banyu Urip","Kupang Krajan","Pakis","Petemon","Putat Jaya","Sawahan"],"Semampir":["Ampel","Pegirian","Sidotopo","Ujung","Wonokusumo"],"Simokerto":["Kapasan","Sidodadi","Simokerto","Simolawang","Tambakrejo"],"Suko Manunggal":["Putat Gede","Simomulyo","Simomulyo Baru","Sono Kwijenan","Suko Manunggal","Tanjungsari"],"Sukolilo":["Gebang Putih","Keputih","Klampis Ngasem","Medokan Semampir","Menur Pumpungan","Ngiden Jangkungan","Semolowaru"],"Tambaksari":["Dukuh Setro","Gading","Kapasmadya Baru","Pacar Keling","Pacar Kembang","Ploso","Rangkah","Tambaksari"],"Tandes":["Balongsari","Banjar Sugihan","Karangpoh","Manukan Kulon","Manukan Wetan","Tandes"],"Tegalsari":["Dr. Sutomo","Kedungdoro","Keputran","Tegalsari","Wonorejo Tegalsari"],"Tenggilis Mejoyo":["Kendangsari","Kutisari","Panjang Jiwo","Tenggilis Mejoyo"],"Wiyung":["Babatan","Balas Klumprik","Jajar Tunggal","Wiyung"],"Wonocolo":["Bendul Merisi","Jemur Wonosari","Margorejo","Sidosermo","Siwalankerto"],"Wonokromo":["Darmo","Jagir","Ngagel","Ngagelrejo","Sawunggaling","Wonokromo"]};
+  var selKec = document.getElementById("kecamatan");
+  var selKel = document.getElementById("kelurahan");
+
+  function isiKelurahan(){
+    var daftar = KEC[selKec.value] || [];
+    selKel.innerHTML = "";
+    var awal = document.createElement("option");
+    awal.value = "";
+    awal.textContent = daftar.length ? "Pilih kelurahan" : "Pilih kecamatan dulu";
+    selKel.appendChild(awal);
+    daftar.forEach(function(nama){
+      var o = document.createElement("option");
+      o.value = nama;
+      o.textContent = nama;
+      selKel.appendChild(o);
+    });
+  }
+  selKec.addEventListener("change", isiKelurahan);
+  isiKelurahan();
+
   function periksa(){
-    var nama = nilai("nama"), jk = nilai("jk"), usia = parseInt(nilai("usia"),10);
+    var nama = nilai("nama").toUpperCase(), jk = nilai("jk"), usia = parseInt(nilai("usia"),10);
     var tinggi = parseInt(nilai("tinggi"),10), pengalaman = nilai("pengalaman");
-    var domisili = nilai("domisili"), gada = nilai("gada"), android = nilai("android");
+    var kecamatan = nilai("kecamatan"), kelurahan = nilai("kelurahan");
+    var domisili = kelurahan && kecamatan ? kelurahan + ", " + kecamatan : "";
+    var gada = nilai("gada"), android = nilai("android");
     var wa = nilai("wa").replace(/[^0-9]/g, "");
     var waRapi = wa.indexOf("62") === 0 ? "0" + wa.slice(2) : wa;
     var kurang = [];
@@ -328,7 +390,8 @@
     if (!/^(08|628|8)[0-9]{7,}$/.test(wa)) kurang.push("Nomor WhatsApp belum benar.");
     if (!usia || usia < 17) kurang.push("Usia belum diisi dengan benar.");
     if (!tinggi) kurang.push("Tinggi badan belum diisi.");
-    if (!domisili) kurang.push("Kecamatan domisili belum diisi.");
+    if (!kecamatan) kurang.push("Kecamatan belum dipilih.");
+    if (kecamatan && !kelurahan) kurang.push("Kelurahan belum dipilih.");
 
     var batasUsia = jk === "P" ? 30 : (pengalaman === "ya" ? 35 : 25);
     var batasTinggi = jk === "P" ? 158 : 168;
@@ -345,7 +408,7 @@
     return {
       kurang: kurang, nama: nama, jk: jk === "P" ? "Perempuan" : "Laki-laki",
       usia: usia, tinggi: tinggi, pengalaman: pengalaman === "ya" ? "Sudah" : "Belum",
-      domisili: domisili, gada: gada === "ya" ? "Ya" : "Belum", android: android === "ya" ? "Ya" : "Tidak",
+      domisili: domisili, kecamatan: kecamatan, kelurahan: kelurahan, gada: gada === "ya" ? "Ya" : "Belum", android: android === "ya" ? "Ya" : "Tidak",
       wa: wa, waRapi: waRapi
     };
   }
