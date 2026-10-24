@@ -287,23 +287,22 @@
 <script>
 (function(){
   var NOMOR = "6281339760265";
-  var GAS = "https://script.google.com/macros/s/AKfycbxIkfE5eE_Fh6Hy-AhOHI2V0ZzC6CZQ14u8NGRgziSZnuDcWf-lhx__-cAD0HDDOX9E/exec";
+  var GAS = "https://script.google.com/macros/s/AKfycbxOo_Z8IPxSXYgvuyxBna8ZEjGx0GLUJl2orrjaDtJZePRGmSMNYVatvXWbpLljQyzYNg/exec";
 
   function kirim(d){
-    var q = new URLSearchParams({
-      action: "register",
-      nama: d.nama,
-      wa: d.waRapi,
-      tipe: "satpam",
-      usia: String(d.usia || ""),
-      tinggi: String(d.tinggi || ""),
-      domisili: d.domisili,
-      gada: d.gada,
-      android: d.android,
-      sumber: "sokabatnu.fun/loker-satpam"
-    });
+    var pesan = "Layanan: Security Surabaya | Usia " + d.usia + " tahun"
+      + " | Tinggi " + d.tinggi + " cm"
+      + " | Domisili " + d.domisili
+      + " | Gada Pratama " + d.gada
+      + " | Android " + d.android
+      + " | Sumber sokabatnu.fun/loker-satpam";
     try {
-      fetch(GAS + "?" + q.toString(), { method: "GET", mode: "no-cors", keepalive: true });
+      fetch(GAS, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ tipe: "Lead WhatsApp", nama: d.nama, wa: d.waRapi, pesan: pesan })
+      });
     } catch (_) {}
   }
 
