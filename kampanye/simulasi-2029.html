@@ -6,53 +6,91 @@
 <title>Simulasi Pecah Dapil 2029 · PKB Surabaya</title>
 <meta name="theme-color" content="#04301f">
 <style>
-:root{--hijau:#0b6b45;--hijau-gelap:#04301f;--hijau-muda:#e8f5ee;--emas:#f6b93b;--emas-muda:#ffe6a6;--bg:#eef3f0;--kartu:#fff;--garis:#dbe5df;--teks:#0e1a15;--redup:#4e615a;--redup2:#7b8c85;--merah:#b3261e;--r:16px}
+:root{--hijau:#0b6b45;--hijau-gelap:#04301f;--hijau-muda:#e8f5ee;--emas:#f6b93b;--emas-muda:#ffe6a6;--bg:#eef3f0;--kartu:#fff;--garis:#dbe5df;--teks:#0e1a15;--redup:#4e615a;--redup2:#7b8c85;--merah:#b3261e;--merah-muda:#fdeceb;--kuning:#8a5a00;--kuning-muda:#fff5dc;--r:16px}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--teks);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
-.bungkus{max-width:560px;margin:0 auto;padding:0 14px 48px}
-.hero{position:relative;overflow:hidden;background:radial-gradient(120% 140% at 0% 0%,#0e7d51 0%,#04301f 62%);color:#fff;border-radius:0 0 26px 26px;padding:22px 20px 26px;box-shadow:0 14px 30px rgba(4,48,31,.28)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--teks);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5;font-variant-numeric:tabular-nums}
+.bungkus{max-width:600px;margin:0 auto;padding:0 14px 56px}
+.hero{position:relative;overflow:hidden;background:radial-gradient(120% 140% at 0% 0%,#0e7d51 0%,#04301f 62%);color:#fff;border-radius:0 0 26px 26px;padding:22px 20px 24px;box-shadow:0 14px 30px rgba(4,48,31,.28)}
 .hero::after{content:"";position:absolute;right:-60px;top:-40px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(246,185,59,.34),transparent 68%)}
 .lencana{display:inline-block;background:rgba(246,185,59,.2);color:var(--emas-muda);border:1px solid rgba(246,185,59,.5);font-size:10.5px;font-weight:800;letter-spacing:.12em;padding:4px 10px;border-radius:999px;text-transform:uppercase}
-.hero h1{margin:12px 0 6px;font-size:25px;line-height:1.18;letter-spacing:-.02em}
-.hero p{margin:0;color:#cfe6db;font-size:13px}
-.kembali{display:inline-block;margin-top:14px;color:#fff;font-size:12px;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:1px}
-.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
-.stat div{background:var(--kartu);border:1px solid var(--garis);border-radius:12px;padding:10px 8px;text-align:center}
-.stat b{display:block;font-size:16px;color:var(--hijau-gelap);letter-spacing:-.02em}
-.stat span{font-size:9.5px;color:var(--redup2);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
-h2{font-size:15px;margin:26px 0 4px;letter-spacing:-.01em}
-.sub{font-size:12px;color:var(--redup);margin:0 0 12px}
-.dapil{background:var(--kartu);border:1px solid var(--garis);border-radius:var(--r);padding:13px 13px 12px;margin-bottom:10px;box-shadow:0 1px 2px rgba(4,48,31,.05)}
+.hero h1{margin:12px 0 6px;font-size:24px;line-height:1.16;letter-spacing:-.02em}
+.hero p{margin:0;color:#cfe6db;font-size:12.5px}
+.kembali{display:inline-block;margin-top:13px;color:#fff;font-size:12px;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:1px}
+h2{font-size:15.5px;margin:28px 0 2px;letter-spacing:-.01em}
+h2 span{font-weight:400;color:var(--redup2);font-size:11.5px;margin-left:6px;letter-spacing:0}
+.sub{font-size:12px;color:var(--redup);margin:4px 0 12px}
+.cara{background:var(--kartu);border:1px solid var(--garis);border-radius:14px;padding:12px 14px;margin-top:14px}
+.cara div{display:flex;gap:9px;font-size:11.8px;color:#26362e;padding:4px 0}
+.cara i{font-style:normal;flex:0 0 62px;font-weight:800;color:var(--hijau);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;padding-top:1px}
+.stat{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.stat div{background:var(--kartu);border:1px solid var(--garis);border-radius:12px;padding:9px 6px;text-align:center}
+.stat b{display:block;font-size:15px;color:var(--hijau-gelap);letter-spacing:-.02em}
+.stat span{font-size:9px;color:var(--redup2);text-transform:uppercase;letter-spacing:.05em;font-weight:700;display:block;line-height:1.25}
+.gulir{overflow-x:auto;margin:0 -2px;padding:0 2px}
+table{width:100%;min-width:352px;border-collapse:collapse;background:var(--kartu);border:1px solid var(--garis);border-radius:12px;overflow:hidden;font-size:11px}
+thead th{background:#f4f8f6;color:var(--redup2);font-size:9px;text-transform:uppercase;letter-spacing:.04em;font-weight:800;padding:8px 5px;text-align:right;border-bottom:1px solid var(--garis);white-space:nowrap}
+thead th:first-child{text-align:left}
+tbody td{padding:8px 5px;text-align:right;border-bottom:1px solid #eef3f0;vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even){background:#fafcfb}
+td:first-child{text-align:left;font-weight:800;font-size:11.5px;white-space:nowrap}
+td small{display:block;font-size:9px;color:var(--redup2);font-weight:600}
+tbody td:last-child{min-width:56px}
+td.kurang b{color:var(--merah)}td.kurang small{color:var(--merah)}
+td.surplus b{color:var(--hijau)}td.surplus small{color:var(--hijau)}
+.peringkat{background:var(--kartu);border:1px solid var(--garis);border-radius:14px;padding:12px 14px 6px}
+.pr{display:grid;grid-template-columns:52px 1fr 66px;gap:8px;align-items:center;padding:6px 0}
+.pr .lbl{font-size:11px;font-weight:800}
+.pr .lbl small{display:block;font-weight:600;color:var(--redup2);font-size:9px}
+.lacak{position:relative;height:9px;background:#eef3f0;border-radius:999px}
+.lacak i{position:absolute;left:0;top:0;height:100%;border-radius:999px}
+.lacak u{position:absolute;left:31.25%;top:-3px;width:1px;height:15px;background:#8fa39a;text-decoration:none}
+.pr .ang{text-align:right;font-size:11px;font-weight:800}
+.pr .ang small{display:block;font-size:9px;color:var(--redup2);font-weight:600}
+.w-aman{background:linear-gradient(90deg,#3fbf85,#0b6b45)}
+.w-jalan{background:linear-gradient(90deg,#f6c96b,#d99400)}
+.w-rawan{background:linear-gradient(90deg,#f0908a,#b3261e)}
+.skala{display:flex;justify-content:space-between;font-size:9px;color:var(--redup2);margin:2px 0 4px 60px;padding-right:66px}
+.chips{display:flex;gap:6px;margin:10px 0 6px;flex-wrap:wrap}
+.chips button{border:1px solid var(--garis);background:var(--kartu);color:var(--redup);font-size:11px;font-weight:700;padding:6px 11px;border-radius:999px;font-family:inherit}
+.chips button.on{background:var(--hijau-gelap);border-color:var(--hijau-gelap);color:#fff}
+.dapil{background:var(--kartu);border:1px solid var(--garis);border-radius:var(--r);padding:13px;margin-bottom:10px;box-shadow:0 1px 2px rgba(4,48,31,.05)}
 .dkepala{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.dnomor{font-size:11px;font-weight:800;color:var(--hijau);letter-spacing:.1em}
-.dkuota{font-size:12px;color:var(--redup);font-weight:600;margin-top:2px}
+.dnomor{font-size:12px;font-weight:800;color:var(--hijau);letter-spacing:.06em}
+.dkuota{font-size:11.5px;color:var(--redup);font-weight:600;margin-top:1px}
 .badge{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:4px 8px;border-radius:999px;white-space:nowrap}
 .b-aman{background:var(--hijau-muda);color:#0b6b45}
-.b-jalan{background:#fff5dc;color:#8a5a00}
-.b-rawan{background:#fdeceb;color:var(--merah)}
+.b-jalan{background:var(--kuning-muda);color:var(--kuning)}
 .b-netral{background:#eef2f0;color:#52655c}
-.kec{display:flex;flex-wrap:wrap;gap:4px;margin:9px 0 10px}
-.kec span{font-size:10px;background:#f4f8f6;border:1px solid var(--garis);color:var(--redup);padding:3px 7px;border-radius:6px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:9px}
-.grid3 div{background:#f8fbf9;border-radius:9px;padding:7px 8px}
-.grid3 em{display:block;font-style:normal;font-size:9px;color:var(--redup2);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
-.grid3 strong{font-size:13px;letter-spacing:-.02em}
-.grid3 small{font-size:10px;color:var(--redup2)}
-.bar{height:7px;background:#eef3f0;border-radius:999px;overflow:hidden;margin:2px 0 9px}
+.kec{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 10px}
+.kec span{font-size:10px;background:#f4f8f6;border:1px solid var(--garis);color:var(--redup);padding:2px 6px;border-radius:6px}
+.keputusan{font-size:12px;font-weight:700;line-height:1.45;margin:0 0 10px;padding:8px 10px;border-radius:9px;background:#f7faf8;border-left:3px solid var(--hijau)}
+.keputusan.kurang{background:var(--merah-muda);border-left-color:var(--merah);color:#7d1b15}
+.keputusan.surplus{background:var(--hijau-muda);border-left-color:var(--hijau);color:#0a5c3c}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px}
+.grid3 div{background:#f8fbf9;border-radius:9px;padding:6px 8px}
+.grid3 em{display:block;font-style:normal;font-size:8.5px;color:var(--redup2);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+.grid3 strong{font-size:12.5px;letter-spacing:-.02em;display:block}
+.grid3 small{font-size:9.5px;color:var(--redup2)}
+.bar{height:7px;background:#eef3f0;border-radius:999px;overflow:hidden;margin:2px 0 8px;position:relative}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,#12a06a,#0b6b45);border-radius:999px}
-.kaki{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px dashed var(--garis);padding-top:8px;font-size:11px}
-.kaki .k{color:var(--redup)}
-.kaki b{font-size:12.5px}
-.kurang{color:var(--merah);font-weight:800}
-.surplus{color:#0b6b45;font-weight:800}
-.temuan{background:var(--kartu);border:1px solid var(--garis);border-radius:var(--r);padding:6px 14px}
-.temuan div{display:flex;gap:9px;padding:10px 0;border-bottom:1px solid #eef3f0;font-size:12.5px;color:#22322b}
+.pbl{display:flex;justify-content:space-between;font-size:9px;color:var(--redup2);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin:2px 0 3px}
+.bar i.pb-aman{background:linear-gradient(90deg,#12a06a,#0b6b45)}
+.bar i.pb-jalan{background:linear-gradient(90deg,#f6c96b,#d99400)}
+.bar i.pb-rawan{background:linear-gradient(90deg,#f0908a,#b3261e)}
+.kaki{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10.5px;color:var(--redup);border-top:1px dashed var(--garis);padding-top:7px;margin-top:2px}
+.kaki b{color:var(--teks);font-size:11.5px}
+.partai3{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.partai3 span{font-size:9.5px;font-weight:700;color:var(--redup);background:#f4f8f6;border-radius:5px;padding:2px 6px}
+.temuan{background:var(--kartu);border:1px solid var(--garis);border-radius:var(--r);padding:4px 14px}
+.temuan div{display:flex;gap:9px;padding:10px 0;border-bottom:1px solid #eef3f0;font-size:12px;color:#22322b;line-height:1.5}
 .temuan div:last-child{border-bottom:0}
-.temuan i{font-style:normal;font-size:14px;line-height:1.2}
+.temuan i{font-style:normal;font-size:14px;line-height:1.25;flex:0 0 auto}
+.temuan b{color:var(--hijau-gelap)}
 .catatan{background:#f6faf8;border:1px solid var(--garis);border-left:4px solid var(--emas);border-radius:10px;padding:12px 14px;font-size:11.5px;color:var(--redup);margin-top:14px}
-.catatan p{margin:0 0 7px}
-.catatan p:last-child{margin:0}
-@media(max-width:360px){.hero h1{font-size:22px}.stat b{font-size:14px}}
+.catatan p{margin:0 0 7px}.catatan p:last-child{margin:0}
+@media(max-width:380px){.hero h1{font-size:21px}.stat b{font-size:13.5px}.stat span{font-size:8.5px}.grid3 strong{font-size:11.5px}}
 </style>
 </head>
 <body>
@@ -60,63 +98,156 @@ h2{font-size:15px;margin:26px 0 4px;letter-spacing:-.01em}
   <div class="bungkus" style="padding:0">
     <span class="lencana">Simulasi Pemilu 2029</span>
     <h1>Pecah Dapil: 8 Dapil, 55 Kursi</h1>
-    <p>Suara asli Pemilu 2024 dibagi ulang ke 8 daerah pemilihan, lalu kursi dihitung dengan Sainte-Lague. Ini bukan hasil resmi, ini hitungan skenario.</p>
+    <p>Suara asli Pemilu 2024 dibagi ulang ke 8 daerah pemilihan, kursi dihitung dengan Sainte-Lague. Skenario hitung, bukan hasil resmi.</p>
     <a class="kembali" href="peta-2024.html">&larr; Kembali ke peta suara 2024</a>
   </div>
 </div>
 <div class="bungkus">
-  <div class="stat">
-    <div><b>159.362</b><span>Suara PKB 2024</span></div>
-    <div><b>7 kursi</b><span>Simulasi 8 dapil</span></div>
-    <div><b>10 kursi</b><span>Target tabel DPC</span></div>
+  <div class="cara">
+    <div><i>Kuota</i><span>Jumlah kursi yang tersedia di satu dapil.</span></div>
+    <div><i>Ambang</i><span>Suara minimal PKB agar target kursi tercapai, suara partai lain dibekukan.</span></div>
+    <div><i>Selisih</i><span>Ambang dikurangi suara PKB 2024. Positif berarti kurang, negatif berarti surplus.</span></div>
+    <div><i>Pangsa</i><span>Bagian suara PKB dari seluruh suara sah di dapil itu.</span></div>
   </div>
 
-  <h2>Hitung per dapil</h2>
-  <p class="sub">Ambang artinya suara minimal PKB agar target kursi tercapai, dihitung dari suara partai lain yang tetap.</p>
+  <div class="stat">
+    <div><b>159.362</b><span>Suara PKB 2024</span></div>
+    <div><b>7 kursi</b><span>Simulasi</span></div>
+    <div><b>10 kursi</b><span>Target tabel</span></div>
+    <div><b>55 kursi</b><span>Total kuota</span></div>
+  </div>
+
+  <h2>Ringkasan semua dapil<span>ketuk angka untuk urutkan</span></h2>
+  <p class="sub">Satu layar untuk membandingkan beban tiap dapil.</p>
+  <div class="gulir">
+    <table id="tabel">
+      <thead><tr>
+        <th data-s="n">Dapil</th>
+        <th data-s="pkb">PKB 2024</th>
+        <th data-s="share">Pangsa</th>
+        <th data-s="sim">Kursi</th>
+        <th data-s="ambang">Ambang<small style="display:block;font-size:8px;letter-spacing:0;text-transform:none;font-weight:600">target</small></th>
+        <th data-s="selisih">Selisih</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <h2>Peringkat beban<span>ambang dibagi suara 2024</span></h2>
+  <p class="sub">Garis abu menandai titik 1,0 kali. Di kanan garis berarti butuh suara baru.</p>
+  <div class="peringkat">
+    <div class="skala"><span>0</span><span>1x</span><span>3,2x</span></div>
+    <div id="peringkat"></div>
+  </div>
+
+  <h2>Rincian dapil</h2>
+  <div class="chips" id="chips">
+    <button data-s="n" class="on">Urut dapil</button>
+    <button data-s="beban">Urut beban</button>
+    <button data-s="pkb">Urut suara PKB</button>
+    <button data-s="sah">Urut suara sah</button>
+  </div>
   <div id="daftar"></div>
 
   <h2>Temuan kunci</h2>
   <div class="temuan">
-    <div><i>&#9888;</i><span><b>Angka 55.000 suara di tabel tidak masuk akal.</b> PKB sudah meraih 159.362 suara pada 2024 di 31 kecamatan. Target 55.000 berarti turun 65 persen, bukan naik.</span></div>
-    <div><i>&#128202;</i><span><b>Pecah dapil sendiri menambah 2 kursi tanpa suara tambahan.</b> Dengan suara 2024 yang sama, PKB dapat 7 kursi dari 55, bukan 5 dari 50.</span></div>
-    <div><i>&#128683;</i><span><b>Dapil 5 dilabeli aman, padahal paling berat.</b> Butuh 56.502 suara untuk 2 kursi, 3,04 kali lipat suara 2024 di sana. Dapil 3 jauh lebih realistis, cukup 41.064 suara.</span></div>
-    <div><i>&#128681;</i><span><b>Dapil 7 satu-satunya tanpa kursi.</b> PKB hanya 10.725 suara atau 6,0 persen. Namun cuma butuh 2.319 suara tambahan untuk merebut kursi pertama.</span></div>
-    <div><i>&#128200;</i><span><b>Dapil 8 dan 1 terlalu rendah targetnya.</b> PKB di Dapil 8 sudah 25.501 suara, surplus 12.744 di atas ambang satu kursi. Target 1 kursi membuang peluang kursi kedua.</span></div>
+    <div><i>&#9888;</i><span><b>Angka 55.000 suara di tabel tidak masuk akal.</b> PKB sudah 159.362 suara pada 2024. Target 55.000 berarti turun 65 persen, bukan naik.</span></div>
+    <div><i>&#128202;</i><span><b>Pecah dapil menambah 2 kursi tanpa suara tambahan.</b> Suara 2024 yang sama menghasilkan 7 kursi dari 55, sedangkan 2024 hanya 5 dari 50.</span></div>
+    <div><i>&#128683;</i><span><b>Dapil 5 dilabeli aman, padahal paling berat.</b> Butuh 56.502 suara untuk 2 kursi, 3,04 kali suara 2024 di sana. Dapil 3 cukup 41.064 suara.</span></div>
+    <div><i>&#128681;</i><span><b>Dapil 7 satu-satunya tanpa kursi.</b> PKB 10.725 suara atau 6,0 persen, tetapi hanya butuh 2.319 suara tambahan untuk kursi pertama.</span></div>
+    <div><i>&#128200;</i><span><b>Dapil 8 dan 1 terlalu rendah targetnya.</b> Dapil 8 surplus 12.744 suara di atas ambang satu kursi, target 1 kursi membuang peluang kedua.</span></div>
   </div>
 
   <div class="catatan">
-    <p><b>Metode.</b> Suara partai dan caleg 2024 per kecamatan dijumlahkan sesuai 8 dapil usulan, lalu kursi dibagi dengan Sainte-Lague murni memakai kuota kursi 6, 7, 8, 6, 6, 8, 7, 7. Ambang dihitung dengan menaikkan suara PKB saja, suara partai lain dibekukan.</p>
-    <p><b>Batas hitungan.</b> Jumlah kursi 55 dan batas dapil 2029 belum ditetapkan PKPU, jadi ini skenario, bukan kepastian. Simulasi tidak memasukkan caleg baru, efek inkumben, atau perubahan jumlah pemilih.</p>
+    <p><b>Metode.</b> Suara partai dan caleg 2024 per kecamatan dijumlahkan sesuai usulan 8 dapil, lalu kursi dibagi Sainte-Lague murni dengan kuota 6, 7, 8, 6, 6, 8, 7, 7. Ambang dihitung dengan menaikkan suara PKB saja.</p>
+    <p><b>Batas hitungan.</b> Jumlah 55 kursi dan batas dapil 2029 belum ditetapkan PKPU. Simulasi tidak memasukkan caleg baru, efek inkumben, atau perubahan jumlah pemilih.</p>
   </div>
 </div>
 <script>
-const DATA = [{"n": 1, "kecamatan": ["GENTENG", "SIMOKERTO", "BUBUTAN", "TEGALSARI"], "kuota": 6, "sah": 171814, "per_kursi": 28636, "pkb": 20432, "share": 11.9, "sim": 1, "target": 1, "ambang": 12101, "selisih": -8331, "ambang2": 41431, "ket": "Penjajakan kuota", "top": [["PDIP", 41431], ["Gerindra", 28195], ["PKB", 20432]]}, {"n": 2, "kecamatan": ["KREMBANGAN", "SEMAMPIR", "PABEAN CANTIAN"], "kuota": 7, "sah": 182360, "per_kursi": 26051, "pkb": 19552, "share": 10.7, "sim": 1, "target": 1, "ambang": 11992, "selisih": -7559, "ambang2": 39606, "ket": "Penjajakan", "top": [["PDIP", 34114], ["Gerindra", 25284], ["Golkar", 22607]]}, {"n": 3, "kecamatan": ["TAMBAKSARI", "BULAK", "KENJERAN"], "kuota": 8, "sah": 225525, "per_kursi": 28191, "pkb": 28732, "share": 12.7, "sim": 1, "target": 2, "ambang": 41064, "selisih": 12332, "ambang2": 41064, "ket": "Aman", "top": [["PDIP", 57927], ["Gerindra", 29451], ["PKB", 28732]]}, {"n": 4, "kecamatan": ["MULYOREJO", "SUKOLILO", "GUBENG"], "kuota": 6, "sah": 174272, "per_kursi": 29045, "pkb": 15379, "share": 8.8, "sim": 1, "target": 1, "ambang": 10583, "selisih": -4795, "ambang2": 46119, "ket": "Penjajakan", "top": [["PDIP", 46119], ["Gerindra", 23679], ["PSI", 22290]]}, {"n": 5, "kecamatan": ["TENGGILIS MEJOYO", "GUNUNG ANYAR", "RUNGKUT", "WONOCOLO"], "kuota": 6, "sah": 173292, "per_kursi": 28882, "pkb": 18589, "share": 10.7, "sim": 1, "target": 2, "ambang": 56502, "selisih": 37913, "ambang2": 56502, "ket": "Aman", "top": [["PDIP", 33760], ["Gerindra", 22326], ["Golkar", 19791]]}, {"n": 6, "kecamatan": ["GAYUNGAN", "WONOKROMO", "JAMBANGAN", "SAWAHAN"], "kuota": 8, "sah": 229762, "per_kursi": 28720, "pkb": 20452, "share": 8.9, "sim": 1, "target": 1, "ambang": 12362, "selisih": -8089, "ambang2": 42102, "ket": "Menuju 2 kursi", "top": [["PDIP", 54311], ["Gerindra", 37088], ["PKS", 23836]]}, {"n": 7, "kecamatan": ["KARANG PILANG", "WIYUNG", "LAKARSANTRI", "DUKUH PAKIS", "SAMBIKEREP"], "kuota": 7, "sah": 179996, "per_kursi": 25714, "pkb": 10725, "share": 6.0, "sim": 0, "target": 1, "ambang": 13045, "selisih": 2319, "ambang2": 44684, "ket": "Menuju 2 kursi", "top": [["Gerindra", 44684], ["PDIP", 30768], ["PSI", 20877]]}, {"n": 8, "kecamatan": ["TANDES", "SUKOMANUNGGAL", "ASEM ROWO", "BENOWO", "PAKAL"], "kuota": 7, "sah": 199822, "per_kursi": 28546, "pkb": 25501, "share": 12.8, "sim": 1, "target": 1, "ambang": 12756, "selisih": -12744, "ambang2": 42186, "ket": "Penjajakan", "top": [["PDIP", 38268], ["Gerindra", 30524], ["PKB", 25501]]}];
-const nf = n => n.toLocaleString('id-ID');
-function badge(x){
+const DATA = [{"n": 1, "kecamatan": ["GENTENG", "SIMOKERTO", "BUBUTAN", "TEGALSARI"], "kuota": 6, "sah": 171814, "per_kursi": 28636, "pkb": 20432, "share": 11.9, "sim": 1, "target": 1, "ambang": 12101, "selisih": -8331, "ambang2": 41431, "ket": "Penjajakan kuota", "top": [["PDIP", 41431], ["Gerindra", 28195], ["PKB", 20432]], "rasio": 0.59, "status": "surplus", "ambang3": 41431}, {"n": 2, "kecamatan": ["KREMBANGAN", "SEMAMPIR", "PABEAN CANTIAN"], "kuota": 7, "sah": 182360, "per_kursi": 26051, "pkb": 19552, "share": 10.7, "sim": 1, "target": 1, "ambang": 11992, "selisih": -7559, "ambang2": 39606, "ket": "Penjajakan", "top": [["PDIP", 34114], ["Gerindra", 25284], ["Golkar", 22607]], "rasio": 0.61, "status": "surplus", "ambang3": 39606}, {"n": 3, "kecamatan": ["TAMBAKSARI", "BULAK", "KENJERAN"], "kuota": 8, "sah": 225525, "per_kursi": 28191, "pkb": 28732, "share": 12.7, "sim": 1, "target": 2, "ambang": 41064, "selisih": 12332, "ambang2": 41064, "ket": "Aman", "top": [["PDIP", 57927], ["Gerindra", 29451], ["PKB", 28732]], "rasio": 1.43, "status": "kurang", "ambang3": 70375}, {"n": 4, "kecamatan": ["MULYOREJO", "SUKOLILO", "GUBENG"], "kuota": 6, "sah": 174272, "per_kursi": 29045, "pkb": 15379, "share": 8.8, "sim": 1, "target": 1, "ambang": 10583, "selisih": -4795, "ambang2": 46119, "ket": "Penjajakan", "top": [["PDIP", 46119], ["Gerindra", 23679], ["PSI", 22290]], "rasio": 0.69, "status": "surplus", "ambang3": 46119}, {"n": 5, "kecamatan": ["TENGGILIS MEJOYO", "GUNUNG ANYAR", "RUNGKUT", "WONOCOLO"], "kuota": 6, "sah": 173292, "per_kursi": 28882, "pkb": 18589, "share": 10.7, "sim": 1, "target": 2, "ambang": 56502, "selisih": 37913, "ambang2": 56502, "ket": "Aman", "top": [["PDIP", 33760], ["Gerindra", 22326], ["Golkar", 19791]], "rasio": 3.04, "status": "kurang", "ambang3": 97790}, {"n": 6, "kecamatan": ["GAYUNGAN", "WONOKROMO", "JAMBANGAN", "SAWAHAN"], "kuota": 8, "sah": 229762, "per_kursi": 28720, "pkb": 20452, "share": 8.9, "sim": 1, "target": 1, "ambang": 12362, "selisih": -8089, "ambang2": 42102, "ket": "Menuju 2 kursi", "top": [["PDIP", 54311], ["Gerindra", 37088], ["PKS", 23836]], "rasio": 0.6, "status": "surplus", "ambang3": 42102}, {"n": 7, "kecamatan": ["KARANG PILANG", "WIYUNG", "LAKARSANTRI", "DUKUH PAKIS", "SAMBIKEREP"], "kuota": 7, "sah": 179996, "per_kursi": 25714, "pkb": 10725, "share": 6.0, "sim": 0, "target": 1, "ambang": 13045, "selisih": 2319, "ambang2": 44684, "ket": "Menuju 2 kursi", "top": [["Gerindra", 44684], ["PDIP", 30768], ["PSI", 20877]], "rasio": 1.22, "status": "kurang", "ambang3": 44684}, {"n": 8, "kecamatan": ["TANDES", "SUKOMANUNGGAL", "ASEM ROWO", "BENOWO", "PAKAL"], "kuota": 7, "sah": 199822, "per_kursi": 28546, "pkb": 25501, "share": 12.8, "sim": 1, "target": 1, "ambang": 12756, "selisih": -12744, "ambang2": 42186, "ket": "Penjajakan", "top": [["PDIP", 38268], ["Gerindra", 30524], ["PKB", 25501]], "rasio": 0.5, "status": "surplus", "ambang3": 42186}];
+const nf = n => Math.abs(n).toLocaleString('id-ID');
+const urut = {n:'n', beban:'rasio', pkb:'pkb', sah:'sah'};
+let urutan = 'n';
+
+function warnaWarna(x){ return x.rasio <= 0.99 ? 'w-aman' : (x.rasio < 1.7 ? 'w-jalan' : 'w-rawan'); }
+function kelasBadge(x){
   if(x.ket === 'Aman') return 'b-aman';
   if(x.ket.indexOf('Menuju') === 0) return 'b-jalan';
-  if(x.ket.indexOf('Penjajakan') === 0) return 'b-netral';
-  return 'b-rawan';
+  return 'b-netral';
 }
-document.getElementById('daftar').innerHTML = DATA.map(x => {
-  const kurang = x.selisih > 0;
-  const tag = kurang ? '<span class="kurang">kurang ' + nf(x.selisih) + '</span>'
-                     : '<span class="surplus">surplus ' + nf(-x.selisih) + '</span>';
-  return '<div class="dapil">' +
-    '<div class="dkepala"><div><div class="dnomor">DAPIL ' + x.n + '</div>' +
-      '<div class="dkuota">Kuota ' + x.kuota + ' kursi &middot; ' + x.kecamatan.length + ' kecamatan</div></div>' +
-      '<span class="badge ' + badge(x) + '">' + x.ket + '</span></div>' +
-    '<div class="kec">' + x.kecamatan.map(k => '<span>' + k + '</span>').join('') + '</div>' +
-    '<div class="grid3">' +
-      '<div><em>Suara sah</em><strong>' + nf(x.sah) + '</strong><small>per kursi ' + nf(x.per_kursi) + '</small></div>' +
-      '<div><em>PKB 2024</em><strong>' + nf(x.pkb) + '</strong><small>' + x.share + '% suara</small></div>' +
-      '<div><em>Kursi</em><strong>' + x.sim + ' &rarr; ' + x.target + '</strong><small>simulasi ke target</small></div>' +
-    '</div>' +
-    '<div class="bar"><i style="width:' + Math.min(100, x.share * 4) + '%"></i></div>' +
-    '<div class="kaki"><span class="k">Ambang ' + x.target + ' kursi <b>' + nf(x.ambang) + '</b></span>' + tag + '</div>' +
-    '<div class="kaki" style="border-top:0;padding-top:4px"><span class="k">Ambang 2 kursi</span><span>' + nf(x.ambang2) + '</span></div>' +
-  '</div>';
-}).join('');
+
+function renderTabel(){
+  document.querySelector('#tabel tbody').innerHTML = DATA.map(x => {
+    const tag = x.selisih > 0
+      ? '<td class="kurang"><b>' + nf(x.selisih) + '</b><small>kurang</small></td>'
+      : '<td class="surplus"><b>' + nf(x.selisih) + '</b><small>surplus</small></td>';
+    return '<tr><td>D' + x.n + '<small>' + x.kuota + ' kursi</small></td>' +
+      '<td><b>' + nf(x.pkb) + '</b></td>' +
+      '<td>' + x.share.toFixed(1).replace('.', ',') + '%</td>' +
+      '<td>' + x.sim + ' &rarr; ' + x.target + '</td>' +
+      '<td>' + nf(x.ambang) + '</td>' + tag + '</tr>';
+  }).join('');
+}
+
+function renderPeringkat(){
+  const urutBeban = [...DATA].sort((a,b) => b.rasio - a.rasio);
+  document.getElementById('peringkat').innerHTML = urutBeban.map(x =>
+    '<div class="pr"><div class="lbl">D' + x.n + '<small>' + x.kuota + ' kursi</small></div>' +
+    '<div class="lacak"><i class="' + warnaWarna(x) + '" style="width:' + Math.min(100, x.rasio / 3.2 * 100) + '%"></i><u></u></div>' +
+    '<div class="ang">' + x.rasio.toFixed(2).replace('.', ',') + 'x<small>' + nf(x.ambang) + '</small></div></div>'
+  ).join('');
+}
+
+function renderDaftar(){
+  const kunci = urut[urutan];
+  const d = [...DATA].sort((a,b) => urutan === 'n' ? a.n - b.n : b[kunci] - a[kunci]);
+  document.getElementById('daftar').innerHTML = d.map(x => {
+    const kurang = x.selisih > 0;
+    const kalimat = kurang
+      ? 'Butuh ' + nf(x.selisih) + ' suara lagi untuk ' + x.target + ' kursi.'
+      : 'Sudah surplus ' + nf(x.selisih) + ' suara di atas ambang ' + x.target + ' kursi.';
+    return '<div class="dapil" id="d' + x.n + '">' +
+      '<div class="dkepala"><div><div class="dnomor">DAPIL ' + x.n + '</div>' +
+        '<div class="dkuota">Kuota ' + x.kuota + ' kursi &middot; ' + x.kecamatan.length + ' kecamatan</div></div>' +
+        '<span class="badge ' + kelasBadge(x) + '">' + 'Tabel: ' + x.ket.toLowerCase() + '</span></div>' +
+      '<div class="kec">' + x.kecamatan.map(k => '<span>' + k + '</span>').join('') + '</div>' +
+      '<p class="keputusan ' + (kurang ? 'kurang' : 'surplus') + '">' + kalimat + '</p>' +
+      '<div class="grid3">' +
+        '<div><em>Suara sah</em><strong>' + nf(x.sah) + '</strong><small>' + nf(x.per_kursi) + ' per kursi</small></div>' +
+        '<div><em>PKB 2024</em><strong>' + nf(x.pkb) + '</strong><small>' + x.share + '% pangsa</small></div>' +
+        '<div><em>Kursi</em><strong>' + x.sim + ' &rarr; ' + x.target + '</strong><small>simulasi ke target</small></div>' +
+      '</div>' +
+      '<div class="pbl"><span>Progres ke ambang</span><span>' + (x.pkb / x.ambang * 100).toFixed(0) + '%</span></div>' +
+      '<div class="bar"><i class="' + (x.pkb >= x.ambang ? 'pb-aman' : (x.rasio >= 1.7 ? 'pb-rawan' : 'pb-jalan')) + '" style="width:' + Math.min(100, x.pkb / x.ambang * 100) + '%"></i></div>' +
+      '<div class="kaki"><span>Ambang ' + x.target + ' kursi <b>' + nf(x.ambang) + '</b></span>' +
+        '<span>Ambang ' + (x.target + 1) + ' kursi <b>' + nf(x.ambang3) + '</b></span></div>' +
+      '<div class="partai3">' + x.top.map(t => '<span>' + t[0] + ' ' + nf(t[1]) + '</span>').join('') + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+document.querySelectorAll('#tabel thead th').forEach(th => {
+  th.style.cursor = 'pointer';
+  th.addEventListener('click', () => {
+    const k = th.dataset.s;
+    const naik = th.dataset.arah !== 'naik';
+    th.dataset.arah = naik ? 'naik' : 'turun';
+    DATA.sort((a,b) => (typeof a[k] === 'number' ? (naik ? a[k]-b[k] : b[k]-a[k]) : 0));
+    renderTabel();
+  });
+});
+
+document.querySelectorAll('#chips button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    urutan = btn.dataset.s;
+    document.querySelectorAll('#chips button').forEach(b => b.classList.toggle('on', b === btn));
+    renderDaftar();
+  });
+});
+
+renderTabel();
+renderPeringkat();
+renderDaftar();
 </script>
 </body>
 </html>
