@@ -1,211 +1,423 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>PETA SUARA 2024 - SOKABAT NU</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#03754c">
-  <link rel="manifest" href="manifest.json">
-  <style>
-    :root { --primary:#03754c; --primary-dark:#02452d; --accent-orange:#FF9c08; --accent-yellow:#fff212; --bg-body:#f0f4f2; --border:#d1d9d6; --teks:#101815; --redup:#5c6b64; }
-    * { box-sizing:border-box; }
-    body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg-body); margin:0; padding:18px 14px 40px; color:var(--teks); display:flex; justify-content:center; }
-    .wrapper { width:100%; max-width:520px; display:flex; flex-direction:column; gap:14px; }
-    .kepala { background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; border-radius:16px; padding:22px 18px; border-bottom:6px solid var(--accent-orange); box-shadow:0 10px 25px rgba(3,117,76,.2); }
-    .kepala h1 { margin:0; font-size:24px; letter-spacing:.5px; color:var(--accent-yellow); font-weight:900; }
-    .kepala p { margin:6px 0 0; font-size:12.5px; font-weight:600; color:#dbe6e1; }
-    .kartu { background:#fff; border-radius:14px; padding:16px; box-shadow:0 5px 14px rgba(0,0,0,.05); }
-    .kartu h2 { margin:0 0 12px; font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:var(--primary); font-weight:900; }
-    .grid4 { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
-    .kotak { background:#f7faf8; border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; }
-    .kotak span { display:block; font-size:9.5px; text-transform:uppercase; font-weight:800; color:var(--primary); letter-spacing:.4px; margin-bottom:4px; }
-    .kotak b { font-size:18px; font-weight:900; }
-    .tab { display:flex; gap:6px; flex-wrap:wrap; }
-    .tab button { flex:1; min-width:58px; padding:11px 10px; border:2px solid var(--border); background:#fff; border-radius:10px; font-weight:900; font-size:12.5px; color:#46534c; cursor:pointer; }
-    .tab button.aktif { background:var(--primary); border-color:var(--primary); color:#fff; }
-    .kecamatan { display:flex; flex-wrap:wrap; gap:6px; margin:2px 0 12px; }
-    .kecamatan span { background:#eaf3ee; color:var(--primary-dark); border-radius:20px; padding:5px 10px; font-size:11.5px; font-weight:800; }
-    .partai { border:1px solid var(--border); border-radius:11px; margin-bottom:8px; overflow:hidden; }
-    .baris { display:flex; align-items:center; gap:10px; padding:11px 12px; cursor:pointer; background:#fff; }
-    .baris:active { background:#f4f8f6; }
-    .baris .nama { flex:1; font-size:12.5px; font-weight:800; line-height:1.35; }
-    .baris .angka { text-align:right; font-size:13px; font-weight:900; white-space:nowrap; }
-    .baris .angka small { display:block; font-size:10.5px; color:#46534c; font-weight:700; }
-    .lencana { background:var(--accent-orange); color:#111; border-radius:20px; padding:4px 9px; font-size:11px; font-weight:900; white-space:nowrap; }
-    .lencana.kosong { background:#eceeed; color:#8b968f; }
-    .partai.pkb .baris { border-left:5px solid var(--primary); }
-    .caleg { background:#fbfdfc; border-top:1px solid var(--border); display:none; }
-    .caleg.buka { display:block; }
-    .caleg div { display:flex; gap:8px; padding:8px 12px; font-size:11.5px; border-bottom:1px dashed #e6ecE8; }
-    .caleg div:last-child { border-bottom:none; }
-    .caleg .no { width:20px; color:var(--redup); font-weight:800; }
-    .caleg .cn { flex:1; font-weight:700; }
-    .caleg .cv { font-weight:900; white-space:nowrap; }
-    .caleg .terpilih { background:#eaf7f0; }
-    .caleg .terpilih .cn::after { content:" ✔"; color:var(--primary); font-weight:900; }
-    .catatan { font-size:12px; color:#46534c; line-height:1.55; margin:8px 0 0; }
-    .pkb-baris { display:flex; align-items:center; gap:8px; margin-bottom:7px; font-size:11.5px; }
-    .pkb-baris .lk { width:104px; font-weight:800; color:var(--primary-dark); }
-    .pkb-baris .barbg { flex:1; background:#eef2f0; border-radius:6px; height:12px; overflow:hidden; }
-    .pkb-baris .barfg { background:linear-gradient(90deg,var(--primary),#10b981); height:100%; }
-    .pkb-baris .nil { width:52px; text-align:right; font-weight:900; }
-    .angka-besar { font-size:22px; font-weight:900; color:var(--primary-dark); }
-    .dua-kolom { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:10px; }
-    .dua-kolom .kotak b { font-size:15px; }
-    .tautan { text-align:center; font-size:12px; font-weight:800; }
-    .tautan a { color:var(--primary); text-decoration:none; display:inline-block; padding:8px 12px; }
-  </style>
+<meta charset="UTF-8">
+<title>PETA SUARA 2024 - SOKABAT NU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#04301f">
+<link rel="manifest" href="manifest.json">
+<style>
+  :root{
+    --hijau:#0b6b45; --hijau-gelap:#04301f; --hijau-muda:#e8f5ee;
+    --emas:#f6b93b; --emas-muda:#ffe6a6;
+    --bg:#eef3f0; --kartu:#ffffff; --garis:#dbe5df;
+    --teks:#0e1a15; --redup:#4e615a; --redup2:#7b8c85;
+    --r:16px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:0 0 40px;background:var(--bg);color:var(--teks);
+       font-family:'Segoe UI',system-ui,-apple-system,sans-serif;display:flex;justify-content:center}
+  .bungkus{width:100%;max-width:560px;padding:14px 14px 0;display:flex;flex-direction:column;gap:14px}
+
+  .hero{position:relative;overflow:hidden;border-radius:20px;padding:22px 20px 18px;color:#fff;
+        background:radial-gradient(120% 140% at 0% 0%,#0e7d51 0%,#04301f 62%);box-shadow:0 14px 30px rgba(4,48,31,.28)}
+  .hero::after{content:"";position:absolute;right:-52px;top:-46px;width:160px;height:160px;border-radius:50%;
+               background:radial-gradient(circle,rgba(246,185,59,.34),transparent 70%)}
+  .hero .label{font-size:10.5px;letter-spacing:1.6px;font-weight:800;color:var(--emas-muda);text-transform:uppercase}
+  .hero h1{margin:6px 0 4px;font-size:26px;font-weight:900;letter-spacing:.4px;position:relative}
+  .hero p{margin:0;font-size:12.5px;color:#cfe4d9;line-height:1.5;position:relative}
+  .hero-angka{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;position:relative}
+  .hero-angka div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);
+                  border-radius:12px;padding:9px 6px;text-align:center}
+  .hero-angka span{display:block;font-size:9px;letter-spacing:.7px;text-transform:uppercase;color:#bcd8ca;font-weight:800}
+  .hero-angka b{font-size:16px;font-weight:900}
+
+  .tab{display:flex;gap:6px;position:sticky;top:0;z-index:20;padding:8px 0;
+       background:linear-gradient(var(--bg) 72%,rgba(238,243,240,0))}
+  .tab button{flex:1;padding:11px 4px;border:1px solid var(--garis);background:#fff;border-radius:12px;
+              font-weight:800;font-size:12px;color:var(--redup);cursor:pointer;min-width:0}
+  .tab button.aktif{background:var(--hijau);border-color:var(--hijau);color:#fff;box-shadow:0 6px 14px rgba(11,107,69,.24)}
+
+  .kartu{background:var(--kartu);border-radius:var(--r);padding:16px;border:1px solid var(--garis);
+         box-shadow:0 4px 12px rgba(14,26,21,.04)}
+  .kartu > h2{margin:0 0 4px;font-size:12px;letter-spacing:1px;text-transform:uppercase;
+              color:var(--hijau);font-weight:900}
+  .kartu > .sub{margin:0 0 14px;font-size:11.5px;color:var(--redup2);line-height:1.45}
+
+  .ringkas{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .ringkas .sel{background:#f7faf8;border:1px solid var(--garis);border-radius:12px;padding:11px;text-align:center}
+  .ringkas .sel span{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;
+                     font-weight:800;color:var(--redup2);margin-bottom:5px}
+  .ringkas .sel b{font-size:17px;font-weight:900;color:var(--hijau-gelap)}
+
+  .kec-strip{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;scrollbar-width:none}
+  .kec-strip::-webkit-scrollbar{display:none}
+  .kec-strip span{white-space:nowrap;background:var(--hijau-muda);color:#0a5236;border:1px solid #cfe6d9;
+                  border-radius:20px;padding:6px 11px;font-size:11px;font-weight:800}
+
+  .baris{display:flex;align-items:center;gap:10px;padding:11px 2px;border-bottom:1px solid #eef3f0}
+  .baris:last-child{border-bottom:none}
+  .baris .kiri{flex:1;min-width:0}
+  .baris .nm{font-size:12.5px;font-weight:800;line-height:1.3}
+  .baris .ket{font-size:10.5px;color:var(--redup2);margin-top:2px;font-weight:600}
+  .baris .kanan{text-align:right;white-space:nowrap}
+  .baris .kanan b{font-size:13px;font-weight:900;display:block}
+  .baris .kanan span{font-size:10.5px;color:var(--redup2);font-weight:700}
+  .lencana{background:var(--emas);color:#3a2a00;border-radius:20px;padding:3px 8px;font-size:10.5px;
+           font-weight:900;white-space:nowrap}
+  .lencana.nol{background:#eef1f0;color:#9aa8a2}
+
+  .barbg{height:7px;border-radius:6px;background:#eef2f0;overflow:hidden;margin-top:6px}
+  .barfg{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--hijau),#2fbf82)}
+
+  .peta{overflow-x:auto;margin:0 -4px;padding:0 4px 6px}
+  .tabel{display:grid;grid-template-columns:100px repeat(var(--n),1fr);gap:3px;min-width:max-content}
+  .tabel .sel{font-size:10px;font-weight:800;text-align:center;padding:6px 2px;color:var(--redup);line-height:1.15}
+  .tabel .sel.kepala{color:var(--redup2);font-size:9px;max-width:44px;overflow:hidden}
+  .tabel .sel.nama{text-align:left;font-size:10.5px;color:var(--teks);max-width:100px;overflow:hidden;
+                   text-overflow:ellipsis;white-space:nowrap}
+  .tabel .nil{font-size:10px;font-weight:800;text-align:center;border-radius:6px;padding:6px 2px;color:#0e3b28;
+              min-width:34px}
+  .legenda{display:flex;align-items:center;gap:6px;font-size:10.8px;color:var(--redup2);margin-top:8px;font-weight:700}
+  .legenda i{width:26px;height:9px;border-radius:3px;background:linear-gradient(90deg,#e6f2ea,#8fd0ac,#0b6b45)}
+
+  .kec{border:1px solid var(--garis);border-radius:14px;margin-bottom:9px;overflow:hidden;background:#fff}
+  .kec .kepala{display:flex;align-items:center;gap:10px;padding:12px 13px;cursor:pointer}
+  .kec .kepala .nm{flex:1;font-size:13px;font-weight:900;line-height:1.25}
+  .kec .kepala .nm small{display:block;font-size:10.5px;font-weight:700;color:var(--redup2);margin-top:2px}
+  .kec .kepala .tanda{font-size:16px;color:var(--redup2);font-weight:900}
+  .kec .badan{display:none;padding:0 13px 13px;border-top:1px dashed var(--garis)}
+  .kec.buka .badan{display:block}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:11px 0 12px}
+  .grid3 div{background:#f7faf8;border:1px solid var(--garis);border-radius:10px;padding:8px;text-align:center}
+  .grid3 span{display:block;font-size:9px;text-transform:uppercase;color:var(--redup2);font-weight:800;margin-bottom:3px}
+  .grid3 b{font-size:13px;font-weight:900}
+  .pilkec{display:flex;align-items:center;gap:8px;font-size:11px;margin-bottom:5px}
+  .pilkec .nm{width:104px;font-weight:700;color:var(--redup);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pilkec .bg{flex:1;height:8px;border-radius:5px;background:#eef2f0;overflow:hidden;display:block}
+  .pilkec .fg{height:100%;background:linear-gradient(90deg,#0b6b45,#38bdf8);border-radius:5px}
+  .pilkec .vl{width:56px;text-align:right;font-weight:900;font-size:10.5px}
+  .kel{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+  .kel span{background:#f2f6f4;border:1px solid #e2eae6;color:#4e615a;border-radius:8px;padding:4px 8px;font-size:10.5px;font-weight:700}
+  .kel-tanya{margin-top:8px;font-size:10.5px;color:#8a6d1f;background:#fff8e6;border:1px solid #f6e2ac;
+             border-radius:9px;padding:8px 9px;line-height:1.45;font-weight:600}
+
+  .partai{border:1px solid var(--garis);border-radius:12px;margin-bottom:8px;overflow:hidden}
+  .partai .baris{cursor:pointer;padding:11px 12px}
+  .partai .baris .kiri .nm{font-size:12.5px}
+  .caleg{display:none;background:#fbfdfc;border-top:1px solid var(--garis)}
+  .caleg.buka{display:block}
+  .caleg div{display:flex;gap:8px;padding:8px 12px;font-size:11.5px;border-bottom:1px dashed #e6ece8}
+  .caleg div:last-child{border-bottom:none}
+  .caleg .no{width:18px;color:var(--redup2);font-weight:800}
+  .caleg .cn{flex:1;font-weight:700}
+  .caleg .cv{font-weight:900;white-space:nowrap}
+  .caleg .terpilih{background:#eaf7f0}
+  .caleg .terpilih .cn::after{content:" ✔";color:var(--hijau);font-weight:900}
+
+  .tandai{background:linear-gradient(180deg,#fffdf5,#fff);border:1px solid #f3e3b8}
+  .tandai h2{color:#8a6d1f}
+  .dua{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .dua .sel{background:#fbf8ee;border:1px solid #f0e3bf;border-radius:12px;padding:10px;text-align:center}
+  .dua .sel span{display:block;font-size:9px;text-transform:uppercase;font-weight:800;color:#8a6d1f;margin-bottom:4px}
+  .dua .sel b{font-size:15px;font-weight:900}
+  .catatan{font-size:11.5px;color:var(--redup);line-height:1.55;margin:10px 0 0}
+  .kaki{text-align:center;font-size:11.5px;font-weight:800;padding:6px 0 26px}
+  .kaki a{color:var(--hijau);text-decoration:none;display:inline-block;padding:8px 10px}
+  .kosong{font-size:11.5px;color:var(--redup2);text-align:center;padding:18px}
+  @media(min-width:520px){ .hero h1{font-size:30px} }
+</style>
 </head>
 <body>
-<div class="wrapper">
+<div class="bungkus">
 
-  <div class="kepala">
-    <h1>PETA SUARA 2024</h1>
-    <p>Rekap KPU DPRD Kota Surabaya, basis data menuju Pemilu 2029</p>
+  <div class="hero">
+    <div class="label">Basis data Pemilu 2024</div>
+    <h1>Peta Suara Kota Surabaya</h1>
+    <p>Rekap KPU DPRD Kota, dibedah sampai kecamatan dan kelurahan, untuk membaca kantong suara menuju 2029.</p>
+    <div class="hero-angka">
+      <div><span>Suara sah</span><b id="h-sah">-</b></div>
+      <div><span>Kursi</span><b>50</b></div>
+      <div><span>Pemilih</span><b id="h-dpt">-</b></div>
+    </div>
+  </div>
+
+  <div class="tab" id="tab"></div>
+
+  <div class="kartu">
+    <h2 id="j-dapil">Dapil</h2>
+    <p class="sub" id="s-dapil"></p>
+    <div class="kec-strip" id="strip"></div>
+    <div class="ringkas" id="ringkas"></div>
   </div>
 
   <div class="kartu">
-    <h2>Ringkasan Kota</h2>
-    <div class="grid4">
-      <div class="kotak"><span>Daerah pemilihan</span><b>5</b></div>
-      <div class="kotak"><span>Kursi DPRD</span><b>50</b></div>
-      <div class="kotak"><span>Suara sah</span><b id="ringkas-sah">-</b></div>
-      <div class="kotak"><span>Pemilih terdaftar</span><b id="ringkas-dpt">-</b></div>
-    </div>
-    <p class="catatan" id="ringkas-kursi"></p>
+    <h2>Kantong suara partai</h2>
+    <p class="sub">Kecamatan terkuat tiap partai di dapil ini, diukur dari persentase suara sah kecamatan.</p>
+    <div id="kantong"></div>
   </div>
 
-  <div class="tab" id="tab-dapil"></div>
+  <div class="kartu">
+    <h2>Peta kekuatan</h2>
+    <p class="sub">Warna makin gelap, kuasa partai makin besar. Angka adalah persen suara sah kecamatan.</p>
+    <div class="peta"><div class="tabel" id="tabel"></div></div>
+    <div class="legenda"><i></i> 0 sampai 40 persen suara sah kecamatan</div>
+  </div>
 
-  <div class="kartu" id="panel-dapil">
-    <h2 id="judul-dapil">Dapil</h2>
-    <div class="kecamatan" id="kecamatan"></div>
-    <div class="grid4" style="margin-bottom:14px">
-      <div class="kotak"><span>Kursi</span><b id="stat-kursi">-</b></div>
-      <div class="kotak"><span>Suara sah</span><b id="stat-sah">-</b></div>
-      <div class="kotak"><span>Ambang kursi</span><b id="stat-ambang">-</b></div>
-      <div class="kotak"><span>Suara per kursi</span><b id="stat-rasio">-</b></div>
-    </div>
+  <div class="kartu">
+    <h2>Rincian per kecamatan</h2>
+    <p class="sub" id="sub-kec">Ketuk satu kecamatan untuk melihat partai teratas, partisipasi, dan daftar kelurahan.</p>
+    <div id="daftar-kec"></div>
+  </div>
+
+  <div class="kartu">
+    <h2>Suara partai dan caleg</h2>
+    <p class="sub">Ketuk satu partai untuk membuka suara seluruh caleg. Tanda centang berarti meraih kursi.</p>
     <div id="daftar-partai"></div>
   </div>
 
-  <div class="kartu" id="kartu-pkb" style="display:none">
-    <h2>Peta PKB Dapil 3</h2>
-    <div class="dua-kolom">
-      <div class="kotak"><span>Suara PKB 2024</span><b id="pkb-total">-</b></div>
-      <div class="kotak"><span>Kursi 2024</span><b id="pkb-kursi">-</b></div>
-      <div class="kotak"><span>Target 2 kursi</span><b id="pkb-target">-</b></div>
-      <div class="kotak"><span>Selisih</span><b id="pkb-selisih">-</b></div>
-    </div>
-    <p class="catatan" id="pkb-catatan"></p>
-    <div id="pkb-kecamatan" style="margin-top:12px"></div>
+  <div id="kartu-pkb"></div>
+
+  <div class="kartu">
+    <h2>Level kelurahan</h2>
+    <p class="catatan" id="catatan-kelurahan"></p>
   </div>
 
-  <div class="tautan">
+  <div class="kaki">
     <a href="index.html">Kembali ke Dashboard</a>
-    <a href="data/pemilu-2024.json">Buka Data JSON</a>
+    <a href="data/pemilu-2024.json">Data JSON</a>
   </div>
-
 </div>
 
 <script>
-const angka = n => (n || 0).toLocaleString('id-ID');
+const nf = n => (n || 0).toLocaleString('id-ID');
+const pct = n => (n || 0).toFixed(1).replace('.', ',') + '%';
+const pendek = s => s.replace('Partai Politik ', '').replace('Partai ', '');
 let DATA = null, dapilAktif = 3;
 
-function ringkas() {
-  document.getElementById('ringkas-sah').textContent = angka(DATA.total_suara_sah);
-  document.getElementById('ringkas-dpt').textContent = angka(DATA.total_dpt);
-  const kota = {};
-  Object.values(DATA.dapil).forEach(d => d.partai.forEach(p => {
-    kota[p.nama] = (kota[p.nama] || 0) + p.kursi;
-  }));
-  const urut = Object.entries(kota).sort((a, b) => b[1] - a[1]).slice(0, 5)
-    .map(([n, k]) => n.replace('Partai ', '') + ' ' + k).join(' · ');
-  document.getElementById('ringkas-kursi').textContent =
-    'Kursi per partai se-Surabaya: ' + urut + '. Sumber: ' + DATA.sumber + '.';
-}
-
-function tab() {
-  const wadah = document.getElementById('tab-dapil');
-  wadah.innerHTML = '';
+function renderTab() {
+  const t = document.getElementById('tab');
+  t.innerHTML = '';
   Object.keys(DATA.dapil).forEach(k => {
     const b = document.createElement('button');
     b.textContent = 'Dapil ' + k;
     if (Number(k) === dapilAktif) b.className = 'aktif';
-    b.onclick = () => { dapilAktif = Number(k); tab(); panel(); };
-    wadah.appendChild(b);
+    b.onclick = () => { dapilAktif = Number(k); renderTab(); renderSemua(); };
+    t.appendChild(b);
   });
 }
 
-function panel() {
-  const d = DATA.dapil[String(dapilAktif)];
-  document.getElementById('judul-dapil').textContent = d.nama;
-  document.getElementById('kecamatan').innerHTML =
+function renderRingkas(d) {
+  document.getElementById('j-dapil').textContent = d.nama;
+  document.getElementById('s-dapil').textContent =
+    d.kursi + ' kursi, ' + d.kecamatan.length + ' kecamatan, ' + d.jumlah_kelurahan +
+    ' kelurahan, ' + nf(d.suara_sah) + ' suara sah.';
+  document.getElementById('strip').innerHTML =
     d.kecamatan.map(k => '<span>' + k + '</span>').join('');
-  document.getElementById('stat-kursi').textContent = d.kursi;
-  document.getElementById('stat-sah').textContent = angka(d.suara_sah);
-  document.getElementById('stat-ambang').textContent = angka(d.ambang_kursi);
-  document.getElementById('stat-rasio').textContent = angka(d.suara_per_kursi);
+  const part = d.kecamatan_detail.reduce((a, k) => a + k.pengguna_hak_pilih, 0);
+  const dpt = d.kecamatan_detail.reduce((a, k) => a + k.dpt, 0);
+  document.getElementById('ringkas').innerHTML =
+    '<div class="sel"><span>Kursi dapil</span><b>' + d.kursi + '</b></div>' +
+    '<div class="sel"><span>Suara sah</span><b>' + nf(d.suara_sah) + '</b></div>' +
+    '<div class="sel"><span>DPT</span><b>' + nf(dpt) + '</b></div>' +
+    '<div class="sel"><span>Partisipasi</span><b>' + pct(100 * part / dpt) + '</b></div>';
+}
 
+function renderKantong(d) {
+  const wadah = document.getElementById('kantong');
+  const top = d.partai.filter(p => p.total > 0).slice(0, 6);
+  const baris = top.map(p => {
+    let terbaik = null;
+    d.kecamatan_detail.forEach(k => {
+      const isi = k.partai.find(x => x.nama === p.nama);
+      if (!isi || !k.suara_sah) return;
+      const share = 100 * isi.total / k.suara_sah;
+      if (!terbaik || share > terbaik.share) terbaik = { kec: k.nama, share: share, total: isi.total };
+    });
+    return { p: p, terbaik: terbaik };
+  }).filter(x => x.terbaik);
+  const maks = Math.max.apply(null, baris.map(x => x.terbaik.share).concat([1]));
+  wadah.innerHTML = baris.map(x =>
+    '<div class="baris">' +
+      '<div class="kiri">' +
+        '<div class="nm">' + pendek(x.p.nama) + '</div>' +
+        '<div class="ket">' + x.terbaik.kec + ' · ' + nf(x.terbaik.total) + ' suara</div>' +
+        '<div class="barbg"><div class="barfg" style="width:' +
+          Math.round(100 * x.terbaik.share / maks) + '%"></div></div>' +
+      '</div>' +
+      '<div class="kanan"><b>' + pct(x.terbaik.share) + '</b><span>' + x.p.kursi + ' kursi</span></div>' +
+    '</div>').join('');
+}
+
+function renderTabel(d) {
+  const tabel = document.getElementById('tabel');
+  const kec = d.kecamatan_detail;
+  const partai = d.partai.filter(p => p.total > 0).slice(0, 8);
+  const semua = [];
+  kec.forEach(k => partai.forEach(p => {
+    const isi = k.partai.find(x => x.nama === p.nama);
+    semua.push(isi && k.suara_sah ? 100 * isi.total / k.suara_sah : 0);
+  }));
+  const maks = Math.max.apply(null, semua.concat([1]));
+  tabel.style.setProperty('--n', kec.length);
+  let html = '<div class="sel kepala nama">Partai</div>' +
+    kec.map(k => '<div class="sel kepala">' + k.nama.split(' ')[0].slice(0, 8) + '</div>').join('');
+  partai.forEach(p => {
+    html += '<div class="sel nama">' + pendek(p.nama).slice(0, 16) + '</div>';
+    kec.forEach(k => {
+      const isi = k.partai.find(x => x.nama === p.nama);
+      const share = isi && k.suara_sah ? 100 * isi.total / k.suara_sah : 0;
+      const alpha = Math.min(1, share / maks);
+      const bg = share ? 'rgba(11,107,69,' + (0.10 + 0.82 * alpha).toFixed(2) + ')' : '#f4f7f5';
+      const warna = alpha > 0.58 ? '#fff' : '#0e3b28';
+      html += '<div class="nil" style="background:' + bg + ';color:' + warna + '" title="' +
+        k.nama + ': ' + nf(isi ? isi.total : 0) + ' suara">' +
+        (share ? Math.round(share) : '-') + '</div>';
+    });
+  });
+  tabel.innerHTML = html;
+}
+
+function renderKecamatan(d) {
+  const wadah = document.getElementById('daftar-kec');
+  wadah.innerHTML = d.kecamatan_detail.map((k, i) => {
+    const top = k.partai.slice(0, 5);
+    const maks = Math.max.apply(null, top.map(x => x.total).concat([1]));
+    return '<div class="kec" data-i="' + i + '">' +
+      '<div class="kepala">' +
+        '<div class="nm">' + k.nama +
+          '<small>' + nf(k.suara_sah) + ' suara sah · partisipasi ' + pct(k.partisipasi) + '</small>' +
+        '</div>' +
+        '<div style="text-align:right">' +
+          '<div style="font-size:10.5px;font-weight:800;color:#4e615a">' + pendek(k.pemenang) + '</div>' +
+          '<div style="font-size:12px;font-weight:900;color:#0b6b45">' + pct(k.persen_pemenang) + '</div>' +
+        '</div>' +
+        '<div class="tanda">+</div>' +
+      '</div>' +
+      '<div class="badan">' +
+        '<div class="grid3">' +
+          '<div><span>DPT</span><b>' + nf(k.dpt) + '</b></div>' +
+          '<div><span>Suara sah</span><b>' + nf(k.suara_sah) + '</b></div>' +
+          '<div><span>Selisih juara</span><b>' + nf(k.selisih_puncak) + '</b></div>' +
+        '</div>' +
+        top.map(x => '<div class="pilkec">' +
+          '<span class="nm">' + pendek(x.nama) + '</span>' +
+          '<span class="bg"><span class="fg" style="display:block;width:' +
+            Math.round(100 * x.total / maks) + '%"></span></span>' +
+          '<span class="vl">' + nf(x.total) + '</span>' +
+        '</div>').join('') +
+        '<div class="kel">' + (k.kelurahan.length
+          ? k.kelurahan.map(x => '<span>' + x + '</span>').join('')
+          : '<span>Daftar kelurahan menyusul</span>') + '</div>' +
+        '<div class="kel-tanya">Suara per kelurahan belum ada di rekap tingkat kota. ' +
+          'Butuh formulir D.HASIL KECAMATAN untuk membuka level ini.</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+  wadah.querySelectorAll('.kec .kepala').forEach(el => {
+    el.onclick = () => el.parentElement.classList.toggle('buka');
+  });
+}
+
+function renderPartai(d) {
   const wadah = document.getElementById('daftar-partai');
   wadah.innerHTML = '';
   d.partai.filter(p => p.total > 0).forEach((p, i) => {
     const kotak = document.createElement('div');
-    kotak.className = 'partai' + (p.nama.includes('Kebangkitan Bangsa') ? ' pkb' : '');
-    const lencana = p.kursi ? '<span class="lencana">' + p.kursi + ' kursi</span>'
-                            : '<span class="lencana kosong">0</span>';
+    kotak.className = 'partai';
     kotak.innerHTML =
       '<div class="baris">' +
-        '<div class="nama">' + (i + 1) + '. ' + p.nama + '</div>' +
-        '<div class="angka">' + angka(p.total) + '<small>' + p.persen.toFixed(1) + '%</small></div>' +
-        lencana +
+        '<div class="kiri"><div class="nm">' + (i + 1) + '. ' + p.nama + '</div>' +
+          '<div class="ket">' + nf(p.total) + ' suara · ' + pct(p.persen) + '</div></div>' +
+        (p.kursi ? '<span class="lencana">' + p.kursi + ' kursi</span>'
+                 : '<span class="lencana nol">0</span>') +
       '</div>' +
       '<div class="caleg">' +
         p.caleg.map(c =>
           '<div class="' + (c.terpilih ? 'terpilih' : '') + '">' +
             '<span class="no">' + c.no + '</span>' +
             '<span class="cn">' + c.nama + '</span>' +
-            '<span class="cv">' + angka(c.total) + '</span>' +
+            '<span class="cv">' + nf(c.total) + '</span>' +
           '</div>').join('') +
       '</div>';
-    kotak.querySelector('.baris').onclick = () => {
+    kotak.querySelector('.baris').onclick = () =>
       kotak.querySelector('.caleg').classList.toggle('buka');
-    };
     wadah.appendChild(kotak);
   });
+}
 
-  const pkb = document.getElementById('kartu-pkb');
-  if (dapilAktif === 3 && d.analisis_pkb) {
-    const a = d.analisis_pkb;
-    pkb.style.display = 'block';
-    document.getElementById('pkb-total').textContent = angka(a.total_2024);
-    document.getElementById('pkb-kursi').textContent = a.kursi_2024;
-    document.getElementById('pkb-target').textContent = angka(a.target_dua_kursi);
-    document.getElementById('pkb-selisih').textContent = '+' + angka(a.selisih_dua_kursi);
-    document.getElementById('pkb-catatan').textContent =
-      'Untuk dua kursi, PKB Dapil 3 perlu naik dari ' + angka(a.total_2024) + ' ke ' +
-      angka(a.target_dua_kursi) + ' suara, atau ' + angka(a.selisih_dua_kursi) +
-      ' suara tambahan bila perolehan partai lain tetap. Kursi pertama 2024 diraih ' +
-      angka(a.pemenang_kursi_pkb) + ' suara.';
-    const maks = Math.max(...Object.values(a.suara_pkb_per_kecamatan));
-    document.getElementById('pkb-kecamatan').innerHTML =
-      Object.entries(a.suara_pkb_per_kecamatan).sort((x, y) => y[1] - x[1]).map(([k, v]) =>
-        '<div class="pkb-baris"><span class="lk">' + k + '</span>' +
-        '<span class="barbg"><span class="barfg" style="width:' +
-        Math.round(100 * v / maks) + '%"></span></span>' +
-        '<span class="nil">' + angka(v) + '</span></div>').join('');
-  } else {
-    pkb.style.display = 'none';
+function renderPKB(d) {
+  const wadah = document.getElementById('kartu-pkb');
+  if (dapilAktif !== 3 || !d.analisis_pkb) { wadah.innerHTML = ''; return; }
+  const a = d.analisis_pkb;
+  const perKec = Object.entries(a.suara_pkb_per_kecamatan).sort((x, y) => y[1] - x[1]);
+  const maks = Math.max.apply(null, perKec.map(x => x[1]).concat([1]));
+  const pkb = d.partai.find(p => p.nama.indexOf('Kebangkitan Bangsa') !== -1);
+  const caleg = pkb ? pkb.caleg : [];
+  const penulis = caleg.find(c => /NASFA/i.test(c.nama));
+  let personal = '';
+  if (penulis) {
+    const rinci = (penulis.suara_kecamatan || []).map((v, i) => [d.kecamatan[i], v]).sort((x, y) => y[1] - x[1]);
+    const pmaks = Math.max.apply(null, rinci.map(x => x[1]).concat([1]));
+    personal =
+      '<div style="margin-top:14px;border-top:1px dashed #efe0b4;padding-top:12px">' +
+        '<div style="font-size:11.5px;font-weight:900;color:#8a6d1f;margin-bottom:4px">' +
+          'Suara Anda per kecamatan</div>' +
+        '<div style="font-size:10.5px;color:#8a6d1f;margin-bottom:9px;font-weight:700">' +
+          nf(penulis.total) + ' total, peringkat ' + (caleg.indexOf(penulis) + 1) +
+          ' dari ' + caleg.length + ' caleg PKB</div>' +
+        rinci.map(x =>
+          '<div class="pilkec"><span class="nm">' + x[0] + '</span>' +
+          '<span class="bg"><span class="fg" style="display:block;width:' +
+            Math.round(100 * x[1] / pmaks) + '%"></span></span>' +
+          '<span class="vl">' + nf(x[1]) + '</span></div>').join('') +
+      '</div>';
   }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  wadah.innerHTML =
+    '<div class="kartu tandai">' +
+      '<h2>Peta PKB Dapil 3</h2>' +
+      '<p class="sub">Basis Rungkut, peluang kursi kedua, dan posisi Anda pada 2024.</p>' +
+      '<div class="dua">' +
+        '<div class="sel"><span>Suara PKB 2024</span><b>' + nf(a.total_2024) + '</b></div>' +
+        '<div class="sel"><span>Kursi 2024</span><b>' + a.kursi_2024 + '</b></div>' +
+        '<div class="sel"><span>Target 2 kursi</span><b>' + nf(a.target_dua_kursi) + '</b></div>' +
+        '<div class="sel"><span>Tambahan suara</span><b>+' + nf(a.selisih_dua_kursi) + '</b></div>' +
+      '</div>' +
+      '<p class="catatan">Kursi kedua butuh ' + nf(a.target_dua_kursi) +
+        ' suara bila perolehan partai lain tetap. Kursi pertama 2024 diraih ' +
+        nf(a.pemenang_kursi_pkb) + ' suara.</p>' +
+      '<div style="margin-top:14px">' +
+        perKec.map(x =>
+          '<div class="pilkec"><span class="nm">' + x[0] + '</span>' +
+          '<span class="bg"><span class="fg" style="display:block;width:' +
+            Math.round(100 * x[1] / maks) + '%"></span></span>' +
+          '<span class="vl">' + nf(x[1]) + '</span></div>').join('') +
+      '</div>' + personal +
+    '</div>';
+}
+
+function renderSemua() {
+  const d = DATA.dapil[String(dapilAktif)];
+  renderRingkas(d); renderKantong(d); renderTabel(d); renderKecamatan(d); renderPartai(d); renderPKB(d);
+}
+
+function renderGlobal() {
+  document.getElementById('h-sah').textContent = nf(DATA.total_suara_sah);
+  document.getElementById('h-dpt').textContent = nf(DATA.total_dpt);
+  const totalKel = Object.keys(DATA.dapil).reduce((a, k) => a + (DATA.dapil[k].jumlah_kelurahan || 0), 0);
+  document.getElementById('catatan-kelurahan').innerHTML =
+    'Dokumen yang Anda kirim adalah rekap tingkat kota, dan ' + totalKel +
+    ' kelurahan sudah terdaftar lengkap di halaman ini. Angka suara per kelurahan tidak ada di dokumen itu, ' +
+    'karena rekap kota hanya memuat kolom kecamatan. Kalau Anda kirim formulir D.HASIL KECAMATAN-DPRD ' +
+    'untuk 7 kecamatan Dapil 3, saya pecah sampai kelurahan dan menyusun prioritas kanvasing per TPS.';
 }
 
 fetch('data/pemilu-2024.json')
   .then(r => r.json())
-  .then(d => { DATA = d; ringkas(); tab(); panel(); })
-  .catch(e => {
-    document.getElementById('panel-dapil').innerHTML =
-      '<p class="catatan">Data gagal dimuat. Pastikan berkas data/pemilu-2024.json ada.</p>';
+  .then(d => { DATA = d; renderGlobal(); renderTab(); renderSemua(); })
+  .catch(() => {
+    document.getElementById('ringkas').innerHTML =
+      '<div class="kosong">Data gagal dimuat, periksa berkas data/pemilu-2024.json.</div>';
   });
 </script>
 </body>
