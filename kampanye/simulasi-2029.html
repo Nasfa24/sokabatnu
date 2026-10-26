@@ -56,10 +56,10 @@ td.surplus b{color:var(--hijau)}td.surplus small{color:var(--hijau)}
 .chips button{border:1px solid var(--garis);background:var(--kartu);color:var(--redup);font-size:11px;font-weight:700;padding:6px 11px;border-radius:999px;font-family:inherit}
 .chips button.on{background:var(--hijau-gelap);border-color:var(--hijau-gelap);color:#fff}
 .dapil{background:var(--kartu);border:1px solid var(--garis);border-radius:var(--r);padding:13px;margin-bottom:10px;box-shadow:0 1px 2px rgba(4,48,31,.05)}
-.dkepala{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.dkepala{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .dnomor{font-size:12px;font-weight:800;color:var(--hijau);letter-spacing:.06em}
 .dkuota{font-size:11.5px;color:var(--redup);font-weight:600;margin-top:1px}
-.badge{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:4px 8px;border-radius:999px;white-space:nowrap}
+.badge{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:4px 8px;border-radius:12px;white-space:normal;max-width:100%;line-height:1.35;text-align:left}
 .b-aman{background:var(--hijau-muda);color:#0b6b45}
 .b-jalan{background:var(--kuning-muda);color:var(--kuning)}
 .b-netral{background:#eef2f0;color:#52655c}
@@ -165,9 +165,20 @@ ol.rec b{color:var(--hijau-gelap)}
   <h2>Potensi dan adjustment<span>tiga label tabel diuji dengan suara 2024</span></h2>
   <p class="sub">Label Kurang, Aman, dan Menuju 2 Kursi di tabel asli diuji ulang memakai suara 2024.</p>
   <div class="klas">
-    <div class="kk aman"><b>AMAN</b><span>Dapil 1, 2, 4, 6, 8</span><small>Target tercapai tanpa satu suara pun tambahan. Lima kursi sudah terkunci.</small></div>
+    <div class="kk aman"><b>AMAN</b><span>Dapil 1, 2, 4, 6, 8</span><small>Target tabel 1 kursi tercapai tanpa tambahan suara. Lima kursi sudah terkunci.</small></div>
     <div class="kk jalan"><b>MENUJU 2 KURSI</b><span>Dapil 3 dan Dapil 7</span><small>Defisit ringan. Dapil 7 butuh 2.320 suara untuk kursi pertama, Dapil 3 butuh 12.332 suara untuk kursi kedua.</small></div>
-    <div class="kk rawan"><b>KURANG</b><span>Dapil 5</span><small>Butuh 37.913 suara untuk kursi kedua, 2,04 kali suara 2024. Satu-satunya dapil yang benar-benar berat.</small></div>
+    <div class="kk rawan"><b>KURANG</b><span>Dapil 5 dan kursi kedua Dapil 6</span><small>Dapil 5 butuh 37.913 suara atau 3,04 kali, Dapil 6 butuh 21.650 suara atau 2,06 kali. Keduanya terlalu mahal untuk dikejar.</small></div>
+  </div>
+
+  <h2>Adjustment dan analisis yang masuk akal untuk meraih 10 kursi<span>tiga langkah, bukan lima</span></h2>
+  <div class="temuan">
+    <div><i>&#127919;</i><span><b>Posisi awal sudah 7 kursi, bukan 5.</b> Suara PKB 2024 sebesar 159.362 bila dapil dipecah menjadi 8 menghasilkan 7 kursi dari 55. Yang benar-benar diperjuangkan hanya 3 kursi tambahan.</span></div>
+    <div><i>&#129518;</i><span><b>Yang menentukan bukan total suara, tetapi penempatan.</b> Kenaikan seragam 50 persen berarti 79.681 suara baru dan hanya berbuah 9 kursi. Tambahan 31.337 suara yang dipusatkan di tiga dapil berbuah 10 kursi, dengan biaya per kursi turun dari 21.193 ke 19.070 suara.</span></div>
+    <div><i>&#128273;</i><span><b>Langkah 1, Dapil 7, tambah 2.320 suara.</b> Pangsa cukup naik dari 6,0 ke 7,2 persen, hanya 1,3 persen dari suara sah dapil. Ini kursi termurah di kota, dan cukup dikunci dari Karang Pilang serta Wiyung, tidak perlu menyebar ke lima kecamatan.</span></div>
+    <div><i>&#128273;</i><span><b>Langkah 2, Dapil 3, tambah 12.332 suara.</b> Pangsa naik dari 12,7 ke 18,2 persen. Basis terkuat sudah ada di Tenggilis Mejoyo 7.867 dan Rungkut 4.409, jadi konsentrasi di dua kecamatan itu paling efisien.</span></div>
+    <div><i>&#128273;</i><span><b>Langkah 3, Dapil 8, tambah 16.685 suara.</b> Pangsa naik dari 12,8 ke 21,1 persen. Dapil ini sudah surplus 12.745 suara di atas ambang satu kursi, jadi kursi kedua di sini lebih murah daripada kursi kedua di Dapil 5.</span></div>
+    <div><i>&#128683;</i><span><b>Yang dilepas, kursi kedua Dapil 5.</b> Butuh 37.913 suara dan pangsa 32,6 persen. Biayanya lebih besar daripada langkah 1 ditambah langkah 2, sementara hasilnya tetap satu kursi.</span></div>
+    <div><i>&#128197;</i><span><b>Konsekuensi organisasi.</b> Total 31.337 suara itu hanya 2,04 persen dari 1.536.843 suara sah kota. Target harus diturunkan ke level kecamatan dan TPS, karena dengan strategi dapil saja tambahan sebesar itu tidak akan terkontrol.</span></div>
   </div>
 
   <h2>Jalan dari 5 ke 10 kursi</h2>
@@ -217,15 +228,6 @@ ol.rec b{color:var(--hijau-gelap)}
   </div>
   <div id="daftar"></div>
 
-  <h2>Temuan kunci</h2>
-  <div class="temuan">
-    <div><i>&#9888;</i><span><b>Angka 55.000 suara di tabel tidak masuk akal.</b> PKB sudah 159.362 suara pada 2024. Target 55.000 berarti turun 65 persen, bukan naik.</span></div>
-    <div><i>&#128202;</i><span><b>Pecah dapil menambah 2 kursi tanpa suara tambahan.</b> Suara 2024 yang sama menghasilkan 7 kursi dari 55, sedangkan 2024 hanya 5 dari 50.</span></div>
-    <div><i>&#128683;</i><span><b>Dapil 5 dilabeli aman, padahal paling berat.</b> Butuh 56.502 suara untuk 2 kursi, 3,04 kali suara 2024 di sana. Dapil 3 cukup 41.064 suara.</span></div>
-    <div><i>&#128681;</i><span><b>Dapil 7 satu-satunya tanpa kursi.</b> PKB 10.725 suara atau 6,0 persen, tetapi hanya butuh 2.320 suara tambahan untuk kursi pertama.</span></div>
-    <div><i>&#128200;</i><span><b>Dapil 8 dan 1 terlalu rendah targetnya.</b> Dapil 8 surplus 12.745 suara di atas ambang satu kursi, target 1 kursi membuang peluang kedua.</span></div>
-  </div>
-
   <div class="catatan">
     <p><b>Metode.</b> Suara partai dan caleg 2024 per kecamatan dijumlahkan sesuai usulan 8 dapil, lalu kursi dibagi Sainte-Lague murni dengan kuota 6, 7, 8, 6, 6, 8, 7, 7. Ambang dihitung dengan menaikkan suara PKB saja. Validasi silang 26 Oktober 2026: form D.Hasil Kecamatan Gayungan mencocokkan ekstraksi KPU pada DPT 32.510, suara sah 22.917, PKB 2.513, dan Gerindra 2.844.</p>
     <p><b>Batas hitungan.</b> Jumlah 55 kursi dan batas dapil 2029 belum ditetapkan PKPU. Simulasi tidak memasukkan caleg baru, efek inkumben, atau perubahan jumlah pemilih.</p>
@@ -239,9 +241,13 @@ let urutan = 'n';
 
 function warnaWarna(x){ return x.rasio <= 0.99 ? 'w-aman' : (x.rasio < 1.7 ? 'w-jalan' : 'w-rawan'); }
 function kelasBadge(x){
-  if(x.ket === 'Aman') return 'b-aman';
-  if(x.ket.indexOf('Menuju') === 0) return 'b-jalan';
-  return 'b-netral';
+  if(x.status === 'surplus') return 'b-aman';
+  if(x.status === 'pas') return 'b-jalan';
+  return 'b-rawan';
+}
+function teksBadge(x){
+  const h = x.status === 'surplus' ? 'aman' : (x.status === 'pas' ? 'pas' : 'kurang');
+  return 'Tabel ' + x.ket.toLowerCase() + ' &middot; hitungan ' + h;
 }
 
 function renderTabel(){
@@ -277,7 +283,7 @@ function renderDaftar(){
     return '<div class="dapil" id="d' + x.n + '">' +
       '<div class="dkepala"><div><div class="dnomor">DAPIL ' + x.n + '</div>' +
         '<div class="dkuota">Kuota ' + x.kuota + ' kursi &middot; ' + x.kecamatan.length + ' kecamatan</div></div>' +
-        '<span class="badge ' + kelasBadge(x) + '">' + 'Tabel: ' + x.ket.toLowerCase() + '</span></div>' +
+        '<span class="badge ' + kelasBadge(x) + '">' + teksBadge(x) + '</span></div>' +
       '<div class="kec">' + x.kecamatan.map(k => '<span>' + k + '</span>').join('') + '</div>' +
       '<p class="keputusan ' + (kurang ? 'kurang' : 'surplus') + '">' + kalimat + '</p>' +
       '<div class="grid3">' +
