@@ -1,4 +1,3 @@
 User-agent: *
-Disallow: /analisa-caleg/
 Allow: /
 Sitemap: https://sokabatnu.fun/sitemap.xml

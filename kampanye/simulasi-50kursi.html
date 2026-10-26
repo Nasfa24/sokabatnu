@@ -1,0 +1,1295 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Simulasi 5 Dapil 50 Kursi - Beranda Caleg</title>
+<style>
+:root{--hijau:#0b6b45;--hijau2:#04301f;--muda:#e8f5ee;--emas:#f6b93b;--emas2:#fff3d2;
+--bg:#eef3f0;--kartu:#fff;--garis:#d7e3dc;--teks:#0e1a15;--redup:#4e615a;--redup2:#7c8d86;
+--merah:#b3261e;--merahm:#fdecea;--kuning:#8a5a00;--kuningm:#fff5dc;--r:16px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--teks);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px 64px}
+.kepala{background:linear-gradient(160deg,#0b6b45,#04301f 78%);color:#fff;padding:22px 0 22px;border-radius:0 0 26px 26px}
+.kepala .dalam{max-width:680px;margin:0 auto;padding:0 16px}
+.kembali{display:inline-block;font-size:13px;color:#cfe4da;text-decoration:none;margin-bottom:12px}
+.kembali:hover{color:#fff}
+.tag{display:inline-block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:5px 11px;border-radius:999px;color:#ffe6a6;font-weight:700}
+h1{font-size:27px;line-height:1.2;margin:14px 0 6px;letter-spacing:-.02em}
+.kepala p{margin:0;color:#cfe4da;font-size:14.5px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.chips span{font-size:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);padding:4px 10px;border-radius:999px;color:#eaf6f0}
+h2{font-size:19px;margin:30px 0 4px;letter-spacing:-.01em}
+h2 small{display:block;font-size:12.5px;font-weight:600;color:var(--redup2);letter-spacing:.02em;margin-top:3px;text-transform:uppercase}
+.card{background:var(--kartu);border:1px solid var(--garis);border-radius:var(--r);padding:16px;margin-top:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.stat{background:var(--kartu);border:1px solid var(--garis);border-radius:14px;padding:13px 14px}
+.stat em{display:block;font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--redup2);font-weight:700}
+.stat b{display:block;font-size:20px;margin-top:4px;letter-spacing:-.02em}
+.stat span{display:block;font-size:12px;color:var(--redup);margin-top:2px}
+table{width:100%;border-collapse:collapse}
+.gulir{overflow-x:auto;-webkit-overflow-scrolling:touch}
+th,td{padding:9px 7px;text-align:right;border-bottom:1px solid #eef3f0;font-size:13px;white-space:nowrap}
+th{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--redup2);border-bottom:1.5px solid var(--garis);font-weight:700}
+th:first-child,td:first-child{text-align:left}
+tbody tr:last-child td{border-bottom:0}
+td b{font-weight:700}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;border:1px solid transparent}
+.b-murah{background:var(--muda);color:var(--hijau);border-color:#bfe2ce}
+.b-sedang{background:var(--kuningm);color:var(--kuning);border-color:#f0dcae}
+.b-mahal{background:var(--merahm);color:var(--merah);border-color:#f3c9c4}
+.bar{height:8px;border-radius:99px;background:#e6efea;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#0b6b45,#3f9f74);border-radius:99px}
+.baris{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed #e2ece6}
+.baris:last-child{border-bottom:0}
+.baris .k{font-size:13.5px}
+.baris .v{font-weight:700;font-size:13.5px;white-space:nowrap}
+.dapil{border:1px solid var(--garis);border-radius:14px;overflow:hidden;margin-top:12px;background:var(--kartu)}
+.dkepala{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 14px;background:var(--muda);border-bottom:1px solid #cfe6db}
+.dkepala b{font-size:14.5px}
+.dkepala span{font-size:12px;color:var(--redup)}
+.kec{padding:12px 14px;border-bottom:1px dashed #e2ece6}
+.kec:last-child{border-bottom:0}
+.kec .atas{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.kec .nm{font-weight:700;font-size:14px}
+.kec .sh{font-size:12.5px;color:var(--redup);white-space:nowrap}
+.kec .bawah{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.pil{font-size:11.5px;padding:3px 8px;border-radius:999px;background:#f2f6f4;color:var(--redup);border:1px solid #e3ece8}
+.pil.p{background:var(--muda);color:var(--hijau);border-color:#c6e4d4}
+.pil.m{background:var(--merahm);color:var(--merah);border-color:#f3c9c4}
+.kantong{margin-top:7px;font-size:12.5px;color:var(--redup);line-height:1.5}
+.kantong b{color:var(--teks)}
+.rute{display:grid;gap:8px;margin-top:12px}
+.langkah{display:flex;gap:12px;align-items:center;background:var(--kartu);border:1px solid var(--garis);border-radius:14px;padding:12px 14px}
+.langkah .no{width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:var(--hijau);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.langkah .isi b{font-size:14px;display:block}
+.langkah .isi span{font-size:12.5px;color:var(--redup)}
+.catatan{font-size:12.5px;color:var(--redup);line-height:1.65}
+.catatan b{color:var(--teks)}
+.catatan p{margin:0 0 10px}
+.catatan p:last-child{margin:0}
+.tanda{font-size:11.5px;color:var(--redup2);text-align:center;margin-top:26px;line-height:1.5}
+@media(max-width:400px){h1{font-size:23px}.stat b{font-size:18px}th,td{font-size:12.5px}}
+</style>
+</head>
+<body>
+<header class="kepala"><div class="dalam">
+  <a class="kembali" href="caleg.html">&#8592; Beranda Caleg</a><br>
+  <span class="tag">Ruang Caleg</span>
+  <h1>Simulasi 5 Dapil dan 50 Kursi</h1>
+  <p>Peta kecamatan prospek dan kantong suara yang harus diambil, dihitung dari rekap KPU 2024.</p>
+  <div class="chips" id="meta"></div>
+</div></header>
+
+<main class="wrap">
+  <h2>Ringkasan kota<small>Basis suara 2024</small></h2>
+  <div class="grid" id="stat"></div>
+
+  <h2>Biaya satu kursi tambahan<small>Diurutkan dari yang termurah</small></h2>
+  <div class="card" id="urutan"></div>
+
+  <h2>Rute menuju 8 kursi<small>Tiga langkah, berurutan</small></h2>
+  <div class="rute" id="rute"></div>
+
+  <h2>Tabel lima dapil<small>Ambang dan rasio kenaikan</small></h2>
+  <div class="card gulir" id="tabelDapil"></div>
+
+  <h2>Pemegang kursi terakhir<small>Kantong partai yang harus digeser</small></h2>
+  <div class="card" id="tabelKantong"></div>
+
+  <h2>Rincian per dapil<small>Kecamatan, selisih, dan nama kantong</small></h2>
+  <div id="rinci"></div>
+
+  <h2>Catatan metode<small>Baca sebelum memakai angka</small></h2>
+  <div class="card catatan">
+    <p><b>Konfigurasi.</b> Lima dapil dengan 10, 11, 10, 9, dan 10 kursi, total 50 kursi. Ini konfigurasi Pemilu 2024, bukan kepastian 2029.</p>
+    <p><b>Metode.</b> Sainte-Lague murni tanpa ambang. Ambang dihitung dengan mengulang alokasi kursi pada setiap kenaikan suara PKB, sedangkan suara partai lain dibekukan pada angka 2024. Galat pembulatan maksimal satu suara.</p>
+    <p><b>Batas tafsir.</b> Angka ini lantai aritmetika, bukan target aman. Bila lawan ikut tumbuh, ambang naik. Kantong suara adalah caleg dengan suara terbesar di kecamatan target menurut rekap KPU 2024.</p>
+    <p><b>Sumber.</b> Rekap D.Hasil DPRD Kota Surabaya 2024, 31 kecamatan, 1.536.843 suara sah. Data kelurahan tidak tersedia pada formulir ini.</p>
+  </div>
+  <p class="tanda">Halaman ini hanya untuk caleg, berada di dalam Beranda Caleg dan tidak ditautkan dari portal Kampanye.</p>
+</main>
+
+<script>
+
+const D={
+ "judul": "Simulasi 5 Dapil dan 50 Kursi",
+ "subjudul": "Peta prospek kecamatan dan kantong suara yang harus diambil",
+ "sumber": "KPU Kota Surabaya 2024, rekap D.Hasil DPRD Kota",
+ "metode": "Sainte-Lague murni tanpa ambang, suara lawan dibekukan pada angka 2024",
+ "total_sah": 1536843,
+ "total_dpt": 2218586,
+ "total_pkb": 159362,
+ "pkb_persen": 10.37,
+ "total_kursi": 50,
+ "biaya_pkb": 31872,
+ "psi": {
+  "suara": 133236,
+  "kursi": 5,
+  "biaya": 26647
+ },
+ "dapil": [
+  {
+   "nomor": 1,
+   "kursi": 10,
+   "sah": 298698,
+   "dpt": 446501,
+   "kuota": 29870,
+   "pkb": 34666,
+   "pkb_persen": 11.61,
+   "pkb_kursi": 1,
+   "butuh": 47463,
+   "tambah": 12797,
+   "rasio": 1.37,
+   "marginal": {
+    "partai": "Gerindra",
+    "kursi_ke": 10,
+    "batas": 15821,
+    "pemegang": {
+     "nama": "Ajeng Wira Wati, S.Sos., M.PSDM.",
+     "suara": 11467,
+     "basis": "GUBENG"
+    }
+   },
+   "kecamatan": [
+    {
+     "nama": "GUBENG",
+     "sah": 69392,
+     "dpt": 101875,
+     "pkb": 9236,
+     "persen": 13.3,
+     "rank": 3,
+     "pemenang": "PDIP",
+     "persen_pemenang": 18.0,
+     "suara_pemenang": 12524,
+     "jarak": 3288,
+     "kantong": {
+      "nama": "Drs. R. TARU SASMITA",
+      "suara": 3222
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "KREMBANGAN",
+     "sah": 57492,
+     "dpt": 83811,
+     "pkb": 4998,
+     "persen": 8.7,
+     "rank": 5,
+     "pemenang": "PDIP",
+     "persen_pemenang": 25.2,
+     "suara_pemenang": 14497,
+     "jarak": 9499,
+     "kantong": {
+      "nama": "ACHMAD HIDAYAT, S.Sos.",
+      "suara": 4014
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "BUBUTAN",
+     "sah": 49030,
+     "dpt": 72982,
+     "pkb": 4642,
+     "persen": 9.5,
+     "rank": 4,
+     "pemenang": "PDIP",
+     "persen_pemenang": 26.8,
+     "suara_pemenang": 13132,
+     "jarak": 8490,
+     "kantong": {
+      "nama": "BUDI LEKSONO, S.H.",
+      "suara": 5419
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "TEGALSARI",
+     "sah": 48113,
+     "dpt": 73959,
+     "pkb": 5748,
+     "persen": 11.9,
+     "rank": 3,
+     "pemenang": "PDIP",
+     "persen_pemenang": 23.6,
+     "suara_pemenang": 11355,
+     "jarak": 5607,
+     "kantong": {
+      "nama": "H. TRI DIDIK ADIONO, S.Sos.",
+      "suara": 3090
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "SIMOKERTO",
+     "sah": 45165,
+     "dpt": 69533,
+     "pkb": 6970,
+     "persen": 15.4,
+     "rank": 3,
+     "pemenang": "PDIP",
+     "persen_pemenang": 19.4,
+     "suara_pemenang": 8759,
+     "jarak": 1789,
+     "kantong": {
+      "nama": "Drs. EDI SANTOSO, M.Si.",
+      "suara": 1839
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "GENTENG",
+     "sah": 29506,
+     "dpt": 44341,
+     "pkb": 3072,
+     "persen": 10.4,
+     "rank": 4,
+     "pemenang": "PDIP",
+     "persen_pemenang": 27.7,
+     "suara_pemenang": 8185,
+     "jarak": 5113,
+     "kantong": {
+      "nama": "NORMA YUNITA, S.H.",
+      "suara": 1894
+     },
+     "pkb_terkuat": null
+    }
+   ],
+   "caleg": [
+    {
+     "partai": "PDIP",
+     "nama": "BUDI LEKSONO, S.H.",
+     "suara": 13271,
+     "basis": "BUBUTAN"
+    },
+    {
+     "partai": "PDIP",
+     "nama": "H. TRI DIDIK ADIONO, S.Sos.",
+     "suara": 12021,
+     "basis": "KREMBANGAN"
+    },
+    {
+     "partai": "Gerindra",
+     "nama": "Ajeng Wira Wati, S.Sos., M.PSDM.",
+     "suara": 11467,
+     "basis": "GUBENG"
+    },
+    {
+     "partai": "PKB",
+     "nama": "AIS SHAFIYAH ASFAR",
+     "suara": 10860,
+     "basis": "GUBENG"
+    },
+    {
+     "partai": "NasDem",
+     "nama": "Drs. H. IMAM SYAFI'I, S.H., M.H.",
+     "suara": 10233,
+     "basis": "KREMBANGAN"
+    },
+    {
+     "partai": "PAN",
+     "nama": "dr. Hj. ZUHROTUL MAR'AH",
+     "suara": 9985,
+     "basis": "KREMBANGAN"
+    }
+   ],
+   "pkb_caleg": [
+    {
+     "partai": "PKB",
+     "nama": "AIS SHAFIYAH ASFAR",
+     "suara": 10860,
+     "basis": "GUBENG",
+     "porsi": 39.0
+    },
+    {
+     "partai": "PKB",
+     "nama": "ZAINAL ABIDIN",
+     "suara": 6723,
+     "basis": "GUBENG",
+     "porsi": 24.2
+    },
+    {
+     "partai": "PKB",
+     "nama": "HANI FIDYANTO",
+     "suara": 5055,
+     "basis": "GUBENG",
+     "porsi": 18.2
+    },
+    {
+     "partai": "PKB",
+     "nama": "MOHAMMAD HIDAYATULLOH",
+     "suara": 1549,
+     "basis": "KREMBANGAN",
+     "porsi": 5.6
+    },
+    {
+     "partai": "PKB",
+     "nama": "QOTRUNNADA LAILA MUFIDAH",
+     "suara": 1530,
+     "basis": "SIMOKERTO",
+     "porsi": 5.5
+    },
+    {
+     "partai": "PKB",
+     "nama": "IMAM MUSTAJI, S.E.",
+     "suara": 1055,
+     "basis": "TEGALSARI",
+     "porsi": 3.8
+    }
+   ],
+   "konsentrasi": 39.0
+  },
+  {
+   "nomor": 2,
+   "kursi": 11,
+   "sah": 325791,
+   "dpt": 482660,
+   "kuota": 29617,
+   "pkb": 41004,
+   "pkb_persen": 12.59,
+   "pkb_kursi": 1,
+   "butuh": 48447,
+   "tambah": 7443,
+   "rasio": 1.18,
+   "marginal": {
+    "partai": "NasDem",
+    "kursi_ke": 11,
+    "batas": 16149,
+    "pemegang": {
+     "nama": "H. SAIFUL BAHRI, S.Ag.",
+     "suara": 7365,
+     "basis": "SEMAMPIR"
+    }
+   },
+   "kecamatan": [
+    {
+     "nama": "TAMBAKSARI",
+     "sah": 112768,
+     "dpt": 170142,
+     "pkb": 11768,
+     "persen": 10.4,
+     "rank": 3,
+     "pemenang": "PDIP",
+     "persen_pemenang": 29.4,
+     "suara_pemenang": 33139,
+     "jarak": 21371,
+     "kantong": {
+      "nama": "BAKTIONO, B.A., S.S.",
+      "suara": 11142
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "SEMAMPIR",
+     "sah": 88483,
+     "dpt": 130554,
+     "pkb": 11644,
+     "persen": 13.2,
+     "rank": 3,
+     "pemenang": "PDIP",
+     "persen_pemenang": 14.9,
+     "suara_pemenang": 13203,
+     "jarak": 1559,
+     "kantong": {
+      "nama": "ABDUL MALIK",
+      "suara": 5242
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "KENJERAN",
+     "sah": 88155,
+     "dpt": 127265,
+     "pkb": 14682,
+     "persen": 16.7,
+     "rank": 2,
+     "pemenang": "PDIP",
+     "persen_pemenang": 20.6,
+     "suara_pemenang": 18116,
+     "jarak": 3434,
+     "kantong": {
+      "nama": "ABDUL MALIK",
+      "suara": 4070
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "PABEAN CANTIAN",
+     "sah": 36385,
+     "dpt": 54699,
+     "pkb": 2910,
+     "persen": 8.0,
+     "rank": 6,
+     "pemenang": "PDIP",
+     "persen_pemenang": 17.6,
+     "suara_pemenang": 6414,
+     "jarak": 3504,
+     "kantong": {
+      "nama": "TEGUH RACHMANTO, S.T.",
+      "suara": 1675
+     },
+     "pkb_terkuat": null
+    }
+   ],
+   "caleg": [
+    {
+     "partai": "PDIP",
+     "nama": "BAKTIONO, B.A., S.S.",
+     "suara": 16049,
+     "basis": "TAMBAKSARI"
+    },
+    {
+     "partai": "PKB",
+     "nama": "H. MOHAMMAD FARIDZ AFIF, S.I.P., M.A.P.",
+     "suara": 15576,
+     "basis": "KENJERAN"
+    },
+    {
+     "partai": "PPP",
+     "nama": "Drs. H. BUCHORI IMRON",
+     "suara": 13268,
+     "basis": "KENJERAN"
+    },
+    {
+     "partai": "Golkar",
+     "nama": "Achmad Nurdjayanto",
+     "suara": 11960,
+     "basis": "SEMAMPIR"
+    },
+    {
+     "partai": "PDIP",
+     "nama": "ABDUL MALIK",
+     "suara": 10993,
+     "basis": "SEMAMPIR"
+    },
+    {
+     "partai": "Gerindra",
+     "nama": "Hj. Luthfiyah",
+     "suara": 10142,
+     "basis": "TAMBAKSARI"
+    }
+   ],
+   "pkb_caleg": [
+    {
+     "partai": "PKB",
+     "nama": "H. MOHAMMAD FARIDZ AFIF, S.I.P., M.A.P.",
+     "suara": 15576,
+     "basis": "KENJERAN",
+     "porsi": 48.8
+    },
+    {
+     "partai": "PKB",
+     "nama": "MOH. SYAHCHROINI, S.H.",
+     "suara": 5927,
+     "basis": "SEMAMPIR",
+     "porsi": 18.6
+    },
+    {
+     "partai": "PKB",
+     "nama": "H. FATCHUL MUID, S.E.",
+     "suara": 4509,
+     "basis": "TAMBAKSARI",
+     "porsi": 14.1
+    },
+    {
+     "partai": "PKB",
+     "nama": "MOCH. MUCHYI",
+     "suara": 2030,
+     "basis": "SEMAMPIR",
+     "porsi": 6.4
+    },
+    {
+     "partai": "PKB",
+     "nama": "RISMA KUSUMA DEWI",
+     "suara": 1034,
+     "basis": "TAMBAKSARI",
+     "porsi": 3.2
+    },
+    {
+     "partai": "PKB",
+     "nama": "DADANG HARYONO, S.E.",
+     "suara": 839,
+     "basis": "SEMAMPIR",
+     "porsi": 2.6
+    }
+   ],
+   "konsentrasi": 48.8
+  },
+  {
+   "nomor": 3,
+   "kursi": 10,
+   "sah": 302774,
+   "dpt": 422172,
+   "kuota": 30277,
+   "pkb": 27014,
+   "pkb_persen": 8.92,
+   "pkb_kursi": 1,
+   "butuh": 38535,
+   "tambah": 11521,
+   "rasio": 1.43,
+   "marginal": {
+    "partai": "PPP",
+    "kursi_ke": 10,
+    "batas": 12845,
+    "pemegang": {
+     "nama": "MUHAIMIN, S.H., M.M.",
+     "suara": 6156,
+     "basis": "WONOCOLO"
+    }
+   },
+   "kecamatan": [
+    {
+     "nama": "RUNGKUT",
+     "sah": 64786,
+     "dpt": 89492,
+     "pkb": 4409,
+     "persen": 6.8,
+     "rank": 6,
+     "pemenang": "PDIP",
+     "persen_pemenang": 18.6,
+     "suara_pemenang": 12078,
+     "jarak": 7669,
+     "kantong": {
+      "nama": "ADI SUTARWIJONO",
+      "suara": 5133
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "SUKOLILO",
+     "sah": 59367,
+     "dpt": 85043,
+     "pkb": 4101,
+     "persen": 6.9,
+     "rank": 6,
+     "pemenang": "PDIP",
+     "persen_pemenang": 31.4,
+     "suara_pemenang": 18631,
+     "jarak": 14530,
+     "kantong": {
+      "nama": "M. ERI IRAWAN, S.E., M.Kp.",
+      "suara": 7984
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "MULYOREJO",
+     "sah": 45513,
+     "dpt": 65656,
+     "pkb": 2042,
+     "persen": 4.5,
+     "rank": 7,
+     "pemenang": "PDIP",
+     "persen_pemenang": 32.9,
+     "suara_pemenang": 14964,
+     "jarak": 12922,
+     "kantong": {
+      "nama": "M. ERI IRAWAN, S.E., M.Kp.",
+      "suara": 3411
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "WONOCOLO",
+     "sah": 41405,
+     "dpt": 59600,
+     "pkb": 3218,
+     "persen": 7.8,
+     "rank": 5,
+     "pemenang": "Gerindra",
+     "persen_pemenang": 16.5,
+     "suara_pemenang": 6850,
+     "jarak": 3632,
+     "kantong": {
+      "nama": "Drs. A. Hermas Thony, M.Si.",
+      "suara": 1625
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "GUNUNG ANYAR",
+     "sah": 34251,
+     "dpt": 44951,
+     "pkb": 3095,
+     "persen": 9.0,
+     "rank": 6,
+     "pemenang": "PDIP",
+     "persen_pemenang": 22.8,
+     "suara_pemenang": 7825,
+     "jarak": 4730,
+     "kantong": {
+      "nama": "REKSANINGSIH",
+      "suara": 1599
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "TENGGILIS MEJOYO",
+     "sah": 32850,
+     "dpt": 43976,
+     "pkb": 7867,
+     "persen": 23.9,
+     "rank": 1,
+     "pemenang": "PKB",
+     "persen_pemenang": 23.9,
+     "suara_pemenang": 7867,
+     "jarak": 0,
+     "kantong": {
+      "nama": "Hj. LAILA MUFIDAH, S.Ag.",
+      "suara": 6105
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "BULAK",
+     "sah": 24602,
+     "dpt": 33454,
+     "pkb": 2282,
+     "persen": 9.3,
+     "rank": 4,
+     "pemenang": "PDIP",
+     "persen_pemenang": 27.1,
+     "suara_pemenang": 6672,
+     "jarak": 4390,
+     "kantong": {
+      "nama": "ABDUL GHONI MUKHLAS NI`AM, S.Pd.I.",
+      "suara": 3013
+     },
+     "pkb_terkuat": null
+    }
+   ],
+   "caleg": [
+    {
+     "partai": "PKB",
+     "nama": "Hj. LAILA MUFIDAH, S.Ag.",
+     "suara": 13865,
+     "basis": "TENGGILIS MEJOYO"
+    },
+    {
+     "partai": "PKS",
+     "nama": "ANING RAHMAWATI, S.T.",
+     "suara": 13859,
+     "basis": "RUNGKUT"
+    },
+    {
+     "partai": "PDIP",
+     "nama": "M. ERI IRAWAN, S.E., M.Kp.",
+     "suara": 13384,
+     "basis": "SUKOLILO"
+    },
+    {
+     "partai": "PDIP",
+     "nama": "ADI SUTARWIJONO",
+     "suara": 12799,
+     "basis": "RUNGKUT"
+    },
+    {
+     "partai": "Golkar",
+     "nama": "Arif Fathoni, S.H.",
+     "suara": 11795,
+     "basis": "RUNGKUT"
+    },
+    {
+     "partai": "Demokrat",
+     "nama": "HERLINA HARSONO NJOTO, S.Psi., M.Psi., Psikolog.",
+     "suara": 8261,
+     "basis": "SUKOLILO"
+    }
+   ],
+   "pkb_caleg": [
+    {
+     "partai": "PKB",
+     "nama": "Hj. LAILA MUFIDAH, S.Ag.",
+     "suara": 13865,
+     "basis": "TENGGILIS MEJOYO",
+     "porsi": 69.6
+    },
+    {
+     "partai": "PKB",
+     "nama": "H. M. MAHFUDZ",
+     "suara": 1813,
+     "basis": "BULAK",
+     "porsi": 9.1
+    },
+    {
+     "partai": "PKB",
+     "nama": "TITIK INDRAWATI, S.H.",
+     "suara": 1272,
+     "basis": "SUKOLILO",
+     "porsi": 6.4
+    },
+    {
+     "partai": "PKB",
+     "nama": "MUHAMMAD CHUSAINI ASHARI",
+     "suara": 931,
+     "basis": "RUNGKUT",
+     "porsi": 4.7
+    },
+    {
+     "partai": "PKB",
+     "nama": "NASFA UUTH AKHMADIE",
+     "suara": 673,
+     "basis": "RUNGKUT",
+     "porsi": 3.4
+    },
+    {
+     "partai": "PKB",
+     "nama": "NINDI RAGIL KUSUMANINGRUM",
+     "suara": 440,
+     "basis": "BULAK",
+     "porsi": 2.2
+    }
+   ],
+   "konsentrasi": 69.6
+  },
+  {
+   "nomor": 4,
+   "kursi": 9,
+   "sah": 286193,
+   "dpt": 417847,
+   "kuota": 31799,
+   "pkb": 24545,
+   "pkb_persen": 8.58,
+   "pkb_kursi": 1,
+   "butuh": 47260,
+   "tambah": 22715,
+   "rasio": 1.93,
+   "marginal": {
+    "partai": "Gerindra",
+    "kursi_ke": 9,
+    "batas": 15753,
+    "pemegang": {
+     "nama": "Bahtiyar Rifai, S.H.",
+     "suara": 13927,
+     "basis": "SAWAHAN"
+    }
+   },
+   "kecamatan": [
+    {
+     "nama": "SAWAHAN",
+     "sah": 100223,
+     "dpt": 150180,
+     "pkb": 8538,
+     "persen": 8.5,
+     "rank": 6,
+     "pemenang": "PDIP",
+     "persen_pemenang": 23.9,
+     "suara_pemenang": 24003,
+     "jarak": 15465,
+     "kantong": {
+      "nama": "SUKADAR, S.H.",
+      "suara": 6334
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "WONOKROMO",
+     "sah": 78686,
+     "dpt": 117904,
+     "pkb": 6797,
+     "persen": 8.6,
+     "rank": 5,
+     "pemenang": "PDIP",
+     "persen_pemenang": 27.5,
+     "suara_pemenang": 21662,
+     "jarak": 14865,
+     "kantong": {
+      "nama": "ARJUNA RIZKI DWI KRISNAYANA, S.H., M.Kn.",
+      "suara": 11027
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "SUKOMANUNGGAL",
+     "sah": 56431,
+     "dpt": 77674,
+     "pkb": 4093,
+     "persen": 7.3,
+     "rank": 7,
+     "pemenang": "PDIP",
+     "persen_pemenang": 21.2,
+     "suara_pemenang": 11941,
+     "jarak": 7848,
+     "kantong": {
+      "nama": "SUKADAR, S.H.",
+      "suara": 2245
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "JAMBANGAN",
+     "sah": 27936,
+     "dpt": 39579,
+     "pkb": 2604,
+     "persen": 9.3,
+     "rank": 5,
+     "pemenang": "PDIP",
+     "persen_pemenang": 18.0,
+     "suara_pemenang": 5032,
+     "jarak": 2428,
+     "kantong": {
+      "nama": "MUHAMMAD SUNAR, S.T.",
+      "suara": 1092
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "GAYUNGAN",
+     "sah": 22917,
+     "dpt": 32510,
+     "pkb": 2513,
+     "persen": 11.0,
+     "rank": 5,
+     "pemenang": "Golkar",
+     "persen_pemenang": 16.6,
+     "suara_pemenang": 3800,
+     "jarak": 1287,
+     "kantong": {
+      "nama": "Drs. Agoeng Prasodjo, M.Si.",
+      "suara": 2403
+     },
+     "pkb_terkuat": null
+    }
+   ],
+   "caleg": [
+    {
+     "partai": "PDIP",
+     "nama": "ARJUNA RIZKI DWI KRISNAYANA, S.H., M.Kn.",
+     "suara": 16157,
+     "basis": "WONOKROMO"
+    },
+    {
+     "partai": "Gerindra",
+     "nama": "Bahtiyar Rifai, S.H.",
+     "suara": 13927,
+     "basis": "SAWAHAN"
+    },
+    {
+     "partai": "Golkar",
+     "nama": "Drs. Agoeng Prasodjo, M.Si.",
+     "suara": 11678,
+     "basis": "WONOKROMO"
+    },
+    {
+     "partai": "PAN",
+     "nama": "GHOFAR ISMAIL, S.T.",
+     "suara": 11299,
+     "basis": "SAWAHAN"
+    },
+    {
+     "partai": "PDIP",
+     "nama": "SUKADAR, S.H.",
+     "suara": 9649,
+     "basis": "SAWAHAN"
+    },
+    {
+     "partai": "PKB",
+     "nama": "TUBAGUS LUKMAN AMIN",
+     "suara": 8525,
+     "basis": "WONOKROMO"
+    }
+   ],
+   "pkb_caleg": [
+    {
+     "partai": "PKB",
+     "nama": "TUBAGUS LUKMAN AMIN",
+     "suara": 8525,
+     "basis": "WONOKROMO",
+     "porsi": 48.5
+    },
+    {
+     "partai": "PKB",
+     "nama": "MAZLAN MANSUR",
+     "suara": 2788,
+     "basis": "SAWAHAN",
+     "porsi": 15.9
+    },
+    {
+     "partai": "PKB",
+     "nama": "Dr. Ir. RUSLI YUSUF, M.T.",
+     "suara": 1725,
+     "basis": "WONOKROMO",
+     "porsi": 9.8
+    },
+    {
+     "partai": "PKB",
+     "nama": "BADRU TAMAM",
+     "suara": 1457,
+     "basis": "SAWAHAN",
+     "porsi": 8.3
+    },
+    {
+     "partai": "PKB",
+     "nama": "MUCHAMMAD YUSUF",
+     "suara": 869,
+     "basis": "SAWAHAN",
+     "porsi": 4.9
+    },
+    {
+     "partai": "PKB",
+     "nama": "DINA DEWI MISKIAH, S.H.",
+     "suara": 753,
+     "basis": "WONOKROMO",
+     "porsi": 4.3
+    }
+   ],
+   "konsentrasi": 48.5
+  },
+  {
+   "nomor": 5,
+   "kursi": 10,
+   "sah": 323387,
+   "dpt": 449406,
+   "kuota": 32339,
+   "pkb": 32133,
+   "pkb_persen": 9.94,
+   "pkb_kursi": 1,
+   "butuh": 46629,
+   "tambah": 14496,
+   "rasio": 1.45,
+   "marginal": {
+    "partai": "PPP",
+    "kursi_ke": 10,
+    "batas": 15543,
+    "pemegang": {
+     "nama": "AGUS MASHURI",
+     "suara": 11460,
+     "basis": "PAKAL"
+    }
+   },
+   "kecamatan": [
+    {
+     "nama": "TANDES",
+     "sah": 47549,
+     "dpt": 67845,
+     "pkb": 4297,
+     "persen": 9.0,
+     "rank": 4,
+     "pemenang": "Demokrat",
+     "persen_pemenang": 19.3,
+     "suara_pemenang": 9156,
+     "jarak": 4859,
+     "kantong": {
+      "nama": "MOCHAMAD MACHMUD, S.Sos., M.Si.",
+      "suara": 6847
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "KARANG PILANG",
+     "sah": 40235,
+     "dpt": 55637,
+     "pkb": 2514,
+     "persen": 6.2,
+     "rank": 5,
+     "pemenang": "Gerindra",
+     "persen_pemenang": 37.2,
+     "suara_pemenang": 14958,
+     "jarak": 12444,
+     "kantong": {
+      "nama": "Yona Bagus Widyatmoko, S.H., S.M.",
+      "suara": 4970
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "WIYUNG",
+     "sah": 40133,
+     "dpt": 55475,
+     "pkb": 2006,
+     "persen": 5.0,
+     "rank": 7,
+     "pemenang": "Gerindra",
+     "persen_pemenang": 28.3,
+     "suara_pemenang": 11366,
+     "jarak": 9360,
+     "kantong": {
+      "nama": "Alif Iman Waluyo, M.M.",
+      "suara": 3913
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "BENOWO",
+     "sah": 38493,
+     "dpt": 51738,
+     "pkb": 7142,
+     "persen": 18.6,
+     "rank": 2,
+     "pemenang": "PDIP",
+     "persen_pemenang": 25.3,
+     "suara_pemenang": 9746,
+     "jarak": 2604,
+     "kantong": {
+      "nama": "H. SYAIFUDDIN ZUHRI, S.Sos.",
+      "suara": 6449
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "SAMBIKEREP",
+     "sah": 36067,
+     "dpt": 49511,
+     "pkb": 1846,
+     "persen": 5.1,
+     "rank": 7,
+     "pemenang": "PDIP",
+     "persen_pemenang": 20.7,
+     "suara_pemenang": 7450,
+     "jarak": 5604,
+     "kantong": {
+      "nama": "SARONI, S.H.",
+      "suara": 3501
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "PAKAL",
+     "sah": 34939,
+     "dpt": 44775,
+     "pkb": 6052,
+     "persen": 17.3,
+     "rank": 3,
+     "pemenang": "PPP",
+     "persen_pemenang": 23.2,
+     "suara_pemenang": 8123,
+     "jarak": 2071,
+     "kantong": {
+      "nama": "AGUS MASHURI",
+      "suara": 7288
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "LAKARSANTRI",
+     "sah": 33455,
+     "dpt": 46117,
+     "pkb": 2878,
+     "persen": 8.6,
+     "rank": 5,
+     "pemenang": "Gerindra",
+     "persen_pemenang": 21.4,
+     "suara_pemenang": 7164,
+     "jarak": 4286,
+     "kantong": {
+      "nama": "Yona Bagus Widyatmoko, S.H., S.M.",
+      "suara": 1893
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "DUKUH PAKIS",
+     "sah": 30106,
+     "dpt": 44177,
+     "pkb": 1481,
+     "persen": 4.9,
+     "rank": 6,
+     "pemenang": "Gerindra",
+     "persen_pemenang": 20.2,
+     "suara_pemenang": 6095,
+     "jarak": 4614,
+     "kantong": {
+      "nama": "Endy Suhadi",
+      "suara": 2700
+     },
+     "pkb_terkuat": null
+    },
+    {
+     "nama": "ASEM ROWO",
+     "sah": 22410,
+     "dpt": 34131,
+     "pkb": 3917,
+     "persen": 17.5,
+     "rank": 2,
+     "pemenang": "Gerindra",
+     "persen_pemenang": 19.4,
+     "suara_pemenang": 4345,
+     "jarak": 428,
+     "kantong": {
+      "nama": "Yona Bagus Widyatmoko, S.H., S.M.",
+      "suara": 1241
+     },
+     "pkb_terkuat": null
+    }
+   ],
+   "caleg": [
+    {
+     "partai": "Demokrat",
+     "nama": "MOCHAMAD MACHMUD, S.Sos., M.Si.",
+     "suara": 17066,
+     "basis": "TANDES"
+    },
+    {
+     "partai": "Gerindra",
+     "nama": "Yona Bagus Widyatmoko, S.H., S.M.",
+     "suara": 16872,
+     "basis": "KARANG PILANG"
+    },
+    {
+     "partai": "PDIP",
+     "nama": "H. SYAIFUDDIN ZUHRI, S.Sos.",
+     "suara": 13175,
+     "basis": "BENOWO"
+    },
+    {
+     "partai": "Gerindra",
+     "nama": "Alif Iman Waluyo, M.M.",
+     "suara": 12532,
+     "basis": "WIYUNG"
+    },
+    {
+     "partai": "Gerindra",
+     "nama": "Endy Suhadi",
+     "suara": 11983,
+     "basis": "DUKUH PAKIS"
+    },
+    {
+     "partai": "Golkar",
+     "nama": "dr. Akmarawita Kadir",
+     "suara": 11832,
+     "basis": "ASEM ROWO"
+    }
+   ],
+   "pkb_caleg": [
+    {
+     "partai": "PKB",
+     "nama": "MINUN LATIF",
+     "suara": 10387,
+     "basis": "PAKAL",
+     "porsi": 40.8
+    },
+    {
+     "partai": "PKB",
+     "nama": "PUSPA INDAH",
+     "suara": 4738,
+     "basis": "BENOWO",
+     "porsi": 18.6
+    },
+    {
+     "partai": "PKB",
+     "nama": "FARAH FATATY, S.H., M.Kn.",
+     "suara": 4644,
+     "basis": "ASEM ROWO",
+     "porsi": 18.2
+    },
+    {
+     "partai": "PKB",
+     "nama": "IWAN SETIONO, S.Sos.",
+     "suara": 2211,
+     "basis": "LAKARSANTRI",
+     "porsi": 8.7
+    },
+    {
+     "partai": "PKB",
+     "nama": "SYAIFUL ANAM, S.E.",
+     "suara": 1366,
+     "basis": "TANDES",
+     "porsi": 5.4
+    },
+    {
+     "partai": "PKB",
+     "nama": "HADI SUWARNO, S.E., M.M.",
+     "suara": 1197,
+     "basis": "ASEM ROWO",
+     "porsi": 4.7
+    }
+   ],
+   "konsentrasi": 40.8
+  }
+ ],
+ "rute": [
+  {
+   "dapil": 2,
+   "tambah": 7443,
+   "akum": 7443,
+   "kursi": 6,
+   "persen_kota": 0.48
+  },
+  {
+   "dapil": 3,
+   "tambah": 11521,
+   "akum": 18964,
+   "kursi": 7,
+   "persen_kota": 1.23
+  },
+  {
+   "dapil": 1,
+   "tambah": 12797,
+   "akum": 31761,
+   "kursi": 8,
+   "persen_kota": 2.07
+  }
+ ]
+};
+const nf=new Intl.NumberFormat('id-ID');
+const n=x=>nf.format(x);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function badge(t){ if(t<=9000) return ['b-murah','Murah']; if(t<=13000) return ['b-sedang','Sedang']; return ['b-mahal','Mahal']; }
+
+function render(d){
+  document.getElementById('meta').innerHTML =
+    ['<span>'+d.dapil.length+' dapil</span>','<span>'+d.total_kursi+' kursi</span>',
+     '<span>PKB '+d.dapil.reduce((a,x)=>a+x.pkb_kursi,0)+' kursi basis</span>','<span>Target realistis 8 kursi</span>'].join('');
+
+  document.getElementById('stat').innerHTML=[
+    ['Suara sah kota',n(d.total_sah),'DPT '+n(d.total_dpt)],
+    ['Suara PKB',n(d.total_pkb),d.pkb_persen+' persen kota'],
+    ['Biaya kursi PKB',n(d.biaya_pkb),'suara per kursi'],
+    ['Biaya kursi PSI',n(d.psi.biaya),'lebih efisien '+Math.round((1-d.psi.biaya/d.biaya_pkb)*100)+' persen']
+  ].map(x=>'<div class="stat"><em>'+x[0]+'</em><b>'+x[1]+'</b><span>'+x[2]+'</span></div>').join('');
+
+  const urut=d.dapil.slice().sort((a,b)=>a.tambah-b.tambah);
+  const maks=Math.max(...d.dapil.map(x=>x.tambah));
+  document.getElementById('tabelDapil').innerHTML='<table><thead><tr><th>Dapil</th><th>Kursi</th><th>PKB</th><th>Tambah</th><th>Rasio</th></tr></thead><tbody>'+
+   urut.map(x=>'<tr><td><b>Dapil '+x.nomor+'</b></td><td>'+x.kursi+'</td><td>'+x.pkb_persen+'%</td><td><b>'+n(x.tambah)+'</b></td><td>'+x.rasio+'x</td></tr>').join('')+'</tbody></table>';
+
+  document.getElementById('urutan').innerHTML=urut.map((x,i)=>{
+    const bd=badge(x.tambah);
+    return '<div style="padding:10px 0;border-bottom:1px dashed #e2ece6"><div class="baris" style="border:0;padding:0">'+
+      '<span class="k"><b>'+(i+1)+'. Dapil '+x.nomor+'</b> <span class="badge '+bd[0]+'">'+bd[1]+'</span></span>'+
+      '<span class="v">+'+n(x.tambah)+'</span></div>'+
+      '<div class="bar"><i style="width:'+Math.round(x.tambah/maks*100)+'%"></i></div>'+
+      '<div class="kantong">PKB '+n(x.pkb)+' suara ('+x.pkb_persen+' persen), batas kuota '+n(x.butuh)+' suara</div></div>';
+  }).join('');
+
+  document.getElementById('rute').innerHTML=d.rute.map((r,i)=>
+    '<div class="langkah"><div class="no">'+(5+i+1)+'</div><div class="isi"><b>Kursi ke-'+(5+i+1)+' lewat Dapil '+r.dapil+'</b>'+
+    '<span>Tambah '+n(r.tambah)+' suara. Akumulasi '+n(r.akum)+' suara atau '+r.persen_kota+' persen suara sah kota.</span></div></div>').join('');
+
+  document.getElementById('rinci').innerHTML=d.dapil.map(x=>{
+    const m=x.marginal, p=m.pemegang;
+    const kec=x.kecamatan.slice().sort((a,b)=>b.sah-a.sah).map(k=>{
+      const kc=k.kantong?('<b>'+esc(k.kantong.nama)+'</b> '+n(k.kantong.suara)+' suara'):'-';
+      const warna=k.rank<=2?'p':(k.rank>=5?'m':'');
+      return '<div class="kec"><div class="atas"><span class="nm">'+esc(k.nama)+'</span><span class="sh">'+n(k.sah)+' sah</span></div>'+
+        '<div class="bawah"><span class="pil '+warna+'">PKB '+k.persen+'%</span>'+
+        '<span class="pil">peringkat '+k.rank+'</span>'+
+        '<span class="pil">'+esc(k.pemenang)+' '+k.persen_pemenang+'%</span>'+
+        '<span class="pil '+(k.jarak<=2000?'m':'')+'">selisih '+n(k.jarak)+'</span></div>'+
+        '<div class="kantong">Kantong lawan: '+kc+'</div></div>';
+    }).join('');
+    return '<div class="dapil"><div class="dkepala"><b>Dapil '+x.nomor+' · '+x.kursi+' kursi</b>'+
+      '<span>kuota '+n(x.kuota)+' suara</span></div>'+
+      '<div style="padding:12px 14px;border-bottom:1px solid #eef3f0">'+
+      '<div class="kantong" style="margin:0 0 8px">Kursi ke-'+m.kursi_ke+' dipegang <b>'+m.partai+'</b>'+
+      (p?(' lewat <b>'+esc(p.nama)+'</b> ('+n(p.suara)+' suara, basis '+esc(p.basis)+')'):'')+' dengan batas kuota '+n(m.batas)+'.</div>'+
+      '<div class="kantong" style="margin:0">PKB butuh <b>'+n(x.butuh)+'</b> suara, artinya tambah <b>'+n(x.tambah)+'</b> suara atau '+x.rasio+' kali lipat.</div></div>'+
+      kec+'</div>';
+  }).join('');
+
+  document.getElementById('tabelKantong').innerHTML=d.dapil.map(x=>{
+    const m=x.marginal, p=m.pemegang;
+    return '<div style="padding:11px 0;border-bottom:1px dashed #e2ece6">'+
+      '<div class="baris" style="border:0;padding:0"><span class="k">Dapil '+x.nomor+' · kursi ke-'+m.kursi_ke+' · <b>'+m.partai+'</b></span><span class="v">'+n(p?p.suara:0)+'</span></div>'+
+      '<div class="kantong" style="margin-top:2px">'+(p?esc(p.nama)+' · basis '+esc(p.basis):'-')+'</div></div>';
+  }).join('');
+}
+
+render(D);
+
+</script>
+</body>
+</html>
