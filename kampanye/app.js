@@ -59,7 +59,7 @@ async function callAPI(action, dataObj = {}) {
 // ==========================================
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
+    navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
       .then(reg => console.log('✅ Sistem Aplikasi Terinstal (PWA Aktif)'))
       .catch(err => console.log('❌ PWA Gagal:', err));
   });

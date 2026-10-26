@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sokabatnu-v7.1';
+const CACHE_NAME = 'sokabatnu-v7.2';
 const urlsToCache = [
   './',
   './index.html',
@@ -29,6 +29,19 @@ self.addEventListener('fetch', event => {
     return; 
   }
   
+  // HTML dan navigasi: ambil jaringan dulu supaya pembaruan langsung terlihat
+  const html = event.request.mode === 'navigate' || (event.request.headers.get('accept')||'').includes('text/html');
+  if (html) {
+    event.respondWith(
+      fetch(event.request).then(res => {
+        const salinan = res.clone();
+        caches.open(CACHE_NAME).then(c => c.put(event.request, salinan));
+        return res;
+      }).catch(() => caches.match(event.request).then(r => r || caches.match('./index.html')))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then(response => {
       return response || fetch(event.request);
