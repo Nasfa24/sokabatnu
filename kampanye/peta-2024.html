@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>PETA SUARA 2024 - SOKABAT NU</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#03754c">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root { --primary:#03754c; --primary-dark:#02452d; --accent-orange:#FF9c08; --accent-yellow:#fff212; --bg-body:#f0f4f2; --border:#d1d9d6; --teks:#101815; --redup:#5c6b64; }
+    * { box-sizing:border-box; }
+    body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg-body); margin:0; padding:18px 14px 40px; color:var(--teks); display:flex; justify-content:center; }
+    .wrapper { width:100%; max-width:520px; display:flex; flex-direction:column; gap:14px; }
+    .kepala { background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; border-radius:16px; padding:22px 18px; border-bottom:6px solid var(--accent-orange); box-shadow:0 10px 25px rgba(3,117,76,.2); }
+    .kepala h1 { margin:0; font-size:24px; letter-spacing:.5px; color:var(--accent-yellow); font-weight:900; }
+    .kepala p { margin:6px 0 0; font-size:12.5px; font-weight:600; color:#dbe6e1; }
+    .kartu { background:#fff; border-radius:14px; padding:16px; box-shadow:0 5px 14px rgba(0,0,0,.05); }
+    .kartu h2 { margin:0 0 12px; font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:var(--primary); font-weight:900; }
+    .grid4 { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+    .kotak { background:#f7faf8; border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; }
+    .kotak span { display:block; font-size:9.5px; text-transform:uppercase; font-weight:800; color:var(--primary); letter-spacing:.4px; margin-bottom:4px; }
+    .kotak b { font-size:18px; font-weight:900; }
+    .tab { display:flex; gap:6px; flex-wrap:wrap; }
+    .tab button { flex:1; min-width:58px; padding:11px 10px; border:2px solid var(--border); background:#fff; border-radius:10px; font-weight:900; font-size:12.5px; color:#46534c; cursor:pointer; }
+    .tab button.aktif { background:var(--primary); border-color:var(--primary); color:#fff; }
+    .kecamatan { display:flex; flex-wrap:wrap; gap:6px; margin:2px 0 12px; }
+    .kecamatan span { background:#eaf3ee; color:var(--primary-dark); border-radius:20px; padding:5px 10px; font-size:11.5px; font-weight:800; }
+    .partai { border:1px solid var(--border); border-radius:11px; margin-bottom:8px; overflow:hidden; }
+    .baris { display:flex; align-items:center; gap:10px; padding:11px 12px; cursor:pointer; background:#fff; }
+    .baris:active { background:#f4f8f6; }
+    .baris .nama { flex:1; font-size:12.5px; font-weight:800; line-height:1.35; }
+    .baris .angka { text-align:right; font-size:13px; font-weight:900; white-space:nowrap; }
+    .baris .angka small { display:block; font-size:10.5px; color:#46534c; font-weight:700; }
+    .lencana { background:var(--accent-orange); color:#111; border-radius:20px; padding:4px 9px; font-size:11px; font-weight:900; white-space:nowrap; }
+    .lencana.kosong { background:#eceeed; color:#8b968f; }
+    .partai.pkb .baris { border-left:5px solid var(--primary); }
+    .caleg { background:#fbfdfc; border-top:1px solid var(--border); display:none; }
+    .caleg.buka { display:block; }
+    .caleg div { display:flex; gap:8px; padding:8px 12px; font-size:11.5px; border-bottom:1px dashed #e6ecE8; }
+    .caleg div:last-child { border-bottom:none; }
+    .caleg .no { width:20px; color:var(--redup); font-weight:800; }
+    .caleg .cn { flex:1; font-weight:700; }
+    .caleg .cv { font-weight:900; white-space:nowrap; }
+    .caleg .terpilih { background:#eaf7f0; }
+    .caleg .terpilih .cn::after { content:" ✔"; color:var(--primary); font-weight:900; }
+    .catatan { font-size:12px; color:#46534c; line-height:1.55; margin:8px 0 0; }
+    .pkb-baris { display:flex; align-items:center; gap:8px; margin-bottom:7px; font-size:11.5px; }
+    .pkb-baris .lk { width:104px; font-weight:800; color:var(--primary-dark); }
+    .pkb-baris .barbg { flex:1; background:#eef2f0; border-radius:6px; height:12px; overflow:hidden; }
+    .pkb-baris .barfg { background:linear-gradient(90deg,var(--primary),#10b981); height:100%; }
+    .pkb-baris .nil { width:52px; text-align:right; font-weight:900; }
+    .angka-besar { font-size:22px; font-weight:900; color:var(--primary-dark); }
+    .dua-kolom { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:10px; }
+    .dua-kolom .kotak b { font-size:15px; }
+    .tautan { text-align:center; font-size:12px; font-weight:800; }
+    .tautan a { color:var(--primary); text-decoration:none; display:inline-block; padding:8px 12px; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="kepala">
+    <h1>PETA SUARA 2024</h1>
+    <p>Rekap KPU DPRD Kota Surabaya, basis data menuju Pemilu 2029</p>
+  </div>
+
+  <div class="kartu">
+    <h2>Ringkasan Kota</h2>
+    <div class="grid4">
+      <div class="kotak"><span>Daerah pemilihan</span><b>5</b></div>
+      <div class="kotak"><span>Kursi DPRD</span><b>50</b></div>
+      <div class="kotak"><span>Suara sah</span><b id="ringkas-sah">-</b></div>
+      <div class="kotak"><span>Pemilih terdaftar</span><b id="ringkas-dpt">-</b></div>
+    </div>
+    <p class="catatan" id="ringkas-kursi"></p>
+  </div>
+
+  <div class="tab" id="tab-dapil"></div>
+
+  <div class="kartu" id="panel-dapil">
+    <h2 id="judul-dapil">Dapil</h2>
+    <div class="kecamatan" id="kecamatan"></div>
+    <div class="grid4" style="margin-bottom:14px">
+      <div class="kotak"><span>Kursi</span><b id="stat-kursi">-</b></div>
+      <div class="kotak"><span>Suara sah</span><b id="stat-sah">-</b></div>
+      <div class="kotak"><span>Ambang kursi</span><b id="stat-ambang">-</b></div>
+      <div class="kotak"><span>Suara per kursi</span><b id="stat-rasio">-</b></div>
+    </div>
+    <div id="daftar-partai"></div>
+  </div>
+
+  <div class="kartu" id="kartu-pkb" style="display:none">
+    <h2>Peta PKB Dapil 3</h2>
+    <div class="dua-kolom">
+      <div class="kotak"><span>Suara PKB 2024</span><b id="pkb-total">-</b></div>
+      <div class="kotak"><span>Kursi 2024</span><b id="pkb-kursi">-</b></div>
+      <div class="kotak"><span>Target 2 kursi</span><b id="pkb-target">-</b></div>
+      <div class="kotak"><span>Selisih</span><b id="pkb-selisih">-</b></div>
+    </div>
+    <p class="catatan" id="pkb-catatan"></p>
+    <div id="pkb-kecamatan" style="margin-top:12px"></div>
+  </div>
+
+  <div class="tautan">
+    <a href="index.html">Kembali ke Dashboard</a>
+    <a href="data/pemilu-2024.json">Buka Data JSON</a>
+  </div>
+
+</div>
+
+<script>
+const angka = n => (n || 0).toLocaleString('id-ID');
+let DATA = null, dapilAktif = 3;
+
+function ringkas() {
+  document.getElementById('ringkas-sah').textContent = angka(DATA.total_suara_sah);
+  document.getElementById('ringkas-dpt').textContent = angka(DATA.total_dpt);
+  const kota = {};
+  Object.values(DATA.dapil).forEach(d => d.partai.forEach(p => {
+    kota[p.nama] = (kota[p.nama] || 0) + p.kursi;
+  }));
+  const urut = Object.entries(kota).sort((a, b) => b[1] - a[1]).slice(0, 5)
+    .map(([n, k]) => n.replace('Partai ', '') + ' ' + k).join(' · ');
+  document.getElementById('ringkas-kursi').textContent =
+    'Kursi per partai se-Surabaya: ' + urut + '. Sumber: ' + DATA.sumber + '.';
+}
+
+function tab() {
+  const wadah = document.getElementById('tab-dapil');
+  wadah.innerHTML = '';
+  Object.keys(DATA.dapil).forEach(k => {
+    const b = document.createElement('button');
+    b.textContent = 'Dapil ' + k;
+    if (Number(k) === dapilAktif) b.className = 'aktif';
+    b.onclick = () => { dapilAktif = Number(k); tab(); panel(); };
+    wadah.appendChild(b);
+  });
+}
+
+function panel() {
+  const d = DATA.dapil[String(dapilAktif)];
+  document.getElementById('judul-dapil').textContent = d.nama;
+  document.getElementById('kecamatan').innerHTML =
+    d.kecamatan.map(k => '<span>' + k + '</span>').join('');
+  document.getElementById('stat-kursi').textContent = d.kursi;
+  document.getElementById('stat-sah').textContent = angka(d.suara_sah);
+  document.getElementById('stat-ambang').textContent = angka(d.ambang_kursi);
+  document.getElementById('stat-rasio').textContent = angka(d.suara_per_kursi);
+
+  const wadah = document.getElementById('daftar-partai');
+  wadah.innerHTML = '';
+  d.partai.filter(p => p.total > 0).forEach((p, i) => {
+    const kotak = document.createElement('div');
+    kotak.className = 'partai' + (p.nama.includes('Kebangkitan Bangsa') ? ' pkb' : '');
+    const lencana = p.kursi ? '<span class="lencana">' + p.kursi + ' kursi</span>'
+                            : '<span class="lencana kosong">0</span>';
+    kotak.innerHTML =
+      '<div class="baris">' +
+        '<div class="nama">' + (i + 1) + '. ' + p.nama + '</div>' +
+        '<div class="angka">' + angka(p.total) + '<small>' + p.persen.toFixed(1) + '%</small></div>' +
+        lencana +
+      '</div>' +
+      '<div class="caleg">' +
+        p.caleg.map(c =>
+          '<div class="' + (c.terpilih ? 'terpilih' : '') + '">' +
+            '<span class="no">' + c.no + '</span>' +
+            '<span class="cn">' + c.nama + '</span>' +
+            '<span class="cv">' + angka(c.total) + '</span>' +
+          '</div>').join('') +
+      '</div>';
+    kotak.querySelector('.baris').onclick = () => {
+      kotak.querySelector('.caleg').classList.toggle('buka');
+    };
+    wadah.appendChild(kotak);
+  });
+
+  const pkb = document.getElementById('kartu-pkb');
+  if (dapilAktif === 3 && d.analisis_pkb) {
+    const a = d.analisis_pkb;
+    pkb.style.display = 'block';
+    document.getElementById('pkb-total').textContent = angka(a.total_2024);
+    document.getElementById('pkb-kursi').textContent = a.kursi_2024;
+    document.getElementById('pkb-target').textContent = angka(a.target_dua_kursi);
+    document.getElementById('pkb-selisih').textContent = '+' + angka(a.selisih_dua_kursi);
+    document.getElementById('pkb-catatan').textContent =
+      'Untuk dua kursi, PKB Dapil 3 perlu naik dari ' + angka(a.total_2024) + ' ke ' +
+      angka(a.target_dua_kursi) + ' suara, atau ' + angka(a.selisih_dua_kursi) +
+      ' suara tambahan bila perolehan partai lain tetap. Kursi pertama 2024 diraih ' +
+      angka(a.pemenang_kursi_pkb) + ' suara.';
+    const maks = Math.max(...Object.values(a.suara_pkb_per_kecamatan));
+    document.getElementById('pkb-kecamatan').innerHTML =
+      Object.entries(a.suara_pkb_per_kecamatan).sort((x, y) => y[1] - x[1]).map(([k, v]) =>
+        '<div class="pkb-baris"><span class="lk">' + k + '</span>' +
+        '<span class="barbg"><span class="barfg" style="width:' +
+        Math.round(100 * v / maks) + '%"></span></span>' +
+        '<span class="nil">' + angka(v) + '</span></div>').join('');
+  } else {
+    pkb.style.display = 'none';
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+fetch('data/pemilu-2024.json')
+  .then(r => r.json())
+  .then(d => { DATA = d; ringkas(); tab(); panel(); })
+  .catch(e => {
+    document.getElementById('panel-dapil').innerHTML =
+      '<p class="catatan">Data gagal dimuat. Pastikan berkas data/pemilu-2024.json ada.</p>';
+  });
+</script>
+</body>
+</html>
