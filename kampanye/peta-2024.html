@@ -172,7 +172,7 @@
 
   <div class="kartu">
     <h2>Suara partai dan caleg</h2>
-    <p class="sub">Ketuk satu partai untuk membuka suara seluruh caleg. Tanda centang berarti meraih kursi.</p>
+    <p class="sub">Nama partai memakai singkatan resmi. Ketuk satu partai untuk membuka suara seluruh caleg, tanda centang berarti meraih kursi.</p>
     <div id="daftar-partai"></div>
   </div>
 
@@ -240,7 +240,7 @@ function renderKantong(d) {
   wadah.innerHTML = baris.map(x =>
     '<div class="baris">' +
       '<div class="kiri">' +
-        '<div class="nm">' + pendek(x.p.nama) + '</div>' +
+        '<div class="nm">' + (x.p.singkat || pendek(x.p.nama)) + '</div>' +
         '<div class="ket">' + x.terbaik.kec + ' · ' + nf(x.terbaik.total) + ' suara</div>' +
         '<div class="barbg"><div class="barfg" style="width:' +
           Math.round(100 * x.terbaik.share / maks) + '%"></div></div>' +
@@ -261,9 +261,10 @@ function renderTabel(d) {
   const maks = Math.max.apply(null, semua.concat([1]));
   tabel.style.setProperty('--n', kec.length);
   let html = '<div class="sel kepala nama">Partai</div>' +
-    kec.map(k => '<div class="sel kepala">' + k.nama.split(' ')[0].slice(0, 8) + '</div>').join('');
+    kec.map(k => '<div class="sel kepala" title="' + k.nama + '">' +
+      k.nama.split(' ')[0] + '</div>').join('');
   partai.forEach(p => {
-    html += '<div class="sel nama">' + pendek(p.nama).slice(0, 16) + '</div>';
+    html += '<div class="sel nama">' + (p.singkat || pendek(p.nama)) + '</div>';
     kec.forEach(k => {
       const isi = k.partai.find(x => x.nama === p.nama);
       const share = isi && k.suara_sah ? 100 * isi.total / k.suara_sah : 0;
@@ -289,7 +290,8 @@ function renderKecamatan(d) {
           '<small>' + nf(k.suara_sah) + ' suara sah · partisipasi ' + pct(k.partisipasi) + '</small>' +
         '</div>' +
         '<div style="text-align:right">' +
-          '<div style="font-size:10.5px;font-weight:800;color:#4e615a">' + pendek(k.pemenang) + '</div>' +
+          '<div style="font-size:10.5px;font-weight:800;color:#4e615a">' +
+            (k.pemenang_singkat || pendek(k.pemenang)) + '</div>' +
           '<div style="font-size:12px;font-weight:900;color:#0b6b45">' + pct(k.persen_pemenang) + '</div>' +
         '</div>' +
         '<div class="tanda">+</div>' +
@@ -301,7 +303,7 @@ function renderKecamatan(d) {
           '<div><span>Selisih juara</span><b>' + nf(k.selisih_puncak) + '</b></div>' +
         '</div>' +
         top.map(x => '<div class="pilkec">' +
-          '<span class="nm">' + pendek(x.nama) + '</span>' +
+          '<span class="nm">' + (x.singkat || pendek(x.nama)) + '</span>' +
           '<span class="bg"><span class="fg" style="display:block;width:' +
             Math.round(100 * x.total / maks) + '%"></span></span>' +
           '<span class="vl">' + nf(x.total) + '</span>' +
@@ -327,7 +329,7 @@ function renderPartai(d) {
     kotak.className = 'partai';
     kotak.innerHTML =
       '<div class="baris">' +
-        '<div class="kiri"><div class="nm">' + (i + 1) + '. ' + p.nama + '</div>' +
+        '<div class="kiri"><div class="nm">' + (i + 1) + '. ' + (p.singkat || pendek(p.nama)) + '</div>' +
           '<div class="ket">' + nf(p.total) + ' suara · ' + pct(p.persen) + '</div></div>' +
         (p.kursi ? '<span class="lencana">' + p.kursi + ' kursi</span>'
                  : '<span class="lencana nol">0</span>') +
