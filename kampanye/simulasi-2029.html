@@ -34,13 +34,13 @@ thead th:first-child{text-align:left}
 tbody td{padding:8px 5px;text-align:right;border-bottom:1px solid #eef3f0;vertical-align:middle}
 tbody tr:last-child td{border-bottom:0}
 tbody tr:nth-child(even){background:#fafcfb}
-td:first-child{text-align:left;font-weight:800;font-size:11.5px;white-space:nowrap}
+td:first-child{text-align:left;font-weight:800;font-size:11px;white-space:nowrap}
 td small{display:block;font-size:9px;color:var(--redup2);font-weight:600}
 tbody td:last-child{min-width:56px}
 td.kurang b{color:var(--merah)}td.kurang small{color:var(--merah)}
 td.surplus b{color:var(--hijau)}td.surplus small{color:var(--hijau)}
 .peringkat{background:var(--kartu);border:1px solid var(--garis);border-radius:14px;padding:12px 14px 6px}
-.pr{display:grid;grid-template-columns:52px 1fr 66px;gap:8px;align-items:center;padding:6px 0}
+.pr{display:grid;grid-template-columns:64px 1fr 66px;gap:8px;align-items:center;padding:6px 0}
 .pr .lbl{font-size:11px;font-weight:800}
 .pr .lbl small{display:block;font-weight:600;color:var(--redup2);font-size:9px}
 .lacak{position:relative;height:9px;background:#eef3f0;border-radius:999px}
@@ -51,7 +51,7 @@ td.surplus b{color:var(--hijau)}td.surplus small{color:var(--hijau)}
 .w-aman{background:linear-gradient(90deg,#3fbf85,#0b6b45)}
 .w-jalan{background:linear-gradient(90deg,#f6c96b,#d99400)}
 .w-rawan{background:linear-gradient(90deg,#f0908a,#b3261e)}
-.skala{display:flex;justify-content:space-between;font-size:9px;color:var(--redup2);margin:2px 0 4px 60px;padding-right:66px}
+.skala{display:flex;justify-content:space-between;font-size:9px;color:var(--redup2);margin:2px 0 4px 72px;padding-right:66px}
 .chips{display:flex;gap:6px;margin:10px 0 6px;flex-wrap:wrap}
 .chips button{border:1px solid var(--garis);background:var(--kartu);color:var(--redup);font-size:11px;font-weight:700;padding:6px 11px;border-radius:999px;font-family:inherit}
 .chips button.on{background:var(--hijau-gelap);border-color:var(--hijau-gelap);color:#fff}
@@ -90,6 +90,28 @@ td.surplus b{color:var(--hijau)}td.surplus small{color:var(--hijau)}
 .temuan b{color:var(--hijau-gelap)}
 .catatan{background:#f6faf8;border:1px solid var(--garis);border-left:4px solid var(--emas);border-radius:10px;padding:12px 14px;font-size:11.5px;color:var(--redup);margin-top:14px}
 .catatan p{margin:0 0 7px}.catatan p:last-child{margin:0}
+
+.klas{display:grid;gap:8px}
+.kk{border-radius:12px;padding:11px 13px;border:1px solid var(--garis);background:var(--kartu)}
+.kk b{font-size:10px;letter-spacing:.08em;display:block}
+.kk span{display:block;font-size:13px;font-weight:800;margin:2px 0 3px}
+.kk small{font-size:11px;color:var(--redup);line-height:1.45;display:block}
+.kk.aman{border-left:4px solid var(--hijau)}.kk.aman b{color:var(--hijau)}
+.kk.jalan{border-left:4px solid #d99400}.kk.jalan b{color:#8a5a00}
+.kk.rawan{border-left:4px solid var(--merah)}.kk.rawan b{color:var(--merah)}
+.kotak{background:var(--kartu);border:1px solid var(--garis);border-radius:14px;padding:13px 14px;margin-bottom:10px}
+.kotak .utama{font-size:13px;font-weight:800;line-height:1.45;margin:0 0 9px;letter-spacing:-.01em}
+.kotak .ket{font-size:11px;color:var(--redup);line-height:1.5;margin:9px 0 0}
+table.biaya{min-width:0;width:100%;font-size:11px}
+table.biaya th{text-align:right}table.biaya th:first-child{text-align:left}
+table.biaya td{padding:7px 4px}
+.sken{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.sken div{background:#f4f8f6;border-radius:8px;text-align:center;padding:7px 2px}
+.sken span{display:block;font-size:9px;color:var(--redup2);font-weight:700}
+.sken b{font-size:15px;color:var(--hijau-gelap)}
+ol.rec{margin:9px 0 0;padding-left:18px;font-size:11.5px;color:#22322b;line-height:1.5}
+ol.rec li{margin-bottom:7px}
+ol.rec b{color:var(--hijau-gelap)}
 @media(max-width:380px){.hero h1{font-size:21px}.stat b{font-size:13.5px}.stat span{font-size:8.5px}.grid3 strong{font-size:11.5px}}
 </style>
 </head>
@@ -140,6 +162,52 @@ td.surplus b{color:var(--hijau)}td.surplus small{color:var(--hijau)}
     <div id="peringkat"></div>
   </div>
 
+  <h2>Klasifikasi ulang<span>versi hitungan, bukan versi tabel</span></h2>
+  <p class="sub">Tiga label di tabel asli diuji ulang memakai suara 2024.</p>
+  <div class="klas">
+    <div class="kk aman"><b>AMAN</b><span>Dapil 1, 2, 4, 6, 8</span><small>Target tercapai tanpa satu suara pun tambahan. Lima kursi sudah terkunci.</small></div>
+    <div class="kk jalan"><b>MENUJU 2 KURSI</b><span>Dapil 3 dan Dapil 7</span><small>Defisit ringan. Dapil 7 butuh 2.320 suara untuk kursi pertama, Dapil 3 butuh 12.332 suara untuk kursi kedua.</small></div>
+    <div class="kk rawan"><b>KURANG</b><span>Dapil 5</span><small>Butuh 37.913 suara untuk kursi kedua, 2,04 kali suara 2024. Satu-satunya dapil yang benar-benar berat.</small></div>
+  </div>
+
+  <h2>Jalan dari 5 ke 10 kursi</h2>
+  <p class="sub">Pecah dapil memberi 7 kursi gratis. Tiga kursi terakhir harus dibeli dengan suara baru.</p>
+  <div class="kotak">
+    <p class="utama">Ada dua rute menuju 10 kursi, dan biayanya berbeda 21.228 suara.</p>
+    <p class="ket" style="margin-top:0"><b style="color:var(--hijau-gelap)">Rute A, ikuti tabel apa adanya.</b> Isi target Dapil 3, Dapil 5, dan Dapil 7. Biayanya 52.565 suara atau 33,0 persen dari basis 2024. Dapil 5 menelan 72 persen dari biaya itu.</p>
+    <p class="ket"><b style="color:var(--hijau-gelap)">Rute B, realokasi target.</b> Pindahkan target dari Dapil 5 ke Dapil 8. Biayanya 31.337 suara atau 19,7 persen. Hasilnya tetap 10 kursi, dan 21.228 suara lebih hemat.</p>
+  </div>
+
+  <div class="kotak">
+    <p class="utama">Biaya kursi berikutnya, dari termurah ke termahal.</p>
+    <table class="biaya">
+      <thead><tr><th>Dapil</th><th>Tambahan suara</th><th>Kenaikan</th><th>Kursi</th></tr></thead>
+      <tbody><tr><td>Dapil 7<small>7 kursi</small></td><td><b>2.320</b></td><td>+22%</td><td>0 &rarr; 1</td></tr><tr><td>Dapil 3<small>8 kursi</small></td><td><b>12.332</b></td><td>+43%</td><td>1 &rarr; 2</td></tr><tr><td>Dapil 8<small>7 kursi</small></td><td><b>16.685</b></td><td>+65%</td><td>1 &rarr; 2</td></tr><tr><td>Dapil 2<small>7 kursi</small></td><td><b>20.054</b></td><td>+103%</td><td>1 &rarr; 2</td></tr><tr><td>Dapil 1<small>6 kursi</small></td><td><b>20.999</b></td><td>+103%</td><td>1 &rarr; 2</td></tr><tr><td>Dapil 6<small>8 kursi</small></td><td><b>21.650</b></td><td>+106%</td><td>1 &rarr; 2</td></tr><tr><td>Dapil 4<small>6 kursi</small></td><td><b>30.740</b></td><td>+200%</td><td>1 &rarr; 2</td></tr><tr><td>Dapil 5<small>6 kursi</small></td><td><b>37.913</b></td><td>+204%</td><td>1 &rarr; 2</td></tr></tbody>
+    </table>
+    <p class="ket">Tambahan suara adalah jarak ke ambang kursi berikutnya. Kenaikan dihitung dari suara PKB 2024 di dapil itu.</p>
+  </div>
+
+  <div class="kotak">
+    <p class="utama">Sebaran merata tidak sampai 10 kursi.</p>
+    <div class="sken">
+      <div><span>+0%</span><b>7</b></div>
+      <div><span>+10%</span><b>7</b></div>
+      <div><span>+20%</span><b>7</b></div>
+      <div><span>+30%</span><b>8</b></div>
+      <div><span>+40%</span><b>8</b></div>
+      <div><span>+50%</span><b>9</b></div>
+    </div>
+    <p class="ket">Kenaikan seragam 50 persen di semua dapil hanya menghasilkan 9 kursi. Sepuluh kursi baru muncul di atas 60 persen, itu bukan target yang bisa dikelola.</p>
+    <p class="utama" style="margin-top:12px">Urutan eksekusi.</p>
+    <ol class="rec">
+      <li><b>Dapil 7, kunci kursi pertama.</b> Hanya 2.320 suara, kenaikan 22 persen. Ini kursi termurah di seluruh kota.</li>
+      <li><b>Dapil 3, kunci kursi kedua.</b> 12.332 suara, kenaikan 43 persen. Pangsa awalnya sudah 12,7 persen.</li>
+      <li><b>Dapil 8, kunci kursi kedua.</b> 16.685 suara, kenaikan 65 persen. Paling ringan di antara dapil aman.</li>
+      <li><b>Dapil 2 dan Dapil 1, cadangan.</b> Masing-masing butuh sekitar 20.000 suara atau dua kali lipat, berat tetapi masih masuk akal.</li>
+      <li><b>Dapil 5, jangan dijadikan target.</b> Butuh 37.913 suara untuk kursi kedua, 204 persen. Target 2 kursi di sana adalah jebakan anggaran.</li>
+    </ol>
+  </div>
+
   <h2>Rincian dapil</h2>
   <div class="chips" id="chips">
     <button data-s="n" class="on">Urut dapil</button>
@@ -154,8 +222,8 @@ td.surplus b{color:var(--hijau)}td.surplus small{color:var(--hijau)}
     <div><i>&#9888;</i><span><b>Angka 55.000 suara di tabel tidak masuk akal.</b> PKB sudah 159.362 suara pada 2024. Target 55.000 berarti turun 65 persen, bukan naik.</span></div>
     <div><i>&#128202;</i><span><b>Pecah dapil menambah 2 kursi tanpa suara tambahan.</b> Suara 2024 yang sama menghasilkan 7 kursi dari 55, sedangkan 2024 hanya 5 dari 50.</span></div>
     <div><i>&#128683;</i><span><b>Dapil 5 dilabeli aman, padahal paling berat.</b> Butuh 56.502 suara untuk 2 kursi, 3,04 kali suara 2024 di sana. Dapil 3 cukup 41.064 suara.</span></div>
-    <div><i>&#128681;</i><span><b>Dapil 7 satu-satunya tanpa kursi.</b> PKB 10.725 suara atau 6,0 persen, tetapi hanya butuh 2.319 suara tambahan untuk kursi pertama.</span></div>
-    <div><i>&#128200;</i><span><b>Dapil 8 dan 1 terlalu rendah targetnya.</b> Dapil 8 surplus 12.744 suara di atas ambang satu kursi, target 1 kursi membuang peluang kedua.</span></div>
+    <div><i>&#128681;</i><span><b>Dapil 7 satu-satunya tanpa kursi.</b> PKB 10.725 suara atau 6,0 persen, tetapi hanya butuh 2.320 suara tambahan untuk kursi pertama.</span></div>
+    <div><i>&#128200;</i><span><b>Dapil 8 dan 1 terlalu rendah targetnya.</b> Dapil 8 surplus 12.745 suara di atas ambang satu kursi, target 1 kursi membuang peluang kedua.</span></div>
   </div>
 
   <div class="catatan">
@@ -164,7 +232,7 @@ td.surplus b{color:var(--hijau)}td.surplus small{color:var(--hijau)}
   </div>
 </div>
 <script>
-const DATA = [{"n": 1, "kecamatan": ["GENTENG", "SIMOKERTO", "BUBUTAN", "TEGALSARI"], "kuota": 6, "sah": 171814, "per_kursi": 28636, "pkb": 20432, "share": 11.9, "sim": 1, "target": 1, "ambang": 12101, "selisih": -8331, "ambang2": 41431, "ket": "Penjajakan kuota", "top": [["PDIP", 41431], ["Gerindra", 28195], ["PKB", 20432]], "rasio": 0.59, "status": "surplus", "ambang3": 41431}, {"n": 2, "kecamatan": ["KREMBANGAN", "SEMAMPIR", "PABEAN CANTIAN"], "kuota": 7, "sah": 182360, "per_kursi": 26051, "pkb": 19552, "share": 10.7, "sim": 1, "target": 1, "ambang": 11992, "selisih": -7559, "ambang2": 39606, "ket": "Penjajakan", "top": [["PDIP", 34114], ["Gerindra", 25284], ["Golkar", 22607]], "rasio": 0.61, "status": "surplus", "ambang3": 39606}, {"n": 3, "kecamatan": ["TAMBAKSARI", "BULAK", "KENJERAN"], "kuota": 8, "sah": 225525, "per_kursi": 28191, "pkb": 28732, "share": 12.7, "sim": 1, "target": 2, "ambang": 41064, "selisih": 12332, "ambang2": 41064, "ket": "Aman", "top": [["PDIP", 57927], ["Gerindra", 29451], ["PKB", 28732]], "rasio": 1.43, "status": "kurang", "ambang3": 70375}, {"n": 4, "kecamatan": ["MULYOREJO", "SUKOLILO", "GUBENG"], "kuota": 6, "sah": 174272, "per_kursi": 29045, "pkb": 15379, "share": 8.8, "sim": 1, "target": 1, "ambang": 10583, "selisih": -4795, "ambang2": 46119, "ket": "Penjajakan", "top": [["PDIP", 46119], ["Gerindra", 23679], ["PSI", 22290]], "rasio": 0.69, "status": "surplus", "ambang3": 46119}, {"n": 5, "kecamatan": ["TENGGILIS MEJOYO", "GUNUNG ANYAR", "RUNGKUT", "WONOCOLO"], "kuota": 6, "sah": 173292, "per_kursi": 28882, "pkb": 18589, "share": 10.7, "sim": 1, "target": 2, "ambang": 56502, "selisih": 37913, "ambang2": 56502, "ket": "Aman", "top": [["PDIP", 33760], ["Gerindra", 22326], ["Golkar", 19791]], "rasio": 3.04, "status": "kurang", "ambang3": 97790}, {"n": 6, "kecamatan": ["GAYUNGAN", "WONOKROMO", "JAMBANGAN", "SAWAHAN"], "kuota": 8, "sah": 229762, "per_kursi": 28720, "pkb": 20452, "share": 8.9, "sim": 1, "target": 1, "ambang": 12362, "selisih": -8089, "ambang2": 42102, "ket": "Menuju 2 kursi", "top": [["PDIP", 54311], ["Gerindra", 37088], ["PKS", 23836]], "rasio": 0.6, "status": "surplus", "ambang3": 42102}, {"n": 7, "kecamatan": ["KARANG PILANG", "WIYUNG", "LAKARSANTRI", "DUKUH PAKIS", "SAMBIKEREP"], "kuota": 7, "sah": 179996, "per_kursi": 25714, "pkb": 10725, "share": 6.0, "sim": 0, "target": 1, "ambang": 13045, "selisih": 2319, "ambang2": 44684, "ket": "Menuju 2 kursi", "top": [["Gerindra", 44684], ["PDIP", 30768], ["PSI", 20877]], "rasio": 1.22, "status": "kurang", "ambang3": 44684}, {"n": 8, "kecamatan": ["TANDES", "SUKOMANUNGGAL", "ASEM ROWO", "BENOWO", "PAKAL"], "kuota": 7, "sah": 199822, "per_kursi": 28546, "pkb": 25501, "share": 12.8, "sim": 1, "target": 1, "ambang": 12756, "selisih": -12744, "ambang2": 42186, "ket": "Penjajakan", "top": [["PDIP", 38268], ["Gerindra", 30524], ["PKB", 25501]], "rasio": 0.5, "status": "surplus", "ambang3": 42186}];
+const DATA = [{"n": 1, "kecamatan": ["GENTENG", "SIMOKERTO", "BUBUTAN", "TEGALSARI"], "kuota": 6, "sah": 171814, "per_kursi": 28636, "pkb": 20432, "share": 11.9, "sim": 1, "target": 1, "ambang": 12101, "selisih": -8331, "ambang2": 41431, "ket": "Penjajakan kuota", "top": [["PDIP", 41431], ["Gerindra", 28195], ["PKB", 20432]], "rasio": 0.59, "status": "surplus", "ambang3": 41431, "marginal": 20999, "marginal_pct": 103, "next_ambang": 41431, "kursi_next": 2}, {"n": 2, "kecamatan": ["KREMBANGAN", "SEMAMPIR", "PABEAN CANTIAN"], "kuota": 7, "sah": 182360, "per_kursi": 26051, "pkb": 19552, "share": 10.7, "sim": 1, "target": 1, "ambang": 11992, "selisih": -7560, "ambang2": 39606, "ket": "Penjajakan", "top": [["PDIP", 34114], ["Gerindra", 25284], ["Golkar", 22607]], "rasio": 0.61, "status": "surplus", "ambang3": 39606, "marginal": 20054, "marginal_pct": 103, "next_ambang": 39606, "kursi_next": 2}, {"n": 3, "kecamatan": ["TAMBAKSARI", "BULAK", "KENJERAN"], "kuota": 8, "sah": 225525, "per_kursi": 28191, "pkb": 28732, "share": 12.7, "sim": 1, "target": 2, "ambang": 41064, "selisih": 12332, "ambang2": 41064, "ket": "Aman", "top": [["PDIP", 57927], ["Gerindra", 29451], ["PKB", 28732]], "rasio": 1.43, "status": "kurang", "ambang3": 70375, "marginal": 12332, "marginal_pct": 43, "next_ambang": 41064, "kursi_next": 2}, {"n": 4, "kecamatan": ["MULYOREJO", "SUKOLILO", "GUBENG"], "kuota": 6, "sah": 174272, "per_kursi": 29045, "pkb": 15379, "share": 8.8, "sim": 1, "target": 1, "ambang": 10583, "selisih": -4796, "ambang2": 46119, "ket": "Penjajakan", "top": [["PDIP", 46119], ["Gerindra", 23679], ["PSI", 22290]], "rasio": 0.69, "status": "surplus", "ambang3": 46119, "marginal": 30740, "marginal_pct": 200, "next_ambang": 46119, "kursi_next": 2}, {"n": 5, "kecamatan": ["TENGGILIS MEJOYO", "GUNUNG ANYAR", "RUNGKUT", "WONOCOLO"], "kuota": 6, "sah": 173292, "per_kursi": 28882, "pkb": 18589, "share": 10.7, "sim": 1, "target": 2, "ambang": 56502, "selisih": 37913, "ambang2": 56502, "ket": "Aman", "top": [["PDIP", 33760], ["Gerindra", 22326], ["Golkar", 19791]], "rasio": 3.04, "status": "kurang", "ambang3": 97790, "marginal": 37913, "marginal_pct": 204, "next_ambang": 56502, "kursi_next": 2}, {"n": 6, "kecamatan": ["GAYUNGAN", "WONOKROMO", "JAMBANGAN", "SAWAHAN"], "kuota": 8, "sah": 229762, "per_kursi": 28720, "pkb": 20452, "share": 8.9, "sim": 1, "target": 1, "ambang": 12362, "selisih": -8090, "ambang2": 42102, "ket": "Menuju 2 kursi", "top": [["PDIP", 54311], ["Gerindra", 37088], ["PKS", 23836]], "rasio": 0.6, "status": "surplus", "ambang3": 42102, "marginal": 21650, "marginal_pct": 106, "next_ambang": 42102, "kursi_next": 2}, {"n": 7, "kecamatan": ["KARANG PILANG", "WIYUNG", "LAKARSANTRI", "DUKUH PAKIS", "SAMBIKEREP"], "kuota": 7, "sah": 179996, "per_kursi": 25714, "pkb": 10725, "share": 6.0, "sim": 0, "target": 1, "ambang": 13045, "selisih": 2320, "ambang2": 44684, "ket": "Menuju 2 kursi", "top": [["Gerindra", 44684], ["PDIP", 30768], ["PSI", 20877]], "rasio": 1.22, "status": "kurang", "ambang3": 44684, "marginal": 2320, "marginal_pct": 22, "next_ambang": 13045, "kursi_next": 1}, {"n": 8, "kecamatan": ["TANDES", "SUKOMANUNGGAL", "ASEM ROWO", "BENOWO", "PAKAL"], "kuota": 7, "sah": 199822, "per_kursi": 28546, "pkb": 25501, "share": 12.8, "sim": 1, "target": 1, "ambang": 12756, "selisih": -12745, "ambang2": 42186, "ket": "Penjajakan", "top": [["PDIP", 38268], ["Gerindra", 30524], ["PKB", 25501]], "rasio": 0.5, "status": "surplus", "ambang3": 42186, "marginal": 16685, "marginal_pct": 65, "next_ambang": 42186, "kursi_next": 2}];
 const nf = n => Math.abs(n).toLocaleString('id-ID');
 const urut = {n:'n', beban:'rasio', pkb:'pkb', sah:'sah'};
 let urutan = 'n';
@@ -181,7 +249,7 @@ function renderTabel(){
     const tag = x.selisih > 0
       ? '<td class="kurang"><b>' + nf(x.selisih) + '</b><small>kurang</small></td>'
       : '<td class="surplus"><b>' + nf(x.selisih) + '</b><small>surplus</small></td>';
-    return '<tr><td>D' + x.n + '<small>' + x.kuota + ' kursi</small></td>' +
+    return '<tr><td>Dapil ' + x.n + '<small>' + x.kuota + ' kursi</small></td>' +
       '<td><b>' + nf(x.pkb) + '</b></td>' +
       '<td>' + x.share.toFixed(1).replace('.', ',') + '%</td>' +
       '<td>' + x.sim + ' &rarr; ' + x.target + '</td>' +
@@ -192,7 +260,7 @@ function renderTabel(){
 function renderPeringkat(){
   const urutBeban = [...DATA].sort((a,b) => b.rasio - a.rasio);
   document.getElementById('peringkat').innerHTML = urutBeban.map(x =>
-    '<div class="pr"><div class="lbl">D' + x.n + '<small>' + x.kuota + ' kursi</small></div>' +
+    '<div class="pr"><div class="lbl">Dapil ' + x.n + '<small>' + x.kuota + ' kursi</small></div>' +
     '<div class="lacak"><i class="' + warnaWarna(x) + '" style="width:' + Math.min(100, x.rasio / 3.2 * 100) + '%"></i><u></u></div>' +
     '<div class="ang">' + x.rasio.toFixed(2).replace('.', ',') + 'x<small>' + nf(x.ambang) + '</small></div></div>'
   ).join('');
