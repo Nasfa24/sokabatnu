@@ -376,8 +376,8 @@
     "pkb": 41004,
     "pkb_persen": 12.59,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 48447,
-    "tambah_suara": 7443,
+    "ambang_kursi_berikut": 48448,
+    "tambah_suara": 7444,
     "rasio": 1.18,
     "kursi_partai": [
      {
@@ -601,8 +601,8 @@
     "pkb": 27014,
     "pkb_persen": 8.92,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 38536,
-    "tambah_suara": 11522,
+    "ambang_kursi_berikut": 38535,
+    "tambah_suara": 11521,
     "rasio": 1.43,
     "kursi_partai": [
      {
@@ -2410,8 +2410,8 @@
     "pkb": 20452,
     "pkb_persen": 8.9,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 42102,
-    "tambah_suara": 21650,
+    "ambang_kursi_berikut": 42103,
+    "tambah_suara": 21651,
     "rasio": 2.06,
     "kursi_partai": [
      {
@@ -2615,8 +2615,8 @@
     "pkb": 10725,
     "pkb_persen": 5.96,
     "pkb_kursi": 0,
-    "ambang_kursi_berikut": 13045,
-    "tambah_suara": 2320,
+    "ambang_kursi_berikut": 13046,
+    "tambah_suara": 2321,
     "rasio": 1.22,
     "kursi_partai": [
      {
@@ -2825,8 +2825,8 @@
     "pkb": 25501,
     "pkb_persen": 12.76,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 42186,
-    "tambah_suara": 16685,
+    "ambang_kursi_berikut": 42187,
+    "tambah_suara": 16686,
     "rasio": 1.65,
     "kursi_partai": [
      {
@@ -3028,24 +3028,29 @@
  "rute_10": [
   {
    "dapil": 7,
-   "tambah": 2320,
-   "akum": 2320,
-   "kursi": 7,
+   "tambah": 2321,
+   "akum": 2321,
+   "kursi": 8,
    "persen_kota": 0.15
   },
   {
    "dapil": 3,
    "tambah": 12332,
-   "akum": 14652,
-   "kursi": 8,
+   "akum": 14653,
+   "kursi": 9,
    "persen_kota": 0.95
   },
   {
    "dapil": 8,
-   "tambah": 16685,
-   "akum": 31337,
-   "kursi": 9,
+   "tambah": 16686,
+   "akum": 31339,
+   "kursi": 10,
    "persen_kota": 2.04
   }
- ]
+ ],
+ "uji_seragam": {
+  "tambah": 79681,
+  "kursi": 9,
+  "biaya": 8853
+ }
 }
