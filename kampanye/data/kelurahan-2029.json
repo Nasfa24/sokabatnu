@@ -1,0 +1,1716 @@
+{
+ "total_sah": 1536843,
+ "total_dpt": 2218586,
+ "nonvoter": 681743,
+ "akuisisi": [
+  {
+   "dapil": 8,
+   "kecamatan": "ASEM ROWO",
+   "juara": "Gerindra",
+   "jarak": 428,
+   "pkb": 3917,
+   "pkb_persen": 17.48,
+   "rasio": 0.11,
+   "tier": "pertebal",
+   "target": 2562
+  },
+  {
+   "dapil": 2,
+   "kecamatan": "SEMAMPIR",
+   "juara": "PDIP",
+   "jarak": 1559,
+   "pkb": 11644,
+   "pkb_persen": 13.16,
+   "rasio": 0.13,
+   "tier": "rebut",
+   "target": 0
+  },
+  {
+   "dapil": 3,
+   "kecamatan": "KENJERAN",
+   "juara": "PDIP",
+   "jarak": 3434,
+   "pkb": 14682,
+   "pkb_persen": 16.65,
+   "rasio": 0.23,
+   "tier": "pertebal",
+   "target": 4579
+  },
+  {
+   "dapil": 1,
+   "kecamatan": "SIMOKERTO",
+   "juara": "PDIP",
+   "jarak": 1789,
+   "pkb": 6970,
+   "pkb_persen": 15.43,
+   "rasio": 0.26,
+   "tier": "pertebal",
+   "target": 0
+  },
+  {
+   "dapil": 8,
+   "kecamatan": "PAKAL",
+   "juara": "PPP",
+   "jarak": 2071,
+   "pkb": 6052,
+   "pkb_persen": 17.32,
+   "rasio": 0.34,
+   "tier": "pertebal",
+   "target": 2150
+  },
+  {
+   "dapil": 4,
+   "kecamatan": "GUBENG",
+   "juara": "PDIP",
+   "jarak": 3288,
+   "pkb": 9236,
+   "pkb_persen": 13.31,
+   "rasio": 0.36,
+   "tier": "rebut",
+   "target": 0
+  },
+  {
+   "dapil": 8,
+   "kecamatan": "BENOWO",
+   "juara": "PDIP",
+   "jarak": 2604,
+   "pkb": 7142,
+   "pkb_persen": 18.55,
+   "rasio": 0.36,
+   "tier": "pertebal",
+   "target": 2895
+  },
+  {
+   "dapil": 6,
+   "kecamatan": "GAYUNGAN",
+   "juara": "Golkar",
+   "jarak": 1287,
+   "pkb": 2513,
+   "pkb_persen": 10.97,
+   "rasio": 0.51,
+   "tier": "rebut",
+   "target": 0
+  }
+ ],
+ "lima50": {
+  "label": "5 Dapil, 50 Kursi",
+  "kursi_pkb": 5,
+  "dapil": [
+   {
+    "nomor": 1,
+    "kursi": 10,
+    "sah": 298698,
+    "pkb": 34666,
+    "pkb_persen": 11.61,
+    "pkb_kursi": 1,
+    "ambang_kursi_berikut": 47464,
+    "tambah_suara": 12798,
+    "kecamatan": [
+     "TEGALSARI",
+     "GENTENG",
+     "GUBENG",
+     "SIMOKERTO",
+     "BUBUTAN",
+     "KREMBANGAN"
+    ]
+   },
+   {
+    "nomor": 2,
+    "kursi": 11,
+    "sah": 325791,
+    "pkb": 41004,
+    "pkb_persen": 12.59,
+    "pkb_kursi": 1,
+    "ambang_kursi_berikut": 48447,
+    "tambah_suara": 7443,
+    "kecamatan": [
+     "TAMBAKSARI",
+     "PABEAN CANTIAN",
+     "SEMAMPIR",
+     "KENJERAN"
+    ]
+   },
+   {
+    "nomor": 3,
+    "kursi": 10,
+    "sah": 302774,
+    "pkb": 27014,
+    "pkb_persen": 8.92,
+    "pkb_kursi": 1,
+    "ambang_kursi_berikut": 38536,
+    "tambah_suara": 11522,
+    "kecamatan": [
+     "WONOCOLO",
+     "RUNGKUT",
+     "SUKOLILO",
+     "TENGGILIS MEJOYO",
+     "GUNUNG ANYAR",
+     "MULYOREJO",
+     "BULAK"
+    ]
+   },
+   {
+    "nomor": 4,
+    "kursi": 9,
+    "sah": 286193,
+    "pkb": 24545,
+    "pkb_persen": 8.58,
+    "pkb_kursi": 1,
+    "ambang_kursi_berikut": 47261,
+    "tambah_suara": 22716,
+    "kecamatan": [
+     "WONOKROMO",
+     "SAWAHAN",
+     "GAYUNGAN",
+     "JAMBANGAN",
+     "SUKOMANUNGGAL"
+    ]
+   },
+   {
+    "nomor": 5,
+    "kursi": 10,
+    "sah": 323387,
+    "pkb": 32133,
+    "pkb_persen": 9.94,
+    "pkb_kursi": 1,
+    "ambang_kursi_berikut": 46629,
+    "tambah_suara": 14496,
+    "kecamatan": [
+     "KARANG PILANG",
+     "TANDES",
+     "LAKARSANTRI",
+     "BENOWO",
+     "WIYUNG",
+     "DUKUH PAKIS",
+     "ASEM ROWO",
+     "PAKAL",
+     "SAMBIKEREP"
+    ]
+   }
+  ]
+ },
+ "lima55": {
+  "label": "5 Dapil, 55 Kursi",
+  "kursi_pkb": 5,
+  "dapil": [
+   {
+    "nomor": 1,
+    "kursi": 11,
+    "sah": 298698,
+    "pkb": 34666,
+    "pkb_persen": 11.61,
+    "pkb_kursi": 1,
+    "ambang_kursi_berikut": 41634,
+    "tambah_suara": 6968,
+    "kecamatan": [
+     "TEGALSARI",
+     "GENTENG",
+     "GUBENG",
+     "SIMOKERTO",
+     "BUBUTAN",
+     "KREMBANGAN"
+    ]
+   },
+   {
+    "nomor": 2,
+    "kursi": 12,
+    "sah": 325791,
+    "pkb": 41004,
+    "pkb_persen": 12.59,
+    "pkb_kursi": 1,
+    "ambang_kursi_berikut": 44309,
+    "tambah_suara": 3305,
+    "kecamatan": [
+     "TAMBAKSARI",
+     "PABEAN CANTIAN",
+     "SEMAMPIR",
+     "KENJERAN"
+    ]
+   },
+   {
+    "nomor": 3,
+    "kursi": 11,
+    "sah": 302774,
+    "pkb": 27014,
+    "pkb_persen": 8.92,
+    "pkb_kursi": 1,
+    "ambang_kursi_berikut": 37165,
+    "tambah_suara": 10151,
+    "kecamatan": [
+     "WONOCOLO",
+     "RUNGKUT",
+     "SUKOLILO",
+     "TENGGILIS MEJOYO",
+     "GUNUNG ANYAR",
+     "MULYOREJO",
+     "BULAK"
+    ]
+   },
+   {
+    "nomor": 4,
+    "kursi": 10,
+    "sah": 286193,
+    "pkb": 24545,
+    "pkb_persen": 8.58,
+    "pkb_kursi": 1,
+    "ambang_kursi_berikut": 41289,
+    "tambah_suara": 16744,
+    "kecamatan": [
+     "WONOKROMO",
+     "SAWAHAN",
+     "GAYUNGAN",
+     "JAMBANGAN",
+     "SUKOMANUNGGAL"
+    ]
+   },
+   {
+    "nomor": 5,
+    "kursi": 11,
+    "sah": 323387,
+    "pkb": 32133,
+    "pkb_persen": 9.94,
+    "pkb_kursi": 1,
+    "ambang_kursi_berikut": 39022,
+    "tambah_suara": 6889,
+    "kecamatan": [
+     "KARANG PILANG",
+     "TANDES",
+     "LAKARSANTRI",
+     "BENOWO",
+     "WIYUNG",
+     "DUKUH PAKIS",
+     "ASEM ROWO",
+     "PAKAL",
+     "SAMBIKEREP"
+    ]
+   }
+  ]
+ },
+ "rute_5d50_7": [
+  {
+   "dapil": 2,
+   "tambah": 7443,
+   "akum": 7443,
+   "kursi": 5
+  },
+  {
+   "dapil": 3,
+   "tambah": 11522,
+   "akum": 18965,
+   "kursi": 6
+  }
+ ],
+ "rute_5d55_7": [
+  {
+   "dapil": 2,
+   "tambah": 3305,
+   "akum": 3305,
+   "kursi": 5
+  },
+  {
+   "dapil": 5,
+   "tambah": 6889,
+   "akum": 10194,
+   "kursi": 6
+  }
+ ],
+ "target_lima": 7,
+ "target_delapan": 10,
+ "rute_8d55_10": [
+  {
+   "dapil": 7,
+   "tambah": 2321,
+   "akum": 2321,
+   "kursi": 8,
+   "persen_kota": 0.15
+  },
+  {
+   "dapil": 3,
+   "tambah": 12332,
+   "akum": 14653,
+   "kursi": 9,
+   "persen_kota": 0.95
+  },
+  {
+   "dapil": 8,
+   "tambah": 16686,
+   "akum": 31339,
+   "kursi": 10,
+   "persen_kota": 2.04
+  }
+ ],
+ "peta": [
+  {
+   "nomor": 1,
+   "kursi": 6,
+   "pkb_kursi": 1,
+   "target": 0,
+   "dpt": 260815,
+   "nonvoter": 89001,
+   "kecamatan": [
+    {
+     "nama": "SIMOKERTO",
+     "dpt": 69533,
+     "sah": 45165,
+     "nonvoter": 24368,
+     "pkb": 6970,
+     "pkb_persen": 15.43,
+     "juara": "PDIP",
+     "jarak": 1789,
+     "rasio": 0.26,
+     "tier": "pertebal",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 36,
+     "kelurahan": [
+      {
+       "nama": "Kapasan",
+       "target": 0,
+       "kontak": 1
+      },
+      {
+       "nama": "Sidodadi",
+       "target": 0,
+       "kontak": 20
+      },
+      {
+       "nama": "Simokerto",
+       "target": 0,
+       "kontak": 4
+      },
+      {
+       "nama": "Simolawang",
+       "target": 0,
+       "kontak": 10
+      },
+      {
+       "nama": "Tambakrejo",
+       "target": 0,
+       "kontak": 1
+      }
+     ]
+    },
+    {
+     "nama": "TEGALSARI",
+     "dpt": 73959,
+     "sah": 48113,
+     "nonvoter": 25846,
+     "pkb": 5748,
+     "pkb_persen": 11.95,
+     "juara": "PDIP",
+     "jarak": 5607,
+     "rasio": 0.98,
+     "tier": "adjust",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 21,
+     "kelurahan": [
+      {
+       "nama": "Dr. Sutomo",
+       "target": 0,
+       "kontak": 4
+      },
+      {
+       "nama": "Kedungdoro",
+       "target": 0,
+       "kontak": 2
+      },
+      {
+       "nama": "Keputran",
+       "target": 0,
+       "kontak": 10
+      },
+      {
+       "nama": "Tegalsari",
+       "target": 0,
+       "kontak": 5
+      },
+      {
+       "nama": "Wonorejo",
+       "target": 0,
+       "kontak": 0
+      }
+     ]
+    },
+    {
+     "nama": "GENTENG",
+     "dpt": 44341,
+     "sah": 29506,
+     "nonvoter": 14835,
+     "pkb": 3072,
+     "pkb_persen": 10.41,
+     "juara": "PDIP",
+     "jarak": 5113,
+     "rasio": 1.66,
+     "tier": "hindari",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 22,
+     "kelurahan": [
+      {
+       "nama": "Embong Kaliasin",
+       "target": 0,
+       "kontak": 6
+      },
+      {
+       "nama": "Genteng",
+       "target": 0,
+       "kontak": 4
+      },
+      {
+       "nama": "Kapasari",
+       "target": 0,
+       "kontak": 3
+      },
+      {
+       "nama": "Ketabang",
+       "target": 0,
+       "kontak": 3
+      },
+      {
+       "nama": "Peneleh",
+       "target": 0,
+       "kontak": 6
+      }
+     ]
+    },
+    {
+     "nama": "BUBUTAN",
+     "dpt": 72982,
+     "sah": 49030,
+     "nonvoter": 23952,
+     "pkb": 4642,
+     "pkb_persen": 9.47,
+     "juara": "PDIP",
+     "jarak": 8490,
+     "rasio": 1.83,
+     "tier": "hindari",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 83,
+     "kelurahan": [
+      {
+       "nama": "Alun-Alun Contong",
+       "target": 0,
+       "kontak": 0
+      },
+      {
+       "nama": "Bubutan",
+       "target": 0,
+       "kontak": 4
+      },
+      {
+       "nama": "Gundih",
+       "target": 0,
+       "kontak": 25
+      },
+      {
+       "nama": "Jepara",
+       "target": 0,
+       "kontak": 23
+      },
+      {
+       "nama": "Tembok Dukuh",
+       "target": 0,
+       "kontak": 31
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nomor": 2,
+   "kursi": 7,
+   "pkb_kursi": 1,
+   "target": 0,
+   "dpt": 269064,
+   "nonvoter": 86704,
+   "kecamatan": [
+    {
+     "nama": "SEMAMPIR",
+     "dpt": 130554,
+     "sah": 88483,
+     "nonvoter": 42071,
+     "pkb": 11644,
+     "pkb_persen": 13.16,
+     "juara": "PDIP",
+     "jarak": 1559,
+     "rasio": 0.13,
+     "tier": "rebut",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 62,
+     "kelurahan": [
+      {
+       "nama": "Ampel",
+       "target": 0,
+       "kontak": 9
+      },
+      {
+       "nama": "Pegirian",
+       "target": 0,
+       "kontak": 12
+      },
+      {
+       "nama": "Sidotopo",
+       "target": 0,
+       "kontak": 14
+      },
+      {
+       "nama": "Ujung",
+       "target": 0,
+       "kontak": 10
+      },
+      {
+       "nama": "Wonokusumo",
+       "target": 0,
+       "kontak": 17
+      }
+     ]
+    },
+    {
+     "nama": "KREMBANGAN",
+     "dpt": 83811,
+     "sah": 57492,
+     "nonvoter": 26319,
+     "pkb": 4998,
+     "pkb_persen": 8.69,
+     "juara": "PDIP",
+     "jarak": 9499,
+     "rasio": 1.9,
+     "tier": "hindari",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 27,
+     "kelurahan": [
+      {
+       "nama": "Dupak",
+       "target": 0,
+       "kontak": 1
+      },
+      {
+       "nama": "Kemayoran",
+       "target": 0,
+       "kontak": 4
+      },
+      {
+       "nama": "Krembangan Selatan",
+       "target": 0,
+       "kontak": 1
+      },
+      {
+       "nama": "Morokrembangan",
+       "target": 0,
+       "kontak": 20
+      },
+      {
+       "nama": "Perak Barat",
+       "target": 0,
+       "kontak": 1
+      }
+     ]
+    },
+    {
+     "nama": "PABEAN CANTIAN",
+     "dpt": 54699,
+     "sah": 36385,
+     "nonvoter": 18314,
+     "pkb": 2910,
+     "pkb_persen": 8.0,
+     "juara": "PDIP",
+     "jarak": 3504,
+     "rasio": 1.2,
+     "tier": "adjust",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 16,
+     "kelurahan": [
+      {
+       "nama": "Bongkaran",
+       "target": 0,
+       "kontak": 5
+      },
+      {
+       "nama": "Krembangan Utara",
+       "target": 0,
+       "kontak": 5
+      },
+      {
+       "nama": "Nyamplungan",
+       "target": 0,
+       "kontak": 6
+      },
+      {
+       "nama": "Tanjung Perak",
+       "target": 0,
+       "kontak": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nomor": 3,
+   "kursi": 8,
+   "pkb_kursi": 1,
+   "target": 12332,
+   "dpt": 330861,
+   "nonvoter": 105336,
+   "kecamatan": [
+    {
+     "nama": "KENJERAN",
+     "dpt": 127265,
+     "sah": 88155,
+     "nonvoter": 39110,
+     "pkb": 14682,
+     "pkb_persen": 16.65,
+     "juara": "PDIP",
+     "jarak": 3434,
+     "rasio": 0.23,
+     "tier": "pertebal",
+     "target": 4579,
+     "target_kel": 1145,
+     "kontak": 49,
+     "kelurahan": [
+      {
+       "nama": "Bulakbanteng",
+       "target": 1145,
+       "kontak": 13
+      },
+      {
+       "nama": "Tambakwedi",
+       "target": 1145,
+       "kontak": 7
+      },
+      {
+       "nama": "Tanah Kalikedinding",
+       "target": 1145,
+       "kontak": 24
+      },
+      {
+       "nama": "Sidotopo Wetan",
+       "target": 1145,
+       "kontak": 5
+      }
+     ]
+    },
+    {
+     "nama": "TAMBAKSARI",
+     "dpt": 170142,
+     "sah": 112768,
+     "nonvoter": 57374,
+     "pkb": 11768,
+     "pkb_persen": 10.44,
+     "juara": "PDIP",
+     "jarak": 21371,
+     "rasio": 1.82,
+     "tier": "hindari",
+     "target": 6717,
+     "target_kel": 840,
+     "kontak": 46,
+     "kelurahan": [
+      {
+       "nama": "Dukuh Setro",
+       "target": 840,
+       "kontak": 4
+      },
+      {
+       "nama": "Gading",
+       "target": 840,
+       "kontak": 4
+      },
+      {
+       "nama": "Kapas Madya",
+       "target": 840,
+       "kontak": 0
+      },
+      {
+       "nama": "Pacar Kembang",
+       "target": 840,
+       "kontak": 6
+      },
+      {
+       "nama": "Pacar Keling",
+       "target": 840,
+       "kontak": 4
+      },
+      {
+       "nama": "Ploso",
+       "target": 840,
+       "kontak": 11
+      },
+      {
+       "nama": "Rangkah",
+       "target": 840,
+       "kontak": 12
+      },
+      {
+       "nama": "Tambaksari",
+       "target": 840,
+       "kontak": 5
+      }
+     ]
+    },
+    {
+     "nama": "BULAK",
+     "dpt": 33454,
+     "sah": 24602,
+     "nonvoter": 8852,
+     "pkb": 2282,
+     "pkb_persen": 9.28,
+     "juara": "PDIP",
+     "jarak": 4390,
+     "rasio": 1.92,
+     "tier": "hindari",
+     "target": 1036,
+     "target_kel": 259,
+     "kontak": 30,
+     "kelurahan": [
+      {
+       "nama": "Bulak",
+       "target": 259,
+       "kontak": 9
+      },
+      {
+       "nama": "Kedungcowek",
+       "target": 259,
+       "kontak": 6
+      },
+      {
+       "nama": "Kenjeran",
+       "target": 259,
+       "kontak": 2
+      },
+      {
+       "nama": "Sukolilo Baru",
+       "target": 259,
+       "kontak": 13
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nomor": 4,
+   "kursi": 6,
+   "pkb_kursi": 1,
+   "target": 0,
+   "dpt": 252574,
+   "nonvoter": 78302,
+   "kecamatan": [
+    {
+     "nama": "GUBENG",
+     "dpt": 101875,
+     "sah": 69392,
+     "nonvoter": 32483,
+     "pkb": 9236,
+     "pkb_persen": 13.31,
+     "juara": "PDIP",
+     "jarak": 3288,
+     "rasio": 0.36,
+     "tier": "rebut",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 43,
+     "kelurahan": [
+      {
+       "nama": "Airlangga",
+       "target": 0,
+       "kontak": 16
+      },
+      {
+       "nama": "Barata Jaya",
+       "target": 0,
+       "kontak": 5
+      },
+      {
+       "nama": "Gubeng",
+       "target": 0,
+       "kontak": 3
+      },
+      {
+       "nama": "Kertajaya",
+       "target": 0,
+       "kontak": 5
+      },
+      {
+       "nama": "Mojo",
+       "target": 0,
+       "kontak": 3
+      },
+      {
+       "nama": "Pucangsewu",
+       "target": 0,
+       "kontak": 11
+      }
+     ]
+    },
+    {
+     "nama": "SUKOLILO",
+     "dpt": 85043,
+     "sah": 59367,
+     "nonvoter": 25676,
+     "pkb": 4101,
+     "pkb_persen": 6.91,
+     "juara": "PDIP",
+     "jarak": 14530,
+     "rasio": 3.54,
+     "tier": "hindari",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 39,
+     "kelurahan": [
+      {
+       "nama": "Gebang Putih",
+       "target": 0,
+       "kontak": 1
+      },
+      {
+       "nama": "Keputih",
+       "target": 0,
+       "kontak": 7
+      },
+      {
+       "nama": "Klampisngasem",
+       "target": 0,
+       "kontak": 6
+      },
+      {
+       "nama": "Medokan Semampir",
+       "target": 0,
+       "kontak": 16
+      },
+      {
+       "nama": "Menur Pumpungan",
+       "target": 0,
+       "kontak": 6
+      },
+      {
+       "nama": "Nginden Jangkungan",
+       "target": 0,
+       "kontak": 0
+      },
+      {
+       "nama": "Semolowaru",
+       "target": 0,
+       "kontak": 3
+      }
+     ]
+    },
+    {
+     "nama": "MULYOREJO",
+     "dpt": 65656,
+     "sah": 45513,
+     "nonvoter": 20143,
+     "pkb": 2042,
+     "pkb_persen": 4.49,
+     "juara": "PDIP",
+     "jarak": 12922,
+     "rasio": 6.33,
+     "tier": "hindari",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 20,
+     "kelurahan": [
+      {
+       "nama": "Dukuh Sutorejo",
+       "target": 0,
+       "kontak": 9
+      },
+      {
+       "nama": "Kalijudan",
+       "target": 0,
+       "kontak": 4
+      },
+      {
+       "nama": "Kalisari",
+       "target": 0,
+       "kontak": 2
+      },
+      {
+       "nama": "Kejawan Putih Tambak",
+       "target": 0,
+       "kontak": 0
+      },
+      {
+       "nama": "Manyar Sabrangan",
+       "target": 0,
+       "kontak": 1
+      },
+      {
+       "nama": "Mulyorejo",
+       "target": 0,
+       "kontak": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nomor": 5,
+   "kursi": 6,
+   "pkb_kursi": 1,
+   "target": 0,
+   "dpt": 238019,
+   "nonvoter": 64727,
+   "kecamatan": [
+    {
+     "nama": "TENGGILIS MEJOYO",
+     "dpt": 43976,
+     "sah": 32850,
+     "nonvoter": 11126,
+     "pkb": 7867,
+     "pkb_persen": 23.95,
+     "juara": "PKB",
+     "jarak": 0,
+     "rasio": 0.0,
+     "tier": "pertebal",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 185,
+     "kelurahan": [
+      {
+       "nama": "Kendangsari",
+       "target": 0,
+       "kontak": 98
+      },
+      {
+       "nama": "Kutisari",
+       "target": 0,
+       "kontak": 8
+      },
+      {
+       "nama": "Panjang Jiwo",
+       "target": 0,
+       "kontak": 19
+      },
+      {
+       "nama": "Tenggilis Mejoyo",
+       "target": 0,
+       "kontak": 60
+      }
+     ]
+    },
+    {
+     "nama": "GUNUNG ANYAR",
+     "dpt": 44951,
+     "sah": 34251,
+     "nonvoter": 10700,
+     "pkb": 3095,
+     "pkb_persen": 9.04,
+     "juara": "PDIP",
+     "jarak": 4730,
+     "rasio": 1.53,
+     "tier": "hindari",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 38,
+     "kelurahan": [
+      {
+       "nama": "Gunung Anyar",
+       "target": 0,
+       "kontak": 6
+      },
+      {
+       "nama": "Gunung Anyar Tambak",
+       "target": 0,
+       "kontak": 4
+      },
+      {
+       "nama": "Rungkut Menanggal",
+       "target": 0,
+       "kontak": 13
+      },
+      {
+       "nama": "Rungkut Tengah",
+       "target": 0,
+       "kontak": 15
+      }
+     ]
+    },
+    {
+     "nama": "WONOCOLO",
+     "dpt": 59600,
+     "sah": 41405,
+     "nonvoter": 18195,
+     "pkb": 3218,
+     "pkb_persen": 7.77,
+     "juara": "Gerindra",
+     "jarak": 3632,
+     "rasio": 1.13,
+     "tier": "adjust",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 26,
+     "kelurahan": [
+      {
+       "nama": "Bendul Merisi",
+       "target": 0,
+       "kontak": 4
+      },
+      {
+       "nama": "Jemur Wonosari",
+       "target": 0,
+       "kontak": 13
+      },
+      {
+       "nama": "Margorejo",
+       "target": 0,
+       "kontak": 1
+      },
+      {
+       "nama": "Sidosermo",
+       "target": 0,
+       "kontak": 8
+      },
+      {
+       "nama": "Siwalan Kerto",
+       "target": 0,
+       "kontak": 0
+      }
+     ]
+    },
+    {
+     "nama": "RUNGKUT",
+     "dpt": 89492,
+     "sah": 64786,
+     "nonvoter": 24706,
+     "pkb": 4409,
+     "pkb_persen": 6.81,
+     "juara": "PDIP",
+     "jarak": 7669,
+     "rasio": 1.74,
+     "tier": "hindari",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 222,
+     "kelurahan": [
+      {
+       "nama": "Kalirungkut",
+       "target": 0,
+       "kontak": 68
+      },
+      {
+       "nama": "Kedung Baruk",
+       "target": 0,
+       "kontak": 27
+      },
+      {
+       "nama": "Medokan Ayu",
+       "target": 0,
+       "kontak": 34
+      },
+      {
+       "nama": "Penjaringan Sari",
+       "target": 0,
+       "kontak": 69
+      },
+      {
+       "nama": "Rungkut Kidul",
+       "target": 0,
+       "kontak": 24
+      },
+      {
+       "nama": "Wonorejo",
+       "target": 0,
+       "kontak": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nomor": 6,
+   "kursi": 8,
+   "pkb_kursi": 1,
+   "target": 0,
+   "dpt": 340173,
+   "nonvoter": 110411,
+   "kecamatan": [
+    {
+     "nama": "GAYUNGAN",
+     "dpt": 32510,
+     "sah": 22917,
+     "nonvoter": 9593,
+     "pkb": 2513,
+     "pkb_persen": 10.97,
+     "juara": "Golkar",
+     "jarak": 1287,
+     "rasio": 0.51,
+     "tier": "rebut",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 25,
+     "kelurahan": [
+      {
+       "nama": "Dukuh Menanggal",
+       "target": 0,
+       "kontak": 3
+      },
+      {
+       "nama": "Gayungan",
+       "target": 0,
+       "kontak": 10
+      },
+      {
+       "nama": "Ketintang",
+       "target": 0,
+       "kontak": 7
+      },
+      {
+       "nama": "Menanggal",
+       "target": 0,
+       "kontak": 5
+      }
+     ]
+    },
+    {
+     "nama": "JAMBANGAN",
+     "dpt": 39579,
+     "sah": 27936,
+     "nonvoter": 11643,
+     "pkb": 2604,
+     "pkb_persen": 9.32,
+     "juara": "PDIP",
+     "jarak": 2428,
+     "rasio": 0.93,
+     "tier": "adjust",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 15,
+     "kelurahan": [
+      {
+       "nama": "Jambangan",
+       "target": 0,
+       "kontak": 5
+      },
+      {
+       "nama": "Karah",
+       "target": 0,
+       "kontak": 3
+      },
+      {
+       "nama": "Kebonsari",
+       "target": 0,
+       "kontak": 3
+      },
+      {
+       "nama": "Pagesangan",
+       "target": 0,
+       "kontak": 4
+      }
+     ]
+    },
+    {
+     "nama": "WONOKROMO",
+     "dpt": 117904,
+     "sah": 78686,
+     "nonvoter": 39218,
+     "pkb": 6797,
+     "pkb_persen": 8.64,
+     "juara": "PDIP",
+     "jarak": 14865,
+     "rasio": 2.19,
+     "tier": "hindari",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 59,
+     "kelurahan": [
+      {
+       "nama": "Darmo",
+       "target": 0,
+       "kontak": 9
+      },
+      {
+       "nama": "Jagir",
+       "target": 0,
+       "kontak": 8
+      },
+      {
+       "nama": "Ngagel",
+       "target": 0,
+       "kontak": 5
+      },
+      {
+       "nama": "Ngagelrejo",
+       "target": 0,
+       "kontak": 5
+      },
+      {
+       "nama": "Sawunggaling",
+       "target": 0,
+       "kontak": 9
+      },
+      {
+       "nama": "Wonokromo",
+       "target": 0,
+       "kontak": 23
+      }
+     ]
+    },
+    {
+     "nama": "SAWAHAN",
+     "dpt": 150180,
+     "sah": 100223,
+     "nonvoter": 49957,
+     "pkb": 8538,
+     "pkb_persen": 8.52,
+     "juara": "PDIP",
+     "jarak": 15465,
+     "rasio": 1.81,
+     "tier": "hindari",
+     "target": 0,
+     "target_kel": 0,
+     "kontak": 46,
+     "kelurahan": [
+      {
+       "nama": "Banyu Urip",
+       "target": 0,
+       "kontak": 14
+      },
+      {
+       "nama": "Kupang Krajan",
+       "target": 0,
+       "kontak": 8
+      },
+      {
+       "nama": "Pakis",
+       "target": 0,
+       "kontak": 7
+      },
+      {
+       "nama": "Patemon",
+       "target": 0,
+       "kontak": 0
+      },
+      {
+       "nama": "Putat Jaya",
+       "target": 0,
+       "kontak": 14
+      },
+      {
+       "nama": "Sawahan",
+       "target": 0,
+       "kontak": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nomor": 7,
+   "kursi": 7,
+   "pkb_kursi": 0,
+   "target": 2321,
+   "dpt": 250917,
+   "nonvoter": 70921,
+   "kecamatan": [
+    {
+     "nama": "LAKARSANTRI",
+     "dpt": 46117,
+     "sah": 33455,
+     "nonvoter": 12662,
+     "pkb": 2878,
+     "pkb_persen": 8.6,
+     "juara": "Gerindra",
+     "jarak": 4286,
+     "rasio": 1.49,
+     "tier": "adjust",
+     "target": 414,
+     "target_kel": 69,
+     "kontak": 30,
+     "kelurahan": [
+      {
+       "nama": "Bangkingan",
+       "target": 69,
+       "kontak": 2
+      },
+      {
+       "nama": "Jeruk",
+       "target": 69,
+       "kontak": 4
+      },
+      {
+       "nama": "Lakarsantri",
+       "target": 69,
+       "kontak": 19
+      },
+      {
+       "nama": "Lidah Kulon",
+       "target": 69,
+       "kontak": 2
+      },
+      {
+       "nama": "Lidah Wetan",
+       "target": 69,
+       "kontak": 2
+      },
+      {
+       "nama": "Sumur Welut",
+       "target": 69,
+       "kontak": 1
+      }
+     ]
+    },
+    {
+     "nama": "KARANG PILANG",
+     "dpt": 55637,
+     "sah": 40235,
+     "nonvoter": 15402,
+     "pkb": 2514,
+     "pkb_persen": 6.25,
+     "juara": "Gerindra",
+     "jarak": 12444,
+     "rasio": 4.95,
+     "tier": "hindari",
+     "target": 504,
+     "target_kel": 126,
+     "kontak": 10,
+     "kelurahan": [
+      {
+       "nama": "Karang Pilang",
+       "target": 126,
+       "kontak": 2
+      },
+      {
+       "nama": "Kebraon",
+       "target": 126,
+       "kontak": 3
+      },
+      {
+       "nama": "Kedurus",
+       "target": 126,
+       "kontak": 4
+      },
+      {
+       "nama": "Warugunung",
+       "target": 126,
+       "kontak": 1
+      }
+     ]
+    },
+    {
+     "nama": "SAMBIKEREP",
+     "dpt": 49511,
+     "sah": 36067,
+     "nonvoter": 13444,
+     "pkb": 1846,
+     "pkb_persen": 5.12,
+     "juara": "PDIP",
+     "jarak": 5604,
+     "rasio": 3.04,
+     "tier": "hindari",
+     "target": 440,
+     "target_kel": 110,
+     "kontak": 39,
+     "kelurahan": [
+      {
+       "nama": "Bringin",
+       "target": 110,
+       "kontak": 19
+      },
+      {
+       "nama": "Made",
+       "target": 110,
+       "kontak": 4
+      },
+      {
+       "nama": "Lontar",
+       "target": 110,
+       "kontak": 13
+      },
+      {
+       "nama": "Sambikerep",
+       "target": 110,
+       "kontak": 3
+      }
+     ]
+    },
+    {
+     "nama": "WIYUNG",
+     "dpt": 55475,
+     "sah": 40133,
+     "nonvoter": 15342,
+     "pkb": 2006,
+     "pkb_persen": 5.0,
+     "juara": "Gerindra",
+     "jarak": 9360,
+     "rasio": 4.67,
+     "tier": "hindari",
+     "target": 502,
+     "target_kel": 126,
+     "kontak": 7,
+     "kelurahan": [
+      {
+       "nama": "Babatan",
+       "target": 126,
+       "kontak": 2
+      },
+      {
+       "nama": "Balasklumprik",
+       "target": 126,
+       "kontak": 1
+      },
+      {
+       "nama": "Jajar Tunggal",
+       "target": 126,
+       "kontak": 0
+      },
+      {
+       "nama": "Wiyung",
+       "target": 126,
+       "kontak": 4
+      }
+     ]
+    },
+    {
+     "nama": "DUKUH PAKIS",
+     "dpt": 44177,
+     "sah": 30106,
+     "nonvoter": 14071,
+     "pkb": 1481,
+     "pkb_persen": 4.92,
+     "juara": "Gerindra",
+     "jarak": 4614,
+     "rasio": 3.12,
+     "tier": "hindari",
+     "target": 460,
+     "target_kel": 115,
+     "kontak": 15,
+     "kelurahan": [
+      {
+       "nama": "Dukuh Kupang",
+       "target": 115,
+       "kontak": 1
+      },
+      {
+       "nama": "Dukuh Pakis",
+       "target": 115,
+       "kontak": 2
+      },
+      {
+       "nama": "Gunung Sari",
+       "target": 115,
+       "kontak": 7
+      },
+      {
+       "nama": "Pradah Kalikendal",
+       "target": 115,
+       "kontak": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nomor": 8,
+   "kursi": 7,
+   "pkb_kursi": 1,
+   "target": 16686,
+   "dpt": 276163,
+   "nonvoter": 76341,
+   "kecamatan": [
+    {
+     "nama": "BENOWO",
+     "dpt": 51738,
+     "sah": 38493,
+     "nonvoter": 13245,
+     "pkb": 7142,
+     "pkb_persen": 18.55,
+     "juara": "PDIP",
+     "jarak": 2604,
+     "rasio": 0.36,
+     "tier": "pertebal",
+     "target": 2895,
+     "target_kel": 724,
+     "kontak": 52,
+     "kelurahan": [
+      {
+       "nama": "Kandangan",
+       "target": 724,
+       "kontak": 8
+      },
+      {
+       "nama": "Romokalisari",
+       "target": 724,
+       "kontak": 1
+      },
+      {
+       "nama": "Sememi",
+       "target": 724,
+       "kontak": 43
+      },
+      {
+       "nama": "Tambak Osowilangun",
+       "target": 724,
+       "kontak": 0
+      }
+     ]
+    },
+    {
+     "nama": "ASEM ROWO",
+     "dpt": 34131,
+     "sah": 22410,
+     "nonvoter": 11721,
+     "pkb": 3917,
+     "pkb_persen": 17.48,
+     "juara": "Gerindra",
+     "jarak": 428,
+     "rasio": 0.11,
+     "tier": "pertebal",
+     "target": 2562,
+     "target_kel": 854,
+     "kontak": 14,
+     "kelurahan": [
+      {
+       "nama": "Asemrowo",
+       "target": 854,
+       "kontak": 10
+      },
+      {
+       "nama": "Genting Kalianak",
+       "target": 854,
+       "kontak": 1
+      },
+      {
+       "nama": "Tambak Sarioso",
+       "target": 854,
+       "kontak": 3
+      }
+     ]
+    },
+    {
+     "nama": "PAKAL",
+     "dpt": 44775,
+     "sah": 34939,
+     "nonvoter": 9836,
+     "pkb": 6052,
+     "pkb_persen": 17.32,
+     "juara": "PPP",
+     "jarak": 2071,
+     "rasio": 0.34,
+     "tier": "pertebal",
+     "target": 2150,
+     "target_kel": 537,
+     "kontak": 31,
+     "kelurahan": [
+      {
+       "nama": "Babat Jerawat",
+       "target": 537,
+       "kontak": 7
+      },
+      {
+       "nama": "Benowo",
+       "target": 537,
+       "kontak": 11
+      },
+      {
+       "nama": "Pakal",
+       "target": 537,
+       "kontak": 13
+      },
+      {
+       "nama": "Sumberejo",
+       "target": 537,
+       "kontak": 0
+      }
+     ]
+    },
+    {
+     "nama": "TANDES",
+     "dpt": 67845,
+     "sah": 47549,
+     "nonvoter": 20296,
+     "pkb": 4297,
+     "pkb_persen": 9.04,
+     "juara": "Demokrat",
+     "jarak": 4859,
+     "rasio": 1.13,
+     "tier": "adjust",
+     "target": 4436,
+     "target_kel": 739,
+     "kontak": 22,
+     "kelurahan": [
+      {
+       "nama": "Balongsari",
+       "target": 739,
+       "kontak": 3
+      },
+      {
+       "nama": "Banjar Sugihan",
+       "target": 739,
+       "kontak": 1
+      },
+      {
+       "nama": "Karang Poh",
+       "target": 739,
+       "kontak": 3
+      },
+      {
+       "nama": "Manukan Kulon",
+       "target": 739,
+       "kontak": 6
+      },
+      {
+       "nama": "Manukan Wetan",
+       "target": 739,
+       "kontak": 2
+      },
+      {
+       "nama": "Tandes",
+       "target": 739,
+       "kontak": 7
+      }
+     ]
+    },
+    {
+     "nama": "SUKOMANUNGGAL",
+     "dpt": 77674,
+     "sah": 56431,
+     "nonvoter": 21243,
+     "pkb": 4093,
+     "pkb_persen": 7.25,
+     "juara": "PDIP",
+     "jarak": 7848,
+     "rasio": 1.92,
+     "tier": "hindari",
+     "target": 4643,
+     "target_kel": 774,
+     "kontak": 21,
+     "kelurahan": [
+      {
+       "nama": "Putatgede",
+       "target": 774,
+       "kontak": 4
+      },
+      {
+       "nama": "Simomulyo",
+       "target": 774,
+       "kontak": 5
+      },
+      {
+       "nama": "Simomulyo Baru",
+       "target": 774,
+       "kontak": 4
+      },
+      {
+       "nama": "Sonokwijenan",
+       "target": 774,
+       "kontak": 1
+      },
+      {
+       "nama": "Sukomanunggal",
+       "target": 774,
+       "kontak": 5
+      },
+      {
+       "nama": "Tanjungsari",
+       "target": 774,
+       "kontak": 2
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
