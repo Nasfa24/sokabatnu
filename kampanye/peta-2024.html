@@ -179,13 +179,38 @@
   <div id="kartu-pkb"></div>
 
   <div class="kartu">
+    <h2>Peringkat partai kota</h2>
+    <p class="sub">Gabungan lima dapil. Kursi dihitung dari total kursi tiap dapil, bukan dari suara kota.</p>
+    <div id="partai-kota"></div>
+  </div>
+
+  <div class="kartu">
+    <h2>Kecamatan paling ketat</h2>
+    <p class="sub">Selisih suara juara dan runner up. Makin kecil, makin murah untuk dibalik pada 2029.</p>
+    <div id="kompetisi"></div>
+  </div>
+
+  <div class="kartu">
+    <h2>PKB di seluruh kota</h2>
+    <p class="sub">31 kecamatan diurutkan menurut pangsa PKB. Basis kuat dan titik lemah terlihat langsung.</p>
+    <div id="pkb-kota"></div>
+  </div>
+
+  <div class="kartu">
+    <h2>Caleg teratas kota</h2>
+    <p class="sub">Dua belas perolehan tertinggi lintas dapil. Nama besar menentukan kursi, bukan hanya suara partai.</p>
+    <div id="caleg-kota"></div>
+  </div>
+
+
+  <div class="kartu">
     <h2>Level kelurahan</h2>
     <p class="catatan" id="catatan-kelurahan"></p>
   </div>
 
   <div class="kaki">
     <a href="index.html">Kembali ke Dashboard</a>
-    <a href="simulasi-2029.html" style="display:block;margin-top:8px;text-align:center;text-decoration:none;background:#04301f;color:#ffe6a6;font-weight:800;font-size:12.5px;padding:11px;border-radius:10px;border:1px solid rgba(246,185,59,.45)">Simulasi 8 dapil 2029 &rarr;</a>
+    <a href="simulasi-2029.html" style="display:block;margin-top:8px;text-align:center;text-decoration:none;background:#04301f;color:#ffe6a6;font-weight:800;font-size:12.5px;padding:11px;border-radius:10px;border:1px solid rgba(246,185,59,.45)">Simulasi 50 Kursi 5 Dapil &amp; 55 Kursi 8 Dapil &rarr;</a>
     <a href="data/pemilu-2024.json">Data JSON</a>
   </div>
 </div>
@@ -399,6 +424,80 @@ function renderPKB(d) {
     '</div>';
 }
 
+function agregatKota() {
+  const partai = {};
+  const caleg = [];
+  const kec = [];
+  let sah = 0, dpt = 0;
+  Object.keys(DATA.dapil).forEach(k => {
+    const d = DATA.dapil[k];
+    sah += d.suara_sah;
+    dpt += d.kecamatan_detail.reduce((a, x) => a + x.dpt, 0);
+    (d.partai || []).forEach(p => {
+      const s = partai[p.singkat] || (partai[p.singkat] = { singkat: p.singkat, nama: p.nama, total: 0, kursi: 0 });
+      s.total += p.total;
+      s.kursi += p.kursi;
+      (p.caleg || []).forEach(c => {
+        if (c.total) caleg.push({ nama: c.nama, partai: p.singkat, dapil: k, suara: c.total, terpilih: c.terpilih });
+      });
+    });
+    d.kecamatan_detail.forEach(x => {
+      const pk = x.partai.find(y => y.singkat === 'PKB' || /Kebangkitan/.test(y.nama || ''));
+      kec.push({ nama: x.nama, dapil: k, sah: x.suara_sah, dpt: x.dpt, partisipasi: x.partisipasi,
+                 pemenang: x.pemenang_singkat, persen: x.persen_pemenang, selisih: x.selisih_puncak,
+                 pkb: pk ? pk.total : 0, pkb_persen: x.suara_sah ? 100 * (pk ? pk.total : 0) / x.suara_sah : 0 });
+    });
+  });
+  return { sah: sah, dpt: dpt, partai: partai, caleg: caleg, kec: kec };
+}
+
+function renderKotaBagian() {
+  const A = agregatKota();
+  const partai = Object.values(A.partai).filter(p => p.total > 0).sort((a, b) => b.total - a.total);
+  const maks = Math.max.apply(null, partai.map(p => p.total).concat([1]));
+
+  document.getElementById('partai-kota').innerHTML =
+    '<p class="catatan" style="margin:0 0 10px">Partisipasi kota ' +
+      pct(100 * A.sah / A.dpt) + ' dari ' + nf(A.dpt) + ' pemilih terdaftar. ' +
+      partai.length + ' partai meraih suara, ' + partai.filter(p => p.kursi).length + ' partai meraih kursi.</p>' +
+    partai.map((p, i) =>
+      '<div class="baris">' +
+        '<div class="kiri"><div class="nm">' + (i + 1) + '. ' + p.singkat + '</div>' +
+          '<div class="ket">' + nf(p.total) + ' suara · ' + pct(100 * p.total / A.sah) + '</div>' +
+          '<div class="barbg"><div class="barfg" style="width:' + Math.round(100 * p.total / maks) + '%"></div></div>' +
+        '</div>' +
+        '<div class="kanan">' + (p.kursi ? '<span class="lencana">' + p.kursi + ' kursi</span>'
+          : '<span class="lencana nol">0</span>') + '</div>' +
+      '</div>').join('');
+
+  const ketat = A.kec.slice().sort((a, b) => a.selisih - b.selisih).slice(0, 10);
+  document.getElementById('kompetisi').innerHTML = ketat.map(x =>
+    '<div class="baris">' +
+      '<div class="kiri"><div class="nm">' + x.nama + '</div>' +
+        '<div class="ket">Dapil ' + x.dapil + ' · ' + x.pemenang + ' menang tipis · ' + nf(x.sah) + ' suara sah</div></div>' +
+      '<div class="kanan"><b>' + nf(x.selisih) + '</b><span>selisih</span></div>' +
+    '</div>').join('');
+
+  const pkb = A.kec.slice().sort((a, b) => b.pkb_persen - a.pkb_persen);
+  const pmaks = Math.max.apply(null, pkb.map(x => x.pkb_persen).concat([1]));
+  document.getElementById('pkb-kota').innerHTML = pkb.map(x =>
+    '<div class="baris">' +
+      '<div class="kiri"><div class="nm">' + x.nama + ' <small style="font-weight:700;color:#7b8c85;font-size:10.5px">Dapil ' + x.dapil + '</small></div>' +
+        '<div class="barbg"><div class="barfg" style="width:' + Math.round(100 * x.pkb_persen / pmaks) + '%"></div></div></div>' +
+      '<div class="kanan"><b>' + pct(x.pkb_persen) + '</b><span>' + nf(x.pkb) + '</span></div>' +
+    '</div>').join('');
+
+  const caleg = A.caleg.slice().sort((a, b) => b.suara - a.suara).slice(0, 12);
+  const cmaks = Math.max.apply(null, caleg.map(c => c.suara).concat([1]));
+  document.getElementById('caleg-kota').innerHTML = caleg.map((c, i) =>
+    '<div class="baris">' +
+      '<div class="kiri"><div class="nm">' + (i + 1) + '. ' + c.nama + (c.terpilih ? ' <span style="color:#0b6b45">✔</span>' : '') + '</div>' +
+        '<div class="ket">' + c.partai + ' · Dapil ' + c.dapil + '</div>' +
+        '<div class="barbg"><div class="barfg" style="width:' + Math.round(100 * c.suara / cmaks) + '%"></div></div></div>' +
+      '<div class="kanan"><b>' + nf(c.suara) + '</b><span>suara</span></div>' +
+    '</div>').join('');
+}
+
 function renderSemua() {
   const d = DATA.dapil[String(dapilAktif)];
   renderRingkas(d); renderKantong(d); renderTabel(d); renderKecamatan(d); renderPartai(d); renderPKB(d);
@@ -413,6 +512,7 @@ function renderGlobal() {
     ' kelurahan sudah terdaftar lengkap di halaman ini. Angka suara per kelurahan tidak ada di dokumen itu, ' +
     'karena rekap kota hanya memuat kolom kecamatan. Kalau Anda kirim formulir D.HASIL KECAMATAN-DPRD ' +
     'untuk 7 kecamatan Dapil 3, saya pecah sampai kelurahan dan menyusun prioritas kanvasing per TPS.';
+  renderKotaBagian();
 }
 
 fetch('data/pemilu-2024.json')

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sokabatnu-v7.2';
+const CACHE_NAME = 'sokabatnu-v7.3';
 const urlsToCache = [
   './',
   './index.html',
@@ -6,7 +6,8 @@ const urlsToCache = [
   './tim.html',
   './inputer.html',
   './app.js',
-  './simulasi-50kursi.html',
+  './simulasi-2029.html',
+  './peta-2024.html',
   './favicon-32.png',
   './favicon-512.png'
 ];
