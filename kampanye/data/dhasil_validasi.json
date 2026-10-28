@@ -1,0 +1,544 @@
+{
+ "Asemrowo": {
+  "dapil": 5,
+  "status": "sebagian",
+  "pkb_parse": 3917,
+  "pkb_resmi": 3917,
+  "partai_beda": {
+   "Gerindra": {
+    "parse": 4352,
+    "resmi": 4345
+   },
+   "Buruh": {
+    "parse": 0,
+    "resmi": 105
+   },
+   "Hanura": {
+    "parse": 0,
+    "resmi": 78
+   },
+   "PAN": {
+    "parse": 1016,
+    "resmi": 678
+   },
+   "Demokrat": {
+    "parse": 1570,
+    "resmi": 1479
+   },
+   "Perindo": {
+    "parse": 0,
+    "resmi": 234
+   },
+   "Ummat": {
+    "parse": 0,
+    "resmi": 81
+   }
+  }
+ },
+ "Benowo": {
+  "dapil": 5,
+  "status": "penuh",
+  "pkb_parse": 7142,
+  "pkb_resmi": 7142,
+  "partai_beda": {}
+ },
+ "Bubutan": {
+  "dapil": 1,
+  "status": "penuh",
+  "pkb_parse": 4642,
+  "pkb_resmi": 4642,
+  "partai_beda": {}
+ },
+ "Bulak": {
+  "dapil": 3,
+  "status": "sebagian",
+  "pkb_parse": 2282,
+  "pkb_resmi": 2282,
+  "partai_beda": {
+   "Gerindra": {
+    "parse": 0,
+    "resmi": 2993
+   },
+   "Golkar": {
+    "parse": 0,
+    "resmi": 1482
+   },
+   "Buruh": {
+    "parse": 0,
+    "resmi": 153
+   },
+   "PKS": {
+    "parse": 0,
+    "resmi": 4619
+   },
+   "Hanura": {
+    "parse": 0,
+    "resmi": 102
+   },
+   "PAN": {
+    "parse": 0,
+    "resmi": 847
+   },
+   "Demokrat": {
+    "parse": 0,
+    "resmi": 1168
+   },
+   "Perindo": {
+    "parse": 0,
+    "resmi": 306
+   },
+   "Ummat": {
+    "parse": 0,
+    "resmi": 152
+   }
+  }
+ },
+ "Dukuh Pakis": {
+  "dapil": 5,
+  "status": "penuh",
+  "pkb_parse": 1481,
+  "pkb_resmi": 1481,
+  "partai_beda": {}
+ },
+ "Gayungan": {
+  "dapil": 4,
+  "status": "penuh",
+  "pkb_parse": 2513,
+  "pkb_resmi": 2513,
+  "partai_beda": {}
+ },
+ "Genteng": {
+  "dapil": 1,
+  "status": "sebagian",
+  "pkb_parse": 3072,
+  "pkb_resmi": 3072,
+  "partai_beda": {
+   "Ummat": {
+    "parse": 147,
+    "resmi": 146
+   }
+  }
+ },
+ "Gubeng": {
+  "dapil": 1,
+  "status": "sebagian",
+  "pkb_parse": 9236,
+  "pkb_resmi": 9236,
+  "partai_beda": {
+   "Gerindra": {
+    "parse": 46890,
+    "resmi": 11834
+   },
+   "Golkar": {
+    "parse": 0,
+    "resmi": 3655
+   },
+   "Buruh": {
+    "parse": 0,
+    "resmi": 690
+   },
+   "PKS": {
+    "parse": 46890,
+    "resmi": 8704
+   },
+   "Hanura": {
+    "parse": 0,
+    "resmi": 620
+   },
+   "PAN": {
+    "parse": 0,
+    "resmi": 3854
+   },
+   "Demokrat": {
+    "parse": 0,
+    "resmi": 3081
+   },
+   "Perindo": {
+    "parse": 0,
+    "resmi": 2495
+   },
+   "Ummat": {
+    "parse": 0,
+    "resmi": 559
+   }
+  }
+ },
+ "Gunung Anyar": {
+  "dapil": 3,
+  "status": "penuh",
+  "pkb_parse": 3095,
+  "pkb_resmi": 3095,
+  "partai_beda": {}
+ },
+ "Jambangan": {
+  "dapil": 4,
+  "status": "penuh",
+  "pkb_parse": 2604,
+  "pkb_resmi": 2604,
+  "partai_beda": {}
+ },
+ "Karang Pilang": {
+  "dapil": 5,
+  "status": "penuh",
+  "pkb_parse": 2514,
+  "pkb_resmi": 2514,
+  "partai_beda": {}
+ },
+ "Kenjeran": {
+  "dapil": 2,
+  "status": "sebagian",
+  "pkb_parse": 14682,
+  "pkb_resmi": 14682,
+  "partai_beda": {
+   "PDIP": {
+    "parse": 18310,
+    "resmi": 18116
+   },
+   "Buruh": {
+    "parse": 0,
+    "resmi": 572
+   },
+   "PKS": {
+    "parse": 5960,
+    "resmi": 5400
+   },
+   "Hanura": {
+    "parse": 0,
+    "resmi": 540
+   },
+   "PAN": {
+    "parse": 6041,
+    "resmi": 6010
+   },
+   "PSI": {
+    "parse": 2652,
+    "resmi": 2653
+   },
+   "Perindo": {
+    "parse": 0,
+    "resmi": 647
+   },
+   "Ummat": {
+    "parse": 0,
+    "resmi": 694
+   }
+  }
+ },
+ "Krembangan": {
+  "dapil": 1,
+  "status": "penuh",
+  "pkb_parse": 4998,
+  "pkb_resmi": 4998,
+  "partai_beda": {}
+ },
+ "Lakarsantri": {
+  "dapil": 5,
+  "status": "penuh",
+  "pkb_parse": 2878,
+  "pkb_resmi": 2878,
+  "partai_beda": {}
+ },
+ "Mulyorejo": {
+  "dapil": 3,
+  "status": "sebagian",
+  "pkb_parse": 2042,
+  "pkb_resmi": 2042,
+  "partai_beda": {
+   "Gerindra": {
+    "parse": 5703,
+    "resmi": 5264
+   },
+   "Golkar": {
+    "parse": 5046,
+    "resmi": 2052
+   },
+   "Buruh": {
+    "parse": 0,
+    "resmi": 345
+   },
+   "PKS": {
+    "parse": 5046,
+    "resmi": 3311
+   },
+   "Hanura": {
+    "parse": 0,
+    "resmi": 226
+   },
+   "PAN": {
+    "parse": 5046,
+    "resmi": 2024
+   },
+   "Demokrat": {
+    "parse": 5046,
+    "resmi": 2419
+   },
+   "Perindo": {
+    "parse": 5046,
+    "resmi": 1855
+   },
+   "Ummat": {
+    "parse": 0,
+    "resmi": 246
+   }
+  }
+ },
+ "Pabean Cantian": {
+  "dapil": 2,
+  "status": "penuh",
+  "pkb_parse": 2910,
+  "pkb_resmi": 2910,
+  "partai_beda": {}
+ },
+ "Pakal": {
+  "dapil": 5,
+  "status": "sebagian",
+  "pkb_parse": 6052,
+  "pkb_resmi": 6052,
+  "partai_beda": {
+   "Gerindra": {
+    "parse": 3402,
+    "resmi": 3001
+   },
+   "Golkar": {
+    "parse": 2512,
+    "resmi": 1257
+   },
+   "Buruh": {
+    "parse": 0,
+    "resmi": 134
+   },
+   "PKS": {
+    "parse": 2733,
+    "resmi": 1429
+   },
+   "Hanura": {
+    "parse": 0,
+    "resmi": 72
+   },
+   "PAN": {
+    "parse": 2554,
+    "resmi": 1001
+   },
+   "Demokrat": {
+    "parse": 3970,
+    "resmi": 2941
+   },
+   "Perindo": {
+    "parse": 0,
+    "resmi": 366
+   },
+   "Ummat": {
+    "parse": 0,
+    "resmi": 95
+   }
+  }
+ },
+ "Rungkut": {
+  "dapil": 3,
+  "status": "penuh",
+  "pkb_parse": 4409,
+  "pkb_resmi": 4409,
+  "partai_beda": {}
+ },
+ "Sambikerep": {
+  "dapil": 5,
+  "status": "penuh",
+  "pkb_parse": 1846,
+  "pkb_resmi": 1846,
+  "partai_beda": {}
+ },
+ "Sawahan": {
+  "dapil": 4,
+  "status": "penuh",
+  "pkb_parse": 8538,
+  "pkb_resmi": 8538,
+  "partai_beda": {}
+ },
+ "Semampir": {
+  "dapil": 2,
+  "status": "penuh",
+  "pkb_parse": 11644,
+  "pkb_resmi": 11644,
+  "partai_beda": {}
+ },
+ "Simokerto": {
+  "dapil": 1,
+  "status": "penuh",
+  "pkb_parse": 6970,
+  "pkb_resmi": 6970,
+  "partai_beda": {}
+ },
+ "Sukolilo": {
+  "dapil": 3,
+  "status": "sebagian",
+  "pkb_parse": 4101,
+  "pkb_resmi": 4101,
+  "partai_beda": {
+   "Buruh": {
+    "parse": 503,
+    "resmi": 464
+   },
+   "Hanura": {
+    "parse": 434,
+    "resmi": 296
+   },
+   "Ummat": {
+    "parse": 657,
+    "resmi": 561
+   }
+  }
+ },
+ "Sukomanunggal": {
+  "dapil": 4,
+  "status": "sebagian",
+  "pkb_parse": 4093,
+  "pkb_resmi": 4093,
+  "partai_beda": {
+   "PSI": {
+    "parse": 5816,
+    "resmi": 5821
+   }
+  }
+ },
+ "Tambaksari": {
+  "dapil": 2,
+  "status": "sebagian",
+  "pkb_parse": 11768,
+  "pkb_resmi": 11768,
+  "partai_beda": {
+   "PAN": {
+    "parse": 6616,
+    "resmi": 6626
+   }
+  }
+ },
+ "Tandes": {
+  "dapil": 5,
+  "status": "sebagian",
+  "pkb_parse": 4306,
+  "pkb_resmi": 4297,
+  "partai_beda": {
+   "PKB": {
+    "parse": 4306,
+    "resmi": 4297
+   },
+   "Gerindra": {
+    "parse": 23874,
+    "resmi": 7459
+   },
+   "Golkar": {
+    "parse": 0,
+    "resmi": 3118
+   },
+   "Buruh": {
+    "parse": 0,
+    "resmi": 315
+   },
+   "PKS": {
+    "parse": 23874,
+    "resmi": 4012
+   },
+   "Hanura": {
+    "parse": 0,
+    "resmi": 197
+   },
+   "PAN": {
+    "parse": 0,
+    "resmi": 2592
+   },
+   "Demokrat": {
+    "parse": 24389,
+    "resmi": 9156
+   },
+   "PSI": {
+    "parse": 4236,
+    "resmi": 3796
+   },
+   "Perindo": {
+    "parse": 0,
+    "resmi": 914
+   },
+   "Ummat": {
+    "parse": 0,
+    "resmi": 745
+   }
+  }
+ },
+ "Tenggilis Mejoyo": {
+  "dapil": 3,
+  "status": "penuh",
+  "pkb_parse": 7867,
+  "pkb_resmi": 7867,
+  "partai_beda": {}
+ },
+ "Wiyung": {
+  "dapil": 5,
+  "status": "penuh",
+  "pkb_parse": 2006,
+  "pkb_resmi": 2006,
+  "partai_beda": {}
+ },
+ "Wonocolo": {
+  "dapil": 3,
+  "status": "sebagian",
+  "pkb_parse": 3217,
+  "pkb_resmi": 3218,
+  "partai_beda": {
+   "PKB": {
+    "parse": 3217,
+    "resmi": 3218
+   },
+   "Gerindra": {
+    "parse": 7199,
+    "resmi": 6850
+   },
+   "PDIP": {
+    "parse": 8517,
+    "resmi": 6275
+   },
+   "Golkar": {
+    "parse": 2740,
+    "resmi": 2741
+   },
+   "Hanura": {
+    "parse": 704,
+    "resmi": 708
+   },
+   "Garuda": {
+    "parse": 93,
+    "resmi": 94
+   },
+   "PAN": {
+    "parse": 1399,
+    "resmi": 1400
+   },
+   "PBB": {
+    "parse": 196,
+    "resmi": 197
+   },
+   "Demokrat": {
+    "parse": 2034,
+    "resmi": 2035
+   },
+   "PSI": {
+    "parse": 3126,
+    "resmi": 3127
+   },
+   "Perindo": {
+    "parse": 662,
+    "resmi": 663
+   },
+   "PPP": {
+    "parse": 5681,
+    "resmi": 5673
+   }
+  }
+ },
+ "Wonokromo": {
+  "dapil": 4,
+  "status": "penuh",
+  "pkb_parse": 6797,
+  "pkb_resmi": 6797,
+  "partai_beda": {}
+ }
+}

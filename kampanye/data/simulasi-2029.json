@@ -1,133 +1,25 @@
 {
- "sumber": "KPU Kota Surabaya 2024, rekap D.Hasil DPRD Kota, 31 kecamatan, 1.536.843 suara sah",
- "metode": "Sainte-Lague murni tanpa ambang parlemen. Suara partai lain dibekukan pada angka 2024.",
- "lima": {
-  "label": "5 Dapil, 50 Kursi",
-  "total_kursi": 50,
-  "jumlah_dapil": 5,
+ "meta": {
+  "sumber": "KPU, Pemilu 2024 (rekap kecamatan resmi + Peta Suara kelurahan)",
   "total_sah": 1536843,
-  "total_dpt": 2218586,
-  "partisipasi": 69.3,
-  "pkb": {
-   "suara": 159362,
-   "persen": 10.37,
-   "kursi": 5,
-   "biaya_per_kursi": 31872
-  },
-  "partai": [
-   {
-    "partai": "PDIP",
-    "suara": 336698,
-    "persen": 21.91,
-    "kursi": 11
-   },
-   {
-    "partai": "Gerindra",
-    "suara": 241231,
-    "persen": 15.7,
-    "kursi": 8
-   },
-   {
-    "partai": "PKB",
-    "suara": 159362,
-    "persen": 10.37,
-    "kursi": 5
-   },
-   {
-    "partai": "Golkar",
-    "suara": 136814,
-    "persen": 8.9,
-    "kursi": 5
-   },
-   {
-    "partai": "PKS",
-    "suara": 135733,
-    "persen": 8.83,
-    "kursi": 5
-   },
-   {
-    "partai": "PSI",
-    "suara": 133236,
-    "persen": 8.67,
-    "kursi": 5
-   },
-   {
-    "partai": "Demokrat",
-    "suara": 103382,
-    "persen": 6.73,
-    "kursi": 3
-   },
-   {
-    "partai": "PAN",
-    "suara": 83567,
-    "persen": 5.44,
-    "kursi": 3
-   },
-   {
-    "partai": "NasDem",
-    "suara": 62658,
-    "persen": 4.08,
-    "kursi": 2
-   },
-   {
-    "partai": "PPP",
-    "suara": 52410,
-    "persen": 3.41,
-    "kursi": 3
-   },
-   {
-    "partai": "Perindo",
-    "suara": 32012,
-    "persen": 2.08,
-    "kursi": 0
-   },
-   {
-    "partai": "Buruh",
-    "suara": 11824,
-    "persen": 0.77,
-    "kursi": 0
-   },
-   {
-    "partai": "Hanura",
-    "suara": 11420,
-    "persen": 0.74,
-    "kursi": 0
-   },
-   {
-    "partai": "Gelora",
-    "suara": 10567,
-    "persen": 0.69,
-    "kursi": 0
-   },
-   {
-    "partai": "Ummat",
-    "suara": 9574,
-    "persen": 0.62,
-    "kursi": 0
-   },
-   {
-    "partai": "PBB",
-    "suara": 9389,
-    "persen": 0.61,
-    "kursi": 0
-   },
-   {
-    "partai": "Garuda",
-    "suara": 4037,
-    "persen": 0.26,
-    "kursi": 0
-   },
-   {
-    "partai": "PKN",
-    "suara": 2929,
-    "persen": 0.19,
-    "kursi": 0
-   }
-  ],
+  "total_pkb": 159362,
+  "pkb_persen": 10.37,
+  "kursi_2024": 50,
+  "kursi_pkb_2024": 5,
+  "kelurahan": 148,
+  "kelurahan_kota": 153,
+  "kecamatan": 31,
+  "catatan": "Tegalsari tidak punya rincian kelurahan. Angka partai non-PKB di 12 kecamatan belum final."
+ },
+ "A": {
+  "nama": "A",
+  "kursi_total": 55,
+  "pkb_kursi": 5,
+  "pkb": 159362,
+  "sah": 1536843,
   "dapil": [
    {
     "nomor": 1,
-    "kursi": 10,
     "kecamatan": [
      "TEGALSARI",
      "GENTENG",
@@ -136,454 +28,511 @@
      "BUBUTAN",
      "KREMBANGAN"
     ],
-    "jumlah_kecamatan": 6,
+    "kursi": 11,
     "sah": 298698,
     "dpt": 446501,
     "partisipasi": 66.9,
-    "kuota_suara": 29870,
+    "kuota": 27154,
+    "harga": 13878,
     "pkb": 34666,
     "pkb_persen": 11.61,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 47464,
-    "tambah_suara": 12798,
-    "rasio": 1.37,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 2,
-      "suara": 68452,
-      "persen": 22.9
+    "tambah": 6968,
+    "rasio": 0.2,
+    "tier": {
+     "menang": {
+      "n": 2,
+      "pkb": 4419,
+      "gap": 240,
+      "kel": [
+       {
+        "nama": "SIMOLAWANG",
+        "kec": "Simokerto",
+        "pkb": 2942,
+        "share": 29.08,
+        "rank": 2,
+        "top": "Gerindra",
+        "gap": 240
+       },
+       {
+        "nama": "SIDODADI",
+        "kec": "Simokerto",
+        "pkb": 1477,
+        "share": 19.01,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       }
+      ]
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 2,
-      "suara": 47463,
-      "persen": 15.9
+     "bersaing": {
+      "n": 4,
+      "pkb": 5509,
+      "gap": 10987,
+      "kel": [
+       {
+        "nama": "KERTAJAYA",
+        "kec": "Gubeng",
+        "pkb": 2349,
+        "share": 10.63,
+        "rank": 3,
+        "top": "Gerindra",
+        "gap": 5466
+       },
+       {
+        "nama": "JEPARA",
+        "kec": "Bubutan",
+        "pkb": 1535,
+        "share": 12.42,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 2687
+       },
+       {
+        "nama": "KAPASARI",
+        "kec": "Genteng",
+        "pkb": 918,
+        "share": 10.89,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 1654
+       },
+       {
+        "nama": "EMBONG KALIASIN",
+        "kec": "Genteng",
+        "pkb": 707,
+        "share": 11.77,
+        "rank": 3,
+        "top": "Gerindra",
+        "gap": 1180
+       }
+      ]
      },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 34666,
-      "persen": 11.6
-     },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 27410,
-      "persen": 9.2
-     },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 25644,
-      "persen": 8.6
-     },
-     {
-      "partai": "PAN",
-      "kursi": 1,
-      "suara": 21613,
-      "persen": 7.2
-     },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 21465,
-      "persen": 7.2
-     },
-     {
-      "partai": "NasDem",
-      "kursi": 1,
-      "suara": 19078,
-      "persen": 6.4
-     }
-    ],
-    "marginal": {
-     "partai": "Gerindra",
-     "kursi_ke": 10,
-     "batas": 15821.0,
-     "pemegang": {
-      "partai": "Gerindra",
-      "nama": "Ajeng Wira Wati, S.Sos., M.PSDM.",
-      "suara": 11467,
-      "basis": "GUBENG"
+     "jangan": {
+      "n": 20,
+      "pkb": 18990,
+      "gap": 55250,
+      "kel": [
+       {
+        "nama": "MOJO",
+        "kec": "Gubeng",
+        "pkb": 2992,
+        "share": 11.12,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 4823
+       },
+       {
+        "nama": "MOROKREMBANGAN",
+        "kec": "Krembangan",
+        "pkb": 2362,
+        "share": 10.0,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 3323
+       },
+       {
+        "nama": "GUNDIH",
+        "kec": "Bubutan",
+        "pkb": 1238,
+        "share": 9.13,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1854
+       },
+       {
+        "nama": "PUCANG SEWU",
+        "kec": "Gubeng",
+        "pkb": 1096,
+        "share": 5.58,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 6719
+       },
+       {
+        "nama": "AIRLANGGA",
+        "kec": "Gubeng",
+        "pkb": 1071,
+        "share": 5.3,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 6744
+       },
+       {
+        "nama": "GUBENG",
+        "kec": "Gubeng",
+        "pkb": 1064,
+        "share": 5.62,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 6751
+       },
+       {
+        "nama": "SIMOKERTO",
+        "kec": "Simokerto",
+        "pkb": 1007,
+        "share": 9.68,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1229
+       },
+       {
+        "nama": "TEMBOK DUKUH",
+        "kec": "Bubutan",
+        "pkb": 982,
+        "share": 7.54,
+        "rank": 5,
+        "top": "Golkar",
+        "gap": 1735
+       },
+       {
+        "nama": "TAMBAKREJO",
+        "kec": "Simokerto",
+        "pkb": 962,
+        "share": 10.32,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1987
+       },
+       {
+        "nama": "DUPAK",
+        "kec": "Krembangan",
+        "pkb": 838,
+        "share": 7.43,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1609
+       },
+       {
+        "nama": "KEMAYORAN",
+        "kec": "Krembangan",
+        "pkb": 751,
+        "share": 8.55,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 2624
+       },
+       {
+        "nama": "BUBUTAN",
+        "kec": "Bubutan",
+        "pkb": 737,
+        "share": 10.88,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1100
+       },
+       {
+        "nama": "PENELEH",
+        "kec": "Genteng",
+        "pkb": 708,
+        "share": 9.84,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1906
+       },
+       {
+        "nama": "PERAK BARAT",
+        "kec": "Krembangan",
+        "pkb": 668,
+        "share": 9.73,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 512
+       },
+       {
+        "nama": "BARATAJAYA",
+        "kec": "Gubeng",
+        "pkb": 664,
+        "share": 3.33,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 7151
+       },
+       {
+        "nama": "KAPASAN",
+        "kec": "Simokerto",
+        "pkb": 582,
+        "share": 7.7,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1227
+       },
+       {
+        "nama": "KREMBANGAN SELATAN",
+        "kec": "Krembangan",
+        "pkb": 379,
+        "share": 5.45,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1431
+       },
+       {
+        "nama": "GENTENG",
+        "kec": "Genteng",
+        "pkb": 371,
+        "share": 8.76,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 500
+       },
+       {
+        "nama": "KETABANG",
+        "kec": "Genteng",
+        "pkb": 368,
+        "share": 10.12,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 798
+       },
+       {
+        "nama": "ALUN-ALUN CONTONG",
+        "kec": "Bubutan",
+        "pkb": 150,
+        "share": 4.53,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1227
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "SIMOKERTO",
-      "sah": 45165,
-      "dpt": 69533,
-      "partisipasi": 65.0,
-      "pkb": 6970,
-      "pkb_persen": 15.43,
-      "juara": "PDIP",
-      "juara_persen": 19.39,
-      "jarak": 141
-     },
-     {
-      "nama": "GUBENG",
-      "sah": 69392,
-      "dpt": 101875,
-      "partisipasi": 68.1,
-      "pkb": 9236,
-      "pkb_persen": 13.31,
-      "juara": "PDIP",
-      "juara_persen": 18.05,
-      "jarak": 690
-     },
-     {
-      "nama": "TEGALSARI",
-      "sah": 48113,
-      "dpt": 73959,
-      "partisipasi": 65.1,
-      "pkb": 5748,
-      "pkb_persen": 11.95,
-      "juara": "PDIP",
-      "juara_persen": 23.6,
-      "jarak": 3872
-     },
-     {
-      "nama": "GENTENG",
-      "sah": 29506,
-      "dpt": 44341,
-      "partisipasi": 66.5,
-      "pkb": 3072,
-      "pkb_persen": 10.41,
-      "juara": "PDIP",
-      "juara_persen": 27.74,
-      "jarak": 3009
-     },
-     {
-      "nama": "BUBUTAN",
-      "sah": 49030,
-      "dpt": 72982,
-      "partisipasi": 67.2,
-      "pkb": 4642,
-      "pkb_persen": 9.47,
-      "juara": "PDIP",
-      "juara_persen": 26.78,
-      "jarak": 6214
-     },
-     {
-      "nama": "KREMBANGAN",
-      "sah": 57492,
-      "dpt": 83811,
-      "partisipasi": 68.6,
-      "pkb": 4998,
-      "pkb_persen": 8.69,
-      "juara": "PDIP",
-      "juara_persen": 25.22,
-      "jarak": 6547
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "PDIP",
-      "nama": "BUDI LEKSONO, S.H.",
-      "suara": 13271,
-      "basis": "BUBUTAN"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "H. TRI DIDIK ADIONO, S.Sos.",
-      "suara": 12021,
-      "basis": "KREMBANGAN"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Ajeng Wira Wati, S.Sos., M.PSDM.",
-      "suara": 11467,
-      "basis": "GUBENG"
-     },
-     {
-      "partai": "PKB",
-      "nama": "AIS SHAFIYAH ASFAR",
-      "suara": 10860,
-      "basis": "GUBENG"
-     },
-     {
-      "partai": "NasDem",
-      "nama": "Drs. H. IMAM SYAFI'I, S.H., M.H.",
-      "suara": 10233,
-      "basis": "KREMBANGAN"
-     },
-     {
-      "partai": "PAN",
-      "nama": "dr. Hj. ZUHROTUL MAR'AH",
-      "suara": 9985,
-      "basis": "KREMBANGAN"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "AIS SHAFIYAH ASFAR",
-      "suara": 10860,
-      "basis": "GUBENG",
-      "porsi": 31.3
-     },
-     {
-      "partai": "PKB",
-      "nama": "ZAINAL ABIDIN",
-      "suara": 6723,
-      "basis": "GUBENG",
-      "porsi": 19.4
-     },
-     {
-      "partai": "PKB",
-      "nama": "HANI FIDYANTO",
-      "suara": 5055,
-      "basis": "GUBENG",
-      "porsi": 14.6
-     },
-     {
-      "partai": "PKB",
-      "nama": "MOHAMMAD HIDAYATULLOH",
-      "suara": 1549,
-      "basis": "KREMBANGAN",
-      "porsi": 4.5
-     },
-     {
-      "partai": "PKB",
-      "nama": "QOTRUNNADA LAILA MUFIDAH",
-      "suara": 1530,
-      "basis": "SIMOKERTO",
-      "porsi": 4.4
-     },
-     {
-      "partai": "PKB",
-      "nama": "IMAM MUSTAJI, S.E.",
-      "suara": 1055,
-      "basis": "TEGALSARI",
-      "porsi": 3.0
-     }
-    ]
+    "kel_total": 26
    },
    {
     "nomor": 2,
-    "kursi": 11,
     "kecamatan": [
      "TAMBAKSARI",
      "PABEAN CANTIAN",
      "SEMAMPIR",
      "KENJERAN"
     ],
-    "jumlah_kecamatan": 4,
+    "kursi": 12,
     "sah": 325791,
     "dpt": 482660,
     "partisipasi": 67.5,
-    "kuota_suara": 29617,
+    "kuota": 27149,
+    "harga": 14769,
     "pkb": 41004,
     "pkb_persen": 12.59,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 48448,
-    "tambah_suara": 7444,
-    "rasio": 1.18,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 2,
-      "suara": 70872,
-      "persen": 21.8
+    "tambah": 3304,
+    "rasio": 0.08,
+    "tier": {
+     "menang": {
+      "n": 2,
+      "pkb": 8837,
+      "gap": 0,
+      "kel": [
+       {
+        "nama": "BULAK BANTENG",
+        "kec": "Kenjeran",
+        "pkb": 5264,
+        "share": 30.88,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       },
+       {
+        "nama": "UJUNG",
+        "kec": "Semampir",
+        "pkb": 3573,
+        "share": 22.23,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       }
+      ]
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 1,
-      "suara": 44308,
-      "persen": 13.6
+     "bersaing": {
+      "n": 11,
+      "pkb": 22649,
+      "gap": 20194,
+      "kel": [
+       {
+        "nama": "TANAH KALI KEDINDING",
+        "kec": "Kenjeran",
+        "pkb": 3924,
+        "share": 13.16,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 4255
+       },
+       {
+        "nama": "SIDOTOPO WETAN",
+        "kec": "Kenjeran",
+        "pkb": 3749,
+        "share": 12.56,
+        "rank": 3,
+        "top": "PPP",
+        "gap": 3304
+       },
+       {
+        "nama": "WONOKUSUMO",
+        "kec": "Semampir",
+        "pkb": 3523,
+        "share": 11.09,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 2642
+       },
+       {
+        "nama": "KAPASMADYA BARU",
+        "kec": "Tambaksari",
+        "pkb": 2980,
+        "share": 15.63,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 2306
+       },
+       {
+        "nama": "TAMBAK WEDI",
+        "kec": "Kenjeran",
+        "pkb": 1745,
+        "share": 17.83,
+        "rank": 2,
+        "top": "Golkar",
+        "gap": 667
+       },
+       {
+        "nama": "DUKUH SETRO",
+        "kec": "Tambaksari",
+        "pkb": 1618,
+        "share": 13.76,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 1043
+       },
+       {
+        "nama": "TAMBAKSARI",
+        "kec": "Tambaksari",
+        "pkb": 1456,
+        "share": 15.14,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 1432
+       },
+       {
+        "nama": "RANGKAH",
+        "kec": "Tambaksari",
+        "pkb": 1312,
+        "share": 15.27,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 1842
+       },
+       {
+        "nama": "AMPEL",
+        "kec": "Semampir",
+        "pkb": 1265,
+        "share": 13.49,
+        "rank": 3,
+        "top": "PKS",
+        "gap": 1428
+       },
+       {
+        "nama": "BONGKARAN",
+        "kec": "Pabean Cantian",
+        "pkb": 610,
+        "share": 12.04,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 607
+       },
+       {
+        "nama": "NYAMPLUNGAN",
+        "kec": "Pabean Cantian",
+        "pkb": 467,
+        "share": 11.1,
+        "rank": 3,
+        "top": "PKS",
+        "gap": 668
+       }
+      ]
      },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 41004,
-      "persen": 12.6
-     },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 34945,
-      "persen": 10.7
-     },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 25635,
-      "persen": 7.9
-     },
-     {
-      "partai": "PAN",
-      "kursi": 1,
-      "suara": 22533,
-      "persen": 6.9
-     },
-     {
-      "partai": "Demokrat",
-      "kursi": 1,
-      "suara": 22141,
-      "persen": 6.8
-     },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 16792,
-      "persen": 5.2
-     },
-     {
-      "partai": "PPP",
-      "kursi": 1,
-      "suara": 16328,
-      "persen": 5.0
-     },
-     {
-      "partai": "NasDem",
-      "kursi": 1,
-      "suara": 16149,
-      "persen": 5.0
-     }
-    ],
-    "marginal": {
-     "partai": "NasDem",
-     "kursi_ke": 11,
-     "batas": 16149.0,
-     "pemegang": {
-      "partai": "NasDem",
-      "nama": "H. SAIFUL BAHRI, S.Ag.",
-      "suara": 7365,
-      "basis": "SEMAMPIR"
+     "jangan": {
+      "n": 8,
+      "pkb": 9518,
+      "gap": 22682,
+      "kel": [
+       {
+        "nama": "PEGIRIAN",
+        "kec": "Semampir",
+        "pkb": 1662,
+        "share": 11.02,
+        "rank": 4,
+        "top": "Golkar",
+        "gap": 1535
+       },
+       {
+        "nama": "SIDOTOPO",
+        "kec": "Semampir",
+        "pkb": 1621,
+        "share": 10.02,
+        "rank": 4,
+        "top": "NasDem",
+        "gap": 2394
+       },
+       {
+        "nama": "TANJUNG PERAK",
+        "kec": "Pabean Cantian",
+        "pkb": 1266,
+        "share": 6.67,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 2378
+       },
+       {
+        "nama": "PACARKEMBANG",
+        "kec": "Tambaksari",
+        "pkb": 1237,
+        "share": 6.3,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 4212
+       },
+       {
+        "nama": "GADING",
+        "kec": "Tambaksari",
+        "pkb": 1204,
+        "share": 7.79,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 3593
+       },
+       {
+        "nama": "PLOSO",
+        "kec": "Tambaksari",
+        "pkb": 1083,
+        "share": 6.21,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 5302
+       },
+       {
+        "nama": "PACARKELING",
+        "kec": "Tambaksari",
+        "pkb": 878,
+        "share": 7.86,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 2110
+       },
+       {
+        "nama": "KREMBANGAN UTARA",
+        "kec": "Pabean Cantian",
+        "pkb": 567,
+        "share": 6.96,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1158
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "KENJERAN",
-      "sah": 88155,
-      "dpt": 127265,
-      "partisipasi": 69.3,
-      "pkb": 14682,
-      "pkb_persen": 16.65,
-      "juara": "PDIP",
-      "juara_persen": 20.55,
-      "jarak": 3434
-     },
-     {
-      "nama": "SEMAMPIR",
-      "sah": 88483,
-      "dpt": 130554,
-      "partisipasi": 67.8,
-      "pkb": 11644,
-      "pkb_persen": 13.16,
-      "juara": "PDIP",
-      "juara_persen": 14.92,
-      "jarak": 443
-     },
-     {
-      "nama": "TAMBAKSARI",
-      "sah": 112768,
-      "dpt": 170142,
-      "partisipasi": 66.3,
-      "pkb": 11768,
-      "pkb_persen": 10.44,
-      "juara": "PDIP",
-      "juara_persen": 29.39,
-      "jarak": 14992
-     },
-     {
-      "nama": "PABEAN CANTIAN",
-      "sah": 36385,
-      "dpt": 54699,
-      "partisipasi": 66.5,
-      "pkb": 2910,
-      "pkb_persen": 8.0,
-      "juara": "PDIP",
-      "juara_persen": 17.63,
-      "jarak": 765
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "PDIP",
-      "nama": "BAKTIONO, B.A., S.S.",
-      "suara": 16049,
-      "basis": "TAMBAKSARI"
-     },
-     {
-      "partai": "PKB",
-      "nama": "H. MOHAMMAD FARIDZ AFIF, S.I.P., M.A.P.",
-      "suara": 15576,
-      "basis": "KENJERAN"
-     },
-     {
-      "partai": "PPP",
-      "nama": "Drs. H. BUCHORI IMRON",
-      "suara": 13268,
-      "basis": "KENJERAN"
-     },
-     {
-      "partai": "Golkar",
-      "nama": "Achmad Nurdjayanto",
-      "suara": 11960,
-      "basis": "SEMAMPIR"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "ABDUL MALIK",
-      "suara": 10993,
-      "basis": "SEMAMPIR"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Hj. Luthfiyah",
-      "suara": 10142,
-      "basis": "TAMBAKSARI"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "H. MOHAMMAD FARIDZ AFIF, S.I.P., M.A.P.",
-      "suara": 15576,
-      "basis": "KENJERAN",
-      "porsi": 38.0
-     },
-     {
-      "partai": "PKB",
-      "nama": "MOH. SYAHCHROINI, S.H.",
-      "suara": 5927,
-      "basis": "SEMAMPIR",
-      "porsi": 14.5
-     },
-     {
-      "partai": "PKB",
-      "nama": "H. FATCHUL MUID, S.E.",
-      "suara": 4509,
-      "basis": "TAMBAKSARI",
-      "porsi": 11.0
-     },
-     {
-      "partai": "PKB",
-      "nama": "MOCH. MUCHYI",
-      "suara": 2030,
-      "basis": "SEMAMPIR",
-      "porsi": 5.0
-     },
-     {
-      "partai": "PKB",
-      "nama": "RISMA KUSUMA DEWI",
-      "suara": 1034,
-      "basis": "TAMBAKSARI",
-      "porsi": 2.5
-     },
-     {
-      "partai": "PKB",
-      "nama": "DADANG HARYONO, S.E.",
-      "suara": 839,
-      "basis": "SEMAMPIR",
-      "porsi": 2.0
-     }
-    ]
+    "kel_total": 21
    },
    {
     "nomor": 3,
-    "kursi": 10,
     "kecamatan": [
      "WONOCOLO",
      "RUNGKUT",
@@ -593,243 +542,368 @@
      "MULYOREJO",
      "BULAK"
     ],
-    "jumlah_kecamatan": 7,
+    "kursi": 11,
     "sah": 302774,
     "dpt": 422172,
     "partisipasi": 71.7,
-    "kuota_suara": 30277,
+    "kuota": 27525,
+    "harga": 12388,
     "pkb": 27014,
     "pkb_persen": 8.92,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 38535,
-    "tambah_suara": 11521,
-    "rasio": 1.43,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 3,
-      "suara": 74027,
-      "persen": 24.4
+    "tambah": 10150,
+    "rasio": 0.38,
+    "tier": {
+     "menang": {
+      "n": 2,
+      "pkb": 5297,
+      "gap": 0,
+      "kel": [
+       {
+        "nama": "KENDANGSARI",
+        "kec": "Tenggilis Mejoyo",
+        "pkb": 3448,
+        "share": 40.07,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       },
+       {
+        "nama": "TENGGILIS MEJOYO",
+        "kec": "Tenggilis Mejoyo",
+        "pkb": 1849,
+        "share": 28.44,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       }
+      ]
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 1,
-      "suara": 37164,
-      "persen": 12.3
+     "bersaing": {
+      "n": 7,
+      "pkb": 5954,
+      "gap": 7310,
+      "kel": [
+       {
+        "nama": "KUTISARI",
+        "kec": "Tenggilis Mejoyo",
+        "pkb": 1456,
+        "share": 13.95,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1196
+       },
+       {
+        "nama": "PANJANG JIWO",
+        "kec": "Tenggilis Mejoyo",
+        "pkb": 1114,
+        "share": 15.25,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 848
+       },
+       {
+        "nama": "RUNGKUT TENGAH",
+        "kec": "Gunung Anyar",
+        "pkb": 1102,
+        "share": 14.15,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 876
+       },
+       {
+        "nama": "BULAK",
+        "kec": "Bulak",
+        "pkb": 805,
+        "share": 16.44,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 2112
+       },
+       {
+        "nama": "SUKOLILO BARU",
+        "kec": "Bulak",
+        "pkb": 792,
+        "share": 25.31,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 493
+       },
+       {
+        "nama": "KEDUNG COWEK",
+        "kec": "Bulak",
+        "pkb": 405,
+        "share": 17.25,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 783
+       },
+       {
+        "nama": "KENJERAN",
+        "kec": "Bulak",
+        "pkb": 280,
+        "share": 11.64,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 1002
+       }
+      ]
      },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 34505,
-      "persen": 11.4
-     },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 34160,
-      "persen": 11.3
-     },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 27014,
-      "persen": 8.9
-     },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 26200,
-      "persen": 8.7
-     },
-     {
-      "partai": "Demokrat",
-      "kursi": 1,
-      "suara": 18525,
-      "persen": 6.1
-     },
-     {
-      "partai": "PPP",
-      "kursi": 1,
-      "suara": 12845,
-      "persen": 4.2
-     }
-    ],
-    "marginal": {
-     "partai": "PPP",
-     "kursi_ke": 10,
-     "batas": 12845.0,
-     "pemegang": {
-      "partai": "PPP",
-      "nama": "MUHAIMIN, S.H., M.M.",
-      "suara": 6156,
-      "basis": "WONOCOLO"
+     "jangan": {
+      "n": 27,
+      "pkb": 15762,
+      "gap": 49560,
+      "kel": [
+       {
+        "nama": "KALIRUNGKUT",
+        "kec": "Rungkut",
+        "pkb": 1232,
+        "share": 10.07,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 962
+       },
+       {
+        "nama": "GUNUNG ANYAR",
+        "kec": "Gunung Anyar",
+        "pkb": 1190,
+        "share": 9.41,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1268
+       },
+       {
+        "nama": "JEMUR WONOSARI",
+        "kec": "Wonocolo",
+        "pkb": 1046,
+        "share": 9.01,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 1652
+       },
+       {
+        "nama": "KEPUTIH",
+        "kec": "Sukolilo",
+        "pkb": 853,
+        "share": 8.26,
+        "rank": 5,
+        "top": "PKS",
+        "gap": 1269
+       },
+       {
+        "nama": "KEDUNG BARUK",
+        "kec": "Rungkut",
+        "pkb": 806,
+        "share": 9.39,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1114
+       },
+       {
+        "nama": "MEDOKAN AYU",
+        "kec": "Rungkut",
+        "pkb": 800,
+        "share": 4.95,
+        "rank": 6,
+        "top": "PKS",
+        "gap": 2899
+       },
+       {
+        "nama": "MEDOKAN SEMAMPIR",
+        "kec": "Sukolilo",
+        "pkb": 774,
+        "share": 7.91,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1187
+       },
+       {
+        "nama": "PENJARINGANSARI",
+        "kec": "Rungkut",
+        "pkb": 705,
+        "share": 6.87,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1591
+       },
+       {
+        "nama": "NGINDEN JANGKUNGAN",
+        "kec": "Sukolilo",
+        "pkb": 695,
+        "share": 9.19,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1138
+       },
+       {
+        "nama": "SEMOLOWARU",
+        "kec": "Sukolilo",
+        "pkb": 667,
+        "share": 6.81,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1574
+       },
+       {
+        "nama": "BENDUL MERISI",
+        "kec": "Wonocolo",
+        "pkb": 637,
+        "share": 6.76,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1301
+       },
+       {
+        "nama": "SIWALANKERTO",
+        "kec": "Wonocolo",
+        "pkb": 611,
+        "share": 6.36,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1226
+       },
+       {
+        "nama": "SIDOSERMO",
+        "kec": "Wonocolo",
+        "pkb": 544,
+        "share": 7.31,
+        "rank": 6,
+        "top": "PPP",
+        "gap": 1824
+       },
+       {
+        "nama": "KLAMPIS NGASEM",
+        "kec": "Sukolilo",
+        "pkb": 483,
+        "share": 5.13,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 4071
+       },
+       {
+        "nama": "RUNGKUT MENANGGAL",
+        "kec": "Gunung Anyar",
+        "pkb": 465,
+        "share": 6.19,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1393
+       },
+       {
+        "nama": "WONOREJO",
+        "kec": "Rungkut",
+        "pkb": 435,
+        "share": 4.31,
+        "rank": 8,
+        "top": "PDIP",
+        "gap": 2009
+       },
+       {
+        "nama": "RUNGKUT KIDUL",
+        "kec": "Rungkut",
+        "pkb": 431,
+        "share": 5.78,
+        "rank": 6,
+        "top": "Golkar",
+        "gap": 2387
+       },
+       {
+        "nama": "KALISARI",
+        "kec": "Mulyorejo",
+        "pkb": 385,
+        "share": 3.88,
+        "rank": 9,
+        "top": "PDIP",
+        "gap": 1869
+       },
+       {
+        "nama": "MARGOREJO",
+        "kec": "Wonocolo",
+        "pkb": 379,
+        "share": 6.4,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1207
+       },
+       {
+        "nama": "KEJAWAN PUTIH TAMBAK",
+        "kec": "Mulyorejo",
+        "pkb": 377,
+        "share": 5.28,
+        "rank": 9,
+        "top": "PDIP",
+        "gap": 516
+       },
+       {
+        "nama": "MANYAR SABRANGAN",
+        "kec": "Mulyorejo",
+        "pkb": 367,
+        "share": 3.48,
+        "rank": 9,
+        "top": "PDIP",
+        "gap": 3184
+       },
+       {
+        "nama": "GUNUNG ANYAR TAMBAK",
+        "kec": "Gunung Anyar",
+        "pkb": 338,
+        "share": 5.36,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1193
+       },
+       {
+        "nama": "MENUR PUMPUNGAN",
+        "kec": "Sukolilo",
+        "pkb": 318,
+        "share": 3.63,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 4290
+       },
+       {
+        "nama": "DUKUH SUTOREJO",
+        "kec": "Mulyorejo",
+        "pkb": 312,
+        "share": 2.98,
+        "rank": 9,
+        "top": "PDIP",
+        "gap": 2327
+       },
+       {
+        "nama": "GEBANG PUTIH",
+        "kec": "Sukolilo",
+        "pkb": 311,
+        "share": 7.81,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1083
+       },
+       {
+        "nama": "KALIJUDAN",
+        "kec": "Mulyorejo",
+        "pkb": 305,
+        "share": 3.18,
+        "rank": 10,
+        "top": "PDIP",
+        "gap": 2039
+       },
+       {
+        "nama": "MULYOREJO",
+        "kec": "Mulyorejo",
+        "pkb": 296,
+        "share": 2.69,
+        "rank": 10,
+        "top": "PDIP",
+        "gap": 2987
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "TENGGILIS MEJOYO",
-      "sah": 32850,
-      "dpt": 43976,
-      "partisipasi": 74.7,
-      "pkb": 7867,
-      "pkb_persen": 23.95,
-      "juara": "PKB",
-      "juara_persen": 23.95,
-      "jarak": 285
-     },
-     {
-      "nama": "BULAK",
-      "sah": 24602,
-      "dpt": 33454,
-      "partisipasi": 73.5,
-      "pkb": 2282,
-      "pkb_persen": 9.28,
-      "juara": "PDIP",
-      "juara_persen": 27.12,
-      "jarak": 2053
-     },
-     {
-      "nama": "GUNUNG ANYAR",
-      "sah": 34251,
-      "dpt": 44951,
-      "partisipasi": 76.2,
-      "pkb": 3095,
-      "pkb_persen": 9.04,
-      "juara": "PDIP",
-      "juara_persen": 22.85,
-      "jarak": 3608
-     },
-     {
-      "nama": "WONOCOLO",
-      "sah": 41405,
-      "dpt": 59600,
-      "partisipasi": 69.5,
-      "pkb": 3218,
-      "pkb_persen": 7.77,
-      "juara": "Gerindra",
-      "juara_persen": 16.54,
-      "jarak": 575
-     },
-     {
-      "nama": "SUKOLILO",
-      "sah": 59367,
-      "dpt": 85043,
-      "partisipasi": 69.8,
-      "pkb": 4101,
-      "pkb_persen": 6.91,
-      "juara": "PDIP",
-      "juara_persen": 31.38,
-      "jarak": 11959
-     },
-     {
-      "nama": "RUNGKUT",
-      "sah": 64786,
-      "dpt": 89492,
-      "partisipasi": 72.4,
-      "pkb": 4409,
-      "pkb_persen": 6.81,
-      "juara": "PDIP",
-      "juara_persen": 18.64,
-      "jarak": 940
-     },
-     {
-      "nama": "MULYOREJO",
-      "sah": 45513,
-      "dpt": 65656,
-      "partisipasi": 69.3,
-      "pkb": 2042,
-      "pkb_persen": 4.49,
-      "juara": "PDIP",
-      "juara_persen": 32.88,
-      "jarak": 7300
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "Hj. LAILA MUFIDAH, S.Ag.",
-      "suara": 13865,
-      "basis": "TENGGILIS MEJOYO"
-     },
-     {
-      "partai": "PKS",
-      "nama": "ANING RAHMAWATI, S.T.",
-      "suara": 13859,
-      "basis": "RUNGKUT"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "M. ERI IRAWAN, S.E., M.Kp.",
-      "suara": 13384,
-      "basis": "SUKOLILO"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "ADI SUTARWIJONO",
-      "suara": 12799,
-      "basis": "RUNGKUT"
-     },
-     {
-      "partai": "Golkar",
-      "nama": "Arif Fathoni, S.H.",
-      "suara": 11795,
-      "basis": "RUNGKUT"
-     },
-     {
-      "partai": "Demokrat",
-      "nama": "HERLINA HARSONO NJOTO, S.Psi., M.Psi., Psikolog.",
-      "suara": 8261,
-      "basis": "SUKOLILO"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "Hj. LAILA MUFIDAH, S.Ag.",
-      "suara": 13865,
-      "basis": "TENGGILIS MEJOYO",
-      "porsi": 51.3
-     },
-     {
-      "partai": "PKB",
-      "nama": "H. M. MAHFUDZ",
-      "suara": 1813,
-      "basis": "BULAK",
-      "porsi": 6.7
-     },
-     {
-      "partai": "PKB",
-      "nama": "TITIK INDRAWATI, S.H.",
-      "suara": 1272,
-      "basis": "SUKOLILO",
-      "porsi": 4.7
-     },
-     {
-      "partai": "PKB",
-      "nama": "MUHAMMAD CHUSAINI ASHARI",
-      "suara": 931,
-      "basis": "RUNGKUT",
-      "porsi": 3.4
-     },
-     {
-      "partai": "PKB",
-      "nama": "NASFA UUTH AKHMADIE",
-      "suara": 673,
-      "basis": "RUNGKUT",
-      "porsi": 2.5
-     },
-     {
-      "partai": "PKB",
-      "nama": "NINDI RAGIL KUSUMANINGRUM",
-      "suara": 440,
-      "basis": "BULAK",
-      "porsi": 1.6
-     }
-    ]
+    "kel_total": 36
    },
    {
     "nomor": 4,
-    "kursi": 9,
     "kecamatan": [
      "WONOKROMO",
      "SAWAHAN",
@@ -837,215 +911,277 @@
      "JAMBANGAN",
      "SUKOMANUNGGAL"
     ],
-    "jumlah_kecamatan": 5,
+    "kursi": 10,
     "sah": 286193,
     "dpt": 417847,
     "partisipasi": 68.5,
-    "kuota_suara": 31799,
+    "kuota": 28619,
+    "harga": 13763,
     "pkb": 24545,
     "pkb_persen": 8.58,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 47261,
-    "tambah_suara": 22716,
-    "rasio": 1.93,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 2,
-      "suara": 66252,
-      "persen": 23.1
+    "tambah": 16744,
+    "rasio": 0.68,
+    "tier": {
+     "menang": {
+      "n": 0,
+      "pkb": 0,
+      "gap": 0,
+      "kel": []
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 2,
-      "suara": 47260,
-      "persen": 16.5
+     "bersaing": {
+      "n": 5,
+      "pkb": 8176,
+      "gap": 4851,
+      "kel": [
+       {
+        "nama": "PUTAT JAYA",
+        "kec": "Sawahan",
+        "pkb": 2671,
+        "share": 11.55,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 2651
+       },
+       {
+        "nama": "WONOKROMO",
+        "kec": "Wonokromo",
+        "pkb": 2471,
+        "share": 12.43,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 1153
+       },
+       {
+        "nama": "JAGIR",
+        "kec": "Wonokromo",
+        "pkb": 1479,
+        "share": 14.74,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 417
+       },
+       {
+        "nama": "KETINTANG",
+        "kec": "Gayungan",
+        "pkb": 918,
+        "share": 12.35,
+        "rank": 4,
+        "top": "PKS",
+        "gap": 474
+       },
+       {
+        "nama": "DUKUH MENANGGAL",
+        "kec": "Gayungan",
+        "pkb": 637,
+        "share": 13.67,
+        "rank": 4,
+        "top": "Golkar",
+        "gap": 156
+       }
+      ]
      },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 30314,
-      "persen": 10.6
-     },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 27892,
-      "persen": 9.7
-     },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 24742,
-      "persen": 8.6
-     },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 24545,
-      "persen": 8.6
-     },
-     {
-      "partai": "PAN",
-      "kursi": 1,
-      "suara": 20101,
-      "persen": 7.0
-     }
-    ],
-    "marginal": {
-     "partai": "Gerindra",
-     "kursi_ke": 9,
-     "batas": 15753.33,
-     "pemegang": {
-      "partai": "Gerindra",
-      "nama": "Bahtiyar Rifai, S.H.",
-      "suara": 13927,
-      "basis": "SAWAHAN"
+     "jangan": {
+      "n": 21,
+      "pkb": 16369,
+      "gap": 40092,
+      "kel": [
+       {
+        "nama": "SIMOMULYO BARU",
+        "kec": "Sukomanunggal",
+        "pkb": 2476,
+        "share": 11.04,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 2389
+       },
+       {
+        "nama": "BANYU URIP",
+        "kec": "Sawahan",
+        "pkb": 1783,
+        "share": 9.11,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 3154
+       },
+       {
+        "nama": "PAKIS",
+        "kec": "Sawahan",
+        "pkb": 1691,
+        "share": 9.31,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 2434
+       },
+       {
+        "nama": "NGAGEL REJO",
+        "kec": "Wonokromo",
+        "pkb": 1039,
+        "share": 4.67,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 7942
+       },
+       {
+        "nama": "KUPANG KRAJAN",
+        "kec": "Sawahan",
+        "pkb": 989,
+        "share": 8.42,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1918
+       },
+       {
+        "nama": "SIMOMULYO",
+        "kec": "Sukomanunggal",
+        "pkb": 903,
+        "share": 7.51,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1570
+       },
+       {
+        "nama": "PETEMON",
+        "kec": "Sawahan",
+        "pkb": 870,
+        "share": 4.76,
+        "rank": 8,
+        "top": "PDIP",
+        "gap": 3488
+       },
+       {
+        "nama": "KARAH",
+        "kec": "Jambangan",
+        "pkb": 776,
+        "share": 9.02,
+        "rank": 5,
+        "top": "Golkar",
+        "gap": 821
+       },
+       {
+        "nama": "SAWUNGGALING",
+        "kec": "Wonokromo",
+        "pkb": 760,
+        "share": 5.76,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 2223
+       },
+       {
+        "nama": "PAGESANGAN",
+        "kec": "Jambangan",
+        "pkb": 727,
+        "share": 9.78,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 576
+       },
+       {
+        "nama": "DARMO",
+        "kec": "Wonokromo",
+        "pkb": 633,
+        "share": 8.48,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1859
+       },
+       {
+        "nama": "KEBONSARI",
+        "kec": "Jambangan",
+        "pkb": 606,
+        "share": 10.21,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 587
+       },
+       {
+        "nama": "SAWAHAN",
+        "kec": "Sawahan",
+        "pkb": 534,
+        "share": 5.73,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1820
+       },
+       {
+        "nama": "JAMBANGAN",
+        "kec": "Jambangan",
+        "pkb": 495,
+        "share": 8.3,
+        "rank": 5,
+        "top": "PKS",
+        "gap": 767
+       },
+       {
+        "nama": "MENANGGAL",
+        "kec": "Gayungan",
+        "pkb": 493,
+        "share": 10.22,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 573
+       },
+       {
+        "nama": "GAYUNGAN",
+        "kec": "Gayungan",
+        "pkb": 465,
+        "share": 7.75,
+        "rank": 7,
+        "top": "Golkar",
+        "gap": 835
+       },
+       {
+        "nama": "NGAGEL",
+        "kec": "Wonokromo",
+        "pkb": 415,
+        "share": 7.11,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1421
+       },
+       {
+        "nama": "PUTAT GEDE",
+        "kec": "Sukomanunggal",
+        "pkb": 234,
+        "share": 5.65,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 1097
+       },
+       {
+        "nama": "SUKOMANUNGGAL",
+        "kec": "Sukomanunggal",
+        "pkb": 169,
+        "share": 2.56,
+        "rank": 8,
+        "top": "PDIP",
+        "gap": 1159
+       },
+       {
+        "nama": "TANJUNGSARI",
+        "kec": "Sukomanunggal",
+        "pkb": 160,
+        "share": 2.27,
+        "rank": 7,
+        "top": "PAN",
+        "gap": 2172
+       },
+       {
+        "nama": "SONOKWIJENAN",
+        "kec": "Sukomanunggal",
+        "pkb": 151,
+        "share": 3.6,
+        "rank": 8,
+        "top": "PDIP",
+        "gap": 1287
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "GAYUNGAN",
-      "sah": 22917,
-      "dpt": 32510,
-      "partisipasi": 70.5,
-      "pkb": 2513,
-      "pkb_persen": 10.97,
-      "juara": "Golkar",
-      "juara_persen": 16.58,
-      "jarak": 186
-     },
-     {
-      "nama": "JAMBANGAN",
-      "sah": 27936,
-      "dpt": 39579,
-      "partisipasi": 70.6,
-      "pkb": 2604,
-      "pkb_persen": 9.32,
-      "juara": "PDIP",
-      "juara_persen": 18.01,
-      "jarak": 1013
-     },
-     {
-      "nama": "WONOKROMO",
-      "sah": 78686,
-      "dpt": 117904,
-      "partisipasi": 66.7,
-      "pkb": 6797,
-      "pkb_persen": 8.64,
-      "juara": "PDIP",
-      "juara_persen": 27.53,
-      "jarak": 8777
-     },
-     {
-      "nama": "SAWAHAN",
-      "sah": 100223,
-      "dpt": 150180,
-      "partisipasi": 66.7,
-      "pkb": 8538,
-      "pkb_persen": 8.52,
-      "juara": "PDIP",
-      "juara_persen": 23.95,
-      "jarak": 6392
-     },
-     {
-      "nama": "SUKOMANUNGGAL",
-      "sah": 56431,
-      "dpt": 77674,
-      "partisipasi": 72.7,
-      "pkb": 4093,
-      "pkb_persen": 7.25,
-      "juara": "PDIP",
-      "juara_persen": 21.16,
-      "jarak": 1769
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "PDIP",
-      "nama": "ARJUNA RIZKI DWI KRISNAYANA, S.H., M.Kn.",
-      "suara": 16157,
-      "basis": "WONOKROMO"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Bahtiyar Rifai, S.H.",
-      "suara": 13927,
-      "basis": "SAWAHAN"
-     },
-     {
-      "partai": "Golkar",
-      "nama": "Drs. Agoeng Prasodjo, M.Si.",
-      "suara": 11678,
-      "basis": "WONOKROMO"
-     },
-     {
-      "partai": "PAN",
-      "nama": "GHOFAR ISMAIL, S.T.",
-      "suara": 11299,
-      "basis": "SAWAHAN"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "SUKADAR, S.H.",
-      "suara": 9649,
-      "basis": "SAWAHAN"
-     },
-     {
-      "partai": "PKB",
-      "nama": "TUBAGUS LUKMAN AMIN",
-      "suara": 8525,
-      "basis": "WONOKROMO"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "TUBAGUS LUKMAN AMIN",
-      "suara": 8525,
-      "basis": "WONOKROMO",
-      "porsi": 34.7
-     },
-     {
-      "partai": "PKB",
-      "nama": "MAZLAN MANSUR",
-      "suara": 2788,
-      "basis": "SAWAHAN",
-      "porsi": 11.4
-     },
-     {
-      "partai": "PKB",
-      "nama": "Dr. Ir. RUSLI YUSUF, M.T.",
-      "suara": 1725,
-      "basis": "WONOKROMO",
-      "porsi": 7.0
-     },
-     {
-      "partai": "PKB",
-      "nama": "BADRU TAMAM",
-      "suara": 1457,
-      "basis": "SAWAHAN",
-      "porsi": 5.9
-     },
-     {
-      "partai": "PKB",
-      "nama": "MUCHAMMAD YUSUF",
-      "suara": 869,
-      "basis": "SAWAHAN",
-      "porsi": 3.5
-     },
-     {
-      "partai": "PKB",
-      "nama": "DINA DEWI MISKIAH, S.H.",
-      "suara": 753,
-      "basis": "WONOKROMO",
-      "porsi": 3.1
-     }
-    ]
+    "kel_total": 26
    },
    {
     "nomor": 5,
-    "kursi": 10,
     "kecamatan": [
      "KARANG PILANG",
      "TANDES",
@@ -1057,1549 +1193,1590 @@
      "PAKAL",
      "SAMBIKEREP"
     ],
-    "jumlah_kecamatan": 9,
+    "kursi": 11,
     "sah": 323387,
     "dpt": 449406,
     "partisipasi": 72.0,
-    "kuota_suara": 32339,
+    "kuota": 29399,
+    "harga": 13007,
     "pkb": 32133,
     "pkb_persen": 9.94,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 46629,
-    "tambah_suara": 14496,
-    "rasio": 1.45,
-    "kursi_partai": [
-     {
-      "partai": "Gerindra",
-      "kursi": 2,
-      "suara": 65036,
-      "persen": 20.1
+    "tambah": 6889,
+    "rasio": 0.21,
+    "tier": {
+     "menang": {
+      "n": 3,
+      "pkb": 3716,
+      "gap": 0,
+      "kel": [
+       {
+        "nama": "SUMBER REJO",
+        "kec": "Pakal",
+        "pkb": 2007,
+        "share": 21.77,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       },
+       {
+        "nama": "TAMBAK SARIOSO",
+        "kec": "Asemrowo",
+        "pkb": 955,
+        "share": 23.55,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       },
+       {
+        "nama": "TAMBAK OSO WILANGUN",
+        "kec": "Benowo",
+        "pkb": 754,
+        "share": 34.01,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       }
+      ]
      },
-     {
-      "partai": "PDIP",
-      "kursi": 2,
-      "suara": 57095,
-      "persen": 17.7
+     "bersaing": {
+      "n": 10,
+      "pkb": 14638,
+      "gap": 8410,
+      "kel": [
+       {
+        "nama": "SEMEMI",
+        "kec": "Benowo",
+        "pkb": 3963,
+        "share": 18.19,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 2524
+       },
+       {
+        "nama": "ASEM ROWO",
+        "kec": "Asemrowo",
+        "pkb": 2506,
+        "share": 17.37,
+        "rank": 3,
+        "top": "Gerindra",
+        "gap": 632
+       },
+       {
+        "nama": "KANDANGAN",
+        "kec": "Benowo",
+        "pkb": 1991,
+        "share": 15.59,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 847
+       },
+       {
+        "nama": "BABAT JERAWAT",
+        "kec": "Pakal",
+        "pkb": 1814,
+        "share": 12.89,
+        "rank": 4,
+        "top": "PPP",
+        "gap": 440
+       },
+       {
+        "nama": "BENOWO",
+        "kec": "Pakal",
+        "pkb": 1163,
+        "share": 14.22,
+        "rank": 3,
+        "top": "PPP",
+        "gap": 882
+       },
+       {
+        "nama": "PAKAL",
+        "kec": "Pakal",
+        "pkb": 1068,
+        "share": 12.79,
+        "rank": 2,
+        "top": "PPP",
+        "gap": 1639
+       },
+       {
+        "nama": "LAKARSANTRI",
+        "kec": "Lakarsantri",
+        "pkb": 841,
+        "share": 18.13,
+        "rank": 2,
+        "top": "Gerindra",
+        "gap": 255
+       },
+       {
+        "nama": "GENTING KALIANAK",
+        "kec": "Asemrowo",
+        "pkb": 456,
+        "share": 11.8,
+        "rank": 3,
+        "top": "Gerindra",
+        "gap": 474
+       },
+       {
+        "nama": "ROMOKALISARI",
+        "kec": "Benowo",
+        "pkb": 434,
+        "share": 25.26,
+        "rank": 2,
+        "top": "Gerindra",
+        "gap": 131
+       },
+       {
+        "nama": "SUMURWELUT",
+        "kec": "Lakarsantri",
+        "pkb": 402,
+        "share": 12.29,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 586
+       }
+      ]
      },
-     {
-      "partai": "Demokrat",
-      "kursi": 1,
-      "suara": 35075,
-      "persen": 10.8
-     },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 32133,
-      "persen": 9.9
-     },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 29787,
-      "persen": 9.2
-     },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 24159,
-      "persen": 7.5
-     },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 22133,
-      "persen": 6.8
-     },
-     {
-      "partai": "PPP",
-      "kursi": 1,
-      "suara": 15543,
-      "persen": 4.8
-     }
-    ],
-    "marginal": {
-     "partai": "PPP",
-     "kursi_ke": 10,
-     "batas": 15543.0,
-     "pemegang": {
-      "partai": "PPP",
-      "nama": "AGUS MASHURI",
-      "suara": 11460,
-      "basis": "PAKAL"
+     "jangan": {
+      "n": 26,
+      "pkb": 13788,
+      "gap": 58334,
+      "kel": [
+       {
+        "nama": "MANUKAN KULON",
+        "kec": "Tandes",
+        "pkb": 1257,
+        "share": 6.47,
+        "rank": 6,
+        "top": "Demokrat",
+        "gap": 3237
+       },
+       {
+        "nama": "KEBRAON",
+        "kec": "Karang Pilang",
+        "pkb": 1098,
+        "share": 6.91,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 3417
+       },
+       {
+        "nama": "KARANG POH",
+        "kec": "Tandes",
+        "pkb": 887,
+        "share": 5.61,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3092
+       },
+       {
+        "nama": "LONTAR",
+        "kec": "Sambikerep",
+        "pkb": 881,
+        "share": 5.55,
+        "rank": 7,
+        "top": "Demokrat",
+        "gap": 2020
+       },
+       {
+        "nama": "MANUKAN WETAN",
+        "kec": "Tandes",
+        "pkb": 756,
+        "share": 5.32,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3223
+       },
+       {
+        "nama": "KEDURUS",
+        "kec": "Karang Pilang",
+        "pkb": 714,
+        "share": 4.96,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 5409
+       },
+       {
+        "nama": "BABATAN",
+        "kec": "Wiyung",
+        "pkb": 696,
+        "share": 4.45,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 2451
+       },
+       {
+        "nama": "WIYUNG",
+        "kec": "Wiyung",
+        "pkb": 631,
+        "share": 6.12,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 2004
+       },
+       {
+        "nama": "LIDAH KULON",
+        "kec": "Lakarsantri",
+        "pkb": 588,
+        "share": 6.35,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1214
+       },
+       {
+        "nama": "BANJAR SUGIHAN",
+        "kec": "Tandes",
+        "pkb": 572,
+        "share": 4.13,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3407
+       },
+       {
+        "nama": "SAMBIKEREP",
+        "kec": "Sambikerep",
+        "pkb": 512,
+        "share": 4.4,
+        "rank": 8,
+        "top": "PDIP",
+        "gap": 2038
+       },
+       {
+        "nama": "DUKUH PAKIS",
+        "kec": "Dukuh Pakis",
+        "pkb": 506,
+        "share": 6.76,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 1030
+       },
+       {
+        "nama": "BALAS KLUMPRIK",
+        "kec": "Wiyung",
+        "pkb": 477,
+        "share": 6.04,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 2279
+       },
+       {
+        "nama": "TANDES",
+        "kec": "Tandes",
+        "pkb": 471,
+        "share": 3.21,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 3508
+       },
+       {
+        "nama": "LIDAH WETAN",
+        "kec": "Lakarsantri",
+        "pkb": 436,
+        "share": 7.13,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 865
+       },
+       {
+        "nama": "GUNUNG SARI",
+        "kec": "Dukuh Pakis",
+        "pkb": 416,
+        "share": 5.81,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 1964
+       },
+       {
+        "nama": "BALONGSARI",
+        "kec": "Tandes",
+        "pkb": 363,
+        "share": 2.66,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3616
+       },
+       {
+        "nama": "BANGKINGAN",
+        "kec": "Lakarsantri",
+        "pkb": 356,
+        "share": 7.19,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 826
+       },
+       {
+        "nama": "KARANG PILANG",
+        "kec": "Karang Pilang",
+        "pkb": 353,
+        "share": 7.82,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 1295
+       },
+       {
+        "nama": "WARU GUNUNG",
+        "kec": "Karang Pilang",
+        "pkb": 349,
+        "share": 6.41,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 2323
+       },
+       {
+        "nama": "PRADAH KALIKENDAL",
+        "kec": "Dukuh Pakis",
+        "pkb": 289,
+        "share": 3.55,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1742
+       },
+       {
+        "nama": "DUKUH KUPANG",
+        "kec": "Dukuh Pakis",
+        "pkb": 270,
+        "share": 3.69,
+        "rank": 9,
+        "top": "PDIP",
+        "gap": 1352
+       },
+       {
+        "nama": "JERUK",
+        "kec": "Lakarsantri",
+        "pkb": 255,
+        "share": 4.89,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 934
+       },
+       {
+        "nama": "BERINGIN",
+        "kec": "Sambikerep",
+        "pkb": 234,
+        "share": 7.37,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 966
+       },
+       {
+        "nama": "MADE",
+        "kec": "Sambikerep",
+        "pkb": 219,
+        "share": 4.09,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1496
+       },
+       {
+        "nama": "JAJAR TUNGGAL",
+        "kec": "Wiyung",
+        "pkb": 202,
+        "share": 3.2,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 2626
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "BENOWO",
-      "sah": 38493,
-      "dpt": 51738,
-      "partisipasi": 74.4,
-      "pkb": 7142,
-      "pkb_persen": 18.55,
-      "juara": "PDIP",
-      "juara_persen": 25.32,
-      "jarak": 2604
-     },
-     {
-      "nama": "ASEM ROWO",
-      "sah": 22410,
-      "dpt": 34131,
-      "partisipasi": 65.7,
-      "pkb": 3917,
-      "pkb_persen": 17.48,
-      "juara": "Gerindra",
-      "juara_persen": 19.39,
-      "jarak": 428
-     },
-     {
-      "nama": "PAKAL",
-      "sah": 34939,
-      "dpt": 44775,
-      "partisipasi": 78.0,
-      "pkb": 6052,
-      "pkb_persen": 17.32,
-      "juara": "PPP",
-      "juara_persen": 23.25,
-      "jarak": 1770
-     },
-     {
-      "nama": "TANDES",
-      "sah": 47549,
-      "dpt": 67845,
-      "partisipasi": 70.1,
-      "pkb": 4297,
-      "pkb_persen": 9.04,
-      "juara": "Demokrat",
-      "juara_persen": 19.26,
-      "jarak": 1697
-     },
-     {
-      "nama": "LAKARSANTRI",
-      "sah": 33455,
-      "dpt": 46117,
-      "partisipasi": 72.5,
-      "pkb": 2878,
-      "pkb_persen": 8.6,
-      "juara": "Gerindra",
-      "juara_persen": 21.41,
-      "jarak": 1525
-     },
-     {
-      "nama": "KARANG PILANG",
-      "sah": 40235,
-      "dpt": 55637,
-      "partisipasi": 72.3,
-      "pkb": 2514,
-      "pkb_persen": 6.25,
-      "juara": "Gerindra",
-      "juara_persen": 37.18,
-      "jarak": 9491
-     },
-     {
-      "nama": "SAMBIKEREP",
-      "sah": 36067,
-      "dpt": 49511,
-      "partisipasi": 72.8,
-      "pkb": 1846,
-      "pkb_persen": 5.12,
-      "juara": "PDIP",
-      "juara_persen": 20.66,
-      "jarak": 568
-     },
-     {
-      "nama": "WIYUNG",
-      "sah": 40133,
-      "dpt": 55475,
-      "partisipasi": 72.3,
-      "pkb": 2006,
-      "pkb_persen": 5.0,
-      "juara": "Gerindra",
-      "juara_persen": 28.32,
-      "jarak": 4884
-     },
-     {
-      "nama": "DUKUH PAKIS",
-      "sah": 30106,
-      "dpt": 44177,
-      "partisipasi": 68.1,
-      "pkb": 1481,
-      "pkb_persen": 4.92,
-      "juara": "Gerindra",
-      "juara_persen": 20.25,
-      "jarak": 365
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "Demokrat",
-      "nama": "MOCHAMAD MACHMUD, S.Sos., M.Si.",
-      "suara": 17066,
-      "basis": "TANDES"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Yona Bagus Widyatmoko, S.H., S.M.",
-      "suara": 16872,
-      "basis": "KARANG PILANG"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "H. SYAIFUDDIN ZUHRI, S.Sos.",
-      "suara": 13175,
-      "basis": "BENOWO"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Alif Iman Waluyo, M.M.",
-      "suara": 12532,
-      "basis": "WIYUNG"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Endy Suhadi",
-      "suara": 11983,
-      "basis": "DUKUH PAKIS"
-     },
-     {
-      "partai": "Golkar",
-      "nama": "dr. Akmarawita Kadir",
-      "suara": 11832,
-      "basis": "ASEM ROWO"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "MINUN LATIF",
-      "suara": 10387,
-      "basis": "PAKAL",
-      "porsi": 32.3
-     },
-     {
-      "partai": "PKB",
-      "nama": "PUSPA INDAH",
-      "suara": 4738,
-      "basis": "BENOWO",
-      "porsi": 14.7
-     },
-     {
-      "partai": "PKB",
-      "nama": "FARAH FATATY, S.H., M.Kn.",
-      "suara": 4644,
-      "basis": "ASEM ROWO",
-      "porsi": 14.5
-     },
-     {
-      "partai": "PKB",
-      "nama": "IWAN SETIONO, S.Sos.",
-      "suara": 2211,
-      "basis": "LAKARSANTRI",
-      "porsi": 6.9
-     },
-     {
-      "partai": "PKB",
-      "nama": "SYAIFUL ANAM, S.E.",
-      "suara": 1366,
-      "basis": "TANDES",
-      "porsi": 4.3
-     },
-     {
-      "partai": "PKB",
-      "nama": "HADI SUWARNO, S.E., M.M.",
-      "suara": 1197,
-      "basis": "ASEM ROWO",
-      "porsi": 3.7
-     }
-    ]
+    "kel_total": 39
    }
   ]
  },
- "delapan": {
-  "label": "8 Dapil, 55 Kursi",
-  "total_kursi": 55,
-  "jumlah_dapil": 8,
-  "total_sah": 1536843,
-  "total_dpt": 2218586,
-  "partisipasi": 69.3,
-  "pkb": {
-   "suara": 159362,
-   "persen": 10.37,
-   "kursi": 7,
-   "biaya_per_kursi": 22766
-  },
-  "partai": [
-   {
-    "partai": "PDIP",
-    "suara": 336698,
-    "persen": 21.91,
-    "kursi": 12
-   },
-   {
-    "partai": "Gerindra",
-    "suara": 241231,
-    "persen": 15.7,
-    "kursi": 9
-   },
-   {
-    "partai": "PKB",
-    "suara": 159362,
-    "persen": 10.37,
-    "kursi": 7
-   },
-   {
-    "partai": "Golkar",
-    "suara": 136814,
-    "persen": 8.9,
-    "kursi": 7
-   },
-   {
-    "partai": "PKS",
-    "suara": 135733,
-    "persen": 8.83,
-    "kursi": 7
-   },
-   {
-    "partai": "PSI",
-    "suara": 133236,
-    "persen": 8.67,
-    "kursi": 7
-   },
-   {
-    "partai": "Demokrat",
-    "suara": 103382,
-    "persen": 6.73,
-    "kursi": 3
-   },
-   {
-    "partai": "PAN",
-    "suara": 83567,
-    "persen": 5.44,
-    "kursi": 2
-   },
-   {
-    "partai": "NasDem",
-    "suara": 62658,
-    "persen": 4.08,
-    "kursi": 1
-   },
-   {
-    "partai": "PPP",
-    "suara": 52410,
-    "persen": 3.41,
-    "kursi": 0
-   },
-   {
-    "partai": "Perindo",
-    "suara": 32012,
-    "persen": 2.08,
-    "kursi": 0
-   },
-   {
-    "partai": "Buruh",
-    "suara": 11824,
-    "persen": 0.77,
-    "kursi": 0
-   },
-   {
-    "partai": "Hanura",
-    "suara": 11420,
-    "persen": 0.74,
-    "kursi": 0
-   },
-   {
-    "partai": "Gelora",
-    "suara": 10567,
-    "persen": 0.69,
-    "kursi": 0
-   },
-   {
-    "partai": "Ummat",
-    "suara": 9574,
-    "persen": 0.62,
-    "kursi": 0
-   },
-   {
-    "partai": "PBB",
-    "suara": 9389,
-    "persen": 0.61,
-    "kursi": 0
-   },
-   {
-    "partai": "Garuda",
-    "suara": 4037,
-    "persen": 0.26,
-    "kursi": 0
-   },
-   {
-    "partai": "PKN",
-    "suara": 2929,
-    "persen": 0.19,
-    "kursi": 0
-   }
-  ],
+ "B": {
+  "nama": "B",
+  "kursi_total": 55,
+  "pkb_kursi": 7,
+  "pkb": 159362,
+  "sah": 1536843,
   "dapil": [
    {
     "nomor": 1,
-    "kursi": 6,
     "kecamatan": [
      "GENTENG",
      "SIMOKERTO",
      "BUBUTAN",
      "TEGALSARI"
     ],
-    "jumlah_kecamatan": 4,
+    "kursi": 6,
     "sah": 171814,
     "dpt": 260815,
     "partisipasi": 65.9,
-    "kuota_suara": 28636,
+    "kuota": 28636,
+    "harga": 13810,
     "pkb": 20432,
     "pkb_persen": 11.89,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 41432,
-    "tambah_suara": 21000,
-    "rasio": 2.03,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 2,
-      "suara": 41431,
-      "persen": 24.1
+    "tambah": 20999,
+    "rasio": 1.03,
+    "tier": {
+     "menang": {
+      "n": 2,
+      "pkb": 4419,
+      "gap": 240,
+      "kel": [
+       {
+        "nama": "SIMOLAWANG",
+        "kec": "Simokerto",
+        "pkb": 2942,
+        "share": 29.08,
+        "rank": 2,
+        "top": "Gerindra",
+        "gap": 240
+       },
+       {
+        "nama": "SIDODADI",
+        "kec": "Simokerto",
+        "pkb": 1477,
+        "share": 19.01,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       }
+      ]
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 1,
-      "suara": 28195,
-      "persen": 16.4
+     "bersaing": {
+      "n": 3,
+      "pkb": 3160,
+      "gap": 5521,
+      "kel": [
+       {
+        "nama": "JEPARA",
+        "kec": "Bubutan",
+        "pkb": 1535,
+        "share": 12.42,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 2687
+       },
+       {
+        "nama": "KAPASARI",
+        "kec": "Genteng",
+        "pkb": 918,
+        "share": 10.89,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 1654
+       },
+       {
+        "nama": "EMBONG KALIASIN",
+        "kec": "Genteng",
+        "pkb": 707,
+        "share": 11.77,
+        "rank": 3,
+        "top": "Gerindra",
+        "gap": 1180
+       }
+      ]
      },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 20432,
-      "persen": 11.9
-     },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 16374,
-      "persen": 9.5
-     },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 15386,
-      "persen": 9.0
-     }
-    ],
-    "marginal": {
-     "partai": "PDIP",
-     "kursi_ke": 6,
-     "batas": 13810.33,
-     "pemegang": {
-      "partai": "PDIP",
-      "nama": "BUDI LEKSONO, S.H.",
-      "suara": 8419,
-      "basis": "BUBUTAN"
+     "jangan": {
+      "n": 10,
+      "pkb": 7105,
+      "gap": 13563,
+      "kel": [
+       {
+        "nama": "GUNDIH",
+        "kec": "Bubutan",
+        "pkb": 1238,
+        "share": 9.13,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1854
+       },
+       {
+        "nama": "SIMOKERTO",
+        "kec": "Simokerto",
+        "pkb": 1007,
+        "share": 9.68,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1229
+       },
+       {
+        "nama": "TEMBOK DUKUH",
+        "kec": "Bubutan",
+        "pkb": 982,
+        "share": 7.54,
+        "rank": 5,
+        "top": "Golkar",
+        "gap": 1735
+       },
+       {
+        "nama": "TAMBAKREJO",
+        "kec": "Simokerto",
+        "pkb": 962,
+        "share": 10.32,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1987
+       },
+       {
+        "nama": "BUBUTAN",
+        "kec": "Bubutan",
+        "pkb": 737,
+        "share": 10.88,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1100
+       },
+       {
+        "nama": "PENELEH",
+        "kec": "Genteng",
+        "pkb": 708,
+        "share": 9.84,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1906
+       },
+       {
+        "nama": "KAPASAN",
+        "kec": "Simokerto",
+        "pkb": 582,
+        "share": 7.7,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1227
+       },
+       {
+        "nama": "GENTENG",
+        "kec": "Genteng",
+        "pkb": 371,
+        "share": 8.76,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 500
+       },
+       {
+        "nama": "KETABANG",
+        "kec": "Genteng",
+        "pkb": 368,
+        "share": 10.12,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 798
+       },
+       {
+        "nama": "ALUN-ALUN CONTONG",
+        "kec": "Bubutan",
+        "pkb": 150,
+        "share": 4.53,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1227
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "SIMOKERTO",
-      "sah": 45165,
-      "dpt": 69533,
-      "partisipasi": 65.0,
-      "pkb": 6970,
-      "pkb_persen": 15.43,
-      "juara": "PDIP",
-      "juara_persen": 19.39,
-      "jarak": 141
-     },
-     {
-      "nama": "TEGALSARI",
-      "sah": 48113,
-      "dpt": 73959,
-      "partisipasi": 65.1,
-      "pkb": 5748,
-      "pkb_persen": 11.95,
-      "juara": "PDIP",
-      "juara_persen": 23.6,
-      "jarak": 3872
-     },
-     {
-      "nama": "GENTENG",
-      "sah": 29506,
-      "dpt": 44341,
-      "partisipasi": 66.5,
-      "pkb": 3072,
-      "pkb_persen": 10.41,
-      "juara": "PDIP",
-      "juara_persen": 27.74,
-      "jarak": 3009
-     },
-     {
-      "nama": "BUBUTAN",
-      "sah": 49030,
-      "dpt": 72982,
-      "partisipasi": 67.2,
-      "pkb": 4642,
-      "pkb_persen": 9.47,
-      "juara": "PDIP",
-      "juara_persen": 26.78,
-      "jarak": 6214
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "PDIP",
-      "nama": "BUDI LEKSONO, S.H.",
-      "suara": 8419,
-      "basis": "BUBUTAN"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "H. TRI DIDIK ADIONO, S.Sos.",
-      "suara": 7583,
-      "basis": "BUBUTAN"
-     },
-     {
-      "partai": "PKB",
-      "nama": "AIS SHAFIYAH ASFAR",
-      "suara": 7194,
-      "basis": "SIMOKERTO"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Ajeng Wira Wati, S.Sos., M.PSDM.",
-      "suara": 6192,
-      "basis": "SIMOKERTO"
-     },
-     {
-      "partai": "NasDem",
-      "nama": "Drs. H. IMAM SYAFI'I, S.H., M.H.",
-      "suara": 5924,
-      "basis": "TEGALSARI"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Azhar Kahfi, S.H.",
-      "suara": 5134,
-      "basis": "BUBUTAN"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "AIS SHAFIYAH ASFAR",
-      "suara": 7194,
-      "basis": "SIMOKERTO",
-      "porsi": 35.2
-     },
-     {
-      "partai": "PKB",
-      "nama": "ZAINAL ABIDIN",
-      "suara": 3444,
-      "basis": "SIMOKERTO",
-      "porsi": 16.9
-     },
-     {
-      "partai": "PKB",
-      "nama": "HANI FIDYANTO",
-      "suara": 2481,
-      "basis": "TEGALSARI",
-      "porsi": 12.1
-     },
-     {
-      "partai": "PKB",
-      "nama": "QOTRUNNADA LAILA MUFIDAH",
-      "suara": 1142,
-      "basis": "SIMOKERTO",
-      "porsi": 5.6
-     },
-     {
-      "partai": "PKB",
-      "nama": "MOHAMMAD HIDAYATULLOH",
-      "suara": 856,
-      "basis": "SIMOKERTO",
-      "porsi": 4.2
-     },
-     {
-      "partai": "PKB",
-      "nama": "IMAM MUSTAJI, S.E.",
-      "suara": 649,
-      "basis": "TEGALSARI",
-      "porsi": 3.2
-     }
-    ]
+    "kel_total": 15
    },
    {
     "nomor": 2,
-    "kursi": 7,
     "kecamatan": [
      "KREMBANGAN",
      "SEMAMPIR",
      "PABEAN CANTIAN"
     ],
-    "jumlah_kecamatan": 3,
+    "kursi": 7,
     "sah": 182360,
     "dpt": 269064,
     "partisipasi": 67.8,
-    "kuota_suara": 26051,
+    "kuota": 26051,
+    "harga": 13202,
     "pkb": 19552,
     "pkb_persen": 10.72,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 39606,
-    "tambah_suara": 20054,
-    "rasio": 2.03,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 1,
-      "suara": 34114,
-      "persen": 18.7
+    "tambah": 20054,
+    "rasio": 1.03,
+    "tier": {
+     "menang": {
+      "n": 1,
+      "pkb": 3573,
+      "gap": 0,
+      "kel": [
+       {
+        "nama": "UJUNG",
+        "kec": "Semampir",
+        "pkb": 3573,
+        "share": 22.23,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       }
+      ]
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 1,
-      "suara": 25284,
-      "persen": 13.9
+     "bersaing": {
+      "n": 4,
+      "pkb": 5865,
+      "gap": 5345,
+      "kel": [
+       {
+        "nama": "WONOKUSUMO",
+        "kec": "Semampir",
+        "pkb": 3523,
+        "share": 11.09,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 2642
+       },
+       {
+        "nama": "AMPEL",
+        "kec": "Semampir",
+        "pkb": 1265,
+        "share": 13.49,
+        "rank": 3,
+        "top": "PKS",
+        "gap": 1428
+       },
+       {
+        "nama": "BONGKARAN",
+        "kec": "Pabean Cantian",
+        "pkb": 610,
+        "share": 12.04,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 607
+       },
+       {
+        "nama": "NYAMPLUNGAN",
+        "kec": "Pabean Cantian",
+        "pkb": 467,
+        "share": 11.1,
+        "rank": 3,
+        "top": "PKS",
+        "gap": 668
+       }
+      ]
      },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 22607,
-      "persen": 12.4
-     },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 19552,
-      "persen": 10.7
-     },
-     {
-      "partai": "PAN",
-      "kursi": 1,
-      "suara": 17847,
-      "persen": 9.8
-     },
-     {
-      "partai": "NasDem",
-      "kursi": 1,
-      "suara": 14328,
-      "persen": 7.9
-     },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 13202,
-      "persen": 7.2
-     }
-    ],
-    "marginal": {
-     "partai": "PKS",
-     "kursi_ke": 7,
-     "batas": 13202.0,
-     "pemegang": {
-      "partai": "PKS",
-      "nama": "NAJI ABDURAHMAN BAWAZIER",
-      "suara": 3470,
-      "basis": "SEMAMPIR"
+     "jangan": {
+      "n": 9,
+      "pkb": 10114,
+      "gap": 16964,
+      "kel": [
+       {
+        "nama": "MOROKREMBANGAN",
+        "kec": "Krembangan",
+        "pkb": 2362,
+        "share": 10.0,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 3323
+       },
+       {
+        "nama": "PEGIRIAN",
+        "kec": "Semampir",
+        "pkb": 1662,
+        "share": 11.02,
+        "rank": 4,
+        "top": "Golkar",
+        "gap": 1535
+       },
+       {
+        "nama": "SIDOTOPO",
+        "kec": "Semampir",
+        "pkb": 1621,
+        "share": 10.02,
+        "rank": 4,
+        "top": "NasDem",
+        "gap": 2394
+       },
+       {
+        "nama": "TANJUNG PERAK",
+        "kec": "Pabean Cantian",
+        "pkb": 1266,
+        "share": 6.67,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 2378
+       },
+       {
+        "nama": "DUPAK",
+        "kec": "Krembangan",
+        "pkb": 838,
+        "share": 7.43,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1609
+       },
+       {
+        "nama": "KEMAYORAN",
+        "kec": "Krembangan",
+        "pkb": 751,
+        "share": 8.55,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 2624
+       },
+       {
+        "nama": "PERAK BARAT",
+        "kec": "Krembangan",
+        "pkb": 668,
+        "share": 9.73,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 512
+       },
+       {
+        "nama": "KREMBANGAN UTARA",
+        "kec": "Pabean Cantian",
+        "pkb": 567,
+        "share": 6.96,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1158
+       },
+       {
+        "nama": "KREMBANGAN SELATAN",
+        "kec": "Krembangan",
+        "pkb": 379,
+        "share": 5.45,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1431
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "SEMAMPIR",
-      "sah": 88483,
-      "dpt": 130554,
-      "partisipasi": 67.8,
-      "pkb": 11644,
-      "pkb_persen": 13.16,
-      "juara": "PDIP",
-      "juara_persen": 14.92,
-      "jarak": 443
-     },
-     {
-      "nama": "KREMBANGAN",
-      "sah": 57492,
-      "dpt": 83811,
-      "partisipasi": 68.6,
-      "pkb": 4998,
-      "pkb_persen": 8.69,
-      "juara": "PDIP",
-      "juara_persen": 25.22,
-      "jarak": 6547
-     },
-     {
-      "nama": "PABEAN CANTIAN",
-      "sah": 36385,
-      "dpt": 54699,
-      "partisipasi": 66.5,
-      "pkb": 2910,
-      "pkb_persen": 8.0,
-      "juara": "PDIP",
-      "juara_persen": 17.63,
-      "jarak": 765
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "Golkar",
-      "nama": "Achmad Nurdjayanto",
-      "suara": 7298,
-      "basis": "SEMAMPIR"
-     },
-     {
-      "partai": "NasDem",
-      "nama": "H. SAIFUL BAHRI, S.Ag.",
-      "suara": 6150,
-      "basis": "SEMAMPIR"
-     },
-     {
-      "partai": "PAN",
-      "nama": "dr. Hj. ZUHROTUL MAR'AH",
-      "suara": 5736,
-      "basis": "KREMBANGAN"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "ABDUL MALIK",
-      "suara": 5651,
-      "basis": "SEMAMPIR"
-     },
-     {
-      "partai": "PPP",
-      "nama": "Drs. H. BUCHORI IMRON",
-      "suara": 5234,
-      "basis": "SEMAMPIR"
-     },
-     {
-      "partai": "Demokrat",
-      "nama": "MUHAMMAD SAIFUDDIN, S.Sos.",
-      "suara": 5153,
-      "basis": "SEMAMPIR"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "H. MOHAMMAD FARIDZ AFIF, S.I.P., M.A.P.",
-      "suara": 4343,
-      "basis": "SEMAMPIR",
-      "porsi": 22.2
-     },
-     {
-      "partai": "PKB",
-      "nama": "MOH. SYAHCHROINI, S.H.",
-      "suara": 3524,
-      "basis": "SEMAMPIR",
-      "porsi": 18.0
-     },
-     {
-      "partai": "PKB",
-      "nama": "MOCH. MUCHYI",
-      "suara": 1193,
-      "basis": "SEMAMPIR",
-      "porsi": 6.1
-     },
-     {
-      "partai": "PKB",
-      "nama": "ZAINAL ABIDIN",
-      "suara": 1163,
-      "basis": "KREMBANGAN",
-      "porsi": 5.9
-     },
-     {
-      "partai": "PKB",
-      "nama": "AIS SHAFIYAH ASFAR",
-      "suara": 1161,
-      "basis": "KREMBANGAN",
-      "porsi": 5.9
-     },
-     {
-      "partai": "PKB",
-      "nama": "HANI FIDYANTO",
-      "suara": 597,
-      "basis": "KREMBANGAN",
-      "porsi": 3.1
-     }
-    ]
+    "kel_total": 14
    },
    {
     "nomor": 3,
-    "kursi": 8,
     "kecamatan": [
      "TAMBAKSARI",
      "BULAK",
      "KENJERAN"
     ],
-    "jumlah_kecamatan": 3,
+    "kursi": 8,
     "sah": 225525,
     "dpt": 330861,
     "partisipasi": 68.2,
-    "kuota_suara": 28191,
+    "kuota": 28191,
+    "harga": 13688,
     "pkb": 28732,
     "pkb_persen": 12.74,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 41064,
-    "tambah_suara": 12332,
-    "rasio": 1.43,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 2,
-      "suara": 57927,
-      "persen": 25.7
+    "tambah": 12332,
+    "rasio": 0.43,
+    "tier": {
+     "menang": {
+      "n": 1,
+      "pkb": 5264,
+      "gap": 0,
+      "kel": [
+       {
+        "nama": "BULAK BANTENG",
+        "kec": "Kenjeran",
+        "pkb": 5264,
+        "share": 30.88,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       }
+      ]
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 1,
-      "suara": 29451,
-      "persen": 13.1
+     "bersaing": {
+      "n": 11,
+      "pkb": 19066,
+      "gap": 19239,
+      "kel": [
+       {
+        "nama": "TANAH KALI KEDINDING",
+        "kec": "Kenjeran",
+        "pkb": 3924,
+        "share": 13.16,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 4255
+       },
+       {
+        "nama": "SIDOTOPO WETAN",
+        "kec": "Kenjeran",
+        "pkb": 3749,
+        "share": 12.56,
+        "rank": 3,
+        "top": "PPP",
+        "gap": 3304
+       },
+       {
+        "nama": "KAPASMADYA BARU",
+        "kec": "Tambaksari",
+        "pkb": 2980,
+        "share": 15.63,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 2306
+       },
+       {
+        "nama": "TAMBAK WEDI",
+        "kec": "Kenjeran",
+        "pkb": 1745,
+        "share": 17.83,
+        "rank": 2,
+        "top": "Golkar",
+        "gap": 667
+       },
+       {
+        "nama": "DUKUH SETRO",
+        "kec": "Tambaksari",
+        "pkb": 1618,
+        "share": 13.76,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 1043
+       },
+       {
+        "nama": "TAMBAKSARI",
+        "kec": "Tambaksari",
+        "pkb": 1456,
+        "share": 15.14,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 1432
+       },
+       {
+        "nama": "RANGKAH",
+        "kec": "Tambaksari",
+        "pkb": 1312,
+        "share": 15.27,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 1842
+       },
+       {
+        "nama": "BULAK",
+        "kec": "Bulak",
+        "pkb": 805,
+        "share": 16.44,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 2112
+       },
+       {
+        "nama": "SUKOLILO BARU",
+        "kec": "Bulak",
+        "pkb": 792,
+        "share": 25.31,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 493
+       },
+       {
+        "nama": "KEDUNG COWEK",
+        "kec": "Bulak",
+        "pkb": 405,
+        "share": 17.25,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 783
+       },
+       {
+        "nama": "KENJERAN",
+        "kec": "Bulak",
+        "pkb": 280,
+        "share": 11.64,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 1002
+       }
+      ]
      },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 28732,
-      "persen": 12.7
-     },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 19757,
-      "persen": 8.8
-     },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 19435,
-      "persen": 8.6
-     },
-     {
-      "partai": "Demokrat",
-      "kursi": 1,
-      "suara": 14075,
-      "persen": 6.2
-     },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 13688,
-      "persen": 6.1
-     }
-    ],
-    "marginal": {
-     "partai": "PSI",
-     "kursi_ke": 8,
-     "batas": 13688.0,
-     "pemegang": {
-      "partai": "PSI",
-      "nama": "Yuga Pratisabda Widyawasta",
-      "suara": 1471,
-      "basis": "TAMBAKSARI"
+     "jangan": {
+      "n": 4,
+      "pkb": 4402,
+      "gap": 15217,
+      "kel": [
+       {
+        "nama": "PACARKEMBANG",
+        "kec": "Tambaksari",
+        "pkb": 1237,
+        "share": 6.3,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 4212
+       },
+       {
+        "nama": "GADING",
+        "kec": "Tambaksari",
+        "pkb": 1204,
+        "share": 7.79,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 3593
+       },
+       {
+        "nama": "PLOSO",
+        "kec": "Tambaksari",
+        "pkb": 1083,
+        "share": 6.21,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 5302
+       },
+       {
+        "nama": "PACARKELING",
+        "kec": "Tambaksari",
+        "pkb": 878,
+        "share": 7.86,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 2110
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "KENJERAN",
-      "sah": 88155,
-      "dpt": 127265,
-      "partisipasi": 69.3,
-      "pkb": 14682,
-      "pkb_persen": 16.65,
-      "juara": "PDIP",
-      "juara_persen": 20.55,
-      "jarak": 3434
-     },
-     {
-      "nama": "TAMBAKSARI",
-      "sah": 112768,
-      "dpt": 170142,
-      "partisipasi": 66.3,
-      "pkb": 11768,
-      "pkb_persen": 10.44,
-      "juara": "PDIP",
-      "juara_persen": 29.39,
-      "jarak": 14992
-     },
-     {
-      "nama": "BULAK",
-      "sah": 24602,
-      "dpt": 33454,
-      "partisipasi": 73.5,
-      "pkb": 2282,
-      "pkb_persen": 9.28,
-      "juara": "PDIP",
-      "juara_persen": 27.12,
-      "jarak": 2053
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "PDIP",
-      "nama": "BAKTIONO, B.A., S.S.",
-      "suara": 14164,
-      "basis": "TAMBAKSARI"
-     },
-     {
-      "partai": "PKB",
-      "nama": "H. MOHAMMAD FARIDZ AFIF, S.I.P., M.A.P.",
-      "suara": 11233,
-      "basis": "KENJERAN"
-     },
-     {
-      "partai": "PPP",
-      "nama": "Drs. H. BUCHORI IMRON",
-      "suara": 8034,
-      "basis": "KENJERAN"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Hj. Luthfiyah",
-      "suara": 7494,
-      "basis": "TAMBAKSARI"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "ABDUL MALIK",
-      "suara": 5342,
-      "basis": "KENJERAN"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "Hj. KHUSNUL KHOTIMAH, S.Pd.I., M.Pd.I.",
-      "suara": 4986,
-      "basis": "TAMBAKSARI"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "H. MOHAMMAD FARIDZ AFIF, S.I.P., M.A.P.",
-      "suara": 11233,
-      "basis": "KENJERAN",
-      "porsi": 39.1
-     },
-     {
-      "partai": "PKB",
-      "nama": "H. FATCHUL MUID, S.E.",
-      "suara": 3946,
-      "basis": "TAMBAKSARI",
-      "porsi": 13.7
-     },
-     {
-      "partai": "PKB",
-      "nama": "MOH. SYAHCHROINI, S.H.",
-      "suara": 2403,
-      "basis": "TAMBAKSARI",
-      "porsi": 8.4
-     },
-     {
-      "partai": "PKB",
-      "nama": "H. M. MAHFUDZ",
-      "suara": 1038,
-      "basis": "BULAK",
-      "porsi": 3.6
-     },
-     {
-      "partai": "PKB",
-      "nama": "MOCH. MUCHYI",
-      "suara": 837,
-      "basis": "TAMBAKSARI",
-      "porsi": 2.9
-     },
-     {
-      "partai": "PKB",
-      "nama": "RISMA KUSUMA DEWI",
-      "suara": 640,
-      "basis": "TAMBAKSARI",
-      "porsi": 2.2
-     }
-    ]
+    "kel_total": 16
    },
    {
     "nomor": 4,
-    "kursi": 6,
     "kecamatan": [
      "MULYOREJO",
      "SUKOLILO",
      "GUBENG"
     ],
-    "jumlah_kecamatan": 3,
+    "kursi": 6,
     "sah": 174272,
     "dpt": 252574,
     "partisipasi": 69.0,
-    "kuota_suara": 29045,
+    "kuota": 29045,
+    "harga": 15373,
     "pkb": 15379,
     "pkb_persen": 8.82,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 46120,
-    "tambah_suara": 30741,
-    "rasio": 3.0,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 2,
-      "suara": 46119,
-      "persen": 26.5
+    "tambah": 30740,
+    "rasio": 2.0,
+    "tier": {
+     "menang": {
+      "n": 0,
+      "pkb": 0,
+      "gap": 0,
+      "kel": []
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 1,
-      "suara": 23679,
-      "persen": 13.6
+     "bersaing": {
+      "n": 1,
+      "pkb": 2349,
+      "gap": 5466,
+      "kel": [
+       {
+        "nama": "KERTAJAYA",
+        "kec": "Gubeng",
+        "pkb": 2349,
+        "share": 10.63,
+        "rank": 3,
+        "top": "Gerindra",
+        "gap": 5466
+       }
+      ]
      },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 22290,
-      "persen": 12.8
-     },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 18687,
-      "persen": 10.7
-     },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 15379,
-      "persen": 8.8
-     }
-    ],
-    "marginal": {
-     "partai": "PDIP",
-     "kursi_ke": 6,
-     "batas": 15373.0,
-     "pemegang": {
-      "partai": "PDIP",
-      "nama": "M. ERI IRAWAN, S.E., M.Kp.",
-      "suara": 11395,
-      "basis": "SUKOLILO"
+     "jangan": {
+      "n": 18,
+      "pkb": 13030,
+      "gap": 59722,
+      "kel": [
+       {
+        "nama": "MOJO",
+        "kec": "Gubeng",
+        "pkb": 2992,
+        "share": 11.12,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 4823
+       },
+       {
+        "nama": "PUCANG SEWU",
+        "kec": "Gubeng",
+        "pkb": 1096,
+        "share": 5.58,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 6719
+       },
+       {
+        "nama": "AIRLANGGA",
+        "kec": "Gubeng",
+        "pkb": 1071,
+        "share": 5.3,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 6744
+       },
+       {
+        "nama": "GUBENG",
+        "kec": "Gubeng",
+        "pkb": 1064,
+        "share": 5.62,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 6751
+       },
+       {
+        "nama": "KEPUTIH",
+        "kec": "Sukolilo",
+        "pkb": 853,
+        "share": 8.26,
+        "rank": 5,
+        "top": "PKS",
+        "gap": 1269
+       },
+       {
+        "nama": "MEDOKAN SEMAMPIR",
+        "kec": "Sukolilo",
+        "pkb": 774,
+        "share": 7.91,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1187
+       },
+       {
+        "nama": "NGINDEN JANGKUNGAN",
+        "kec": "Sukolilo",
+        "pkb": 695,
+        "share": 9.19,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1138
+       },
+       {
+        "nama": "SEMOLOWARU",
+        "kec": "Sukolilo",
+        "pkb": 667,
+        "share": 6.81,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1574
+       },
+       {
+        "nama": "BARATAJAYA",
+        "kec": "Gubeng",
+        "pkb": 664,
+        "share": 3.33,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 7151
+       },
+       {
+        "nama": "KLAMPIS NGASEM",
+        "kec": "Sukolilo",
+        "pkb": 483,
+        "share": 5.13,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 4071
+       },
+       {
+        "nama": "KALISARI",
+        "kec": "Mulyorejo",
+        "pkb": 385,
+        "share": 3.88,
+        "rank": 9,
+        "top": "PDIP",
+        "gap": 1869
+       },
+       {
+        "nama": "KEJAWAN PUTIH TAMBAK",
+        "kec": "Mulyorejo",
+        "pkb": 377,
+        "share": 5.28,
+        "rank": 9,
+        "top": "PDIP",
+        "gap": 516
+       },
+       {
+        "nama": "MANYAR SABRANGAN",
+        "kec": "Mulyorejo",
+        "pkb": 367,
+        "share": 3.48,
+        "rank": 9,
+        "top": "PDIP",
+        "gap": 3184
+       },
+       {
+        "nama": "MENUR PUMPUNGAN",
+        "kec": "Sukolilo",
+        "pkb": 318,
+        "share": 3.63,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 4290
+       },
+       {
+        "nama": "DUKUH SUTOREJO",
+        "kec": "Mulyorejo",
+        "pkb": 312,
+        "share": 2.98,
+        "rank": 9,
+        "top": "PDIP",
+        "gap": 2327
+       },
+       {
+        "nama": "GEBANG PUTIH",
+        "kec": "Sukolilo",
+        "pkb": 311,
+        "share": 7.81,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1083
+       },
+       {
+        "nama": "KALIJUDAN",
+        "kec": "Mulyorejo",
+        "pkb": 305,
+        "share": 3.18,
+        "rank": 10,
+        "top": "PDIP",
+        "gap": 2039
+       },
+       {
+        "nama": "MULYOREJO",
+        "kec": "Mulyorejo",
+        "pkb": 296,
+        "share": 2.69,
+        "rank": 10,
+        "top": "PDIP",
+        "gap": 2987
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "GUBENG",
-      "sah": 69392,
-      "dpt": 101875,
-      "partisipasi": 68.1,
-      "pkb": 9236,
-      "pkb_persen": 13.31,
-      "juara": "PDIP",
-      "juara_persen": 18.05,
-      "jarak": 690
-     },
-     {
-      "nama": "SUKOLILO",
-      "sah": 59367,
-      "dpt": 85043,
-      "partisipasi": 69.8,
-      "pkb": 4101,
-      "pkb_persen": 6.91,
-      "juara": "PDIP",
-      "juara_persen": 31.38,
-      "jarak": 11959
-     },
-     {
-      "nama": "MULYOREJO",
-      "sah": 45513,
-      "dpt": 65656,
-      "partisipasi": 69.3,
-      "pkb": 2042,
-      "pkb_persen": 4.49,
-      "juara": "PDIP",
-      "juara_persen": 32.88,
-      "jarak": 7300
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "PDIP",
-      "nama": "M. ERI IRAWAN, S.E., M.Kp.",
-      "suara": 11395,
-      "basis": "SUKOLILO"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Ajeng Wira Wati, S.Sos., M.PSDM.",
-      "suara": 4440,
-      "basis": "GUBENG"
-     },
-     {
-      "partai": "Demokrat",
-      "nama": "HERLINA HARSONO NJOTO, S.Psi., M.Psi., Psikolog.",
-      "suara": 4098,
-      "basis": "SUKOLILO"
-     },
-     {
-      "partai": "PSI",
-      "nama": "William Wirakusuma",
-      "suara": 3742,
-      "basis": "MULYOREJO"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "ADI SUTARWIJONO",
-      "suara": 3231,
-      "basis": "SUKOLILO"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "Drs. R. TARU SASMITA",
-      "suara": 3222,
-      "basis": "GUBENG"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "AIS SHAFIYAH ASFAR",
-      "suara": 2505,
-      "basis": "GUBENG",
-      "porsi": 16.3
-     },
-     {
-      "partai": "PKB",
-      "nama": "Hj. LAILA MUFIDAH, S.Ag.",
-      "suara": 2410,
-      "basis": "SUKOLILO",
-      "porsi": 15.7
-     },
-     {
-      "partai": "PKB",
-      "nama": "ZAINAL ABIDIN",
-      "suara": 2116,
-      "basis": "GUBENG",
-      "porsi": 13.8
-     },
-     {
-      "partai": "PKB",
-      "nama": "HANI FIDYANTO",
-      "suara": 1977,
-      "basis": "GUBENG",
-      "porsi": 12.9
-     },
-     {
-      "partai": "PKB",
-      "nama": "TITIK INDRAWATI, S.H.",
-      "suara": 446,
-      "basis": "SUKOLILO",
-      "porsi": 2.9
-     },
-     {
-      "partai": "PKB",
-      "nama": "H. M. MAHFUDZ",
-      "suara": 343,
-      "basis": "SUKOLILO",
-      "porsi": 2.2
-     }
-    ]
+    "kel_total": 19
    },
    {
     "nomor": 5,
-    "kursi": 6,
     "kecamatan": [
      "TENGGILIS MEJOYO",
      "GUNUNG ANYAR",
      "RUNGKUT",
      "WONOCOLO"
     ],
-    "jumlah_kecamatan": 4,
+    "kursi": 6,
     "sah": 173292,
     "dpt": 238019,
     "partisipasi": 72.8,
-    "kuota_suara": 28882,
+    "kuota": 28882,
+    "harga": 18589,
     "pkb": 18589,
     "pkb_persen": 10.73,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 56502,
-    "tambah_suara": 37913,
-    "rasio": 3.04,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 1,
-      "suara": 33760,
-      "persen": 19.5
+    "tambah": 37913,
+    "rasio": 2.04,
+    "tier": {
+     "menang": {
+      "n": 2,
+      "pkb": 5297,
+      "gap": 0,
+      "kel": [
+       {
+        "nama": "KENDANGSARI",
+        "kec": "Tenggilis Mejoyo",
+        "pkb": 3448,
+        "share": 40.07,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       },
+       {
+        "nama": "TENGGILIS MEJOYO",
+        "kec": "Tenggilis Mejoyo",
+        "pkb": 1849,
+        "share": 28.44,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       }
+      ]
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 1,
-      "suara": 22326,
-      "persen": 12.9
+     "bersaing": {
+      "n": 3,
+      "pkb": 3672,
+      "gap": 2920,
+      "kel": [
+       {
+        "nama": "KUTISARI",
+        "kec": "Tenggilis Mejoyo",
+        "pkb": 1456,
+        "share": 13.95,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 1196
+       },
+       {
+        "nama": "PANJANG JIWO",
+        "kec": "Tenggilis Mejoyo",
+        "pkb": 1114,
+        "share": 15.25,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 848
+       },
+       {
+        "nama": "RUNGKUT TENGAH",
+        "kec": "Gunung Anyar",
+        "pkb": 1102,
+        "share": 14.15,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 876
+       }
+      ]
      },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 19791,
-      "persen": 11.4
-     },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 19558,
-      "persen": 11.3
-     },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 18834,
-      "persen": 10.9
-     },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 18589,
-      "persen": 10.7
-     }
-    ],
-    "marginal": {
-     "partai": "PKB",
-     "kursi_ke": 6,
-     "batas": 18589.0,
-     "pemegang": {
-      "partai": "PKB",
-      "nama": "Hj. LAILA MUFIDAH, S.Ag.",
-      "suara": 10976,
-      "basis": "TENGGILIS MEJOYO"
+     "jangan": {
+      "n": 14,
+      "pkb": 9619,
+      "gap": 22026,
+      "kel": [
+       {
+        "nama": "KALIRUNGKUT",
+        "kec": "Rungkut",
+        "pkb": 1232,
+        "share": 10.07,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 962
+       },
+       {
+        "nama": "GUNUNG ANYAR",
+        "kec": "Gunung Anyar",
+        "pkb": 1190,
+        "share": 9.41,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1268
+       },
+       {
+        "nama": "JEMUR WONOSARI",
+        "kec": "Wonocolo",
+        "pkb": 1046,
+        "share": 9.01,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 1652
+       },
+       {
+        "nama": "KEDUNG BARUK",
+        "kec": "Rungkut",
+        "pkb": 806,
+        "share": 9.39,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1114
+       },
+       {
+        "nama": "MEDOKAN AYU",
+        "kec": "Rungkut",
+        "pkb": 800,
+        "share": 4.95,
+        "rank": 6,
+        "top": "PKS",
+        "gap": 2899
+       },
+       {
+        "nama": "PENJARINGANSARI",
+        "kec": "Rungkut",
+        "pkb": 705,
+        "share": 6.87,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1591
+       },
+       {
+        "nama": "BENDUL MERISI",
+        "kec": "Wonocolo",
+        "pkb": 637,
+        "share": 6.76,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1301
+       },
+       {
+        "nama": "SIWALANKERTO",
+        "kec": "Wonocolo",
+        "pkb": 611,
+        "share": 6.36,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1226
+       },
+       {
+        "nama": "SIDOSERMO",
+        "kec": "Wonocolo",
+        "pkb": 544,
+        "share": 7.31,
+        "rank": 6,
+        "top": "PPP",
+        "gap": 1824
+       },
+       {
+        "nama": "RUNGKUT MENANGGAL",
+        "kec": "Gunung Anyar",
+        "pkb": 465,
+        "share": 6.19,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1393
+       },
+       {
+        "nama": "WONOREJO",
+        "kec": "Rungkut",
+        "pkb": 435,
+        "share": 4.31,
+        "rank": 8,
+        "top": "PDIP",
+        "gap": 2009
+       },
+       {
+        "nama": "RUNGKUT KIDUL",
+        "kec": "Rungkut",
+        "pkb": 431,
+        "share": 5.78,
+        "rank": 6,
+        "top": "Golkar",
+        "gap": 2387
+       },
+       {
+        "nama": "MARGOREJO",
+        "kec": "Wonocolo",
+        "pkb": 379,
+        "share": 6.4,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1207
+       },
+       {
+        "nama": "GUNUNG ANYAR TAMBAK",
+        "kec": "Gunung Anyar",
+        "pkb": 338,
+        "share": 5.36,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1193
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "TENGGILIS MEJOYO",
-      "sah": 32850,
-      "dpt": 43976,
-      "partisipasi": 74.7,
-      "pkb": 7867,
-      "pkb_persen": 23.95,
-      "juara": "PKB",
-      "juara_persen": 23.95,
-      "jarak": 285
-     },
-     {
-      "nama": "GUNUNG ANYAR",
-      "sah": 34251,
-      "dpt": 44951,
-      "partisipasi": 76.2,
-      "pkb": 3095,
-      "pkb_persen": 9.04,
-      "juara": "PDIP",
-      "juara_persen": 22.85,
-      "jarak": 3608
-     },
-     {
-      "nama": "WONOCOLO",
-      "sah": 41405,
-      "dpt": 59600,
-      "partisipasi": 69.5,
-      "pkb": 3218,
-      "pkb_persen": 7.77,
-      "juara": "Gerindra",
-      "juara_persen": 16.54,
-      "jarak": 575
-     },
-     {
-      "nama": "RUNGKUT",
-      "sah": 64786,
-      "dpt": 89492,
-      "partisipasi": 72.4,
-      "pkb": 4409,
-      "pkb_persen": 6.81,
-      "juara": "PDIP",
-      "juara_persen": 18.64,
-      "jarak": 940
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "Hj. LAILA MUFIDAH, S.Ag.",
-      "suara": 10976,
-      "basis": "TENGGILIS MEJOYO"
-     },
-     {
-      "partai": "Golkar",
-      "nama": "Arif Fathoni, S.H.",
-      "suara": 9451,
-      "basis": "RUNGKUT"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "ADI SUTARWIJONO",
-      "suara": 8352,
-      "basis": "RUNGKUT"
-     },
-     {
-      "partai": "PKS",
-      "nama": "ANING RAHMAWATI, S.T.",
-      "suara": 7862,
-      "basis": "RUNGKUT"
-     },
-     {
-      "partai": "PPP",
-      "nama": "MUHAIMIN, S.H., M.M.",
-      "suara": 5590,
-      "basis": "WONOCOLO"
-     },
-     {
-      "partai": "Golkar",
-      "nama": "Muhammad Khusen, S.Sos.",
-      "suara": 5236,
-      "basis": "RUNGKUT"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "Hj. LAILA MUFIDAH, S.Ag.",
-      "suara": 10976,
-      "basis": "TENGGILIS MEJOYO",
-      "porsi": 59.0
-     },
-     {
-      "partai": "PKB",
-      "nama": "TITIK INDRAWATI, S.H.",
-      "suara": 779,
-      "basis": "RUNGKUT",
-      "porsi": 4.2
-     },
-     {
-      "partai": "PKB",
-      "nama": "MUHAMMAD CHUSAINI ASHARI",
-      "suara": 607,
-      "basis": "RUNGKUT",
-      "porsi": 3.3
-     },
-     {
-      "partai": "PKB",
-      "nama": "NASFA UUTH AKHMADIE",
-      "suara": 477,
-      "basis": "RUNGKUT",
-      "porsi": 2.6
-     },
-     {
-      "partai": "PKB",
-      "nama": "H. M. MAHFUDZ",
-      "suara": 432,
-      "basis": "RUNGKUT",
-      "porsi": 2.3
-     },
-     {
-      "partai": "PKB",
-      "nama": "NINDI RAGIL KUSUMANINGRUM",
-      "suara": 235,
-      "basis": "RUNGKUT",
-      "porsi": 1.3
-     }
-    ]
+    "kel_total": 19
    },
    {
     "nomor": 6,
-    "kursi": 8,
     "kecamatan": [
      "GAYUNGAN",
      "WONOKROMO",
      "JAMBANGAN",
      "SAWAHAN"
     ],
-    "jumlah_kecamatan": 4,
+    "kursi": 8,
     "sah": 229762,
     "dpt": 340173,
     "partisipasi": 67.5,
-    "kuota_suara": 28720,
+    "kuota": 28720,
+    "harga": 14034,
     "pkb": 20452,
     "pkb_persen": 8.9,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 42103,
-    "tambah_suara": 21651,
-    "rasio": 2.06,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 2,
-      "suara": 54311,
-      "persen": 23.6
+    "tambah": 21650,
+    "rasio": 1.06,
+    "tier": {
+     "menang": {
+      "n": 0,
+      "pkb": 0,
+      "gap": 0,
+      "kel": []
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 1,
-      "suara": 37088,
-      "persen": 16.1
+     "bersaing": {
+      "n": 5,
+      "pkb": 8176,
+      "gap": 4851,
+      "kel": [
+       {
+        "nama": "PUTAT JAYA",
+        "kec": "Sawahan",
+        "pkb": 2671,
+        "share": 11.55,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 2651
+       },
+       {
+        "nama": "WONOKROMO",
+        "kec": "Wonokromo",
+        "pkb": 2471,
+        "share": 12.43,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 1153
+       },
+       {
+        "nama": "JAGIR",
+        "kec": "Wonokromo",
+        "pkb": 1479,
+        "share": 14.74,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 417
+       },
+       {
+        "nama": "KETINTANG",
+        "kec": "Gayungan",
+        "pkb": 918,
+        "share": 12.35,
+        "rank": 4,
+        "top": "PKS",
+        "gap": 474
+       },
+       {
+        "nama": "DUKUH MENANGGAL",
+        "kec": "Gayungan",
+        "pkb": 637,
+        "share": 13.67,
+        "rank": 4,
+        "top": "Golkar",
+        "gap": 156
+       }
+      ]
      },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 23836,
-      "persen": 10.4
-     },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 22918,
-      "persen": 10.0
-     },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 20452,
-      "persen": 8.9
-     },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 18921,
-      "persen": 8.2
-     },
-     {
-      "partai": "PAN",
-      "kursi": 1,
-      "suara": 14034,
-      "persen": 6.1
-     }
-    ],
-    "marginal": {
-     "partai": "PAN",
-     "kursi_ke": 8,
-     "batas": 14034.0,
-     "pemegang": {
-      "partai": "PAN",
-      "nama": "GHOFAR ISMAIL, S.T.",
-      "suara": 6987,
-      "basis": "SAWAHAN"
+     "jangan": {
+      "n": 15,
+      "pkb": 12276,
+      "gap": 30418,
+      "kel": [
+       {
+        "nama": "BANYU URIP",
+        "kec": "Sawahan",
+        "pkb": 1783,
+        "share": 9.11,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 3154
+       },
+       {
+        "nama": "PAKIS",
+        "kec": "Sawahan",
+        "pkb": 1691,
+        "share": 9.31,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 2434
+       },
+       {
+        "nama": "NGAGEL REJO",
+        "kec": "Wonokromo",
+        "pkb": 1039,
+        "share": 4.67,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 7942
+       },
+       {
+        "nama": "KUPANG KRAJAN",
+        "kec": "Sawahan",
+        "pkb": 989,
+        "share": 8.42,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1918
+       },
+       {
+        "nama": "PETEMON",
+        "kec": "Sawahan",
+        "pkb": 870,
+        "share": 4.76,
+        "rank": 8,
+        "top": "PDIP",
+        "gap": 3488
+       },
+       {
+        "nama": "KARAH",
+        "kec": "Jambangan",
+        "pkb": 776,
+        "share": 9.02,
+        "rank": 5,
+        "top": "Golkar",
+        "gap": 821
+       },
+       {
+        "nama": "SAWUNGGALING",
+        "kec": "Wonokromo",
+        "pkb": 760,
+        "share": 5.76,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 2223
+       },
+       {
+        "nama": "PAGESANGAN",
+        "kec": "Jambangan",
+        "pkb": 727,
+        "share": 9.78,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 576
+       },
+       {
+        "nama": "DARMO",
+        "kec": "Wonokromo",
+        "pkb": 633,
+        "share": 8.48,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1859
+       },
+       {
+        "nama": "KEBONSARI",
+        "kec": "Jambangan",
+        "pkb": 606,
+        "share": 10.21,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 587
+       },
+       {
+        "nama": "SAWAHAN",
+        "kec": "Sawahan",
+        "pkb": 534,
+        "share": 5.73,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1820
+       },
+       {
+        "nama": "JAMBANGAN",
+        "kec": "Jambangan",
+        "pkb": 495,
+        "share": 8.3,
+        "rank": 5,
+        "top": "PKS",
+        "gap": 767
+       },
+       {
+        "nama": "MENANGGAL",
+        "kec": "Gayungan",
+        "pkb": 493,
+        "share": 10.22,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 573
+       },
+       {
+        "nama": "GAYUNGAN",
+        "kec": "Gayungan",
+        "pkb": 465,
+        "share": 7.75,
+        "rank": 7,
+        "top": "Golkar",
+        "gap": 835
+       },
+       {
+        "nama": "NGAGEL",
+        "kec": "Wonokromo",
+        "pkb": 415,
+        "share": 7.11,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 1421
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "GAYUNGAN",
-      "sah": 22917,
-      "dpt": 32510,
-      "partisipasi": 70.5,
-      "pkb": 2513,
-      "pkb_persen": 10.97,
-      "juara": "Golkar",
-      "juara_persen": 16.58,
-      "jarak": 186
-     },
-     {
-      "nama": "JAMBANGAN",
-      "sah": 27936,
-      "dpt": 39579,
-      "partisipasi": 70.6,
-      "pkb": 2604,
-      "pkb_persen": 9.32,
-      "juara": "PDIP",
-      "juara_persen": 18.01,
-      "jarak": 1013
-     },
-     {
-      "nama": "WONOKROMO",
-      "sah": 78686,
-      "dpt": 117904,
-      "partisipasi": 66.7,
-      "pkb": 6797,
-      "pkb_persen": 8.64,
-      "juara": "PDIP",
-      "juara_persen": 27.53,
-      "jarak": 8777
-     },
-     {
-      "nama": "SAWAHAN",
-      "sah": 100223,
-      "dpt": 150180,
-      "partisipasi": 66.7,
-      "pkb": 8538,
-      "pkb_persen": 8.52,
-      "juara": "PDIP",
-      "juara_persen": 23.95,
-      "jarak": 6392
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "PDIP",
-      "nama": "ARJUNA RIZKI DWI KRISNAYANA, S.H., M.Kn.",
-      "suara": 15366,
-      "basis": "WONOKROMO"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Bahtiyar Rifai, S.H.",
-      "suara": 10288,
-      "basis": "SAWAHAN"
-     },
-     {
-      "partai": "Golkar",
-      "nama": "Drs. Agoeng Prasodjo, M.Si.",
-      "suara": 9413,
-      "basis": "WONOKROMO"
-     },
-     {
-      "partai": "PKS",
-      "nama": "CAHYO SISWO UTOMO, S.T., M.H.",
-      "suara": 7538,
-      "basis": "SAWAHAN"
-     },
-     {
-      "partai": "PKB",
-      "nama": "TUBAGUS LUKMAN AMIN",
-      "suara": 7413,
-      "basis": "WONOKROMO"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "SUKADAR, S.H.",
-      "suara": 7404,
-      "basis": "SAWAHAN"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "TUBAGUS LUKMAN AMIN",
-      "suara": 7413,
-      "basis": "WONOKROMO",
-      "porsi": 36.2
-     },
-     {
-      "partai": "PKB",
-      "nama": "MAZLAN MANSUR",
-      "suara": 1774,
-      "basis": "SAWAHAN",
-      "porsi": 8.7
-     },
-     {
-      "partai": "PKB",
-      "nama": "Dr. Ir. RUSLI YUSUF, M.T.",
-      "suara": 1523,
-      "basis": "WONOKROMO",
-      "porsi": 7.4
-     },
-     {
-      "partai": "PKB",
-      "nama": "BADRU TAMAM",
-      "suara": 1259,
-      "basis": "SAWAHAN",
-      "porsi": 6.2
-     },
-     {
-      "partai": "PKB",
-      "nama": "MUCHAMMAD YUSUF",
-      "suara": 770,
-      "basis": "SAWAHAN",
-      "porsi": 3.8
-     },
-     {
-      "partai": "PKB",
-      "nama": "DINA DEWI MISKIAH, S.H.",
-      "suara": 666,
-      "basis": "WONOKROMO",
-      "porsi": 3.3
-     }
-    ]
+    "kel_total": 20
    },
    {
     "nomor": 7,
-    "kursi": 7,
     "kecamatan": [
      "KARANG PILANG",
      "WIYUNG",
@@ -2607,209 +2784,241 @@
      "DUKUH PAKIS",
      "SAMBIKEREP"
     ],
-    "jumlah_kecamatan": 5,
+    "kursi": 7,
     "sah": 179996,
     "dpt": 250917,
     "partisipasi": 71.7,
-    "kuota_suara": 25714,
+    "kuota": 25714,
+    "harga": 13045,
     "pkb": 10725,
     "pkb_persen": 5.96,
     "pkb_kursi": 0,
-    "ambang_kursi_berikut": 13046,
-    "tambah_suara": 2321,
-    "rasio": 1.22,
-    "kursi_partai": [
-     {
-      "partai": "Gerindra",
-      "kursi": 2,
-      "suara": 44684,
-      "persen": 24.8
+    "tambah": 2320,
+    "rasio": 0.22,
+    "tier": {
+     "menang": {
+      "n": 0,
+      "pkb": 0,
+      "gap": 0,
+      "kel": []
      },
-     {
-      "partai": "PDIP",
-      "kursi": 1,
-      "suara": 30768,
-      "persen": 17.1
+     "bersaing": {
+      "n": 2,
+      "pkb": 1243,
+      "gap": 841,
+      "kel": [
+       {
+        "nama": "LAKARSANTRI",
+        "kec": "Lakarsantri",
+        "pkb": 841,
+        "share": 18.13,
+        "rank": 2,
+        "top": "Gerindra",
+        "gap": 255
+       },
+       {
+        "nama": "SUMURWELUT",
+        "kec": "Lakarsantri",
+        "pkb": 402,
+        "share": 12.29,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 586
+       }
+      ]
      },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 20877,
-      "persen": 11.6
-     },
-     {
-      "partai": "Demokrat",
-      "kursi": 1,
-      "suara": 16229,
-      "persen": 9.0
-     },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 15011,
-      "persen": 8.3
-     },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 13045,
-      "persen": 7.2
-     }
-    ],
-    "marginal": {
-     "partai": "Golkar",
-     "kursi_ke": 7,
-     "batas": 13045.0,
-     "pemegang": {
-      "partai": "Golkar",
-      "nama": "dr. Akmarawita Kadir",
-      "suara": 6569,
-      "basis": "DUKUH PAKIS"
+     "jangan": {
+      "n": 20,
+      "pkb": 9482,
+      "gap": 38251,
+      "kel": [
+       {
+        "nama": "KEBRAON",
+        "kec": "Karang Pilang",
+        "pkb": 1098,
+        "share": 6.91,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 3417
+       },
+       {
+        "nama": "LONTAR",
+        "kec": "Sambikerep",
+        "pkb": 881,
+        "share": 5.55,
+        "rank": 7,
+        "top": "Demokrat",
+        "gap": 2020
+       },
+       {
+        "nama": "KEDURUS",
+        "kec": "Karang Pilang",
+        "pkb": 714,
+        "share": 4.96,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 5409
+       },
+       {
+        "nama": "BABATAN",
+        "kec": "Wiyung",
+        "pkb": 696,
+        "share": 4.45,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 2451
+       },
+       {
+        "nama": "WIYUNG",
+        "kec": "Wiyung",
+        "pkb": 631,
+        "share": 6.12,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 2004
+       },
+       {
+        "nama": "LIDAH KULON",
+        "kec": "Lakarsantri",
+        "pkb": 588,
+        "share": 6.35,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1214
+       },
+       {
+        "nama": "SAMBIKEREP",
+        "kec": "Sambikerep",
+        "pkb": 512,
+        "share": 4.4,
+        "rank": 8,
+        "top": "PDIP",
+        "gap": 2038
+       },
+       {
+        "nama": "DUKUH PAKIS",
+        "kec": "Dukuh Pakis",
+        "pkb": 506,
+        "share": 6.76,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 1030
+       },
+       {
+        "nama": "BALAS KLUMPRIK",
+        "kec": "Wiyung",
+        "pkb": 477,
+        "share": 6.04,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 2279
+       },
+       {
+        "nama": "LIDAH WETAN",
+        "kec": "Lakarsantri",
+        "pkb": 436,
+        "share": 7.13,
+        "rank": 5,
+        "top": "PDIP",
+        "gap": 865
+       },
+       {
+        "nama": "GUNUNG SARI",
+        "kec": "Dukuh Pakis",
+        "pkb": 416,
+        "share": 5.81,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 1964
+       },
+       {
+        "nama": "BANGKINGAN",
+        "kec": "Lakarsantri",
+        "pkb": 356,
+        "share": 7.19,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 826
+       },
+       {
+        "nama": "KARANG PILANG",
+        "kec": "Karang Pilang",
+        "pkb": 353,
+        "share": 7.82,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 1295
+       },
+       {
+        "nama": "WARU GUNUNG",
+        "kec": "Karang Pilang",
+        "pkb": 349,
+        "share": 6.41,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 2323
+       },
+       {
+        "nama": "PRADAH KALIKENDAL",
+        "kec": "Dukuh Pakis",
+        "pkb": 289,
+        "share": 3.55,
+        "rank": 7,
+        "top": "PDIP",
+        "gap": 1742
+       },
+       {
+        "nama": "DUKUH KUPANG",
+        "kec": "Dukuh Pakis",
+        "pkb": 270,
+        "share": 3.69,
+        "rank": 9,
+        "top": "PDIP",
+        "gap": 1352
+       },
+       {
+        "nama": "JERUK",
+        "kec": "Lakarsantri",
+        "pkb": 255,
+        "share": 4.89,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 934
+       },
+       {
+        "nama": "BERINGIN",
+        "kec": "Sambikerep",
+        "pkb": 234,
+        "share": 7.37,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 966
+       },
+       {
+        "nama": "MADE",
+        "kec": "Sambikerep",
+        "pkb": 219,
+        "share": 4.09,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1496
+       },
+       {
+        "nama": "JAJAR TUNGGAL",
+        "kec": "Wiyung",
+        "pkb": 202,
+        "share": 3.2,
+        "rank": 7,
+        "top": "Gerindra",
+        "gap": 2626
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "LAKARSANTRI",
-      "sah": 33455,
-      "dpt": 46117,
-      "partisipasi": 72.5,
-      "pkb": 2878,
-      "pkb_persen": 8.6,
-      "juara": "Gerindra",
-      "juara_persen": 21.41,
-      "jarak": 1525
-     },
-     {
-      "nama": "KARANG PILANG",
-      "sah": 40235,
-      "dpt": 55637,
-      "partisipasi": 72.3,
-      "pkb": 2514,
-      "pkb_persen": 6.25,
-      "juara": "Gerindra",
-      "juara_persen": 37.18,
-      "jarak": 9491
-     },
-     {
-      "nama": "SAMBIKEREP",
-      "sah": 36067,
-      "dpt": 49511,
-      "partisipasi": 72.8,
-      "pkb": 1846,
-      "pkb_persen": 5.12,
-      "juara": "PDIP",
-      "juara_persen": 20.66,
-      "jarak": 568
-     },
-     {
-      "nama": "WIYUNG",
-      "sah": 40133,
-      "dpt": 55475,
-      "partisipasi": 72.3,
-      "pkb": 2006,
-      "pkb_persen": 5.0,
-      "juara": "Gerindra",
-      "juara_persen": 28.32,
-      "jarak": 4884
-     },
-     {
-      "nama": "DUKUH PAKIS",
-      "sah": 30106,
-      "dpt": 44177,
-      "partisipasi": 68.1,
-      "pkb": 1481,
-      "pkb_persen": 4.92,
-      "juara": "Gerindra",
-      "juara_persen": 20.25,
-      "jarak": 365
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "Gerindra",
-      "nama": "Yona Bagus Widyatmoko, S.H., S.M.",
-      "suara": 12422,
-      "basis": "KARANG PILANG"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Alif Iman Waluyo, M.M.",
-      "suara": 10822,
-      "basis": "WIYUNG"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Endy Suhadi",
-      "suara": 7105,
-      "basis": "DUKUH PAKIS"
-     },
-     {
-      "partai": "PSI",
-      "nama": "Josiah Michael",
-      "suara": 6971,
-      "basis": "SAMBIKEREP"
-     },
-     {
-      "partai": "Golkar",
-      "nama": "dr. Akmarawita Kadir",
-      "suara": 6569,
-      "basis": "DUKUH PAKIS"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "SITI MARIYAM, S.H.",
-      "suara": 4567,
-      "basis": "KARANG PILANG"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "FARAH FATATY, S.H., M.Kn.",
-      "suara": 2017,
-      "basis": "LAKARSANTRI",
-      "porsi": 18.8
-     },
-     {
-      "partai": "PKB",
-      "nama": "IWAN SETIONO, S.Sos.",
-      "suara": 1650,
-      "basis": "LAKARSANTRI",
-      "porsi": 15.4
-     },
-     {
-      "partai": "PKB",
-      "nama": "MINUN LATIF",
-      "suara": 1548,
-      "basis": "KARANG PILANG",
-      "porsi": 14.4
-     },
-     {
-      "partai": "PKB",
-      "nama": "PUSPA INDAH",
-      "suara": 1030,
-      "basis": "SAMBIKEREP",
-      "porsi": 9.6
-     },
-     {
-      "partai": "PKB",
-      "nama": "SYAIFUL ANAM, S.E.",
-      "suara": 709,
-      "basis": "SAMBIKEREP",
-      "porsi": 6.6
-     },
-     {
-      "partai": "PKB",
-      "nama": "HADI SUWARNO, S.E., M.M.",
-      "suara": 356,
-      "basis": "KARANG PILANG",
-      "porsi": 3.3
-     }
-    ]
+    "kel_total": 22
    },
    {
     "nomor": 8,
-    "kursi": 7,
     "kecamatan": [
      "TANDES",
      "SUKOMANUNGGAL",
@@ -2817,240 +3026,249 @@
      "BENOWO",
      "PAKAL"
     ],
-    "jumlah_kecamatan": 5,
+    "kursi": 7,
     "sah": 199822,
     "dpt": 276163,
     "partisipasi": 72.4,
-    "kuota_suara": 28546,
+    "kuota": 28546,
+    "harga": 14062,
     "pkb": 25501,
     "pkb_persen": 12.76,
     "pkb_kursi": 1,
-    "ambang_kursi_berikut": 42187,
-    "tambah_suara": 16686,
-    "rasio": 1.65,
-    "kursi_partai": [
-     {
-      "partai": "PDIP",
-      "kursi": 1,
-      "suara": 38268,
-      "persen": 19.2
+    "tambah": 16685,
+    "rasio": 0.65,
+    "tier": {
+     "menang": {
+      "n": 3,
+      "pkb": 3716,
+      "gap": 0,
+      "kel": [
+       {
+        "nama": "SUMBER REJO",
+        "kec": "Pakal",
+        "pkb": 2007,
+        "share": 21.77,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       },
+       {
+        "nama": "TAMBAK SARIOSO",
+        "kec": "Asemrowo",
+        "pkb": 955,
+        "share": 23.55,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       },
+       {
+        "nama": "TAMBAK OSO WILANGUN",
+        "kec": "Benowo",
+        "pkb": 754,
+        "share": 34.01,
+        "rank": 1,
+        "top": "PKB",
+        "gap": 0
+       }
+      ]
      },
-     {
-      "partai": "Gerindra",
-      "kursi": 1,
-      "suara": 30524,
-      "persen": 15.3
+     "bersaing": {
+      "n": 8,
+      "pkb": 13395,
+      "gap": 7569,
+      "kel": [
+       {
+        "nama": "SEMEMI",
+        "kec": "Benowo",
+        "pkb": 3963,
+        "share": 18.19,
+        "rank": 2,
+        "top": "PDIP",
+        "gap": 2524
+       },
+       {
+        "nama": "ASEM ROWO",
+        "kec": "Asemrowo",
+        "pkb": 2506,
+        "share": 17.37,
+        "rank": 3,
+        "top": "Gerindra",
+        "gap": 632
+       },
+       {
+        "nama": "KANDANGAN",
+        "kec": "Benowo",
+        "pkb": 1991,
+        "share": 15.59,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 847
+       },
+       {
+        "nama": "BABAT JERAWAT",
+        "kec": "Pakal",
+        "pkb": 1814,
+        "share": 12.89,
+        "rank": 4,
+        "top": "PPP",
+        "gap": 440
+       },
+       {
+        "nama": "BENOWO",
+        "kec": "Pakal",
+        "pkb": 1163,
+        "share": 14.22,
+        "rank": 3,
+        "top": "PPP",
+        "gap": 882
+       },
+       {
+        "nama": "PAKAL",
+        "kec": "Pakal",
+        "pkb": 1068,
+        "share": 12.79,
+        "rank": 2,
+        "top": "PPP",
+        "gap": 1639
+       },
+       {
+        "nama": "GENTING KALIANAK",
+        "kec": "Asemrowo",
+        "pkb": 456,
+        "share": 11.8,
+        "rank": 3,
+        "top": "Gerindra",
+        "gap": 474
+       },
+       {
+        "nama": "ROMOKALISARI",
+        "kec": "Benowo",
+        "pkb": 434,
+        "share": 25.26,
+        "rank": 2,
+        "top": "Gerindra",
+        "gap": 131
+       }
+      ]
      },
-     {
-      "partai": "PKB",
-      "kursi": 1,
-      "suara": 25501,
-      "persen": 12.8
-     },
-     {
-      "partai": "Demokrat",
-      "kursi": 1,
-      "suara": 20633,
-      "persen": 10.3
-     },
-     {
-      "partai": "PKS",
-      "kursi": 1,
-      "suara": 15626,
-      "persen": 7.8
-     },
-     {
-      "partai": "PSI",
-      "kursi": 1,
-      "suara": 14731,
-      "persen": 7.4
-     },
-     {
-      "partai": "Golkar",
-      "kursi": 1,
-      "suara": 14062,
-      "persen": 7.0
-     }
-    ],
-    "marginal": {
-     "partai": "Golkar",
-     "kursi_ke": 7,
-     "batas": 14062.0,
-     "pemegang": {
-      "partai": "Golkar",
-      "nama": "dr. Akmarawita Kadir",
-      "suara": 5263,
-      "basis": "ASEM ROWO"
+     "jangan": {
+      "n": 12,
+      "pkb": 8399,
+      "gap": 29757,
+      "kel": [
+       {
+        "nama": "SIMOMULYO BARU",
+        "kec": "Sukomanunggal",
+        "pkb": 2476,
+        "share": 11.04,
+        "rank": 4,
+        "top": "Gerindra",
+        "gap": 2389
+       },
+       {
+        "nama": "MANUKAN KULON",
+        "kec": "Tandes",
+        "pkb": 1257,
+        "share": 6.47,
+        "rank": 6,
+        "top": "Demokrat",
+        "gap": 3237
+       },
+       {
+        "nama": "SIMOMULYO",
+        "kec": "Sukomanunggal",
+        "pkb": 903,
+        "share": 7.51,
+        "rank": 6,
+        "top": "PDIP",
+        "gap": 1570
+       },
+       {
+        "nama": "KARANG POH",
+        "kec": "Tandes",
+        "pkb": 887,
+        "share": 5.61,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3092
+       },
+       {
+        "nama": "MANUKAN WETAN",
+        "kec": "Tandes",
+        "pkb": 756,
+        "share": 5.32,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3223
+       },
+       {
+        "nama": "BANJAR SUGIHAN",
+        "kec": "Tandes",
+        "pkb": 572,
+        "share": 4.13,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3407
+       },
+       {
+        "nama": "TANDES",
+        "kec": "Tandes",
+        "pkb": 471,
+        "share": 3.21,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 3508
+       },
+       {
+        "nama": "BALONGSARI",
+        "kec": "Tandes",
+        "pkb": 363,
+        "share": 2.66,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3616
+       },
+       {
+        "nama": "PUTAT GEDE",
+        "kec": "Sukomanunggal",
+        "pkb": 234,
+        "share": 5.65,
+        "rank": 6,
+        "top": "Gerindra",
+        "gap": 1097
+       },
+       {
+        "nama": "SUKOMANUNGGAL",
+        "kec": "Sukomanunggal",
+        "pkb": 169,
+        "share": 2.56,
+        "rank": 8,
+        "top": "PDIP",
+        "gap": 1159
+       },
+       {
+        "nama": "TANJUNGSARI",
+        "kec": "Sukomanunggal",
+        "pkb": 160,
+        "share": 2.27,
+        "rank": 7,
+        "top": "PAN",
+        "gap": 2172
+       },
+       {
+        "nama": "SONOKWIJENAN",
+        "kec": "Sukomanunggal",
+        "pkb": 151,
+        "share": 3.6,
+        "rank": 8,
+        "top": "PDIP",
+        "gap": 1287
+       }
+      ]
      }
     },
-    "kecamatan_detail": [
-     {
-      "nama": "BENOWO",
-      "sah": 38493,
-      "dpt": 51738,
-      "partisipasi": 74.4,
-      "pkb": 7142,
-      "pkb_persen": 18.55,
-      "juara": "PDIP",
-      "juara_persen": 25.32,
-      "jarak": 2604
-     },
-     {
-      "nama": "ASEM ROWO",
-      "sah": 22410,
-      "dpt": 34131,
-      "partisipasi": 65.7,
-      "pkb": 3917,
-      "pkb_persen": 17.48,
-      "juara": "Gerindra",
-      "juara_persen": 19.39,
-      "jarak": 428
-     },
-     {
-      "nama": "PAKAL",
-      "sah": 34939,
-      "dpt": 44775,
-      "partisipasi": 78.0,
-      "pkb": 6052,
-      "pkb_persen": 17.32,
-      "juara": "PPP",
-      "juara_persen": 23.25,
-      "jarak": 1770
-     },
-     {
-      "nama": "TANDES",
-      "sah": 47549,
-      "dpt": 67845,
-      "partisipasi": 70.1,
-      "pkb": 4297,
-      "pkb_persen": 9.04,
-      "juara": "Demokrat",
-      "juara_persen": 19.26,
-      "jarak": 1697
-     },
-     {
-      "nama": "SUKOMANUNGGAL",
-      "sah": 56431,
-      "dpt": 77674,
-      "partisipasi": 72.7,
-      "pkb": 4093,
-      "pkb_persen": 7.25,
-      "juara": "PDIP",
-      "juara_persen": 21.16,
-      "jarak": 1769
-     }
-    ],
-    "top_caleg": [
-     {
-      "partai": "Demokrat",
-      "nama": "MOCHAMAD MACHMUD, S.Sos., M.Si.",
-      "suara": 12500,
-      "basis": "TANDES"
-     },
-     {
-      "partai": "PDIP",
-      "nama": "H. SYAIFUDDIN ZUHRI, S.Sos.",
-      "suara": 11444,
-      "basis": "BENOWO"
-     },
-     {
-      "partai": "PPP",
-      "nama": "AGUS MASHURI",
-      "suara": 9830,
-      "basis": "PAKAL"
-     },
-     {
-      "partai": "PKB",
-      "nama": "MINUN LATIF",
-      "suara": 8839,
-      "basis": "PAKAL"
-     },
-     {
-      "partai": "Golkar",
-      "nama": "dr. Akmarawita Kadir",
-      "suara": 5263,
-      "basis": "ASEM ROWO"
-     },
-     {
-      "partai": "Gerindra",
-      "nama": "Endy Suhadi",
-      "suara": 4878,
-      "basis": "TANDES"
-     }
-    ],
-    "pkb_caleg": [
-     {
-      "partai": "PKB",
-      "nama": "MINUN LATIF",
-      "suara": 8839,
-      "basis": "PAKAL",
-      "porsi": 34.7
-     },
-     {
-      "partai": "PKB",
-      "nama": "PUSPA INDAH",
-      "suara": 3708,
-      "basis": "BENOWO",
-      "porsi": 14.5
-     },
-     {
-      "partai": "PKB",
-      "nama": "FARAH FATATY, S.H., M.Kn.",
-      "suara": 2627,
-      "basis": "ASEM ROWO",
-      "porsi": 10.3
-     },
-     {
-      "partai": "PKB",
-      "nama": "TUBAGUS LUKMAN AMIN",
-      "suara": 1112,
-      "basis": "SUKOMANUNGGAL",
-      "porsi": 4.4
-     },
-     {
-      "partai": "PKB",
-      "nama": "MAZLAN MANSUR",
-      "suara": 1014,
-      "basis": "SUKOMANUNGGAL",
-      "porsi": 4.0
-     },
-     {
-      "partai": "PKB",
-      "nama": "HADI SUWARNO, S.E., M.M.",
-      "suara": 841,
-      "basis": "ASEM ROWO",
-      "porsi": 3.3
-     }
-    ]
+    "kel_total": 23
    }
   ]
- },
- "rute_10": [
-  {
-   "dapil": 7,
-   "tambah": 2321,
-   "akum": 2321,
-   "kursi": 8,
-   "persen_kota": 0.15
-  },
-  {
-   "dapil": 3,
-   "tambah": 12332,
-   "akum": 14653,
-   "kursi": 9,
-   "persen_kota": 0.95
-  },
-  {
-   "dapil": 8,
-   "tambah": 16686,
-   "akum": 31339,
-   "kursi": 10,
-   "persen_kota": 2.04
-  }
- ],
- "uji_seragam": {
-  "tambah": 79681,
-  "kursi": 9,
-  "biaya": 8853
  }
 }
