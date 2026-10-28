@@ -7,6 +7,7 @@ import json, html, pathlib
 BASE = pathlib.Path('/home/buleng/.hermes/projects/sokabatnu/kampanye')
 D = json.loads((BASE / 'data' / 'simulasi-2029.json').read_text())
 M, A, B = D['meta'], D['A'], D['B']
+O = json.loads((BASE / 'data' / 'okupansi-2029.json').read_text())
 
 def n(x):
     return f"{int(x):,}".replace(',', '.')
@@ -210,6 +211,23 @@ tbody tr.pkb td{background:#fffdf4}
 .kaki a{color:var(--hijau);text-decoration:none;display:inline-block;padding:8px 10px}
 .kaki .utama{display:block;margin-top:6px;background:#04301f;color:#ffe6a6;font-weight:800;
              font-size:12.5px;padding:11px;border-radius:10px;border:1px solid rgba(246,185,59,.45)}
+.kl{display:flex;flex-wrap:wrap;align-items:center;gap:5px 7px;padding:8px 0;border-bottom:1px dashed var(--garis)}
+.kl:last-child{border-bottom:0}
+.kl b{flex:1 1 52%;font-size:11.5px;color:#22322a}
+.kl small{flex:1 1 100%;font-size:10px;color:var(--redup2);line-height:1.4}
+.kl .chip{margin:0;font-size:8px;padding:2px 6px}
+.tpslist{margin:6px 0 0;padding-left:0;list-style:none;display:grid;gap:4px}
+.tpslist li{font-size:10px;color:var(--redup);line-height:1.45;display:flex;gap:6px;align-items:baseline}
+.tpslist li b{font-variant-numeric:tabular-nums;color:var(--hijau-gelap);flex:0 0 auto}
+.tpslist li span{flex:1 1 auto}
+.rutehead{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;margin:2px 0 6px}
+.rutehead b{font-size:13px;color:var(--hijau-gelap)}
+.rutehead span{font-size:10.5px;color:var(--redup2);font-weight:700}
+.dua{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 2px}
+.dua div{background:#f4f8f5;border:1px solid var(--garis);border-radius:10px;padding:8px 9px}
+.dua span{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--redup2);font-weight:800}
+.dua b{display:block;font-size:15px;color:var(--hijau-gelap);margin-top:2px}
+.dua small{display:block;font-size:9.5px;color:var(--redup2);margin-top:2px;line-height:1.35}
 @media(min-width:560px){.hero h1{font-size:29px}}
 """
 
@@ -222,7 +240,7 @@ function pilih(v){
 }
 tb.forEach(b=>b.addEventListener('click',()=>pilih(b.dataset.v)));
 const awal=location.hash.replace('#','').toUpperCase();
-pilih(awal==='B'?'B':'A');
+pilih(['A','B','C'].includes(awal)?awal:'A');
 """
 
 def tabel_h20(sk):
@@ -269,6 +287,65 @@ def h20_kartu():
   <div class="putus"><b>Putusan</b><p>Pakai 20.000 sebagai target kader di tiap dapil, jangan dipakai sebagai ambang resmi. Ambang itu menguntungkan PDIP dan Gerindra, lalu memangkas PKB di skenario delapan dapil.</p></div>
 </div>'''
 
+def rute_kartu(r, buka=False):
+    kel = ''.join(
+        f'<div class="kl"><b>{e(k["kel"])}</b>'
+        f'<span class="chip {CHIP[k["tier"]]}">{LABEL[k["tier"]]}</span>'
+        f'<small>PKB {n(k["pkb"])} suara · potensi +{n(k["gain"])} · binaan Supabase {k["binaan"]} orang</small></div>'
+        for k in r['kelurahan'])
+    tps = ''.join(
+        f'<li><b>{n(t["pkb"])}</b><span>{e(t["kel"])} · TPS {t["tps"]} · '
+        f'peringkat {t["rank"]} · selisih {n(t["gap"])} · {LABEL[t["tier"]].lower()}</span></li>'
+        for t in r['tps_prio'])
+    return f'''<details class="dcard"{' open' if buka else ''}>
+  <summary class="dhead"><div class="dn">Dapil {r['nomor']} · kursi {r['sekarang']} dari {r['kursi']}
+    <small>{e(', '.join(r['kecamatan']))}</small></div>
+    <div class="badge">+{n(r['biaya'])} suara</div></summary>
+  <div class="dbody">
+    <div class="dua">
+      <div><span>Garap ringan</span><b>{r['tps_pakai']} TPS</b><small>12 persen suara non-PKB per TPS</small></div>
+      <div><span>Garap intensif</span><b>{r['tps_pakai25']} TPS</b><small>25 persen suara non-PKB per TPS</small></div>
+    </div>
+    <div class="sub2">Kelurahan yang diokupansi</div>
+    {kel}
+    <p class="ket" style="font-size:10px">{r['kel_jangan']} kelurahan lain di dapil ini berstatus jangan sentuh, tidak masuk daftar okupansi.</p>
+    <details><summary class="sub2 ringkas">TPS paling potensial · {len(r['tps_prio'])} dari {r['tps_pakai']} TPS</summary>
+      <ol class="tpslist">{tps}</ol>
+    </details>
+  </div>
+</details>'''
+
+
+def okupansi_panel():
+    def blok(sk, judul, sub):
+        rute = ''.join(rute_kartu(r, buka=(i == 0)) for i, r in enumerate(sk['rute']))
+        return f'''<div class="kartu">
+  <h2>{judul}</h2>
+  <p class="sub">{sub}</p>
+  <p class="ket">Dari {sk['sekarang']} kursi menjadi <b>{sk['target']} kursi</b>. Tambahan suara yang dibutuhkan <b>{n(sk['biaya'])}</b>, diambil dari dapil termurah lebih dulu. Tiap dapil hanya perlu satu kursi tambahan.</p>
+  {rute}
+</div>'''
+    a, b = O['A'], O['B']
+    return f'''<section class="panel" id="panel-C">
+  <div class="kartu">
+    <h2>Okupansi · target 8 dan 10 kursi</h2>
+    <p class="sub">Daerah mana yang harus diisi tenaga, dihitung sampai tingkat TPS. Kategori memakai aturan yang sama: menang, bisa bersaing, jangan sentuh.</p>
+    <div class="dua">
+      <div><span>Skenario A · 5 dapil</span><b>{a['sekarang']} &rarr; {a['target']} kursi</b><small>butuh +{n(a['biaya'])} suara</small></div>
+      <div><span>Skenario B · 8 dapil</span><b>{b['sekarang']} &rarr; {b['target']} kursi</b><small>butuh +{n(b['biaya'])} suara</small></div>
+    </div>
+    <p class="ket"><b>Cara membaca.</b> Satu kursi tambahan didapat kalau PKB menyalip satu partai di dapil itu. Kolom <b>garap ringan</b> menghitung tiap TPS hanya menambah 12 persen dari suara non-PKB. Kolom <b>garap intensif</b> memakai 25 persen. Makin intensif, makin sedikit TPS yang perlu diisi.</p>
+    <p class="ket">Kelurahan diurutkan dari potensi suara terbesar. Angka binaan adalah jumlah nama di Supabase, dipakai untuk melihat kelurahan mana yang sudah punya jaringan.</p>
+  </div>
+  {blok(a, 'Skenario A · 8 kursi', 'Tiga dapil termurah: Dapil ' + ', Dapil '.join(str(r['nomor']) for r in a['rute']) + '.')}
+  {blok(b, 'Skenario B · 10 kursi', 'Tiga dapil termurah: Dapil ' + ', Dapil '.join(str(r['nomor']) for r in b['rute']) + '.')}
+  <div class="kartu">
+    <h2>Catatan data TPS</h2>
+    <p class="ket">Supabase tidak menyimpan suara per TPS. Yang ada di Supabase adalah data kontak warga dan KTP per kelurahan. Suara per TPS berasal dari rekap KPU 2024. Keduanya digabung di halaman ini: suara dari KPU, jumlah binaan dari Supabase.</p>
+    <p class="ket">Kategori TPS memakai aturan sama seperti kelurahan. TPS menang berarti PKB juara atau kalah di bawah 15 persen dari juara. TPS bisa bersaing berarti PKB di tiga besar, atau peringkat empat dengan suara di atas 12 persen.</p>
+  </div>
+</section>'''
+
 hero = f'''<div class="hero">
   <div class="label">SOKABAT NU · SIMULASI PEMILU 2029</div>
   <h1><em>5 Dapil</em> dan <em>8 Dapil</em><br>55 Kursi</h1>
@@ -276,21 +353,22 @@ hero = f'''<div class="hero">
   <div class="hero-angka">
     <div><span>Suara sah</span><b>{n(M['total_sah'])}</b></div>
     <div><span>Kelurahan</span><b>{M['kelurahan']}</b></div>
-    <div><span>Kursi PKB</span><b>{A['pkb_kursi']} → {B['pkb_kursi']}</b></div>
+    <div><span>Target kursi</span><b>{A['pkb_kursi']} &rarr; 8 · {B['pkb_kursi']} &rarr; 10</b></div>
   </div>
 </div>'''
 
 tab = '''<div class="pilih">
-  <button data-v="A" class="aktif">Skenario A · 5 Dapil<small>55 kursi · 11 12 11 10 11</small></button>
-  <button data-v="B">Skenario B · 8 Dapil<small>55 kursi · 6 7 8 6 6 8 7 7</small></button>
+  <button data-v="A" class="aktif">A · 5 Dapil<small>55 kursi · 5 &rarr; 8</small></button>
+  <button data-v="B">B · 8 Dapil<small>55 kursi · 7 &rarr; 10</small></button>
+  <button data-v="C">Okupansi<small>target 8 dan 10</small></button>
 </div>'''
 
 rekomendasi = f'''<div class="kartu tandai">
   <h2>Rekomendasi</h2>
   <div class="langkah"><div class="nom">1</div><div class="isi"><b>Ambil opsi delapan dapil</b>
-    Dengan suara yang sama seperti 2024, PKB naik dari 5 menjadi {B['pkb_kursi']} kursi. Di tujuh dari delapan dapil PKB dapat satu kursi, jadi setiap wilayah punya wakil.</div></div>
+    Dengan suara yang sama seperti 2024, PKB dapat {B['pkb_kursi']} kursi. Target sepuluh kursi hanya butuh tambahan {n(O['B']['biaya'])} suara, tersebar di tiga dapil termurah.</div></div>
   <div class="langkah"><div class="nom">2</div><div class="isi"><b>Fokus ke tiga dapil termurah</b>
-    Dapil 7 butuh tambahan {n(B['dapil'][6]['tambah'])} suara, Dapil 3 butuh {n(B['dapil'][2]['tambah'])} suara, Dapil 8 butuh {n(B['dapil'][7]['tambah'])} suara. Ini rute terpendek menuju dua kursi tambahan.</div></div>
+    Dapil 7 butuh tambahan {n(B['dapil'][6]['tambah'])} suara, Dapil 3 butuh {n(B['dapil'][2]['tambah'])} suara, Dapil 8 butuh {n(B['dapil'][7]['tambah'])} suara. Buka tab Okupansi untuk daftar TPS dan kelurahannya.</div></div>
   <div class="langkah"><div class="nom">3</div><div class="isi"><b>Bangun dari nol di Dapil 7</b>
     Dapil 7 murah karena PKB belum punya kursi di sana. Jangan dibaca sebagai basis kuat. Kader dan suara harus ditanam, bukan dikonsolidasikan.</div></div>
   <div class="langkah"><div class="nom">4</div><div class="isi"><b>Kunci basis di delapan kelurahan</b>
@@ -336,6 +414,7 @@ halaman = f'''<!DOCTYPE html>
 {tab}
 {panel(A, 'A')}
 {panel(B, 'B')}
+{okupansi_panel()}
 {rekomendasi}
 {h20_kartu()}
 {legenda}

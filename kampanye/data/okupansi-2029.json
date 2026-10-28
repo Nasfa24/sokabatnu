@@ -1,0 +1,2962 @@
+{
+ "meta": {
+  "sumber_suara": "KPU Pemilu 2024, rekap TPS (dhasil_tps.json)",
+  "sumber_kontak": "Supabase master_pemilih dan data_ktp, agregat per kelurahan",
+  "asumsi_capture": "12 persen suara non-PKB per TPS",
+  "catatan": "Supabase tidak menyimpan suara per TPS. Suara TPS dari KPU, kontak dari Supabase."
+ },
+ "A": {
+  "target": 8,
+  "sekarang": 5,
+  "tambah": 3,
+  "biaya": 17161,
+  "rute": [
+   {
+    "nomor": 2,
+    "kecamatan": [
+     "Tambaksari",
+     "Pabeancantian",
+     "Semampir",
+     "Kenjeran"
+    ],
+    "kursi": 12,
+    "sekarang": 1,
+    "pkb": 41004,
+    "biaya": 3304,
+    "tps_total": 1794,
+    "tps_inti": 941,
+    "tps_pakai": 192,
+    "tps_perluas": 0,
+    "tps_pakai25": 84,
+    "tps_perluas25": 0,
+    "gain_inti": 14121,
+    "kelurahan": [
+     {
+      "kel": "Sidotopo Wetan",
+      "kec": "Kenjeran",
+      "pkb": 3749,
+      "tps": 161,
+      "menang": 34,
+      "bersaing": 60,
+      "jangan": 67,
+      "gain": 3320,
+      "binaan": 5,
+      "ktp": 5,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "085",
+        "pkb": 11,
+        "tot": 255,
+        "rank": 3,
+        "gap": 195,
+        "share": 4.31,
+        "tier": "bersaing",
+        "gain": 29
+       },
+       {
+        "tps": "102",
+        "pkb": 8,
+        "tot": 245,
+        "rank": 3,
+        "gap": 197,
+        "share": 3.27,
+        "tier": "bersaing",
+        "gain": 28
+       },
+       {
+        "tps": "084",
+        "pkb": 11,
+        "tot": 226,
+        "rank": 3,
+        "gap": 134,
+        "share": 4.87,
+        "tier": "bersaing",
+        "gain": 26
+       }
+      ]
+     },
+     {
+      "kel": "Wonokusumo",
+      "kec": "Semampir",
+      "pkb": 3523,
+      "tps": 186,
+      "menang": 34,
+      "bersaing": 62,
+      "jangan": 90,
+      "gain": 3240,
+      "binaan": 6,
+      "ktp": 17,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "176",
+        "pkb": 11,
+        "tot": 237,
+        "rank": 3,
+        "gap": 166,
+        "share": 4.64,
+        "tier": "bersaing",
+        "gain": 27
+       },
+       {
+        "tps": "078",
+        "pkb": 12,
+        "tot": 210,
+        "rank": 3,
+        "gap": 81,
+        "share": 5.71,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "033",
+        "pkb": 9,
+        "tot": 201,
+        "rank": 2,
+        "gap": 139,
+        "share": 4.48,
+        "tier": "bersaing",
+        "gain": 23
+       }
+      ]
+     },
+     {
+      "kel": "Kapasmadya Baru",
+      "kec": "Tambaksari",
+      "pkb": 2980,
+      "tps": 106,
+      "menang": 34,
+      "bersaing": 45,
+      "jangan": 27,
+      "gain": 1758,
+      "binaan": 82,
+      "ktp": 8,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "040",
+        "pkb": 13,
+        "tot": 201,
+        "rank": 3,
+        "gap": 77,
+        "share": 6.47,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "019",
+        "pkb": 21,
+        "tot": 205,
+        "rank": 3,
+        "gap": 51,
+        "share": 10.24,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "027",
+        "pkb": 17,
+        "tot": 191,
+        "rank": 2,
+        "gap": 105,
+        "share": 8.9,
+        "tier": "bersaing",
+        "gain": 21
+       }
+      ]
+     },
+     {
+      "kel": "Sidotopo",
+      "kec": "Semampir",
+      "pkb": 1621,
+      "tps": 86,
+      "menang": 11,
+      "bersaing": 36,
+      "jangan": 39,
+      "gain": 1631,
+      "binaan": 0,
+      "ktp": 14,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "060",
+        "pkb": 8,
+        "tot": 267,
+        "rank": 3,
+        "gap": 232,
+        "share": 3.0,
+        "tier": "bersaing",
+        "gain": 31
+       },
+       {
+        "tps": "052",
+        "pkb": 8,
+        "tot": 259,
+        "rank": 3,
+        "gap": 199,
+        "share": 3.09,
+        "tier": "bersaing",
+        "gain": 30
+       },
+       {
+        "tps": "053",
+        "pkb": 11,
+        "tot": 248,
+        "rank": 2,
+        "gap": 212,
+        "share": 4.44,
+        "tier": "bersaing",
+        "gain": 28
+       }
+      ]
+     },
+     {
+      "kel": "Bulak Banteng",
+      "kec": "Kenjeran",
+      "pkb": 5264,
+      "tps": 89,
+      "menang": 66,
+      "bersaing": 16,
+      "jangan": 7,
+      "gain": 1526,
+      "binaan": 24,
+      "ktp": 13,
+      "tier": "menang",
+      "tps_prio": [
+       {
+        "tps": "053",
+        "pkb": 62,
+        "tot": 265,
+        "rank": 2,
+        "gap": 72,
+        "share": 23.4,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "009",
+        "pkb": 51,
+        "tot": 246,
+        "rank": 2,
+        "gap": 14,
+        "share": 20.73,
+        "tier": "menang",
+        "gain": 23
+       },
+       {
+        "tps": "037",
+        "pkb": 28,
+        "tot": 223,
+        "rank": 3,
+        "gap": 77,
+        "share": 12.56,
+        "tier": "bersaing",
+        "gain": 23
+       }
+      ]
+     },
+     {
+      "kel": "Ujung",
+      "kec": "Semampir",
+      "pkb": 3573,
+      "tps": 92,
+      "menang": 45,
+      "bersaing": 28,
+      "jangan": 19,
+      "gain": 1324,
+      "binaan": 1,
+      "ktp": 10,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "033",
+        "pkb": 32,
+        "tot": 225,
+        "rank": 3,
+        "gap": 61,
+        "share": 14.22,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "031",
+        "pkb": 23,
+        "tot": 209,
+        "rank": 3,
+        "gap": 59,
+        "share": 11.0,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "034",
+        "pkb": 69,
+        "tot": 246,
+        "rank": 2,
+        "gap": 76,
+        "share": 28.05,
+        "tier": "bersaing",
+        "gain": 21
+       }
+      ]
+     },
+     {
+      "kel": "Dukuh Setro",
+      "kec": "Tambaksari",
+      "pkb": 1618,
+      "tps": 61,
+      "menang": 21,
+      "bersaing": 14,
+      "jangan": 26,
+      "gain": 1021,
+      "binaan": 0,
+      "ktp": 4,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "032",
+        "pkb": 27,
+        "tot": 216,
+        "rank": 3,
+        "gap": 86,
+        "share": 12.5,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "021",
+        "pkb": 20,
+        "tot": 203,
+        "rank": 3,
+        "gap": 61,
+        "share": 9.85,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "045",
+        "pkb": 25,
+        "tot": 207,
+        "rank": 3,
+        "gap": 47,
+        "share": 12.08,
+        "tier": "bersaing",
+        "gain": 22
+       }
+      ]
+     },
+     {
+      "kel": "Tambak Wedi",
+      "kec": "Kenjeran",
+      "pkb": 1745,
+      "tps": 51,
+      "menang": 22,
+      "bersaing": 15,
+      "jangan": 14,
+      "gain": 996,
+      "binaan": 0,
+      "ktp": 7,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "031",
+        "pkb": 20,
+        "tot": 225,
+        "rank": 2,
+        "gap": 105,
+        "share": 8.89,
+        "tier": "bersaing",
+        "gain": 25
+       },
+       {
+        "tps": "027",
+        "pkb": 20,
+        "tot": 209,
+        "rank": 2,
+        "gap": 112,
+        "share": 9.57,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "011",
+        "pkb": 88,
+        "tot": 274,
+        "rank": 1,
+        "gap": 0,
+        "share": 32.12,
+        "tier": "menang",
+        "gain": 22
+       }
+      ]
+     }
+    ],
+    "kel_total": 21,
+    "kel_jangan": 8,
+    "tps_prio": [
+     {
+      "kel": "Bulak Banteng",
+      "tps": "009",
+      "pkb": 51,
+      "tot": 246,
+      "rank": 2,
+      "gap": 14,
+      "share": 20.73,
+      "tier": "menang",
+      "gain": 23
+     },
+     {
+      "kel": "Ampel",
+      "tps": "038",
+      "pkb": 60,
+      "tot": 248,
+      "rank": 2,
+      "gap": 7,
+      "share": 24.19,
+      "tier": "menang",
+      "gain": 23
+     },
+     {
+      "kel": "Tambak Wedi",
+      "tps": "011",
+      "pkb": 88,
+      "tot": 274,
+      "rank": 1,
+      "gap": 0,
+      "share": 32.12,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Tanah Kali Kedinding",
+      "tps": "039",
+      "pkb": 44,
+      "tot": 217,
+      "rank": 2,
+      "gap": 24,
+      "share": 20.28,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Tanah Kali Kedinding",
+      "tps": "095",
+      "pkb": 39,
+      "tot": 211,
+      "rank": 2,
+      "gap": 20,
+      "share": 18.48,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Sidotopo Wetan",
+      "tps": "036",
+      "pkb": 33,
+      "tot": 206,
+      "rank": 2,
+      "gap": 17,
+      "share": 16.02,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Sidotopo Wetan",
+      "tps": "138",
+      "pkb": 35,
+      "tot": 210,
+      "rank": 2,
+      "gap": 11,
+      "share": 16.67,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Tambak Wedi",
+      "tps": "030",
+      "pkb": 42,
+      "tot": 216,
+      "rank": 2,
+      "gap": 6,
+      "share": 19.44,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Pegirian",
+      "tps": "078",
+      "pkb": 78,
+      "tot": 250,
+      "rank": 2,
+      "gap": 21,
+      "share": 31.2,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Ujung",
+      "tps": "036",
+      "pkb": 54,
+      "tot": 232,
+      "rank": 2,
+      "gap": 25,
+      "share": 23.28,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Gading",
+      "tps": "065",
+      "pkb": 42,
+      "tot": 218,
+      "rank": 2,
+      "gap": 4,
+      "share": 19.27,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Tanah Kali Kedinding",
+      "tps": "059",
+      "pkb": 48,
+      "tot": 212,
+      "rank": 1,
+      "gap": 0,
+      "share": 22.64,
+      "tier": "menang",
+      "gain": 20
+     }
+    ]
+   },
+   {
+    "nomor": 5,
+    "kecamatan": [
+     "Karangpilang",
+     "Tandes",
+     "Lakarsantri",
+     "Benowo",
+     "Wiyung",
+     "Dukuhpakis",
+     "Asemrowo",
+     "Pakal",
+     "Sambikerep"
+    ],
+    "kursi": 11,
+    "sekarang": 1,
+    "pkb": 32133,
+    "biaya": 6889,
+    "tps_total": 1630,
+    "tps_inti": 630,
+    "tps_pakai": 402,
+    "tps_perluas": 0,
+    "tps_pakai25": 198,
+    "tps_perluas25": 0,
+    "gain_inti": 10256,
+    "kelurahan": [
+     {
+      "kel": "Sememi",
+      "kec": "Benowo",
+      "pkb": 3963,
+      "tps": 104,
+      "menang": 29,
+      "bersaing": 42,
+      "jangan": 33,
+      "gain": 2138,
+      "binaan": 235,
+      "ktp": 43,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "060",
+        "pkb": 30,
+        "tot": 230,
+        "rank": 2,
+        "gap": 136,
+        "share": 13.04,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "068",
+        "pkb": 28,
+        "tot": 228,
+        "rank": 3,
+        "gap": 62,
+        "share": 12.28,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "083",
+        "pkb": 29,
+        "tot": 225,
+        "rank": 2,
+        "gap": 62,
+        "share": 12.89,
+        "tier": "bersaing",
+        "gain": 24
+       }
+      ]
+     },
+     {
+      "kel": "Asem Rowo",
+      "kec": "Asemrowo",
+      "pkb": 2506,
+      "tps": 82,
+      "menang": 30,
+      "bersaing": 34,
+      "jangan": 18,
+      "gain": 1340,
+      "binaan": 0,
+      "ktp": 0,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "037",
+        "pkb": 4,
+        "tot": 230,
+        "rank": 3,
+        "gap": 198,
+        "share": 1.74,
+        "tier": "bersaing",
+        "gain": 27
+       },
+       {
+        "tps": "078",
+        "pkb": 20,
+        "tot": 210,
+        "rank": 2,
+        "gap": 110,
+        "share": 9.52,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "036",
+        "pkb": 22,
+        "tot": 202,
+        "rank": 3,
+        "gap": 76,
+        "share": 10.89,
+        "tier": "bersaing",
+        "gain": 22
+       }
+      ]
+     },
+     {
+      "kel": "Pakal",
+      "kec": "Pakal",
+      "pkb": 1068,
+      "tps": 28,
+      "menang": 7,
+      "bersaing": 12,
+      "jangan": 9,
+      "gain": 717,
+      "binaan": 263,
+      "ktp": 13,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "013",
+        "pkb": 37,
+        "tot": 260,
+        "rank": 3,
+        "gap": 67,
+        "share": 14.23,
+        "tier": "bersaing",
+        "gain": 27
+       },
+       {
+        "tps": "010",
+        "pkb": 31,
+        "tot": 249,
+        "rank": 2,
+        "gap": 122,
+        "share": 12.45,
+        "tier": "bersaing",
+        "gain": 26
+       },
+       {
+        "tps": "025",
+        "pkb": 30,
+        "tot": 241,
+        "rank": 3,
+        "gap": 88,
+        "share": 12.45,
+        "tier": "bersaing",
+        "gain": 25
+       }
+      ]
+     },
+     {
+      "kel": "Sumber Rejo",
+      "kec": "Pakal",
+      "pkb": 2007,
+      "tps": 33,
+      "menang": 17,
+      "bersaing": 9,
+      "jangan": 7,
+      "gain": 693,
+      "binaan": 173,
+      "ktp": 0,
+      "tier": "menang",
+      "tps_prio": [
+       {
+        "tps": "012",
+        "pkb": 47,
+        "tot": 247,
+        "rank": 3,
+        "gap": 31,
+        "share": 19.03,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "024",
+        "pkb": 26,
+        "tot": 228,
+        "rank": 3,
+        "gap": 39,
+        "share": 11.4,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "025",
+        "pkb": 27,
+        "tot": 219,
+        "rank": 3,
+        "gap": 17,
+        "share": 12.33,
+        "tier": "bersaing",
+        "gain": 23
+       }
+      ]
+     },
+     {
+      "kel": "Manukan Wetan",
+      "kec": "Tandes",
+      "pkb": 756,
+      "tps": 25,
+      "menang": 8,
+      "bersaing": 5,
+      "jangan": 12,
+      "gain": 687,
+      "binaan": 131,
+      "ktp": 2,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "011",
+        "pkb": 81,
+        "tot": 285,
+        "rank": 1,
+        "gap": 0,
+        "share": 28.42,
+        "tier": "menang",
+        "gain": 24
+       },
+       {
+        "tps": "016",
+        "pkb": 36,
+        "tot": 223,
+        "rank": 2,
+        "gap": 18,
+        "share": 16.14,
+        "tier": "menang",
+        "gain": 22
+       },
+       {
+        "tps": "002",
+        "pkb": 25,
+        "tot": 198,
+        "rank": 2,
+        "gap": 13,
+        "share": 12.63,
+        "tier": "menang",
+        "gain": 21
+       }
+      ]
+     },
+     {
+      "kel": "Benowo",
+      "kec": "Pakal",
+      "pkb": 1163,
+      "tps": 32,
+      "menang": 9,
+      "bersaing": 18,
+      "jangan": 5,
+      "gain": 678,
+      "binaan": 27,
+      "ktp": 11,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "026",
+        "pkb": 46,
+        "tot": 248,
+        "rank": 3,
+        "gap": 36,
+        "share": 18.55,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "005",
+        "pkb": 24,
+        "tot": 218,
+        "rank": 3,
+        "gap": 81,
+        "share": 11.01,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "017",
+        "pkb": 48,
+        "tot": 236,
+        "rank": 3,
+        "gap": 10,
+        "share": 20.34,
+        "tier": "bersaing",
+        "gain": 23
+       }
+      ]
+     },
+     {
+      "kel": "Lakarsantri",
+      "kec": "Lakarsantri",
+      "pkb": 841,
+      "tps": 22,
+      "menang": 11,
+      "bersaing": 5,
+      "jangan": 6,
+      "gain": 456,
+      "binaan": 0,
+      "ktp": 19,
+      "tier": "menang",
+      "tps_prio": [
+       {
+        "tps": "016",
+        "pkb": 41,
+        "tot": 255,
+        "rank": 3,
+        "gap": 6,
+        "share": 16.08,
+        "tier": "bersaing",
+        "gain": 26
+       },
+       {
+        "tps": "003",
+        "pkb": 36,
+        "tot": 226,
+        "rank": 3,
+        "gap": 13,
+        "share": 15.93,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "004",
+        "pkb": 48,
+        "tot": 229,
+        "rank": 2,
+        "gap": 31,
+        "share": 20.96,
+        "tier": "menang",
+        "gain": 22
+       }
+      ]
+     },
+     {
+      "kel": "Sumurwelut",
+      "kec": "Lakarsantri",
+      "pkb": 402,
+      "tps": 15,
+      "menang": 3,
+      "bersaing": 5,
+      "jangan": 7,
+      "gain": 344,
+      "binaan": 0,
+      "ktp": 0,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "012",
+        "pkb": 48,
+        "tot": 247,
+        "rank": 3,
+        "gap": 7,
+        "share": 19.43,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "001",
+        "pkb": 27,
+        "tot": 220,
+        "rank": 4,
+        "gap": 37,
+        "share": 12.27,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "003",
+        "pkb": 32,
+        "tot": 223,
+        "rank": 2,
+        "gap": 48,
+        "share": 14.35,
+        "tier": "bersaing",
+        "gain": 23
+       }
+      ]
+     }
+    ],
+    "kel_total": 39,
+    "kel_jangan": 25,
+    "tps_prio": [
+     {
+      "kel": "Manukan Wetan",
+      "tps": "011",
+      "pkb": 81,
+      "tot": 285,
+      "rank": 1,
+      "gap": 0,
+      "share": 28.42,
+      "tier": "menang",
+      "gain": 24
+     },
+     {
+      "kel": "Tambak Sarioso",
+      "tps": "015",
+      "pkb": 66,
+      "tot": 260,
+      "rank": 1,
+      "gap": 0,
+      "share": 25.38,
+      "tier": "menang",
+      "gain": 23
+     },
+     {
+      "kel": "Babat Jerawat",
+      "tps": "058",
+      "pkb": 53,
+      "tot": 244,
+      "rank": 2,
+      "gap": 29,
+      "share": 21.72,
+      "tier": "menang",
+      "gain": 23
+     },
+     {
+      "kel": "Babat Jerawat",
+      "tps": "059",
+      "pkb": 38,
+      "tot": 230,
+      "rank": 2,
+      "gap": 3,
+      "share": 16.52,
+      "tier": "menang",
+      "gain": 23
+     },
+     {
+      "kel": "Sememi",
+      "tps": "020",
+      "pkb": 60,
+      "tot": 243,
+      "rank": 2,
+      "gap": 14,
+      "share": 24.69,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Lakarsantri",
+      "tps": "004",
+      "pkb": 48,
+      "tot": 229,
+      "rank": 2,
+      "gap": 31,
+      "share": 20.96,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Sumber Rejo",
+      "tps": "029",
+      "pkb": 53,
+      "tot": 236,
+      "rank": 2,
+      "gap": 18,
+      "share": 22.46,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Benowo",
+      "tps": "025",
+      "pkb": 60,
+      "tot": 245,
+      "rank": 2,
+      "gap": 6,
+      "share": 24.49,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Manukan Wetan",
+      "tps": "016",
+      "pkb": 36,
+      "tot": 223,
+      "rank": 2,
+      "gap": 18,
+      "share": 16.14,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Banjar Sugihan",
+      "tps": "009",
+      "pkb": 47,
+      "tot": 230,
+      "rank": 1,
+      "gap": 0,
+      "share": 20.43,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Balas Klumprik",
+      "tps": "017",
+      "pkb": 29,
+      "tot": 211,
+      "rank": 2,
+      "gap": 31,
+      "share": 13.74,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Kandangan",
+      "tps": "054",
+      "pkb": 37,
+      "tot": 213,
+      "rank": 2,
+      "gap": 26,
+      "share": 17.37,
+      "tier": "menang",
+      "gain": 21
+     }
+    ]
+   },
+   {
+    "nomor": 1,
+    "kecamatan": [
+     "Tegalsari",
+     "Genteng",
+     "Gubeng",
+     "Simokerto",
+     "Bubutan",
+     "Krembangan"
+    ],
+    "kursi": 11,
+    "sekarang": 1,
+    "pkb": 34666,
+    "biaya": 6968,
+    "tps_total": 1384,
+    "tps_inti": 690,
+    "tps_pakai": 435,
+    "tps_perluas": 0,
+    "tps_pakai25": 203,
+    "tps_perluas25": 0,
+    "gain_inti": 10329,
+    "kelurahan": [
+     {
+      "kel": "Kertajaya",
+      "kec": "Gubeng",
+      "pkb": 2349,
+      "tps": 69,
+      "menang": 34,
+      "bersaing": 13,
+      "jangan": 22,
+      "gain": 1406,
+      "binaan": 1,
+      "ktp": 5,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "014",
+        "pkb": 27,
+        "tot": 225,
+        "rank": 3,
+        "gap": 35,
+        "share": 12.0,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "043",
+        "pkb": 33,
+        "tot": 217,
+        "rank": 3,
+        "gap": 19,
+        "share": 15.21,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "047",
+        "pkb": 41,
+        "tot": 218,
+        "rank": 2,
+        "gap": 24,
+        "share": 18.81,
+        "tier": "menang",
+        "gain": 21
+       }
+      ]
+     },
+     {
+      "kel": "Jepara",
+      "kec": "Bubutan",
+      "pkb": 1535,
+      "tps": 69,
+      "menang": 16,
+      "bersaing": 27,
+      "jangan": 26,
+      "gain": 1174,
+      "binaan": 2,
+      "ktp": 23,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "018",
+        "pkb": 13,
+        "tot": 207,
+        "rank": 2,
+        "gap": 163,
+        "share": 6.28,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "020",
+        "pkb": 10,
+        "tot": 190,
+        "rank": 3,
+        "gap": 101,
+        "share": 5.26,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "036",
+        "pkb": 20,
+        "tot": 192,
+        "rank": 2,
+        "gap": 73,
+        "share": 10.42,
+        "tier": "bersaing",
+        "gain": 21
+       }
+      ]
+     },
+     {
+      "kel": "Gubeng",
+      "kec": "Gubeng",
+      "pkb": 1064,
+      "tps": 40,
+      "menang": 11,
+      "bersaing": 11,
+      "jangan": 18,
+      "gain": 925,
+      "binaan": 0,
+      "ktp": 3,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "013",
+        "pkb": 27,
+        "tot": 221,
+        "rank": 3,
+        "gap": 28,
+        "share": 12.22,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "009",
+        "pkb": 38,
+        "tot": 215,
+        "rank": 3,
+        "gap": 20,
+        "share": 17.67,
+        "tier": "bersaing",
+        "gain": 21
+       },
+       {
+        "tps": "016",
+        "pkb": 34,
+        "tot": 201,
+        "rank": 2,
+        "gap": 2,
+        "share": 16.92,
+        "tier": "menang",
+        "gain": 20
+       }
+      ]
+     },
+     {
+      "kel": "Pucang Sewu",
+      "kec": "Gubeng",
+      "pkb": 1096,
+      "tps": 38,
+      "menang": 13,
+      "bersaing": 9,
+      "jangan": 16,
+      "gain": 835,
+      "binaan": 0,
+      "ktp": 11,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "030",
+        "pkb": 43,
+        "tot": 223,
+        "rank": 2,
+        "gap": 17,
+        "share": 19.28,
+        "tier": "menang",
+        "gain": 22
+       },
+       {
+        "tps": "031",
+        "pkb": 30,
+        "tot": 211,
+        "rank": 3,
+        "gap": 20,
+        "share": 14.22,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "032",
+        "pkb": 28,
+        "tot": 208,
+        "rank": 3,
+        "gap": 15,
+        "share": 13.46,
+        "tier": "bersaing",
+        "gain": 22
+       }
+      ]
+     },
+     {
+      "kel": "Simolawang",
+      "kec": "Simokerto",
+      "pkb": 2942,
+      "tps": 59,
+      "menang": 38,
+      "bersaing": 20,
+      "jangan": 1,
+      "gain": 730,
+      "binaan": 0,
+      "ktp": 10,
+      "tier": "menang",
+      "tps_prio": [
+       {
+        "tps": "031",
+        "pkb": 19,
+        "tot": 180,
+        "rank": 3,
+        "gap": 61,
+        "share": 10.56,
+        "tier": "bersaing",
+        "gain": 19
+       },
+       {
+        "tps": "038",
+        "pkb": 41,
+        "tot": 197,
+        "rank": 3,
+        "gap": 21,
+        "share": 20.81,
+        "tier": "bersaing",
+        "gain": 19
+       },
+       {
+        "tps": "048",
+        "pkb": 49,
+        "tot": 208,
+        "rank": 2,
+        "gap": 1,
+        "share": 23.56,
+        "tier": "menang",
+        "gain": 19
+       }
+      ]
+     },
+     {
+      "kel": "Kapasari",
+      "kec": "Genteng",
+      "pkb": 918,
+      "tps": 46,
+      "menang": 10,
+      "bersaing": 16,
+      "jangan": 20,
+      "gain": 723,
+      "binaan": 2,
+      "ktp": 3,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "033",
+        "pkb": 23,
+        "tot": 208,
+        "rank": 3,
+        "gap": 46,
+        "share": 11.06,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "043",
+        "pkb": 33,
+        "tot": 204,
+        "rank": 3,
+        "gap": 17,
+        "share": 16.18,
+        "tier": "bersaing",
+        "gain": 21
+       },
+       {
+        "tps": "040",
+        "pkb": 19,
+        "tot": 186,
+        "rank": 3,
+        "gap": 69,
+        "share": 10.22,
+        "tier": "bersaing",
+        "gain": 20
+       }
+      ]
+     },
+     {
+      "kel": "Peneleh",
+      "kec": "Genteng",
+      "pkb": 708,
+      "tps": 45,
+      "menang": 3,
+      "bersaing": 21,
+      "jangan": 21,
+      "gain": 673,
+      "binaan": 1,
+      "ktp": 6,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "027",
+        "pkb": 17,
+        "tot": 203,
+        "rank": 3,
+        "gap": 77,
+        "share": 8.37,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "032",
+        "pkb": 11,
+        "tot": 167,
+        "rank": 3,
+        "gap": 76,
+        "share": 6.59,
+        "tier": "bersaing",
+        "gain": 19
+       },
+       {
+        "tps": "029",
+        "pkb": 23,
+        "tot": 162,
+        "rank": 3,
+        "gap": 20,
+        "share": 14.2,
+        "tier": "bersaing",
+        "gain": 17
+       }
+      ]
+     },
+     {
+      "kel": "Bubutan",
+      "kec": "Bubutan",
+      "pkb": 737,
+      "tps": 37,
+      "menang": 7,
+      "bersaing": 15,
+      "jangan": 15,
+      "gain": 594,
+      "binaan": 0,
+      "ktp": 4,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "033",
+        "pkb": 42,
+        "tot": 209,
+        "rank": 2,
+        "gap": 19,
+        "share": 20.1,
+        "tier": "menang",
+        "gain": 20
+       },
+       {
+        "tps": "035",
+        "pkb": 32,
+        "tot": 195,
+        "rank": 3,
+        "gap": 41,
+        "share": 16.41,
+        "tier": "bersaing",
+        "gain": 20
+       },
+       {
+        "tps": "026",
+        "pkb": 26,
+        "tot": 186,
+        "rank": 2,
+        "gap": 8,
+        "share": 13.98,
+        "tier": "menang",
+        "gain": 19
+       }
+      ]
+     }
+    ],
+    "kel_total": 26,
+    "kel_jangan": 14,
+    "tps_prio": [
+     {
+      "kel": "Morokrembangan",
+      "tps": "054",
+      "pkb": 57,
+      "tot": 246,
+      "rank": 2,
+      "gap": 3,
+      "share": 23.17,
+      "tier": "menang",
+      "gain": 23
+     },
+     {
+      "kel": "Airlangga",
+      "tps": "040",
+      "pkb": 29,
+      "tot": 214,
+      "rank": 2,
+      "gap": 31,
+      "share": 13.55,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Pucang Sewu",
+      "tps": "030",
+      "pkb": 43,
+      "tot": 223,
+      "rank": 2,
+      "gap": 17,
+      "share": 19.28,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Perak Barat",
+      "tps": "011",
+      "pkb": 37,
+      "tot": 222,
+      "rank": 2,
+      "gap": 6,
+      "share": 16.67,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Airlangga",
+      "tps": "021",
+      "pkb": 42,
+      "tot": 213,
+      "rank": 1,
+      "gap": 0,
+      "share": 19.72,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Kertajaya",
+      "tps": "047",
+      "pkb": 41,
+      "tot": 218,
+      "rank": 2,
+      "gap": 24,
+      "share": 18.81,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Pucang Sewu",
+      "tps": "036",
+      "pkb": 39,
+      "tot": 212,
+      "rank": 2,
+      "gap": 2,
+      "share": 18.4,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Bubutan",
+      "tps": "033",
+      "pkb": 42,
+      "tot": 209,
+      "rank": 2,
+      "gap": 19,
+      "share": 20.1,
+      "tier": "menang",
+      "gain": 20
+     },
+     {
+      "kel": "Tembok Dukuh",
+      "tps": "067",
+      "pkb": 52,
+      "tot": 215,
+      "rank": 1,
+      "gap": 0,
+      "share": 24.19,
+      "tier": "menang",
+      "gain": 20
+     },
+     {
+      "kel": "Embong Kaliasin",
+      "tps": "019",
+      "pkb": 52,
+      "tot": 218,
+      "rank": 2,
+      "gap": 21,
+      "share": 23.85,
+      "tier": "menang",
+      "gain": 20
+     },
+     {
+      "kel": "Gubeng",
+      "tps": "016",
+      "pkb": 34,
+      "tot": 201,
+      "rank": 2,
+      "gap": 2,
+      "share": 16.92,
+      "tier": "menang",
+      "gain": 20
+     },
+     {
+      "kel": "Airlangga",
+      "tps": "036",
+      "pkb": 33,
+      "tot": 200,
+      "rank": 2,
+      "gap": 27,
+      "share": 16.5,
+      "tier": "menang",
+      "gain": 20
+     }
+    ]
+   }
+  ],
+  "tps_pakai": 1029
+ },
+ "B": {
+  "target": 10,
+  "sekarang": 7,
+  "tambah": 3,
+  "biaya": 31337,
+  "rute": [
+   {
+    "nomor": 7,
+    "kecamatan": [
+     "Karangpilang",
+     "Wiyung",
+     "Lakarsantri",
+     "Dukuhpakis",
+     "Sambikerep"
+    ],
+    "kursi": 7,
+    "sekarang": 0,
+    "pkb": 10725,
+    "biaya": 2320,
+    "tps_total": 909,
+    "tps_inti": 235,
+    "tps_pakai": 137,
+    "tps_perluas": 0,
+    "tps_pakai25": 82,
+    "tps_perluas25": 0,
+    "gain_inti": 3297,
+    "kelurahan": [
+     {
+      "kel": "Lakarsantri",
+      "kec": "Lakarsantri",
+      "pkb": 841,
+      "tps": 22,
+      "menang": 11,
+      "bersaing": 5,
+      "jangan": 6,
+      "gain": 456,
+      "binaan": 0,
+      "ktp": 19,
+      "tier": "menang",
+      "tps_prio": [
+       {
+        "tps": "016",
+        "pkb": 41,
+        "tot": 255,
+        "rank": 3,
+        "gap": 6,
+        "share": 16.08,
+        "tier": "bersaing",
+        "gain": 26
+       },
+       {
+        "tps": "003",
+        "pkb": 36,
+        "tot": 226,
+        "rank": 3,
+        "gap": 13,
+        "share": 15.93,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "004",
+        "pkb": 48,
+        "tot": 229,
+        "rank": 2,
+        "gap": 31,
+        "share": 20.96,
+        "tier": "menang",
+        "gain": 22
+       }
+      ]
+     },
+     {
+      "kel": "Sumurwelut",
+      "kec": "Lakarsantri",
+      "pkb": 402,
+      "tps": 15,
+      "menang": 3,
+      "bersaing": 5,
+      "jangan": 7,
+      "gain": 344,
+      "binaan": 0,
+      "ktp": 0,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "012",
+        "pkb": 48,
+        "tot": 247,
+        "rank": 3,
+        "gap": 7,
+        "share": 19.43,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "001",
+        "pkb": 27,
+        "tot": 220,
+        "rank": 4,
+        "gap": 37,
+        "share": 12.27,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "003",
+        "pkb": 32,
+        "tot": 223,
+        "rank": 2,
+        "gap": 48,
+        "share": 14.35,
+        "tier": "bersaing",
+        "gain": 23
+       }
+      ]
+     },
+     {
+      "kel": "Waru Gunung",
+      "kec": "Karangpilang",
+      "pkb": 349,
+      "tps": 26,
+      "menang": 7,
+      "bersaing": 14,
+      "jangan": 5,
+      "gain": 320,
+      "binaan": 0,
+      "ktp": 0,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "024",
+        "pkb": 18,
+        "tot": 207,
+        "rank": 2,
+        "gap": 93,
+        "share": 8.7,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "019",
+        "pkb": 14,
+        "tot": 200,
+        "rank": 3,
+        "gap": 114,
+        "share": 7.0,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "020",
+        "pkb": 25,
+        "tot": 206,
+        "rank": 2,
+        "gap": 93,
+        "share": 12.14,
+        "tier": "bersaing",
+        "gain": 22
+       }
+      ]
+     },
+     {
+      "kel": "Karang Pilang",
+      "kec": "Karangpilang",
+      "pkb": 353,
+      "tps": 23,
+      "menang": 12,
+      "bersaing": 6,
+      "jangan": 5,
+      "gain": 253,
+      "binaan": 4,
+      "ktp": 2,
+      "tier": "menang",
+      "tps_prio": [
+       {
+        "tps": "023",
+        "pkb": 21,
+        "tot": 222,
+        "rank": 3,
+        "gap": 109,
+        "share": 9.46,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "022",
+        "pkb": 29,
+        "tot": 201,
+        "rank": 3,
+        "gap": 49,
+        "share": 14.43,
+        "tier": "bersaing",
+        "gain": 21
+       },
+       {
+        "tps": "016",
+        "pkb": 31,
+        "tot": 186,
+        "rank": 2,
+        "gap": 3,
+        "share": 16.67,
+        "tier": "menang",
+        "gain": 19
+       }
+      ]
+     }
+    ],
+    "kel_total": 22,
+    "kel_jangan": 18,
+    "tps_prio": [
+     {
+      "kel": "Lakarsantri",
+      "tps": "004",
+      "pkb": 48,
+      "tot": 229,
+      "rank": 2,
+      "gap": 31,
+      "share": 20.96,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Balas Klumprik",
+      "tps": "017",
+      "pkb": 29,
+      "tot": 211,
+      "rank": 2,
+      "gap": 31,
+      "share": 13.74,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Kebraon",
+      "tps": "044",
+      "pkb": 31,
+      "tot": 204,
+      "rank": 2,
+      "gap": 28,
+      "share": 15.2,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Lakarsantri",
+      "tps": "010",
+      "pkb": 36,
+      "tot": 207,
+      "rank": 2,
+      "gap": 8,
+      "share": 17.39,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Dukuh Pakis",
+      "tps": "036",
+      "pkb": 65,
+      "tot": 228,
+      "rank": 2,
+      "gap": 31,
+      "share": 28.51,
+      "tier": "menang",
+      "gain": 20
+     },
+     {
+      "kel": "Gunung Sari",
+      "tps": "036",
+      "pkb": 36,
+      "tot": 205,
+      "rank": 2,
+      "gap": 11,
+      "share": 17.56,
+      "tier": "menang",
+      "gain": 20
+     },
+     {
+      "kel": "Lakarsantri",
+      "tps": "001",
+      "pkb": 33,
+      "tot": 203,
+      "rank": 2,
+      "gap": 27,
+      "share": 16.26,
+      "tier": "menang",
+      "gain": 20
+     },
+     {
+      "kel": "Lakarsantri",
+      "tps": "008",
+      "pkb": 46,
+      "tot": 214,
+      "rank": 2,
+      "gap": 6,
+      "share": 21.5,
+      "tier": "menang",
+      "gain": 20
+     },
+     {
+      "kel": "Lakarsantri",
+      "tps": "009",
+      "pkb": 43,
+      "tot": 212,
+      "rank": 2,
+      "gap": 27,
+      "share": 20.28,
+      "tier": "menang",
+      "gain": 20
+     },
+     {
+      "kel": "Lidah Kulon",
+      "tps": "032",
+      "pkb": 29,
+      "tot": 197,
+      "rank": 1,
+      "gap": 0,
+      "share": 14.72,
+      "tier": "menang",
+      "gain": 20
+     },
+     {
+      "kel": "Dukuh Pakis",
+      "tps": "037",
+      "pkb": 64,
+      "tot": 225,
+      "rank": 2,
+      "gap": 11,
+      "share": 28.44,
+      "tier": "menang",
+      "gain": 19
+     },
+     {
+      "kel": "Karang Pilang",
+      "tps": "016",
+      "pkb": 31,
+      "tot": 186,
+      "rank": 2,
+      "gap": 3,
+      "share": 16.67,
+      "tier": "menang",
+      "gain": 19
+     }
+    ]
+   },
+   {
+    "nomor": 3,
+    "kecamatan": [
+     "Tambaksari",
+     "Bulak",
+     "Kenjeran"
+    ],
+    "kursi": 8,
+    "sekarang": 1,
+    "pkb": 28732,
+    "biaya": 12332,
+    "tps_total": 1200,
+    "tps_inti": 607,
+    "tps_pakai": 672,
+    "tps_perluas": 65,
+    "tps_pakai25": 359,
+    "tps_perluas25": 0,
+    "gain_inti": 9703,
+    "kelurahan": [
+     {
+      "kel": "Sidotopo Wetan",
+      "kec": "Kenjeran",
+      "pkb": 3749,
+      "tps": 161,
+      "menang": 34,
+      "bersaing": 60,
+      "jangan": 67,
+      "gain": 3320,
+      "binaan": 5,
+      "ktp": 5,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "085",
+        "pkb": 11,
+        "tot": 255,
+        "rank": 3,
+        "gap": 195,
+        "share": 4.31,
+        "tier": "bersaing",
+        "gain": 29
+       },
+       {
+        "tps": "102",
+        "pkb": 8,
+        "tot": 245,
+        "rank": 3,
+        "gap": 197,
+        "share": 3.27,
+        "tier": "bersaing",
+        "gain": 28
+       },
+       {
+        "tps": "084",
+        "pkb": 11,
+        "tot": 226,
+        "rank": 3,
+        "gap": 134,
+        "share": 4.87,
+        "tier": "bersaing",
+        "gain": 26
+       }
+      ]
+     },
+     {
+      "kel": "Kapasmadya Baru",
+      "kec": "Tambaksari",
+      "pkb": 2980,
+      "tps": 106,
+      "menang": 34,
+      "bersaing": 45,
+      "jangan": 27,
+      "gain": 1758,
+      "binaan": 82,
+      "ktp": 8,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "040",
+        "pkb": 13,
+        "tot": 201,
+        "rank": 3,
+        "gap": 77,
+        "share": 6.47,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "019",
+        "pkb": 21,
+        "tot": 205,
+        "rank": 3,
+        "gap": 51,
+        "share": 10.24,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "027",
+        "pkb": 17,
+        "tot": 191,
+        "rank": 2,
+        "gap": 105,
+        "share": 8.9,
+        "tier": "bersaing",
+        "gain": 21
+       }
+      ]
+     },
+     {
+      "kel": "Bulak Banteng",
+      "kec": "Kenjeran",
+      "pkb": 5264,
+      "tps": 89,
+      "menang": 66,
+      "bersaing": 16,
+      "jangan": 7,
+      "gain": 1526,
+      "binaan": 24,
+      "ktp": 13,
+      "tier": "menang",
+      "tps_prio": [
+       {
+        "tps": "053",
+        "pkb": 62,
+        "tot": 265,
+        "rank": 2,
+        "gap": 72,
+        "share": 23.4,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "009",
+        "pkb": 51,
+        "tot": 246,
+        "rank": 2,
+        "gap": 14,
+        "share": 20.73,
+        "tier": "menang",
+        "gain": 23
+       },
+       {
+        "tps": "037",
+        "pkb": 28,
+        "tot": 223,
+        "rank": 3,
+        "gap": 77,
+        "share": 12.56,
+        "tier": "bersaing",
+        "gain": 23
+       }
+      ]
+     },
+     {
+      "kel": "Dukuh Setro",
+      "kec": "Tambaksari",
+      "pkb": 1618,
+      "tps": 61,
+      "menang": 21,
+      "bersaing": 14,
+      "jangan": 26,
+      "gain": 1021,
+      "binaan": 0,
+      "ktp": 4,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "032",
+        "pkb": 27,
+        "tot": 216,
+        "rank": 3,
+        "gap": 86,
+        "share": 12.5,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "021",
+        "pkb": 20,
+        "tot": 203,
+        "rank": 3,
+        "gap": 61,
+        "share": 9.85,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "045",
+        "pkb": 25,
+        "tot": 207,
+        "rank": 3,
+        "gap": 47,
+        "share": 12.08,
+        "tier": "bersaing",
+        "gain": 22
+       }
+      ]
+     },
+     {
+      "kel": "Tambak Wedi",
+      "kec": "Kenjeran",
+      "pkb": 1745,
+      "tps": 51,
+      "menang": 22,
+      "bersaing": 15,
+      "jangan": 14,
+      "gain": 996,
+      "binaan": 0,
+      "ktp": 7,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "031",
+        "pkb": 20,
+        "tot": 225,
+        "rank": 2,
+        "gap": 105,
+        "share": 8.89,
+        "tier": "bersaing",
+        "gain": 25
+       },
+       {
+        "tps": "027",
+        "pkb": 20,
+        "tot": 209,
+        "rank": 2,
+        "gap": 112,
+        "share": 9.57,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "011",
+        "pkb": 88,
+        "tot": 274,
+        "rank": 1,
+        "gap": 0,
+        "share": 32.12,
+        "tier": "menang",
+        "gain": 22
+       }
+      ]
+     },
+     {
+      "kel": "Tambaksari",
+      "kec": "Tambaksari",
+      "pkb": 1456,
+      "tps": 55,
+      "menang": 15,
+      "bersaing": 16,
+      "jangan": 24,
+      "gain": 860,
+      "binaan": 3,
+      "ktp": 5,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "017",
+        "pkb": 10,
+        "tot": 190,
+        "rank": 3,
+        "gap": 102,
+        "share": 5.26,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "019",
+        "pkb": 21,
+        "tot": 190,
+        "rank": 3,
+        "gap": 28,
+        "share": 11.05,
+        "tier": "bersaing",
+        "gain": 20
+       },
+       {
+        "tps": "002",
+        "pkb": 3,
+        "tot": 159,
+        "rank": 3,
+        "gap": 104,
+        "share": 1.89,
+        "tier": "bersaing",
+        "gain": 19
+       }
+      ]
+     },
+     {
+      "kel": "Rangkah",
+      "kec": "Tambaksari",
+      "pkb": 1312,
+      "tps": 47,
+      "menang": 12,
+      "bersaing": 21,
+      "jangan": 14,
+      "gain": 733,
+      "binaan": 5,
+      "ktp": 12,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "030",
+        "pkb": 17,
+        "tot": 201,
+        "rank": 3,
+        "gap": 53,
+        "share": 8.46,
+        "tier": "bersaing",
+        "gain": 22
+       },
+       {
+        "tps": "034",
+        "pkb": 30,
+        "tot": 203,
+        "rank": 2,
+        "gap": 69,
+        "share": 14.78,
+        "tier": "bersaing",
+        "gain": 21
+       },
+       {
+        "tps": "028",
+        "pkb": 30,
+        "tot": 194,
+        "rank": 2,
+        "gap": 46,
+        "share": 15.46,
+        "tier": "bersaing",
+        "gain": 20
+       }
+      ]
+     },
+     {
+      "kel": "Sukolilo Baru",
+      "kec": "Bulak",
+      "pkb": 792,
+      "tps": 26,
+      "menang": 6,
+      "bersaing": 8,
+      "jangan": 12,
+      "gain": 671,
+      "binaan": 18,
+      "ktp": 13,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "014",
+        "pkb": 54,
+        "tot": 269,
+        "rank": 3,
+        "gap": 10,
+        "share": 20.07,
+        "tier": "bersaing",
+        "gain": 26
+       },
+       {
+        "tps": "006",
+        "pkb": 40,
+        "tot": 249,
+        "rank": 3,
+        "gap": 38,
+        "share": 16.06,
+        "tier": "bersaing",
+        "gain": 25
+       },
+       {
+        "tps": "002",
+        "pkb": 29,
+        "tot": 223,
+        "rank": 3,
+        "gap": 97,
+        "share": 13.0,
+        "tier": "bersaing",
+        "gain": 23
+       }
+      ]
+     }
+    ],
+    "kel_total": 16,
+    "kel_jangan": 8,
+    "tps_prio": [
+     {
+      "kel": "Kenjeran",
+      "tps": "002",
+      "pkb": 65,
+      "tot": 294,
+      "rank": 2,
+      "gap": 22,
+      "share": 22.11,
+      "tier": "menang",
+      "gain": 27
+     },
+     {
+      "kel": "Bulak Banteng",
+      "tps": "009",
+      "pkb": 51,
+      "tot": 246,
+      "rank": 2,
+      "gap": 14,
+      "share": 20.73,
+      "tier": "menang",
+      "gain": 23
+     },
+     {
+      "kel": "Sukolilo Baru",
+      "tps": "004",
+      "pkb": 60,
+      "tot": 240,
+      "rank": 2,
+      "gap": 18,
+      "share": 25.0,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Sukolilo Baru",
+      "tps": "005",
+      "pkb": 75,
+      "tot": 262,
+      "rank": 1,
+      "gap": 0,
+      "share": 28.63,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Tambak Wedi",
+      "tps": "011",
+      "pkb": 88,
+      "tot": 274,
+      "rank": 1,
+      "gap": 0,
+      "share": 32.12,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Bulak",
+      "tps": "048",
+      "pkb": 38,
+      "tot": 213,
+      "rank": 2,
+      "gap": 9,
+      "share": 17.84,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Sukolilo Baru",
+      "tps": "010",
+      "pkb": 57,
+      "tot": 231,
+      "rank": 1,
+      "gap": 0,
+      "share": 24.68,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Tanah Kali Kedinding",
+      "tps": "039",
+      "pkb": 44,
+      "tot": 217,
+      "rank": 2,
+      "gap": 24,
+      "share": 20.28,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Tanah Kali Kedinding",
+      "tps": "095",
+      "pkb": 39,
+      "tot": 211,
+      "rank": 2,
+      "gap": 20,
+      "share": 18.48,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Sidotopo Wetan",
+      "tps": "036",
+      "pkb": 33,
+      "tot": 206,
+      "rank": 2,
+      "gap": 17,
+      "share": 16.02,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Sidotopo Wetan",
+      "tps": "138",
+      "pkb": 35,
+      "tot": 210,
+      "rank": 2,
+      "gap": 11,
+      "share": 16.67,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Tambak Wedi",
+      "tps": "030",
+      "pkb": 42,
+      "tot": 216,
+      "rank": 2,
+      "gap": 6,
+      "share": 19.44,
+      "tier": "menang",
+      "gain": 21
+     }
+    ]
+   },
+   {
+    "nomor": 8,
+    "kecamatan": [
+     "Tandes",
+     "Sukomanunggal",
+     "Asemrowo",
+     "Benowo",
+     "Pakal"
+    ],
+    "kursi": 7,
+    "sekarang": 1,
+    "pkb": 25501,
+    "biaya": 16685,
+    "tps_total": 1007,
+    "tps_inti": 457,
+    "tps_pakai": 745,
+    "tps_perluas": 288,
+    "tps_pakai25": 444,
+    "tps_perluas25": 0,
+    "gain_inti": 8156,
+    "kelurahan": [
+     {
+      "kel": "Sememi",
+      "kec": "Benowo",
+      "pkb": 3963,
+      "tps": 104,
+      "menang": 29,
+      "bersaing": 42,
+      "jangan": 33,
+      "gain": 2138,
+      "binaan": 235,
+      "ktp": 43,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "060",
+        "pkb": 30,
+        "tot": 230,
+        "rank": 2,
+        "gap": 136,
+        "share": 13.04,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "068",
+        "pkb": 28,
+        "tot": 228,
+        "rank": 3,
+        "gap": 62,
+        "share": 12.28,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "083",
+        "pkb": 29,
+        "tot": 225,
+        "rank": 2,
+        "gap": 62,
+        "share": 12.89,
+        "tier": "bersaing",
+        "gain": 24
+       }
+      ]
+     },
+     {
+      "kel": "Asem Rowo",
+      "kec": "Asemrowo",
+      "pkb": 2506,
+      "tps": 82,
+      "menang": 30,
+      "bersaing": 34,
+      "jangan": 18,
+      "gain": 1340,
+      "binaan": 0,
+      "ktp": 0,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "037",
+        "pkb": 4,
+        "tot": 230,
+        "rank": 3,
+        "gap": 198,
+        "share": 1.74,
+        "tier": "bersaing",
+        "gain": 27
+       },
+       {
+        "tps": "078",
+        "pkb": 20,
+        "tot": 210,
+        "rank": 2,
+        "gap": 110,
+        "share": 9.52,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "036",
+        "pkb": 22,
+        "tot": 202,
+        "rank": 3,
+        "gap": 76,
+        "share": 10.89,
+        "tier": "bersaing",
+        "gain": 22
+       }
+      ]
+     },
+     {
+      "kel": "Pakal",
+      "kec": "Pakal",
+      "pkb": 1068,
+      "tps": 28,
+      "menang": 7,
+      "bersaing": 12,
+      "jangan": 9,
+      "gain": 717,
+      "binaan": 263,
+      "ktp": 13,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "013",
+        "pkb": 37,
+        "tot": 260,
+        "rank": 3,
+        "gap": 67,
+        "share": 14.23,
+        "tier": "bersaing",
+        "gain": 27
+       },
+       {
+        "tps": "010",
+        "pkb": 31,
+        "tot": 249,
+        "rank": 2,
+        "gap": 122,
+        "share": 12.45,
+        "tier": "bersaing",
+        "gain": 26
+       },
+       {
+        "tps": "025",
+        "pkb": 30,
+        "tot": 241,
+        "rank": 3,
+        "gap": 88,
+        "share": 12.45,
+        "tier": "bersaing",
+        "gain": 25
+       }
+      ]
+     },
+     {
+      "kel": "Sumber Rejo",
+      "kec": "Pakal",
+      "pkb": 2007,
+      "tps": 33,
+      "menang": 17,
+      "bersaing": 9,
+      "jangan": 7,
+      "gain": 693,
+      "binaan": 173,
+      "ktp": 0,
+      "tier": "menang",
+      "tps_prio": [
+       {
+        "tps": "012",
+        "pkb": 47,
+        "tot": 247,
+        "rank": 3,
+        "gap": 31,
+        "share": 19.03,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "024",
+        "pkb": 26,
+        "tot": 228,
+        "rank": 3,
+        "gap": 39,
+        "share": 11.4,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "025",
+        "pkb": 27,
+        "tot": 219,
+        "rank": 3,
+        "gap": 17,
+        "share": 12.33,
+        "tier": "bersaing",
+        "gain": 23
+       }
+      ]
+     },
+     {
+      "kel": "Manukan Wetan",
+      "kec": "Tandes",
+      "pkb": 756,
+      "tps": 25,
+      "menang": 8,
+      "bersaing": 5,
+      "jangan": 12,
+      "gain": 687,
+      "binaan": 131,
+      "ktp": 2,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "011",
+        "pkb": 81,
+        "tot": 285,
+        "rank": 1,
+        "gap": 0,
+        "share": 28.42,
+        "tier": "menang",
+        "gain": 24
+       },
+       {
+        "tps": "016",
+        "pkb": 36,
+        "tot": 223,
+        "rank": 2,
+        "gap": 18,
+        "share": 16.14,
+        "tier": "menang",
+        "gain": 22
+       },
+       {
+        "tps": "002",
+        "pkb": 25,
+        "tot": 198,
+        "rank": 2,
+        "gap": 13,
+        "share": 12.63,
+        "tier": "menang",
+        "gain": 21
+       }
+      ]
+     },
+     {
+      "kel": "Benowo",
+      "kec": "Pakal",
+      "pkb": 1163,
+      "tps": 32,
+      "menang": 9,
+      "bersaing": 18,
+      "jangan": 5,
+      "gain": 678,
+      "binaan": 27,
+      "ktp": 11,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "026",
+        "pkb": 46,
+        "tot": 248,
+        "rank": 3,
+        "gap": 36,
+        "share": 18.55,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "005",
+        "pkb": 24,
+        "tot": 218,
+        "rank": 3,
+        "gap": 81,
+        "share": 11.01,
+        "tier": "bersaing",
+        "gain": 23
+       },
+       {
+        "tps": "017",
+        "pkb": 48,
+        "tot": 236,
+        "rank": 3,
+        "gap": 10,
+        "share": 20.34,
+        "tier": "bersaing",
+        "gain": 23
+       }
+      ]
+     },
+     {
+      "kel": "Genting Kalianak",
+      "kec": "Asemrowo",
+      "pkb": 456,
+      "tps": 21,
+      "menang": 5,
+      "bersaing": 14,
+      "jangan": 2,
+      "gain": 300,
+      "binaan": 3,
+      "ktp": 1,
+      "tier": "bersaing",
+      "tps_prio": [
+       {
+        "tps": "018",
+        "pkb": 22,
+        "tot": 198,
+        "rank": 3,
+        "gap": 27,
+        "share": 11.11,
+        "tier": "bersaing",
+        "gain": 21
+       },
+       {
+        "tps": "020",
+        "pkb": 14,
+        "tot": 188,
+        "rank": 2,
+        "gap": 101,
+        "share": 7.45,
+        "tier": "bersaing",
+        "gain": 21
+       },
+       {
+        "tps": "019",
+        "pkb": 32,
+        "tot": 202,
+        "rank": 2,
+        "gap": 64,
+        "share": 15.84,
+        "tier": "bersaing",
+        "gain": 20
+       }
+      ]
+     },
+     {
+      "kel": "Tambak Sarioso",
+      "kec": "Asemrowo",
+      "pkb": 955,
+      "tps": 20,
+      "menang": 17,
+      "bersaing": 3,
+      "jangan": 0,
+      "gain": 215,
+      "binaan": 5,
+      "ktp": 3,
+      "tier": "menang",
+      "tps_prio": [
+       {
+        "tps": "016",
+        "pkb": 30,
+        "tot": 232,
+        "rank": 3,
+        "gap": 47,
+        "share": 12.93,
+        "tier": "bersaing",
+        "gain": 24
+       },
+       {
+        "tps": "015",
+        "pkb": 66,
+        "tot": 260,
+        "rank": 1,
+        "gap": 0,
+        "share": 25.38,
+        "tier": "menang",
+        "gain": 23
+       },
+       {
+        "tps": "019",
+        "pkb": 49,
+        "tot": 224,
+        "rank": 2,
+        "gap": 63,
+        "share": 21.88,
+        "tier": "bersaing",
+        "gain": 21
+       }
+      ]
+     }
+    ],
+    "kel_total": 23,
+    "kel_jangan": 13,
+    "tps_prio": [
+     {
+      "kel": "Manukan Wetan",
+      "tps": "011",
+      "pkb": 81,
+      "tot": 285,
+      "rank": 1,
+      "gap": 0,
+      "share": 28.42,
+      "tier": "menang",
+      "gain": 24
+     },
+     {
+      "kel": "Tambak Sarioso",
+      "tps": "015",
+      "pkb": 66,
+      "tot": 260,
+      "rank": 1,
+      "gap": 0,
+      "share": 25.38,
+      "tier": "menang",
+      "gain": 23
+     },
+     {
+      "kel": "Babat Jerawat",
+      "tps": "058",
+      "pkb": 53,
+      "tot": 244,
+      "rank": 2,
+      "gap": 29,
+      "share": 21.72,
+      "tier": "menang",
+      "gain": 23
+     },
+     {
+      "kel": "Babat Jerawat",
+      "tps": "059",
+      "pkb": 38,
+      "tot": 230,
+      "rank": 2,
+      "gap": 3,
+      "share": 16.52,
+      "tier": "menang",
+      "gain": 23
+     },
+     {
+      "kel": "Sememi",
+      "tps": "020",
+      "pkb": 60,
+      "tot": 243,
+      "rank": 2,
+      "gap": 14,
+      "share": 24.69,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Sumber Rejo",
+      "tps": "029",
+      "pkb": 53,
+      "tot": 236,
+      "rank": 2,
+      "gap": 18,
+      "share": 22.46,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Benowo",
+      "tps": "025",
+      "pkb": 60,
+      "tot": 245,
+      "rank": 2,
+      "gap": 6,
+      "share": 24.49,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Simomulyo",
+      "tps": "021",
+      "pkb": 36,
+      "tot": 217,
+      "rank": 2,
+      "gap": 18,
+      "share": 16.59,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Manukan Wetan",
+      "tps": "016",
+      "pkb": 36,
+      "tot": 223,
+      "rank": 2,
+      "gap": 18,
+      "share": 16.14,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Banjar Sugihan",
+      "tps": "009",
+      "pkb": 47,
+      "tot": 230,
+      "rank": 1,
+      "gap": 0,
+      "share": 20.43,
+      "tier": "menang",
+      "gain": 22
+     },
+     {
+      "kel": "Kandangan",
+      "tps": "054",
+      "pkb": 37,
+      "tot": 213,
+      "rank": 2,
+      "gap": 26,
+      "share": 17.37,
+      "tier": "menang",
+      "gain": 21
+     },
+     {
+      "kel": "Sememi",
+      "tps": "030",
+      "pkb": 49,
+      "tot": 228,
+      "rank": 2,
+      "gap": 13,
+      "share": 21.49,
+      "tier": "menang",
+      "gain": 21
+     }
+    ]
+   }
+  ],
+  "tps_pakai": 1554
+ }
+}
