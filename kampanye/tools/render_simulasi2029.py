@@ -1,224 +1,177 @@
 #!/usr/bin/env python3
-"""Render halaman statis SOKABAT NU · SIMULASI PEMILU 2029 dari simulasi-2029.json."""
-import json, pathlib, html
+"""Render halaman SOKABAT NU · SIMULASI PEMILU 2029 dari data/simulasi-2029.json."""
+import json, html, pathlib
 
 BASE = pathlib.Path('/home/buleng/.hermes/projects/sokabatnu/kampanye')
-D = json.loads((BASE / 'data/simulasi-2029.json').read_text())
+D = json.loads((BASE / 'data' / 'simulasi-2029.json').read_text())
 M, A, B = D['meta'], D['A'], D['B']
 
 def n(x):
-    return f'{x:,}'.replace(',', '.')
+    return f"{int(x):,}".replace(',', '.')
 
 def pct(x):
-    return f'{x:.2f}'.replace('.', ',')
+    return f"{x:.2f}".replace('.', ',') + '%'
 
-def chips(daftar):
-    out = []
-    for k in daftar:
-        out.append(f'<span class="kel" title="PKB {n(k["pkb"])} suara, peringkat {k["rank"]}, juara {k["top"]}">{html.escape(k["nama"].title())} <b>{pct(k["share"])}%</b></span>')
-    return ''.join(out)
+def e(s):
+    return html.escape(str(s))
 
-def dapil_card(d, skenario):
-    t = d['tier']
-    warna = {'menang': 'Menang', 'bersaing': 'Bisa bersaing', 'jangan': 'Jangan disentuh'}
-    blok = []
-    blok.append(f'''<div class="tier t-menang"><div class="tier-kepala"><span class="dot"></span><h4>Menang</h4><em>{t["menang"]["n"]} kelurahan · {n(t["menang"]["pkb"])} suara PKB</em></div>
-<div class="chips">{chips(t["menang"]["kel"]) or '<span class="kosong">Belum ada kelurahan yang benar-benar dikuasai PKB.</span>'}</div></div>''')
-    blok.append(f'''<div class="tier t-bersaing"><div class="tier-kepala"><span class="dot"></span><h4>Bisa bersaing</h4><em>{t["bersaing"]["n"]} kelurahan · kurang {n(t["bersaing"]["gap"])} suara untuk menyalip juara</em></div>
-<div class="chips">{chips(t["bersaing"]["kel"]) or '<span class="kosong">Tidak ada kelurahan di zona ini.</span>'}</div></div>''')
-    blok.append(f'''<details class="tier t-jangan"><summary><span class="dot"></span><h4>Jangan disentuh</h4><em>{t["jangan"]["n"]} kelurahan · selisih terlalu jauh</em></summary>
-<div class="chips">{chips(t["jangan"]["kel"]) or '<span class="kosong">Tidak ada.</span>'}</div></details>''')
-    kec = ', '.join(k.title() for k in d['kecamatan'])
-    return f'''<article class="dapil">
-  <div class="dapil-kepala"><h3>Dapil {d['nomor']}</h3><span class="pil">{d['kursi']} kursi</span></div>
-  <p class="kec">{kec}</p>
-  <div class="angka">
-    <div><span>Suara sah 2024</span><b>{n(d['sah'])}</b></div>
-    <div><span>Harga kursi terakhir</span><b>{n(d['harga'])}</b></div>
-    <div><span>PKB 2024</span><b>{n(d['pkb'])}</b><i>{pct(d['pkb_persen'])}%</i></div>
+TEMA = {'menang': ('Menang', 'Basis aman. PKB juara atau kalah tipis di bawah 20 persen.'),
+        'bersaing': ('Bisa bersaing', 'PKB di tiga besar, atau peringkat empat dengan suara di atas 12 persen.'),
+        'jangan': ('Jangan sentuh', 'Selisih terlalu jauh untuk dikejar dalam satu siklus.')}
+
+def baris(k):
+    cap = ''
+    if k['dasar'] == 'kecamatan':
+        cap = ' <span class="badge" title="Rincian partai tingkat kelurahan belum sahih, kategori memakai hitungan kecamatan">kecamatan</span>'
+    pes = ' · '.join(f"{e(p['p'])} {pct(p['sh'])}" for p in k['pesaing'])
+    return (f'<div class="kel">'
+            f'<div class="kepala"><span class="knama">{e(k["nama"].title())}</span>{cap}'
+            f'<span class="kangka">PKB {pct(k["share"])}</span></div>'
+            f'<div class="kmeta">{e(k["kec"].title())} · peringkat {k["rank"]} · {n(k["pkb"])} suara</div>'
+            f'<div class="kpes"><span>Pesaing</span> {pes}</div></div>')
+
+def blok(d, t):
+    isi = d['tier'][t]
+    judul, ket = TEMA[t]
+    if not isi['n']:
+        return (f'<div class="tier t-{t}"><div class="thead"><b>{judul}</b>'
+                f'<span>tidak ada kelurahan</span></div></div>')
+    kepala = (f'<div class="thead"><b>{judul}</b><span>{isi["n"]} kelurahan · '
+              f'{n(isi["pkb"])} suara PKB</span></div><p class="tket">{ket}</p>')
+    badan = ''.join(baris(k) for k in isi['kel'])
+    if t == 'jangan':
+        return (f'<details class="tier t-{t}"><summary>{judul} · {isi["n"]} kelurahan</summary>'
+                f'<p class="tket">{ket}</p>{badan}</details>')
+    return f'<div class="tier t-{t}">{kepala}{badan}</div>'
+
+def kartu(d):
+    tier = ''.join(blok(d, t) for t in ('menang', 'bersaing', 'jangan'))
+    return f'''<div class="dapil">
+  <div class="dhead"><div><span class="dnomor">Dapil {d['nomor']}</span>
+    <span class="dkursi">{d['kursi']} kursi</span></div>
+    <div class="dwil">{e(', '.join(x.title() for x in d['kecamatan']))}</div></div>
+  <div class="dstat">
+    <div><span>Suara sah</span><b>{n(d['sah'])}</b></div>
+    <div><span>Kuota kursi</span><b>{n(d['kuota'])}</b></div>
+    <div><span>Kursi terakhir</span><b>{n(d['harga'])}</b></div>
+    <div><span>PKB 2024</span><b>{n(d['pkb'])} · {pct(d['pkb_persen'])}</b></div>
     <div><span>Kursi PKB</span><b>{d['pkb_kursi']}</b></div>
-    <div class="lebar"><span>Tambahan suara PKB untuk satu kursi lagi</span><b>+{n(d['tambah'])}</b><i>setara {int(round(d['rasio']*100))}% dari suara PKB sekarang</i></div>
+    <div><span>Kursi berikutnya</span><b>{'+' + n(d['tambah']) if d['tambah'] else 'sudah maksimal'}</b></div>
   </div>
-  {''.join(blok)}
-</article>'''
+  {tier}
+</div>'''
 
-def skenario(nama, s, judul, sub):
-    kartu = ''.join(dapil_card(d, nama) for d in s['dapil'])
-    return f'''<section class="bagian">
-<div class="bagian-kepala"><span class="tag">Skenario {nama}</span><h2>{judul}</h2><p>{sub}</p></div>
-<div class="rekap"><div><span>Kursi PKB</span><b>{s['pkb_kursi']}</b></div><div><span>Suara PKB</span><b>{n(s['pkb'])}</b></div><div><span>Kursi total</span><b>{s['kursi_total']}</b></div></div>
-{kartu}
+def panel(sk, ket):
+    kartu_html = ''.join(kartu(d) for d in sk['dapil'])
+    menang = sum(d['tier']['menang']['n'] for d in sk['dapil'])
+    bersaing = sum(d['tier']['bersaing']['n'] for d in sk['dapil'])
+    return f'''<section class="panel" id="panel-{sk['nama']}" role="tabpanel" aria-labelledby="tab-{sk['nama']}">
+  <p class="ringkas">{ket}</p>
+  <div class="rekap"><span>PKB {n(sk['pkb'])} suara</span><span>{sk['pkb_kursi']} kursi dari {sk['kursi_total']}</span><span>{menang} kelurahan menang</span><span>{bersaing} bisa bersaing</span></div>
+  {kartu_html}
 </section>'''
 
-# daftar prioritas rebut: kelurahan bersaing dengan selisih terkecil (skenario B)
-semua = []
-for d in B['dapil']:
-    for k in d['tier']['bersaing']['kel']:
-        semua.append((k['gap'], k['nama'].title(), d['nomor'], k['share'], k['top']))
-semua.sort()
-prioritas = ''.join(f'<li><b>{nm}</b> (Dapil {dp}) selisih {n(g)} suara, PKB {pct(sh)}%, juara {tp}</li>'
-                    for g, nm, dp, sh, tp in semua[:10])
+CSS = """
+:root{--bg:#0f1411;--card:#17201a;--card2:#1d2820;--line:#2b3a2f;--txt:#e8f0e9;--muted:#9db0a2;--hijau:#39b46a;--kuning:#d8a52c;--merah:#c8553d;--radius:14px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:18px 14px 60px}
+h1{font-size:1.5rem;line-height:1.25;margin:6px 0 4px}
+.sub{color:var(--muted);font-size:.92rem;margin:0 0 18px}
+p{color:#cfdcd3}
+.kartu{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin:0 0 16px}
+.kartu h2{font-size:1rem;margin:0 0 6px}
+.kartu p{margin:0 0 8px;font-size:.92rem;color:#c3d2c7}
+.kartu p:last-child{margin-bottom:0}
+.tabs{position:sticky;top:0;z-index:9;display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--bg);padding:10px 0 12px}
+.tabs button{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--txt);padding:11px 10px;border-radius:12px;font-size:.92rem;font-weight:600;cursor:pointer;text-align:left}
+.tabs button small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
+.tabs button[aria-selected="true"]{background:#1f3a29;border-color:var(--hijau)}
+.tabs button[aria-selected="true"] small{color:#b6e3c6}
+.panel{display:none}
+.panel.aktif{display:block}
+.ringkas{font-size:.93rem;color:#c3d2c7;margin:2px 0 12px}
+.rekap{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.rekap span{background:#1c2a21;border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:.8rem;color:#bdd0c3}
+.dapil{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin:0 0 16px}
+.dhead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline;margin-bottom:10px}
+.dnomor{font-size:1.1rem;font-weight:700}
+.dkursi{font-size:.82rem;color:#b6e3c6;background:#1f3a29;border-radius:999px;padding:3px 8px;margin-left:6px}
+.dwil{font-size:.8rem;color:var(--muted);flex:1 1 100%}
+.dstat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.dstat div{background:var(--card2);border-radius:10px;padding:8px 10px}
+.dstat span{display:block;font-size:.72rem;color:var(--muted)}
+.dstat b{font-size:.95rem;font-weight:600}
+.tier{border-left:3px solid var(--line);padding:10px 0 4px 12px;margin:0 0 12px}
+.tier.t-menang{border-color:var(--hijau)}
+.tier.t-bersaing{border-color:var(--kuning)}
+.tier.t-jangan{border-color:var(--merah)}
+.thead{display:flex;justify-content:space-between;gap:8px;font-size:.86rem;color:var(--txt)}
+.thead span{color:var(--muted)}
+.tket{font-size:.78rem;color:var(--muted);margin:2px 0 8px}
+details.tier summary{cursor:pointer;font-size:.86rem;font-weight:600;color:#e0c9a6}
+.kel{background:var(--card2);border-radius:10px;padding:8px 10px;margin-bottom:6px}
+.kepala{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.knama{font-weight:600;font-size:.92rem}
+.kangka{margin-left:auto;font-size:.84rem;color:#b6e3c6;font-variant-numeric:tabular-nums}
+.badge{font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;color:#e0c9a6;border:1px solid #4a3d28;border-radius:6px;padding:1px 5px}
+.kmeta{font-size:.74rem;color:var(--muted);margin-top:1px}
+.kpes{font-size:.76rem;color:#cfdcd3;margin-top:3px}
+.kpes span{color:var(--muted)}
+@media(max-width:560px){.dstat{grid-template-columns:repeat(2,1fr)}h1{font-size:1.3rem}.tabs button{font-size:.86rem;padding:10px 8px}}
+"""
 
-basis = []
-for d in B['dapil']:
-    for k in d['tier']['menang']['kel']:
-        basis.append((k['pkb'], k['nama'].title(), d['nomor'], k['share']))
-basis.sort(reverse=True)
-basis_li = ''.join(f'<li><b>{nm}</b> (Dapil {dp}) {n(v)} suara, {pct(sh)}%</li>' for v, nm, dp, sh in basis)
+JS = """
+const tombol=[...document.querySelectorAll('.tabs button')];
+function pilih(id,simpan){
+  tombol.forEach(b=>{const on=b.dataset.panel===id;b.setAttribute('aria-selected',on?'true':'false');});
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('aktif',p.id==='panel-'+id));
+  if(simpan!==false){history.replaceState(null,'','#'+id.toLowerCase());}
+}
+tombol.forEach(b=>{b.addEventListener('click',()=>pilih(b.dataset.panel));
+ b.addEventListener('keydown',ev=>{if(ev.key==='ArrowRight'||ev.key==='ArrowLeft'){const i=tombol.indexOf(b);const j=(i+(ev.key==='ArrowRight'?1:tombol.length-1))%tombol.length;tombol[j].focus();pilih(tombol[j].dataset.panel);}});});
+const awal=location.hash.replace('#','').toUpperCase();
+pilih(awal==='B'?'B':'A',false);
+"""
 
-def hitung_termurah(s):
-    urut = sorted(s['dapil'], key=lambda d: d['tambah'])
-    return urut
-
-termurahB = hitung_termurah(B)
-termurahA = hitung_termurah(A)
-
-HALAMAN = f'''<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<title>Simulasi Pemilu 2029 · SOKABAT NU</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#04301f">
-<link rel="manifest" href="manifest.json">
-<style>
-:root{{--hijau:#0b6b45;--hijau-gelap:#04301f;--hijau-muda:#e8f5ee;--emas:#f6b93b;--emas-muda:#ffe6a6;
---bg:#eef3f0;--kartu:#fff;--garis:#dbe5df;--teks:#0e1a15;--redup:#4e615a;--redup2:#7b8c85;
---merah:#b3402f;--merah-muda:#fdeeea}}
-*{{box-sizing:border-box;-webkit-tap-highlight-color:transparent}}
-body{{margin:0;padding:0 0 44px;background:var(--bg);color:var(--teks);
-font-family:'Segoe UI',system-ui,-apple-system,sans-serif;display:flex;justify-content:center;line-height:1.55}}
-.bungkus{{width:100%;max-width:700px;padding:14px 14px 0;display:flex;flex-direction:column;gap:14px}}
-.hero{{position:relative;overflow:hidden;border-radius:20px;padding:22px 20px 18px;color:#fff;
-background:radial-gradient(120% 140% at 0% 0%,#0e7d51 0%,#04301f 62%);box-shadow:0 14px 30px rgba(4,48,31,.28)}}
-.hero::after{{content:"";position:absolute;right:-52px;top:-46px;width:160px;height:160px;border-radius:50%;
-background:radial-gradient(circle,rgba(246,185,59,.34),transparent 70%)}}
-.hero .label{{font-size:10.5px;letter-spacing:1.6px;font-weight:800;color:var(--emas-muda);text-transform:uppercase}}
-.hero h1{{margin:7px 0 6px;font-size:25px;line-height:1.18;font-weight:900}}
-.hero h1 em{{font-style:normal;color:var(--emas)}}
-.hero p{{margin:0;font-size:13px;color:#cfe4d9}}
-.hero-angka{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}}
-.hero-angka div{{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:9px 6px;text-align:center}}
-.hero-angka span{{display:block;font-size:9px;letter-spacing:.6px;text-transform:uppercase;color:#bcd8ca;font-weight:800}}
-.hero-angka b{{font-size:15px;font-weight:900}}
-.kartu{{background:var(--kartu);border:1px solid var(--garis);border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(14,26,21,.04)}}
-.kartu h2{{margin:0 0 8px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--hijau)}}
-.kartu p{{margin:0 0 8px;font-size:13.5px;color:var(--redup)}}
-.kartu p:last-child{{margin-bottom:0}}
-.kunci{{display:grid;gap:7px;margin-top:6px}}
-.kunci div{{display:flex;gap:8px;align-items:flex-start;font-size:13px}}
-.kunci i{{font-style:normal;width:16px;height:16px;border-radius:50%;flex:0 0 16px;margin-top:3px}}
-.k-menang i{{background:var(--hijau)}} .k-bersaing i{{background:var(--emas)}} .k-jangan i{{background:var(--redup2)}}
-.bagian{{display:flex;flex-direction:column;gap:12px;margin-top:6px}}
-.bagian-kepala .tag{{display:inline-block;background:var(--hijau-gelap);color:var(--emas-muda);font-size:10px;
-letter-spacing:1.4px;font-weight:800;text-transform:uppercase;padding:4px 9px;border-radius:999px}}
-.bagian-kepala h2{{margin:9px 0 3px;font-size:21px;font-weight:900;line-height:1.2}}
-.bagian-kepala p{{margin:0;font-size:13px;color:var(--redup)}}
-.rekap{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}}
-.rekap div{{background:var(--hijau-muda);border:1px solid #cfe7da;border-radius:14px;padding:11px;text-align:center}}
-.rekap span{{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--redup);font-weight:800}}
-.rekap b{{font-size:19px;font-weight:900;color:var(--hijau-gelap)}}
-.dapil{{background:var(--kartu);border:1px solid var(--garis);border-radius:16px;padding:15px;box-shadow:0 4px 12px rgba(14,26,21,.04)}}
-.dapil-kepala{{display:flex;align-items:center;justify-content:space-between;gap:8px}}
-.dapil-kepala h3{{margin:0;font-size:17px;font-weight:900}}
-.pil{{background:var(--hijau);color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:999px}}
-.kec{{margin:4px 0 12px;font-size:11.5px;color:var(--redup2);line-height:1.45}}
-.angka{{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}}
-.angka div{{background:#f7faf8;border:1px solid var(--garis);border-radius:11px;padding:8px 10px}}
-.angka span{{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--redup2);font-weight:800}}
-.angka b{{font-size:14.5px;font-weight:900}}
-.angka i{{font-style:normal;font-size:10.5px;color:var(--redup);margin-left:4px}}
-.angka .lebar{{grid-column:1 / -1;background:var(--emas-muda);border-color:#f0d79a}}
-.angka .lebar b{{color:#7a5200}}
-.tier{{border-radius:12px;padding:10px;margin-top:8px;border:1px solid var(--garis)}}
-.t-menang{{background:#f0f9f4;border-color:#cfe7da}}
-.t-bersaing{{background:#fff8e8;border-color:#f3e2b6}}
-.t-jangan{{background:#f7f8f7}}
-.tier-kepala,.t-jangan summary{{display:flex;align-items:center;gap:7px;flex-wrap:wrap;cursor:pointer}}
-.tier h4{{margin:0;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.7px}}
-.tier em{{font-style:normal;font-size:10.5px;color:var(--redup);margin-left:auto;text-align:right}}
-.dot{{width:8px;height:8px;border-radius:50%}}
-.t-menang .dot{{background:var(--hijau)}} .t-bersaing .dot{{background:var(--emas)}} .t-jangan .dot{{background:var(--redup2)}}
-.t-jangan summary{{list-style:none}}
-.t-jangan summary::-webkit-details-marker{{display:none}}
-.chips{{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}}
-.kel{{display:inline-flex;align-items:center;gap:4px;background:#fff;border:1px solid var(--garis);
-border-radius:999px;padding:3px 9px;font-size:11px;color:var(--redup)}}
-.kel b{{color:var(--hijau-gelap)}}
-.kosong{{font-size:11px;color:var(--redup2);font-style:italic}}
-ol.daftar{{margin:6px 0 0;padding-left:18px;font-size:13px;color:var(--redup)}}
-ol.daftar li{{margin-bottom:6px}}
-ol.daftar b{{color:var(--teks)}}
-.kaki{{font-size:11px;color:var(--redup2);text-align:center;padding:6px 10px 0;line-height:1.5}}
-@media(max-width:420px){{.hero h1{{font-size:22px}}.angka{{grid-template-columns:1fr 1fr}}}}
-</style>
-</head>
-<body>
-<div class="bungkus">
-
-<div class="hero">
-  <div class="label">Sokabat NU · Pemilu 2029</div>
-  <h1>Simulasi <em>Dapil dan Kursi</em></h1>
-  <p>Dua kemungkinan peta dapil. Satu pertanyaan: di mana PKB menang, di mana masih bisa bersaing, dan di mana energi jangan dibuang.</p>
-  <div class="hero-angka">
-    <div><span>Suara sah 2024</span><b>{n(M['total_sah'])}</b></div>
-    <div><span>Suara PKB</span><b>{n(M['total_pkb'])}</b></div>
-    <div><span>PKB 2024</span><b>{pct(M['pkb_persen'])}%</b></div>
-  </div>
+awal = f'''<div class="wrap">
+<h1>SOKABAT NU · Simulasi Pemilu 2029</h1>
+<p class="sub">Peta kekuatan PKB per kelurahan, memakai angka Pemilu 2024. Tanpa tambahan data lain.</p>
+<div class="kartu"><h2>Cara membaca halaman ini</h2>
+<p>Setiap kelurahan dinilai dari peringkat PKB dan jarak suara ke juara. Menang berarti PKB juara atau kalah di bawah 20 persen. Bisa bersaing berarti PKB di tiga besar, atau peringkat empat dengan suara di atas 12 persen. Jangan sentuh berarti selisihnya terlalu jauh. Di tiap kelurahan, tiga partai terkuat selain PKB ditampilkan sebagai pesaing.</p></div>
+<div class="kartu"><h2>Harga satu kursi</h2>
+<p>Rata-rata kota {n(M['total_sah'])} suara sah dibagi 55 kursi menjadi {n(M['total_sah'] / 55)} suara per kursi. Angka ini menyesatkan kalau dipakai jadi target, karena kursi diperebutkan per dapil. Yang lebih berguna adalah angka kursi terakhir di tiap dapil, yaitu suara partai paling lemah yang masih dapat kursi.</p></div>
+<div class="tabs" role="tablist" aria-label="Pilih skenario">
+<button role="tab" id="tab-A" data-panel="A" aria-selected="true" aria-controls="panel-A">Skenario A · 5 Dapil<small>55 kursi, pembagian 11 12 11 10 11</small></button>
+<button role="tab" id="tab-B" data-panel="B" aria-selected="false" aria-controls="panel-B">Skenario B · 8 Dapil<small>55 kursi, pembagian 6 7 8 6 6 8 7 7</small></button>
 </div>
-
-<div class="kartu">
-  <h2>Dari mana angka ini</h2>
-  <p>Semua angka di halaman ini berasal dari Pemilu 2024 saja. Tidak ada survei, tidak ada asumsi pertumbuhan suara, tidak ada data lain yang dicampur.</p>
-  <p>Suara partai dihitung dari rekap resmi tingkat kecamatan. Peta kelurahan memakai rincian TPS yang sudah diuji: 148 kelurahan menghasilkan 153.622 suara PKB. Lima kelurahan Tegalsari tidak punya rincian, tetapi rekap kecamatannya 5.748 suara. Kalau dijumlahkan menjadi 159.370 suara, hanya 8 suara atau 0,005 persen di atas rekap resmi 159.362.</p>
-  <p>Kursi dihitung dengan metode Sainte-Laguë, metode yang dipakai dalam penghitungan kursi DPRD. Pembagian kursi antar dapil memakai perbandingan suara sah, karena belum ada PKPU untuk 2029.</p>
-</div>
-
-<div class="kartu">
-  <h2>Cara membaca tiga warna</h2>
-  <div class="kunci">
-    <div class="k-menang"><i></i><span><b>Menang.</b> PKB juara di kelurahan itu, atau kalah sangat tipis, selisih di bawah 20 persen dari suara PKB sendiri.</span></div>
-    <div class="k-bersaing"><i></i><span><b>Bisa bersaing.</b> PKB ada di tiga besar, atau peringkat empat dengan suara di atas 12 persen. Tambahan suara masih masuk akal.</span></div>
-    <div class="k-jangan"><i></i><span><b>Jangan disentuh.</b> PKB di luar tiga besar dan selisihnya terlalu jauh. Energi kader lebih baik dipindah ke kelurahan kuning.</span></div>
-  </div>
-</div>
-
-<div class="kartu">
-  <h2>Harga satu kursi</h2>
-  <p>Kalau 1.536.843 suara sah dibagi rata ke 55 kursi, satu kursi setara {n(round(M['total_sah']/55))} suara. Angka itu hanya rata-rata kota dan menyesatkan, karena kursi diperebutkan per dapil, bukan sekota.</p>
-  <p>Yang lebih berguna adalah harga kursi terakhir di tiap dapil. Di dua skenario ini harganya bergerak dari {n(min(x['harga'] for x in A['dapil'] + B['dapil']))} sampai {n(max(x['harga'] for x in A['dapil'] + B['dapil']))} suara. Artinya, partai yang mendapat sekitar 13 ribu sampai 19 ribu suara di sebuah dapil sudah bisa merebut kursi terakhir.</p>
-  <p>Bagi PKB, ukuran yang paling praktis adalah tambahan suara untuk satu kursi lagi di dapil yang sudah ada. Angka itu tertulis di setiap kartu dapil pada bagian berikut.</p>
-</div>
-
-{skenario('A', A, '5 Dapil · 55 Kursi', 'Peta dapil seperti pemilu sebelumnya, tetapi kursi ditambah dari 50 menjadi 55. Pembagian kursi mengikuti suara sah: 11, 12, 11, 10, 11. Dengan angka 2024, tambahan 5 kursi kota tidak menambah kursi PKB. Tetap 5.')}
-
-{skenario('B', B, '8 Dapil · 55 Kursi', 'Kota dipecah menjadi delapan dapil kecil. Dengan wilayah yang lebih sempit, harga satu kursi turun dan peluang kader lokal naik. Pembagian kursi mengikuti suara sah: 6, 7, 8, 6, 6, 8, 7, 7. Dengan angka 2024, PKB naik dari 5 menjadi 7 kursi.')}
-
-<div class="kartu">
-  <h2>Rekomendasi</h2>
-  <p><b>Pilih skenario 8 dapil kalau targetnya menambah kursi.</b> Dengan angka 2024 yang sama, PKB mendapat 7 kursi di 8 dapil, sedangkan di 5 dapil hanya 5 kursi. Dua kursi tambahan itu datang dari dapil yang lebih kecil, bukan dari suara yang bertambah.</p>
-  <p><b>Kemenangan PKB menyebar, tidak menumpuk.</b> Di skenario 8 dapil, PKB mendapat satu kursi di tujuh dapil dan belum mendapat kursi di Dapil 7. Pola ini sehat untuk jaringan kader, karena setiap dapil punya wakil PKB yang bisa dihubungi.</p>
-  <p><b>Kursi termurah ada di Dapil 7 skenario 8 dapil.</b> Wilayahnya Karang Pilang, Wiyung, Lakarsantri, Dukuh Pakis, dan Sambikerep. PKB belum punya kursi di sana, dan cukup tambahan {n(termurahB[0]['tambah'])} suara untuk membuka kursi pertama. Di 5 dapil, kursi termurah ada di Dapil 2 dengan tambahan {n(termurahA[0]['tambah'])} suara.</p>
-  <p><b>Urutan biaya kursi tambahan di skenario 8 dapil:</b> Dapil 7 perlu {n(termurahB[0]['tambah'])} suara, Dapil 3 perlu {n(termurahB[1]['tambah'])}, Dapil 8 perlu {n(termurahB[2]['tambah'])}. Tiga dapil ini menjadi rute terpendek menuju 10 kursi.</p>
-  <p><b>Amankan dulu basis yang sudah ada.</b> Ada {A['dapil'][0]['tier']['menang']['n'] + A['dapil'][1]['tier']['menang']['n'] + A['dapil'][2]['tier']['menang']['n'] + A['dapil'][3]['tier']['menang']['n'] + A['dapil'][4]['tier']['menang']['n']} kelurahan yang sudah dikuasai PKB. Jangan sampai berpindah tangan saat fokus merebut wilayah baru.</p>
-  <p><b>Serang yang selisihnya kecil, bukan yang paling ramai.</b> Sepuluh kelurahan dengan selisih terkecil di skenario 8 dapil:</p>
-  <ol class="daftar">{prioritas}</ol>
-  <p><b>Jangan sebar energi.</b> Dari {M['kelurahan']} kelurahan yang terbaca, {B['dapil'][0]['tier']['jangan']['n'] + B['dapil'][1]['tier']['jangan']['n'] + B['dapil'][2]['tier']['jangan']['n'] + B['dapil'][3]['tier']['jangan']['n'] + B['dapil'][4]['tier']['jangan']['n'] + B['dapil'][5]['tier']['jangan']['n'] + B['dapil'][6]['tier']['jangan']['n'] + B['dapil'][7]['tier']['jangan']['n']} kelurahan masuk kategori jangan disentuh. Kunjungan tetap boleh, tetapi janji dan anggaran program sebaiknya dipusatkan di kelurahan kuning dan hijau.</p>
-  <p><b>Basis terkuat yang wajib dijaga:</b></p>
-  <ol class="daftar">{basis_li}</ol>
-</div>
-
-<div class="kartu">
-  <h2>Batas kejujuran data</h2>
-  <p>Rincian kelurahan hanya tersedia untuk {M['kelurahan']} dari 153 kelurahan. Lima kelurahan Tegalsari tidak punya berkas, jadi tidak masuk peta warna, tetapi suaranya tetap masuk hitungan kursi lewat rekap kecamatan.</p>
-  <p>Di 12 kecamatan, angka partai selain PKB belum final. Akibatnya selisih suara di kelurahan-kelurahan tersebut bisa sedikit lebih kecil dari yang tertulis. Kategori kuning di sana perlu dicek ulang sebelum dijadikan dasar janji program.</p>
-  <p>Pembagian kursi 55 ke dalam 5 atau 8 dapil adalah asumsi kerja, bukan keputusan KPU. Kalau kelak PKPU menetapkan pembagian lain, angka harga kursi akan bergeser.</p>
-</div>
-
-<div class="kaki">SOKABAT NU · Simulasi Pemilu 2029 · disusun dari data Pemilu 2024</div>
-</div>
-</body>
-</html>
 '''
-(BASE / 'simulasi-2029.html').write_text(HALAMAN)
-print('tulis', BASE / 'simulasi-2029.html', len(HALAMAN), 'char')
+
+panelA = panel(A, 'Peta dapil seperti pemilu sebelumnya, kursi ditambah dari 50 menjadi 55. Dengan angka 2024, tambahan lima kursi kota tidak menambah kursi PKB. Tetap lima.')
+panelB = panel(B, 'Kota dipecah menjadi delapan dapil kecil. Wilayah lebih sempit, harga kursi turun, peluang kader lokal naik. Dengan angka 2024, PKB naik dari lima menjadi tujuh kursi.')
+
+akhir = f'''<div class="kartu"><h2>Rekomendasi</h2>
+<p><b>Pilih opsi delapan dapil.</b> Dengan suara yang sama seperti 2024, PKB naik dua kursi. Di tujuh dari delapan dapil PKB mendapat satu kursi, jadi setiap dapil punya wakil yang bisa dihubungi.</p>
+<p><b>Rute kursi termurah.</b> Dapil 7 skenario delapan dapil hanya butuh tambahan {n(B['dapil'][6]['tambah'])} suara, karena PKB belum punya kursi di sana. Dapil 3 butuh {n(B['dapil'][2]['tambah'])} suara, Dapil 8 butuh {n(B['dapil'][7]['tambah'])} suara. Tiga dapil ini rute terpendek menuju dua kursi tambahan.</p>
+<p><b>Jangan salah baca.</b> Dapil 7 murah karena PKB lemah di sana, bukan karena basis kuat. Kemenangan harus dibangun dari nol, bukan dikonsolidasikan.</p></div>
+<div class="kartu"><h2>Catatan data</h2>
+<p>Angka kelurahan berasal dari rekapan D.Hasil KPU 2024. Lima kelurahan Tegalsari tidak punya rincian, suaranya tetap dihitung lewat rekap kecamatan. Di {len(M['ragu'])} kecamatan, rincian partai selain PKB belum sahih, sehingga kategori dan pesaing di kelurahan sana memakai hitungan tingkat kecamatan dan diberi tanda.</p>
+<p>Pembagian kursi per dapil adalah asumsi kerja, karena PKPU untuk 2029 belum ada. Suara PKB per kelurahan akurat. Kategori dan harga kursi adalah simulasi.</p></div>
+</div>
+'''
+
+halaman = f'''<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SOKABAT NU · Simulasi Pemilu 2029</title>
+<meta name="description" content="Simulasi Pemilu 2029 untuk Kota Surabaya, 5 dapil dan 8 dapil, 55 kursi, berbasis data Pemilu 2024.">
+<style>{CSS}</style>
+</head><body>
+{awal}{panelA}{panelB}{akhir}
+<script>{JS}</script></body></html>
+'''
+
+keluaran = BASE / 'simulasi-2029.html'
+keluaran.write_text(halaman)
+print('tulis', keluaran, len(halaman), 'char')

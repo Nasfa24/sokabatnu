@@ -9,7 +9,39 @@
   "kelurahan": 148,
   "kelurahan_kota": 153,
   "kecamatan": 31,
-  "catatan": "Tegalsari tidak punya rincian kelurahan. Angka partai non-PKB di 12 kecamatan belum final."
+  "ragu": [
+   {
+    "kec": "Bulak",
+    "selisih": 48.1,
+    "beda_partai": 9
+   },
+   {
+    "kec": "Gubeng",
+    "selisih": 84.0,
+    "beda_partai": 9
+   },
+   {
+    "kec": "Mulyorejo",
+    "selisih": 29.0,
+    "beda_partai": 9
+   },
+   {
+    "kec": "Pakal",
+    "selisih": 14.0,
+    "beda_partai": 9
+   },
+   {
+    "kec": "Tandes",
+    "selisih": 92.7,
+    "beda_partai": 10
+   },
+   {
+    "kec": "Wonocolo",
+    "selisih": 6.2,
+    "beda_partai": 2
+   }
+  ],
+  "catatan": "Tegalsari tanpa rincian kelurahan. Angka partai non-PKB di beberapa kecamatan belum final, kategori di sana memakai hitungan kecamatan."
  },
  "A": {
   "nama": "A",
@@ -43,7 +75,6 @@
      "menang": {
       "n": 2,
       "pkb": 4419,
-      "gap": 240,
       "kel": [
        {
         "nama": "SIMOLAWANG",
@@ -52,7 +83,25 @@
         "share": 29.08,
         "rank": 2,
         "top": "Gerindra",
-        "gap": 240
+        "gap": 240,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 3182,
+          "sh": 31.4
+         },
+         {
+          "p": "NasDem",
+          "v": 968,
+          "sh": 9.6
+         },
+         {
+          "p": "Golkar",
+          "v": 685,
+          "sh": 6.8
+         }
+        ]
        },
        {
         "nama": "SIDODADI",
@@ -61,23 +110,85 @@
         "share": 19.01,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 1378,
+          "sh": 17.7
+         },
+         {
+          "p": "PDIP",
+          "v": 1291,
+          "sh": 16.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 1264,
+          "sh": 16.3
+         }
+        ]
        }
       ]
      },
      "bersaing": {
-      "n": 4,
-      "pkb": 5509,
-      "gap": 10987,
+      "n": 9,
+      "pkb": 12396,
       "kel": [
+       {
+        "nama": "MOJO",
+        "kec": "Gubeng",
+        "pkb": 2992,
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
+       },
        {
         "nama": "KERTAJAYA",
         "kec": "Gubeng",
         "pkb": 2349,
-        "share": 10.63,
+        "share": 13.31,
         "rank": 3,
-        "top": "Gerindra",
-        "gap": 5466
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
        },
        {
         "nama": "JEPARA",
@@ -86,7 +197,106 @@
         "share": 12.42,
         "rank": 3,
         "top": "PDIP",
-        "gap": 2687
+        "gap": 2687,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4222,
+          "sh": 34.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 1933,
+          "sh": 15.6
+         },
+         {
+          "p": "PKS",
+          "v": 888,
+          "sh": 7.2
+         }
+        ]
+       },
+       {
+        "nama": "PUCANG SEWU",
+        "kec": "Gubeng",
+        "pkb": 1096,
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
+       },
+       {
+        "nama": "AIRLANGGA",
+        "kec": "Gubeng",
+        "pkb": 1071,
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
+       },
+       {
+        "nama": "GUBENG",
+        "kec": "Gubeng",
+        "pkb": 1064,
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
        },
        {
         "nama": "KAPASARI",
@@ -95,7 +305,25 @@
         "share": 10.89,
         "rank": 3,
         "top": "PDIP",
-        "gap": 1654
+        "gap": 1654,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2572,
+          "sh": 30.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 1428,
+          "sh": 16.9
+         },
+         {
+          "p": "Golkar",
+          "v": 789,
+          "sh": 9.4
+         }
+        ]
        },
        {
         "nama": "EMBONG KALIASIN",
@@ -104,24 +332,59 @@
         "share": 11.77,
         "rank": 3,
         "top": "Gerindra",
-        "gap": 1180
+        "gap": 1180,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1887,
+          "sh": 31.4
+         },
+         {
+          "p": "PDIP",
+          "v": 962,
+          "sh": 16.0
+         },
+         {
+          "p": "Golkar",
+          "v": 582,
+          "sh": 9.7
+         }
+        ]
+       },
+       {
+        "nama": "BARATAJAYA",
+        "kec": "Gubeng",
+        "pkb": 664,
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
        }
       ]
      },
      "jangan": {
-      "n": 20,
-      "pkb": 18990,
-      "gap": 55250,
+      "n": 15,
+      "pkb": 12103,
       "kel": [
-       {
-        "nama": "MOJO",
-        "kec": "Gubeng",
-        "pkb": 2992,
-        "share": 11.12,
-        "rank": 4,
-        "top": "Gerindra",
-        "gap": 4823
-       },
        {
         "nama": "MOROKREMBANGAN",
         "kec": "Krembangan",
@@ -129,7 +392,25 @@
         "share": 10.0,
         "rank": 5,
         "top": "PDIP",
-        "gap": 3323
+        "gap": 3323,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 5685,
+          "sh": 24.1
+         },
+         {
+          "p": "PAN",
+          "v": 5071,
+          "sh": 21.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 2740,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "GUNDIH",
@@ -138,34 +419,25 @@
         "share": 9.13,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1854
-       },
-       {
-        "nama": "PUCANG SEWU",
-        "kec": "Gubeng",
-        "pkb": 1096,
-        "share": 5.58,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 6719
-       },
-       {
-        "nama": "AIRLANGGA",
-        "kec": "Gubeng",
-        "pkb": 1071,
-        "share": 5.3,
-        "rank": 4,
-        "top": "Gerindra",
-        "gap": 6744
-       },
-       {
-        "nama": "GUBENG",
-        "kec": "Gubeng",
-        "pkb": 1064,
-        "share": 5.62,
-        "rank": 4,
-        "top": "Gerindra",
-        "gap": 6751
+        "gap": 1854,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 3092,
+          "sh": 22.8
+         },
+         {
+          "p": "PAN",
+          "v": 3015,
+          "sh": 22.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 2040,
+          "sh": 15.0
+         }
+        ]
        },
        {
         "nama": "SIMOKERTO",
@@ -174,7 +446,25 @@
         "share": 9.68,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1229
+        "gap": 1229,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2236,
+          "sh": 21.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 1731,
+          "sh": 16.6
+         },
+         {
+          "p": "PSI",
+          "v": 1093,
+          "sh": 10.5
+         }
+        ]
        },
        {
         "nama": "TEMBOK DUKUH",
@@ -183,7 +473,25 @@
         "share": 7.54,
         "rank": 5,
         "top": "Golkar",
-        "gap": 1735
+        "gap": 1735,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 2717,
+          "sh": 20.9
+         },
+         {
+          "p": "PDIP",
+          "v": 2604,
+          "sh": 20.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 1669,
+          "sh": 12.8
+         }
+        ]
        },
        {
         "nama": "TAMBAKREJO",
@@ -192,7 +500,25 @@
         "share": 10.32,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1987
+        "gap": 1987,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2949,
+          "sh": 31.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 1221,
+          "sh": 13.1
+         },
+         {
+          "p": "Golkar",
+          "v": 1023,
+          "sh": 11.0
+         }
+        ]
        },
        {
         "nama": "DUPAK",
@@ -201,7 +527,25 @@
         "share": 7.43,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1609
+        "gap": 1609,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2447,
+          "sh": 21.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 2006,
+          "sh": 17.8
+         },
+         {
+          "p": "PAN",
+          "v": 1800,
+          "sh": 16.0
+         }
+        ]
        },
        {
         "nama": "KEMAYORAN",
@@ -210,7 +554,25 @@
         "share": 8.55,
         "rank": 5,
         "top": "PDIP",
-        "gap": 2624
+        "gap": 2624,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 3375,
+          "sh": 38.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 1000,
+          "sh": 11.4
+         },
+         {
+          "p": "NasDem",
+          "v": 948,
+          "sh": 10.8
+         }
+        ]
        },
        {
         "nama": "BUBUTAN",
@@ -219,7 +581,25 @@
         "share": 10.88,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1100
+        "gap": 1100,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1837,
+          "sh": 27.1
+         },
+         {
+          "p": "Gerindra",
+          "v": 974,
+          "sh": 14.4
+         },
+         {
+          "p": "Golkar",
+          "v": 793,
+          "sh": 11.7
+         }
+        ]
        },
        {
         "nama": "PENELEH",
@@ -228,7 +608,25 @@
         "share": 9.84,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1906
+        "gap": 1906,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2614,
+          "sh": 36.3
+         },
+         {
+          "p": "PSI",
+          "v": 1100,
+          "sh": 15.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 757,
+          "sh": 10.5
+         }
+        ]
        },
        {
         "nama": "PERAK BARAT",
@@ -237,16 +635,25 @@
         "share": 9.73,
         "rank": 6,
         "top": "PDIP",
-        "gap": 512
-       },
-       {
-        "nama": "BARATAJAYA",
-        "kec": "Gubeng",
-        "pkb": 664,
-        "share": 3.33,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 7151
+        "gap": 512,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1180,
+          "sh": 17.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 1026,
+          "sh": 14.9
+         },
+         {
+          "p": "PKS",
+          "v": 832,
+          "sh": 12.1
+         }
+        ]
        },
        {
         "nama": "KAPASAN",
@@ -255,7 +662,25 @@
         "share": 7.7,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1227
+        "gap": 1227,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1809,
+          "sh": 23.9
+         },
+         {
+          "p": "Gerindra",
+          "v": 1220,
+          "sh": 16.1
+         },
+         {
+          "p": "NasDem",
+          "v": 1042,
+          "sh": 13.8
+         }
+        ]
        },
        {
         "nama": "KREMBANGAN SELATAN",
@@ -264,7 +689,25 @@
         "share": 5.45,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1431
+        "gap": 1431,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1810,
+          "sh": 26.0
+         },
+         {
+          "p": "Golkar",
+          "v": 1175,
+          "sh": 16.9
+         },
+         {
+          "p": "PSI",
+          "v": 793,
+          "sh": 11.4
+         }
+        ]
        },
        {
         "nama": "GENTENG",
@@ -273,7 +716,25 @@
         "share": 8.76,
         "rank": 5,
         "top": "PDIP",
-        "gap": 500
+        "gap": 500,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 871,
+          "sh": 20.6
+         },
+         {
+          "p": "Golkar",
+          "v": 740,
+          "sh": 17.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 697,
+          "sh": 16.5
+         }
+        ]
        },
        {
         "nama": "KETABANG",
@@ -282,7 +743,25 @@
         "share": 10.12,
         "rank": 4,
         "top": "PDIP",
-        "gap": 798
+        "gap": 798,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1166,
+          "sh": 32.1
+         },
+         {
+          "p": "PSI",
+          "v": 612,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 407,
+          "sh": 11.2
+         }
+        ]
        },
        {
         "nama": "ALUN-ALUN CONTONG",
@@ -291,7 +770,25 @@
         "share": 4.53,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1227
+        "gap": 1227,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1377,
+          "sh": 41.6
+         },
+         {
+          "p": "PSI",
+          "v": 601,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 302,
+          "sh": 9.1
+         }
+        ]
        }
       ]
      }
@@ -321,7 +818,6 @@
      "menang": {
       "n": 2,
       "pkb": 8837,
-      "gap": 0,
       "kel": [
        {
         "nama": "BULAK BANTENG",
@@ -330,7 +826,25 @@
         "share": 30.88,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2417,
+          "sh": 14.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 2130,
+          "sh": 12.5
+         },
+         {
+          "p": "Golkar",
+          "v": 1928,
+          "sh": 11.3
+         }
+        ]
        },
        {
         "nama": "UJUNG",
@@ -339,14 +853,31 @@
         "share": 22.23,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2521,
+          "sh": 15.7
+         },
+         {
+          "p": "PAN",
+          "v": 1797,
+          "sh": 11.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 1778,
+          "sh": 11.1
+         }
+        ]
        }
       ]
      },
      "bersaing": {
       "n": 11,
       "pkb": 22649,
-      "gap": 20194,
       "kel": [
        {
         "nama": "TANAH KALI KEDINDING",
@@ -355,7 +886,25 @@
         "share": 13.16,
         "rank": 3,
         "top": "PDIP",
-        "gap": 4255
+        "gap": 4255,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 8179,
+          "sh": 27.4
+         },
+         {
+          "p": "Golkar",
+          "v": 3943,
+          "sh": 13.2
+         },
+         {
+          "p": "Demokrat",
+          "v": 3007,
+          "sh": 10.1
+         }
+        ]
        },
        {
         "nama": "SIDOTOPO WETAN",
@@ -364,7 +913,25 @@
         "share": 12.56,
         "rank": 3,
         "top": "PPP",
-        "gap": 3304
+        "gap": 3304,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PPP",
+          "v": 7053,
+          "sh": 23.6
+         },
+         {
+          "p": "PDIP",
+          "v": 6236,
+          "sh": 20.9
+         },
+         {
+          "p": "Gerindra",
+          "v": 2451,
+          "sh": 8.2
+         }
+        ]
        },
        {
         "nama": "WONOKUSUMO",
@@ -373,7 +940,25 @@
         "share": 11.09,
         "rank": 3,
         "top": "PDIP",
-        "gap": 2642
+        "gap": 2642,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6165,
+          "sh": 19.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 3995,
+          "sh": 12.6
+         },
+         {
+          "p": "Golkar",
+          "v": 3469,
+          "sh": 10.9
+         }
+        ]
        },
        {
         "nama": "KAPASMADYA BARU",
@@ -382,7 +967,25 @@
         "share": 15.63,
         "rank": 2,
         "top": "PDIP",
-        "gap": 2306
+        "gap": 2306,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 5286,
+          "sh": 27.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 2256,
+          "sh": 11.8
+         },
+         {
+          "p": "PAN",
+          "v": 1708,
+          "sh": 9.0
+         }
+        ]
        },
        {
         "nama": "TAMBAK WEDI",
@@ -391,7 +994,25 @@
         "share": 17.83,
         "rank": 2,
         "top": "Golkar",
-        "gap": 667
+        "gap": 667,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 2412,
+          "sh": 24.6
+         },
+         {
+          "p": "PDIP",
+          "v": 1478,
+          "sh": 15.1
+         },
+         {
+          "p": "Demokrat",
+          "v": 937,
+          "sh": 9.6
+         }
+        ]
        },
        {
         "nama": "DUKUH SETRO",
@@ -400,7 +1021,25 @@
         "share": 13.76,
         "rank": 3,
         "top": "PDIP",
-        "gap": 1043
+        "gap": 1043,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2661,
+          "sh": 22.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 1656,
+          "sh": 14.1
+         },
+         {
+          "p": "PKS",
+          "v": 1354,
+          "sh": 11.5
+         }
+        ]
        },
        {
         "nama": "TAMBAKSARI",
@@ -409,7 +1048,25 @@
         "share": 15.14,
         "rank": 2,
         "top": "PDIP",
-        "gap": 1432
+        "gap": 1432,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2888,
+          "sh": 30.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 1110,
+          "sh": 11.5
+         },
+         {
+          "p": "PSI",
+          "v": 799,
+          "sh": 8.3
+         }
+        ]
        },
        {
         "nama": "RANGKAH",
@@ -418,7 +1075,25 @@
         "share": 15.27,
         "rank": 2,
         "top": "PDIP",
-        "gap": 1842
+        "gap": 1842,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 3154,
+          "sh": 36.7
+         },
+         {
+          "p": "PKS",
+          "v": 944,
+          "sh": 11.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 780,
+          "sh": 9.1
+         }
+        ]
        },
        {
         "nama": "AMPEL",
@@ -427,7 +1102,25 @@
         "share": 13.49,
         "rank": 3,
         "top": "PKS",
-        "gap": 1428
+        "gap": 1428,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 2693,
+          "sh": 28.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 1297,
+          "sh": 13.8
+         },
+         {
+          "p": "Golkar",
+          "v": 1147,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "BONGKARAN",
@@ -436,7 +1129,25 @@
         "share": 12.04,
         "rank": 3,
         "top": "PDIP",
-        "gap": 607
+        "gap": 607,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1217,
+          "sh": 24.0
+         },
+         {
+          "p": "PAN",
+          "v": 799,
+          "sh": 15.8
+         },
+         {
+          "p": "PSI",
+          "v": 507,
+          "sh": 10.0
+         }
+        ]
        },
        {
         "nama": "NYAMPLUNGAN",
@@ -445,14 +1156,31 @@
         "share": 11.1,
         "rank": 3,
         "top": "PKS",
-        "gap": 668
+        "gap": 668,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 1135,
+          "sh": 27.0
+         },
+         {
+          "p": "PDIP",
+          "v": 970,
+          "sh": 23.1
+         },
+         {
+          "p": "Golkar",
+          "v": 369,
+          "sh": 8.8
+         }
+        ]
        }
       ]
      },
      "jangan": {
       "n": 8,
       "pkb": 9518,
-      "gap": 22682,
       "kel": [
        {
         "nama": "PEGIRIAN",
@@ -461,7 +1189,25 @@
         "share": 11.02,
         "rank": 4,
         "top": "Golkar",
-        "gap": 1535
+        "gap": 1535,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 3197,
+          "sh": 21.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 2795,
+          "sh": 18.5
+         },
+         {
+          "p": "PDIP",
+          "v": 2538,
+          "sh": 16.8
+         }
+        ]
        },
        {
         "nama": "SIDOTOPO",
@@ -470,7 +1216,25 @@
         "share": 10.02,
         "rank": 4,
         "top": "NasDem",
-        "gap": 2394
+        "gap": 2394,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "NasDem",
+          "v": 4015,
+          "sh": 24.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2895,
+          "sh": 17.9
+         },
+         {
+          "p": "Golkar",
+          "v": 1879,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "TANJUNG PERAK",
@@ -479,7 +1243,25 @@
         "share": 6.67,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 2378
+        "gap": 2378,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 3644,
+          "sh": 19.2
+         },
+         {
+          "p": "Golkar",
+          "v": 3354,
+          "sh": 17.7
+         },
+         {
+          "p": "PDIP",
+          "v": 2502,
+          "sh": 13.2
+         }
+        ]
        },
        {
         "nama": "PACARKEMBANG",
@@ -488,7 +1270,25 @@
         "share": 6.3,
         "rank": 5,
         "top": "Gerindra",
-        "gap": 4212
+        "gap": 4212,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 5449,
+          "sh": 27.7
+         },
+         {
+          "p": "PDIP",
+          "v": 4980,
+          "sh": 25.3
+         },
+         {
+          "p": "PKS",
+          "v": 2040,
+          "sh": 10.4
+         }
+        ]
        },
        {
         "nama": "GADING",
@@ -497,7 +1297,25 @@
         "share": 7.79,
         "rank": 4,
         "top": "PDIP",
-        "gap": 3593
+        "gap": 3593,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4797,
+          "sh": 31.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 2190,
+          "sh": 14.2
+         },
+         {
+          "p": "PSI",
+          "v": 2013,
+          "sh": 13.0
+         }
+        ]
        },
        {
         "nama": "PLOSO",
@@ -506,7 +1324,25 @@
         "share": 6.21,
         "rank": 5,
         "top": "PDIP",
-        "gap": 5302
+        "gap": 5302,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6385,
+          "sh": 36.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 2330,
+          "sh": 13.4
+         },
+         {
+          "p": "PSI",
+          "v": 2131,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "PACARKELING",
@@ -515,7 +1351,25 @@
         "share": 7.86,
         "rank": 5,
         "top": "PDIP",
-        "gap": 2110
+        "gap": 2110,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2988,
+          "sh": 26.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2376,
+          "sh": 21.3
+         },
+         {
+          "p": "Golkar",
+          "v": 1037,
+          "sh": 9.3
+         }
+        ]
        },
        {
         "nama": "KREMBANGAN UTARA",
@@ -524,7 +1378,25 @@
         "share": 6.96,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1158
+        "gap": 1158,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1725,
+          "sh": 21.2
+         },
+         {
+          "p": "Golkar",
+          "v": 1645,
+          "sh": 20.2
+         },
+         {
+          "p": "PPP",
+          "v": 903,
+          "sh": 11.1
+         }
+        ]
        }
       ]
      }
@@ -557,7 +1429,6 @@
      "menang": {
       "n": 2,
       "pkb": 5297,
-      "gap": 0,
       "kel": [
        {
         "nama": "KENDANGSARI",
@@ -566,7 +1437,25 @@
         "share": 40.07,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1711,
+          "sh": 19.9
+         },
+         {
+          "p": "Gerindra",
+          "v": 1165,
+          "sh": 13.5
+         },
+         {
+          "p": "PSI",
+          "v": 608,
+          "sh": 7.1
+         }
+        ]
        },
        {
         "nama": "TENGGILIS MEJOYO",
@@ -575,14 +1464,31 @@
         "share": 28.44,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1257,
+          "sh": 19.3
+         },
+         {
+          "p": "PSI",
+          "v": 677,
+          "sh": 10.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 614,
+          "sh": 9.4
+         }
+        ]
        }
       ]
      },
      "bersaing": {
-      "n": 7,
-      "pkb": 5954,
-      "gap": 7310,
+      "n": 3,
+      "pkb": 3672,
       "kel": [
        {
         "nama": "KUTISARI",
@@ -591,7 +1497,25 @@
         "share": 13.95,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1196
+        "gap": 1196,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2652,
+          "sh": 25.4
+         },
+         {
+          "p": "PSI",
+          "v": 1647,
+          "sh": 15.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 1532,
+          "sh": 14.7
+         }
+        ]
        },
        {
         "nama": "PANJANG JIWO",
@@ -600,7 +1524,25 @@
         "share": 15.25,
         "rank": 3,
         "top": "PDIP",
-        "gap": 848
+        "gap": 848,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1962,
+          "sh": 26.9
+         },
+         {
+          "p": "Gerindra",
+          "v": 1183,
+          "sh": 16.2
+         },
+         {
+          "p": "PSI",
+          "v": 829,
+          "sh": 11.4
+         }
+        ]
        },
        {
         "nama": "RUNGKUT TENGAH",
@@ -609,50 +1551,31 @@
         "share": 14.15,
         "rank": 3,
         "top": "PDIP",
-        "gap": 876
-       },
-       {
-        "nama": "BULAK",
-        "kec": "Bulak",
-        "pkb": 805,
-        "share": 16.44,
-        "rank": 2,
-        "top": "PDIP",
-        "gap": 2112
-       },
-       {
-        "nama": "SUKOLILO BARU",
-        "kec": "Bulak",
-        "pkb": 792,
-        "share": 25.31,
-        "rank": 2,
-        "top": "PDIP",
-        "gap": 493
-       },
-       {
-        "nama": "KEDUNG COWEK",
-        "kec": "Bulak",
-        "pkb": 405,
-        "share": 17.25,
-        "rank": 3,
-        "top": "PDIP",
-        "gap": 783
-       },
-       {
-        "nama": "KENJERAN",
-        "kec": "Bulak",
-        "pkb": 280,
-        "share": 11.64,
-        "rank": 3,
-        "top": "PDIP",
-        "gap": 1002
+        "gap": 876,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1978,
+          "sh": 25.4
+         },
+         {
+          "p": "Golkar",
+          "v": 1128,
+          "sh": 14.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 996,
+          "sh": 12.8
+         }
+        ]
        }
       ]
      },
      "jangan": {
-      "n": 27,
-      "pkb": 15762,
-      "gap": 49560,
+      "n": 31,
+      "pkb": 18044,
       "kel": [
        {
         "nama": "KALIRUNGKUT",
@@ -661,7 +1584,25 @@
         "share": 10.07,
         "rank": 5,
         "top": "PDIP",
-        "gap": 962
+        "gap": 962,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2194,
+          "sh": 17.9
+         },
+         {
+          "p": "Golkar",
+          "v": 1997,
+          "sh": 16.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 1838,
+          "sh": 15.0
+         }
+        ]
        },
        {
         "nama": "GUNUNG ANYAR",
@@ -670,16 +1611,52 @@
         "share": 9.41,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1268
+        "gap": 1268,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2458,
+          "sh": 19.4
+         },
+         {
+          "p": "Golkar",
+          "v": 2069,
+          "sh": 16.4
+         },
+         {
+          "p": "PSI",
+          "v": 1499,
+          "sh": 11.9
+         }
+        ]
        },
        {
         "nama": "JEMUR WONOSARI",
         "kec": "Wonocolo",
         "pkb": 1046,
-        "share": 9.01,
-        "rank": 4,
+        "share": 7.77,
+        "rank": 5,
         "top": "Gerindra",
-        "gap": 1652
+        "gap": 3632,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6850,
+          "sh": 16.5
+         },
+         {
+          "p": "PDIP",
+          "v": 6275,
+          "sh": 15.2
+         },
+         {
+          "p": "PPP",
+          "v": 5673,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "KEPUTIH",
@@ -688,7 +1665,25 @@
         "share": 8.26,
         "rank": 5,
         "top": "PKS",
-        "gap": 1269
+        "gap": 1269,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 2122,
+          "sh": 20.6
+         },
+         {
+          "p": "PDIP",
+          "v": 2040,
+          "sh": 19.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 1236,
+          "sh": 12.0
+         }
+        ]
        },
        {
         "nama": "KEDUNG BARUK",
@@ -697,7 +1692,52 @@
         "share": 9.39,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1114
+        "gap": 1114,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1920,
+          "sh": 22.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 1224,
+          "sh": 14.3
+         },
+         {
+          "p": "PSI",
+          "v": 973,
+          "sh": 11.3
+         }
+        ]
+       },
+       {
+        "nama": "BULAK",
+        "kec": "Bulak",
+        "pkb": 805,
+        "share": 9.28,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 4390,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6672,
+          "sh": 27.1
+         },
+         {
+          "p": "PKS",
+          "v": 4619,
+          "sh": 18.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2993,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "MEDOKAN AYU",
@@ -706,7 +1746,52 @@
         "share": 4.95,
         "rank": 6,
         "top": "PKS",
-        "gap": 2899
+        "gap": 2899,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 3699,
+          "sh": 22.9
+         },
+         {
+          "p": "Golkar",
+          "v": 3258,
+          "sh": 20.1
+         },
+         {
+          "p": "PDIP",
+          "v": 2116,
+          "sh": 13.1
+         }
+        ]
+       },
+       {
+        "nama": "SUKOLILO BARU",
+        "kec": "Bulak",
+        "pkb": 792,
+        "share": 9.28,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 4390,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6672,
+          "sh": 27.1
+         },
+         {
+          "p": "PKS",
+          "v": 4619,
+          "sh": 18.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2993,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "MEDOKAN SEMAMPIR",
@@ -715,7 +1800,25 @@
         "share": 7.91,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1187
+        "gap": 1187,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1961,
+          "sh": 20.0
+         },
+         {
+          "p": "Demokrat",
+          "v": 1799,
+          "sh": 18.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 1331,
+          "sh": 13.6
+         }
+        ]
        },
        {
         "nama": "PENJARINGANSARI",
@@ -724,7 +1827,25 @@
         "share": 6.87,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1591
+        "gap": 1591,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2296,
+          "sh": 22.4
+         },
+         {
+          "p": "Golkar",
+          "v": 1481,
+          "sh": 14.4
+         },
+         {
+          "p": "PKS",
+          "v": 1183,
+          "sh": 11.5
+         }
+        ]
        },
        {
         "nama": "NGINDEN JANGKUNGAN",
@@ -733,7 +1854,25 @@
         "share": 9.19,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1138
+        "gap": 1138,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1833,
+          "sh": 24.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 1044,
+          "sh": 13.8
+         },
+         {
+          "p": "PSI",
+          "v": 790,
+          "sh": 10.4
+         }
+        ]
        },
        {
         "nama": "SEMOLOWARU",
@@ -742,34 +1881,106 @@
         "share": 6.81,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1574
+        "gap": 1574,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2241,
+          "sh": 22.9
+         },
+         {
+          "p": "PKS",
+          "v": 1481,
+          "sh": 15.1
+         },
+         {
+          "p": "PSI",
+          "v": 1208,
+          "sh": 12.3
+         }
+        ]
        },
        {
         "nama": "BENDUL MERISI",
         "kec": "Wonocolo",
         "pkb": 637,
-        "share": 6.76,
-        "rank": 7,
-        "top": "PDIP",
-        "gap": 1301
+        "share": 7.77,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3632,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6850,
+          "sh": 16.5
+         },
+         {
+          "p": "PDIP",
+          "v": 6275,
+          "sh": 15.2
+         },
+         {
+          "p": "PPP",
+          "v": 5673,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "SIWALANKERTO",
         "kec": "Wonocolo",
         "pkb": 611,
-        "share": 6.36,
-        "rank": 6,
-        "top": "PDIP",
-        "gap": 1226
+        "share": 7.77,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3632,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6850,
+          "sh": 16.5
+         },
+         {
+          "p": "PDIP",
+          "v": 6275,
+          "sh": 15.2
+         },
+         {
+          "p": "PPP",
+          "v": 5673,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "SIDOSERMO",
         "kec": "Wonocolo",
         "pkb": 544,
-        "share": 7.31,
-        "rank": 6,
-        "top": "PPP",
-        "gap": 1824
+        "share": 7.77,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3632,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6850,
+          "sh": 16.5
+         },
+         {
+          "p": "PDIP",
+          "v": 6275,
+          "sh": 15.2
+         },
+         {
+          "p": "PPP",
+          "v": 5673,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "KLAMPIS NGASEM",
@@ -778,7 +1989,25 @@
         "share": 5.13,
         "rank": 6,
         "top": "PDIP",
-        "gap": 4071
+        "gap": 4071,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4554,
+          "sh": 48.3
+         },
+         {
+          "p": "PSI",
+          "v": 1047,
+          "sh": 11.1
+         },
+         {
+          "p": "Gerindra",
+          "v": 783,
+          "sh": 8.3
+         }
+        ]
        },
        {
         "nama": "RUNGKUT MENANGGAL",
@@ -787,7 +2016,25 @@
         "share": 6.19,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1393
+        "gap": 1393,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1858,
+          "sh": 24.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 1006,
+          "sh": 13.4
+         },
+         {
+          "p": "PKS",
+          "v": 916,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "WONOREJO",
@@ -796,7 +2043,25 @@
         "share": 4.31,
         "rank": 8,
         "top": "PDIP",
-        "gap": 2009
+        "gap": 2009,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2444,
+          "sh": 24.2
+         },
+         {
+          "p": "PSI",
+          "v": 1893,
+          "sh": 18.8
+         },
+         {
+          "p": "PKS",
+          "v": 1482,
+          "sh": 14.7
+         }
+        ]
        },
        {
         "nama": "RUNGKUT KIDUL",
@@ -805,43 +2070,160 @@
         "share": 5.78,
         "rank": 6,
         "top": "Golkar",
-        "gap": 2387
+        "gap": 2387,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 2818,
+          "sh": 37.8
+         },
+         {
+          "p": "PDIP",
+          "v": 1108,
+          "sh": 14.9
+         },
+         {
+          "p": "PSI",
+          "v": 613,
+          "sh": 8.2
+         }
+        ]
+       },
+       {
+        "nama": "KEDUNG COWEK",
+        "kec": "Bulak",
+        "pkb": 405,
+        "share": 9.28,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 4390,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6672,
+          "sh": 27.1
+         },
+         {
+          "p": "PKS",
+          "v": 4619,
+          "sh": 18.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2993,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "KALISARI",
         "kec": "Mulyorejo",
         "pkb": 385,
-        "share": 3.88,
-        "rank": 9,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 1869
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "MARGOREJO",
         "kec": "Wonocolo",
         "pkb": 379,
-        "share": 6.4,
+        "share": 7.77,
         "rank": 5,
-        "top": "PDIP",
-        "gap": 1207
+        "top": "Gerindra",
+        "gap": 3632,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6850,
+          "sh": 16.5
+         },
+         {
+          "p": "PDIP",
+          "v": 6275,
+          "sh": 15.2
+         },
+         {
+          "p": "PPP",
+          "v": 5673,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "KEJAWAN PUTIH TAMBAK",
         "kec": "Mulyorejo",
         "pkb": 377,
-        "share": 5.28,
-        "rank": 9,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 516
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "MANYAR SABRANGAN",
         "kec": "Mulyorejo",
         "pkb": 367,
-        "share": 3.48,
-        "rank": 9,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 3184
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "GUNUNG ANYAR TAMBAK",
@@ -850,7 +2232,25 @@
         "share": 5.36,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1193
+        "gap": 1193,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1531,
+          "sh": 24.3
+         },
+         {
+          "p": "PKS",
+          "v": 1157,
+          "sh": 18.4
+         },
+         {
+          "p": "PSI",
+          "v": 1037,
+          "sh": 16.4
+         }
+        ]
        },
        {
         "nama": "MENUR PUMPUNGAN",
@@ -859,16 +2259,52 @@
         "share": 3.63,
         "rank": 7,
         "top": "PDIP",
-        "gap": 4290
+        "gap": 4290,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4608,
+          "sh": 52.6
+         },
+         {
+          "p": "PSI",
+          "v": 986,
+          "sh": 11.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 652,
+          "sh": 7.4
+         }
+        ]
        },
        {
         "nama": "DUKUH SUTOREJO",
         "kec": "Mulyorejo",
         "pkb": 312,
-        "share": 2.98,
-        "rank": 9,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 2327
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "GEBANG PUTIH",
@@ -877,25 +2313,106 @@
         "share": 7.81,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1083
+        "gap": 1083,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1394,
+          "sh": 35.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 506,
+          "sh": 12.7
+         },
+         {
+          "p": "PSI",
+          "v": 436,
+          "sh": 10.9
+         }
+        ]
        },
        {
         "nama": "KALIJUDAN",
         "kec": "Mulyorejo",
         "pkb": 305,
-        "share": 3.18,
-        "rank": 10,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 2039
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "MULYOREJO",
         "kec": "Mulyorejo",
         "pkb": 296,
-        "share": 2.69,
-        "rank": 10,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 2987
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
+       },
+       {
+        "nama": "KENJERAN",
+        "kec": "Bulak",
+        "pkb": 280,
+        "share": 9.28,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 4390,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6672,
+          "sh": 27.1
+         },
+         {
+          "p": "PKS",
+          "v": 4619,
+          "sh": 18.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2993,
+          "sh": 12.2
+         }
+        ]
        }
       ]
      }
@@ -926,13 +2443,11 @@
      "menang": {
       "n": 0,
       "pkb": 0,
-      "gap": 0,
       "kel": []
      },
      "bersaing": {
       "n": 5,
       "pkb": 8176,
-      "gap": 4851,
       "kel": [
        {
         "nama": "PUTAT JAYA",
@@ -941,7 +2456,25 @@
         "share": 11.55,
         "rank": 3,
         "top": "PDIP",
-        "gap": 2651
+        "gap": 2651,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 5322,
+          "sh": 23.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 4578,
+          "sh": 19.8
+         },
+         {
+          "p": "Golkar",
+          "v": 2195,
+          "sh": 9.5
+         }
+        ]
        },
        {
         "nama": "WONOKROMO",
@@ -950,7 +2483,25 @@
         "share": 12.43,
         "rank": 3,
         "top": "PDIP",
-        "gap": 1153
+        "gap": 1153,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 3624,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3106,
+          "sh": 15.6
+         },
+         {
+          "p": "PKS",
+          "v": 2356,
+          "sh": 11.8
+         }
+        ]
        },
        {
         "nama": "JAGIR",
@@ -959,7 +2510,25 @@
         "share": 14.74,
         "rank": 2,
         "top": "PDIP",
-        "gap": 417
+        "gap": 417,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1896,
+          "sh": 18.9
+         },
+         {
+          "p": "PKS",
+          "v": 1418,
+          "sh": 14.1
+         },
+         {
+          "p": "Gerindra",
+          "v": 1376,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "KETINTANG",
@@ -968,7 +2537,25 @@
         "share": 12.35,
         "rank": 4,
         "top": "PKS",
-        "gap": 474
+        "gap": 474,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 1392,
+          "sh": 18.7
+         },
+         {
+          "p": "Golkar",
+          "v": 1207,
+          "sh": 16.2
+         },
+         {
+          "p": "PDIP",
+          "v": 931,
+          "sh": 12.5
+         }
+        ]
        },
        {
         "nama": "DUKUH MENANGGAL",
@@ -977,14 +2564,31 @@
         "share": 13.67,
         "rank": 4,
         "top": "Golkar",
-        "gap": 156
+        "gap": 156,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 793,
+          "sh": 17.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 717,
+          "sh": 15.4
+         },
+         {
+          "p": "PDIP",
+          "v": 655,
+          "sh": 14.1
+         }
+        ]
        }
       ]
      },
      "jangan": {
       "n": 21,
       "pkb": 16369,
-      "gap": 40092,
       "kel": [
        {
         "nama": "SIMOMULYO BARU",
@@ -993,7 +2597,25 @@
         "share": 11.04,
         "rank": 4,
         "top": "Gerindra",
-        "gap": 2389
+        "gap": 2389,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 4865,
+          "sh": 21.7
+         },
+         {
+          "p": "PDIP",
+          "v": 4056,
+          "sh": 18.1
+         },
+         {
+          "p": "PKS",
+          "v": 2946,
+          "sh": 13.1
+         }
+        ]
        },
        {
         "nama": "BANYU URIP",
@@ -1002,7 +2624,25 @@
         "share": 9.11,
         "rank": 4,
         "top": "PDIP",
-        "gap": 3154
+        "gap": 3154,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4937,
+          "sh": 25.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3659,
+          "sh": 18.7
+         },
+         {
+          "p": "PAN",
+          "v": 1963,
+          "sh": 10.0
+         }
+        ]
        },
        {
         "nama": "PAKIS",
@@ -1011,7 +2651,25 @@
         "share": 9.31,
         "rank": 4,
         "top": "PDIP",
-        "gap": 2434
+        "gap": 2434,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4125,
+          "sh": 22.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 2921,
+          "sh": 16.1
+         },
+         {
+          "p": "PKS",
+          "v": 2141,
+          "sh": 11.8
+         }
+        ]
        },
        {
         "nama": "NGAGEL REJO",
@@ -1020,7 +2678,25 @@
         "share": 4.67,
         "rank": 6,
         "top": "PDIP",
-        "gap": 7942
+        "gap": 7942,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 8981,
+          "sh": 40.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 3285,
+          "sh": 14.8
+         },
+         {
+          "p": "PSI",
+          "v": 1927,
+          "sh": 8.7
+         }
+        ]
        },
        {
         "nama": "KUPANG KRAJAN",
@@ -1029,7 +2705,25 @@
         "share": 8.42,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1918
+        "gap": 1918,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2907,
+          "sh": 24.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 1525,
+          "sh": 13.0
+         },
+         {
+          "p": "PAN",
+          "v": 1392,
+          "sh": 11.8
+         }
+        ]
        },
        {
         "nama": "SIMOMULYO",
@@ -1038,7 +2732,25 @@
         "share": 7.51,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1570
+        "gap": 1570,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2473,
+          "sh": 20.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 2307,
+          "sh": 19.2
+         },
+         {
+          "p": "PKS",
+          "v": 1971,
+          "sh": 16.4
+         }
+        ]
        },
        {
         "nama": "PETEMON",
@@ -1047,7 +2759,25 @@
         "share": 4.76,
         "rank": 8,
         "top": "PDIP",
-        "gap": 3488
+        "gap": 3488,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4358,
+          "sh": 23.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 3636,
+          "sh": 19.9
+         },
+         {
+          "p": "PSI",
+          "v": 2325,
+          "sh": 12.7
+         }
+        ]
        },
        {
         "nama": "KARAH",
@@ -1056,7 +2786,25 @@
         "share": 9.02,
         "rank": 5,
         "top": "Golkar",
-        "gap": 821
+        "gap": 821,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 1597,
+          "sh": 18.6
+         },
+         {
+          "p": "PDIP",
+          "v": 1507,
+          "sh": 17.5
+         },
+         {
+          "p": "PKS",
+          "v": 1361,
+          "sh": 15.8
+         }
+        ]
        },
        {
         "nama": "SAWUNGGALING",
@@ -1065,7 +2813,25 @@
         "share": 5.76,
         "rank": 6,
         "top": "Gerindra",
-        "gap": 2223
+        "gap": 2223,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2983,
+          "sh": 22.6
+         },
+         {
+          "p": "PDIP",
+          "v": 2833,
+          "sh": 21.5
+         },
+         {
+          "p": "Golkar",
+          "v": 2174,
+          "sh": 16.5
+         }
+        ]
        },
        {
         "nama": "PAGESANGAN",
@@ -1074,7 +2840,25 @@
         "share": 9.78,
         "rank": 5,
         "top": "PDIP",
-        "gap": 576
+        "gap": 576,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1303,
+          "sh": 17.5
+         },
+         {
+          "p": "Golkar",
+          "v": 1136,
+          "sh": 15.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 1015,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "DARMO",
@@ -1083,7 +2867,25 @@
         "share": 8.48,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1859
+        "gap": 1859,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2492,
+          "sh": 33.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 1218,
+          "sh": 16.3
+         },
+         {
+          "p": "PSI",
+          "v": 672,
+          "sh": 9.0
+         }
+        ]
        },
        {
         "nama": "KEBONSARI",
@@ -1092,7 +2894,25 @@
         "share": 10.21,
         "rank": 5,
         "top": "PDIP",
-        "gap": 587
+        "gap": 587,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1193,
+          "sh": 20.1
+         },
+         {
+          "p": "Gerindra",
+          "v": 853,
+          "sh": 14.4
+         },
+         {
+          "p": "Golkar",
+          "v": 632,
+          "sh": 10.6
+         }
+        ]
        },
        {
         "nama": "SAWAHAN",
@@ -1101,7 +2921,25 @@
         "share": 5.73,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1820
+        "gap": 1820,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2354,
+          "sh": 25.3
+         },
+         {
+          "p": "PSI",
+          "v": 1300,
+          "sh": 14.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 1292,
+          "sh": 13.9
+         }
+        ]
        },
        {
         "nama": "JAMBANGAN",
@@ -1110,7 +2948,25 @@
         "share": 8.3,
         "rank": 5,
         "top": "PKS",
-        "gap": 767
+        "gap": 767,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 1262,
+          "sh": 21.2
+         },
+         {
+          "p": "PDIP",
+          "v": 1029,
+          "sh": 17.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 913,
+          "sh": 15.3
+         }
+        ]
        },
        {
         "nama": "MENANGGAL",
@@ -1119,7 +2975,25 @@
         "share": 10.22,
         "rank": 6,
         "top": "PDIP",
-        "gap": 573
+        "gap": 573,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1066,
+          "sh": 22.1
+         },
+         {
+          "p": "PKS",
+          "v": 654,
+          "sh": 13.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 546,
+          "sh": 11.3
+         }
+        ]
        },
        {
         "nama": "GAYUNGAN",
@@ -1128,7 +3002,25 @@
         "share": 7.75,
         "rank": 7,
         "top": "Golkar",
-        "gap": 835
+        "gap": 835,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 1300,
+          "sh": 21.7
+         },
+         {
+          "p": "PDIP",
+          "v": 962,
+          "sh": 16.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 701,
+          "sh": 11.7
+         }
+        ]
        },
        {
         "nama": "NGAGEL",
@@ -1137,7 +3029,25 @@
         "share": 7.11,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1421
+        "gap": 1421,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1836,
+          "sh": 31.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 917,
+          "sh": 15.7
+         },
+         {
+          "p": "PKS",
+          "v": 780,
+          "sh": 13.4
+         }
+        ]
        },
        {
         "nama": "PUTAT GEDE",
@@ -1146,7 +3056,25 @@
         "share": 5.65,
         "rank": 6,
         "top": "Gerindra",
-        "gap": 1097
+        "gap": 1097,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1331,
+          "sh": 32.2
+         },
+         {
+          "p": "PDIP",
+          "v": 1012,
+          "sh": 24.5
+         },
+         {
+          "p": "Golkar",
+          "v": 527,
+          "sh": 12.7
+         }
+        ]
        },
        {
         "nama": "SUKOMANUNGGAL",
@@ -1155,7 +3083,25 @@
         "share": 2.56,
         "rank": 8,
         "top": "PDIP",
-        "gap": 1159
+        "gap": 1159,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1328,
+          "sh": 20.2
+         },
+         {
+          "p": "PKS",
+          "v": 1131,
+          "sh": 17.2
+         },
+         {
+          "p": "Golkar",
+          "v": 981,
+          "sh": 14.9
+         }
+        ]
        },
        {
         "nama": "TANJUNGSARI",
@@ -1164,7 +3110,25 @@
         "share": 2.27,
         "rank": 7,
         "top": "PAN",
-        "gap": 2172
+        "gap": 2172,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PAN",
+          "v": 2332,
+          "sh": 33.1
+         },
+         {
+          "p": "PDIP",
+          "v": 1634,
+          "sh": 23.2
+         },
+         {
+          "p": "PSI",
+          "v": 1171,
+          "sh": 16.6
+         }
+        ]
        },
        {
         "nama": "SONOKWIJENAN",
@@ -1173,7 +3137,25 @@
         "share": 3.6,
         "rank": 8,
         "top": "PDIP",
-        "gap": 1287
+        "gap": 1287,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1438,
+          "sh": 34.3
+         },
+         {
+          "p": "PSI",
+          "v": 999,
+          "sh": 23.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 477,
+          "sh": 11.4
+         }
+        ]
        }
       ]
      }
@@ -1206,19 +3188,9 @@
     "rasio": 0.21,
     "tier": {
      "menang": {
-      "n": 3,
-      "pkb": 3716,
-      "gap": 0,
+      "n": 2,
+      "pkb": 1709,
       "kel": [
-       {
-        "nama": "SUMBER REJO",
-        "kec": "Pakal",
-        "pkb": 2007,
-        "share": 21.77,
-        "rank": 1,
-        "top": "PKB",
-        "gap": 0
-       },
        {
         "nama": "TAMBAK SARIOSO",
         "kec": "Asemrowo",
@@ -1226,7 +3198,25 @@
         "share": 23.55,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 711,
+          "sh": 17.5
+         },
+         {
+          "p": "PBB",
+          "v": 431,
+          "sh": 10.6
+         },
+         {
+          "p": "PKS",
+          "v": 391,
+          "sh": 9.6
+         }
+        ]
        },
        {
         "nama": "TAMBAK OSO WILANGUN",
@@ -1235,14 +3225,31 @@
         "share": 34.01,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PBB",
+          "v": 595,
+          "sh": 26.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 358,
+          "sh": 16.1
+         },
+         {
+          "p": "PDIP",
+          "v": 243,
+          "sh": 11.0
+         }
+        ]
        }
       ]
      },
      "bersaing": {
-      "n": 10,
-      "pkb": 14638,
-      "gap": 8410,
+      "n": 11,
+      "pkb": 16645,
       "kel": [
        {
         "nama": "SEMEMI",
@@ -1251,7 +3258,25 @@
         "share": 18.19,
         "rank": 2,
         "top": "PDIP",
-        "gap": 2524
+        "gap": 2524,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6487,
+          "sh": 29.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2819,
+          "sh": 12.9
+         },
+         {
+          "p": "Demokrat",
+          "v": 2657,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "ASEM ROWO",
@@ -1260,7 +3285,52 @@
         "share": 17.37,
         "rank": 3,
         "top": "Gerindra",
-        "gap": 632
+        "gap": 632,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 3138,
+          "sh": 21.7
+         },
+         {
+          "p": "Golkar",
+          "v": 2877,
+          "sh": 19.9
+         },
+         {
+          "p": "PDIP",
+          "v": 1887,
+          "sh": 13.1
+         }
+        ]
+       },
+       {
+        "nama": "SUMBER REJO",
+        "kec": "Pakal",
+        "pkb": 2007,
+        "share": 17.32,
+        "rank": 3,
+        "top": "PPP",
+        "gap": 2071,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PPP",
+          "v": 8123,
+          "sh": 23.2
+         },
+         {
+          "p": "PDIP",
+          "v": 6353,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3001,
+          "sh": 8.6
+         }
+        ]
        },
        {
         "nama": "KANDANGAN",
@@ -1269,34 +3339,106 @@
         "share": 15.59,
         "rank": 3,
         "top": "PDIP",
-        "gap": 847
+        "gap": 847,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2838,
+          "sh": 22.2
+         },
+         {
+          "p": "Demokrat",
+          "v": 2443,
+          "sh": 19.1
+         },
+         {
+          "p": "Gerindra",
+          "v": 1805,
+          "sh": 14.1
+         }
+        ]
        },
        {
         "nama": "BABAT JERAWAT",
         "kec": "Pakal",
         "pkb": 1814,
-        "share": 12.89,
-        "rank": 4,
+        "share": 17.32,
+        "rank": 3,
         "top": "PPP",
-        "gap": 440
+        "gap": 2071,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PPP",
+          "v": 8123,
+          "sh": 23.2
+         },
+         {
+          "p": "PDIP",
+          "v": 6353,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3001,
+          "sh": 8.6
+         }
+        ]
        },
        {
         "nama": "BENOWO",
         "kec": "Pakal",
         "pkb": 1163,
-        "share": 14.22,
+        "share": 17.32,
         "rank": 3,
         "top": "PPP",
-        "gap": 882
+        "gap": 2071,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PPP",
+          "v": 8123,
+          "sh": 23.2
+         },
+         {
+          "p": "PDIP",
+          "v": 6353,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3001,
+          "sh": 8.6
+         }
+        ]
        },
        {
         "nama": "PAKAL",
         "kec": "Pakal",
         "pkb": 1068,
-        "share": 12.79,
-        "rank": 2,
+        "share": 17.32,
+        "rank": 3,
         "top": "PPP",
-        "gap": 1639
+        "gap": 2071,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PPP",
+          "v": 8123,
+          "sh": 23.2
+         },
+         {
+          "p": "PDIP",
+          "v": 6353,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3001,
+          "sh": 8.6
+         }
+        ]
        },
        {
         "nama": "LAKARSANTRI",
@@ -1305,7 +3447,25 @@
         "share": 18.13,
         "rank": 2,
         "top": "Gerindra",
-        "gap": 255
+        "gap": 255,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1096,
+          "sh": 23.6
+         },
+         {
+          "p": "PDIP",
+          "v": 581,
+          "sh": 12.5
+         },
+         {
+          "p": "NasDem",
+          "v": 570,
+          "sh": 12.3
+         }
+        ]
        },
        {
         "nama": "GENTING KALIANAK",
@@ -1314,7 +3474,25 @@
         "share": 11.8,
         "rank": 3,
         "top": "Gerindra",
-        "gap": 474
+        "gap": 474,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 930,
+          "sh": 24.1
+         },
+         {
+          "p": "PDIP",
+          "v": 843,
+          "sh": 21.8
+         },
+         {
+          "p": "PKS",
+          "v": 331,
+          "sh": 8.6
+         }
+        ]
        },
        {
         "nama": "ROMOKALISARI",
@@ -1323,7 +3501,25 @@
         "share": 25.26,
         "rank": 2,
         "top": "Gerindra",
-        "gap": 131
+        "gap": 131,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 565,
+          "sh": 32.9
+         },
+         {
+          "p": "PDIP",
+          "v": 178,
+          "sh": 10.4
+         },
+         {
+          "p": "PBB",
+          "v": 142,
+          "sh": 8.3
+         }
+        ]
        },
        {
         "nama": "SUMURWELUT",
@@ -1332,23 +3528,58 @@
         "share": 12.29,
         "rank": 4,
         "top": "Gerindra",
-        "gap": 586
+        "gap": 586,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 988,
+          "sh": 30.2
+         },
+         {
+          "p": "PDIP",
+          "v": 634,
+          "sh": 19.4
+         },
+         {
+          "p": "PKS",
+          "v": 460,
+          "sh": 14.1
+         }
+        ]
        }
       ]
      },
      "jangan": {
       "n": 26,
       "pkb": 13788,
-      "gap": 58334,
       "kel": [
        {
         "nama": "MANUKAN KULON",
         "kec": "Tandes",
         "pkb": 1257,
-        "share": 6.47,
-        "rank": 6,
+        "share": 9.04,
+        "rank": 4,
         "top": "Demokrat",
-        "gap": 3237
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "KEBRAON",
@@ -1357,16 +3588,52 @@
         "share": 6.91,
         "rank": 6,
         "top": "Gerindra",
-        "gap": 3417
+        "gap": 3417,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 4515,
+          "sh": 28.4
+         },
+         {
+          "p": "PDIP",
+          "v": 2374,
+          "sh": 14.9
+         },
+         {
+          "p": "PKS",
+          "v": 1899,
+          "sh": 11.9
+         }
+        ]
        },
        {
         "nama": "KARANG POH",
         "kec": "Tandes",
         "pkb": 887,
-        "share": 5.61,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 3092
+        "share": 9.04,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "LONTAR",
@@ -1375,16 +3642,52 @@
         "share": 5.55,
         "rank": 7,
         "top": "Demokrat",
-        "gap": 2020
+        "gap": 2020,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 2901,
+          "sh": 18.3
+         },
+         {
+          "p": "PDIP",
+          "v": 2464,
+          "sh": 15.5
+         },
+         {
+          "p": "PSI",
+          "v": 2447,
+          "sh": 15.4
+         }
+        ]
        },
        {
         "nama": "MANUKAN WETAN",
         "kec": "Tandes",
         "pkb": 756,
-        "share": 5.32,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 3223
+        "share": 9.04,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "KEDURUS",
@@ -1393,7 +3696,25 @@
         "share": 4.96,
         "rank": 6,
         "top": "Gerindra",
-        "gap": 5409
+        "gap": 5409,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6123,
+          "sh": 42.6
+         },
+         {
+          "p": "PDIP",
+          "v": 2038,
+          "sh": 14.2
+         },
+         {
+          "p": "PKS",
+          "v": 1250,
+          "sh": 8.7
+         }
+        ]
        },
        {
         "nama": "BABATAN",
@@ -1402,7 +3723,25 @@
         "share": 4.45,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 2451
+        "gap": 2451,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 3147,
+          "sh": 20.1
+         },
+         {
+          "p": "PDIP",
+          "v": 2789,
+          "sh": 17.9
+         },
+         {
+          "p": "PSI",
+          "v": 2580,
+          "sh": 16.5
+         }
+        ]
        },
        {
         "nama": "WIYUNG",
@@ -1411,7 +3750,25 @@
         "share": 6.12,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 2004
+        "gap": 2004,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2635,
+          "sh": 25.6
+         },
+         {
+          "p": "PDIP",
+          "v": 1706,
+          "sh": 16.6
+         },
+         {
+          "p": "PSI",
+          "v": 1140,
+          "sh": 11.1
+         }
+        ]
        },
        {
         "nama": "LIDAH KULON",
@@ -1420,16 +3777,52 @@
         "share": 6.35,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1214
+        "gap": 1214,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1802,
+          "sh": 19.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 1681,
+          "sh": 18.1
+         },
+         {
+          "p": "PSI",
+          "v": 1314,
+          "sh": 14.2
+         }
+        ]
        },
        {
         "nama": "BANJAR SUGIHAN",
         "kec": "Tandes",
         "pkb": 572,
-        "share": 4.13,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 3407
+        "share": 9.04,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "SAMBIKEREP",
@@ -1438,7 +3831,25 @@
         "share": 4.4,
         "rank": 8,
         "top": "PDIP",
-        "gap": 2038
+        "gap": 2038,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2550,
+          "sh": 21.9
+         },
+         {
+          "p": "PSI",
+          "v": 2050,
+          "sh": 17.6
+         },
+         {
+          "p": "Demokrat",
+          "v": 1952,
+          "sh": 16.8
+         }
+        ]
        },
        {
         "nama": "DUKUH PAKIS",
@@ -1447,7 +3858,25 @@
         "share": 6.76,
         "rank": 6,
         "top": "Gerindra",
-        "gap": 1030
+        "gap": 1030,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1536,
+          "sh": 20.5
+         },
+         {
+          "p": "PKS",
+          "v": 1454,
+          "sh": 19.4
+         },
+         {
+          "p": "PDIP",
+          "v": 1391,
+          "sh": 18.6
+         }
+        ]
        },
        {
         "nama": "BALAS KLUMPRIK",
@@ -1456,16 +3885,52 @@
         "share": 6.04,
         "rank": 5,
         "top": "Gerindra",
-        "gap": 2279
+        "gap": 2279,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2756,
+          "sh": 34.9
+         },
+         {
+          "p": "PKS",
+          "v": 1254,
+          "sh": 15.9
+         },
+         {
+          "p": "PDIP",
+          "v": 986,
+          "sh": 12.5
+         }
+        ]
        },
        {
         "nama": "TANDES",
         "kec": "Tandes",
         "pkb": 471,
-        "share": 3.21,
-        "rank": 6,
-        "top": "Gerindra",
-        "gap": 3508
+        "share": 9.04,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "LIDAH WETAN",
@@ -1474,7 +3939,25 @@
         "share": 7.13,
         "rank": 5,
         "top": "PDIP",
-        "gap": 865
+        "gap": 865,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1301,
+          "sh": 21.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 1028,
+          "sh": 16.8
+         },
+         {
+          "p": "PSI",
+          "v": 939,
+          "sh": 15.4
+         }
+        ]
        },
        {
         "nama": "GUNUNG SARI",
@@ -1483,16 +3966,52 @@
         "share": 5.81,
         "rank": 5,
         "top": "Gerindra",
-        "gap": 1964
+        "gap": 1964,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2380,
+          "sh": 33.3
+         },
+         {
+          "p": "Golkar",
+          "v": 1661,
+          "sh": 23.2
+         },
+         {
+          "p": "PDIP",
+          "v": 686,
+          "sh": 9.6
+         }
+        ]
        },
        {
         "nama": "BALONGSARI",
         "kec": "Tandes",
         "pkb": 363,
-        "share": 2.66,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 3616
+        "share": 9.04,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "BANGKINGAN",
@@ -1501,7 +4020,25 @@
         "share": 7.19,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 826
+        "gap": 826,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1182,
+          "sh": 23.9
+         },
+         {
+          "p": "PSI",
+          "v": 925,
+          "sh": 18.7
+         },
+         {
+          "p": "NasDem",
+          "v": 601,
+          "sh": 12.1
+         }
+        ]
        },
        {
         "nama": "KARANG PILANG",
@@ -1510,7 +4047,25 @@
         "share": 7.82,
         "rank": 4,
         "top": "Gerindra",
-        "gap": 1295
+        "gap": 1295,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1648,
+          "sh": 36.5
+         },
+         {
+          "p": "Demokrat",
+          "v": 542,
+          "sh": 12.0
+         },
+         {
+          "p": "PDIP",
+          "v": 510,
+          "sh": 11.3
+         }
+        ]
        },
        {
         "nama": "WARU GUNUNG",
@@ -1519,7 +4074,25 @@
         "share": 6.41,
         "rank": 4,
         "top": "Gerindra",
-        "gap": 2323
+        "gap": 2323,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2672,
+          "sh": 49.1
+         },
+         {
+          "p": "PDIP",
+          "v": 545,
+          "sh": 10.0
+         },
+         {
+          "p": "Demokrat",
+          "v": 383,
+          "sh": 7.0
+         }
+        ]
        },
        {
         "nama": "PRADAH KALIKENDAL",
@@ -1528,7 +4101,25 @@
         "share": 3.55,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1742
+        "gap": 1742,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2031,
+          "sh": 24.9
+         },
+         {
+          "p": "PSI",
+          "v": 1750,
+          "sh": 21.5
+         },
+         {
+          "p": "Golkar",
+          "v": 1432,
+          "sh": 17.6
+         }
+        ]
        },
        {
         "nama": "DUKUH KUPANG",
@@ -1537,7 +4128,25 @@
         "share": 3.69,
         "rank": 9,
         "top": "PDIP",
-        "gap": 1352
+        "gap": 1352,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1622,
+          "sh": 22.2
+         },
+         {
+          "p": "PSI",
+          "v": 1240,
+          "sh": 16.9
+         },
+         {
+          "p": "Gerindra",
+          "v": 1223,
+          "sh": 16.7
+         }
+        ]
        },
        {
         "nama": "JERUK",
@@ -1546,7 +4155,25 @@
         "share": 4.89,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 934
+        "gap": 934,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1189,
+          "sh": 22.8
+         },
+         {
+          "p": "NasDem",
+          "v": 1142,
+          "sh": 21.9
+         },
+         {
+          "p": "PDIP",
+          "v": 831,
+          "sh": 16.0
+         }
+        ]
        },
        {
         "nama": "BERINGIN",
@@ -1555,7 +4182,25 @@
         "share": 7.37,
         "rank": 4,
         "top": "Demokrat",
-        "gap": 966
+        "gap": 966,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 1200,
+          "sh": 37.8
+         },
+         {
+          "p": "PDIP",
+          "v": 721,
+          "sh": 22.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 308,
+          "sh": 9.7
+         }
+        ]
        },
        {
         "nama": "MADE",
@@ -1564,7 +4209,25 @@
         "share": 4.09,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1496
+        "gap": 1496,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1715,
+          "sh": 32.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 1087,
+          "sh": 20.3
+         },
+         {
+          "p": "Demokrat",
+          "v": 829,
+          "sh": 15.5
+         }
+        ]
        },
        {
         "nama": "JAJAR TUNGGAL",
@@ -1573,7 +4236,25 @@
         "share": 3.2,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 2626
+        "gap": 2626,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2828,
+          "sh": 44.8
+         },
+         {
+          "p": "PDIP",
+          "v": 1001,
+          "sh": 15.9
+         },
+         {
+          "p": "PKS",
+          "v": 518,
+          "sh": 8.2
+         }
+        ]
        }
       ]
      }
@@ -1612,7 +4293,6 @@
      "menang": {
       "n": 2,
       "pkb": 4419,
-      "gap": 240,
       "kel": [
        {
         "nama": "SIMOLAWANG",
@@ -1621,7 +4301,25 @@
         "share": 29.08,
         "rank": 2,
         "top": "Gerindra",
-        "gap": 240
+        "gap": 240,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 3182,
+          "sh": 31.4
+         },
+         {
+          "p": "NasDem",
+          "v": 968,
+          "sh": 9.6
+         },
+         {
+          "p": "Golkar",
+          "v": 685,
+          "sh": 6.8
+         }
+        ]
        },
        {
         "nama": "SIDODADI",
@@ -1630,14 +4328,31 @@
         "share": 19.01,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 1378,
+          "sh": 17.7
+         },
+         {
+          "p": "PDIP",
+          "v": 1291,
+          "sh": 16.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 1264,
+          "sh": 16.3
+         }
+        ]
        }
       ]
      },
      "bersaing": {
       "n": 3,
       "pkb": 3160,
-      "gap": 5521,
       "kel": [
        {
         "nama": "JEPARA",
@@ -1646,7 +4361,25 @@
         "share": 12.42,
         "rank": 3,
         "top": "PDIP",
-        "gap": 2687
+        "gap": 2687,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4222,
+          "sh": 34.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 1933,
+          "sh": 15.6
+         },
+         {
+          "p": "PKS",
+          "v": 888,
+          "sh": 7.2
+         }
+        ]
        },
        {
         "nama": "KAPASARI",
@@ -1655,7 +4388,25 @@
         "share": 10.89,
         "rank": 3,
         "top": "PDIP",
-        "gap": 1654
+        "gap": 1654,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2572,
+          "sh": 30.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 1428,
+          "sh": 16.9
+         },
+         {
+          "p": "Golkar",
+          "v": 789,
+          "sh": 9.4
+         }
+        ]
        },
        {
         "nama": "EMBONG KALIASIN",
@@ -1664,14 +4415,31 @@
         "share": 11.77,
         "rank": 3,
         "top": "Gerindra",
-        "gap": 1180
+        "gap": 1180,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1887,
+          "sh": 31.4
+         },
+         {
+          "p": "PDIP",
+          "v": 962,
+          "sh": 16.0
+         },
+         {
+          "p": "Golkar",
+          "v": 582,
+          "sh": 9.7
+         }
+        ]
        }
       ]
      },
      "jangan": {
       "n": 10,
       "pkb": 7105,
-      "gap": 13563,
       "kel": [
        {
         "nama": "GUNDIH",
@@ -1680,7 +4448,25 @@
         "share": 9.13,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1854
+        "gap": 1854,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 3092,
+          "sh": 22.8
+         },
+         {
+          "p": "PAN",
+          "v": 3015,
+          "sh": 22.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 2040,
+          "sh": 15.0
+         }
+        ]
        },
        {
         "nama": "SIMOKERTO",
@@ -1689,7 +4475,25 @@
         "share": 9.68,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1229
+        "gap": 1229,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2236,
+          "sh": 21.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 1731,
+          "sh": 16.6
+         },
+         {
+          "p": "PSI",
+          "v": 1093,
+          "sh": 10.5
+         }
+        ]
        },
        {
         "nama": "TEMBOK DUKUH",
@@ -1698,7 +4502,25 @@
         "share": 7.54,
         "rank": 5,
         "top": "Golkar",
-        "gap": 1735
+        "gap": 1735,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 2717,
+          "sh": 20.9
+         },
+         {
+          "p": "PDIP",
+          "v": 2604,
+          "sh": 20.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 1669,
+          "sh": 12.8
+         }
+        ]
        },
        {
         "nama": "TAMBAKREJO",
@@ -1707,7 +4529,25 @@
         "share": 10.32,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1987
+        "gap": 1987,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2949,
+          "sh": 31.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 1221,
+          "sh": 13.1
+         },
+         {
+          "p": "Golkar",
+          "v": 1023,
+          "sh": 11.0
+         }
+        ]
        },
        {
         "nama": "BUBUTAN",
@@ -1716,7 +4556,25 @@
         "share": 10.88,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1100
+        "gap": 1100,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1837,
+          "sh": 27.1
+         },
+         {
+          "p": "Gerindra",
+          "v": 974,
+          "sh": 14.4
+         },
+         {
+          "p": "Golkar",
+          "v": 793,
+          "sh": 11.7
+         }
+        ]
        },
        {
         "nama": "PENELEH",
@@ -1725,7 +4583,25 @@
         "share": 9.84,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1906
+        "gap": 1906,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2614,
+          "sh": 36.3
+         },
+         {
+          "p": "PSI",
+          "v": 1100,
+          "sh": 15.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 757,
+          "sh": 10.5
+         }
+        ]
        },
        {
         "nama": "KAPASAN",
@@ -1734,7 +4610,25 @@
         "share": 7.7,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1227
+        "gap": 1227,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1809,
+          "sh": 23.9
+         },
+         {
+          "p": "Gerindra",
+          "v": 1220,
+          "sh": 16.1
+         },
+         {
+          "p": "NasDem",
+          "v": 1042,
+          "sh": 13.8
+         }
+        ]
        },
        {
         "nama": "GENTENG",
@@ -1743,7 +4637,25 @@
         "share": 8.76,
         "rank": 5,
         "top": "PDIP",
-        "gap": 500
+        "gap": 500,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 871,
+          "sh": 20.6
+         },
+         {
+          "p": "Golkar",
+          "v": 740,
+          "sh": 17.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 697,
+          "sh": 16.5
+         }
+        ]
        },
        {
         "nama": "KETABANG",
@@ -1752,7 +4664,25 @@
         "share": 10.12,
         "rank": 4,
         "top": "PDIP",
-        "gap": 798
+        "gap": 798,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1166,
+          "sh": 32.1
+         },
+         {
+          "p": "PSI",
+          "v": 612,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 407,
+          "sh": 11.2
+         }
+        ]
        },
        {
         "nama": "ALUN-ALUN CONTONG",
@@ -1761,7 +4691,25 @@
         "share": 4.53,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1227
+        "gap": 1227,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1377,
+          "sh": 41.6
+         },
+         {
+          "p": "PSI",
+          "v": 601,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 302,
+          "sh": 9.1
+         }
+        ]
        }
       ]
      }
@@ -1790,7 +4738,6 @@
      "menang": {
       "n": 1,
       "pkb": 3573,
-      "gap": 0,
       "kel": [
        {
         "nama": "UJUNG",
@@ -1799,14 +4746,31 @@
         "share": 22.23,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2521,
+          "sh": 15.7
+         },
+         {
+          "p": "PAN",
+          "v": 1797,
+          "sh": 11.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 1778,
+          "sh": 11.1
+         }
+        ]
        }
       ]
      },
      "bersaing": {
       "n": 4,
       "pkb": 5865,
-      "gap": 5345,
       "kel": [
        {
         "nama": "WONOKUSUMO",
@@ -1815,7 +4779,25 @@
         "share": 11.09,
         "rank": 3,
         "top": "PDIP",
-        "gap": 2642
+        "gap": 2642,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6165,
+          "sh": 19.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 3995,
+          "sh": 12.6
+         },
+         {
+          "p": "Golkar",
+          "v": 3469,
+          "sh": 10.9
+         }
+        ]
        },
        {
         "nama": "AMPEL",
@@ -1824,7 +4806,25 @@
         "share": 13.49,
         "rank": 3,
         "top": "PKS",
-        "gap": 1428
+        "gap": 1428,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 2693,
+          "sh": 28.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 1297,
+          "sh": 13.8
+         },
+         {
+          "p": "Golkar",
+          "v": 1147,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "BONGKARAN",
@@ -1833,7 +4833,25 @@
         "share": 12.04,
         "rank": 3,
         "top": "PDIP",
-        "gap": 607
+        "gap": 607,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1217,
+          "sh": 24.0
+         },
+         {
+          "p": "PAN",
+          "v": 799,
+          "sh": 15.8
+         },
+         {
+          "p": "PSI",
+          "v": 507,
+          "sh": 10.0
+         }
+        ]
        },
        {
         "nama": "NYAMPLUNGAN",
@@ -1842,14 +4860,31 @@
         "share": 11.1,
         "rank": 3,
         "top": "PKS",
-        "gap": 668
+        "gap": 668,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 1135,
+          "sh": 27.0
+         },
+         {
+          "p": "PDIP",
+          "v": 970,
+          "sh": 23.1
+         },
+         {
+          "p": "Golkar",
+          "v": 369,
+          "sh": 8.8
+         }
+        ]
        }
       ]
      },
      "jangan": {
       "n": 9,
       "pkb": 10114,
-      "gap": 16964,
       "kel": [
        {
         "nama": "MOROKREMBANGAN",
@@ -1858,7 +4893,25 @@
         "share": 10.0,
         "rank": 5,
         "top": "PDIP",
-        "gap": 3323
+        "gap": 3323,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 5685,
+          "sh": 24.1
+         },
+         {
+          "p": "PAN",
+          "v": 5071,
+          "sh": 21.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 2740,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "PEGIRIAN",
@@ -1867,7 +4920,25 @@
         "share": 11.02,
         "rank": 4,
         "top": "Golkar",
-        "gap": 1535
+        "gap": 1535,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 3197,
+          "sh": 21.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 2795,
+          "sh": 18.5
+         },
+         {
+          "p": "PDIP",
+          "v": 2538,
+          "sh": 16.8
+         }
+        ]
        },
        {
         "nama": "SIDOTOPO",
@@ -1876,7 +4947,25 @@
         "share": 10.02,
         "rank": 4,
         "top": "NasDem",
-        "gap": 2394
+        "gap": 2394,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "NasDem",
+          "v": 4015,
+          "sh": 24.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2895,
+          "sh": 17.9
+         },
+         {
+          "p": "Golkar",
+          "v": 1879,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "TANJUNG PERAK",
@@ -1885,7 +4974,25 @@
         "share": 6.67,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 2378
+        "gap": 2378,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 3644,
+          "sh": 19.2
+         },
+         {
+          "p": "Golkar",
+          "v": 3354,
+          "sh": 17.7
+         },
+         {
+          "p": "PDIP",
+          "v": 2502,
+          "sh": 13.2
+         }
+        ]
        },
        {
         "nama": "DUPAK",
@@ -1894,7 +5001,25 @@
         "share": 7.43,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1609
+        "gap": 1609,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2447,
+          "sh": 21.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 2006,
+          "sh": 17.8
+         },
+         {
+          "p": "PAN",
+          "v": 1800,
+          "sh": 16.0
+         }
+        ]
        },
        {
         "nama": "KEMAYORAN",
@@ -1903,7 +5028,25 @@
         "share": 8.55,
         "rank": 5,
         "top": "PDIP",
-        "gap": 2624
+        "gap": 2624,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 3375,
+          "sh": 38.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 1000,
+          "sh": 11.4
+         },
+         {
+          "p": "NasDem",
+          "v": 948,
+          "sh": 10.8
+         }
+        ]
        },
        {
         "nama": "PERAK BARAT",
@@ -1912,7 +5055,25 @@
         "share": 9.73,
         "rank": 6,
         "top": "PDIP",
-        "gap": 512
+        "gap": 512,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1180,
+          "sh": 17.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 1026,
+          "sh": 14.9
+         },
+         {
+          "p": "PKS",
+          "v": 832,
+          "sh": 12.1
+         }
+        ]
        },
        {
         "nama": "KREMBANGAN UTARA",
@@ -1921,7 +5082,25 @@
         "share": 6.96,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1158
+        "gap": 1158,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1725,
+          "sh": 21.2
+         },
+         {
+          "p": "Golkar",
+          "v": 1645,
+          "sh": 20.2
+         },
+         {
+          "p": "PPP",
+          "v": 903,
+          "sh": 11.1
+         }
+        ]
        },
        {
         "nama": "KREMBANGAN SELATAN",
@@ -1930,7 +5109,25 @@
         "share": 5.45,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1431
+        "gap": 1431,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1810,
+          "sh": 26.0
+         },
+         {
+          "p": "Golkar",
+          "v": 1175,
+          "sh": 16.9
+         },
+         {
+          "p": "PSI",
+          "v": 793,
+          "sh": 11.4
+         }
+        ]
        }
       ]
      }
@@ -1959,7 +5156,6 @@
      "menang": {
       "n": 1,
       "pkb": 5264,
-      "gap": 0,
       "kel": [
        {
         "nama": "BULAK BANTENG",
@@ -1968,14 +5164,31 @@
         "share": 30.88,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2417,
+          "sh": 14.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 2130,
+          "sh": 12.5
+         },
+         {
+          "p": "Golkar",
+          "v": 1928,
+          "sh": 11.3
+         }
+        ]
        }
       ]
      },
      "bersaing": {
-      "n": 11,
-      "pkb": 19066,
-      "gap": 19239,
+      "n": 7,
+      "pkb": 16784,
       "kel": [
        {
         "nama": "TANAH KALI KEDINDING",
@@ -1984,7 +5197,25 @@
         "share": 13.16,
         "rank": 3,
         "top": "PDIP",
-        "gap": 4255
+        "gap": 4255,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 8179,
+          "sh": 27.4
+         },
+         {
+          "p": "Golkar",
+          "v": 3943,
+          "sh": 13.2
+         },
+         {
+          "p": "Demokrat",
+          "v": 3007,
+          "sh": 10.1
+         }
+        ]
        },
        {
         "nama": "SIDOTOPO WETAN",
@@ -1993,7 +5224,25 @@
         "share": 12.56,
         "rank": 3,
         "top": "PPP",
-        "gap": 3304
+        "gap": 3304,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PPP",
+          "v": 7053,
+          "sh": 23.6
+         },
+         {
+          "p": "PDIP",
+          "v": 6236,
+          "sh": 20.9
+         },
+         {
+          "p": "Gerindra",
+          "v": 2451,
+          "sh": 8.2
+         }
+        ]
        },
        {
         "nama": "KAPASMADYA BARU",
@@ -2002,7 +5251,25 @@
         "share": 15.63,
         "rank": 2,
         "top": "PDIP",
-        "gap": 2306
+        "gap": 2306,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 5286,
+          "sh": 27.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 2256,
+          "sh": 11.8
+         },
+         {
+          "p": "PAN",
+          "v": 1708,
+          "sh": 9.0
+         }
+        ]
        },
        {
         "nama": "TAMBAK WEDI",
@@ -2011,7 +5278,25 @@
         "share": 17.83,
         "rank": 2,
         "top": "Golkar",
-        "gap": 667
+        "gap": 667,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 2412,
+          "sh": 24.6
+         },
+         {
+          "p": "PDIP",
+          "v": 1478,
+          "sh": 15.1
+         },
+         {
+          "p": "Demokrat",
+          "v": 937,
+          "sh": 9.6
+         }
+        ]
        },
        {
         "nama": "DUKUH SETRO",
@@ -2020,7 +5305,25 @@
         "share": 13.76,
         "rank": 3,
         "top": "PDIP",
-        "gap": 1043
+        "gap": 1043,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2661,
+          "sh": 22.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 1656,
+          "sh": 14.1
+         },
+         {
+          "p": "PKS",
+          "v": 1354,
+          "sh": 11.5
+         }
+        ]
        },
        {
         "nama": "TAMBAKSARI",
@@ -2029,7 +5332,25 @@
         "share": 15.14,
         "rank": 2,
         "top": "PDIP",
-        "gap": 1432
+        "gap": 1432,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2888,
+          "sh": 30.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 1110,
+          "sh": 11.5
+         },
+         {
+          "p": "PSI",
+          "v": 799,
+          "sh": 8.3
+         }
+        ]
        },
        {
         "nama": "RANGKAH",
@@ -2038,50 +5359,31 @@
         "share": 15.27,
         "rank": 2,
         "top": "PDIP",
-        "gap": 1842
-       },
-       {
-        "nama": "BULAK",
-        "kec": "Bulak",
-        "pkb": 805,
-        "share": 16.44,
-        "rank": 2,
-        "top": "PDIP",
-        "gap": 2112
-       },
-       {
-        "nama": "SUKOLILO BARU",
-        "kec": "Bulak",
-        "pkb": 792,
-        "share": 25.31,
-        "rank": 2,
-        "top": "PDIP",
-        "gap": 493
-       },
-       {
-        "nama": "KEDUNG COWEK",
-        "kec": "Bulak",
-        "pkb": 405,
-        "share": 17.25,
-        "rank": 3,
-        "top": "PDIP",
-        "gap": 783
-       },
-       {
-        "nama": "KENJERAN",
-        "kec": "Bulak",
-        "pkb": 280,
-        "share": 11.64,
-        "rank": 3,
-        "top": "PDIP",
-        "gap": 1002
+        "gap": 1842,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 3154,
+          "sh": 36.7
+         },
+         {
+          "p": "PKS",
+          "v": 944,
+          "sh": 11.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 780,
+          "sh": 9.1
+         }
+        ]
        }
       ]
      },
      "jangan": {
-      "n": 4,
-      "pkb": 4402,
-      "gap": 15217,
+      "n": 8,
+      "pkb": 6684,
       "kel": [
        {
         "nama": "PACARKEMBANG",
@@ -2090,7 +5392,25 @@
         "share": 6.3,
         "rank": 5,
         "top": "Gerindra",
-        "gap": 4212
+        "gap": 4212,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 5449,
+          "sh": 27.7
+         },
+         {
+          "p": "PDIP",
+          "v": 4980,
+          "sh": 25.3
+         },
+         {
+          "p": "PKS",
+          "v": 2040,
+          "sh": 10.4
+         }
+        ]
        },
        {
         "nama": "GADING",
@@ -2099,7 +5419,25 @@
         "share": 7.79,
         "rank": 4,
         "top": "PDIP",
-        "gap": 3593
+        "gap": 3593,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4797,
+          "sh": 31.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 2190,
+          "sh": 14.2
+         },
+         {
+          "p": "PSI",
+          "v": 2013,
+          "sh": 13.0
+         }
+        ]
        },
        {
         "nama": "PLOSO",
@@ -2108,7 +5446,25 @@
         "share": 6.21,
         "rank": 5,
         "top": "PDIP",
-        "gap": 5302
+        "gap": 5302,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6385,
+          "sh": 36.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 2330,
+          "sh": 13.4
+         },
+         {
+          "p": "PSI",
+          "v": 2131,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "PACARKELING",
@@ -2117,7 +5473,133 @@
         "share": 7.86,
         "rank": 5,
         "top": "PDIP",
-        "gap": 2110
+        "gap": 2110,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2988,
+          "sh": 26.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2376,
+          "sh": 21.3
+         },
+         {
+          "p": "Golkar",
+          "v": 1037,
+          "sh": 9.3
+         }
+        ]
+       },
+       {
+        "nama": "BULAK",
+        "kec": "Bulak",
+        "pkb": 805,
+        "share": 9.28,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 4390,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6672,
+          "sh": 27.1
+         },
+         {
+          "p": "PKS",
+          "v": 4619,
+          "sh": 18.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2993,
+          "sh": 12.2
+         }
+        ]
+       },
+       {
+        "nama": "SUKOLILO BARU",
+        "kec": "Bulak",
+        "pkb": 792,
+        "share": 9.28,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 4390,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6672,
+          "sh": 27.1
+         },
+         {
+          "p": "PKS",
+          "v": 4619,
+          "sh": 18.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2993,
+          "sh": 12.2
+         }
+        ]
+       },
+       {
+        "nama": "KEDUNG COWEK",
+        "kec": "Bulak",
+        "pkb": 405,
+        "share": 9.28,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 4390,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6672,
+          "sh": 27.1
+         },
+         {
+          "p": "PKS",
+          "v": 4619,
+          "sh": 18.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2993,
+          "sh": 12.2
+         }
+        ]
+       },
+       {
+        "nama": "KENJERAN",
+        "kec": "Bulak",
+        "pkb": 280,
+        "share": 9.28,
+        "rank": 4,
+        "top": "PDIP",
+        "gap": 4390,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6672,
+          "sh": 27.1
+         },
+         {
+          "p": "PKS",
+          "v": 4619,
+          "sh": 18.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2993,
+          "sh": 12.2
+         }
+        ]
        }
       ]
      }
@@ -2146,66 +5628,180 @@
      "menang": {
       "n": 0,
       "pkb": 0,
-      "gap": 0,
       "kel": []
      },
      "bersaing": {
-      "n": 1,
-      "pkb": 2349,
-      "gap": 5466,
-      "kel": [
-       {
-        "nama": "KERTAJAYA",
-        "kec": "Gubeng",
-        "pkb": 2349,
-        "share": 10.63,
-        "rank": 3,
-        "top": "Gerindra",
-        "gap": 5466
-       }
-      ]
-     },
-     "jangan": {
-      "n": 18,
-      "pkb": 13030,
-      "gap": 59722,
+      "n": 6,
+      "pkb": 9236,
       "kel": [
        {
         "nama": "MOJO",
         "kec": "Gubeng",
         "pkb": 2992,
-        "share": 11.12,
-        "rank": 4,
-        "top": "Gerindra",
-        "gap": 4823
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
+       },
+       {
+        "nama": "KERTAJAYA",
+        "kec": "Gubeng",
+        "pkb": 2349,
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
        },
        {
         "nama": "PUCANG SEWU",
         "kec": "Gubeng",
         "pkb": 1096,
-        "share": 5.58,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 6719
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
        },
        {
         "nama": "AIRLANGGA",
         "kec": "Gubeng",
         "pkb": 1071,
-        "share": 5.3,
-        "rank": 4,
-        "top": "Gerindra",
-        "gap": 6744
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
        },
        {
         "nama": "GUBENG",
         "kec": "Gubeng",
         "pkb": 1064,
-        "share": 5.62,
-        "rank": 4,
-        "top": "Gerindra",
-        "gap": 6751
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
        },
+       {
+        "nama": "BARATAJAYA",
+        "kec": "Gubeng",
+        "pkb": 664,
+        "share": 13.31,
+        "rank": 3,
+        "top": "PDIP",
+        "gap": 3288,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 12524,
+          "sh": 18.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 11834,
+          "sh": 17.1
+         },
+         {
+          "p": "PKS",
+          "v": 8704,
+          "sh": 12.5
+         }
+        ]
+       }
+      ]
+     },
+     "jangan": {
+      "n": 13,
+      "pkb": 6143,
+      "kel": [
        {
         "nama": "KEPUTIH",
         "kec": "Sukolilo",
@@ -2213,7 +5809,25 @@
         "share": 8.26,
         "rank": 5,
         "top": "PKS",
-        "gap": 1269
+        "gap": 1269,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 2122,
+          "sh": 20.6
+         },
+         {
+          "p": "PDIP",
+          "v": 2040,
+          "sh": 19.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 1236,
+          "sh": 12.0
+         }
+        ]
        },
        {
         "nama": "MEDOKAN SEMAMPIR",
@@ -2222,7 +5836,25 @@
         "share": 7.91,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1187
+        "gap": 1187,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1961,
+          "sh": 20.0
+         },
+         {
+          "p": "Demokrat",
+          "v": 1799,
+          "sh": 18.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 1331,
+          "sh": 13.6
+         }
+        ]
        },
        {
         "nama": "NGINDEN JANGKUNGAN",
@@ -2231,7 +5863,25 @@
         "share": 9.19,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1138
+        "gap": 1138,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1833,
+          "sh": 24.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 1044,
+          "sh": 13.8
+         },
+         {
+          "p": "PSI",
+          "v": 790,
+          "sh": 10.4
+         }
+        ]
        },
        {
         "nama": "SEMOLOWARU",
@@ -2240,16 +5890,25 @@
         "share": 6.81,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1574
-       },
-       {
-        "nama": "BARATAJAYA",
-        "kec": "Gubeng",
-        "pkb": 664,
-        "share": 3.33,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 7151
+        "gap": 1574,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2241,
+          "sh": 22.9
+         },
+         {
+          "p": "PKS",
+          "v": 1481,
+          "sh": 15.1
+         },
+         {
+          "p": "PSI",
+          "v": 1208,
+          "sh": 12.3
+         }
+        ]
        },
        {
         "nama": "KLAMPIS NGASEM",
@@ -2258,34 +5917,106 @@
         "share": 5.13,
         "rank": 6,
         "top": "PDIP",
-        "gap": 4071
+        "gap": 4071,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4554,
+          "sh": 48.3
+         },
+         {
+          "p": "PSI",
+          "v": 1047,
+          "sh": 11.1
+         },
+         {
+          "p": "Gerindra",
+          "v": 783,
+          "sh": 8.3
+         }
+        ]
        },
        {
         "nama": "KALISARI",
         "kec": "Mulyorejo",
         "pkb": 385,
-        "share": 3.88,
-        "rank": 9,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 1869
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "KEJAWAN PUTIH TAMBAK",
         "kec": "Mulyorejo",
         "pkb": 377,
-        "share": 5.28,
-        "rank": 9,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 516
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "MANYAR SABRANGAN",
         "kec": "Mulyorejo",
         "pkb": 367,
-        "share": 3.48,
-        "rank": 9,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 3184
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "MENUR PUMPUNGAN",
@@ -2294,16 +6025,52 @@
         "share": 3.63,
         "rank": 7,
         "top": "PDIP",
-        "gap": 4290
+        "gap": 4290,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4608,
+          "sh": 52.6
+         },
+         {
+          "p": "PSI",
+          "v": 986,
+          "sh": 11.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 652,
+          "sh": 7.4
+         }
+        ]
        },
        {
         "nama": "DUKUH SUTOREJO",
         "kec": "Mulyorejo",
         "pkb": 312,
-        "share": 2.98,
-        "rank": 9,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 2327
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "GEBANG PUTIH",
@@ -2312,25 +6079,79 @@
         "share": 7.81,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1083
+        "gap": 1083,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1394,
+          "sh": 35.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 506,
+          "sh": 12.7
+         },
+         {
+          "p": "PSI",
+          "v": 436,
+          "sh": 10.9
+         }
+        ]
        },
        {
         "nama": "KALIJUDAN",
         "kec": "Mulyorejo",
         "pkb": 305,
-        "share": 3.18,
-        "rank": 10,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 2039
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        },
        {
         "nama": "MULYOREJO",
         "kec": "Mulyorejo",
         "pkb": 296,
-        "share": 2.69,
-        "rank": 10,
+        "share": 4.49,
+        "rank": 7,
         "top": "PDIP",
-        "gap": 2987
+        "gap": 12922,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 14964,
+          "sh": 32.9
+         },
+         {
+          "p": "PSI",
+          "v": 7664,
+          "sh": 16.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 5264,
+          "sh": 11.6
+         }
+        ]
        }
       ]
      }
@@ -2360,7 +6181,6 @@
      "menang": {
       "n": 2,
       "pkb": 5297,
-      "gap": 0,
       "kel": [
        {
         "nama": "KENDANGSARI",
@@ -2369,7 +6189,25 @@
         "share": 40.07,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1711,
+          "sh": 19.9
+         },
+         {
+          "p": "Gerindra",
+          "v": 1165,
+          "sh": 13.5
+         },
+         {
+          "p": "PSI",
+          "v": 608,
+          "sh": 7.1
+         }
+        ]
        },
        {
         "nama": "TENGGILIS MEJOYO",
@@ -2378,14 +6216,31 @@
         "share": 28.44,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1257,
+          "sh": 19.3
+         },
+         {
+          "p": "PSI",
+          "v": 677,
+          "sh": 10.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 614,
+          "sh": 9.4
+         }
+        ]
        }
       ]
      },
      "bersaing": {
       "n": 3,
       "pkb": 3672,
-      "gap": 2920,
       "kel": [
        {
         "nama": "KUTISARI",
@@ -2394,7 +6249,25 @@
         "share": 13.95,
         "rank": 4,
         "top": "PDIP",
-        "gap": 1196
+        "gap": 1196,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2652,
+          "sh": 25.4
+         },
+         {
+          "p": "PSI",
+          "v": 1647,
+          "sh": 15.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 1532,
+          "sh": 14.7
+         }
+        ]
        },
        {
         "nama": "PANJANG JIWO",
@@ -2403,7 +6276,25 @@
         "share": 15.25,
         "rank": 3,
         "top": "PDIP",
-        "gap": 848
+        "gap": 848,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1962,
+          "sh": 26.9
+         },
+         {
+          "p": "Gerindra",
+          "v": 1183,
+          "sh": 16.2
+         },
+         {
+          "p": "PSI",
+          "v": 829,
+          "sh": 11.4
+         }
+        ]
        },
        {
         "nama": "RUNGKUT TENGAH",
@@ -2412,14 +6303,31 @@
         "share": 14.15,
         "rank": 3,
         "top": "PDIP",
-        "gap": 876
+        "gap": 876,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1978,
+          "sh": 25.4
+         },
+         {
+          "p": "Golkar",
+          "v": 1128,
+          "sh": 14.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 996,
+          "sh": 12.8
+         }
+        ]
        }
       ]
      },
      "jangan": {
       "n": 14,
       "pkb": 9619,
-      "gap": 22026,
       "kel": [
        {
         "nama": "KALIRUNGKUT",
@@ -2428,7 +6336,25 @@
         "share": 10.07,
         "rank": 5,
         "top": "PDIP",
-        "gap": 962
+        "gap": 962,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2194,
+          "sh": 17.9
+         },
+         {
+          "p": "Golkar",
+          "v": 1997,
+          "sh": 16.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 1838,
+          "sh": 15.0
+         }
+        ]
        },
        {
         "nama": "GUNUNG ANYAR",
@@ -2437,16 +6363,52 @@
         "share": 9.41,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1268
+        "gap": 1268,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2458,
+          "sh": 19.4
+         },
+         {
+          "p": "Golkar",
+          "v": 2069,
+          "sh": 16.4
+         },
+         {
+          "p": "PSI",
+          "v": 1499,
+          "sh": 11.9
+         }
+        ]
        },
        {
         "nama": "JEMUR WONOSARI",
         "kec": "Wonocolo",
         "pkb": 1046,
-        "share": 9.01,
-        "rank": 4,
+        "share": 7.77,
+        "rank": 5,
         "top": "Gerindra",
-        "gap": 1652
+        "gap": 3632,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6850,
+          "sh": 16.5
+         },
+         {
+          "p": "PDIP",
+          "v": 6275,
+          "sh": 15.2
+         },
+         {
+          "p": "PPP",
+          "v": 5673,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "KEDUNG BARUK",
@@ -2455,7 +6417,25 @@
         "share": 9.39,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1114
+        "gap": 1114,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1920,
+          "sh": 22.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 1224,
+          "sh": 14.3
+         },
+         {
+          "p": "PSI",
+          "v": 973,
+          "sh": 11.3
+         }
+        ]
        },
        {
         "nama": "MEDOKAN AYU",
@@ -2464,7 +6444,25 @@
         "share": 4.95,
         "rank": 6,
         "top": "PKS",
-        "gap": 2899
+        "gap": 2899,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 3699,
+          "sh": 22.9
+         },
+         {
+          "p": "Golkar",
+          "v": 3258,
+          "sh": 20.1
+         },
+         {
+          "p": "PDIP",
+          "v": 2116,
+          "sh": 13.1
+         }
+        ]
        },
        {
         "nama": "PENJARINGANSARI",
@@ -2473,34 +6471,106 @@
         "share": 6.87,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1591
+        "gap": 1591,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2296,
+          "sh": 22.4
+         },
+         {
+          "p": "Golkar",
+          "v": 1481,
+          "sh": 14.4
+         },
+         {
+          "p": "PKS",
+          "v": 1183,
+          "sh": 11.5
+         }
+        ]
        },
        {
         "nama": "BENDUL MERISI",
         "kec": "Wonocolo",
         "pkb": 637,
-        "share": 6.76,
-        "rank": 7,
-        "top": "PDIP",
-        "gap": 1301
+        "share": 7.77,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3632,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6850,
+          "sh": 16.5
+         },
+         {
+          "p": "PDIP",
+          "v": 6275,
+          "sh": 15.2
+         },
+         {
+          "p": "PPP",
+          "v": 5673,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "SIWALANKERTO",
         "kec": "Wonocolo",
         "pkb": 611,
-        "share": 6.36,
-        "rank": 6,
-        "top": "PDIP",
-        "gap": 1226
+        "share": 7.77,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3632,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6850,
+          "sh": 16.5
+         },
+         {
+          "p": "PDIP",
+          "v": 6275,
+          "sh": 15.2
+         },
+         {
+          "p": "PPP",
+          "v": 5673,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "SIDOSERMO",
         "kec": "Wonocolo",
         "pkb": 544,
-        "share": 7.31,
-        "rank": 6,
-        "top": "PPP",
-        "gap": 1824
+        "share": 7.77,
+        "rank": 5,
+        "top": "Gerindra",
+        "gap": 3632,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6850,
+          "sh": 16.5
+         },
+         {
+          "p": "PDIP",
+          "v": 6275,
+          "sh": 15.2
+         },
+         {
+          "p": "PPP",
+          "v": 5673,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "RUNGKUT MENANGGAL",
@@ -2509,7 +6579,25 @@
         "share": 6.19,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1393
+        "gap": 1393,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1858,
+          "sh": 24.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 1006,
+          "sh": 13.4
+         },
+         {
+          "p": "PKS",
+          "v": 916,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "WONOREJO",
@@ -2518,7 +6606,25 @@
         "share": 4.31,
         "rank": 8,
         "top": "PDIP",
-        "gap": 2009
+        "gap": 2009,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2444,
+          "sh": 24.2
+         },
+         {
+          "p": "PSI",
+          "v": 1893,
+          "sh": 18.8
+         },
+         {
+          "p": "PKS",
+          "v": 1482,
+          "sh": 14.7
+         }
+        ]
        },
        {
         "nama": "RUNGKUT KIDUL",
@@ -2527,16 +6633,52 @@
         "share": 5.78,
         "rank": 6,
         "top": "Golkar",
-        "gap": 2387
+        "gap": 2387,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 2818,
+          "sh": 37.8
+         },
+         {
+          "p": "PDIP",
+          "v": 1108,
+          "sh": 14.9
+         },
+         {
+          "p": "PSI",
+          "v": 613,
+          "sh": 8.2
+         }
+        ]
        },
        {
         "nama": "MARGOREJO",
         "kec": "Wonocolo",
         "pkb": 379,
-        "share": 6.4,
+        "share": 7.77,
         "rank": 5,
-        "top": "PDIP",
-        "gap": 1207
+        "top": "Gerindra",
+        "gap": 3632,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6850,
+          "sh": 16.5
+         },
+         {
+          "p": "PDIP",
+          "v": 6275,
+          "sh": 15.2
+         },
+         {
+          "p": "PPP",
+          "v": 5673,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "GUNUNG ANYAR TAMBAK",
@@ -2545,7 +6687,25 @@
         "share": 5.36,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1193
+        "gap": 1193,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1531,
+          "sh": 24.3
+         },
+         {
+          "p": "PKS",
+          "v": 1157,
+          "sh": 18.4
+         },
+         {
+          "p": "PSI",
+          "v": 1037,
+          "sh": 16.4
+         }
+        ]
        }
       ]
      }
@@ -2575,13 +6735,11 @@
      "menang": {
       "n": 0,
       "pkb": 0,
-      "gap": 0,
       "kel": []
      },
      "bersaing": {
       "n": 5,
       "pkb": 8176,
-      "gap": 4851,
       "kel": [
        {
         "nama": "PUTAT JAYA",
@@ -2590,7 +6748,25 @@
         "share": 11.55,
         "rank": 3,
         "top": "PDIP",
-        "gap": 2651
+        "gap": 2651,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 5322,
+          "sh": 23.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 4578,
+          "sh": 19.8
+         },
+         {
+          "p": "Golkar",
+          "v": 2195,
+          "sh": 9.5
+         }
+        ]
        },
        {
         "nama": "WONOKROMO",
@@ -2599,7 +6775,25 @@
         "share": 12.43,
         "rank": 3,
         "top": "PDIP",
-        "gap": 1153
+        "gap": 1153,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 3624,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3106,
+          "sh": 15.6
+         },
+         {
+          "p": "PKS",
+          "v": 2356,
+          "sh": 11.8
+         }
+        ]
        },
        {
         "nama": "JAGIR",
@@ -2608,7 +6802,25 @@
         "share": 14.74,
         "rank": 2,
         "top": "PDIP",
-        "gap": 417
+        "gap": 417,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1896,
+          "sh": 18.9
+         },
+         {
+          "p": "PKS",
+          "v": 1418,
+          "sh": 14.1
+         },
+         {
+          "p": "Gerindra",
+          "v": 1376,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "KETINTANG",
@@ -2617,7 +6829,25 @@
         "share": 12.35,
         "rank": 4,
         "top": "PKS",
-        "gap": 474
+        "gap": 474,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 1392,
+          "sh": 18.7
+         },
+         {
+          "p": "Golkar",
+          "v": 1207,
+          "sh": 16.2
+         },
+         {
+          "p": "PDIP",
+          "v": 931,
+          "sh": 12.5
+         }
+        ]
        },
        {
         "nama": "DUKUH MENANGGAL",
@@ -2626,14 +6856,31 @@
         "share": 13.67,
         "rank": 4,
         "top": "Golkar",
-        "gap": 156
+        "gap": 156,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 793,
+          "sh": 17.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 717,
+          "sh": 15.4
+         },
+         {
+          "p": "PDIP",
+          "v": 655,
+          "sh": 14.1
+         }
+        ]
        }
       ]
      },
      "jangan": {
       "n": 15,
       "pkb": 12276,
-      "gap": 30418,
       "kel": [
        {
         "nama": "BANYU URIP",
@@ -2642,7 +6889,25 @@
         "share": 9.11,
         "rank": 4,
         "top": "PDIP",
-        "gap": 3154
+        "gap": 3154,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4937,
+          "sh": 25.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3659,
+          "sh": 18.7
+         },
+         {
+          "p": "PAN",
+          "v": 1963,
+          "sh": 10.0
+         }
+        ]
        },
        {
         "nama": "PAKIS",
@@ -2651,7 +6916,25 @@
         "share": 9.31,
         "rank": 4,
         "top": "PDIP",
-        "gap": 2434
+        "gap": 2434,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4125,
+          "sh": 22.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 2921,
+          "sh": 16.1
+         },
+         {
+          "p": "PKS",
+          "v": 2141,
+          "sh": 11.8
+         }
+        ]
        },
        {
         "nama": "NGAGEL REJO",
@@ -2660,7 +6943,25 @@
         "share": 4.67,
         "rank": 6,
         "top": "PDIP",
-        "gap": 7942
+        "gap": 7942,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 8981,
+          "sh": 40.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 3285,
+          "sh": 14.8
+         },
+         {
+          "p": "PSI",
+          "v": 1927,
+          "sh": 8.7
+         }
+        ]
        },
        {
         "nama": "KUPANG KRAJAN",
@@ -2669,7 +6970,25 @@
         "share": 8.42,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1918
+        "gap": 1918,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2907,
+          "sh": 24.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 1525,
+          "sh": 13.0
+         },
+         {
+          "p": "PAN",
+          "v": 1392,
+          "sh": 11.8
+         }
+        ]
        },
        {
         "nama": "PETEMON",
@@ -2678,7 +6997,25 @@
         "share": 4.76,
         "rank": 8,
         "top": "PDIP",
-        "gap": 3488
+        "gap": 3488,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 4358,
+          "sh": 23.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 3636,
+          "sh": 19.9
+         },
+         {
+          "p": "PSI",
+          "v": 2325,
+          "sh": 12.7
+         }
+        ]
        },
        {
         "nama": "KARAH",
@@ -2687,7 +7024,25 @@
         "share": 9.02,
         "rank": 5,
         "top": "Golkar",
-        "gap": 821
+        "gap": 821,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 1597,
+          "sh": 18.6
+         },
+         {
+          "p": "PDIP",
+          "v": 1507,
+          "sh": 17.5
+         },
+         {
+          "p": "PKS",
+          "v": 1361,
+          "sh": 15.8
+         }
+        ]
        },
        {
         "nama": "SAWUNGGALING",
@@ -2696,7 +7051,25 @@
         "share": 5.76,
         "rank": 6,
         "top": "Gerindra",
-        "gap": 2223
+        "gap": 2223,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2983,
+          "sh": 22.6
+         },
+         {
+          "p": "PDIP",
+          "v": 2833,
+          "sh": 21.5
+         },
+         {
+          "p": "Golkar",
+          "v": 2174,
+          "sh": 16.5
+         }
+        ]
        },
        {
         "nama": "PAGESANGAN",
@@ -2705,7 +7078,25 @@
         "share": 9.78,
         "rank": 5,
         "top": "PDIP",
-        "gap": 576
+        "gap": 576,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1303,
+          "sh": 17.5
+         },
+         {
+          "p": "Golkar",
+          "v": 1136,
+          "sh": 15.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 1015,
+          "sh": 13.7
+         }
+        ]
        },
        {
         "nama": "DARMO",
@@ -2714,7 +7105,25 @@
         "share": 8.48,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1859
+        "gap": 1859,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2492,
+          "sh": 33.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 1218,
+          "sh": 16.3
+         },
+         {
+          "p": "PSI",
+          "v": 672,
+          "sh": 9.0
+         }
+        ]
        },
        {
         "nama": "KEBONSARI",
@@ -2723,7 +7132,25 @@
         "share": 10.21,
         "rank": 5,
         "top": "PDIP",
-        "gap": 587
+        "gap": 587,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1193,
+          "sh": 20.1
+         },
+         {
+          "p": "Gerindra",
+          "v": 853,
+          "sh": 14.4
+         },
+         {
+          "p": "Golkar",
+          "v": 632,
+          "sh": 10.6
+         }
+        ]
        },
        {
         "nama": "SAWAHAN",
@@ -2732,7 +7159,25 @@
         "share": 5.73,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1820
+        "gap": 1820,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2354,
+          "sh": 25.3
+         },
+         {
+          "p": "PSI",
+          "v": 1300,
+          "sh": 14.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 1292,
+          "sh": 13.9
+         }
+        ]
        },
        {
         "nama": "JAMBANGAN",
@@ -2741,7 +7186,25 @@
         "share": 8.3,
         "rank": 5,
         "top": "PKS",
-        "gap": 767
+        "gap": 767,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PKS",
+          "v": 1262,
+          "sh": 21.2
+         },
+         {
+          "p": "PDIP",
+          "v": 1029,
+          "sh": 17.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 913,
+          "sh": 15.3
+         }
+        ]
        },
        {
         "nama": "MENANGGAL",
@@ -2750,7 +7213,25 @@
         "share": 10.22,
         "rank": 6,
         "top": "PDIP",
-        "gap": 573
+        "gap": 573,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1066,
+          "sh": 22.1
+         },
+         {
+          "p": "PKS",
+          "v": 654,
+          "sh": 13.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 546,
+          "sh": 11.3
+         }
+        ]
        },
        {
         "nama": "GAYUNGAN",
@@ -2759,7 +7240,25 @@
         "share": 7.75,
         "rank": 7,
         "top": "Golkar",
-        "gap": 835
+        "gap": 835,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Golkar",
+          "v": 1300,
+          "sh": 21.7
+         },
+         {
+          "p": "PDIP",
+          "v": 962,
+          "sh": 16.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 701,
+          "sh": 11.7
+         }
+        ]
        },
        {
         "nama": "NGAGEL",
@@ -2768,7 +7267,25 @@
         "share": 7.11,
         "rank": 5,
         "top": "PDIP",
-        "gap": 1421
+        "gap": 1421,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1836,
+          "sh": 31.5
+         },
+         {
+          "p": "Gerindra",
+          "v": 917,
+          "sh": 15.7
+         },
+         {
+          "p": "PKS",
+          "v": 780,
+          "sh": 13.4
+         }
+        ]
        }
       ]
      }
@@ -2799,13 +7316,11 @@
      "menang": {
       "n": 0,
       "pkb": 0,
-      "gap": 0,
       "kel": []
      },
      "bersaing": {
       "n": 2,
       "pkb": 1243,
-      "gap": 841,
       "kel": [
        {
         "nama": "LAKARSANTRI",
@@ -2814,7 +7329,25 @@
         "share": 18.13,
         "rank": 2,
         "top": "Gerindra",
-        "gap": 255
+        "gap": 255,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1096,
+          "sh": 23.6
+         },
+         {
+          "p": "PDIP",
+          "v": 581,
+          "sh": 12.5
+         },
+         {
+          "p": "NasDem",
+          "v": 570,
+          "sh": 12.3
+         }
+        ]
        },
        {
         "nama": "SUMURWELUT",
@@ -2823,14 +7356,31 @@
         "share": 12.29,
         "rank": 4,
         "top": "Gerindra",
-        "gap": 586
+        "gap": 586,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 988,
+          "sh": 30.2
+         },
+         {
+          "p": "PDIP",
+          "v": 634,
+          "sh": 19.4
+         },
+         {
+          "p": "PKS",
+          "v": 460,
+          "sh": 14.1
+         }
+        ]
        }
       ]
      },
      "jangan": {
       "n": 20,
       "pkb": 9482,
-      "gap": 38251,
       "kel": [
        {
         "nama": "KEBRAON",
@@ -2839,7 +7389,25 @@
         "share": 6.91,
         "rank": 6,
         "top": "Gerindra",
-        "gap": 3417
+        "gap": 3417,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 4515,
+          "sh": 28.4
+         },
+         {
+          "p": "PDIP",
+          "v": 2374,
+          "sh": 14.9
+         },
+         {
+          "p": "PKS",
+          "v": 1899,
+          "sh": 11.9
+         }
+        ]
        },
        {
         "nama": "LONTAR",
@@ -2848,7 +7416,25 @@
         "share": 5.55,
         "rank": 7,
         "top": "Demokrat",
-        "gap": 2020
+        "gap": 2020,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 2901,
+          "sh": 18.3
+         },
+         {
+          "p": "PDIP",
+          "v": 2464,
+          "sh": 15.5
+         },
+         {
+          "p": "PSI",
+          "v": 2447,
+          "sh": 15.4
+         }
+        ]
        },
        {
         "nama": "KEDURUS",
@@ -2857,7 +7443,25 @@
         "share": 4.96,
         "rank": 6,
         "top": "Gerindra",
-        "gap": 5409
+        "gap": 5409,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 6123,
+          "sh": 42.6
+         },
+         {
+          "p": "PDIP",
+          "v": 2038,
+          "sh": 14.2
+         },
+         {
+          "p": "PKS",
+          "v": 1250,
+          "sh": 8.7
+         }
+        ]
        },
        {
         "nama": "BABATAN",
@@ -2866,7 +7470,25 @@
         "share": 4.45,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 2451
+        "gap": 2451,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 3147,
+          "sh": 20.1
+         },
+         {
+          "p": "PDIP",
+          "v": 2789,
+          "sh": 17.9
+         },
+         {
+          "p": "PSI",
+          "v": 2580,
+          "sh": 16.5
+         }
+        ]
        },
        {
         "nama": "WIYUNG",
@@ -2875,7 +7497,25 @@
         "share": 6.12,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 2004
+        "gap": 2004,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2635,
+          "sh": 25.6
+         },
+         {
+          "p": "PDIP",
+          "v": 1706,
+          "sh": 16.6
+         },
+         {
+          "p": "PSI",
+          "v": 1140,
+          "sh": 11.1
+         }
+        ]
        },
        {
         "nama": "LIDAH KULON",
@@ -2884,7 +7524,25 @@
         "share": 6.35,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1214
+        "gap": 1214,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1802,
+          "sh": 19.4
+         },
+         {
+          "p": "Gerindra",
+          "v": 1681,
+          "sh": 18.1
+         },
+         {
+          "p": "PSI",
+          "v": 1314,
+          "sh": 14.2
+         }
+        ]
        },
        {
         "nama": "SAMBIKEREP",
@@ -2893,7 +7551,25 @@
         "share": 4.4,
         "rank": 8,
         "top": "PDIP",
-        "gap": 2038
+        "gap": 2038,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2550,
+          "sh": 21.9
+         },
+         {
+          "p": "PSI",
+          "v": 2050,
+          "sh": 17.6
+         },
+         {
+          "p": "Demokrat",
+          "v": 1952,
+          "sh": 16.8
+         }
+        ]
        },
        {
         "nama": "DUKUH PAKIS",
@@ -2902,7 +7578,25 @@
         "share": 6.76,
         "rank": 6,
         "top": "Gerindra",
-        "gap": 1030
+        "gap": 1030,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1536,
+          "sh": 20.5
+         },
+         {
+          "p": "PKS",
+          "v": 1454,
+          "sh": 19.4
+         },
+         {
+          "p": "PDIP",
+          "v": 1391,
+          "sh": 18.6
+         }
+        ]
        },
        {
         "nama": "BALAS KLUMPRIK",
@@ -2911,7 +7605,25 @@
         "share": 6.04,
         "rank": 5,
         "top": "Gerindra",
-        "gap": 2279
+        "gap": 2279,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2756,
+          "sh": 34.9
+         },
+         {
+          "p": "PKS",
+          "v": 1254,
+          "sh": 15.9
+         },
+         {
+          "p": "PDIP",
+          "v": 986,
+          "sh": 12.5
+         }
+        ]
        },
        {
         "nama": "LIDAH WETAN",
@@ -2920,7 +7632,25 @@
         "share": 7.13,
         "rank": 5,
         "top": "PDIP",
-        "gap": 865
+        "gap": 865,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1301,
+          "sh": 21.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 1028,
+          "sh": 16.8
+         },
+         {
+          "p": "PSI",
+          "v": 939,
+          "sh": 15.4
+         }
+        ]
        },
        {
         "nama": "GUNUNG SARI",
@@ -2929,7 +7659,25 @@
         "share": 5.81,
         "rank": 5,
         "top": "Gerindra",
-        "gap": 1964
+        "gap": 1964,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2380,
+          "sh": 33.3
+         },
+         {
+          "p": "Golkar",
+          "v": 1661,
+          "sh": 23.2
+         },
+         {
+          "p": "PDIP",
+          "v": 686,
+          "sh": 9.6
+         }
+        ]
        },
        {
         "nama": "BANGKINGAN",
@@ -2938,7 +7686,25 @@
         "share": 7.19,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 826
+        "gap": 826,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1182,
+          "sh": 23.9
+         },
+         {
+          "p": "PSI",
+          "v": 925,
+          "sh": 18.7
+         },
+         {
+          "p": "NasDem",
+          "v": 601,
+          "sh": 12.1
+         }
+        ]
        },
        {
         "nama": "KARANG PILANG",
@@ -2947,7 +7713,25 @@
         "share": 7.82,
         "rank": 4,
         "top": "Gerindra",
-        "gap": 1295
+        "gap": 1295,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1648,
+          "sh": 36.5
+         },
+         {
+          "p": "Demokrat",
+          "v": 542,
+          "sh": 12.0
+         },
+         {
+          "p": "PDIP",
+          "v": 510,
+          "sh": 11.3
+         }
+        ]
        },
        {
         "nama": "WARU GUNUNG",
@@ -2956,7 +7740,25 @@
         "share": 6.41,
         "rank": 4,
         "top": "Gerindra",
-        "gap": 2323
+        "gap": 2323,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2672,
+          "sh": 49.1
+         },
+         {
+          "p": "PDIP",
+          "v": 545,
+          "sh": 10.0
+         },
+         {
+          "p": "Demokrat",
+          "v": 383,
+          "sh": 7.0
+         }
+        ]
        },
        {
         "nama": "PRADAH KALIKENDAL",
@@ -2965,7 +7767,25 @@
         "share": 3.55,
         "rank": 7,
         "top": "PDIP",
-        "gap": 1742
+        "gap": 1742,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2031,
+          "sh": 24.9
+         },
+         {
+          "p": "PSI",
+          "v": 1750,
+          "sh": 21.5
+         },
+         {
+          "p": "Golkar",
+          "v": 1432,
+          "sh": 17.6
+         }
+        ]
        },
        {
         "nama": "DUKUH KUPANG",
@@ -2974,7 +7794,25 @@
         "share": 3.69,
         "rank": 9,
         "top": "PDIP",
-        "gap": 1352
+        "gap": 1352,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1622,
+          "sh": 22.2
+         },
+         {
+          "p": "PSI",
+          "v": 1240,
+          "sh": 16.9
+         },
+         {
+          "p": "Gerindra",
+          "v": 1223,
+          "sh": 16.7
+         }
+        ]
        },
        {
         "nama": "JERUK",
@@ -2983,7 +7821,25 @@
         "share": 4.89,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 934
+        "gap": 934,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1189,
+          "sh": 22.8
+         },
+         {
+          "p": "NasDem",
+          "v": 1142,
+          "sh": 21.9
+         },
+         {
+          "p": "PDIP",
+          "v": 831,
+          "sh": 16.0
+         }
+        ]
        },
        {
         "nama": "BERINGIN",
@@ -2992,7 +7848,25 @@
         "share": 7.37,
         "rank": 4,
         "top": "Demokrat",
-        "gap": 966
+        "gap": 966,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 1200,
+          "sh": 37.8
+         },
+         {
+          "p": "PDIP",
+          "v": 721,
+          "sh": 22.7
+         },
+         {
+          "p": "Gerindra",
+          "v": 308,
+          "sh": 9.7
+         }
+        ]
        },
        {
         "nama": "MADE",
@@ -3001,7 +7875,25 @@
         "share": 4.09,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1496
+        "gap": 1496,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1715,
+          "sh": 32.0
+         },
+         {
+          "p": "Gerindra",
+          "v": 1087,
+          "sh": 20.3
+         },
+         {
+          "p": "Demokrat",
+          "v": 829,
+          "sh": 15.5
+         }
+        ]
        },
        {
         "nama": "JAJAR TUNGGAL",
@@ -3010,7 +7902,25 @@
         "share": 3.2,
         "rank": 7,
         "top": "Gerindra",
-        "gap": 2626
+        "gap": 2626,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 2828,
+          "sh": 44.8
+         },
+         {
+          "p": "PDIP",
+          "v": 1001,
+          "sh": 15.9
+         },
+         {
+          "p": "PKS",
+          "v": 518,
+          "sh": 8.2
+         }
+        ]
        }
       ]
      }
@@ -3039,19 +7949,9 @@
     "rasio": 0.65,
     "tier": {
      "menang": {
-      "n": 3,
-      "pkb": 3716,
-      "gap": 0,
+      "n": 2,
+      "pkb": 1709,
       "kel": [
-       {
-        "nama": "SUMBER REJO",
-        "kec": "Pakal",
-        "pkb": 2007,
-        "share": 21.77,
-        "rank": 1,
-        "top": "PKB",
-        "gap": 0
-       },
        {
         "nama": "TAMBAK SARIOSO",
         "kec": "Asemrowo",
@@ -3059,7 +7959,25 @@
         "share": 23.55,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 711,
+          "sh": 17.5
+         },
+         {
+          "p": "PBB",
+          "v": 431,
+          "sh": 10.6
+         },
+         {
+          "p": "PKS",
+          "v": 391,
+          "sh": 9.6
+         }
+        ]
        },
        {
         "nama": "TAMBAK OSO WILANGUN",
@@ -3068,14 +7986,31 @@
         "share": 34.01,
         "rank": 1,
         "top": "PKB",
-        "gap": 0
+        "gap": 0,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PBB",
+          "v": 595,
+          "sh": 26.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 358,
+          "sh": 16.1
+         },
+         {
+          "p": "PDIP",
+          "v": 243,
+          "sh": 11.0
+         }
+        ]
        }
       ]
      },
      "bersaing": {
-      "n": 8,
-      "pkb": 13395,
-      "gap": 7569,
+      "n": 9,
+      "pkb": 15402,
       "kel": [
        {
         "nama": "SEMEMI",
@@ -3084,7 +8019,25 @@
         "share": 18.19,
         "rank": 2,
         "top": "PDIP",
-        "gap": 2524
+        "gap": 2524,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 6487,
+          "sh": 29.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 2819,
+          "sh": 12.9
+         },
+         {
+          "p": "Demokrat",
+          "v": 2657,
+          "sh": 12.2
+         }
+        ]
        },
        {
         "nama": "ASEM ROWO",
@@ -3093,7 +8046,52 @@
         "share": 17.37,
         "rank": 3,
         "top": "Gerindra",
-        "gap": 632
+        "gap": 632,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 3138,
+          "sh": 21.7
+         },
+         {
+          "p": "Golkar",
+          "v": 2877,
+          "sh": 19.9
+         },
+         {
+          "p": "PDIP",
+          "v": 1887,
+          "sh": 13.1
+         }
+        ]
+       },
+       {
+        "nama": "SUMBER REJO",
+        "kec": "Pakal",
+        "pkb": 2007,
+        "share": 17.32,
+        "rank": 3,
+        "top": "PPP",
+        "gap": 2071,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PPP",
+          "v": 8123,
+          "sh": 23.2
+         },
+         {
+          "p": "PDIP",
+          "v": 6353,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3001,
+          "sh": 8.6
+         }
+        ]
        },
        {
         "nama": "KANDANGAN",
@@ -3102,34 +8100,106 @@
         "share": 15.59,
         "rank": 3,
         "top": "PDIP",
-        "gap": 847
+        "gap": 847,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2838,
+          "sh": 22.2
+         },
+         {
+          "p": "Demokrat",
+          "v": 2443,
+          "sh": 19.1
+         },
+         {
+          "p": "Gerindra",
+          "v": 1805,
+          "sh": 14.1
+         }
+        ]
        },
        {
         "nama": "BABAT JERAWAT",
         "kec": "Pakal",
         "pkb": 1814,
-        "share": 12.89,
-        "rank": 4,
+        "share": 17.32,
+        "rank": 3,
         "top": "PPP",
-        "gap": 440
+        "gap": 2071,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PPP",
+          "v": 8123,
+          "sh": 23.2
+         },
+         {
+          "p": "PDIP",
+          "v": 6353,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3001,
+          "sh": 8.6
+         }
+        ]
        },
        {
         "nama": "BENOWO",
         "kec": "Pakal",
         "pkb": 1163,
-        "share": 14.22,
+        "share": 17.32,
         "rank": 3,
         "top": "PPP",
-        "gap": 882
+        "gap": 2071,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PPP",
+          "v": 8123,
+          "sh": 23.2
+         },
+         {
+          "p": "PDIP",
+          "v": 6353,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3001,
+          "sh": 8.6
+         }
+        ]
        },
        {
         "nama": "PAKAL",
         "kec": "Pakal",
         "pkb": 1068,
-        "share": 12.79,
-        "rank": 2,
+        "share": 17.32,
+        "rank": 3,
         "top": "PPP",
-        "gap": 1639
+        "gap": 2071,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "PPP",
+          "v": 8123,
+          "sh": 23.2
+         },
+         {
+          "p": "PDIP",
+          "v": 6353,
+          "sh": 18.2
+         },
+         {
+          "p": "Gerindra",
+          "v": 3001,
+          "sh": 8.6
+         }
+        ]
        },
        {
         "nama": "GENTING KALIANAK",
@@ -3138,7 +8208,25 @@
         "share": 11.8,
         "rank": 3,
         "top": "Gerindra",
-        "gap": 474
+        "gap": 474,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 930,
+          "sh": 24.1
+         },
+         {
+          "p": "PDIP",
+          "v": 843,
+          "sh": 21.8
+         },
+         {
+          "p": "PKS",
+          "v": 331,
+          "sh": 8.6
+         }
+        ]
        },
        {
         "nama": "ROMOKALISARI",
@@ -3147,14 +8235,31 @@
         "share": 25.26,
         "rank": 2,
         "top": "Gerindra",
-        "gap": 131
+        "gap": 131,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 565,
+          "sh": 32.9
+         },
+         {
+          "p": "PDIP",
+          "v": 178,
+          "sh": 10.4
+         },
+         {
+          "p": "PBB",
+          "v": 142,
+          "sh": 8.3
+         }
+        ]
        }
       ]
      },
      "jangan": {
       "n": 12,
       "pkb": 8399,
-      "gap": 29757,
       "kel": [
        {
         "nama": "SIMOMULYO BARU",
@@ -3163,16 +8268,52 @@
         "share": 11.04,
         "rank": 4,
         "top": "Gerindra",
-        "gap": 2389
+        "gap": 2389,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 4865,
+          "sh": 21.7
+         },
+         {
+          "p": "PDIP",
+          "v": 4056,
+          "sh": 18.1
+         },
+         {
+          "p": "PKS",
+          "v": 2946,
+          "sh": 13.1
+         }
+        ]
        },
        {
         "nama": "MANUKAN KULON",
         "kec": "Tandes",
         "pkb": 1257,
-        "share": 6.47,
-        "rank": 6,
+        "share": 9.04,
+        "rank": 4,
         "top": "Demokrat",
-        "gap": 3237
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "SIMOMULYO",
@@ -3181,52 +8322,160 @@
         "share": 7.51,
         "rank": 6,
         "top": "PDIP",
-        "gap": 1570
+        "gap": 1570,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 2473,
+          "sh": 20.6
+         },
+         {
+          "p": "Gerindra",
+          "v": 2307,
+          "sh": 19.2
+         },
+         {
+          "p": "PKS",
+          "v": 1971,
+          "sh": 16.4
+         }
+        ]
        },
        {
         "nama": "KARANG POH",
         "kec": "Tandes",
         "pkb": 887,
-        "share": 5.61,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 3092
+        "share": 9.04,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "MANUKAN WETAN",
         "kec": "Tandes",
         "pkb": 756,
-        "share": 5.32,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 3223
+        "share": 9.04,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "BANJAR SUGIHAN",
         "kec": "Tandes",
         "pkb": 572,
-        "share": 4.13,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 3407
+        "share": 9.04,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "TANDES",
         "kec": "Tandes",
         "pkb": 471,
-        "share": 3.21,
-        "rank": 6,
-        "top": "Gerindra",
-        "gap": 3508
+        "share": 9.04,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "BALONGSARI",
         "kec": "Tandes",
         "pkb": 363,
-        "share": 2.66,
-        "rank": 5,
-        "top": "Gerindra",
-        "gap": 3616
+        "share": 9.04,
+        "rank": 4,
+        "top": "Demokrat",
+        "gap": 4859,
+        "dasar": "kecamatan",
+        "pesaing": [
+         {
+          "p": "Demokrat",
+          "v": 9156,
+          "sh": 19.3
+         },
+         {
+          "p": "Gerindra",
+          "v": 7459,
+          "sh": 15.7
+         },
+         {
+          "p": "PDIP",
+          "v": 7232,
+          "sh": 15.2
+         }
+        ]
        },
        {
         "nama": "PUTAT GEDE",
@@ -3235,7 +8484,25 @@
         "share": 5.65,
         "rank": 6,
         "top": "Gerindra",
-        "gap": 1097
+        "gap": 1097,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "Gerindra",
+          "v": 1331,
+          "sh": 32.2
+         },
+         {
+          "p": "PDIP",
+          "v": 1012,
+          "sh": 24.5
+         },
+         {
+          "p": "Golkar",
+          "v": 527,
+          "sh": 12.7
+         }
+        ]
        },
        {
         "nama": "SUKOMANUNGGAL",
@@ -3244,7 +8511,25 @@
         "share": 2.56,
         "rank": 8,
         "top": "PDIP",
-        "gap": 1159
+        "gap": 1159,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1328,
+          "sh": 20.2
+         },
+         {
+          "p": "PKS",
+          "v": 1131,
+          "sh": 17.2
+         },
+         {
+          "p": "Golkar",
+          "v": 981,
+          "sh": 14.9
+         }
+        ]
        },
        {
         "nama": "TANJUNGSARI",
@@ -3253,7 +8538,25 @@
         "share": 2.27,
         "rank": 7,
         "top": "PAN",
-        "gap": 2172
+        "gap": 2172,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PAN",
+          "v": 2332,
+          "sh": 33.1
+         },
+         {
+          "p": "PDIP",
+          "v": 1634,
+          "sh": 23.2
+         },
+         {
+          "p": "PSI",
+          "v": 1171,
+          "sh": 16.6
+         }
+        ]
        },
        {
         "nama": "SONOKWIJENAN",
@@ -3262,7 +8565,25 @@
         "share": 3.6,
         "rank": 8,
         "top": "PDIP",
-        "gap": 1287
+        "gap": 1287,
+        "dasar": "kelurahan",
+        "pesaing": [
+         {
+          "p": "PDIP",
+          "v": 1438,
+          "sh": 34.3
+         },
+         {
+          "p": "PSI",
+          "v": 999,
+          "sh": 23.8
+         },
+         {
+          "p": "Gerindra",
+          "v": 477,
+          "sh": 11.4
+         }
+        ]
        }
       ]
      }

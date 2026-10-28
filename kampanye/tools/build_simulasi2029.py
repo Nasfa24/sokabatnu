@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Bangun data + halaman SOKABAT NU · SIMULASI PEMILU 2029.
-Sumber tunggal: data Pemilu 2024 (kecamatan resmi + kelurahan hasil Peta Suara).
+"""Bangun data SOKABAT NU · SIMULASI PEMILU 2029.
+Sumber tunggal: Pemilu 2024 (rekap kecamatan resmi + Peta Suara kelurahan).
+Setiap kelurahan membawa tiga pesaing terberat dan penanda dasar hitung.
 """
-import json, math, re, collections, pathlib
+import json, re, collections, pathlib
 
 BASE = pathlib.Path('/home/buleng/.hermes/projects/sokabatnu/kampanye')
 DATA = BASE / 'data'
@@ -13,7 +14,6 @@ def kunci(s):
     return re.sub(r'[^A-Z0-9]', '', s.upper())
 
 def sl(votes, seats):
-    """Sainte-Lague. Kembalikan kursi per partai + harga kursi terakhir."""
     div = {k: 1 for k in votes}
     kursi = {k: 0 for k in votes}
     log = []
@@ -29,15 +29,14 @@ def alokasi(total, bobot):
     mentah = {k: total * v / semua for k, v in bobot.items()}
     dasar = {k: int(v) for k, v in mentah.items()}
     sisa = total - sum(dasar.values())
-    for k in sorted(mentah, key=lambda k: -mentah[k] % 1)[:sisa]:
+    for k in sorted(mentah, key=lambda k: -(mentah[k] % 1))[:sisa]:
         dasar[k] += 1
     return dasar
 
-def kategori(r):
-    """Aturan tiga warna, hanya dari angka 2024."""
-    if r['rank'] == 1 or (r['rank'] == 2 and r['gapr'] <= 0.20):
+def kategori(rank, gapr, share):
+    if rank == 1 or (rank == 2 and gapr <= 0.20):
         return 'menang'
-    if r['rank'] <= 3 or (r['share'] >= 12 and r['rank'] <= 4):
+    if rank <= 3 or (share >= 12 and rank <= 4):
         return 'bersaing'
     return 'jangan'
 
@@ -66,27 +65,55 @@ def muat():
     for d in pem['dapil'].values():
         for k in d['kecamatan_detail']:
             kec[kunci(k['nama'])] = {
-                'nama': k['nama'],
-                'sah': k['suara_sah'],
-                'dpt': k['dpt'],
+                'nama': k['nama'], 'sah': k['suara_sah'], 'dpt': k['dpt'],
                 'partai': {p['singkat']: p['total'] for p in k['partai']},
             }
-    kel = []
+    kel, ragu = [], []
     for nama_kec, isi in dhasil.items():
+        kc = kec[kunci(nama_kec)]
+        # uji kelayakan angka partai tingkat kelurahan
+        jum = collections.Counter()
+        for suara in isi['kelurahan'].values():
+            for i, n in suara.items():
+                jum[SING[int(i)]] += n
+        selisih = abs(sum(jum.values()) - kc['sah']) / kc['sah']
+        beda_partai = sum(1 for p in SING
+                          if abs(jum[p] - kc['partai'].get(p, 0)) > max(25, 0.02 * kc['partai'].get(p, 0)))
+        layak = selisih <= 0.05
+        if not layak:
+            ragu.append((nama_kec, round(100 * selisih, 1), beda_partai))
+        # statistik tingkat kecamatan sebagai cadangan
+        urut_kec = sorted(kc['partai'].items(), key=lambda x: -x[1])
+        pkb_kec = kc['partai'].get('PKB', 0)
+        rank_kec = [i for i, (p, _) in enumerate(urut_kec, 1) if p == 'PKB'][0]
+        gap_kec = urut_kec[0][1] - pkb_kec
         for nama_kel, suara in isi['kelurahan'].items():
             v = {SING[int(i)]: n for i, n in suara.items()}
-            total = sum(v.values())
-            urut = sorted(v.items(), key=lambda x: -x[1])
             pkb = v.get('PKB', 0)
-            rank = [i for i, (p, _) in enumerate(urut, 1) if p == 'PKB'][0]
-            gap = urut[0][1] - pkb
+            if layak:
+                total = sum(v.values())
+                urut = sorted(v.items(), key=lambda x: -x[1])
+                rank = [i for i, (p, _) in enumerate(urut, 1) if p == 'PKB'][0]
+                top, top_v = urut[0]
+                dasar = 'kelurahan'
+                pesaing = [(p, n, round(100 * n / total, 1)) for p, n in urut if p != 'PKB'][:3]
+                hitung = pkb
+            else:
+                total = kc['sah']
+                rank, top, top_v = rank_kec, urut_kec[0][0], urut_kec[0][1]
+                dasar = 'kecamatan'
+                hitung = pkb_kec
+                pesaing = [(p, n, round(100 * n / total, 1)) for p, n in urut_kec if p != 'PKB'][:3]
+            gap = top_v - hitung
+            share = round(100 * hitung / total, 2) if total else 0
+            gapr = round(gap / hitung, 3) if hitung else 99
             kel.append(dict(kec=kunci(nama_kec), kec_nama=nama_kec, nama=nama_kel,
-                            pkb=pkb, sah=total,
-                            share=round(100 * pkb / total, 2) if total else 0,
-                            rank=rank, top=urut[0][0], top_v=urut[0][1],
-                            gap=gap, gapr=round(gap / pkb, 3) if pkb else 99,
-                            valid=isi['status']))
-    return kec, kel
+                            pkb=pkb, sah=total, share=share, rank=rank,
+                            top=top, top_v=top_v, gap=gap, gapr=gapr,
+                            dasar=dasar,
+                            pesaing=[dict(p=p, v=n, sh=sh) for p, n, sh in pesaing],
+                            tier=kategori(rank, gapr, share)))
+    return kec, kel, ragu
 
 def bangun(nama, dapilmap, kec, kel, total_kursi=55):
     sah_dapil = {d: sum(kec[kunci(x)]['sah'] for x in ks) for d, ks in dapilmap.items()}
@@ -111,15 +138,15 @@ def bangun(nama, dapilmap, kec, kel, total_kursi=55):
         anggota = [r for r in kel if r['kec'] in {kunci(x) for x in ks}]
         per = collections.defaultdict(list)
         for r in anggota:
-            per[kategori(r)].append(r)
+            per[r['tier']].append(r)
         tier = {}
         for t in ('menang', 'bersaing', 'jangan'):
             isi = sorted(per[t], key=lambda r: -r['pkb'])
             tier[t] = dict(n=len(isi), pkb=sum(r['pkb'] for r in isi),
-                           gap=sum(r['gap'] for r in isi),
                            kel=[dict(nama=r['nama'], kec=r['kec_nama'], pkb=r['pkb'],
                                      share=r['share'], rank=r['rank'], top=r['top'],
-                                     gap=r['gap']) for r in isi])
+                                     gap=r['gap'], dasar=r['dasar'],
+                                     pesaing=r['pesaing']) for r in isi])
         hasil.append(dict(nomor=d, kecamatan=[kec[kunci(x)]['nama'] for x in ks],
                           kursi=kursi, sah=sah,
                           dpt=sum(kec[kunci(x)]['dpt'] for x in ks),
@@ -128,8 +155,7 @@ def bangun(nama, dapilmap, kec, kel, total_kursi=55):
                           pkb=pkb, pkb_persen=round(100 * pkb / sah, 2),
                           pkb_kursi=kursi_partai['PKB'], tambah=tambah,
                           rasio=round(tambah / pkb, 2),
-                          tier=tier,
-                          kel_total=len(anggota)))
+                          tier=tier, kel_total=len(anggota)))
     return dict(nama=nama, kursi_total=total_kursi,
                 pkb_kursi=sum(x['pkb_kursi'] for x in hasil),
                 pkb=sum(x['pkb'] for x in hasil),
@@ -137,7 +163,7 @@ def bangun(nama, dapilmap, kec, kel, total_kursi=55):
                 dapil=hasil)
 
 def main():
-    kec, kel = muat()
+    kec, kel, ragu = muat()
     total_sah = sum(k['sah'] for k in kec.values())
     total_pkb = sum(k['partai'].get('PKB', 0) for k in kec.values())
     A = bangun('A', DAPIL_A, kec, kel)
@@ -149,10 +175,12 @@ def main():
                   kursi_2024=50, kursi_pkb_2024=5,
                   kelurahan=len(kel), kelurahan_kota=153,
                   kecamatan=len(kec),
-                  catatan='Tegalsari tidak punya rincian kelurahan. Angka partai non-PKB di 12 kecamatan belum final.'),
+                  ragu=[dict(kec=n, selisih=s, beda_partai=b) for n, s, b in ragu],
+                  catatan='Tegalsari tanpa rincian kelurahan. Angka partai non-PKB di beberapa kecamatan belum final, kategori di sana memakai hitungan kecamatan.'),
         A=A, B=B)
     (DATA / 'simulasi-2029.json').write_text(json.dumps(keluaran, ensure_ascii=False, indent=1))
     print('A', A['pkb_kursi'], 'B', B['pkb_kursi'], 'sah', total_sah, 'pkb', total_pkb)
+    print('ragu', ragu)
     for x in A['dapil'] + B['dapil']:
         print(x['nomor'], x['kursi'], x['harga'], x['pkb_kursi'], x['tambah'],
               {t: v['n'] for t, v in x['tier'].items()})
