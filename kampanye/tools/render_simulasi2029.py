@@ -22,12 +22,14 @@ def e(s):
 
 LABEL = {'menang': 'Menang', 'bersaing': 'Bisa bersaing', 'jangan': 'Jangan sentuh'}
 
-def kelrow(k):
-    chip = ''
+CHIP = {'menang': 't-pertebal', 'bersaing': 't-rebut', 'jangan': 't-hindari'}
+
+def kelrow(k, t):
+    chip = f' <span class="chip {CHIP[t]}">{LABEL[t]}</span>'
     if k['dasar'] == 'kecamatan':
-        chip = ' <span class="chip t-adjust">kecamatan</span>'
+        chip += ' <span class="chip t-adjust">kecamatan</span>'
     pes = ' · '.join(f"{e(p['p'])} {pct1(p['sh'])}" for p in k['pesaing'])
-    return (f'<div class="kelrow"><div class="kiri">'
+    return (f'<div class="kelrow tier-{t}"><div class="kiri">'
             f'<div class="nm">{e(k["nama"].title())}{chip}</div>'
             f'<div class="meta">{e(k["kec"].title())} · PKB {n(k["pkb"])} suara</div>'
             f'<div class="pes">Pesaing: {pes}</div></div>'
@@ -37,12 +39,12 @@ def tier(d, t):
     isi = d['tier'][t]
     judul = LABEL[t]
     if not isi['n']:
-        return f'<div class="sub2">{judul} · tidak ada kelurahan</div>'
-    badan = ''.join(kelrow(k) for k in isi['kel'])
+        return f'<div class="sub2 grp-{t}"><i></i>{judul} · tidak ada kelurahan</div>'
+    badan = ''.join(kelrow(k, t) for k in isi['kel'])
     if t == 'jangan':
-        return (f'<details><summary class="sub2 ringkas">{judul} · {isi["n"]} kelurahan · '
+        return (f'<details><summary class="sub2 ringkas grp-{t}"><i></i>{judul} · {isi["n"]} kelurahan · '
                 f'{n(isi["pkb"])} suara PKB</summary>{badan}</details>')
-    return (f'<div class="sub2">{judul} · {isi["n"]} kelurahan · '
+    return (f'<div class="sub2 grp-{t}"><i></i>{judul} · {isi["n"]} kelurahan · '
             f'{n(isi["pkb"])} suara PKB</div>{badan}')
 
 def kartu(d, buka=False):
@@ -147,7 +149,7 @@ body{margin:0;padding:0 0 36px;background:var(--bg);color:var(--teks);
 .baris-isi b{font-size:12.5px;font-weight:900;color:#8a6410}
 .sub2{font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--redup2);font-weight:900;margin:13px 0 4px}
 summary.ringkas{cursor:pointer}
-.kelrow{display:flex;gap:9px;padding:9px 0;border-bottom:1px dashed #e6ece8;align-items:flex-start}
+.kelrow{display:flex;gap:9px;border-bottom:1px dashed #e6ece8;align-items:flex-start}
 .kelrow:last-child{border-bottom:none}
 .kelrow .kiri{flex:1;min-width:0}
 .kelrow .nm{font-size:12px;font-weight:900;line-height:1.3}
@@ -156,6 +158,35 @@ summary.ringkas{cursor:pointer}
 .kelrow .kanan{text-align:right;white-space:nowrap}
 .kelrow .kanan b{font-size:12.5px;font-weight:900;display:block;color:var(--hijau-gelap)}
 .kelrow .kanan span{font-size:9px;color:var(--redup2);font-weight:800}
+.kelrow{padding:9px 0 9px 10px;border-left:3px solid transparent}
+.kelrow.tier-menang{border-left-color:#12a066;background:linear-gradient(90deg,#f3fbf7,rgba(243,251,247,0))}
+.kelrow.tier-bersaing{border-left-color:#e0a92b;background:linear-gradient(90deg,#fffcf2,rgba(255,252,242,0))}
+.kelrow.tier-jangan{border-left-color:#ccd7d1}
+.sub2 i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle;background:#c9d3ce}
+.grp-menang i{background:#12a066}
+.grp-bersaing i{background:#e0a92b}
+.grp-jangan i{background:#b9c4be}
+.tabelwrap{overflow-x:auto;margin:8px -4px 0;padding:0 4px}
+table{border-collapse:collapse;width:100%;min-width:320px;font-size:10.5px}
+thead th{font-size:8.5px;letter-spacing:.4px;text-transform:uppercase;color:var(--redup2);font-weight:900;
+         text-align:right;padding:6px 5px;border-bottom:1px solid var(--garis);white-space:nowrap}
+thead th:first-child{text-align:left}
+tbody td{padding:7px 5px;border-bottom:1px solid #eef3f0;text-align:right;font-weight:800;white-space:nowrap}
+tbody td:first-child{text-align:left}
+tbody tr.pkb td{background:#fffdf4}
+.h20-besar{display:flex;gap:10px;align-items:baseline;margin:6px 0 2px}
+.h20-besar b{font-size:30px;font-weight:900;color:var(--hijau-gelap);line-height:1}
+.h20-besar span{font-size:11px;color:var(--redup2);font-weight:800;line-height:1.35}
+.banding{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 4px}
+.banding div{background:#f7faf8;border:1px solid var(--garis);border-radius:10px;padding:9px}
+.banding span{display:block;font-size:9px;letter-spacing:.5px;text-transform:uppercase;color:var(--redup2);font-weight:900}
+.banding b{font-size:18px;font-weight:900;color:var(--hijau-gelap)}
+.banding small{display:block;font-size:9.5px;color:var(--redup2);font-weight:700;margin-top:2px}
+.putus{border-left:3px solid var(--hijau);background:#f4fbf7;border-radius:0 10px 10px 0;padding:10px 12px;margin-top:10px}
+.putus b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--hijau);margin-bottom:3px}
+.putus p{margin:0;font-size:11.5px;line-height:1.5;color:var(--teks)}
+.naik{color:var(--hijau);font-weight:900}
+.turun{color:var(--merah);font-weight:900}
 .chip{display:inline-block;border-radius:20px;padding:2px 7px;font-size:8.5px;font-weight:900;
       letter-spacing:.3px;text-transform:uppercase;vertical-align:middle;margin-left:5px;border:1px solid}
 .t-pertebal{background:#e8f5ee;color:#0a5236;border-color:#bfe3d0}
@@ -173,7 +204,7 @@ summary.ringkas{cursor:pointer}
 .legend{display:grid;gap:8px;margin-top:6px}
 .legend div{display:flex;gap:8px;align-items:flex-start;font-size:10.5px;color:var(--redup);line-height:1.45}
 .legend .chip{margin:0;flex:0 0 auto}
-.ket{font-size:11.5px;color:var(--redup);line-height:1.55;margin:8px 0 0}
+.ket{font-size:11.5px;color:#39463f;line-height:1.55;margin:8px 0 0}
 .ket b{color:var(--hijau-gelap)}
 .kaki{text-align:center;font-size:11.5px;font-weight:800;padding:4px 0 24px}
 .kaki a{color:var(--hijau);text-decoration:none;display:inline-block;padding:8px 10px}
@@ -193,6 +224,50 @@ tb.forEach(b=>b.addEventListener('click',()=>pilih(b.dataset.v)));
 const awal=location.hash.replace('#','').toUpperCase();
 pilih(awal==='B'?'B':'A');
 """
+
+def tabel_h20(sk):
+    baris = []
+    for d in sk['dapil']:
+        h = d['h20']
+        sel = h['selisih']
+        tanda = ('+' + n(sel)) if sel > 0 else ('&minus;' + n(-sel))
+        warna = 'naik' if sel >= 0 else 'turun'
+        baris.append(f'<tr{" class=\"pkb\"" if d["pkb"] >= 20000 else ""}>'
+                     f'<td>Dapil {d["nomor"]}</td><td>{n(d["pkb"])}</td>'
+                     f'<td class="{warna}">{tanda}</td>'
+                     f'<td>{h["ambang_pkb"]}</td><td>{h["kuota_pkb"]}</td></tr>')
+    return ('<div class="tabelwrap"><table><thead><tr><th>Dapil</th><th>Suara PKB</th>'
+            '<th>Selisih 20.000</th><th>Ambang</th><th>Kuota</th></tr></thead>'
+            f'<tbody>{"".join(baris)}</tbody></table></div>')
+
+def h20_kartu():
+    a, b = A['h20'], B['h20']
+    kg = {d['nomor']: 20000 - d['pkb'] for d in B['dapil'] if d['pkb'] < 20000}
+    return f'''<div class="kartu">
+  <h2>Kalau satu kursi 20.000 suara</h2>
+  <p class="sub">Uji aturan harga kursi tetap. Suara sah kota dibagi 20.000, lalu dibandingkan dengan kursi yang tersedia.</p>
+  <div class="h20-besar"><b>{str(a['kursi_kota']).replace('.', ',')}</b><span>kursi terbentuk kalau 20.000 suara sama dengan satu kursi. Kursi yang tersedia hanya 55.</span></div>
+  <p class="ket">Angka 20.000 lebih murah 28,4 persen dari harga rata-rata kota 27.943 suara per kursi. Karena itu aturan ini kelebihan 21,8 kursi. Supaya pas 55 kursi, satu kursi harus dihargai {n(round(M['total_sah'] / 55))} suara.</p>
+
+  <div class="sub2">Hasil untuk PKB</div>
+  <div class="banding">
+    <div><span>Skenario A · 5 dapil</span><b>{A['pkb_kursi']} → {a['ambang_pkb']} → {a['kuota_pkb']}</b><small>asli, ambang, kuota</small></div>
+    <div><span>Skenario B · 8 dapil</span><b>{B['pkb_kursi']} → {b['ambang_pkb']} → {b['kuota_pkb']}</b><small>asli, ambang, kuota</small></div>
+  </div>
+  <p class="ket"><b>Cara ambang:</b> partai yang suaranya di bawah 20.000 di satu dapil tidak dapat kursi, sisanya dibagi ulang. <b>Cara kuota:</b> tiap 20.000 suara dapat satu kursi, sisa kursi diberikan ke sisa suara terbesar.</p>
+  <p class="ket">Di skenario 5 dapil, aturan ini menaikkan PKB dari {A['pkb_kursi']} ke {a['ambang_pkb']} kursi karena suara PKB menumpuk di dua dapil besar. Di skenario 8 dapil, aturan ini menurunkan PKB dari {B['pkb_kursi']} ke {b['ambang_pkb']} kursi karena suara PKB pecah tipis di banyak dapil.</p>
+
+  <div class="sub2">Pemenang dan korban</div>
+  <p class="ket">Ambang 20.000 memindahkan kursi ke partai besar. Di skenario 8 dapil, PDIP naik dari 12 ke 24 kursi, Gerindra dari 9 ke 17 kursi. PKB turun dari 7 ke 6 kursi, PKS dari 7 ke 1 kursi, Golkar dari 7 ke 3 kursi. NasDem dan PAN kehilangan semua kursinya.</p>
+
+  <div class="sub2">Sebagai target kerja, bukan aturan</div>
+  <p class="ket">Kalau 20.000 dipakai sebagai target per dapil, PKB butuh 20.000 suara di tiap dapil untuk delapan kursi. Sekarang baru {b['dapil_lolos']} dari 8 dapil yang lewat 20.000. Kekurangan total {n(b['kurang'])} suara, tersebar di empat dapil: Dapil 7 kurang {n(kg[7])}, Dapil 4 kurang {n(kg[4])}, Dapil 5 kurang {n(kg[5])}, Dapil 2 kurang {n(kg[2])}.</p>
+
+  <details><summary class="sub2 ringkas">Rincian per dapil · skenario A</summary>{tabel_h20(A)}</details>
+  <details><summary class="sub2 ringkas">Rincian per dapil · skenario B</summary>{tabel_h20(B)}</details>
+
+  <div class="putus"><b>Putusan</b><p>Pakai 20.000 sebagai target kader di tiap dapil, jangan dipakai sebagai ambang resmi. Ambang itu menguntungkan PDIP dan Gerindra, lalu memangkas PKB di skenario delapan dapil.</p></div>
+</div>'''
 
 hero = f'''<div class="hero">
   <div class="label">SOKABAT NU · SIMULASI PEMILU 2029</div>
@@ -235,7 +310,7 @@ legenda = '''<div class="kartu">
 catatan = f'''<div class="kartu">
   <h2>Catatan data</h2>
   <p class="ket">Angka kelurahan berasal dari rekapan D.Hasil KPU 2024. Lima kelurahan Tegalsari tidak punya rincian, suaranya tetap dihitung lewat rekap kecamatan. Di {len(M['ragu'])} kecamatan, rincian partai selain PKB belum sahih, yaitu Gubeng, Tandes, Bulak, Mulyorejo, Pakal, dan Wonocolo. Kategori dan pesaing di 31 kelurahan sana memakai hitungan kecamatan dan diberi tanda.</p>
-  <p class="ket">Pembagian kursi per dapil adalah asumsi kerja karena PKPU 2029 belum ada. Suara PKB per kelurahan akurat, kategori dan harga kursi adalah simulasi. Rata-rata kota {n(M['total_sah'] / 55)} suara per kursi menyesatkan kalau dipakai jadi target, karena kursi diperebutkan per dapil.</p>
+  <p class="ket">Pembagian kursi per dapil adalah asumsi kerja karena PKPU 2029 belum ada. Suara PKB per kelurahan akurat, kategori dan harga kursi adalah simulasi. Rata-rata kota {n(round(M['total_sah'] / 55))} suara per kursi menyesatkan kalau dipakai jadi target, karena kursi diperebutkan per dapil.</p>
 </div>'''
 
 kaki = '''<div class="kaki">
@@ -262,6 +337,7 @@ halaman = f'''<!DOCTYPE html>
 {panel(A, 'A')}
 {panel(B, 'B')}
 {rekomendasi}
+{h20_kartu()}
 {legenda}
 {catatan}
 {kaki}

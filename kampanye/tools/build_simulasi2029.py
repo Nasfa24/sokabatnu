@@ -162,12 +162,55 @@ def bangun(nama, dapilmap, kec, kel, total_kursi=55):
                 sah=sum(x['sah'] for x in hasil),
                 dapil=hasil)
 
+def harga20(votes, kursi, harga=20000):
+    """Dua cara membaca aturan satu kursi sama dengan 20.000 suara."""
+    amb = {p: v for p, v in votes.items() if v >= harga}
+    kursi_amb = sl(amb, kursi)[0] if amb else {}
+    dasar = {p: v // harga for p, v in votes.items()}
+    sisa = kursi - sum(dasar.values())
+    if sisa > 0:
+        for p in sorted(votes, key=lambda q: votes[q] % harga, reverse=True)[:sisa]:
+            dasar[p] += 1
+    elif sisa < 0:
+        for p in sorted([q for q in votes if dasar[q] > 0],
+                        key=lambda q: votes[q] % harga)[:-sisa]:
+            dasar[p] -= 1
+    return kursi_amb, dasar, len(amb)
+
+def tempel_h20(sk, dapilmap, kec):
+    pkb_amb = pkb_kuota = lolos = 0
+    kurang = 0
+    partai_amb = collections.Counter()
+    partai_biasa = collections.Counter()
+    for d in sk['dapil']:
+        ks = dapilmap[d['nomor']]
+        votes = {p: sum(kec[kunci(x)]['partai'].get(p, 0) for x in ks) for p in SING}
+        amb, kuota, jml = harga20(votes, d['kursi'])
+        biasa = sl(votes, d['kursi'])[0]
+        d['h20'] = dict(ambang_pkb=amb.get('PKB', 0), kuota_pkb=kuota['PKB'],
+                        lolos=jml, selisih=d['pkb'] - 20000)
+        pkb_amb += amb.get('PKB', 0)
+        pkb_kuota += kuota['PKB']
+        lolos += jml
+        kurang += max(0, 20000 - d['pkb'])
+        partai_amb.update(amb)
+        partai_biasa.update(biasa)
+    sk['h20'] = dict(
+        harga=20000,
+        kursi_kota=round(sk['sah'] / 20000, 1),
+        ambang_pkb=pkb_amb, kuota_pkb=pkb_kuota, lolos=lolos, kurang=kurang,
+        dapil_lolos=sum(1 for d in sk['dapil'] if d['pkb'] >= 20000),
+        partai=[dict(p=p, biasa=partai_biasa.get(p, 0), ambang=partai_amb.get(p, 0))
+                for p in SING if partai_biasa.get(p, 0) or partai_amb.get(p, 0)])
+
 def main():
     kec, kel, ragu = muat()
     total_sah = sum(k['sah'] for k in kec.values())
     total_pkb = sum(k['partai'].get('PKB', 0) for k in kec.values())
     A = bangun('A', DAPIL_A, kec, kel)
     B = bangun('B', DAPIL_B, kec, kel)
+    tempel_h20(A, DAPIL_A, kec)
+    tempel_h20(B, DAPIL_B, kec)
     keluaran = dict(
         meta=dict(sumber='KPU, Pemilu 2024 (rekap kecamatan resmi + Peta Suara kelurahan)',
                   total_sah=total_sah, total_pkb=total_pkb,

@@ -1,0 +1,73 @@
+{
+ "sumber": "D.Hasil KPU 2024 folder Drive 1r-x2P9m8y80zaGT26H11coYi3orpKZI4",
+ "dibuat": "2026-10-28",
+ "keyakinan": "tinggi (jumlah kelurahan = rekap kecamatan)",
+ "kecamatan": {
+  "SUKOLILO": {
+   "dapil": 3,
+   "pkb_kecamatan": 4101,
+   "suara_sah": 59367,
+   "kelurahan": {
+    "Gebang Putih": {
+     "pkb_partai": 72,
+     "pkb_total": 316,
+     "nasfa": 15
+    },
+    "Klampis Ngasem": {
+     "pkb_partai": 158,
+     "pkb_total": 456,
+     "nasfa": 18
+    },
+    "Medokan Semampir": {
+     "pkb_partai": 227,
+     "pkb_total": 775,
+     "nasfa": 19
+    },
+    "Menur Pumpungan": {
+     "pkb_partai": 114,
+     "pkb_total": 311,
+     "nasfa": 6
+    },
+    "Nginden Jangkungan": {
+     "pkb_partai": 199,
+     "pkb_total": 685,
+     "nasfa": 18
+    },
+    "Semolowaru": {
+     "pkb_partai": 204,
+     "pkb_total": 654,
+     "nasfa": 27
+    }
+   },
+   "catatan": "6 kelurahan dari rekap; Keputih tidak ada berkas, sisa 904 suara PKB dihitung sebagai selisih (Keyakinan Sedang)"
+  },
+  "BENOWO": {
+   "dapil": 5,
+   "pkb_kecamatan": 7142,
+   "suara_sah": 38493,
+   "kelurahan": {
+    "Kandangan": {
+     "pkb_total": 1991,
+     "pkb_partai": null,
+     "nasfa": null
+    },
+    "Romokalisari": {
+     "pkb_total": 434,
+     "pkb_partai": null,
+     "nasfa": null
+    },
+    "Sememi": {
+     "pkb_total": 3963,
+     "pkb_partai": null,
+     "nasfa": null
+    },
+    "Tambak Oso Wilangun": {
+     "pkb_total": 754,
+     "pkb_partai": null,
+     "nasfa": null
+    }
+   },
+   "catatan": "jumlah 4 kelurahan tepat sama dengan rekap kecamatan 7.142"
+  }
+ }
+}

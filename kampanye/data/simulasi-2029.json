@@ -793,7 +793,13 @@
       ]
      }
     },
-    "kel_total": 26
+    "kel_total": 26,
+    "h20": {
+     "ambang_pkb": 2,
+     "kuota_pkb": 1,
+     "lolos": 7,
+     "selisih": 14666
+    }
    },
    {
     "nomor": 2,
@@ -1401,7 +1407,13 @@
       ]
      }
     },
-    "kel_total": 21
+    "kel_total": 21,
+    "h20": {
+     "ambang_pkb": 2,
+     "kuota_pkb": 2,
+     "lolos": 7,
+     "selisih": 21004
+    }
    },
    {
     "nomor": 3,
@@ -2417,7 +2429,13 @@
       ]
      }
     },
-    "kel_total": 36
+    "kel_total": 36,
+    "h20": {
+     "ambang_pkb": 1,
+     "kuota_pkb": 1,
+     "lolos": 6,
+     "selisih": 7014
+    }
    },
    {
     "nomor": 4,
@@ -3160,7 +3178,13 @@
       ]
      }
     },
-    "kel_total": 26
+    "kel_total": 26,
+    "h20": {
+     "ambang_pkb": 1,
+     "kuota_pkb": 1,
+     "lolos": 7,
+     "selisih": 4545
+    }
    },
    {
     "nomor": 5,
@@ -4259,9 +4283,76 @@
       ]
      }
     },
-    "kel_total": 39
+    "kel_total": 39,
+    "h20": {
+     "ambang_pkb": 1,
+     "kuota_pkb": 1,
+     "lolos": 7,
+     "selisih": 12133
+    }
    }
-  ]
+  ],
+  "h20": {
+   "harga": 20000,
+   "kursi_kota": 76.8,
+   "ambang_pkb": 7,
+   "kuota_pkb": 6,
+   "lolos": 34,
+   "kurang": 0,
+   "dapil_lolos": 5,
+   "partai": [
+    {
+     "p": "PKB",
+     "biasa": 5,
+     "ambang": 7
+    },
+    {
+     "p": "Gerindra",
+     "biasa": 11,
+     "ambang": 11
+    },
+    {
+     "p": "PDIP",
+     "biasa": 11,
+     "ambang": 14
+    },
+    {
+     "p": "Golkar",
+     "biasa": 5,
+     "ambang": 6
+    },
+    {
+     "p": "NasDem",
+     "biasa": 2,
+     "ambang": 0
+    },
+    {
+     "p": "PKS",
+     "biasa": 5,
+     "ambang": 6
+    },
+    {
+     "p": "PAN",
+     "biasa": 3,
+     "ambang": 3
+    },
+    {
+     "p": "Demokrat",
+     "biasa": 5,
+     "ambang": 3
+    },
+    {
+     "p": "PSI",
+     "biasa": 5,
+     "ambang": 5
+    },
+    {
+     "p": "PPP",
+     "biasa": 3,
+     "ambang": 0
+    }
+   ]
+  }
  },
  "B": {
   "nama": "B",
@@ -4714,7 +4805,13 @@
       ]
      }
     },
-    "kel_total": 15
+    "kel_total": 15,
+    "h20": {
+     "ambang_pkb": 1,
+     "kuota_pkb": 1,
+     "lolos": 3,
+     "selisih": 432
+    }
    },
    {
     "nomor": 2,
@@ -5132,7 +5229,13 @@
       ]
      }
     },
-    "kel_total": 14
+    "kel_total": 14,
+    "h20": {
+     "ambang_pkb": 0,
+     "kuota_pkb": 1,
+     "lolos": 3,
+     "selisih": -448
+    }
    },
    {
     "nomor": 3,
@@ -5604,7 +5707,13 @@
       ]
      }
     },
-    "kel_total": 16
+    "kel_total": 16,
+    "h20": {
+     "ambang_pkb": 2,
+     "kuota_pkb": 1,
+     "lolos": 3,
+     "selisih": 8732
+    }
    },
    {
     "nomor": 4,
@@ -6156,7 +6265,13 @@
       ]
      }
     },
-    "kel_total": 19
+    "kel_total": 19,
+    "h20": {
+     "ambang_pkb": 0,
+     "kuota_pkb": 1,
+     "lolos": 3,
+     "selisih": -4621
+    }
    },
    {
     "nomor": 5,
@@ -6710,7 +6825,13 @@
       ]
      }
     },
-    "kel_total": 19
+    "kel_total": 19,
+    "h20": {
+     "ambang_pkb": 0,
+     "kuota_pkb": 1,
+     "lolos": 2,
+     "selisih": -1411
+    }
    },
    {
     "nomor": 6,
@@ -7290,7 +7411,13 @@
       ]
      }
     },
-    "kel_total": 20
+    "kel_total": 20,
+    "h20": {
+     "ambang_pkb": 1,
+     "kuota_pkb": 1,
+     "lolos": 5,
+     "selisih": 452
+    }
    },
    {
     "nomor": 7,
@@ -7925,7 +8052,13 @@
       ]
      }
     },
-    "kel_total": 22
+    "kel_total": 22,
+    "h20": {
+     "ambang_pkb": 0,
+     "kuota_pkb": 0,
+     "lolos": 3,
+     "selisih": -9275
+    }
    },
    {
     "nomor": 8,
@@ -8588,8 +8721,70 @@
       ]
      }
     },
-    "kel_total": 23
+    "kel_total": 23,
+    "h20": {
+     "ambang_pkb": 2,
+     "kuota_pkb": 1,
+     "lolos": 4,
+     "selisih": 5501
+    }
    }
-  ]
+  ],
+  "h20": {
+   "harga": 20000,
+   "kursi_kota": 76.8,
+   "ambang_pkb": 6,
+   "kuota_pkb": 7,
+   "lolos": 26,
+   "kurang": 15755,
+   "dapil_lolos": 4,
+   "partai": [
+    {
+     "p": "PKB",
+     "biasa": 7,
+     "ambang": 6
+    },
+    {
+     "p": "Gerindra",
+     "biasa": 9,
+     "ambang": 17
+    },
+    {
+     "p": "PDIP",
+     "biasa": 12,
+     "ambang": 24
+    },
+    {
+     "p": "Golkar",
+     "biasa": 7,
+     "ambang": 3
+    },
+    {
+     "p": "NasDem",
+     "biasa": 1,
+     "ambang": 0
+    },
+    {
+     "p": "PKS",
+     "biasa": 7,
+     "ambang": 1
+    },
+    {
+     "p": "PAN",
+     "biasa": 2,
+     "ambang": 0
+    },
+    {
+     "p": "Demokrat",
+     "biasa": 3,
+     "ambang": 1
+    },
+    {
+     "p": "PSI",
+     "biasa": 7,
+     "ambang": 3
+    }
+   ]
+  }
  }
 }

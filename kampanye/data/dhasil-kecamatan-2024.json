@@ -1,0 +1,293 @@
+{
+ "sumber": "D.Hasil Kecamatan DPRD Kota 2024, Drive 1r-x2P9m8y80zaGT26H11coYi3orpKZI4",
+ "dibuat": "2026-10-28",
+ "metode": "teks PDF digital, ambil kolom JUMLAH terakhir per partai per kelurahan, lalu maksimum antar halaman",
+ "validasi": "PKB 16 kecamatan dibandingkan pemilu-2024.json: 15 sama persis, Wonocolo selisih 1",
+ "kecamatan": [
+  {
+   "kecamatan": "Simokerto",
+   "dapil": 1,
+   "pkb": 6970,
+   "pkb_ref": 6970,
+   "suara_sah": 45165,
+   "share": 15.43,
+   "n_kel": 5,
+   "top_kel": "SIMOLAWANG",
+   "top_pkb": 2942
+  },
+  {
+   "kecamatan": "Gubeng",
+   "dapil": 1,
+   "pkb": 9236,
+   "pkb_ref": 9236,
+   "suara_sah": 69392,
+   "share": 13.31,
+   "n_kel": 6,
+   "top_kel": "MOJO",
+   "top_pkb": 2992
+  },
+  {
+   "kecamatan": "Genteng",
+   "dapil": 1,
+   "pkb": 3072,
+   "pkb_ref": 3072,
+   "suara_sah": 29506,
+   "share": 10.41,
+   "n_kel": 5,
+   "top_kel": "KAPASARI",
+   "top_pkb": 918
+  },
+  {
+   "kecamatan": "Bubutan",
+   "dapil": 1,
+   "pkb": 4642,
+   "pkb_ref": 4642,
+   "suara_sah": 49030,
+   "share": 9.47,
+   "n_kel": 5,
+   "top_kel": "JEPARA",
+   "top_pkb": 1535
+  },
+  {
+   "kecamatan": "Krembangan",
+   "dapil": 1,
+   "pkb": 4998,
+   "pkb_ref": 4998,
+   "suara_sah": 57492,
+   "share": 8.69,
+   "n_kel": 5,
+   "top_kel": "MOROKREMBANGAN",
+   "top_pkb": 2362
+  },
+  {
+   "kecamatan": "Kenjeran",
+   "dapil": 2,
+   "pkb": 14682,
+   "pkb_ref": 14682,
+   "suara_sah": 88155,
+   "share": 16.65,
+   "n_kel": 4,
+   "top_kel": "BULAK BANTENG",
+   "top_pkb": 5264
+  },
+  {
+   "kecamatan": "Semampir",
+   "dapil": 2,
+   "pkb": 11644,
+   "pkb_ref": 11644,
+   "suara_sah": 88483,
+   "share": 13.16,
+   "n_kel": 5,
+   "top_kel": "UJUNG",
+   "top_pkb": 3573
+  },
+  {
+   "kecamatan": "Tambaksari",
+   "dapil": 2,
+   "pkb": 11768,
+   "pkb_ref": 11768,
+   "suara_sah": 112768,
+   "share": 10.44,
+   "n_kel": 8,
+   "top_kel": "KAPASMADYA BARU",
+   "top_pkb": 2980
+  },
+  {
+   "kecamatan": "Pabean Cantian",
+   "dapil": 2,
+   "pkb": 2910,
+   "pkb_ref": 2910,
+   "suara_sah": 36385,
+   "share": 8.0,
+   "n_kel": 4,
+   "top_kel": "TANJUNG PERAK",
+   "top_pkb": 1266
+  },
+  {
+   "kecamatan": "Tenggilis Mejoyo",
+   "dapil": 3,
+   "pkb": 7867,
+   "pkb_ref": 7867,
+   "suara_sah": 32850,
+   "share": 23.95,
+   "n_kel": 4,
+   "top_kel": "KENDANGSARI",
+   "top_pkb": 3448
+  },
+  {
+   "kecamatan": "Bulak",
+   "dapil": 3,
+   "pkb": 2282,
+   "pkb_ref": 2282,
+   "suara_sah": 24602,
+   "share": 9.28,
+   "n_kel": 4,
+   "top_kel": "BULAK",
+   "top_pkb": 805
+  },
+  {
+   "kecamatan": "Wonocolo",
+   "dapil": 3,
+   "pkb": 3217,
+   "pkb_ref": 3218,
+   "suara_sah": 41405,
+   "share": 7.77,
+   "n_kel": 5,
+   "top_kel": "JEMUR WONOSARI",
+   "top_pkb": 1046
+  },
+  {
+   "kecamatan": "Sukolilo",
+   "dapil": 3,
+   "pkb": 4101,
+   "pkb_ref": 4101,
+   "suara_sah": 59367,
+   "share": 6.91,
+   "n_kel": 7,
+   "top_kel": "KEPUTIH",
+   "top_pkb": 853
+  },
+  {
+   "kecamatan": "Sukolilo",
+   "dapil": 3,
+   "pkb": 4101,
+   "pkb_ref": 4101,
+   "suara_sah": 59367,
+   "share": 6.91,
+   "n_kel": 7,
+   "top_kel": "KEPUTIH",
+   "top_pkb": 853
+  },
+  {
+   "kecamatan": "Rungkut",
+   "dapil": 3,
+   "pkb": 4409,
+   "pkb_ref": 4409,
+   "suara_sah": 64786,
+   "share": 6.81,
+   "n_kel": 6,
+   "top_kel": "KALIRUNGKUT",
+   "top_pkb": 1232
+  },
+  {
+   "kecamatan": "Gayungan",
+   "dapil": 4,
+   "pkb": 2513,
+   "pkb_ref": 2513,
+   "suara_sah": 22917,
+   "share": 10.97,
+   "n_kel": 4,
+   "top_kel": "KETINTANG",
+   "top_pkb": 918
+  }
+ ],
+ "pkb_per_kelurahan": {
+  "BUBUTAN": {
+   "ALUN": 150,
+   "BUBUTAN": 737,
+   "GUNDIH": 1238,
+   "JEPARA": 1535,
+   "TEMBOK DUKUH": 982
+  },
+  "GENTENG": {
+   "EMBONG KALIASIN": 707,
+   "GENTENG": 371,
+   "KAPASARI": 918,
+   "KETABANG": 368,
+   "PENELEH": 708
+  },
+  "GUBENG": {
+   "GUBENG": 1064,
+   "MOJO": 2992,
+   "AIRLANGGA": 1071,
+   "KERTAJAYA": 2349,
+   "BARATAJAYA": 664,
+   "PUCANG SEWU": 1096
+  },
+  "KREMBANGAN": {
+   "KREMBANGAN SELATAN": 379,
+   "KEMAYORAN": 751,
+   "PERAK BARAT": 668,
+   "DUPAK": 838,
+   "MOROKREMBANGAN": 2362
+  },
+  "SIMOKERTO": {
+   "SIMOKERTO": 1007,
+   "KAPASAN": 582,
+   "SIDODADI": 1477,
+   "SIMOLAWANG": 2942,
+   "TAMBAKREJO": 962
+  },
+  "KENJERAN": {
+   "TANAH KALI KEDINDING": 3924,
+   "SIDOTOPO WETAN": 3749,
+   "BULAK BANTENG": 5264,
+   "TAMBAK WEDI": 1745
+  },
+  "PABEAN CANTIAN": {
+   "BONGKARAN": 610,
+   "NYAMPLUNGAN": 467,
+   "KREMBANGAN UTARA": 567,
+   "TANJUNG PERAK": 1266
+  },
+  "SEMAMPIR": {
+   "AMPEL": 1265,
+   "PEGIRIAN": 1662,
+   "WONOKUSUMO": 3523,
+   "UJUNG": 3573,
+   "SIDOTOPO": 1621
+  },
+  "TAMBAKSARI": {
+   "TAMBAKSARI": 1456,
+   "PLOSO": 1083,
+   "GADING": 1204,
+   "PACARKEMBANG": 1237,
+   "RANGKAH": 1312,
+   "PACARKELING": 878,
+   "KAPASMADYA BARU": 2980,
+   "DUKUH SETRO": 1618
+  },
+  "BULAK": {
+   "KEDUNG COWEK": 405,
+   "KENJERAN": 280,
+   "BULAK": 805,
+   "SUKOLILO BARU": 792
+  },
+  "RUNGKUT": {
+   "KALIRUNGKUT": 1232,
+   "RUNGKUT KIDUL": 431,
+   "KEDUNG BARUK": 806,
+   "PENJARINGANSARI": 705,
+   "WONOREJO": 435,
+   "MEDOKAN AYU": 800
+  },
+  "SUKOLILO": {
+   "KEPUTIH": 853,
+   "GEBANG PUTIH": 311,
+   "KLAMPIS NGASEM": 483,
+   "MENUR PUMPUNGAN": 318,
+   "NGINDEN JANGKUNGAN": 695,
+   "SEMOLOWARU": 667,
+   "MEDOKAN SEMAMPIR": 774
+  },
+  "TENGGILIS MEJOYO": {
+   "KUTISARI": 1456,
+   "KENDANGSARI": 3448,
+   "TENGGILIS MEJOYO": 1849,
+   "PANJANG JIWO": 1114
+  },
+  "WONOCOLO": {
+   "SIDOSERMO": 544,
+   "BENDUL MERISI": 637,
+   "MARGOREJO": 379,
+   "JEMUR WONOSARI": 1046,
+   "SIWALANKERTO": 611
+  },
+  "GAYUNGAN": {
+   "GAYUNGAN": 465,
+   "MENANGGAL": 493,
+   "DUKUH MENANGGAL": 637,
+   "KETINTANG": 918
+  }
+ }
+}
