@@ -15,7 +15,7 @@
     "nomor": 2,
     "kecamatan": [
      "Tambaksari",
-     "Pabeancantian",
+     "Pabean Cantian",
      "Semampir",
      "Kenjeran"
     ],
@@ -23,6 +23,14 @@
     "sekarang": 1,
     "pkb": 41004,
     "biaya": 3304,
+    "posisi": [
+     3
+    ],
+    "posisi_target": [
+     2,
+     12
+    ],
+    "kursi_baru": 12,
     "tps_total": 1794,
     "tps_inti": 941,
     "tps_pakai": 192,
@@ -397,9 +405,12 @@
     "tps_prio": [
      {
       "kel": "Bulak Banteng",
+      "kec": "Kenjeran",
       "tps": "009",
       "pkb": 51,
       "tot": 246,
+      "alamat": "DUKUH BULAK BANTENG GG. PANDU 4",
+      "binaan": 0,
       "rank": 2,
       "gap": 14,
       "share": 20.73,
@@ -408,9 +419,12 @@
      },
      {
       "kel": "Ampel",
+      "kec": "Semampir",
       "tps": "038",
       "pkb": 60,
       "tot": 248,
+      "alamat": "Jl. Nyamplungan Balokan No 20",
+      "binaan": 0,
       "rank": 2,
       "gap": 7,
       "share": 24.19,
@@ -419,9 +433,12 @@
      },
      {
       "kel": "Tambak Wedi",
+      "kec": "Kenjeran",
       "tps": "011",
       "pkb": 88,
       "tot": 274,
+      "alamat": "Tambak Wedi Tengah3/39",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 32.12,
@@ -430,9 +447,12 @@
      },
      {
       "kel": "Tanah Kali Kedinding",
+      "kec": "Kenjeran",
       "tps": "039",
       "pkb": 44,
       "tot": 217,
+      "alamat": "KEDINDING TENGAH 4/15",
+      "binaan": 0,
       "rank": 2,
       "gap": 24,
       "share": 20.28,
@@ -441,9 +461,12 @@
      },
      {
       "kel": "Tanah Kali Kedinding",
+      "kec": "Kenjeran",
       "tps": "095",
       "pkb": 39,
       "tot": 211,
+      "alamat": "Jl pogot 2",
+      "binaan": 0,
       "rank": 2,
       "gap": 20,
       "share": 18.48,
@@ -452,9 +475,12 @@
      },
      {
       "kel": "Sidotopo Wetan",
+      "kec": "Kenjeran",
       "tps": "036",
       "pkb": 33,
       "tot": 206,
+      "alamat": "",
+      "binaan": 0,
       "rank": 2,
       "gap": 17,
       "share": 16.02,
@@ -463,9 +489,12 @@
      },
      {
       "kel": "Sidotopo Wetan",
+      "kec": "Kenjeran",
       "tps": "138",
       "pkb": 35,
       "tot": 210,
+      "alamat": "",
+      "binaan": 0,
       "rank": 2,
       "gap": 11,
       "share": 16.67,
@@ -474,9 +503,12 @@
      },
      {
       "kel": "Tambak Wedi",
+      "kec": "Kenjeran",
       "tps": "030",
       "pkb": 42,
       "tot": 216,
+      "alamat": "Tambak Wedi Baru 6/36",
+      "binaan": 0,
       "rank": 2,
       "gap": 6,
       "share": 19.44,
@@ -485,9 +517,12 @@
      },
      {
       "kel": "Pegirian",
+      "kec": "Semampir",
       "tps": "078",
       "pkb": 78,
       "tot": 250,
+      "alamat": "Wonokusumo Jaya Baru 6 No 36",
+      "binaan": 0,
       "rank": 2,
       "gap": 21,
       "share": 31.2,
@@ -496,9 +531,12 @@
      },
      {
       "kel": "Ujung",
+      "kec": "Semampir",
       "tps": "036",
       "pkb": 54,
       "tot": 232,
+      "alamat": "SAWAH PULO KULON Gg. 3 No.10",
+      "binaan": 0,
       "rank": 2,
       "gap": 25,
       "share": 23.28,
@@ -507,9 +545,12 @@
      },
      {
       "kel": "Gading",
+      "kec": "Tambaksari",
       "tps": "065",
       "pkb": 42,
       "tot": 218,
+      "alamat": "DUKUH SETRO IXA NO.46",
+      "binaan": 0,
       "rank": 2,
       "gap": 4,
       "share": 19.27,
@@ -518,9 +559,12 @@
      },
      {
       "kel": "Tanah Kali Kedinding",
+      "kec": "Kenjeran",
       "tps": "059",
       "pkb": 48,
       "tot": 212,
+      "alamat": "Tanah merah 1 no.72",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 22.64,
@@ -532,13 +576,13 @@
    {
     "nomor": 5,
     "kecamatan": [
-     "Karangpilang",
+     "Karang Pilang",
      "Tandes",
      "Lakarsantri",
      "Benowo",
      "Wiyung",
-     "Dukuhpakis",
-     "Asemrowo",
+     "Dukuh Pakis",
+     "Asem Rowo",
      "Pakal",
      "Sambikerep"
     ],
@@ -546,6 +590,14 @@
     "sekarang": 1,
     "pkb": 32133,
     "biaya": 6889,
+    "posisi": [
+     4
+    ],
+    "posisi_target": [
+     3,
+     11
+    ],
+    "kursi_baru": 11,
     "tps_total": 1630,
     "tps_inti": 630,
     "tps_pakai": 402,
@@ -920,9 +972,12 @@
     "tps_prio": [
      {
       "kel": "Manukan Wetan",
+      "kec": "Tandes",
       "tps": "011",
       "pkb": 81,
       "tot": 285,
+      "alamat": "Jalan Sikatan 3 No. 41 RW 02",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 28.42,
@@ -931,9 +986,12 @@
      },
      {
       "kel": "Tambak Sarioso",
+      "kec": "Asemrowo",
       "tps": "015",
       "pkb": 66,
       "tot": 260,
+      "alamat": "Akses jalan kelurahan tambak sarioso",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 25.38,
@@ -942,9 +1000,12 @@
      },
      {
       "kel": "Babat Jerawat",
+      "kec": "Pakal",
       "tps": "058",
       "pkb": 53,
       "tot": 244,
+      "alamat": "depan Rumah ketua RT 04 (Bapak Musrifan) RW 04 Dk. Jerawat",
+      "binaan": 0,
       "rank": 2,
       "gap": 29,
       "share": 21.72,
@@ -953,9 +1014,12 @@
      },
      {
       "kel": "Babat Jerawat",
+      "kec": "Pakal",
       "tps": "059",
       "pkb": 38,
       "tot": 230,
+      "alamat": "Depan gerbang perbatasan dk. jerawat dengan Bukti Palma RT 09 RW 04",
+      "binaan": 0,
       "rank": 2,
       "gap": 3,
       "share": 16.52,
@@ -964,9 +1028,12 @@
      },
      {
       "kel": "Sememi",
+      "kec": "Benowo",
       "tps": "020",
       "pkb": 60,
       "tot": 243,
+      "alamat": "Sememi Jaya 6 RT 6 RW 1",
+      "binaan": 0,
       "rank": 2,
       "gap": 14,
       "share": 24.69,
@@ -975,9 +1042,12 @@
      },
      {
       "kel": "Lakarsantri",
+      "kec": "Lakarsantri",
       "tps": "004",
       "pkb": 48,
       "tot": 229,
+      "alamat": "Balai RW 01",
+      "binaan": 0,
       "rank": 2,
       "gap": 31,
       "share": 20.96,
@@ -986,9 +1056,12 @@
      },
      {
       "kel": "Sumber Rejo",
+      "kec": "Pakal",
       "tps": "029",
       "pkb": 53,
       "tot": 236,
+      "alamat": "SD. TANWIRUL AFKAR",
+      "binaan": 0,
       "rank": 2,
       "gap": 18,
       "share": 22.46,
@@ -997,9 +1070,12 @@
      },
      {
       "kel": "Benowo",
+      "kec": "Pakal",
       "tps": "025",
       "pkb": 60,
       "tot": 245,
+      "alamat": "Stand Perekonomian Raci",
+      "binaan": 0,
       "rank": 2,
       "gap": 6,
       "share": 24.49,
@@ -1008,9 +1084,12 @@
      },
      {
       "kel": "Manukan Wetan",
+      "kec": "Tandes",
       "tps": "016",
       "pkb": 36,
       "tot": 223,
+      "alamat": "Jl. Buntaran / Pendopo RW 05 / 04",
+      "binaan": 0,
       "rank": 2,
       "gap": 18,
       "share": 16.14,
@@ -1019,9 +1098,12 @@
      },
      {
       "kel": "Banjar Sugihan",
+      "kec": "Tandes",
       "tps": "009",
       "pkb": 47,
       "tot": 230,
+      "alamat": "Jl. Manukan Lor 6 (Perempatan Gang)",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 20.43,
@@ -1030,9 +1112,12 @@
      },
      {
       "kel": "Balas Klumprik",
+      "kec": "Wiyung",
       "tps": "017",
       "pkb": 29,
       "tot": 211,
+      "alamat": "GEMPOL RT. 03 RW. 03",
+      "binaan": 0,
       "rank": 2,
       "gap": 31,
       "share": 13.74,
@@ -1041,9 +1126,12 @@
      },
      {
       "kel": "Kandangan",
+      "kec": "Benowo",
       "tps": "054",
       "pkb": 37,
       "tot": 213,
+      "alamat": "Klakahrejo gg 5 rt 4 rw 8",
+      "binaan": 0,
       "rank": 2,
       "gap": 26,
       "share": 17.37,
@@ -1066,6 +1154,14 @@
     "sekarang": 1,
     "pkb": 34666,
     "biaya": 6968,
+    "posisi": [
+     3
+    ],
+    "posisi_target": [
+     3,
+     11
+    ],
+    "kursi_baru": 11,
     "tps_total": 1384,
     "tps_inti": 690,
     "tps_pakai": 435,
@@ -1440,9 +1536,12 @@
     "tps_prio": [
      {
       "kel": "Morokrembangan",
+      "kec": "Krembangan",
       "tps": "054",
       "pkb": 57,
       "tot": 246,
+      "alamat": "JL. TAMBAK ASRI BUNGA RAMPAI II",
+      "binaan": 0,
       "rank": 2,
       "gap": 3,
       "share": 23.17,
@@ -1451,9 +1550,12 @@
      },
      {
       "kel": "Airlangga",
+      "kec": "Gubeng",
       "tps": "040",
       "pkb": 29,
       "tot": 214,
+      "alamat": "Gubeng Kertajaya 9 F Depan Rumah Warga RT 10",
+      "binaan": 0,
       "rank": 2,
       "gap": 31,
       "share": 13.55,
@@ -1462,9 +1564,12 @@
      },
      {
       "kel": "Pucang Sewu",
+      "kec": "Gubeng",
       "tps": "030",
       "pkb": 43,
       "tot": 223,
+      "alamat": "Jl. Pucang Sewu VIII ( Balai RW 007 )",
+      "binaan": 0,
       "rank": 2,
       "gap": 17,
       "share": 19.28,
@@ -1473,9 +1578,12 @@
      },
      {
       "kel": "Perak Barat",
+      "kec": "Krembangan",
       "tps": "011",
       "pkb": 37,
       "tot": 222,
+      "alamat": "Jl. Ikan Dorang Baru 56 (Depan Balai RT 09)",
+      "binaan": 0,
       "rank": 2,
       "gap": 6,
       "share": 16.67,
@@ -1484,9 +1592,12 @@
      },
      {
       "kel": "Airlangga",
+      "kec": "Gubeng",
       "tps": "021",
       "pkb": 42,
       "tot": 213,
+      "alamat": "Gubeng Kertajaya 5 D Pelataran Rumah Warga",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 19.72,
@@ -1495,9 +1606,12 @@
      },
      {
       "kel": "Kertajaya",
+      "kec": "Gubeng",
       "tps": "047",
       "pkb": 41,
       "tot": 218,
+      "alamat": "JUWINGAN NO7",
+      "binaan": 0,
       "rank": 2,
       "gap": 24,
       "share": 18.81,
@@ -1506,9 +1620,12 @@
      },
      {
       "kel": "Pucang Sewu",
+      "kec": "Gubeng",
       "tps": "036",
       "pkb": 39,
       "tot": 212,
+      "alamat": "Jl. Kalibokor VIII No. 14",
+      "binaan": 0,
       "rank": 2,
       "gap": 2,
       "share": 18.4,
@@ -1517,9 +1634,12 @@
      },
      {
       "kel": "Bubutan",
+      "kec": "Bubutan",
       "tps": "033",
       "pkb": 42,
       "tot": 209,
+      "alamat": "Jl Semarang XIII no 128 Bubutan, Kel Bubutan, Kec Bubutan Kota Surabaya",
+      "binaan": 0,
       "rank": 2,
       "gap": 19,
       "share": 20.1,
@@ -1528,9 +1648,12 @@
      },
      {
       "kel": "Tembok Dukuh",
+      "kec": "Bubutan",
       "tps": "067",
       "pkb": 52,
       "tot": 215,
+      "alamat": "Demak Jaya 8",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 24.19,
@@ -1539,9 +1662,12 @@
      },
      {
       "kel": "Embong Kaliasin",
+      "kec": "Genteng",
       "tps": "019",
       "pkb": 52,
       "tot": 218,
+      "alamat": "KEPUTRAN KEJAMBON II",
+      "binaan": 0,
       "rank": 2,
       "gap": 21,
       "share": 23.85,
@@ -1550,9 +1676,12 @@
      },
      {
       "kel": "Gubeng",
+      "kec": "Gubeng",
       "tps": "016",
       "pkb": 34,
       "tot": 201,
+      "alamat": "Jl. Gubeng Jaya Langgar Timur (Depan Balai Rw 02)",
+      "binaan": 0,
       "rank": 2,
       "gap": 2,
       "share": 16.92,
@@ -1561,9 +1690,12 @@
      },
      {
       "kel": "Airlangga",
+      "kec": "Gubeng",
       "tps": "036",
       "pkb": 33,
       "tot": 200,
+      "alamat": "Gubeng Kertajaya 9 B no 12i Depan TK Jaya Negara",
+      "binaan": 0,
       "rank": 2,
       "gap": 27,
       "share": 16.5,
@@ -1571,6 +1703,78 @@
       "gain": 20
      }
     ]
+   }
+  ],
+  "semua": [
+   {
+    "nomor": 1,
+    "kursi": 11,
+    "pkb": 34666,
+    "sekarang": 1,
+    "posisi": [
+     3
+    ],
+    "posisi_target": [
+     3,
+     11
+    ],
+    "kursi_baru": 11
+   },
+   {
+    "nomor": 2,
+    "kursi": 12,
+    "pkb": 41004,
+    "sekarang": 1,
+    "posisi": [
+     3
+    ],
+    "posisi_target": [
+     2,
+     12
+    ],
+    "kursi_baru": 12
+   },
+   {
+    "nomor": 3,
+    "kursi": 11,
+    "pkb": 27014,
+    "sekarang": 1,
+    "posisi": [
+     5
+    ],
+    "posisi_target": [
+     2,
+     11
+    ],
+    "kursi_baru": 11
+   },
+   {
+    "nomor": 4,
+    "kursi": 10,
+    "pkb": 24545,
+    "sekarang": 1,
+    "posisi": [
+     6
+    ],
+    "posisi_target": [
+     3,
+     10
+    ],
+    "kursi_baru": 10
+   },
+   {
+    "nomor": 5,
+    "kursi": 11,
+    "pkb": 32133,
+    "sekarang": 1,
+    "posisi": [
+     4
+    ],
+    "posisi_target": [
+     3,
+     11
+    ],
+    "kursi_baru": 11
    }
   ],
   "tps_pakai": 1029
@@ -1584,16 +1788,21 @@
    {
     "nomor": 7,
     "kecamatan": [
-     "Karangpilang",
+     "Karang Pilang",
      "Wiyung",
      "Lakarsantri",
-     "Dukuhpakis",
+     "Dukuh Pakis",
      "Sambikerep"
     ],
     "kursi": 7,
     "sekarang": 0,
     "pkb": 10725,
     "biaya": 2320,
+    "posisi": [],
+    "posisi_target": [
+     7
+    ],
+    "kursi_baru": 7,
     "tps_total": 909,
     "tps_inti": 235,
     "tps_pakai": 137,
@@ -1788,9 +1997,12 @@
     "tps_prio": [
      {
       "kel": "Lakarsantri",
+      "kec": "Lakarsantri",
       "tps": "004",
       "pkb": 48,
       "tot": 229,
+      "alamat": "Balai RW 01",
+      "binaan": 0,
       "rank": 2,
       "gap": 31,
       "share": 20.96,
@@ -1799,9 +2011,12 @@
      },
      {
       "kel": "Balas Klumprik",
+      "kec": "Wiyung",
       "tps": "017",
       "pkb": 29,
       "tot": 211,
+      "alamat": "GEMPOL RT. 03 RW. 03",
+      "binaan": 0,
       "rank": 2,
       "gap": 31,
       "share": 13.74,
@@ -1810,9 +2025,12 @@
      },
      {
       "kel": "Kebraon",
+      "kec": "Karangpilang",
       "tps": "044",
       "pkb": 31,
       "tot": 204,
+      "alamat": "KEMLATEN GANG 9 NO 84 RW 06",
+      "binaan": 0,
       "rank": 2,
       "gap": 28,
       "share": 15.2,
@@ -1821,9 +2039,12 @@
      },
      {
       "kel": "Lakarsantri",
+      "kec": "Lakarsantri",
       "tps": "010",
       "pkb": 36,
       "tot": 207,
+      "alamat": "Halaman Rumah Bp. Imron RT 03/ RW 02",
+      "binaan": 0,
       "rank": 2,
       "gap": 8,
       "share": 17.39,
@@ -1832,9 +2053,12 @@
      },
      {
       "kel": "Dukuh Pakis",
+      "kec": "Dukuhpakis",
       "tps": "036",
       "pkb": 65,
       "tot": 228,
+      "alamat": "Jl. Dukuh Pakis 3 RT 02 RW 06",
+      "binaan": 0,
       "rank": 2,
       "gap": 31,
       "share": 28.51,
@@ -1843,9 +2067,12 @@
      },
      {
       "kel": "Gunung Sari",
+      "kec": "Dukuhpakis",
       "tps": "036",
       "pkb": 36,
       "tot": 205,
+      "alamat": "Halaman Balai RW 3",
+      "binaan": 0,
       "rank": 2,
       "gap": 11,
       "share": 17.56,
@@ -1854,9 +2081,12 @@
      },
      {
       "kel": "Lakarsantri",
+      "kec": "Lakarsantri",
       "tps": "001",
       "pkb": 33,
       "tot": 203,
+      "alamat": "Perempatan Depan Rumah Bapak Nashihan RT 01/ RW 01",
+      "binaan": 0,
       "rank": 2,
       "gap": 27,
       "share": 16.26,
@@ -1865,9 +2095,12 @@
      },
      {
       "kel": "Lakarsantri",
+      "kec": "Lakarsantri",
       "tps": "008",
       "pkb": 46,
       "tot": 214,
+      "alamat": "Pos Kamling RT 02/ RW 02",
+      "binaan": 0,
       "rank": 2,
       "gap": 6,
       "share": 21.5,
@@ -1876,9 +2109,12 @@
      },
      {
       "kel": "Lakarsantri",
+      "kec": "Lakarsantri",
       "tps": "009",
       "pkb": 43,
       "tot": 212,
+      "alamat": "Balai RW 02",
+      "binaan": 0,
       "rank": 2,
       "gap": 27,
       "share": 20.28,
@@ -1887,9 +2123,12 @@
      },
      {
       "kel": "Lidah Kulon",
+      "kec": "Lakarsantri",
       "tps": "032",
       "pkb": 29,
       "tot": 197,
+      "alamat": "Lidah kulon RT 05 RW 02",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 14.72,
@@ -1898,9 +2137,12 @@
      },
      {
       "kel": "Dukuh Pakis",
+      "kec": "Dukuhpakis",
       "tps": "037",
       "pkb": 64,
       "tot": 225,
+      "alamat": "Jl. Dukuh Pakis 2",
+      "binaan": 0,
       "rank": 2,
       "gap": 11,
       "share": 28.44,
@@ -1909,9 +2151,12 @@
      },
      {
       "kel": "Karang Pilang",
+      "kec": "Karangpilang",
       "tps": "016",
       "pkb": 31,
       "tot": 186,
+      "alamat": "Fasum RT 05 RW 02",
+      "binaan": 0,
       "rank": 2,
       "gap": 3,
       "share": 16.67,
@@ -1931,6 +2176,14 @@
     "sekarang": 1,
     "pkb": 28732,
     "biaya": 12332,
+    "posisi": [
+     3
+    ],
+    "posisi_target": [
+     2,
+     8
+    ],
+    "kursi_baru": 8,
     "tps_total": 1200,
     "tps_inti": 607,
     "tps_pakai": 672,
@@ -2305,9 +2558,12 @@
     "tps_prio": [
      {
       "kel": "Kenjeran",
+      "kec": "Bulak",
       "tps": "002",
       "pkb": 65,
       "tot": 294,
+      "alamat": "MI. KH. Romly Tamim",
+      "binaan": 0,
       "rank": 2,
       "gap": 22,
       "share": 22.11,
@@ -2316,9 +2572,12 @@
      },
      {
       "kel": "Bulak Banteng",
+      "kec": "Kenjeran",
       "tps": "009",
       "pkb": 51,
       "tot": 246,
+      "alamat": "DUKUH BULAK BANTENG GG. PANDU 4",
+      "binaan": 0,
       "rank": 2,
       "gap": 14,
       "share": 20.73,
@@ -2327,9 +2586,12 @@
      },
      {
       "kel": "Sukolilo Baru",
+      "kec": "Bulak",
       "tps": "004",
       "pkb": 60,
       "tot": 240,
+      "alamat": "Jl. Raya Sukolilo (pantai kulon)",
+      "binaan": 0,
       "rank": 2,
       "gap": 18,
       "share": 25.0,
@@ -2338,9 +2600,12 @@
      },
      {
       "kel": "Sukolilo Baru",
+      "kec": "Bulak",
       "tps": "005",
       "pkb": 75,
       "tot": 262,
+      "alamat": "Jl. Raya Sukolilo (depan gudang parkir)",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 28.63,
@@ -2349,9 +2614,12 @@
      },
      {
       "kel": "Tambak Wedi",
+      "kec": "Kenjeran",
       "tps": "011",
       "pkb": 88,
       "tot": 274,
+      "alamat": "Tambak Wedi Tengah3/39",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 32.12,
@@ -2360,9 +2628,12 @@
      },
      {
       "kel": "Bulak",
+      "kec": "Bulak",
       "tps": "048",
       "pkb": 38,
       "tot": 213,
+      "alamat": "Bogorami Regency",
+      "binaan": 0,
       "rank": 2,
       "gap": 9,
       "share": 17.84,
@@ -2371,9 +2642,12 @@
      },
      {
       "kel": "Sukolilo Baru",
+      "kec": "Bulak",
       "tps": "010",
       "pkb": 57,
       "tot": 231,
+      "alamat": "Jl. Raya Sukolilo Lor ( depan bakso kepala sapi)",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 24.68,
@@ -2382,9 +2656,12 @@
      },
      {
       "kel": "Tanah Kali Kedinding",
+      "kec": "Kenjeran",
       "tps": "039",
       "pkb": 44,
       "tot": 217,
+      "alamat": "KEDINDING TENGAH 4/15",
+      "binaan": 0,
       "rank": 2,
       "gap": 24,
       "share": 20.28,
@@ -2393,9 +2670,12 @@
      },
      {
       "kel": "Tanah Kali Kedinding",
+      "kec": "Kenjeran",
       "tps": "095",
       "pkb": 39,
       "tot": 211,
+      "alamat": "Jl pogot 2",
+      "binaan": 0,
       "rank": 2,
       "gap": 20,
       "share": 18.48,
@@ -2404,9 +2684,12 @@
      },
      {
       "kel": "Sidotopo Wetan",
+      "kec": "Kenjeran",
       "tps": "036",
       "pkb": 33,
       "tot": 206,
+      "alamat": "",
+      "binaan": 0,
       "rank": 2,
       "gap": 17,
       "share": 16.02,
@@ -2415,9 +2698,12 @@
      },
      {
       "kel": "Sidotopo Wetan",
+      "kec": "Kenjeran",
       "tps": "138",
       "pkb": 35,
       "tot": 210,
+      "alamat": "",
+      "binaan": 0,
       "rank": 2,
       "gap": 11,
       "share": 16.67,
@@ -2426,9 +2712,12 @@
      },
      {
       "kel": "Tambak Wedi",
+      "kec": "Kenjeran",
       "tps": "030",
       "pkb": 42,
       "tot": 216,
+      "alamat": "Tambak Wedi Baru 6/36",
+      "binaan": 0,
       "rank": 2,
       "gap": 6,
       "share": 19.44,
@@ -2442,7 +2731,7 @@
     "kecamatan": [
      "Tandes",
      "Sukomanunggal",
-     "Asemrowo",
+     "Asem Rowo",
      "Benowo",
      "Pakal"
     ],
@@ -2450,6 +2739,14 @@
     "sekarang": 1,
     "pkb": 25501,
     "biaya": 16685,
+    "posisi": [
+     3
+    ],
+    "posisi_target": [
+     1,
+     7
+    ],
+    "kursi_baru": 7,
     "tps_total": 1007,
     "tps_inti": 457,
     "tps_pakai": 745,
@@ -2824,9 +3121,12 @@
     "tps_prio": [
      {
       "kel": "Manukan Wetan",
+      "kec": "Tandes",
       "tps": "011",
       "pkb": 81,
       "tot": 285,
+      "alamat": "Jalan Sikatan 3 No. 41 RW 02",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 28.42,
@@ -2835,9 +3135,12 @@
      },
      {
       "kel": "Tambak Sarioso",
+      "kec": "Asemrowo",
       "tps": "015",
       "pkb": 66,
       "tot": 260,
+      "alamat": "Akses jalan kelurahan tambak sarioso",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 25.38,
@@ -2846,9 +3149,12 @@
      },
      {
       "kel": "Babat Jerawat",
+      "kec": "Pakal",
       "tps": "058",
       "pkb": 53,
       "tot": 244,
+      "alamat": "depan Rumah ketua RT 04 (Bapak Musrifan) RW 04 Dk. Jerawat",
+      "binaan": 0,
       "rank": 2,
       "gap": 29,
       "share": 21.72,
@@ -2857,9 +3163,12 @@
      },
      {
       "kel": "Babat Jerawat",
+      "kec": "Pakal",
       "tps": "059",
       "pkb": 38,
       "tot": 230,
+      "alamat": "Depan gerbang perbatasan dk. jerawat dengan Bukti Palma RT 09 RW 04",
+      "binaan": 0,
       "rank": 2,
       "gap": 3,
       "share": 16.52,
@@ -2868,9 +3177,12 @@
      },
      {
       "kel": "Sememi",
+      "kec": "Benowo",
       "tps": "020",
       "pkb": 60,
       "tot": 243,
+      "alamat": "Sememi Jaya 6 RT 6 RW 1",
+      "binaan": 0,
       "rank": 2,
       "gap": 14,
       "share": 24.69,
@@ -2879,9 +3191,12 @@
      },
      {
       "kel": "Sumber Rejo",
+      "kec": "Pakal",
       "tps": "029",
       "pkb": 53,
       "tot": 236,
+      "alamat": "SD. TANWIRUL AFKAR",
+      "binaan": 0,
       "rank": 2,
       "gap": 18,
       "share": 22.46,
@@ -2890,9 +3205,12 @@
      },
      {
       "kel": "Benowo",
+      "kec": "Pakal",
       "tps": "025",
       "pkb": 60,
       "tot": 245,
+      "alamat": "Stand Perekonomian Raci",
+      "binaan": 0,
       "rank": 2,
       "gap": 6,
       "share": 24.49,
@@ -2901,9 +3219,12 @@
      },
      {
       "kel": "Simomulyo",
+      "kec": "Sukomanunggal",
       "tps": "021",
       "pkb": 36,
       "tot": 217,
+      "alamat": "Simorejo XXV",
+      "binaan": 0,
       "rank": 2,
       "gap": 18,
       "share": 16.59,
@@ -2912,9 +3233,12 @@
      },
      {
       "kel": "Manukan Wetan",
+      "kec": "Tandes",
       "tps": "016",
       "pkb": 36,
       "tot": 223,
+      "alamat": "Jl. Buntaran / Pendopo RW 05 / 04",
+      "binaan": 0,
       "rank": 2,
       "gap": 18,
       "share": 16.14,
@@ -2923,9 +3247,12 @@
      },
      {
       "kel": "Banjar Sugihan",
+      "kec": "Tandes",
       "tps": "009",
       "pkb": 47,
       "tot": 230,
+      "alamat": "Jl. Manukan Lor 6 (Perempatan Gang)",
+      "binaan": 0,
       "rank": 1,
       "gap": 0,
       "share": 20.43,
@@ -2934,9 +3261,12 @@
      },
      {
       "kel": "Kandangan",
+      "kec": "Benowo",
       "tps": "054",
       "pkb": 37,
       "tot": 213,
+      "alamat": "Klakahrejo gg 5 rt 4 rw 8",
+      "binaan": 0,
       "rank": 2,
       "gap": 26,
       "share": 17.37,
@@ -2945,9 +3275,12 @@
      },
      {
       "kel": "Sememi",
+      "kec": "Benowo",
       "tps": "030",
       "pkb": 49,
       "tot": 228,
+      "alamat": "UKA Gg 3 RT 1 RW 2",
+      "binaan": 60,
       "rank": 2,
       "gap": 13,
       "share": 21.49,
@@ -2955,6 +3288,117 @@
       "gain": 21
      }
     ]
+   }
+  ],
+  "semua": [
+   {
+    "nomor": 1,
+    "kursi": 6,
+    "pkb": 20432,
+    "sekarang": 1,
+    "posisi": [
+     3
+    ],
+    "posisi_target": [
+     1,
+     6
+    ],
+    "kursi_baru": 6
+   },
+   {
+    "nomor": 2,
+    "kursi": 7,
+    "pkb": 19552,
+    "sekarang": 1,
+    "posisi": [
+     4
+    ],
+    "posisi_target": [
+     1,
+     7
+    ],
+    "kursi_baru": 7
+   },
+   {
+    "nomor": 3,
+    "kursi": 8,
+    "pkb": 28732,
+    "sekarang": 1,
+    "posisi": [
+     3
+    ],
+    "posisi_target": [
+     2,
+     8
+    ],
+    "kursi_baru": 8
+   },
+   {
+    "nomor": 4,
+    "kursi": 6,
+    "pkb": 15379,
+    "sekarang": 1,
+    "posisi": [
+     5
+    ],
+    "posisi_target": [
+     1,
+     6
+    ],
+    "kursi_baru": 6
+   },
+   {
+    "nomor": 5,
+    "kursi": 6,
+    "pkb": 18589,
+    "sekarang": 1,
+    "posisi": [
+     6
+    ],
+    "posisi_target": [
+     1,
+     6
+    ],
+    "kursi_baru": 6
+   },
+   {
+    "nomor": 6,
+    "kursi": 8,
+    "pkb": 20452,
+    "sekarang": 1,
+    "posisi": [
+     5
+    ],
+    "posisi_target": [
+     2,
+     8
+    ],
+    "kursi_baru": 8
+   },
+   {
+    "nomor": 7,
+    "kursi": 7,
+    "pkb": 10725,
+    "sekarang": 0,
+    "posisi": [],
+    "posisi_target": [
+     7
+    ],
+    "kursi_baru": 7
+   },
+   {
+    "nomor": 8,
+    "kursi": 7,
+    "pkb": 25501,
+    "sekarang": 1,
+    "posisi": [
+     3
+    ],
+    "posisi_target": [
+     1,
+     7
+    ],
+    "kursi_baru": 7
    }
   ],
   "tps_pakai": 1554
