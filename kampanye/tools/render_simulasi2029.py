@@ -197,6 +197,7 @@ ol.daftar b{{color:var(--teks)}}
 <div class="kartu">
   <h2>Rekomendasi</h2>
   <p><b>Pilih skenario 8 dapil kalau targetnya menambah kursi.</b> Dengan angka 2024 yang sama, PKB mendapat 7 kursi di 8 dapil, sedangkan di 5 dapil hanya 5 kursi. Dua kursi tambahan itu datang dari dapil yang lebih kecil, bukan dari suara yang bertambah.</p>
+  <p><b>Kemenangan PKB menyebar, tidak menumpuk.</b> Di skenario 8 dapil, PKB mendapat satu kursi di tujuh dapil dan belum mendapat kursi di Dapil 7. Pola ini sehat untuk jaringan kader, karena setiap dapil punya wakil PKB yang bisa dihubungi.</p>
   <p><b>Kursi termurah ada di Dapil 7 skenario 8 dapil.</b> Wilayahnya Karang Pilang, Wiyung, Lakarsantri, Dukuh Pakis, dan Sambikerep. PKB belum punya kursi di sana, dan cukup tambahan {n(termurahB[0]['tambah'])} suara untuk membuka kursi pertama. Di 5 dapil, kursi termurah ada di Dapil 2 dengan tambahan {n(termurahA[0]['tambah'])} suara.</p>
   <p><b>Urutan biaya kursi tambahan di skenario 8 dapil:</b> Dapil 7 perlu {n(termurahB[0]['tambah'])} suara, Dapil 3 perlu {n(termurahB[1]['tambah'])}, Dapil 8 perlu {n(termurahB[2]['tambah'])}. Tiga dapil ini menjadi rute terpendek menuju 10 kursi.</p>
   <p><b>Amankan dulu basis yang sudah ada.</b> Ada {A['dapil'][0]['tier']['menang']['n'] + A['dapil'][1]['tier']['menang']['n'] + A['dapil'][2]['tier']['menang']['n'] + A['dapil'][3]['tier']['menang']['n'] + A['dapil'][4]['tier']['menang']['n']} kelurahan yang sudah dikuasai PKB. Jangan sampai berpindah tangan saat fokus merebut wilayah baru.</p>
