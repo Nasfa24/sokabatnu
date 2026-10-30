@@ -547,22 +547,21 @@
                         imgMidlineMime: midlineData ? midlineData.mime : null
                     };
 
-                    const slug = judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70);
-                    const entri = {
-                        Judul: judul, Kategori: kategori, Tanggal: new Date().toISOString(),
-                        Deskripsi: deskripsiHTML, Status: statusTarget, Slug: slug
-                    };
-                    const blob = new Blob([JSON.stringify(entri, null, 1)], { type: 'application/json' });
-                    const tautanUnduh = document.createElement('a');
-                    tautanUnduh.href = URL.createObjectURL(blob);
-                    tautanUnduh.download = 'artikel-' + slug + '.json';
-                    tautanUnduh.click();
+                    await fetch(WEB_APP_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify(payload)
+                    });
 
                     Swal.fire({
                         ...cmsSwal,
-                        icon: 'info',
-                        title: 'Naskah diunduh',
-                        html: 'Publikasi otomatis sedang tidak aktif. Kirim berkas naskah ini beserta gambar headline dan gambar tengah ke Buleng lewat Telegram. Halaman artikel akan dibangun dari berkas itu.'
+                        title: 'Terkirim!',
+                        text: `Artikel berhasil disimpan dengan status: ${statusTarget}. Halaman artikel dan tautan bagikan terbentuk otomatis dalam beberapa menit.`,
+                        icon: 'success'
+                    }).then(() => {
+                        sessionStorage.clear();
+                        window.location.reload(true);
                     });
                 }
             } catch (error) {
