@@ -333,7 +333,8 @@
                 if (status !== 'publish') return;
 
                 const pureText = stripHtml(item.Deskripsi);
-                const imgHtml = imgHeadline ? `<div class="karya-img-wrapper"><img src="${imgHeadline}" alt="${item.Judul}" class="karya-img" loading="lazy" onerror="this.style.display='none'"></div>` : '';
+                const lokalKartu = item.Slug ? `assets/artikel/${item.Slug}-1.jpg` : '';
+                const imgHtml = (lokalKartu || imgHeadline) ? `<div class="karya-img-wrapper"><img src="${lokalKartu || imgHeadline}" data-cadangan="${imgHeadline || ''}" alt="${item.Judul}" class="karya-img" loading="lazy" onerror="if(this.dataset.cadangan){this.src=this.dataset.cadangan;this.dataset.cadangan='';}else{this.parentNode.style.display='none'}"></div>` : '';
 
                 const cardHTML = `
                     <div class="col-md-6 col-lg-4 d-flex">
