@@ -352,18 +352,14 @@ function injectPKBModalSystem() {
                                         <i class="bi bi-hexagon-fill me-1" style="color: #d4a017;"></i> Akun Ekosistem Lebah Bergerak
                                     </div>
                                     <div class="text-muted small mb-2">
-                                        Satu pendaftaran, dua manfaat. Password minimal 6 karakter. Login Lebah memakai NIK dan nomor WhatsApp yang Anda isi. Rekening dipakai untuk pencairan poin.
+                                        Satu pendaftaran, dua manfaat. Login Lebah memakai NIK dan nomor WhatsApp yang Anda isi. Rekening dipakai untuk pencairan poin.
                                     </div>
                                     <div class="row g-2">
-                                        <div class="col-md-4">
-                                            <label class="form-label fw-bold text-emerald small mb-1">Password Akun <span class="text-danger">*</span></label>
-                                            <input type="password" id="pkb-password" class="form-control" minlength="6" placeholder="Minimal 6 karakter" autocomplete="new-password" required>
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <label class="form-label fw-bold text-emerald small mb-1">Nama Bank <span class="text-danger">*</span></label>
                                             <input type="text" id="pkb-bank" class="form-control" placeholder="Contoh: BCA / BRI / MANDIRI" required>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <label class="form-label fw-bold text-emerald small mb-1">Nomor Rekening <span class="text-danger">*</span></label>
                                             <input type="tel" inputmode="numeric" id="pkb-rekening" class="form-control" placeholder="Contoh: 1234567890" required>
                                         </div>
@@ -531,7 +527,6 @@ async function handlePKBSubmit(e) {
     const kelurahan = document.getElementById('pkb-kelurahan').value.trim();
     const kecamatan = document.getElementById('pkb-kecamatan').value.trim();
     const pekerjaan = document.getElementById('pkb-pekerjaan').value.trim();
-    const password = document.getElementById('pkb-password').value;
     const bank = document.getElementById('pkb-bank').value.trim();
     const rekening = document.getElementById('pkb-rekening').value.replace(/[^0-9]/g, '').trim();
     const fileKTP = document.getElementById('pkb-file-ktp').files[0];
@@ -553,9 +548,6 @@ async function handlePKBSubmit(e) {
     }
     if (!fileKTP) {
         return Swal.fire({ ...swalConfig, icon: 'warning', title: 'Foto KTP Wajib Diunggah', text: 'Mohon lampirkan foto KTP Anda untuk verifikasi keanggotaan.' });
-    }
-    if (password.length < 6) {
-        return Swal.fire({ ...swalConfig, icon: 'warning', title: 'Password Terlalu Pendek', text: 'Buat password minimal 6 karakter untuk akun Lebah Bergerak Anda.' });
     }
     if (!bank || rekening.length < 8) {
         return Swal.fire({ ...swalConfig, icon: 'warning', title: 'Data Rekening Belum Lengkap', text: 'Isi nama bank dan nomor rekening agar poin Anda bisa dicairkan.' });
@@ -617,7 +609,6 @@ async function handlePKBSubmit(e) {
                 p_kelurahan: kelurahan,
                 p_kecamatan: kecamatan,
                 p_pekerjaan: pekerjaan.toUpperCase(),
-                p_password: password,
                 p_bank_name: bank,
                 p_bank_number: rekening,
                 p_ktp_path: ktpPath,
