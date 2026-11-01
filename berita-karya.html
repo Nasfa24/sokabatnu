@@ -223,8 +223,8 @@
         const CACHE_KEY = 'mas_uuth_berita_data_v2';
         const CACHE_TIMESTAMP_KEY = 'mas_uuth_berita_timestamp';
         const TTL_MS = 5 * 60 * 1000;
-        const SUPA_URL = 'https://hvbrskchlpemypawpqjn.supabase.co';
-        const SUPA_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2YnJza2NobHBlbXlwYXdwcWpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MzYzNzksImV4cCI6MjA5MjUxMjM3OX0.0NCroyTHROeQ3SNKOTNZS1H1hxrGy5wGTLGWm5YdOdo';
+        const BK_SUPA_URL = 'https://hvbrskchlpemypawpqjn.supabase.co';
+        const BK_SUPA_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2YnJza2NobHBlbXlwYXdwcWpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MzYzNzksImV4cCI6MjA5MjUxMjM3OX0.0NCroyTHROeQ3SNKOTNZS1H1hxrGy5wGTLGWm5YdOdo';
         const KUNCI_SUNTING = '57bc35c01bfc677ab1a56ba9';
         let petaPembaca = {};
         let modeSunting = null;
@@ -281,8 +281,8 @@
 
         async function muatPembaca() {
             try {
-                const r = await fetch(SUPA_URL + '/rest/v1/baca_artikel?select=slug,jumlah', {
-                    headers: { apikey: SUPA_ANON, Authorization: 'Bearer ' + SUPA_ANON }
+                const r = await fetch(BK_SUPA_URL + '/rest/v1/baca_artikel?select=slug,jumlah', {
+                    headers: { apikey: BK_SUPA_ANON, Authorization: 'Bearer ' + BK_SUPA_ANON }
                 });
                 const d = await r.json();
                 petaPembaca = {};
@@ -607,9 +607,9 @@
             if (!konfirmasi.isConfirmed) return;
             Swal.fire({ ...cmsSwal, title: 'Menyimpan...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
             try {
-                const r = await fetch(SUPA_URL + '/rest/v1/rpc/simpan_edit', {
+                const r = await fetch(BK_SUPA_URL + '/rest/v1/rpc/simpan_edit', {
                     method: 'POST',
-                    headers: { apikey: SUPA_ANON, Authorization: 'Bearer ' + SUPA_ANON, 'Content-Type': 'application/json' },
+                    headers: { apikey: BK_SUPA_ANON, Authorization: 'Bearer ' + BK_SUPA_ANON, 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         p_id: Number(modeSunting.ID),
                         p_judul: judul,
