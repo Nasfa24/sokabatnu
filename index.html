@@ -265,8 +265,7 @@
                     }
                 }).then(function (res) {
                     if (!res.isConfirmed) return;
-                    const base = window.location.pathname.replace(/\/?$/, '/');
-                    window.location.assign(base + 'kampanye/');
+                    window.location.assign('/kampanye/');
                 });
             }
         });
