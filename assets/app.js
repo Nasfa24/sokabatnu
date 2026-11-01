@@ -663,32 +663,44 @@ async function handlePKBSubmit(e) {
         const form = document.getElementById('formPendaftaranPKB');
         if (form) form.reset();
 
-        Swal.fire({
-            ...swalConfig,
-            icon: 'success',
-            title: 'Pendaftaran Berhasil',
-            html: `
-                <div class="p-2">
-                    <p class="mb-2" style="font-size: 1rem; line-height: 1.6;">
-                        Selamat, <b>${hasil.nama}</b>. Anda terdaftar sebagai Kader PKB Surabaya dan otomatis menjadi anggota ekosistem Lebah Bergerak.
-                    </p>
-                    <div class="p-3 rounded-4 text-start" style="background: #f4f6f5; border: 1px solid #dfe6e1;">
-                        <div class="small text-muted">ID Kader</div>
-                        <div class="fw-bold" style="font-size: 1.15rem; letter-spacing: 0.5px;">${hasil.id_kader}</div>
-                        <div class="small text-muted mt-2">Login di lebahbergerak.fun memakai NIK dan nomor WhatsApp Anda.</div>
-                        <div class="small text-muted">Bonus awal ${hasil.konekta_points} poin sudah masuk.</div>
-                    </div>
-                    <p class="mt-3 mb-0 small text-muted">Simpan ID ini. Data Anda disimpan di database PKB Surabaya.</p>
+        const tokenMasuk = hasil.token;
+        const kartuBukti = `
+            <div class="p-2">
+                <p class="mb-2" style="font-size: 1rem; line-height: 1.6;">
+                    Selamat, <b>${hasil.nama}</b>. Akun Kader PKB dan akun Lebah Bergerak Anda sudah aktif.
+                </p>
+                <div class="p-3 rounded-4 text-start" style="background: #f4f6f5; border: 1px solid #dfe6e1;">
+                    <div class="small text-muted">ID Kader</div>
+                    <div class="fw-bold" style="font-size: 1.15rem; letter-spacing: 0.5px;">${hasil.id_kader}</div>
+                    <div class="small text-muted mt-2">Bonus awal ${hasil.konekta_points} poin sudah masuk.</div>
+                    <div class="small text-muted">Simpan ID ini untuk keperluan layanan kader.</div>
                 </div>
-            `,
-            confirmButtonText: 'Buka Lebah Bergerak',
-            showCancelButton: true,
-            cancelButtonText: 'Nanti saja'
-        }).then((r) => {
-            if (r.isConfirmed) {
-                window.open('https://lebahbergerak.fun/', '_blank');
-            }
-        });
+            </div>`;
+
+        if (tokenMasuk) {
+            Swal.fire({
+                ...swalConfig,
+                icon: 'success',
+                title: 'Membuka Dasbor Lebah',
+                html: kartuBukti + '<p class="mt-2 mb-0 small text-muted">Mohon tunggu, Anda diarahkan otomatis.</p>',
+                timer: 2200,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                showConfirmButton: false
+            }).then(() => {
+                window.location.href = 'https://lebahbergerak.fun/masuk.html?t=' + encodeURIComponent(tokenMasuk);
+            });
+        } else {
+            Swal.fire({
+                ...swalConfig,
+                icon: 'success',
+                title: 'Pendaftaran Berhasil',
+                html: kartuBukti,
+                confirmButtonText: 'Masuk ke Lebah Bergerak'
+            }).then(() => {
+                window.location.href = 'https://lebahbergerak.fun/';
+            });
+        }
 
     } catch (error) {
         console.error('PKB Submit Error:', error);
