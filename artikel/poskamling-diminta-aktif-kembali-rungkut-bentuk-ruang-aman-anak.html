@@ -101,7 +101,7 @@ h1 { font-size:clamp(1.6rem,4.4vw,2.5rem); line-height:1.22; font-weight:800; ma
 <main class="bungkus">
   <span class="lencana">Berita</span>
   <h1>Poskamling Diminta Aktif Kembali, Rungkut Bentuk Ruang Aman Anak</h1>
-  <div class="tanggal"><i class="bi bi-calendar3 me-1"></i>29 Oktober 2026</div>
+  <div class="tanggal"><i class="bi bi-calendar3 me-1"></i>29 Oktober 2026 <span class="pembaca" id="jumlah-pembaca" data-slug="poskamling-diminta-aktif-kembali-rungkut-bentuk-ruang-aman-anak">menghitung pembaca...</span></div>
   <img class="gambar-utama" src="../assets/artikel/poskamling-diminta-aktif-kembali-rungkut-bentuk-ruang-aman-anak-1.jpg" alt="Poskamling Diminta Aktif Kembali, Rungkut Bentuk Ruang Aman Anak">
   <article class="isi"><p>Ketua DPAC PKB Kecamatan Rungkut, Nasfa Uuth Akhmadie, meminta warga menghidupkan kembali poskamling sebagai pusat kegiatan anak. Ia menekankan bahwa pengawasan lingkungan harus melibatkan orang tua, pengurus RT dan RW, serta guru sekolah. Imbauan itu menanggapi pergaulan bebas, peredaran miras, dan kelompok gangster yang menyasar remaja di permukiman padat. Menurutnya, ruang aman hanya lahir bila warga ikut menjaga.</p><p>Imbauan itu disampaikan di Kecamatan Rungkut, Kota Surabaya, Jumat, 30 Oktober 2026. Nasfa juga menjabat sebagai Wakil Ketua GP Ansor Kota Surabaya. Menurutnya, Rungkut menjadi titik awal karena pengawasan warga paling dekat dengan kehidupan anak. Permukiman padat itu menjadi titik rawan bagi remaja yang sedang mencari jati diri. Karena itu, ia menilai pendekatan berbasis warga lebih cepat dijalankan daripada menunggu razia aparat yang hanya datang sebentar.</p><p>Razia aparat, menurut Nasfa, hanya menyentuh gejala dan tidak menyelesaikan akar persoalan psikologis anak. Remaja, katanya, lebih sering ikut kelompok karena butuh pengakuan, bukan karena ingin melanggar. Sementara itu, Plt Kepala Satpol PP Kota Surabaya Irna Pawanti menyatakan pembinaan menyasar pengurus RT dan RW, orang tua, serta sekolah. Anak usia 12 sampai 15 tahun, kata Irna, paling rentan terpapar miras, konten ekstrem, dan ajakan gangster karena ikut-ikutan teman. Temuan itu, kata Nasfa, cukup menjadi alasan untuk bergerak di tingkat RT.</p><p>Ada tiga langkah yang ia usulkan. Pertama, aktifkan poskamling sebagai tempat warga berkumpul dan membina anak. Kedua, tegakkan kembali aturan lapor 1x24 jam bagi warga pendatang untuk mencegah masuknya pihak luar. Ketiga, tangani anak yang terindikasi melanggar norma lewat dialog bersama orang tua, pengurus RT dan RW, serta guru. "Anak-anak kita butuh ruang aman untuk tumbuh, tidak untuk diawasi saat ada razia. Ketika ada yang mulai terjerumus, penanganannya wajib melibatkan orang tua dan guru agar bimbingannya utuh," ujarnya. Ia juga meminta Satpol PP dan kelurahan menggelar pembinaan terjadwal di kampung. Pembinaan itu, katanya, harus rutin, bukan sekali jalan, tetapi berlanjut agar warga tahu apa yang harus dilakukan. Ia berharap Rungkut menjadi pelopor bagi kecamatan lain.</p></article>
   <aside class="terkait"><p>Baca juga</p><ul><li><a href="merebut-nalar-publik-di-belantara-algoritma.html">Merebut Nalar Publik di Belantara Algoritma</a><span class="tanggal">31 Oktober 2026</span></li><li><a href="santri-dan-sistem-yang-tak-dinilai.html">Santri dan Sistem yang Tak Dinilai</a><span class="tanggal">29 Oktober 2026</span></li></ul></aside>
@@ -123,6 +123,33 @@ function salinTautan(btn) {
     setTimeout(() => btn.innerHTML = asli, 2000);
   });
 }
+</script>
+<script>
+(function () {
+  var slug = "poskamling-diminta-aktif-kembali-rungkut-bentuk-ruang-aman-anak";
+  var U = "https://hvbrskchlpemypawpqjn.supabase.co";
+  var K = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2YnJza2NobHBlbXlwYXdwcWpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MzYzNzksImV4cCI6MjA5MjUxMjM3OX0.0NCroyTHROeQ3SNKOTNZS1H1hxrGy5wGTLGWm5YdOdo";
+  var H = { apikey: K, Authorization: "Bearer " + K };
+  var el = document.getElementById("jumlah-pembaca");
+  function tampil(n) {
+    if (!el) return;
+    n = Number(n) || 0;
+    el.textContent = n.toLocaleString("id-ID") + " pembaca";
+  }
+  try {
+    var kunci = "baca:" + slug + ":" + new Date().toISOString().slice(0, 10);
+    if (!localStorage.getItem(kunci)) {
+      localStorage.setItem(kunci, "1");
+      var hj = Object.assign({}, H, { "Content-Type": "application/json" });
+      fetch(U + "/rest/v1/rpc/tambah_baca", { method: "POST", headers: hj, body: JSON.stringify({ p_slug: slug }), keepalive: true })
+        .then(function (r) { return r.json(); }).then(tampil).catch(function () {});
+    }
+  } catch (e) {}
+  fetch(U + "/rest/v1/baca_artikel?select=jumlah&slug=eq." + encodeURIComponent(slug), { headers: H })
+    .then(function (r) { return r.json(); })
+    .then(function (d) { if (d && d[0]) tampil(d[0].jumlah); else if (el) el.remove(); })
+    .catch(function () { if (el) el.remove(); });
+})();
 </script>
 </body>
 </html>

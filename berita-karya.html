@@ -71,6 +71,11 @@
         .cms-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f0f0f0; padding-bottom: 20px; margin-bottom: 30px; }
         #quill-editor { height: 400px; font-family: 'Poppins', sans-serif; font-size: 1.05rem; }
         .ql-editor p { text-align: justify; } 
+        .karya-pembaca { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 600; color: #6b7280; background: #f4f6f5; border-radius: 999px; padding: 4px 10px; margin-bottom: 12px; }
+        .karya-pembaca i { color: #d4a017; }
+        #btn-sunting-toggle { background: #fff; border: 2px solid var(--emerald-green); color: var(--emerald-green); border-radius: 999px; padding: 8px 18px; font-weight: 700; }
+        #btn-sunting-toggle:hover { background: var(--emerald-green); color: #fff; }
+        #cms-mode-label { display: none; font-size: 0.85rem; color: #b45309; font-weight: 700; margin-bottom: 12px; }
     </style>
 </head>
 <body>
@@ -144,8 +149,12 @@
         <div class="cms-container">
             <div class="cms-header">
                 <h2 class="fw-bold text-emerald m-0"><i class="bi bi-vector-pen me-2"></i> Ruang Redaksi</h2>
-                <button id="btn-close-cms" class="btn btn-outline-danger rounded-pill px-4 fw-bold">Tutup</button>
+                <div class="d-flex gap-2">
+                    <button type="button" id="btn-sunting-toggle"><i class="bi bi-pencil-square me-1"></i> Sunting Berita</button>
+                    <button id="btn-close-cms" class="btn btn-outline-danger rounded-pill px-4 fw-bold">Tutup</button>
+                </div>
             </div>
+            <div id="cms-mode-label"><i class="bi bi-pencil-square"></i> Mode sunting: <span id="cms-mode-judul"></span></div>
             
             <form id="cms-form">
                 <div class="row g-4">
@@ -180,6 +189,7 @@
 
                     <div class="col-12 mt-5 pt-3 border-top d-flex gap-3 justify-content-end">
                         <button type="button" id="btn-preview" class="btn btn-secondary-custom"><i class="bi bi-eye"></i> Preview</button>
+                        <button type="button" id="btn-sunting-simpan" class="btn btn-primary-custom" style="display:none"><i class="bi bi-check2-circle"></i> Simpan Perubahan</button>
                         <button type="button" id="btn-draft" class="btn btn-secondary-custom bg-dark text-white border-dark"><i class="bi bi-save"></i> Simpan Draft</button>
                         <button type="button" id="btn-publish" class="btn btn-primary-custom"><i class="bi bi-send-check"></i> Terbitkan (Publish)</button>
                     </div>
@@ -213,6 +223,11 @@
         const CACHE_KEY = 'mas_uuth_berita_data_v2';
         const CACHE_TIMESTAMP_KEY = 'mas_uuth_berita_timestamp';
         const TTL_MS = 5 * 60 * 1000;
+        const SUPA_URL = 'https://hvbrskchlpemypawpqjn.supabase.co';
+        const SUPA_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2YnJza2NobHBlbXlwYXdwcWpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MzYzNzksImV4cCI6MjA5MjUxMjM3OX0.0NCroyTHROeQ3SNKOTNZS1H1hxrGy5wGTLGWm5YdOdo';
+        const KUNCI_SUNTING = '57bc35c01bfc677ab1a56ba9';
+        let petaPembaca = {};
+        let modeSunting = null;
 
         const cmsSwal = {
             backdrop: 'rgba(20, 35, 26, 0.75)',
@@ -249,6 +264,7 @@
             }
             initDataFetch();
             initCMSBindings();
+            muatPembaca();
         });
 
         function initCMSBindings() {
@@ -259,6 +275,31 @@
             document.getElementById('btn-preview').addEventListener('click', previewCMS);
             document.getElementById('btn-draft').addEventListener('click', () => submitCMS('Draft'));
             document.getElementById('btn-publish').addEventListener('click', () => submitCMS('Publish'));
+            document.getElementById('btn-sunting-toggle').addEventListener('click', bukaSunting);
+            document.getElementById('btn-sunting-simpan').addEventListener('click', simpanSunting);
+        }
+
+        async function muatPembaca() {
+            try {
+                const r = await fetch(SUPA_URL + '/rest/v1/baca_artikel?select=slug,jumlah', {
+                    headers: { apikey: SUPA_ANON, Authorization: 'Bearer ' + SUPA_ANON }
+                });
+                const d = await r.json();
+                petaPembaca = {};
+                (d || []).forEach(x => { petaPembaca[x.slug] = x.jumlah; });
+            } catch (e) {
+                petaPembaca = {};
+            }
+            tampilkanPembaca();
+        }
+
+        function tampilkanPembaca() {
+            document.querySelectorAll('[data-pembaca]').forEach(el => {
+                const n = Number(petaPembaca[el.dataset.pembaca] || 0);
+                const angka = el.querySelector('.angka');
+                if (angka) angka.textContent = n.toLocaleString('id-ID');
+                el.title = n ? n + ' kali dibaca' : 'belum ada pembaca tercatat';
+            });
         }
 
         async function initDataFetch() {
@@ -350,6 +391,7 @@
                                     <span class="karya-badge">${kategori}</span>
                                     <small class="text-muted fw-medium" style="font-size: 0.85rem;"><i class="bi bi-calendar3 me-1"></i> ${tanggal}</small>
                                 </div>
+                                <div class="karya-pembaca" data-pembaca="${slugItem(item)}"><i class="bi bi-eye"></i> <span class="angka">0</span> pembaca</div>
                                 <h5 class="fw-bold mb-3" style="font-size: 1.25rem; line-height: 1.4; color: #1a1a1a;">${item.Judul}</h5>
                                 <p class="text-muted mb-4" style="font-size: 0.95rem; line-height: 1.6; flex-grow: 1;">
                                     ${pureText ? pureText.substring(0, 100) + '...' : ''}
@@ -364,6 +406,7 @@
                 `;
                 container.insertAdjacentHTML('beforeend', cardHTML);
             });
+            tampilkanPembaca();
         }
 
         function injectMidline(htmlContent, midlineHtml) {
@@ -466,29 +509,136 @@
                 Swal.fire({ toast: true, position: 'top-end', showConfirmButton: false, timer: 1500, icon: 'success', title: 'Akses Diberikan' });
                 document.getElementById('cms-overlay').style.display = 'block';
                 document.body.style.overflow = 'hidden'; 
-                
-                if (!quill) {
-                    quill = new Quill('#quill-editor', {
-                        theme: 'snow',
-                        placeholder: 'Tulis isi berita di sini...',
-                        modules: {
-                            toolbar: [
-                                [{ 'header': [2, 3, false] }],
-                                ['bold', 'italic', 'underline'],
-                                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                                ['clean']
-                            ]
-                        }
-                    });
-                }
+                pastikanQuill();
             } else if (pin) {
                 Swal.fire({ ...cmsSwal, icon: 'error', title: 'Akses Ditolak', text: 'Kode PIN yang Anda masukkan tidak valid.' });
+            }
+        }
+
+        function pastikanQuill() {
+            if (!quill) {
+                quill = new Quill('#quill-editor', {
+                    theme: 'snow',
+                    placeholder: 'Tulis isi berita di sini...',
+                    modules: {
+                        toolbar: [
+                            [{ 'header': [2, 3, false] }],
+                            ['bold', 'italic', 'underline'],
+                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                            ['clean']
+                        ]
+                    }
+                });
+            }
+            return quill;
+        }
+
+        function aturMode(mode) {
+            const sunting = mode === 'sunting';
+            document.getElementById('cms-mode-label').style.display = sunting ? 'block' : 'none';
+            document.getElementById('btn-sunting-simpan').style.display = sunting ? 'inline-block' : 'none';
+            document.getElementById('btn-draft').style.display = sunting ? 'none' : 'inline-block';
+            document.getElementById('btn-publish').style.display = sunting ? 'none' : 'inline-block';
+            document.getElementById('cms-img-headline').required = !sunting;
+            const kolomGambar = document.querySelectorAll('#cms-form .col-md-6');
+            kolomGambar.forEach(k => { k.style.opacity = sunting ? '0.45' : '1'; });
+        }
+
+        function resetMode() {
+            modeSunting = null;
+            aturMode('baru');
+            document.getElementById('cms-judul').value = '';
+            document.getElementById('cms-kategori').value = 'Berita';
+            document.getElementById('cms-img-headline').value = '';
+            document.getElementById('cms-img-midline').value = '';
+            if (quill) quill.setContents([]);
+        }
+
+        async function bukaSunting() {
+            const data = normalisasiData(JSON.parse(localStorage.getItem(CACHE_KEY) || '[]'))
+                .filter(x => x.Judul)
+                .sort((a, b) => Number(b.ID || 0) - Number(a.ID || 0));
+            if (!data.length) {
+                return Swal.fire({ ...cmsSwal, icon: 'info', title: 'Belum ada berita', text: 'Tidak ada berita terposting yang bisa disunting.' });
+            }
+            const opsi = {};
+            data.forEach(it => { opsi[String(it.ID)] = (it.Kategori || 'Berita') + ' | ' + it.Judul; });
+            const pilih = await Swal.fire({
+                ...cmsSwal,
+                title: 'Pilih Berita',
+                input: 'select',
+                inputOptions: opsi,
+                inputPlaceholder: 'Daftar berita yang sudah terposting',
+                showCancelButton: true,
+                confirmButtonText: 'Sunting',
+                cancelButtonText: 'Batal'
+            });
+            if (!pilih.value) return;
+            const it = data.find(x => String(x.ID) === String(pilih.value));
+            if (!it) return;
+            pastikanQuill();
+            modeSunting = it;
+            document.getElementById('cms-judul').value = it.Judul || '';
+            document.getElementById('cms-kategori').value = it.Kategori || 'Berita';
+            quill.root.innerHTML = it.Deskripsi || '';
+            document.getElementById('cms-mode-judul').textContent = it.Judul || '';
+            aturMode('sunting');
+            document.getElementById('cms-overlay').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('cms-overlay').scrollTop = 0;
+        }
+
+        async function simpanSunting() {
+            if (!modeSunting) return;
+            const judul = document.getElementById('cms-judul').value.trim();
+            const kategori = document.getElementById('cms-kategori').value;
+            const isi = quill.root.innerHTML;
+            if (!judul) return Swal.fire({ ...cmsSwal, icon: 'error', title: 'Judul kosong', text: 'Judul wajib diisi.' });
+            if (quill.getText().trim().length === 0) return Swal.fire({ ...cmsSwal, icon: 'error', title: 'Isi kosong', text: 'Isi berita tidak boleh kosong.' });
+            const konfirmasi = await Swal.fire({
+                ...cmsSwal,
+                title: 'Simpan Perubahan?',
+                html: 'Judul, kategori, dan isi berita akan diperbarui.<br>Tautan artikel tetap sama.',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#FFB703',
+                confirmButtonText: 'Ya, Simpan'
+            });
+            if (!konfirmasi.isConfirmed) return;
+            Swal.fire({ ...cmsSwal, title: 'Menyimpan...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+            try {
+                const r = await fetch(SUPA_URL + '/rest/v1/rpc/simpan_edit', {
+                    method: 'POST',
+                    headers: { apikey: SUPA_ANON, Authorization: 'Bearer ' + SUPA_ANON, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        p_id: Number(modeSunting.ID),
+                        p_judul: judul,
+                        p_kategori: kategori,
+                        p_deskripsi: isi,
+                        p_kunci: KUNCI_SUNTING
+                    })
+                });
+                const d = await r.json();
+                if (!d || d.ok !== true) throw new Error((d && d.pesan) || 'gagal menyimpan');
+                await Swal.fire({
+                    ...cmsSwal,
+                    icon: 'success',
+                    title: 'Tersimpan',
+                    html: 'Perubahan tampil di situs dalam ±5 menit.<br><small>Tautan artikel tidak berubah.</small>'
+                });
+                localStorage.removeItem(CACHE_KEY);
+                localStorage.removeItem(CACHE_TIMESTAMP_KEY);
+                resetMode();
+                closeCMS();
+            } catch (e) {
+                Swal.fire({ ...cmsSwal, icon: 'error', title: 'Gagal menyimpan', text: String((e && e.message) || e) });
             }
         }
 
         function closeCMS() {
             document.getElementById('cms-overlay').style.display = 'none';
             document.body.style.overflow = 'auto';
+            if (modeSunting) resetMode();
         }
 
         function getBase64(file) {
