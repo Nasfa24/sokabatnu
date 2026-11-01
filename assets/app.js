@@ -352,7 +352,7 @@ function injectPKBModalSystem() {
                                         <i class="bi bi-hexagon-fill me-1" style="color: #d4a017;"></i> Akun Ekosistem Lebah Bergerak
                                     </div>
                                     <div class="text-muted small mb-2">
-                                        Satu pendaftaran, dua manfaat. Password ini dipakai untuk masuk ke Lebah Bergerak. Rekening dipakai untuk pencairan poin.
+                                        Satu pendaftaran, dua manfaat. Password minimal 6 karakter. Login Lebah memakai NIK dan nomor WhatsApp yang Anda isi. Rekening dipakai untuk pencairan poin.
                                     </div>
                                     <div class="row g-2">
                                         <div class="col-md-4">
@@ -675,7 +675,7 @@ async function handlePKBSubmit(e) {
                     <div class="p-3 rounded-4 text-start" style="background: #f4f6f5; border: 1px solid #dfe6e1;">
                         <div class="small text-muted">ID Kader</div>
                         <div class="fw-bold" style="font-size: 1.15rem; letter-spacing: 0.5px;">${hasil.id_kader}</div>
-                        <div class="small text-muted mt-2">Login memakai NIK dan password yang Anda buat tadi.</div>
+                        <div class="small text-muted mt-2">Login di lebahbergerak.fun memakai NIK dan nomor WhatsApp Anda.</div>
                         <div class="small text-muted">Bonus awal ${hasil.konekta_points} poin sudah masuk.</div>
                     </div>
                     <p class="mt-3 mb-0 small text-muted">Simpan ID ini. Data Anda disimpan di database PKB Surabaya.</p>
