@@ -5,6 +5,9 @@
  */
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxOo_Z8IPxSXYgvuyxBna8ZEjGx0GLUJl2orrjaDtJZePRGmSMNYVatvXWbpLljQyzYNg/exec';
+// Akun Lebah Bergerak: satu pendaftaran, dua keanggotaan
+const SUPA_URL = 'https://hvbrskchlpemypawpqjn.supabase.co';
+const SUPA_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2YnJza2NobHBlbXlwYXdwcWpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MzYzNzksImV4cCI6MjA5MjUxMjM3OX0.0NCroyTHROeQ3SNKOTNZS1H1hxrGy5wGTLGWm5YdOdo';
 
 const swalConfig = {
     backdrop: 'rgba(20, 35, 26, 0.75)',
@@ -342,6 +345,32 @@ function injectPKBModalSystem() {
                                 </div>
                             </div>
 
+                            <!-- AKUN LEBAH BERGERAK -->
+                            <div class="col-12">
+                                <div class="p-3 rounded-4" style="background: rgba(212, 160, 23, 0.08); border: 1px solid rgba(212, 160, 23, 0.35);">
+                                    <div class="fw-bold text-dark mb-1" style="font-size: 0.98rem;">
+                                        <i class="bi bi-hexagon-fill me-1" style="color: #d4a017;"></i> Akun Ekosistem Lebah Bergerak
+                                    </div>
+                                    <div class="text-muted small mb-2">
+                                        Satu pendaftaran, dua manfaat. Password ini dipakai untuk masuk ke Lebah Bergerak. Rekening dipakai untuk pencairan poin.
+                                    </div>
+                                    <div class="row g-2">
+                                        <div class="col-md-4">
+                                            <label class="form-label fw-bold text-emerald small mb-1">Password Akun <span class="text-danger">*</span></label>
+                                            <input type="password" id="pkb-password" class="form-control" minlength="6" placeholder="Minimal 6 karakter" autocomplete="new-password" required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label fw-bold text-emerald small mb-1">Nama Bank <span class="text-danger">*</span></label>
+                                            <input type="text" id="pkb-bank" class="form-control" placeholder="Contoh: BCA / BRI / MANDIRI" required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label fw-bold text-emerald small mb-1">Nomor Rekening <span class="text-danger">*</span></label>
+                                            <input type="tel" inputmode="numeric" id="pkb-rekening" class="form-control" placeholder="Contoh: 1234567890" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- UPLOAD KTP & KK -->
                             <div class="col-md-6">
                                 <label class="form-label fw-bold text-emerald small mb-1"><i class="bi bi-person-vcard-fill me-1"></i> Upload Foto KTP <span class="text-danger">* (Wajib)</span></label>
@@ -360,7 +389,7 @@ function injectPKBModalSystem() {
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="pkb-setuju" value="Setuju" required style="transform: scale(1.25); margin-top: 5px;">
                                         <label class="form-check-label fw-semibold ms-2 text-dark" for="pkb-setuju" style="font-size: 0.92rem;">
-                                            Saya menyatakan data di atas benar dan <strong>Setuju Bergabung</strong> menjadi Anggota / Kader Partai Kebangkitan Bangsa (PKB) Surabaya. <span class="text-danger">*</span>
+                                            Saya menyatakan data di atas benar dan <strong>Setuju Bergabung</strong> menjadi Anggota / Kader Partai Kebangkitan Bangsa (PKB) Surabaya. Saya juga setuju terdaftar sebagai anggota ekosistem Lebah Bergerak dan data rekening saya dipakai untuk pencairan poin. <span class="text-danger">*</span>
                                         </label>
                                     </div>
                                 </div>
@@ -502,6 +531,9 @@ async function handlePKBSubmit(e) {
     const kelurahan = document.getElementById('pkb-kelurahan').value.trim();
     const kecamatan = document.getElementById('pkb-kecamatan').value.trim();
     const pekerjaan = document.getElementById('pkb-pekerjaan').value.trim();
+    const password = document.getElementById('pkb-password').value;
+    const bank = document.getElementById('pkb-bank').value.trim();
+    const rekening = document.getElementById('pkb-rekening').value.replace(/[^0-9]/g, '').trim();
     const fileKTP = document.getElementById('pkb-file-ktp').files[0];
     const fileKK = document.getElementById('pkb-file-kk').files[0];
     const setuju = document.getElementById('pkb-setuju').checked;
@@ -522,74 +554,150 @@ async function handlePKBSubmit(e) {
     if (!fileKTP) {
         return Swal.fire({ ...swalConfig, icon: 'warning', title: 'Foto KTP Wajib Diunggah', text: 'Mohon lampirkan foto KTP Anda untuk verifikasi keanggotaan.' });
     }
+    if (password.length < 6) {
+        return Swal.fire({ ...swalConfig, icon: 'warning', title: 'Password Terlalu Pendek', text: 'Buat password minimal 6 karakter untuk akun Lebah Bergerak Anda.' });
+    }
+    if (!bank || rekening.length < 8) {
+        return Swal.fire({ ...swalConfig, icon: 'warning', title: 'Data Rekening Belum Lengkap', text: 'Isi nama bank dan nomor rekening agar poin Anda bisa dicairkan.' });
+    }
     if (!setuju) {
         return Swal.fire({ ...swalConfig, icon: 'warning', title: 'Konfirmasi Persetujuan', text: 'Mohon centang pernyataan Setuju Bergabung terlebih dahulu.' });
     }
 
     Swal.fire({
         ...swalConfig,
-        title: 'Mendaftarkan Kader PKB...',
-        html: 'Sedang mengenkripsi dokumen KTP/KK & menyimpan ke Database PKB Surabaya.<br><b>Mohon tunggu sebentar...</b>',
+        title: 'Mendaftarkan Kader...',
+        html: 'Menyimpan data, mengunggah KTP, dan menyiapkan akun Lebah Bergerak.<br><b>Mohon tunggu sebentar...</b>',
         allowOutsideClick: false,
         didOpen: () => { Swal.showLoading(); }
     });
 
+    const acak = () => Math.random().toString(36).slice(2, 8);
+
+    const unggahBerkas = async (awalan, file) => {
+        const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
+        const path = `pkb/${nik}-${awalan}-${Date.now()}-${acak()}.${ext}`;
+        const res = await fetch(`${SUPA_URL}/storage/v1/object/berkas_kader/${path}`, {
+            method: 'POST',
+            headers: {
+                apikey: SUPA_ANON,
+                Authorization: `Bearer ${SUPA_ANON}`,
+                'Content-Type': file.type || 'application/octet-stream'
+            },
+            body: file
+        });
+        if (!res.ok) {
+            throw new Error('Unggah berkas gagal (' + res.status + '). Periksa ukuran foto lalu coba lagi.');
+        }
+        return path;
+    };
+
     try {
-        const ktpData = await compressAndGetBase64(fileKTP);
-        let kkData = null;
+        const ktpPath = await unggahBerkas('ktp', fileKTP);
+        let kkPath = null;
         if (fileKK) {
-            kkData = await compressAndGetBase64(fileKK);
+            kkPath = await unggahBerkas('kk', fileKK);
         }
 
-        const payload = {
-            tipe: "Pendaftaran Kader PKB",
-            nik: nik,
-            nama_lengkap: nama,
-            jenis_kelamin: jk,
-            no_hp: hp,
-            alamat_jalan: alamat,
-            rt: rt,
-            rw: rw,
-            kelurahan: kelurahan,
-            kecamatan: kecamatan,
-            pekerjaan: pekerjaan.toUpperCase(),
-            setuju_gabung: "Setuju",
-            ktpBase64: ktpData.base64,
-            ktpMime: ktpData.mime,
-            kkBase64: kkData ? kkData.base64 : null,
-            kkMime: kkData ? kkData.mime : null
-        };
-
-        await fetch(scriptURL, {
+        const res = await fetch(`${SUPA_URL}/rest/v1/rpc/daftar_kader_pkb`, {
             method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify(payload)
+            headers: {
+                apikey: SUPA_ANON,
+                Authorization: `Bearer ${SUPA_ANON}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                p_nik: nik,
+                p_nama: nama,
+                p_jk: jk,
+                p_hp: hp,
+                p_alamat: alamat,
+                p_rt: rt,
+                p_rw: rw,
+                p_kelurahan: kelurahan,
+                p_kecamatan: kecamatan,
+                p_pekerjaan: pekerjaan.toUpperCase(),
+                p_password: password,
+                p_bank_name: bank,
+                p_bank_number: rekening,
+                p_ktp_path: ktpPath,
+                p_kk_path: kkPath
+            })
         });
 
+        const hasil = await res.json().catch(() => ({ ok: false, pesan: 'Jawaban server tidak terbaca.' }));
+        if (!res.ok || !hasil.ok) {
+            throw new Error(hasil.pesan || 'Pendaftaran ditolak server.');
+        }
+
+        // Arsip ke Google Sheet PKB, jalan di latar dan tidak menentukan hasil
+        compressAndGetBase64(fileKTP).then((ktpData) => {
+            const payload = {
+                tipe: 'Pendaftaran Kader PKB',
+                nik: nik,
+                nama_lengkap: nama,
+                jenis_kelamin: jk,
+                no_hp: hp,
+                alamat_jalan: alamat,
+                rt: rt,
+                rw: rw,
+                kelurahan: kelurahan,
+                kecamatan: kecamatan,
+                pekerjaan: pekerjaan.toUpperCase(),
+                setuju_gabung: 'Setuju',
+                id_kader_lebah: hasil.id_kader,
+                bank: bank,
+                nomor_rekening: rekening,
+                ktpBase64: ktpData.base64,
+                ktpMime: ktpData.mime
+            };
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(payload)
+            }).catch(() => {});
+        }).catch(() => {});
+
         closePKBModal();
-        document.getElementById('formPendaftaranPKB').reset();
+        const form = document.getElementById('formPendaftaranPKB');
+        if (form) form.reset();
 
         Swal.fire({
             ...swalConfig,
             icon: 'success',
-            title: 'Terima Kasih.',
+            title: 'Pendaftaran Berhasil',
             html: `
                 <div class="p-2">
-                    <p class="mb-3" style="font-size: 1.05rem; line-height: 1.7;">
-                        Data diri anda akan di jaga kerahasiaannya dan hanya akan di pergunakan untuk kepentingan organisasi.
+                    <p class="mb-2" style="font-size: 1rem; line-height: 1.6;">
+                        Selamat, <b>${hasil.nama}</b>. Anda terdaftar sebagai Kader PKB Surabaya dan otomatis menjadi anggota ekosistem Lebah Bergerak.
                     </p>
-                    <div class="p-3 rounded-4 fw-bold text-white" style="background: linear-gradient(135deg, #2E8B57 0%, #14452B 100%); letter-spacing: 0.5px;">
-                        PKB Surabaya ! Bangkit Solid Menang !
+                    <div class="p-3 rounded-4 text-start" style="background: #f4f6f5; border: 1px solid #dfe6e1;">
+                        <div class="small text-muted">ID Kader</div>
+                        <div class="fw-bold" style="font-size: 1.15rem; letter-spacing: 0.5px;">${hasil.id_kader}</div>
+                        <div class="small text-muted mt-2">Login memakai NIK dan password yang Anda buat tadi.</div>
+                        <div class="small text-muted">Bonus awal ${hasil.konekta_points} poin sudah masuk.</div>
                     </div>
+                    <p class="mt-3 mb-0 small text-muted">Simpan ID ini. Data Anda disimpan di database PKB Surabaya.</p>
                 </div>
             `,
-            confirmButtonText: 'Siap, Bangkit Solid Menang!'
+            confirmButtonText: 'Buka Lebah Bergerak',
+            showCancelButton: true,
+            cancelButtonText: 'Nanti saja'
+        }).then((r) => {
+            if (r.isConfirmed) {
+                window.open('https://lebahbergerak.fun/', '_blank');
+            }
         });
 
     } catch (error) {
-        console.error("PKB Submit Error:", error);
-        Swal.fire({ ...swalConfig, icon: 'error', title: 'Gagal Mengirim', text: 'Terjadi kendala jaringan. Silakan coba lagi.' });
+        console.error('PKB Submit Error:', error);
+        Swal.fire({
+            ...swalConfig,
+            icon: 'error',
+            title: 'Pendaftaran Gagal',
+            text: error.message || 'Terjadi kendala jaringan. Silakan coba lagi.'
+        });
     }
 }
 
