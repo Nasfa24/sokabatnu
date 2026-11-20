@@ -244,6 +244,19 @@
     inisialisasiAccordion();
   };
 
+  // Tombol KELUAR APLIKASI memanggil ini. Wajib di lingkup global, bukan di dalam
+  // fungsi lain. Sebelumnya tim.html memanggil prosesLogout() yang hanya ada di
+  // caleg.html, jadi tombolnya diam tanpa pesan dan sesi tidak pernah terhapus.
+  // Jangan hapus atau pindahkan ke dalam fungsi lain.
+  function prosesLogout() {
+    Swal.fire({ title: 'Akhiri Sesi?', icon: 'warning', showCancelButton: true,
+      confirmButtonColor: '#ef4444', confirmButtonText: 'Ya, Keluar',
+      cancelButtonText: 'Batal' }).then((r) => {
+      if (r.isConfirmed) { localStorage.clear(); sessionStorage.clear();
+        window.location.replace('index.html'); }
+    });
+  }
+
   function switchTab(sectionId, element) {
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
     element.classList.add('active');
